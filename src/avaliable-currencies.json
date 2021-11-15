@@ -1,0 +1,67 @@
+{
+  "USD": {
+    "currencyName": "United States Dollar",
+    "currencySymbol": "$",
+    "id": "USD"
+  },
+  "EUR": {
+    "currencyName": "Euro",
+    "currencySymbol": "€",
+    "id": "EUR"
+  },
+  "RUB": {
+    "currencyName": "Russian Ruble",
+    "currencySymbol": "руб",
+    "id": "RUB"
+  },
+  "GBP": {
+    "currencyName": "British Pound",
+    "currencySymbol": "£",
+    "id": "GBP"
+  },
+  "CAD": {
+    "currencyName": "Canadian Dollar",
+    "currencySymbol": "$",
+    "id": "CAD"
+  },
+  "PLN": {
+    "currencyName": "Polish Zloty",
+    "currencySymbol": "zł",
+    "id": "PLN"
+  },
+  "UAH": {
+    "currencyName": "Ukrainian Hryvnia",
+    "currencySymbol": "₴",
+    "id": "UAH"
+  },
+  "SEK": {
+    "currencyName": "Swedish Krona",
+    "currencySymbol": "kr",
+    "id": "SEK"
+  },
+  "CHF": {
+    "currencyName": "Swiss Franc",
+    "currencySymbol": "Fr.",
+    "id": "CHF"
+  },
+  "JPY": {
+    "currencyName": "Japanese Yen",
+    "currencySymbol": "¥",
+    "id": "JPY"
+  },
+  "CNY": {
+    "currencyName": "Chinese Yuan",
+    "currencySymbol": "¥",
+    "id": "CNY"
+  },
+  "CZK": {
+    "currencyName": "Czech Koruna",
+    "currencySymbol": "Kč",
+    "id": "CZK"
+  },
+  "NOK": {
+    "currencyName": "Norwegian Krone",
+    "currencySymbol": "kr",
+    "id": "NOK"
+  }
+}
