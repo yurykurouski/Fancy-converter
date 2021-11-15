@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -14,46 +14,23 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { CurrencySelector } from './components/CurrencySelector/CurrencySelector';
 import { CurrencyValue } from './components/CurrencyValue/CurrencyValue';
 import { useGetCurrenciesList } from './hooks/useGetCurrenciesList';
-import { currenciesService } from './services/currencies-service';
 import avaliableCurrencies from './avaliable-currencies.json';
 import { API_CITIES_GRODNO } from './contsants';
 
-const DEFAULT_CURRENCY = {
-  BY: {
-    alpha3: 'BLR',
-    currencyId: 'BYN',
-    currencyName: 'New Belarusian ruble',
-    currencySymbol: 'p.',
-    id: 'BY',
-    name: 'Belarus',
-  },
-};
-
 const App = () => {
-  const [values, setValues] = useState([]);
   const [isModal, setIsModal] = useState(false);
   const [selectedCurrencies, setSelectedCurrencies] = useState([]);
+  const [currentCity, setCurrentCity] = useState(API_CITIES_GRODNO);
 
   const isDarkMode = useColorScheme() === 'dark';
 
-  const [isLoading, currenciesList] = useGetCurrenciesList();
+  const [isLoading, exchangeCourse] = useGetCurrenciesList(currentCity);
 
   const backgroundStyle = {
     height: '100%',
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     paddingHorizontal: 10,
   };
-
-  const onPressHandler = useCallback(async () => {
-    const response = await currenciesService.getCoursesExchangeWithCity(
-      API_CITIES_GRODNO,
-    );
-    console.log(response);
-    const responseMapped = Object.keys(response).map(key => ({
-      [key]: response[key],
-    }));
-    setValues(responseMapped);
-  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -75,10 +52,9 @@ const App = () => {
             isModal={isModal}
             setIsModal={setIsModal}
             setSelectedCurrencies={setSelectedCurrencies}
-            //todo выбранные валюты нужно в контекст провайдер
             selectedCurrencies={selectedCurrencies}
           />
-          {selectedCurrencies && <Button title="API Test" onPress={onPressHandler} />}
+          {/* {selectedCurrencies && <Button title="API Test" onPress={onPressHandler} />} */}
         </>
       )}
     </SafeAreaView>

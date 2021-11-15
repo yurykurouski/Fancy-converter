@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { currenciesService } from '../services/currencies-service';
 
-export const useGetCurrenciesList = () => {
+export const useGetCurrenciesList = currentCity => {
   const [isLoading, setIsLOading] = useState(false);
-  const [currenciesList, setCurrenciesList] = useState();
+  const [actualExchangeCourse, setActualExchangeCourse] = useState();
 
-  // useEffect(() => {
-  //   setIsLOading(true);
+  useEffect(() => {
+    setIsLOading(true);
 
-  //   currenciesService
-  //     .getCurrencies()
-  //     .then(value => setCurrenciesList(value))
-  //     .then(() => setIsLOading(false));
-  // }, []);
+    currenciesService
+      .getCoursesExchangeWithCity(currentCity)
+      .then(value => setActualExchangeCourse(value))
+      .then(() => setIsLOading(false));
+  }, [currentCity]);
 
-  return [isLoading, currenciesList];
+  return [isLoading, actualExchangeCourse];
 };

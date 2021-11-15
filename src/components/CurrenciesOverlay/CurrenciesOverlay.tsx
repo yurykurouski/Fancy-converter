@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { HorisontalDivider } from '../common/HorisontalDivider';
 import { SubmitButton } from '../common/SubmitButton';
 
 import { styles } from './CurrenciesOverlay.styles';
-import { CurrenciesCheckbox } from './CurrenciesCheckbox';
+import { CurrencySelectorValue } from './CurrencySelectorValue';
 
 export const CurrenciesOverlay = ({
   currenciesList,
@@ -12,7 +12,9 @@ export const CurrenciesOverlay = ({
   setSelectedCurrencies,
   selectedCurrencies,
 }) => {
-  const [modalSelectedCurrencies, setModalSelectedCurrencies] = useState(selectedCurrencies);
+  const [modalSelectedCurrencies, setModalSelectedCurrencies] =
+    useState(selectedCurrencies);
+
   const acceptButtonHandler = () => {
     setSelectedCurrencies(modalSelectedCurrencies);
 
@@ -22,26 +24,14 @@ export const CurrenciesOverlay = ({
   return (
     <View style={styles.container}>
       <ScrollView>
-        {currenciesList.map(value => {
-          const currencyCode = Object.keys(value)[0];
-          const { currencyName, id } = value[currencyCode];
-          const isActive = selectedCurrencies.includes(currencyCode);
-
-          return (
-            <View key={id} style={styles.currencyBlock}>
-              <View>
-                <Text style={styles.currencyCode}>{currencyCode}</Text>
-                <Text style={styles.currencyName}>{currencyName}</Text>
-              </View>
-              <CurrenciesCheckbox
-                selectedCurrencies={selectedCurrencies}
-                currencyCode={currencyCode}
-                setModalSelectedCurrencies={setModalSelectedCurrencies}
-                isActive={isActive}
-              />
-            </View>
-          );
-        })}
+        {currenciesList.map(value => (
+          <CurrencySelectorValue
+            key={Object.keys(value)[0]}
+            value={value}
+            modalSelectedCurrencies={modalSelectedCurrencies}
+            setModalSelectedCurrencies={setModalSelectedCurrencies}
+          />
+        ))}
       </ScrollView>
       <View style={styles.buttonsWrapper}>
         <SubmitButton
