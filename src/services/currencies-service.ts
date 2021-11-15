@@ -1,4 +1,5 @@
 import { DEFAULT_API_CITY_REQUEST } from 'react-native-dotenv';
+
 import { requests } from './requests';
 
 class CurrenciesService {

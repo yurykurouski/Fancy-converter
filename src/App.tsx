@@ -1,65 +1,52 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import {
-  SafeAreaView,
-  StatusBar,
-  useColorScheme,
-  Button,
-  ScrollView,
-  StyleSheet,
   ActivityIndicator,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
   Text,
+  useColorScheme,
 } from 'react-native';
-
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { CurrencySelector } from './components/CurrencySelector/CurrencySelector';
-import { CurrencyValue } from './components/CurrencyValue/CurrencyValue';
-import { useGetCurrenciesList } from './hooks/useGetCurrenciesList';
+
 import avaliableCurrencies from './avaliable-currencies.json';
-import { API_CITIES_GRODNO } from './contsants';
+import CurrencySelector from './components/CurrencySelector/CurrencySelector';
+import CurrencyValue from './components/CurrencyValue/CurrencyValue';
+import { SelectedCurrenciesProvider } from './components/SelectedCurrenciesContext';
 
-const App = () => {
-  const [isModal, setIsModal] = useState(false);
-  const [selectedCurrencies, setSelectedCurrencies] = useState([]);
-  const [currentCity, setCurrentCity] = useState(API_CITIES_GRODNO);
-
+const App = React.memo(() => {
   const isDarkMode = useColorScheme() === 'dark';
+  // const [isLoading, exchangeCourse] = useGetCurrenciesList();
 
-  const [isLoading, exchangeCourse] = useGetCurrenciesList(currentCity);
-
-  const backgroundStyle = {
-    height: '100%',
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    paddingHorizontal: 10,
-  };
+  const backgroundStyle = useMemo(
+    () => ({
+      height: '100%',
+      backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+      paddingHorizontal: 10,
+    }),
+    [isDarkMode],
+  );
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Text style={styles.header}>Fancy converter</Text>
-      {isLoading ? (
+      {false ? (
         <ActivityIndicator size="large" />
       ) : (
         <>
-          <ScrollView style={styles.container}>
-            {selectedCurrencies.map(currency => (
-              <CurrencyValue currencyCode={currency} key={currency} />
-            ))}
-
-            <Button onPress={() => setIsModal(true)} title="Add a currency" />
-          </ScrollView>
-          <CurrencySelector
-            avaliableCurrencies={avaliableCurrencies}
-            isModal={isModal}
-            setIsModal={setIsModal}
-            setSelectedCurrencies={setSelectedCurrencies}
-            selectedCurrencies={selectedCurrencies}
-          />
-          {/* {selectedCurrencies && <Button title="API Test" onPress={onPressHandler} />} */}
+          <SelectedCurrenciesProvider>
+            <ScrollView style={styles.container}>
+              <CurrencyValue />
+            </ScrollView>
+            <CurrencySelector avaliableCurrencies={avaliableCurrencies} />
+          </SelectedCurrenciesProvider>
         </>
       )}
     </SafeAreaView>
   );
-};
+});
 
 export default App;
 

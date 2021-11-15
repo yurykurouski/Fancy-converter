@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-export const useCurrenciesListToArray = (results) =>
+export const useCurrenciesListToArray = results =>
   useMemo(
     () =>
       Object.keys(results).map(value => ({

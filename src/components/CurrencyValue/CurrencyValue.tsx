@@ -1,30 +1,14 @@
-import React, { useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import React from 'react';
 
-import { styles } from './CurrencyValue.styles';
+import { withSelectedCurrencies } from '../SelectedCurrenciesContext';
+import { CurrencyInputValue } from './CurrencyInputValue';
 
-export const CurrencyValue = ({ currencyCode }) => {
-  const [value, setValue] = useState('');
-  const [isFocused, setIsFocused] = useState(false);
-
-  return (
-    <View
-      style={
-        isFocused
-          ? [styles.container, styles.containerFocused]
-          : styles.container
-      }>
-      <Text style={styles.title}>{currencyCode}</Text>
-      <TextInput
-        style={styles.input}
-        value={value}
-        onChange={({ nativeEvent: { text } }) => {
-          setValue(text);
-        }}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        keyboardType="number-pad"
-      />
-    </View>
-  );
+const CurrencyValue = ({
+  selectedCurrenciesContext: { selectedCurrencies },
+}) => {
+  return selectedCurrencies.map(currencyCode => (
+    <CurrencyInputValue key={currencyCode} currencyCode={currencyCode} />
+  ));
 };
+
+export default withSelectedCurrencies(CurrencyValue);

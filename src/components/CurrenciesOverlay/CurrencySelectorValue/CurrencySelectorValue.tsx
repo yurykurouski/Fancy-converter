@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import { TouchableOpacity, View, Text } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import React, { useCallback, useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import { styles } from './CurrencySelectorValue.styles';
 

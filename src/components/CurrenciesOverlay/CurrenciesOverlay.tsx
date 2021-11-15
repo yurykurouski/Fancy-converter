@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
+
 import { HorisontalDivider } from '../common/HorisontalDivider';
 import { SubmitButton } from '../common/SubmitButton';
-
 import { styles } from './CurrenciesOverlay.styles';
 import { CurrencySelectorValue } from './CurrencySelectorValue';
 
