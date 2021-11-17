@@ -3,7 +3,7 @@ import {
   getOnlyCourses,
 } from '../utils/getOnlyCourses';
 
-export const useFirteredCourseBySelectedCurrencies = (
+export const useFilteredCourseBySelectedCurrencies = (
   exchancgeCourse,
   selectedCurrencies,
 ) => {
