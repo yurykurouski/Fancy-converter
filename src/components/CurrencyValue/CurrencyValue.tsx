@@ -1,14 +1,9 @@
 import React from 'react';
 
-import { withSelectedCurrencies } from '../SelectedCurrenciesContext';
-import { CurrencyInputValue } from './CurrencyInputValue';
+import { CurrencyInputValue } from './CurrencyInputValue/CurrencyInputValue';
 
-const CurrencyValue = ({
-  selectedCurrenciesContext: { selectedCurrencies },
-}) => {
+export const CurrencyValue = ({ selectedCurrencies }) => {
   return selectedCurrencies.map(currencyCode => (
     <CurrencyInputValue key={currencyCode} currencyCode={currencyCode} />
   ));
 };
-
-export default withSelectedCurrencies(CurrencyValue);

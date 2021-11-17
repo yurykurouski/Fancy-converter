@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from 'react-native';
 
+import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
 import { CurrenciesOverlay } from '../CurrenciesOverlay/CurrenciesOverlay';
-import { withSelectedCurrencies } from '../SelectedCurrenciesContext';
-import { useCurrenciesListToArray } from './CurrencySelector.hooks';
+import { CurrencyValue } from '../CurrencyValue';
 
-const CurrencySelector = ({
-  avaliableCurrencies,
-  selectedCurrenciesContext: { setSelectedCurrencies, selectedCurrencies },
-}) => {
+export const CurrencySelector = () => {
   const [isModal, setIsModal] = useState(false);
+  const {
+    selectedCurrenciesContext: { selectedCurrencies },
+  } = useContext(SelectedCurrenciesContext);
 
-  const resultsArray = useCurrenciesListToArray(avaliableCurrencies);
   return (
     <>
-      {isModal && (
-        <CurrenciesOverlay
-          setIsModal={setIsModal}
-          currenciesList={resultsArray}
-          setSelectedCurrencies={setSelectedCurrencies}
-          selectedCurrencies={selectedCurrencies}
-        />
+      {isModal && <CurrenciesOverlay setIsModal={setIsModal} />}
+
+      {selectedCurrencies.length > 0 && (
+        <CurrencyValue selectedCurrencies={selectedCurrencies} />
       )}
       <Button onPress={() => setIsModal(true)} title="Add a currency" />
     </>
   );
 };
-
-export default withSelectedCurrencies(CurrencySelector);

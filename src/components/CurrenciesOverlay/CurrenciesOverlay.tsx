@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 
+import avaliableCurrencies from '../../resources/avaliable-currencies.json';
 import { HorisontalDivider } from '../common/HorisontalDivider';
 import { SubmitButton } from '../common/SubmitButton';
+import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
+import { useCurrenciesListToArray } from '../CurrencySelector/CurrencySelector.hooks';
 import { styles } from './CurrenciesOverlay.styles';
 import { CurrencySelectorValue } from './CurrencySelectorValue';
 
-export const CurrenciesOverlay = ({
-  currenciesList,
-  setIsModal,
-  setSelectedCurrencies,
-  selectedCurrencies,
-}) => {
+export const CurrenciesOverlay = ({ setIsModal }) => {
+  const {
+    selectedCurrenciesContext: { setSelectedCurrencies, selectedCurrencies },
+  } = useContext(SelectedCurrenciesContext);
+
   const [modalSelectedCurrencies, setModalSelectedCurrencies] =
     useState(selectedCurrencies);
 
@@ -21,10 +23,12 @@ export const CurrenciesOverlay = ({
     setIsModal(false);
   };
 
+  const currenciesArray = useCurrenciesListToArray(avaliableCurrencies);
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        {currenciesList.map(value => (
+        {currenciesArray.map(value => (
           <CurrencySelectorValue
             key={Object.keys(value)[0]}
             value={value}

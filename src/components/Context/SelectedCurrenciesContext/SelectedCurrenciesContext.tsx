@@ -22,13 +22,3 @@ export const SelectedCurrenciesProvider = ({ children }) => {
     </SelectedCurrenciesContext.Provider>
   );
 };
-
-export function withSelectedCurrencies(Component) {
-  return function SelectedCurrenciesConsumer(props) {
-    return (
-      <SelectedCurrenciesContext.Consumer>
-        {contexts => <Component {...props} {...contexts} />}
-      </SelectedCurrenciesContext.Consumer>
-    );
-  };
-}

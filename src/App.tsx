@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
 import {
-  ActivityIndicator,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -10,14 +8,11 @@ import {
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import avaliableCurrencies from './avaliable-currencies.json';
-import CurrencySelector from './components/CurrencySelector/CurrencySelector';
-import CurrencyValue from './components/CurrencyValue/CurrencyValue';
-import { SelectedCurrenciesProvider } from './components/SelectedCurrenciesContext';
+import { ExchangeCourseProvider } from './components/Context/ExchangeCourseContext';
+import { CurrenciesMainContent } from './components/CurrenciesMainContent';
 
 const App = React.memo(() => {
   const isDarkMode = useColorScheme() === 'dark';
-  // const [isLoading, exchangeCourse] = useGetCurrenciesList();
 
   const backgroundStyle = useMemo(
     () => ({
@@ -32,18 +27,9 @@ const App = React.memo(() => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Text style={styles.header}>Fancy converter</Text>
-      {false ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <>
-          <SelectedCurrenciesProvider>
-            <ScrollView style={styles.container}>
-              <CurrencyValue />
-            </ScrollView>
-            <CurrencySelector avaliableCurrencies={avaliableCurrencies} />
-          </SelectedCurrenciesProvider>
-        </>
-      )}
+      <ExchangeCourseProvider>
+        <CurrenciesMainContent />
+      </ExchangeCourseProvider>
     </SafeAreaView>
   );
 });
