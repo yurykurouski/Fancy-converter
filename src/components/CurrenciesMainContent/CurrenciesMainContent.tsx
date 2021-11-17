@@ -9,14 +9,14 @@ export const CurrenciesMainContent = () => {
   const {
     currentExchangeCourseContext: { currentExchangeCourse },
   } = useContext(ExchangeCourseContext);
-  // const { exchangeCourse, isLoading } = currentExchangeCourse;
+  const { isLoading, exchangeCourse } = currentExchangeCourse;
 
-  return false ? (
+  return isLoading ? (
     <ActivityIndicator size="large" />
   ) : (
     <>
       <SelectedCurrenciesProvider>
-        <CurrencySelector />
+        <CurrencySelector exchangeCourse={exchangeCourse} />
       </SelectedCurrenciesProvider>
     </>
   );

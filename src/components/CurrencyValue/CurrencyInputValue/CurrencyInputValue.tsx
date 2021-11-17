@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 
-import { ExchangeCourseContext } from '../../Context/ExchangeCourseContext';
 import { styles } from './CurrencyInputValue.styles';
 
 export const CurrencyInputValue = ({ currencyCode }) => {
