@@ -5,23 +5,26 @@ import { useFilteredCourseBySelectedCurrencies } from '../../hooks/useFilteredCo
 import { FocusedCurrencyContext } from '../Context/FocusedCurrencyContext';
 import { CurrencyInputValue } from './CurrencyInputValue/CurrencyInputValue';
 
-export const CurrencyValue = ({ selectedCurrencies, exchangeCourse }) => {
-  const {
-    focusedCurrencyContext: { focusedCurrency, setFocusedCurrency },
-  } = useContext(FocusedCurrencyContext);
+export const CurrencyValue = React.memo(
+  ({ selectedCurrencies, exchangeCourse }) => {
+    const {
+      focusedCurrencyContext: { focusedCurrency, setFocusedCurrency },
+    } = useContext(FocusedCurrencyContext);
 
-  const selectedCourses = useFilteredCourseBySelectedCurrencies(
-    exchangeCourse,
-    selectedCurrencies,
-    OPERATION_TYPE_OUT,
-  );
+    const selectedCourses = useFilteredCourseBySelectedCurrencies(
+      exchangeCourse,
+      selectedCurrencies,
+      OPERATION_TYPE_OUT,
+    );
 
-  return selectedCurrencies.map(currencyCode => (
-    <CurrencyInputValue
-      key={currencyCode}
-      currencyCode={currencyCode}
-      setFocusedCurrency={setFocusedCurrency}
-      focusedCurrency={focusedCurrency}
-    />
-  ));
-};
+    return selectedCurrencies.map(currencyCode => (
+      <CurrencyInputValue
+        key={currencyCode}
+        currencyCode={currencyCode}
+        setFocusedCurrency={setFocusedCurrency}
+        focusedCurrency={focusedCurrency}
+        course={selectedCourses[currencyCode]}
+      />
+    ));
+  },
+);

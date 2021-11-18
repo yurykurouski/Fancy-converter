@@ -45,3 +45,16 @@ export const getFilteredCoursesByOperationType = (
     return regexp.test(key);
   });
 };
+
+export const getFormattedCourses = filteredCoursesByOperationType =>
+  filteredCoursesByOperationType.reduce((acc, currency) => {
+    const currencyName = Object.keys(currency)[0];
+    const currencyCourseValue = Object.values(currency)[0];
+
+    const formattedCurrencyName = currencyName.split(/_(in|out)$/)[0];
+
+    return {
+      ...acc,
+      [formattedCurrencyName]: currencyCourseValue,
+    };
+  }, {});
