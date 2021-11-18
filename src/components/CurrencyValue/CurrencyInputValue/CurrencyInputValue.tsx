@@ -1,15 +1,30 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 
+import { useCurrencyInputHandlers } from './CurrencyInputValue.hooks';
 import { styles } from './CurrencyInputValue.styles';
 
 export const CurrencyInputValue = ({
   currencyCode,
-  focusedCurrency,
-  setFocusedCurrency,
+  focusedCurrencyName,
+  setFocusedCurrencyName,
+  setFocusedCurrencyValue,
+  focusedCurrencyValue,
+  course,
 }) => {
-  const [value, setValue] = useState('');
-  const isFocused = focusedCurrency === currencyCode;
+  const [value, setValue] = useState('0');
+  const isFocused = focusedCurrencyName === currencyCode;
+
+  const [onChangeTextHandler, onFocusHandler, onBlurHandler] =
+    useCurrencyInputHandlers(
+      setFocusedCurrencyValue,
+      setValue,
+      value,
+      setFocusedCurrencyName,
+      currencyCode,
+    );
+  
+  
 
   return (
     <View
@@ -23,10 +38,9 @@ export const CurrencyInputValue = ({
       <TextInput
         style={styles.input}
         value={value}
-        onChange={({ nativeEvent: { text } }) => {
-          setValue(text);
-        }}
-        onFocus={() => setFocusedCurrency(currencyCode)}
+        onChangeText={onChangeTextHandler}
+        onFocus={onFocusHandler}
+        onBlur={onBlurHandler}
         keyboardType="number-pad"
         contextMenuHidden={true}
       />
