@@ -32,3 +32,16 @@ const getMathcedCurrency = (currency, selectedCurrencies) => {
     }
   }
 };
+
+export const getFilteredCoursesByOperationType = (
+  operationType,
+  coursesForSelectedCurrencies,
+) => {
+  const regexp = new RegExp(`_${operationType}$`, 'i');
+
+  return coursesForSelectedCurrencies.filter(currencyCourse => {
+    const key = Object.keys(currencyCourse)[0];
+
+    return regexp.test(key);
+  });
+};

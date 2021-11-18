@@ -1,11 +1,13 @@
 import {
   getCoursesForSelectedCurrencies,
+  getFilteredCoursesByOperationType,
   getOnlyCourses,
 } from '../utils/getOnlyCourses';
 
 export const useFilteredCourseBySelectedCurrencies = (
   exchancgeCourse,
   selectedCurrencies,
+  operationType,
 ) => {
   if (!exchancgeCourse) {
     return;
@@ -17,5 +19,10 @@ export const useFilteredCourseBySelectedCurrencies = (
     selectedCurrencies,
   );
 
-  return coursesForSelectedCurrencies;
+  const filteredCoursesByOperationType = getFilteredCoursesByOperationType(
+    operationType,
+    coursesForSelectedCurrencies,
+  );
+
+  return filteredCoursesByOperationType;
 };
