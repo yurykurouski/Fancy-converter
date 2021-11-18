@@ -48,8 +48,7 @@ export const getFilteredCoursesByOperationType = (
 
 export const getFormattedCourses = filteredCoursesByOperationType =>
   filteredCoursesByOperationType.reduce((acc, currency) => {
-    const currencyName = Object.keys(currency)[0];
-    const currencyCourseValue = Object.values(currency)[0];
+    const [currencyName, currencyCourseValue] = Object.entries(currency)[0];
 
     const formattedCurrencyName = currencyName.split(/_(in|out)$/)[0];
 
