@@ -5,3 +5,6 @@ export const API_CITIES_GRODNO = 'Гродно';
 
 export const REQUEST_GET = 'GET';
 export const REQUEST_CT_APPLICATION_JSON = 'application/json';
+
+export const OPERATION_TYPE_OUT = 'out';
+export const OPERATION_TYPE_IN = 'in';

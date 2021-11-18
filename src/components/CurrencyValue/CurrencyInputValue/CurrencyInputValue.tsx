@@ -3,9 +3,13 @@ import { Text, TextInput, View } from 'react-native';
 
 import { styles } from './CurrencyInputValue.styles';
 
-export const CurrencyInputValue = ({ currencyCode }) => {
+export const CurrencyInputValue = ({
+  currencyCode,
+  focusedCurrency,
+  setFocusedCurrency,
+}) => {
   const [value, setValue] = useState('');
-  const [isFocused, setIsFocused] = useState(false);
+  const isFocused = focusedCurrency === currencyCode;
 
   return (
     <View
@@ -22,8 +26,7 @@ export const CurrencyInputValue = ({ currencyCode }) => {
         onChange={({ nativeEvent: { text } }) => {
           setValue(text);
         }}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onFocus={() => setFocusedCurrency(currencyCode)}
         keyboardType="number-pad"
         contextMenuHidden={true}
       />
