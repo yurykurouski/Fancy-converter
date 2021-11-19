@@ -7,16 +7,19 @@ import { CurrenciesOverlay } from '../CurrenciesOverlay/CurrenciesOverlay';
 import { CurrencyValue } from '../CurrencyValue';
 
 export const CurrencySelector = ({ exchangeCourse }) => {
-  const [isModal, setIsModal] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const {
     selectedCurrenciesContext: { selectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
 
   return (
     <>
-      {isModal && <CurrenciesOverlay setIsModal={setIsModal} />}
+      <CurrenciesOverlay
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      />
 
-      {selectedCurrencies.length > 0 && !isModal && (
+      {selectedCurrencies.length > 0 && (
         <FocusedCurrencyProvider>
           <CurrencyValue
             selectedCurrencies={selectedCurrencies}
@@ -24,7 +27,7 @@ export const CurrencySelector = ({ exchangeCourse }) => {
           />
         </FocusedCurrencyProvider>
       )}
-      <Button onPress={() => setIsModal(true)} title="Add a currency" />
+      <Button onPress={() => setModalVisible(true)} title="Add a currency" />
     </>
   );
 };
