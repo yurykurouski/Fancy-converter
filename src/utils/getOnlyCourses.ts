@@ -1,10 +1,16 @@
 export const getOnlyCourses = exchangeCourse => {
-  const onlyCurrenciesNamesValues = Object.keys(exchangeCourse[0]).filter(
+  const withBYNCourse = {
+    ...exchangeCourse[0],
+    BYN_in: '1',
+    BYN_out: '1',
+  };
+
+  const onlyCurrenciesNamesValues = Object.keys(withBYNCourse).filter(
     key => key.match(/_out$/) || key.match(/_in$/),
   );
 
   return onlyCurrenciesNamesValues.map(key => ({
-    [key]: exchangeCourse[0][key],
+    [key]: withBYNCourse[key],
   }));
 };
 

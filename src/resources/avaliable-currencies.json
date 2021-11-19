@@ -1,4 +1,9 @@
 {
+  "BYN": {
+    "currencyName": "Belarussian ruble",
+    "currencySymbol": "Br",
+    "id": "BYN"
+  },
   "USD": {
     "currencyName": "United States Dollar",
     "currencySymbol": "$",
