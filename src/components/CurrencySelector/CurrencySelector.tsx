@@ -3,7 +3,7 @@ import { Button } from 'react-native';
 
 import { FocusedCurrencyProvider } from '../Context/FocusedCurrencyContext';
 import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
-import { CurrenciesOverlay } from '../CurrenciesOverlay/CurrenciesOverlay';
+import { CurrenciesModal } from '../CurrenciesModal/CurrenciesModal';
 import { CurrencyValue } from '../CurrencyValue';
 
 export const CurrencySelector = ({ exchangeCourse }) => {
@@ -14,7 +14,7 @@ export const CurrencySelector = ({ exchangeCourse }) => {
 
   return (
     <>
-      <CurrenciesOverlay
+      <CurrenciesModal
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
       />

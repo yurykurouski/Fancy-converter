@@ -6,10 +6,10 @@ import { HorisontalDivider } from '../common/HorisontalDivider';
 import { SubmitButton } from '../common/SubmitButton';
 import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
 import { useCurrenciesListToArray } from '../CurrencySelector/CurrencySelector.hooks';
-import { styles } from './CurrenciesOverlay.styles';
+import { styles } from './CurrenciesModal.styles';
 import { CurrencySelectorValue } from './CurrencySelectorValue';
 
-export const CurrenciesOverlay = ({ setModalVisible, modalVisible }) => {
+export const CurrenciesModal = ({ setModalVisible, modalVisible }) => {
   const {
     selectedCurrenciesContext: { setSelectedCurrencies, selectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
