@@ -2,17 +2,9 @@ import React from 'react';
 
 import { useGetCurrenciesExchangeCourse } from '../../../hooks/useGetCurrenciesExchangeCourse';
 
-export const ExchangeCourseContext = React.createContext({
-  currentExchangeCourseContext: {
-    currentExchangeCourse: {
-      exchangeCourse: [],
-      isLoading: false,
-    },
-    setcurrentExchangeCourse: value => value,
-  },
-});
+export const ExchangeCourseContext = React.createContext({});
 
-export const ExchangeCourseProvider = ({ children }) => {
+export const ExchangeCourseProvider: React.FC = ({ children }) => {
   const { isLoading, actualExchangeCourse } = useGetCurrenciesExchangeCourse();
 
   return (
