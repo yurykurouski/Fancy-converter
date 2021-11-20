@@ -36,7 +36,7 @@ export const useConvertedValues = (
         ? value
         : isNaN(coefficient)
         ? null
-        : String(Number(focusedCurrencyValue) * coefficient),
+        : (Number(focusedCurrencyValue) * coefficient).toFixed(2),
     [coefficient, focusedCurrencyValue, isFocused, value],
   );
 
