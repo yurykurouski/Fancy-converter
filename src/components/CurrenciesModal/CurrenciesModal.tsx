@@ -26,7 +26,11 @@ export const CurrenciesModal = ({ setModalVisible, modalVisible }) => {
   const currenciesArray = useCurrenciesListToArray(avaliableCurrencies);
 
   return (
-    <Modal animationType="slide" visible={modalVisible} transparent={true}>
+    <Modal
+      animationType="slide"
+      visible={modalVisible}
+      transparent={true}
+      onRequestClose={() => setModalVisible(false)}>
       <View style={styles.container}>
         <ScrollView>
           {currenciesArray.map(value => (
