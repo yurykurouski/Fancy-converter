@@ -43,7 +43,10 @@ export const CurrencyInputValue: React.FC<Props> = ({
           ? [styles.container, styles.containerFocused]
           : styles.container
       }>
-      <Text style={styles.title}>{currencyCode}</Text>
+      <Text
+        style={isFocused ? [styles.title, styles.titleFocused] : styles.title}>
+        {currencyCode}
+      </Text>
       <TextInput
         style={styles.input}
         value={caclulatedValue}

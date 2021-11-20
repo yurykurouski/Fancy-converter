@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, ScrollView } from 'react-native';
+import { ScrollView, Text, TouchableOpacity } from 'react-native';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
 import { FocusedCurrencyProvider } from '../Context/FocusedCurrencyContext';
@@ -33,7 +33,11 @@ export const CurrencySelector: React.FC<Props> = ({ exchangeCourse }) => {
             />
           </FocusedCurrencyProvider>
         )}
-        <Button onPress={() => setModalVisible(true)} title="Add a currency" />
+        <TouchableOpacity
+          onPress={() => setModalVisible(true)}
+          style={styles.fab}>
+          <Text style={styles.fabText}>Add a currency</Text>
+        </TouchableOpacity>
       </ScrollView>
     </>
   );

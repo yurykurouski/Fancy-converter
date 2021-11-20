@@ -5,8 +5,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     borderColor: 'grey',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 20,
     marginBottom: 10,
+    height: 60,
   },
   containerFocused: {
     borderColor: 'blue',
@@ -17,8 +18,15 @@ export const styles = StyleSheet.create({
     padding: 10,
     color: 'grey',
     fontWeight: 'bold',
+    fontSize: 22,
+  },
+  titleFocused: {
+    color: 'white',
   },
   input: {
+    height: 60,
     flexGrow: 1,
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });

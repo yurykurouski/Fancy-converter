@@ -4,14 +4,21 @@ export const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 5,
-    fontWeight: 'bold',
+    borderRadius: 20,
     borderColor: 'rgba(110, 110, 110, 0.8)',
-    borderWidth: 1,
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  buttonTextAccept: {
+    color: '#00296b',
+  },
+  buttonTextCancel: {
+    color: '#8aa6d4',
   },
   acceptButton: {
-    backgroundColor: 'green',
-    color: 'white',
+    backgroundColor: '#98ee99',
   },
   cancelButton: {
     borderWidth: 1,
