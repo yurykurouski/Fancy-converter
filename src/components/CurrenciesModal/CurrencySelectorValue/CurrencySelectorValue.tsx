@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import { styles } from './CurrencySelectorValue.styles';
 
-export const CurrencySelectorValue = ({
+export const CurrencySelectorValue: React.FC = ({
   value,
   modalSelectedCurrencies,
   setModalSelectedCurrencies,

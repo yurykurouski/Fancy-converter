@@ -7,7 +7,15 @@ import {
 } from './CurrencyInputValue.hooks';
 import { styles } from './CurrencyInputValue.styles';
 
-export const CurrencyInputValue = ({
+type Props = {
+  currencyCode: string;
+  focusedCurrencyName: string;
+  focusedCurrencyValue: string;
+  course: string;
+  focusedCurrencyCourse: string;
+};
+
+export const CurrencyInputValue: React.FC<Props> = ({
   currencyCode,
   focusedCurrencyName,
   setFocusedCurrencyName,

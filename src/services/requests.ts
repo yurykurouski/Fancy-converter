@@ -22,7 +22,7 @@ class Requests implements RequestsInterface {
       const response = await this.response(url, REQUEST_GET);
 
       return response.json();
-    } catch (err: any) {
+    } catch (err) {
       throw new Error(err);
     }
   }

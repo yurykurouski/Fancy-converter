@@ -3,7 +3,13 @@ import { Text, TouchableOpacity } from 'react-native';
 
 import { styles } from './SubmitButton.styles';
 
-export const SubmitButton = ({ onPress, type, title }) => {
+type Props = {
+  onPress: () => void;
+  type: string;
+  title: string;
+};
+
+export const SubmitButton: React.FC<Props> = ({ onPress, type, title }) => {
   const buttonTypeStyle =
     type === 'acceptButton' ? styles.acceptButton : styles.cancelButton;
 

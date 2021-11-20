@@ -7,7 +7,11 @@ import { CurrenciesModal } from '../CurrenciesModal/CurrenciesModal';
 import { CurrencyValue } from '../CurrencyValue';
 import { styles } from './CurrencySelector.styles';
 
-export const CurrencySelector = ({ exchangeCourse }) => {
+type Props = {
+  exchangeCourse: string;
+};
+
+export const CurrencySelector: React.FC<Props> = ({ exchangeCourse }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const {
     selectedCurrenciesContext: { selectedCurrencies },

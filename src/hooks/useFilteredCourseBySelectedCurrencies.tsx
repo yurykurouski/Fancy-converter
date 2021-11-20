@@ -1,9 +1,9 @@
 import {
+  getAdjustedCourses,
   getCoursesForSelectedCurrencies,
   getFilteredCoursesByOperationType,
-  getOnlyCourses,
   getFormattedCourses,
-  getAdjustedCourses,
+  getOnlyCourses,
 } from '../utils/getOnlyCourses';
 
 export const useFilteredCourseBySelectedCurrencies = (

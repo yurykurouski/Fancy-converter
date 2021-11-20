@@ -1,7 +1,11 @@
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
 
-export const HorisontalDivider = ({ width }) => {
+type Props = {
+  width: number;
+};
+
+export const HorisontalDivider = React.memo<Props>(({ width }) => {
   const style = useMemo(
     () => ({
       width: width,
@@ -10,4 +14,4 @@ export const HorisontalDivider = ({ width }) => {
   );
 
   return <View style={style} />;
-};
+});
