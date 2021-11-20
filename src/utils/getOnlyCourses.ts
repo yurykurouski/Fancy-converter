@@ -70,8 +70,6 @@ export const getAdjustedCourses = formattedCourses => {
   for (let key in adjustedCourses) {
     switch (key) {
       case 'RUB':
-        adjustedCourses[key] = adjustedCourses[key] / 100;
-        break;
       case 'UAH':
         adjustedCourses[key] = adjustedCourses[key] / 100;
         break;
