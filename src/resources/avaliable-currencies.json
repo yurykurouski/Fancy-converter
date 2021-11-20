@@ -24,11 +24,6 @@
     "currencySymbol": "£",
     "id": "GBP"
   },
-  "CAD": {
-    "currencyName": "Canadian Dollar",
-    "currencySymbol": "$",
-    "id": "CAD"
-  },
   "PLN": {
     "currencyName": "Polish Zloty",
     "currencySymbol": "zł",
@@ -39,20 +34,10 @@
     "currencySymbol": "₴",
     "id": "UAH"
   },
-  "SEK": {
-    "currencyName": "Swedish Krona",
-    "currencySymbol": "kr",
-    "id": "SEK"
-  },
   "CHF": {
     "currencyName": "Swiss Franc",
     "currencySymbol": "Fr.",
     "id": "CHF"
-  },
-  "JPY": {
-    "currencyName": "Japanese Yen",
-    "currencySymbol": "¥",
-    "id": "JPY"
   },
   "CNY": {
     "currencyName": "Chinese Yuan",
@@ -63,10 +48,5 @@
     "currencyName": "Czech Koruna",
     "currencySymbol": "Kč",
     "id": "CZK"
-  },
-  "NOK": {
-    "currencyName": "Norwegian Krone",
-    "currencySymbol": "kr",
-    "id": "NOK"
   }
 }
