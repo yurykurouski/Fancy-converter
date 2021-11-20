@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Button, ScrollView } from 'react-native';
+import { ResultFromAPI } from 'types/avaliable-currencies';
 
 import { FocusedCurrencyProvider } from '../Context/FocusedCurrencyContext';
 import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
@@ -8,7 +9,7 @@ import { CurrencyValue } from '../CurrencyValue';
 import { styles } from './CurrencySelector.styles';
 
 type Props = {
-  exchangeCourse: string;
+  exchangeCourse: ResultFromAPI[] | null;
 };
 
 export const CurrencySelector: React.FC<Props> = ({ exchangeCourse }) => {

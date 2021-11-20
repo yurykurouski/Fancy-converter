@@ -1,4 +1,9 @@
 import {
+  FormattedCurrenciesCourses,
+  ResultFromAPI,
+} from 'types/avaliable-currencies';
+
+import {
   getAdjustedCourses,
   getCoursesForSelectedCurrencies,
   getFilteredCoursesByOperationType,
@@ -6,27 +11,32 @@ import {
   getOnlyCourses,
 } from '../utils/getOnlyCourses';
 
-export const useFilteredCourseBySelectedCurrencies = (
-  exchancgeCourse,
-  selectedCurrencies,
-  operationType,
-) => {
-  if (!exchancgeCourse) {
-    return;
-  }
-  const onlyCourses = getOnlyCourses(exchancgeCourse);
+type UseFilteredCourseBySelectedCurrencies = (
+  exchangeCourse: ResultFromAPI[] | null,
+  selectedCurrencies: string[] | [],
+  operationType: string,
+) => FormattedCurrenciesCourses;
 
-  const coursesForSelectedCurrencies = getCoursesForSelectedCurrencies(
-    onlyCourses,
-    selectedCurrencies,
-  );
+export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedCurrencies =
+  (exchangeCourse, selectedCurrencies, operationType) => {
+    if (!exchangeCourse) {
+      return;
+    }
+    const onlyCourses = getOnlyCourses(exchangeCourse);
 
-  const filteredCoursesByOperationType = getFilteredCoursesByOperationType(
-    operationType,
-    coursesForSelectedCurrencies,
-  );
+    const coursesForSelectedCurrencies = getCoursesForSelectedCurrencies(
+      onlyCourses,
+      selectedCurrencies,
+    );
 
-  const formattedCourses = getFormattedCourses(filteredCoursesByOperationType);
+    const filteredCoursesByOperationType = getFilteredCoursesByOperationType(
+      operationType,
+      coursesForSelectedCurrencies,
+    );
 
-  return getAdjustedCourses(formattedCourses);
-};
+    const formattedCourses = getFormattedCourses(
+      filteredCoursesByOperationType,
+    );
+
+    return getAdjustedCourses(formattedCourses);
+  };

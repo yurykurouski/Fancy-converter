@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
-export const SelectedCurrenciesContext = React.createContext({});
+type SelectedCurrenciesContext = {
+  selectedCurrenciesContext?: {
+    selectedCurrencies: string[] | [];
+    setSelectedCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
+  };
+};
+
+export const SelectedCurrenciesContext =
+  React.createContext<SelectedCurrenciesContext>({});
 
 export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
   const [selectedCurrencies, setSelectedCurrencies] = useState([]);

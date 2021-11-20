@@ -6,14 +6,7 @@ import {
   useCurrencyInputHandlers,
 } from './CurrencyInputValue.hooks';
 import { styles } from './CurrencyInputValue.styles';
-
-type Props = {
-  currencyCode: string;
-  focusedCurrencyName: string;
-  focusedCurrencyValue: string;
-  course: string;
-  focusedCurrencyCourse: string;
-};
+import { Props } from './CurrencyInputValue.types';
 
 export const CurrencyInputValue: React.FC<Props> = ({
   currencyCode,

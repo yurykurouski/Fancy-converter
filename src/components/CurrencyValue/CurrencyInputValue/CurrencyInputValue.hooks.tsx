@@ -1,6 +1,11 @@
 import { useCallback, useMemo } from 'react';
 
-export const useCurrencyInputHandlers = (
+import {
+  UseConvertedValues,
+  UseCurrencyInputHandlers,
+} from './CurrencyInputValue.types';
+
+export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
   setFocusedCurrencyValue,
   setValue,
   setFocusedCurrencyName,
@@ -26,14 +31,14 @@ export const useCurrencyInputHandlers = (
   return [onChangeTextHandler, onFocusHandler];
 };
 
-export const useConvertedValues = (
+export const useConvertedValues: UseConvertedValues = (
   isFocused,
   value,
   focusedCurrencyValue,
   course,
   focusedCurrencyCourse,
 ) => {
-  const coefficient = focusedCurrencyCourse / course;
+  const coefficient = Number(focusedCurrencyCourse) / Number(course);
 
   const caclulatedValue = useMemo(
     () =>

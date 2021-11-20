@@ -29,3 +29,11 @@ export type AvaliableCurrenciesInObject = {
 export type AvaliableCurrenciesInArray = {
   [key in AvaliableCurrenciesNames]?: CurrencyDescription;
 };
+
+export type ResultFromAPI = {
+  [key: string]: string;
+};
+
+export type FormattedCurrenciesCourses = {
+  [key in AvaliableCurrenciesNames]?: string;
+};
