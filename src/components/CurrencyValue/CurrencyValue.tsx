@@ -8,8 +8,14 @@ import { CurrencyInputValue } from './CurrencyInputValue/CurrencyInputValue';
 export const CurrencyValue = React.memo(
   ({ selectedCurrencies, exchangeCourse }) => {
     const {
-      focusedCurrencyContext: { focusedCurrency, setFocusedCurrency },
+      focusedCurrencyContext: {
+        focusedCurrency,
+        setFocusedCurrencyName,
+        setFocusedCurrencyValue,
+      },
     } = useContext(FocusedCurrencyContext);
+
+    const { focusedCurrencyName, focusedCurrencyValue } = focusedCurrency;
 
     const selectedCourses = useFilteredCourseBySelectedCurrencies(
       exchangeCourse,
@@ -21,9 +27,12 @@ export const CurrencyValue = React.memo(
       <CurrencyInputValue
         key={currencyCode}
         currencyCode={currencyCode}
-        setFocusedCurrency={setFocusedCurrency}
-        focusedCurrency={focusedCurrency}
+        setFocusedCurrencyName={setFocusedCurrencyName}
+        focusedCurrencyName={focusedCurrencyName}
+        setFocusedCurrencyValue={setFocusedCurrencyValue}
+        focusedCurrencyValue={focusedCurrencyValue}
         course={selectedCourses[currencyCode]}
+        focusedCurrencyCourse={selectedCourses[focusedCurrencyName]}
       />
     ));
   },

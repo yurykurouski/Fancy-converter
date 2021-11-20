@@ -1,9 +1,8 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 export const useCurrencyInputHandlers = (
   setFocusedCurrencyValue,
   setValue,
-  value,
   setFocusedCurrencyName,
   currencyCode,
 ) => {
@@ -16,17 +15,30 @@ export const useCurrencyInputHandlers = (
   );
 
   const onFocusHandler = useCallback(() => {
-    if (value === '0') {
-      setValue('');
-    }
     setFocusedCurrencyName(currencyCode);
-  }, [currencyCode, setFocusedCurrencyName, setValue, value]);
+  }, [currencyCode, setFocusedCurrencyName]);
 
-  const onBlurHandler = useCallback(() => {
-    if (!value) {
-      setValue('0');
-    }
-  }, [setValue, value]);
+  return [onChangeTextHandler, onFocusHandler];
+};
 
-  return [onChangeTextHandler, onFocusHandler, onBlurHandler];
+export const useConvertedValues = (
+  isFocused,
+  value,
+  focusedCurrencyValue,
+  course,
+  focusedCurrencyCourse,
+) => {
+  const coefficient = focusedCurrencyCourse / course;
+
+  const caclulatedValue = useMemo(
+    () =>
+      isFocused
+        ? value
+        : isNaN(coefficient)
+        ? null
+        : String(Number(focusedCurrencyValue) * coefficient),
+    [coefficient, focusedCurrencyValue, isFocused, value],
+  );
+
+  return caclulatedValue;
 };

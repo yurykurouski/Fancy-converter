@@ -1,14 +1,17 @@
 import { useMemo } from 'react';
 
-export const useCurrenciesListToArray = results =>
-  useMemo(
-    () =>
-      Object.keys(results).map(value => ({
-        [value]: {
-          currencyName: results[value].currencyName,
-          currencySymbol: results[value].currencySymbol,
-          id: results[value].id,
-        },
-      })),
-    [results],
-  );
+import { UseCurrenciesListToArray } from './CurrencySelector.types';
+
+export const useCurrenciesListToArray: UseCurrenciesListToArray =
+  avaliableCurrencies =>
+    useMemo(
+      () =>
+        Object.keys(avaliableCurrencies).map(value => ({
+          [value]: {
+            currencyName: avaliableCurrencies[value].currencyName,
+            currencySymbol: avaliableCurrencies[value].currencySymbol,
+            id: avaliableCurrencies[value].id,
+          },
+        })),
+      [avaliableCurrencies],
+    );

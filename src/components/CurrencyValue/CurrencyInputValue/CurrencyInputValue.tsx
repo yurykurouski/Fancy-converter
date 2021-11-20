@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 
-import { useCurrencyInputHandlers } from './CurrencyInputValue.hooks';
+import {
+  useConvertedValues,
+  useCurrencyInputHandlers,
+} from './CurrencyInputValue.hooks';
 import { styles } from './CurrencyInputValue.styles';
 
 export const CurrencyInputValue = ({
@@ -11,20 +14,25 @@ export const CurrencyInputValue = ({
   setFocusedCurrencyValue,
   focusedCurrencyValue,
   course,
+  focusedCurrencyCourse,
 }) => {
-  const [value, setValue] = useState('0');
+  const [value, setValue] = useState(null);
   const isFocused = focusedCurrencyName === currencyCode;
 
-  const [onChangeTextHandler, onFocusHandler, onBlurHandler] =
-    useCurrencyInputHandlers(
-      setFocusedCurrencyValue,
-      setValue,
-      value,
-      setFocusedCurrencyName,
-      currencyCode,
-    );
-  
-  
+  const [onChangeTextHandler, onFocusHandler] = useCurrencyInputHandlers(
+    setFocusedCurrencyValue,
+    setValue,
+    setFocusedCurrencyName,
+    currencyCode,
+  );
+
+  const caclulatedValue = useConvertedValues(
+    isFocused,
+    value,
+    focusedCurrencyValue,
+    course,
+    focusedCurrencyCourse,
+  );
 
   return (
     <View
@@ -37,12 +45,12 @@ export const CurrencyInputValue = ({
       <Text style={styles.title}>{currencyCode}</Text>
       <TextInput
         style={styles.input}
-        value={value}
+        value={caclulatedValue}
         onChangeText={onChangeTextHandler}
         onFocus={onFocusHandler}
-        onBlur={onBlurHandler}
         keyboardType="number-pad"
         contextMenuHidden={true}
+        placeholder="0"
       />
     </View>
   );
