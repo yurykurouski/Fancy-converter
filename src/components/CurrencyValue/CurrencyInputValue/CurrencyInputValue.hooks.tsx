@@ -14,9 +14,14 @@ export const useCurrencyInputHandlers = (
     [setFocusedCurrencyValue, setValue],
   );
 
-  const onFocusHandler = useCallback(() => {
-    setFocusedCurrencyName(currencyCode);
-  }, [currencyCode, setFocusedCurrencyName]);
+  const onFocusHandler = useCallback(
+    value => {
+      setFocusedCurrencyName(currencyCode);
+      setFocusedCurrencyValue(value);
+      setValue(value);
+    },
+    [currencyCode, setFocusedCurrencyName, setFocusedCurrencyValue, setValue],
+  );
 
   return [onChangeTextHandler, onFocusHandler];
 };
@@ -40,5 +45,5 @@ export const useConvertedValues = (
     [coefficient, focusedCurrencyValue, isFocused, value],
   );
 
-  return caclulatedValue;
+  return caclulatedValue === '0.00' ? null : caclulatedValue;
 };

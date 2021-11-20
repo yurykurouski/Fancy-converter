@@ -47,7 +47,7 @@ export const CurrencyInputValue = ({
         style={styles.input}
         value={caclulatedValue}
         onChangeText={onChangeTextHandler}
-        onFocus={onFocusHandler}
+        onFocus={() => onFocusHandler(caclulatedValue)}
         keyboardType="number-pad"
         contextMenuHidden={true}
         placeholder="0"
