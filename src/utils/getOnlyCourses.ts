@@ -71,7 +71,12 @@ export const getAdjustedCourses = formattedCourses => {
     switch (key) {
       case 'RUB':
       case 'UAH':
+      case 'CZK':
         adjustedCourses[key] = adjustedCourses[key] / 100;
+        break;
+      case 'PLN':
+      case 'CNY':
+        adjustedCourses[key] = adjustedCourses[key] / 10;
         break;
     }
   }
