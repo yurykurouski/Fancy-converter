@@ -3,6 +3,7 @@ import {
   getFilteredCoursesByOperationType,
   getOnlyCourses,
   getFormattedCourses,
+  getAdjustedCourses,
 } from '../utils/getOnlyCourses';
 
 export const useFilteredCourseBySelectedCurrencies = (
@@ -25,5 +26,7 @@ export const useFilteredCourseBySelectedCurrencies = (
     coursesForSelectedCurrencies,
   );
 
-  return getFormattedCourses(filteredCoursesByOperationType);
+  const formattedCourses = getFormattedCourses(filteredCoursesByOperationType);
+
+  return getAdjustedCourses(formattedCourses);
 };
