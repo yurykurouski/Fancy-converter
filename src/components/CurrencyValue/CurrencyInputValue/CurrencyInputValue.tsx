@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Pressable, Text, TextInput } from 'react-native';
 
+import { CountryFlag } from '../../CountryFlag';
 import {
   useConvertedValues,
   useCurrencyInputHandlers,
@@ -17,15 +18,19 @@ export const CurrencyInputValue: React.FC<Props> = ({
   course,
   focusedCurrencyCourse,
 }) => {
+  const inputRef = useRef(null);
+
   const [value, setValue] = useState(null);
   const isFocused = focusedCurrencyName === currencyCode;
 
-  const [onChangeTextHandler, onFocusHandler] = useCurrencyInputHandlers(
-    setFocusedCurrencyValue,
-    setValue,
-    setFocusedCurrencyName,
-    currencyCode,
-  );
+  const [onChangeTextHandler, onFocusHandler, containerOnPressHandler] =
+    useCurrencyInputHandlers(
+      setFocusedCurrencyValue,
+      setValue,
+      setFocusedCurrencyName,
+      currencyCode,
+      inputRef,
+    );
 
   const caclulatedValue = useConvertedValues(
     isFocused,
@@ -36,8 +41,9 @@ export const CurrencyInputValue: React.FC<Props> = ({
   );
 
   return (
-    <View
+    <Pressable
       key={currencyCode}
+      onPress={containerOnPressHandler}
       style={
         isFocused
           ? [styles.container, styles.containerFocused]
@@ -52,10 +58,12 @@ export const CurrencyInputValue: React.FC<Props> = ({
         value={caclulatedValue}
         onChangeText={onChangeTextHandler}
         onFocus={() => onFocusHandler(caclulatedValue)}
+        ref={inputRef}
         keyboardType="number-pad"
         contextMenuHidden={true}
         placeholder="0"
       />
-    </View>
+      <CountryFlag currencyCode={currencyCode} />
+    </Pressable>
   );
 };

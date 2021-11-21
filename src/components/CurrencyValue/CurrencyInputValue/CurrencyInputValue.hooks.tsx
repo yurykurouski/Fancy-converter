@@ -10,6 +10,7 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
   setValue,
   setFocusedCurrencyName,
   currencyCode,
+  inputRef,
 ) => {
   const onChangeTextHandler = useCallback(
     text => {
@@ -28,7 +29,12 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
     [currencyCode, setFocusedCurrencyName, setFocusedCurrencyValue, setValue],
   );
 
-  return [onChangeTextHandler, onFocusHandler];
+  const containerOnPressHandler = useCallback(
+    () => inputRef.current.focus(),
+    [inputRef],
+  );
+
+  return [onChangeTextHandler, onFocusHandler, containerOnPressHandler];
 };
 
 export const useConvertedValues: UseConvertedValues = (
