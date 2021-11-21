@@ -5,12 +5,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     borderColor: 'grey',
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 15,
     marginBottom: 10,
     height: 60,
   },
   containerFocused: {
-    borderColor: 'blue',
+    borderColor: '#4F378B',
+    borderWidth: 2,
   },
   title: {
     textAlignVertical: 'center',

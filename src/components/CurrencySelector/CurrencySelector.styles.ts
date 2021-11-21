@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 20,
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 15,
     elevation: 2,
     width: '50%',
     alignSelf: 'flex-end',

@@ -1,6 +1,6 @@
-import CheckBox from '@react-native-community/checkbox';
 import React, { useCallback, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { AvaliableCurrenciesInObject } from 'types/avaliable-currencies';
 
 import { styles } from './CurrencySelectorValue.styles';
@@ -51,7 +51,12 @@ export const CurrencySelectorValue: React.FC<Props> = ({
         <Text style={styles.currencyCode}>{currencyCode}</Text>
         <Text style={styles.currencyName}>{currencyName}</Text>
       </View>
-      <CheckBox value={isActive} onValueChange={onPressHandler} />
+      <BouncyCheckbox
+        onPress={onPressHandler}
+        isChecked={isActive}
+        disableBuiltInState
+        bounceFriction={4}
+      />
     </TouchableOpacity>
   );
 };

@@ -2,13 +2,17 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   button: {
+    flex: 1,
     paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 20,
+    paddingVertical: 15,
+    borderRadius: 15,
     borderColor: 'rgba(110, 110, 110, 0.8)',
+    elevation: 2,
   },
   buttonText: {
-    fontWeight: 'bold',
+    width: '100%',
+    textAlign: 'center',
+    fontWeight: '500',
     fontSize: 18,
   },
   buttonTextAccept: {

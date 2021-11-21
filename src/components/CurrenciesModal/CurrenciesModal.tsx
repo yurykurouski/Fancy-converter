@@ -50,15 +50,9 @@ export const CurrenciesModal = React.memo<Props>(
           </ScrollView>
           <View style={styles.buttonsWrapper}>
             <SubmitButton
-              type="cancelButton"
-              onPress={() => setModalVisible(false)}
-              title="Cancel"
-            />
-            <HorisontalDivider width={10} />
-            <SubmitButton
               type="acceptButton"
               onPress={acceptButtonHandler}
-              title="Accept"
+              title="Close"
             />
           </View>
         </View>

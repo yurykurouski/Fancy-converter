@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     width: '95%',
     height: '95%',
     borderRadius: 10,
-    backgroundColor: '#1e2a45',
+    backgroundColor: '#1D192B',
     alignSelf: 'center',
     padding: 10,
     elevation: 1,
