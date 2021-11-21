@@ -1,6 +1,9 @@
-<svg height="744.094482" id="svg378" sodipodi:docbase="/home/vital/" sodipodi:docname="/home/vital/belarus.svg" sodipodi:version="0.31.1" version="1" width="1062.98853" x="0.00000000" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" y="0.00000000">
-  <sodipodi:namedview id="base"/>
-  <defs id="defs380"/>
-  <rect height="744.094421" id="rect149" style="font-size:12;fill:#ffffff;fill-rule:evenodd;stroke-width:1.0247pt;" transform="matrix(-1.000000,0.000000,0.000000,-1.000000,-7.629395e-4,35.43352)" width="1062.98999" x="-1062.98999" y="-708.660950"/>
-  <rect height="248.031448" id="rect148" style="font-size:12;fill:#df0000;fill-rule:evenodd;stroke-width:1pt;" width="1062.992065" x="0.000000" y="247.501884"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <mask id="mask0_1_17" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">
+    <path d="M256 512C397.385 512 512 397.385 512 256C512 114.615 397.385 0 256 0C114.615 0 0 114.615 0 256C0 397.385 114.615 512 256 512Z" fill="white" />
+  </mask>
+  <g mask="url(#mask0_1_17)">
+    <path d="M0 0H512V512H0V0Z" fill="#EEEEEE" />
+    <path d="M0 174.57L512 174.57V344.57H0V174.57Z" fill="#D80027" />
+  </g>
 </svg>
