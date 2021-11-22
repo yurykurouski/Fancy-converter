@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Modal, ScrollView, View } from 'react-native';
 
 import avaliableCurrencies from '../../resources/avaliable-currencies.json';
-import { HorisontalDivider } from '../common/HorisontalDivider';
 import { SubmitButton } from '../common/SubmitButton';
 import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
 import { useCurrenciesListToArray } from '../CurrencySelector/CurrencySelector.hooks';

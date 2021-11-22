@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AppState } from 'react-native';
+import { SelectedCurrencies } from 'types/avaliable-currencies';
+
+import { LocalStorageContext } from '../LocalStorageProvider/LocalStorageProvider';
 
 type SelectedCurrenciesContext = {
   selectedCurrenciesContext?: {
-    selectedCurrencies: string[] | [];
+    selectedCurrencies: SelectedCurrencies;
     setSelectedCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
   };
 };
@@ -11,7 +16,31 @@ export const SelectedCurrenciesContext =
   React.createContext<SelectedCurrenciesContext>({});
 
 export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
-  const [selectedCurrencies, setSelectedCurrencies] = useState([]);
+  const appState = useRef(AppState.currentState);
+  const context = useContext(LocalStorageContext);
+  const { setItem } = useAsyncStorage('selectedCurrencies');
+
+  const [selectedCurrencies, setSelectedCurrencies] = useState(() => context);
+
+  useEffect(() => {
+    const writeItemToStorage = async newValue => {
+      await setItem(newValue);
+    };
+
+    const subscription = AppState.addEventListener('change', nextAppState => {
+      if (appState.current === 'active' && nextAppState === 'background') {
+        const result = arrayToObject(selectedCurrencies);
+        const stateStringified = JSON.stringify(result);
+        writeItemToStorage(stateStringified);
+      }
+
+      appState.current = nextAppState;
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, [selectedCurrencies, setItem]);
 
   return (
     <SelectedCurrenciesContext.Provider
@@ -25,3 +54,11 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
     </SelectedCurrenciesContext.Provider>
   );
 };
+
+const arrayToObject = array =>
+  array.reduce((acc, _, index) => {
+    return {
+      ...acc,
+      [index]: array[index],
+    };
+  }, {});

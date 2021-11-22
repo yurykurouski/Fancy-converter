@@ -37,3 +37,5 @@ export type ResultFromAPI = {
 export type FormattedCurrenciesCourses = {
   [key in AvaliableCurrenciesNames]?: string;
 };
+
+export type SelectedCurrencies = string[] | [];
