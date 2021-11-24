@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { getCurrentColorTheme } from './utils/getCurrentColorTheme';
+import { getCurrentThemeColors } from './utils/getCurrentColorTheme';
 
-const isDarkMode = getCurrentColorTheme();
+const themeColors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
   container: {
@@ -19,7 +18,6 @@ export const styles = StyleSheet.create({
   },
   backgroundStyle: {
     height: '100%',
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    paddingHorizontal: 10,
+    backgroundColor: themeColors.APP_BACKGROUND_PRIMARY,
   },
 });

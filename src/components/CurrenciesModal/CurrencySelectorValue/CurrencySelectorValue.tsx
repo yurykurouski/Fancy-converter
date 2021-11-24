@@ -3,6 +3,10 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { AvaliableCurrenciesInObject } from 'types/avaliable-currencies';
 
+import { getCurrentThemeColors } from '../../../utils/getCurrentColorTheme';
+
+const colors = getCurrentThemeColors();
+
 import { styles } from './CurrencySelectorValue.styles';
 
 type Props = {
@@ -52,6 +56,8 @@ export const CurrencySelectorValue: React.FC<Props> = ({
         <Text style={styles.currencyName}>{currencyName}</Text>
       </View>
       <BouncyCheckbox
+        size={30}
+        fillColor={colors.ACCENT_COLOR_LIGHTER}
         onPress={onPressHandler}
         isChecked={isActive}
         disableBuiltInState

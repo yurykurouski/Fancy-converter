@@ -31,31 +31,33 @@ export const CurrenciesModal = React.memo<Props>(
     const currenciesArray = useCurrenciesListToArray(avaliableCurrencies);
 
     return (
-      <Modal
-        animationType="slide"
-        visible={modalVisible}
-        transparent={true}
-        onRequestClose={() => setModalVisible(false)}>
-        <View style={styles.container}>
-          <ScrollView>
-            {currenciesArray.map(value => (
-              <CurrencySelectorValue
-                key={Object.keys(value)[0]}
-                value={value}
-                modalSelectedCurrencies={modalSelectedCurrencies}
-                setModalSelectedCurrencies={setModalSelectedCurrencies}
+      <View style={modalVisible ? styles.wrapperVisibleBackground : null}>
+        <Modal
+          animationType="slide"
+          visible={modalVisible}
+          transparent={true}
+          onRequestClose={() => setModalVisible(false)}>
+          <View style={styles.container}>
+            <ScrollView>
+              {currenciesArray.map(value => (
+                <CurrencySelectorValue
+                  key={Object.keys(value)[0]}
+                  value={value}
+                  modalSelectedCurrencies={modalSelectedCurrencies}
+                  setModalSelectedCurrencies={setModalSelectedCurrencies}
+                />
+              ))}
+            </ScrollView>
+            <View style={styles.buttonsWrapper}>
+              <SubmitButton
+                type="acceptButton"
+                onPress={acceptButtonHandler}
+                title="Close"
               />
-            ))}
-          </ScrollView>
-          <View style={styles.buttonsWrapper}>
-            <SubmitButton
-              type="acceptButton"
-              onPress={acceptButtonHandler}
-              title="Close"
-            />
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
+      </View>
     );
   },
 );

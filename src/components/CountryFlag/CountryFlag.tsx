@@ -44,7 +44,7 @@ export const CountryFlag = React.memo<Props>(({ currencyCode }) => {
 
   return (
     <View style={styles.flagContainer}>
-      <Flag width={40} height={40} />
+      <Flag width={30} height={30} />
     </View>
   );
 });
