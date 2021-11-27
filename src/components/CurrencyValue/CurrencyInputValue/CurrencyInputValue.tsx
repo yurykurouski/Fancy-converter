@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Pressable, Text, TextInput } from 'react-native';
 
-import { CountryFlag } from '../../CountryFlag';
+import { CancelButton } from '../../../components/common/CancelButton';
+import { CountryFlag } from '../../common/CountryFlag/CountryFlag';
 import {
   useConvertedValues,
   useCurrencyInputHandlers,
@@ -63,6 +64,7 @@ export const CurrencyInputValue: React.FC<Props> = ({
         contextMenuHidden={true}
         placeholder="0"
       />
+      {isFocused && <CancelButton onPress={onChangeTextHandler}/>}
       <CountryFlag currencyCode={currencyCode} />
     </Pressable>
   );
