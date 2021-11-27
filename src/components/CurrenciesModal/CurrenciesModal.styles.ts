@@ -15,12 +15,13 @@ export const styles = StyleSheet.create({
   container: {
     width: '95%',
     height: '95%',
-    borderRadius: 10,
+    borderRadius: 20,
     backgroundColor: colors.ACCENT_COLOR_DARKER,
     alignSelf: 'center',
-    paddingVertical: 10,
+    paddingBottom: 10,
     elevation: 1,
     marginTop: '5%',
+    overflow: 'hidden',
   },
   buttonsWrapper: {
     marginTop: 10,

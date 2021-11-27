@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import { styles } from './SubmitButton.styles';
 
@@ -17,10 +18,12 @@ export const SubmitButton: React.FC<Props> = ({ onPress, type, title }) => {
     type === 'acceptButton' ? styles.buttonTextAccept : styles.buttonTextCancel;
 
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={[styles.button, buttonTypeStyle]}>
-      <Text style={[styles.buttonText, buttonTypeTextStyle]}>{title}</Text>
-    </TouchableOpacity>
+    <RectButton
+      style={[styles.buttonWrapper, buttonTypeStyle]}
+      onPress={onPress}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <Text style={[styles.buttonText, buttonTypeTextStyle]}>{title}</Text>
+      </TouchableOpacity>
+    </RectButton>
   );
 };

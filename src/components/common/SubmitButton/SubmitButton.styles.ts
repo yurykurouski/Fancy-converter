@@ -5,12 +5,14 @@ import { getCurrentThemeColors } from '../../../utils/getCurrentColorTheme';
 const colors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
-  button: {
+  buttonWrapper: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
     borderRadius: 15,
     elevation: 2,
+  },
+  button: {
+    paddingHorizontal: 20,
+    paddingVertical: 15,
   },
   buttonText: {
     width: '100%',

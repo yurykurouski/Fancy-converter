@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { Modal, ScrollView, View } from 'react-native';
 
 import avaliableCurrencies from '../../resources/avaliable-currencies.json';
@@ -22,11 +22,11 @@ export const CurrenciesModal = React.memo<Props>(
     const [modalSelectedCurrencies, setModalSelectedCurrencies] =
       useState(selectedCurrencies);
 
-    const acceptButtonHandler = () => {
+    const acceptButtonHandler = useCallback(() => {
       setSelectedCurrencies(modalSelectedCurrencies);
 
       setModalVisible(false);
-    };
+    }, [modalSelectedCurrencies, setModalVisible, setSelectedCurrencies]);
 
     const currenciesArray = useCurrenciesListToArray(avaliableCurrencies);
 
@@ -36,7 +36,7 @@ export const CurrenciesModal = React.memo<Props>(
           animationType="slide"
           visible={modalVisible}
           transparent={true}
-          onRequestClose={() => setModalVisible(false)}>
+          onRequestClose={acceptButtonHandler}>
           <View style={styles.container}>
             <ScrollView>
               {currenciesArray.map(value => (

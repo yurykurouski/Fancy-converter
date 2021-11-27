@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Pressable, Text, TextInput } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 
 import { CancelButton } from '../../../components/common/CancelButton';
 import { CountryFlag } from '../../common/CountryFlag/CountryFlag';
@@ -42,31 +42,37 @@ export const CurrencyInputValue: React.FC<Props> = ({
   );
 
   return (
-    <Pressable
-      key={currencyCode}
-      onPress={containerOnPressHandler}
+    <View
       style={
         isFocused
-          ? [styles.container, styles.containerFocused]
-          : styles.container
+          ? [styles.containerWrapper, styles.containerWrapperFocused]
+          : styles.containerWrapper
       }>
-      <Text
-        style={isFocused ? [styles.title, styles.titleFocused] : styles.title}>
-        {currencyCode}
-      </Text>
-      <TextInput
-        style={styles.input}
-        value={caclulatedValue}
-        onChangeText={onChangeTextHandler}
-        onFocus={() => onFocusHandler(caclulatedValue)}
-        ref={inputRef}
-        keyboardType="numeric"
-        contextMenuHidden={true}
-        placeholder="0"
-        maxLength={14}
-      />
-      {isFocused && <CancelButton onPress={onChangeTextHandler}/>}
-      <CountryFlag currencyCode={currencyCode} />
-    </Pressable>
+      <Pressable
+        key={currencyCode}
+        onPress={containerOnPressHandler}
+        android_ripple={{ borderless: false }}
+        style={styles.container}>
+        <Text
+          style={
+            isFocused ? [styles.title, styles.titleFocused] : styles.title
+          }>
+          {currencyCode}
+        </Text>
+        <TextInput
+          style={styles.input}
+          value={caclulatedValue}
+          onChangeText={onChangeTextHandler}
+          onFocus={() => onFocusHandler(caclulatedValue)}
+          ref={inputRef}
+          keyboardType="numeric"
+          contextMenuHidden={true}
+          placeholder="0"
+          maxLength={14}
+        />
+        {isFocused && <CancelButton onPress={onChangeTextHandler} />}
+        <CountryFlag currencyCode={currencyCode} />
+      </Pressable>
+    </View>
   );
 };

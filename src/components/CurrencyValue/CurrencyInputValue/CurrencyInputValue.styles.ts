@@ -5,19 +5,22 @@ import { getCurrentThemeColors } from '../../../utils/getCurrentColorTheme';
 const colors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    borderColor: colors.ELEMENT_FADE_OR_BACKGROUND,
-    borderWidth: 2,
+  containerWrapper: {
     borderRadius: 15,
     marginBottom: 10,
-    alignItems: 'center',
-    height: 60,
+    borderColor: 'transparent',
+    borderWidth: 2,
+    overflow: 'hidden',
     backgroundColor: colors.ELEMENT_FADE_OR_BACKGROUND,
   },
-  containerFocused: {
+  container: {
+    flexDirection: 'row',
+    borderRadius: 15,
+    alignItems: 'center',
+    height: 60,
+  },
+  containerWrapperFocused: {
     borderColor: colors.ACCENT_COLOR_LIGHTER,
-    borderWidth: 2,
   },
   title: {
     textAlignVertical: 'center',

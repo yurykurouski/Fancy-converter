@@ -5,16 +5,17 @@ import { getCurrentThemeColors } from '../../../utils/getCurrentColorTheme';
 const colors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
-  currencyBlock: {
+  currencyBlockWrapper: {
     backgroundColor: colors.ELEMENT_FADE_OR_BACKGROUND,
-    alignItems: 'center',
-    paddingHorizontal: 8,
-    paddingVertical: 15,
+    marginBottom: 10,
     borderRadius: 20,
+  },
+  currencyBlock: {
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
-    marginHorizontal: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
   },
   currencyCode: {
     fontSize: 18,
@@ -24,5 +25,8 @@ export const styles = StyleSheet.create({
   currencyName: {
     fontSize: 14,
     color: colors.FONT_COLOR_FADED,
+  },
+  checkBoxContainer: {
+    left: 15,
   },
 });

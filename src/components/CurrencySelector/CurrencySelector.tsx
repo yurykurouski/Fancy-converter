@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 

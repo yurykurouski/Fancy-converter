@@ -1,10 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { AvaliableCurrenciesInObject } from 'types/avaliable-currencies';
 
 import { getCurrentThemeColors } from '../../../utils/getCurrentColorTheme';
-
 const colors = getCurrentThemeColors();
 
 import { styles } from './CurrencySelectorValue.styles';
@@ -47,22 +46,26 @@ export const CurrencySelectorValue: React.FC<Props> = ({
   ]);
 
   return (
-    <TouchableOpacity
-      key={id}
-      style={styles.currencyBlock}
-      onPress={onPressHandler}>
-      <View>
-        <Text style={styles.currencyCode}>{currencyCode}</Text>
-        <Text style={styles.currencyName}>{currencyName}</Text>
-      </View>
-      <BouncyCheckbox
-        size={30}
-        fillColor={colors.ACCENT_COLOR_LIGHTER}
+    <View style={styles.currencyBlockWrapper}>
+      <Pressable
+        key={id}
+        style={styles.currencyBlock}
         onPress={onPressHandler}
-        isChecked={isActive}
-        disableBuiltInState
-        bounceFriction={4}
-      />
-    </TouchableOpacity>
+        android_ripple={{ borderless: true }}>
+        <View>
+          <Text style={styles.currencyCode}>{currencyCode}</Text>
+          <Text style={styles.currencyName}>{currencyName}</Text>
+        </View>
+        <BouncyCheckbox
+          size={30}
+          fillColor={colors.ACCENT_COLOR_LIGHTER}
+          onPress={onPressHandler}
+          isChecked={isActive}
+          disableBuiltInState
+          bounceFriction={4}
+          style={styles.checkBoxContainer}
+        />
+      </Pressable>
+    </View>
   );
 };
