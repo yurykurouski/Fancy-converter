@@ -60,9 +60,10 @@ export const CurrencyInputValue: React.FC<Props> = ({
         onChangeText={onChangeTextHandler}
         onFocus={() => onFocusHandler(caclulatedValue)}
         ref={inputRef}
-        keyboardType="number-pad"
+        keyboardType="numeric"
         contextMenuHidden={true}
         placeholder="0"
+        maxLength={14}
       />
       {isFocused && <CancelButton onPress={onChangeTextHandler}/>}
       <CountryFlag currencyCode={currencyCode} />

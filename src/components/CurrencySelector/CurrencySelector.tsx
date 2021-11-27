@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
 import { FocusedCurrencyProvider } from '../Context/FocusedCurrencyContext';
@@ -24,7 +25,7 @@ export const CurrencySelector: React.FC<Props> = ({ exchangeCourse }) => {
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
       />
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} keyboardShouldPersistTaps="always">
         {selectedCurrencies.length > 0 && (
           <FocusedCurrencyProvider>
             <CurrencyValue
@@ -33,11 +34,9 @@ export const CurrencySelector: React.FC<Props> = ({ exchangeCourse }) => {
             />
           </FocusedCurrencyProvider>
         )}
-        <TouchableOpacity
-          onPress={() => setModalVisible(true)}
-          style={styles.fab}>
+        <RectButton onPress={() => setModalVisible(true)} style={styles.fab}>
           <Text style={styles.fabText}>Add a currency</Text>
-        </TouchableOpacity>
+        </RectButton>
       </ScrollView>
     </>
   );
