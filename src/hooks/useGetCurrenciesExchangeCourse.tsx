@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
-import { API_CITIES_GRODNO } from '../contsants';
+import { API_CITIES_GRODNO } from 'constants';
 import { currenciesService } from '../services/currencies-service';
 
 export type UseGetCurrenciesExchangeCourse = () => {

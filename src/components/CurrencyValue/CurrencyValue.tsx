@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
-import { OPERATION_TYPE_OUT } from '../../contsants';
-import { useFilteredCourseBySelectedCurrencies } from '../../hooks/useFilteredCourseBySelectedCurrencies';
+import { useFilteredCourseBySelectedCurrencies } from 'hooks/useFilteredCourseBySelectedCurrencies';
 import { FocusedCurrencyContext } from '../Context/FocusedCurrencyContext';
 import { CurrencyInputValue } from './CurrencyInputValue/CurrencyInputValue';
+import { OPERATION_TYPE_OUT } from 'constants';
 
 type Props = {
   selectedCurrencies: string[] | [];
