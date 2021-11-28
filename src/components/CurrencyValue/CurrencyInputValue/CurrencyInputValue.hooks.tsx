@@ -1,3 +1,4 @@
+import { INPUT_VALIDATION_REXEXP } from 'constants';
 import { useCallback, useMemo } from 'react';
 
 import {
@@ -14,8 +15,10 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
 ) => {
   const onChangeTextHandler = useCallback(
     text => {
-      setFocusedCurrencyValue(text);
-      setValue(text);
+      if (INPUT_VALIDATION_REXEXP.test(text) || !text) {
+        setFocusedCurrencyValue(text);
+        setValue(text);
+      }
     },
     [setFocusedCurrencyValue, setValue],
   );
@@ -51,10 +54,10 @@ export const useConvertedValues: UseConvertedValues = (
       isFocused
         ? value
         : isNaN(coefficient)
-        ? null
-        : (Number(focusedCurrencyValue) * coefficient).toFixed(2),
+          ? null
+          : (Number(focusedCurrencyValue) * coefficient).toFixed(2),
     [coefficient, focusedCurrencyValue, isFocused, value],
   );
 
-  return caclulatedValue === '0.00' ? null : caclulatedValue;
+  return caclulatedValue === '0.00' ? null : isNaN(caclulatedValue) && !isFocused ? 'Wrong value!' : caclulatedValue;
 };

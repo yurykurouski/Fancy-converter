@@ -8,3 +8,5 @@ export const REQUEST_CT_APPLICATION_JSON = 'application/json';
 
 export const OPERATION_TYPE_OUT = 'out';
 export const OPERATION_TYPE_IN = 'in';
+
+export const INPUT_VALIDATION_REXEXP = new RegExp('^[0-9]*\.[0-9]*$');
