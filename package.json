@@ -17,6 +17,9 @@
     "react-native": "0.66.2",
     "react-native-bouncy-checkbox": "^2.1.7",
     "react-native-dotenv": "^3.3.0",
+    "react-native-draggable-flatlist": "^3.0.3",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.3.0-beta.4",
     "react-native-svg": "^12.1.1"
   },
   "devDependencies": {
