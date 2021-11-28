@@ -70,7 +70,9 @@ export const CurrencyInputValue: React.FC<Props> = ({
           placeholder="0"
           maxLength={14}
         />
-        {isFocused && <CancelButton onPress={onChangeTextHandler} />}
+        {isFocused && !!caclulatedValue && (
+          <CancelButton onPress={onChangeTextHandler} />
+        )}
         <CountryFlag currencyCode={currencyCode} />
       </Pressable>
     </View>
