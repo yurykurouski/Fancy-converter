@@ -17,6 +17,12 @@ export const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 10,
   },
+  currencyInfoWrapper: {
+    flexDirection: 'row',
+  },
+  currencyCodeNameWrapper: {
+    marginLeft: 10,
+  },
   currencyCode: {
     fontSize: 18,
     fontWeight: '500',

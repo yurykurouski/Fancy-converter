@@ -5,15 +5,8 @@ import { getCurrentThemeColors } from '../../utils/getCurrentColorTheme';
 const colors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
-  wrapperVisibleBackground: {
-    position: 'absolute',
-    elevation: 1,
-    width: '100%',
-    height: '100%',
-    backgroundColor: colors.ACCENT_COLOR_DARKER,
-  },
   container: {
-    width: '95%',
+    width: '105%',
     height: '95%',
     borderRadius: 20,
     backgroundColor: colors.ACCENT_COLOR_DARKER,

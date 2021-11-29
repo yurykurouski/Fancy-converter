@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: 'center',
     height: 60,
+    paddingRight: 10,
   },
   containerWrapperFocused: {
     borderColor: colors.ACCENT_COLOR_LIGHTER,

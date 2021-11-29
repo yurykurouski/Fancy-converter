@@ -37,14 +37,15 @@ const flags = {
 
 type Props = {
   currencyCode: string;
+  size: number;
 };
 
-export const CountryFlag = React.memo<Props>(({ currencyCode }) => {
+export const CountryFlag = React.memo<Props>(({ currencyCode, size }) => {
   const Flag = flags[currencyCode];
 
   return (
     <View style={styles.flagContainer}>
-      <Flag width={30} height={30} />
+      <Flag width={size} height={size} />
     </View>
   );
 });

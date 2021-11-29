@@ -11,7 +11,7 @@ import {
   getCurrentThemeColors,
 } from './utils/getCurrentColorTheme';
 
-const isDarkMode = getCurrentColorTheme();
+const currentTheme = getCurrentColorTheme();
 const colors = getCurrentThemeColors();
 
 const App = React.memo(() => (
@@ -19,7 +19,7 @@ const App = React.memo(() => (
     <LocalStorageProvider>
       <SafeAreaView style={styles.backgroundStyle}>
         <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          barStyle={currentTheme === 'dark' ? 'light-content' : 'dark-content'}
           backgroundColor={colors.APP_BACKGROUND_PRIMARY}
         />
         <Text style={styles.header}>Fancy converter</Text>

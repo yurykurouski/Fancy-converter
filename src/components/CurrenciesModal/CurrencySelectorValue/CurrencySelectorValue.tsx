@@ -1,3 +1,4 @@
+import { CountryFlag } from 'components/common/CountryFlag';
 import React, { useCallback, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -52,9 +53,12 @@ export const CurrencySelectorValue: React.FC<Props> = ({
         style={styles.currencyBlock}
         onPress={onPressHandler}
         android_ripple={{ borderless: true }}>
-        <View>
-          <Text style={styles.currencyCode}>{currencyCode}</Text>
-          <Text style={styles.currencyName}>{currencyName}</Text>
+        <View style={styles.currencyInfoWrapper}>
+          <CountryFlag currencyCode={currencyCode} size={36} />
+          <View style={styles.currencyCodeNameWrapper}>
+            <Text style={styles.currencyCode}>{currencyCode}</Text>
+            <Text style={styles.currencyName}>{currencyName}</Text>
+          </View>
         </View>
         <BouncyCheckbox
           size={30}
