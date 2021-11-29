@@ -1,24 +1,30 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  extends: '@react-native-community',
-  plugins: ['simple-import-sort, @typescript-eslint/eslint-plugin'],
+  parserOptions: {
+    allowImportExportEverywhere: true,
+  },
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+    'plugin:import/typescript',
+    'prettier/@typescript-eslint',
+  ],
+  plugins: [
+    'eslint-plugin-simple-import-sort',
+    '@typescript-eslint',
+    'prettier',
+  ],
   rules: {
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
-    'import/no-unresolved': 'error',
+    'react/display-name': 'off',
+    // 'import/no-unresolved': 'warn',
   },
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-    'import/resolver': {
-      "node": {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
     },
   },
 };
