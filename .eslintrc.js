@@ -6,15 +6,16 @@ module.exports = {
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:import/typescript',
     'prettier/@typescript-eslint',
+    'plugin:react-hooks/recommended',
   ],
   plugins: [
     'eslint-plugin-simple-import-sort',
     '@typescript-eslint',
     'prettier',
+    'react-hooks',
   ],
   rules: {
     'simple-import-sort/exports': 'error',
