@@ -14,10 +14,8 @@ export const CurrenciesMainContent = () => {
   return isLoading ? (
     <ActivityIndicator size="large" />
   ) : (
-    <>
-      <SelectedCurrenciesProvider>
-        <CurrencySelector exchangeCourse={exchangeCourse} />
-      </SelectedCurrenciesProvider>
-    </>
+    <SelectedCurrenciesProvider>
+      <CurrencySelector exchangeCourse={exchangeCourse} />
+    </SelectedCurrenciesProvider>
   );
 };

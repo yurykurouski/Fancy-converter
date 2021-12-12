@@ -6,7 +6,6 @@ const colors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
   container: {
-    marginBottom: 10,
     paddingHorizontal: 10,
   },
   fab: {

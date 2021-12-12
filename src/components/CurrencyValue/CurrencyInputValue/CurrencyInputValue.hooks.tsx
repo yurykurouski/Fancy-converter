@@ -49,15 +49,19 @@ export const useConvertedValues: UseConvertedValues = (
 ) => {
   const coefficient = Number(focusedCurrencyCourse) / Number(course);
 
-  const caclulatedValue = useMemo(
+  const calculatedValue = useMemo(
     () =>
       isFocused
         ? value
         : isNaN(coefficient)
-          ? null
-          : (Number(focusedCurrencyValue) * coefficient).toFixed(2),
+        ? null
+        : (Number(focusedCurrencyValue) * coefficient).toFixed(2),
     [coefficient, focusedCurrencyValue, isFocused, value],
   );
 
-  return caclulatedValue === '0.00' ? null : isNaN(caclulatedValue) && !isFocused ? 'Wrong value!' : caclulatedValue;
+  return calculatedValue === '0.00'
+    ? null
+    : isNaN(calculatedValue) && !isFocused
+    ? 'Wrong value!'
+    : calculatedValue;
 };

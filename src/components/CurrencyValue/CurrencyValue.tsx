@@ -1,6 +1,7 @@
 import { OPERATION_TYPE_OUT } from 'constants';
 import { useFilteredCourseBySelectedCurrencies } from 'hooks/useFilteredCourseBySelectedCurrencies';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
 import { FocusedCurrencyContext } from '../Context/FocusedCurrencyContext';
@@ -29,21 +30,17 @@ export const CurrencyValue = React.memo<Props>(
       OPERATION_TYPE_OUT,
     );
 
-    return (
-      <>
-        {selectedCurrencies.map(currencyCode => (
-          <CurrencyInputValue
-            key={currencyCode}
-            currencyCode={currencyCode}
-            setFocusedCurrencyName={setFocusedCurrencyName}
-            focusedCurrencyName={focusedCurrencyName}
-            setFocusedCurrencyValue={setFocusedCurrencyValue}
-            focusedCurrencyValue={focusedCurrencyValue}
-            course={selectedCourses[currencyCode]}
-            focusedCurrencyCourse={selectedCourses[focusedCurrencyName]}
-          />
-        ))}
-      </>
-    );
+    return selectedCurrencies.map(currencyCode => (
+      <CurrencyInputValue
+        key={currencyCode}
+        currencyCode={currencyCode}
+        setFocusedCurrencyName={setFocusedCurrencyName}
+        focusedCurrencyName={focusedCurrencyName}
+        setFocusedCurrencyValue={setFocusedCurrencyValue}
+        focusedCurrencyValue={focusedCurrencyValue}
+        course={selectedCourses[currencyCode]}
+        focusedCurrencyCourse={selectedCourses[focusedCurrencyName]}
+      />
+    ));
   },
 );

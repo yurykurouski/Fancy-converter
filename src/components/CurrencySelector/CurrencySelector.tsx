@@ -1,7 +1,7 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import { CurrenciesBottomSheet } from 'components/CurrenciesBottomSheet';
-import React, { useContext, useRef } from 'react';
-import { ScrollView } from 'react-native';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Keyboard, ScrollView } from 'react-native';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
 import { FocusedCurrencyProvider } from '../Context/FocusedCurrencyContext';
@@ -21,9 +21,30 @@ export const CurrencySelector: React.FC<Props> = React.memo(
 
     const sheetRef = useRef<BottomSheet>(null);
 
+    const [keyBoardOpened, setKeyBoardOpened] = useState(false);
+
+    useEffect(() => {
+      const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+        setKeyBoardOpened(true);
+      });
+      const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+        setKeyBoardOpened(false);
+      });
+
+      return () => {
+        showSubscription.remove();
+        hideSubscription.remove();
+      };
+    }, []);
+
     return (
       <>
-        <ScrollView style={styles.container} keyboardShouldPersistTaps="always">
+        <ScrollView
+          style={[
+            styles.container,
+            keyBoardOpened ? { marginBottom: 20 } : { marginBottom: 60 },
+          ]}
+          keyboardShouldPersistTaps="always">
           {selectedCurrencies.length > 0 && (
             <FocusedCurrencyProvider>
               <CurrencyValue

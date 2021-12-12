@@ -72,7 +72,7 @@ export const getFormattedCourses: GetFormattedCourses =
 export const getAdjustedCourses: GetAdjustedCourses = formattedCourses => {
   const adjustedCourses = { ...formattedCourses };
 
-  for (let key in adjustedCourses) {
+  for (const key in adjustedCourses) {
     switch (key) {
       case 'RUB':
       case 'UAH':
