@@ -44,7 +44,7 @@ export const CurrencySelector: React.FC<Props> = React.memo(
             styles.container,
             keyBoardOpened ? { marginBottom: 20 } : { marginBottom: 60 },
           ]}
-          keyboardShouldPersistTaps="always">
+          keyboardShouldPersistTaps="handled">
           {selectedCurrencies.length > 0 && (
             <FocusedCurrencyProvider>
               <CurrencyValue

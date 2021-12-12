@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
   bottomSheet: {
     backgroundColor: themeColors.ACCENT_COLOR_DARKER,
   },
+  listContainer: {
+    paddingHorizontal: 10,
+  },
   handleContainer: {
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
