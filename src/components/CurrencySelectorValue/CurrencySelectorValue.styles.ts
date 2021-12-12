@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { getCurrentThemeColors } from '../../../utils/getCurrentColorTheme';
+import { getCurrentThemeColors } from '../../utils/getCurrentColorTheme';
 
 const colors = getCurrentThemeColors();
 
