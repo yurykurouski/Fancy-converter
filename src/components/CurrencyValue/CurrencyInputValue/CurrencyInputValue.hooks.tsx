@@ -15,9 +15,11 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
 ) => {
   const onChangeTextHandler = useCallback(
     text => {
-      if (INPUT_VALIDATION_REXEXP.test(text) || !text) {
-        setFocusedCurrencyValue(text);
-        setValue(text);
+      const withoutSpaces = text.replace(/\s+/g, '');
+
+      if (INPUT_VALIDATION_REXEXP.test(withoutSpaces) || !withoutSpaces) {
+        setFocusedCurrencyValue(withoutSpaces);
+        setValue(withoutSpaces);
       }
     },
     [setFocusedCurrencyValue, setValue],
@@ -61,7 +63,25 @@ export const useConvertedValues: UseConvertedValues = (
 
   return calculatedValue === '0.00'
     ? null
-    : isNaN(calculatedValue) && !isFocused
+    : isNaN(Number(calculatedValue)) && !isFocused
     ? 'Wrong value!'
     : calculatedValue;
+};
+
+export const useFormattedValue = (value: string) => {
+  if (!value || isNaN(Number(value))) return value;
+
+  const haveFraction = value.includes('.');
+  const [integer, fraction] = value.split('.');
+
+  const formatted = integer
+    .split('')
+    .reverse()
+    .reduce((acc, value, index) => {
+      return [...acc, index % 3 === 0 && index > 0 ? `${value} ` : value];
+    }, []);
+
+  return haveFraction
+    ? `${formatted.reverse().join('')}.${fraction}`
+    : `${formatted.reverse().join('')}`;
 };

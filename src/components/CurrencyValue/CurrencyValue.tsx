@@ -1,7 +1,6 @@
 import { OPERATION_TYPE_OUT } from 'constants';
 import { useFilteredCourseBySelectedCurrencies } from 'hooks/useFilteredCourseBySelectedCurrencies';
-import React, { useContext, useEffect, useState } from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
+import React, { useContext } from 'react';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
 import { FocusedCurrencyContext } from '../Context/FocusedCurrencyContext';
