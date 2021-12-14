@@ -28,7 +28,7 @@ const expandHandle = () =>
     useNativeDriver: false,
   }).start();
 
-const snapPoints = [30, 60, '100%'];
+const snapPoints = [30, 70, '100%'];
 
 export const CurrenciesBottomSheet = React.memo<Props>(
   ({ sheetRef, selectedCurrencies }) => {
@@ -130,7 +130,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
         <BottomSheetScrollView
           style={styles.listContainer}
           keyboardShouldPersistTaps="handled">
-          <CurrencySelectorValueMap />
+          <CurrencySelectorValueMap isExpanded={isExpanded}/>
         </BottomSheetScrollView>
       </BottomSheet>
     );

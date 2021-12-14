@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
   handleContainer: {
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   handlePressable: {
@@ -21,7 +20,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   handle: {
-    width: 60,
+    width: 50,
     height: 5,
     backgroundColor: themeColors.FONT_COLOR_FADED,
     borderRadius: 5,

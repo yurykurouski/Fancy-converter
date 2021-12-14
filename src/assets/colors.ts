@@ -17,7 +17,7 @@ export enum ColorsLight {
   FONT_COLOR_FADED = 'grey',
   ELEMENT_FADE_OR_BACKGROUND = 'rgba(87, 84, 92, 0.1)',
   ACCENT_COLOR_LIGHTER = '#1a73e8',
-  ACCENT_COLOR_DARKER = '#f0f0f3',
+  ACCENT_COLOR_DARKER = '#e9e9f0',
   MAIN_BUTTON_COLOR = '#1a73e8',
   MAIN_BUTTON_TEXT_COLOR = '#fafcfe',
 }
