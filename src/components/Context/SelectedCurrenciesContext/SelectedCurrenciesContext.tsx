@@ -23,7 +23,7 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
   const [selectedCurrencies, setSelectedCurrencies] = useState(() => context);
 
   useEffect(() => {
-    const writeItemToStorage = async newValue => {
+    const writeItemToStorage = async (newValue: string) => {
       await setItem(newValue);
     };
 
@@ -56,9 +56,10 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
 };
 
 const arrayToObject = array =>
-  array.reduce((acc, _, index) => {
-    return {
+  array.reduce(
+    (acc, _, index) => ({
       ...acc,
       [index]: array[index],
-    };
-  }, {});
+    }),
+    {},
+  );
