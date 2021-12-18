@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { API_CITIES_GRODNO } from 'constants';
+import { useCallback, useEffect, useState } from 'react';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
-import { API_CITIES_GRODNO } from 'constants';
 import { currenciesService } from '../services/currencies-service';
 
 export type UseGetCurrenciesExchangeCourse = () => {
   isLoading: boolean;
   actualExchangeCourse: ResultFromAPI[];
+  reloadCourses: () => void;
 };
 
 export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
@@ -14,7 +15,7 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
     const [isLoading, setIsLoading] = useState(false);
     const [actualExchangeCourse, setActualExchangeCourse] = useState(null);
 
-    useEffect(() => {
+    const reloadCourses = useCallback(() => {
       setIsLoading(true);
 
       currenciesService
@@ -23,5 +24,9 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
         .then(() => setIsLoading(false));
     }, []);
 
-    return { isLoading, actualExchangeCourse };
+    useEffect(() => {
+      reloadCourses();
+    }, []);
+
+    return { isLoading, actualExchangeCourse, reloadCourses };
   };

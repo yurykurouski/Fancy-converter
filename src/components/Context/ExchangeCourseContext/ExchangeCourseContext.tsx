@@ -1,10 +1,7 @@
 import React from 'react';
 import { ResultFromAPI } from 'types/avaliable-currencies';
 
-import {
-  UseGetCurrenciesExchangeCourse,
-  useGetCurrenciesExchangeCourse,
-} from '../../../hooks/useGetCurrenciesExchangeCourse';
+import { useGetCurrenciesExchangeCourse } from '../../../hooks/useGetCurrenciesExchangeCourse';
 
 type Context = {
   currentExchangeCourseContext?: {
@@ -12,14 +9,15 @@ type Context = {
       exchangeCourse: ResultFromAPI[] | null;
       isLoading: boolean;
     };
-    setcurrentExchangeCourse: UseGetCurrenciesExchangeCourse;
+    setCurrentExchangeCourse: () => void;
   };
 };
 
 export const ExchangeCourseContext = React.createContext<Context>({});
 
 export const ExchangeCourseProvider: React.FC = ({ children }) => {
-  const { isLoading, actualExchangeCourse } = useGetCurrenciesExchangeCourse();
+  const { isLoading, actualExchangeCourse, reloadCourses } =
+    useGetCurrenciesExchangeCourse();
 
   return (
     <ExchangeCourseContext.Provider
@@ -29,7 +27,7 @@ export const ExchangeCourseProvider: React.FC = ({ children }) => {
             exchangeCourse: actualExchangeCourse,
             isLoading: isLoading,
           },
-          setcurrentExchangeCourse: useGetCurrenciesExchangeCourse,
+          setCurrentExchangeCourse: reloadCourses,
         },
       }}>
       {children}
