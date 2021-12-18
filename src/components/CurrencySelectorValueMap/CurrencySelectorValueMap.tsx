@@ -1,16 +1,17 @@
 import { SelectedCurrenciesContext } from 'components/Context/SelectedCurrenciesContext';
-import { CurrencySelectorValue } from 'components/CurrenciesModal/CurrencySelectorValue';
 import { useCurrenciesListToArray } from 'components/CurrencySelector/CurrencySelector.hooks';
+import { CurrencySelectorValue } from 'components/CurrencySelectorValue';
 import React, { useContext } from 'react';
 import avaliableCurrencies from 'resources/avaliable-currencies.json';
 
-export const CurrencySelectorValueMap = React.memo(() => {
+type Props = {
+  isExpanded: boolean;
+};
+
+export const CurrencySelectorValueMap = React.memo<Props>(({ isExpanded }) => {
   const {
     selectedCurrenciesContext: { setSelectedCurrencies, selectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
-  //TODO: look at setSelectedCurrencies logic
-  // const [modalSelectedCurrencies, setModalSelectedCurrencies] =
-  //   useState(selectedCurrencies);
 
   const currenciesArray = useCurrenciesListToArray(avaliableCurrencies);
 
@@ -20,6 +21,7 @@ export const CurrencySelectorValueMap = React.memo(() => {
       value={value}
       modalSelectedCurrencies={selectedCurrencies}
       setModalSelectedCurrencies={setSelectedCurrencies}
+      isExpanded={isExpanded}
     />
   ));
 });

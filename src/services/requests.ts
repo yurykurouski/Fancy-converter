@@ -1,6 +1,6 @@
+import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/contsants';
 import { DEFAULT_API_URL } from 'react-native-dotenv';
 
-import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/contsants';
 import { RequestsInterface, Response } from './requests.types';
 
 class Requests implements RequestsInterface {
