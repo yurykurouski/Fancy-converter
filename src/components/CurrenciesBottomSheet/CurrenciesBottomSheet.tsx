@@ -130,7 +130,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
         <BottomSheetScrollView
           style={styles.listContainer}
           keyboardShouldPersistTaps="handled">
-          <CurrencySelectorValueMap isExpanded={isExpanded}/>
+          <CurrencySelectorValueMap isExpanded={isExpanded} />
         </BottomSheetScrollView>
       </BottomSheet>
     );
