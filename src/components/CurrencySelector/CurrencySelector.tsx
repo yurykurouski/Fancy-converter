@@ -54,7 +54,10 @@ export const CurrencySelector: React.FC<Props> = React.memo(
             </FocusedCurrencyProvider>
           )}
         </ScrollView>
-        <CurrenciesBottomSheet sheetRef={sheetRef} />
+        <CurrenciesBottomSheet
+          sheetRef={sheetRef}
+          selectedCurrencies={selectedCurrencies}
+        />
       </>
     );
   },
