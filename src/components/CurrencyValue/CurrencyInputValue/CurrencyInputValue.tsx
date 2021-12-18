@@ -6,6 +6,7 @@ import { CountryFlag } from '../../common/CountryFlag/CountryFlag';
 import {
   useConvertedValues,
   useCurrencyInputHandlers,
+  useFormattedValue,
 } from './CurrencyInputValue.hooks';
 import { styles } from './CurrencyInputValue.styles';
 import { Props } from './CurrencyInputValue.types';
@@ -41,6 +42,8 @@ export const CurrencyInputValue: React.FC<Props> = ({
     focusedCurrencyCourse,
   );
 
+  const formattedValue = useFormattedValue(caclulatedValue);
+
   return (
     <View
       style={
@@ -61,7 +64,7 @@ export const CurrencyInputValue: React.FC<Props> = ({
         </Text>
         <TextInput
           style={styles.input}
-          value={caclulatedValue}
+          value={formattedValue}
           onChangeText={onChangeTextHandler}
           onFocus={() => onFocusHandler(caclulatedValue)}
           ref={inputRef}
