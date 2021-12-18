@@ -15,20 +15,23 @@ type Props = {
   setModalSelectedCurrencies: React.Dispatch<
     React.SetStateAction<string[] | []>
   >;
+  isExpanded: boolean;
 };
 
 export const CurrencySelectorValue: React.FC<Props> = ({
   value,
   modalSelectedCurrencies,
   setModalSelectedCurrencies,
+  isExpanded,
 }) => {
   const currencyCode = Object.keys(value)[0];
   const { currencyName, id } = value[currencyCode];
   const [isActive, setIsActive] = useState(() =>
-    modalSelectedCurrencies.includes(currencyCode),
+    (modalSelectedCurrencies as string[]).includes(currencyCode),
   );
 
   const onPressHandler = useCallback(() => {
+    if (!isExpanded) return;
     if (isActive) {
       const filteredCurrenciesList = modalSelectedCurrencies.filter(
         code => code !== currencyCode,
@@ -42,6 +45,7 @@ export const CurrencySelectorValue: React.FC<Props> = ({
   }, [
     currencyCode,
     isActive,
+    isExpanded,
     modalSelectedCurrencies,
     setModalSelectedCurrencies,
   ]);
