@@ -1,9 +1,9 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { getCurrentColorTheme } from 'utils';
 
 import CloseIconDark from '../../../assets/icons/close_black_24dp';
 import CloseIconLight from '../../../assets/icons/close_white_24dp';
-import { getCurrentColorTheme } from '../../../utils/getCurrentColorTheme';
 import { styles } from './CancelButton.styles';
 
 type Props = {
