@@ -10,3 +10,18 @@ export const OPERATION_TYPE_OUT = 'out';
 export const OPERATION_TYPE_IN = 'in';
 
 export const INPUT_VALIDATION_REXEXP = new RegExp('^[0-9]*.[0-9]*$');
+
+export enum SWIPE_DIRECTIONS {
+  UP = 'UP',
+  DOWN = 'DOWN',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+}
+
+export const HORIZONTAL_SWIPES = [
+  SWIPE_DIRECTIONS.LEFT,
+  SWIPE_DIRECTIONS.RIGHT,
+];
+export const VERTICAL_SWIPES = [SWIPE_DIRECTIONS.UP, SWIPE_DIRECTIONS.DOWN];
+
+export const VIBRATION_DURATION = 50;
