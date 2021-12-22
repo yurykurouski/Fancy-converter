@@ -1,21 +1,9 @@
 import { StyleSheet } from 'react-native';
-
-import { getCurrentThemeColors } from './utils/getCurrentColorTheme';
+import { getCurrentThemeColors } from 'utils';
 
 const themeColors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-  },
-  header: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    fontFamily: 'monospace',
-    textTransform: 'uppercase',
-    paddingVertical: 25,
-    alignSelf: 'center',
-  },
   backgroundStyle: {
     height: '100%',
     width: '100%',

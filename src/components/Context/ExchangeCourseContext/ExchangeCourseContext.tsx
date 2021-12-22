@@ -1,7 +1,6 @@
+import { useGetCurrenciesExchangeCourse } from 'hooks';
 import React from 'react';
 import { ResultFromAPI } from 'types/avaliable-currencies';
-
-import { useGetCurrenciesExchangeCourse } from '../../../hooks/useGetCurrenciesExchangeCourse';
 
 type Context = {
   currentExchangeCourseContext?: {

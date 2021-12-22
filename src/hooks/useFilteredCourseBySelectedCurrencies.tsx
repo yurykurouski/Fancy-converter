@@ -2,14 +2,13 @@ import {
   FormattedCurrenciesCourses,
   ResultFromAPI,
 } from 'types/avaliable-currencies';
-
 import {
   getAdjustedCourses,
   getCoursesForSelectedCurrencies,
   getFilteredCoursesByOperationType,
   getFormattedCourses,
   getOnlyCourses,
-} from '../utils/getOnlyCourses';
+} from 'utils';
 
 type UseFilteredCourseBySelectedCurrencies = (
   exchangeCourse: ResultFromAPI[] | null,

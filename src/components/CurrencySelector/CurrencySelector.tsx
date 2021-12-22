@@ -11,10 +11,11 @@ import { styles } from './CurrencySelector.styles';
 
 type Props = {
   exchangeCourse: ResultFromAPI[] | null;
+  isDrawerOpened: boolean;
 };
 
 export const CurrencySelector: React.FC<Props> = React.memo(
-  ({ exchangeCourse }) => {
+  ({ exchangeCourse, isDrawerOpened }) => {
     const {
       selectedCurrenciesContext: { selectedCurrencies },
     } = useContext(SelectedCurrenciesContext);
@@ -55,6 +56,7 @@ export const CurrencySelector: React.FC<Props> = React.memo(
           )}
         </ScrollView>
         <CurrenciesBottomSheet
+          isDrawerOpened={isDrawerOpened}
           sheetRef={sheetRef}
           selectedCurrencies={selectedCurrencies}
         />

@@ -3,8 +3,8 @@ import React, { useCallback, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { AvaliableCurrenciesInObject } from 'types/avaliable-currencies';
+import { getCurrentThemeColors } from 'utils';
 
-import { getCurrentThemeColors } from '../../utils/getCurrentColorTheme';
 const colors = getCurrentThemeColors();
 
 import { styles } from './CurrencySelectorValue.styles';
