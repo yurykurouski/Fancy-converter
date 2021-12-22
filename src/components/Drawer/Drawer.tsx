@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useCallback, useEffect } from 'react';
-import { Animated, Pressable, Text } from 'react-native';
+import { Animated, Pressable } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 import { styles } from './Drawer.styles';
@@ -60,25 +60,22 @@ export const Drawer = React.memo<Props>(
     );
 
     return (
-      isDrawerOpened && (
-        <>
-          <PanGestureHandler
-            onGestureEvent={gestureHandler}
-            onHandlerStateChange={gestureStateHandler}>
-            <Animated.View
-              style={[
-                styles.drawer,
-                { transform: [{ translateX: animatedPosition }] },
-              ]}>
-              <Text>TEST</Text>
-            </Animated.View>
-          </PanGestureHandler>
+      <>
+        <PanGestureHandler
+          onGestureEvent={gestureHandler}
+          onHandlerStateChange={gestureStateHandler}>
           <Animated.View
-            style={[styles.fadeContainer, { opacity: opacityValue }]}>
-            <Pressable onPressOut={drawerAnimation} style={[styles.fade]} />
-          </Animated.View>
-        </>
-      )
+            style={[
+              styles.drawer,
+              { transform: [{ translateX: animatedPosition }] },
+            ]}></Animated.View>
+        </PanGestureHandler>
+        <Animated.View
+          style={[styles.fadeContainer, { opacity: opacityValue }]}
+          pointerEvents={isDrawerOpened ? 'box-none' : 'none'}>
+          <Pressable onPressOut={drawerAnimation} style={[styles.fade]} />
+        </Animated.View>
+      </>
     );
   },
 );
