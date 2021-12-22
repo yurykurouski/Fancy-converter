@@ -1,6 +1,6 @@
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
 import { SelectedCurrencies } from 'types/avaliable-currencies';
+import { getFromStorage, StorageKeys } from 'utils';
 
 export const LocalStorageContext = React.createContext<SelectedCurrencies>([]);
 
@@ -8,11 +8,10 @@ export const LocalStorageProvider: React.FC = ({ children }) => {
   const [storageSelectedCurrencies, setStorageSelectedCurrencies] = useState(
     [],
   );
-  const { getItem } = useAsyncStorage('selectedCurrencies');
 
   useEffect(() => {
     (async () => {
-      const item = await getItem();
+      const item = await getFromStorage(StorageKeys.SELECTED_CURRENCIES);
 
       const currenciesArray = converToArray(item);
       setStorageSelectedCurrencies(currenciesArray);

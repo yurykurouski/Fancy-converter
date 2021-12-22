@@ -1,7 +1,7 @@
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AppState } from 'react-native';
 import { SelectedCurrencies } from 'types/avaliable-currencies';
+import { setToStorage, StorageKeys } from 'utils';
 
 import { LocalStorageContext } from '../LocalStorageProvider/LocalStorageProvider';
 
@@ -18,20 +18,14 @@ export const SelectedCurrenciesContext =
 export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
   const appState = useRef(AppState.currentState);
   const context = useContext(LocalStorageContext);
-  const { setItem } = useAsyncStorage('selectedCurrencies');
 
   const [selectedCurrencies, setSelectedCurrencies] = useState(() => context);
 
   useEffect(() => {
-    const writeItemToStorage = async (newValue: string) => {
-      await setItem(newValue);
-    };
-
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (appState.current === 'active' && nextAppState === 'background') {
         const result = arrayToObject(selectedCurrencies);
-        const stateStringified = JSON.stringify(result);
-        writeItemToStorage(stateStringified);
+        setToStorage(StorageKeys.SELECTED_CURRENCIES, result);
       }
 
       appState.current = nextAppState;
@@ -40,7 +34,7 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
     return () => {
       subscription.remove();
     };
-  }, [selectedCurrencies, setItem]);
+  }, [selectedCurrencies]);
 
   return (
     <SelectedCurrenciesContext.Provider
