@@ -122,7 +122,6 @@ export const CurrenciesBottomSheet = React.memo<Props>(
       <BottomSheet
         index={initialIndex}
         backgroundStyle={styles.bottomSheet}
-        topInset={isKeyboardVisible ? 0 : 68}
         snapPoints={snapPoints}
         ref={sheetRef}
         handleComponent={renderHandle}

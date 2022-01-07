@@ -56,7 +56,6 @@ export const CurrencySelector: React.FC<Props> = React.memo(
           )}
         </ScrollView>
         <CurrenciesBottomSheet
-          isDrawerOpened={isDrawerOpened}
           sheetRef={sheetRef}
           selectedCurrencies={selectedCurrencies}
         />
