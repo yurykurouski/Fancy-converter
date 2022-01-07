@@ -20,7 +20,6 @@ class Requests implements RequestsInterface {
   async get(url: string) {
     try {
       const response = await this.response(url, REQUEST_GET);
-
       return response.json();
     } catch (err) {
       throw new Error(err);

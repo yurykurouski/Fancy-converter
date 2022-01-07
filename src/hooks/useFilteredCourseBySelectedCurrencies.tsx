@@ -5,19 +5,16 @@ import {
 import {
   getAdjustedCourses,
   getCoursesForSelectedCurrencies,
-  getFilteredCoursesByOperationType,
-  getFormattedCourses,
   getOnlyCourses,
 } from 'utils';
 
 type UseFilteredCourseBySelectedCurrencies = (
   exchangeCourse: ResultFromAPI[] | null,
   selectedCurrencies: string[] | [],
-  operationType: string,
 ) => FormattedCurrenciesCourses;
 
 export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedCurrencies =
-  (exchangeCourse, selectedCurrencies, operationType) => {
+  (exchangeCourse, selectedCurrencies) => {
     if (!exchangeCourse) {
       return;
     }
@@ -28,14 +25,5 @@ export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedC
       selectedCurrencies,
     );
 
-    const filteredCoursesByOperationType = getFilteredCoursesByOperationType(
-      operationType,
-      coursesForSelectedCurrencies,
-    );
-
-    const formattedCourses = getFormattedCourses(
-      filteredCoursesByOperationType,
-    );
-
-    return getAdjustedCourses(formattedCourses);
+    return getAdjustedCourses(coursesForSelectedCurrencies);
   };

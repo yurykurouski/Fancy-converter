@@ -1,13 +1,12 @@
-import { OPERATION_TYPE_OUT } from 'constants';
 import { useFilteredCourseBySelectedCurrencies } from 'hooks/useFilteredCourseBySelectedCurrencies';
 import React, { useContext } from 'react';
-import { ResultFromAPI } from 'types/avaliable-currencies';
+import { ResultFromAPI, SelectedCurrencies } from 'types/avaliable-currencies';
 
 import { FocusedCurrencyContext } from '../Context/FocusedCurrencyContext';
 import { CurrencyInputValue } from './CurrencyInputValue/CurrencyInputValue';
 
 type Props = {
-  selectedCurrencies: string[] | [];
+  selectedCurrencies: SelectedCurrencies;
   exchangeCourse: ResultFromAPI[] | null;
 };
 
@@ -26,7 +25,6 @@ export const CurrencyValue = React.memo<Props>(
     const selectedCourses = useFilteredCourseBySelectedCurrencies(
       exchangeCourse,
       selectedCurrencies,
-      OPERATION_TYPE_OUT,
     );
 
     return selectedCurrencies.map(currencyCode => (

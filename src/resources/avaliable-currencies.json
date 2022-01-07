@@ -1,52 +1,52 @@
 {
   "BYN": {
-    "currencyName": "Belarussian Ruble",
-    "currencySymbol": "Br",
-    "id": "BYN"
+    "Cur_Name": "Belarussian Ruble",
+    "Cur_Symbol": "Br",
+    "Cur_Abbreviation": "BYN"
   },
   "USD": {
-    "currencyName": "United States Dollar",
-    "currencySymbol": "$",
-    "id": "USD"
+    "Cur_Name": "United States Dollar",
+    "Cur_Symbol": "$",
+    "Cur_Abbreviation": "USD"
   },
   "EUR": {
-    "currencyName": "Euro",
-    "currencySymbol": "€",
-    "id": "EUR"
+    "Cur_Name": "Euro",
+    "Cur_Symbol": "€",
+    "Cur_Abbreviation": "EUR"
   },
   "RUB": {
-    "currencyName": "Russian Ruble",
-    "currencySymbol": "руб",
-    "id": "RUB"
+    "Cur_Name": "Russian Ruble",
+    "Cur_Symbol": "руб",
+    "Cur_Abbreviation": "RUB"
   },
   "GBP": {
-    "currencyName": "British Pound",
-    "currencySymbol": "£",
-    "id": "GBP"
+    "Cur_Name": "British Pound",
+    "Cur_Symbol": "£",
+    "Cur_Abbreviation": "GBP"
   },
   "PLN": {
-    "currencyName": "Polish Zloty",
-    "currencySymbol": "zł",
-    "id": "PLN"
+    "Cur_Name": "Polish Zloty",
+    "Cur_Symbol": "zł",
+    "Cur_Abbreviation": "PLN"
   },
   "UAH": {
-    "currencyName": "Ukrainian Hryvnia",
-    "currencySymbol": "₴",
-    "id": "UAH"
+    "Cur_Name": "Ukrainian Hryvnia",
+    "Cur_Symbol": "₴",
+    "Cur_Abbreviation": "UAH"
   },
   "CHF": {
-    "currencyName": "Swiss Franc",
-    "currencySymbol": "Fr.",
-    "id": "CHF"
+    "Cur_Name": "Swiss Franc",
+    "Cur_Symbol": "Fr.",
+    "Cur_Abbreviation": "CHF"
   },
   "CNY": {
-    "currencyName": "Chinese Yuan",
-    "currencySymbol": "¥",
-    "id": "CNY"
+    "Cur_Name": "Chinese Yuan",
+    "Cur_Symbol": "¥",
+    "Cur_Abbreviation": "CNY"
   },
   "CZK": {
-    "currencyName": "Czech Koruna",
-    "currencySymbol": "Kč",
-    "id": "CZK"
+    "Cur_Name": "Czech Koruna",
+    "Cur_Symbol": "Kč",
+    "Cur_Abbreviation": "CZK"
   }
 }

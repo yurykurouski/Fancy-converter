@@ -25,7 +25,7 @@ export const CurrencySelectorValue: React.FC<Props> = ({
   isExpanded,
 }) => {
   const currencyCode = Object.keys(value)[0];
-  const { currencyName, id } = value[currencyCode];
+  const { Cur_Name, Cur_Abbreviation } = value[currencyCode];
   const [isActive, setIsActive] = useState(() =>
     (modalSelectedCurrencies as string[]).includes(currencyCode),
   );
@@ -53,7 +53,7 @@ export const CurrencySelectorValue: React.FC<Props> = ({
   return (
     <View style={styles.currencyBlockWrapper}>
       <Pressable
-        key={id}
+        key={Cur_Abbreviation}
         style={styles.currencyBlock}
         onPress={onPressHandler}
         android_ripple={{ borderless: true }}>
@@ -61,7 +61,7 @@ export const CurrencySelectorValue: React.FC<Props> = ({
           <CountryFlag currencyCode={currencyCode} size={36} />
           <View style={styles.currencyCodeNameWrapper}>
             <Text style={styles.currencyCode}>{currencyCode}</Text>
-            <Text style={styles.currencyName}>{currencyName}</Text>
+            <Text style={styles.currencyName}>{Cur_Name}</Text>
           </View>
         </View>
         <BouncyCheckbox
