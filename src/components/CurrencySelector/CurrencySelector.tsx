@@ -11,11 +11,10 @@ import { styles } from './CurrencySelector.styles';
 
 type Props = {
   exchangeCourse: ResultFromAPI[] | null;
-  isDrawerOpened: boolean;
 };
 
 export const CurrencySelector: React.FC<Props> = React.memo(
-  ({ exchangeCourse, isDrawerOpened }) => {
+  ({ exchangeCourse }) => {
     const {
       selectedCurrenciesContext: { selectedCurrencies },
     } = useContext(SelectedCurrenciesContext);

@@ -4,15 +4,11 @@ import { getCurrentThemeColors } from 'utils';
 const themeColors = getCurrentThemeColors();
 
 export const styles = StyleSheet.create({
-  bottomSheet: {
-    backgroundColor: themeColors.ACCENT_COLOR_DARKER,
-  },
   listContainer: {
     paddingHorizontal: 10,
   },
   handleContainer: {
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
+    height: 30,
     alignItems: 'center',
   },
   handlePressable: {
@@ -22,7 +18,12 @@ export const styles = StyleSheet.create({
   handle: {
     width: 50,
     height: 5,
-    backgroundColor: themeColors.FONT_COLOR_FADED,
+    backgroundColor: themeColors.FONT_PRIMARY_COLOR,
     borderRadius: 5,
+  },
+  background: {
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    backgroundColor: themeColors.ACCENT_COLOR_DARKER,
   },
 });

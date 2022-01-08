@@ -41,10 +41,7 @@ export const CurrenciesMainContent = () => {
       ) : (
         <SelectedCurrenciesProvider>
           <View style={styles.container}>
-            <CurrencySelector
-              exchangeCourse={exchangeCourse}
-              isDrawerOpened={isDrawerOpened}
-            />
+            <CurrencySelector exchangeCourse={exchangeCourse} />
           </View>
           <Drawer
             animatedPosition={animatedPosition}
