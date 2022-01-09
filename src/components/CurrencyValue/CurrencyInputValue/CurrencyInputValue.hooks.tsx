@@ -1,4 +1,4 @@
-import { INPUT_VALIDATION_REXEXP } from 'constants';
+import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
 import { useCallback, useMemo } from 'react';
 
 import {

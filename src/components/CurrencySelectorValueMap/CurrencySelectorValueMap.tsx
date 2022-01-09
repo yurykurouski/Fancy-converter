@@ -15,13 +15,27 @@ export const CurrencySelectorValueMap = React.memo<Props>(({ isExpanded }) => {
 
   const currenciesArray = useCurrenciesListToArray(avaliableCurrencies);
 
-  return currenciesArray.map(value => (
-    <CurrencySelectorValue
-      key={Object.keys(value)[0]}
-      value={value}
-      modalSelectedCurrencies={selectedCurrencies}
-      setModalSelectedCurrencies={setSelectedCurrencies}
-      isExpanded={isExpanded}
-    />
-  ));
+  return (
+    <>
+      {currenciesArray.map(value => (
+        <CurrencySelectorValue
+          key={Object.keys(value)[0]}
+          value={value}
+          modalSelectedCurrencies={selectedCurrencies}
+          setModalSelectedCurrencies={setSelectedCurrencies}
+          isExpanded={isExpanded}
+        />
+      ))}
+    </>
+  );
+
+  // return currenciesArray.map(value => (
+  //   <CurrencySelectorValue
+  //     key={Object.keys(value)[0]}
+  //     value={value}
+  //     modalSelectedCurrencies={selectedCurrencies}
+  //     setModalSelectedCurrencies={setSelectedCurrencies}
+  //     isExpanded={isExpanded}
+  //   />
+  // ));
 });

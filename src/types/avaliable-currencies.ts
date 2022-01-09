@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-shadow
 export enum AvaliableCurrenciesNames {
   USD = 'USD',
   EUR = 'EUR',

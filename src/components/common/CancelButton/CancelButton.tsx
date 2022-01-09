@@ -1,13 +1,14 @@
+import CloseIconDark from 'assets/icons/close_black_24dp';
+import CloseIconLight from 'assets/icons/close_white_24dp';
+import { OnChangeTextHandler } from 'components/CurrencyValue/CurrencyInputValue/CurrencyInputValue.types';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { getCurrentColorTheme } from 'utils';
 
-import CloseIconDark from '../../../assets/icons/close_black_24dp';
-import CloseIconLight from '../../../assets/icons/close_white_24dp';
 import { styles } from './CancelButton.styles';
 
 type Props = {
-  onPress: (text: any) => void;
+  onPress: OnChangeTextHandler;
 };
 
 export const CancelButton: React.FC<Props> = ({ onPress }) => {

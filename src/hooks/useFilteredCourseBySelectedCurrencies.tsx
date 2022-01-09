@@ -1,15 +1,9 @@
-import {
-  FormattedCurrenciesCourses,
-  ResultFromAPI,
-} from 'types/avaliable-currencies';
-import {
-  getAdjustedCourses,
-  getCoursesForSelectedCurrencies,
-  getOnlyCourses,
-} from 'utils';
+import { FormattedCurrenciesCourses } from 'types/avaliable-currencies';
+import { getAdjustedCourses, getCoursesForSelectedCurrencies } from 'utils';
+import { OnlyCourses } from 'utils/utils.types';
 
 type UseFilteredCourseBySelectedCurrencies = (
-  exchangeCourse: ResultFromAPI[] | null,
+  exchangeCourse: OnlyCourses | null,
   selectedCurrencies: string[] | [],
 ) => FormattedCurrenciesCourses;
 
@@ -18,10 +12,9 @@ export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedC
     if (!exchangeCourse) {
       return;
     }
-    const onlyCourses = getOnlyCourses(exchangeCourse);
 
     const coursesForSelectedCurrencies = getCoursesForSelectedCurrencies(
-      onlyCourses,
+      exchangeCourse,
       selectedCurrencies,
     );
 

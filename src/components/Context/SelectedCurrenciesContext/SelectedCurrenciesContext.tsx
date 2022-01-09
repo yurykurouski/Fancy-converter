@@ -24,7 +24,7 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
   useEffect(() => {
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (appState.current === 'active' && nextAppState === 'background') {
-        const result = arrayToObject(selectedCurrencies);
+        const result = Object.assign({}, selectedCurrencies);
         setToStorage(StorageKeys.SELECTED_CURRENCIES, result);
       }
 
@@ -48,12 +48,3 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
     </SelectedCurrenciesContext.Provider>
   );
 };
-
-const arrayToObject = array =>
-  array.reduce(
-    (acc, _, index) => ({
-      ...acc,
-      [index]: array[index],
-    }),
-    {},
-  );

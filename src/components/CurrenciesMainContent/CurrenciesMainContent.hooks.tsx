@@ -1,4 +1,4 @@
-import { VIBRATION_DURATION } from 'constants';
+import { VIBRATION_DURATION } from 'constants/constants';
 import { useCallback, useState } from 'react';
 import { Animated, Vibration } from 'react-native';
 import { getScreenWidth } from 'utils';

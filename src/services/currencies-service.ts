@@ -1,4 +1,4 @@
-import { DEFAULT_API_DAY_RATES } from 'react-native-dotenv';
+import { DEFAULT_API_DAY_RATES } from '@env';
 
 import { requests } from './requests';
 

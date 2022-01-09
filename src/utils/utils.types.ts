@@ -10,7 +10,7 @@ export type OnlyCourses = {
 };
 
 export type GetCoursesForSelectedCurrencies = (
-  courses: OnlyCourses,
+  exchangeCourse: OnlyCourses,
   selectedCurrencies: string[] | [],
 ) => OnlyCourses;
 

@@ -1,8 +1,8 @@
+import { CancelButton } from 'components/common/CancelButton';
+import { CountryFlag } from 'components/common/CountryFlag/CountryFlag';
 import React, { useRef, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 
-import { CancelButton } from '../../../components/common/CancelButton';
-import { CountryFlag } from '../../common/CountryFlag/CountryFlag';
 import {
   useConvertedValues,
   useCurrencyInputHandlers,
