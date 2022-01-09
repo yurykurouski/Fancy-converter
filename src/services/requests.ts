@@ -1,5 +1,5 @@
-import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/contsants';
-import { DEFAULT_API_URL } from 'react-native-dotenv';
+import { DEFAULT_API_URL } from '@env';
+import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/constants';
 
 import { RequestsInterface, Response } from './requests.types';
 
@@ -20,7 +20,6 @@ class Requests implements RequestsInterface {
   async get(url: string) {
     try {
       const response = await this.response(url, REQUEST_GET);
-
       return response.json();
     } catch (err) {
       throw new Error(err);

@@ -1,11 +1,11 @@
-import { DEFAULT_API_CITY_REQUEST } from 'react-native-dotenv';
+import { DEFAULT_API_DAY_RATES } from '@env';
 
 import { requests } from './requests';
 
 class CurrenciesService {
-  async getCoursesExchangeWithCity(cityName: string) {
+  async getDailyCourses() {
     try {
-      return await requests.get(`${DEFAULT_API_CITY_REQUEST}=${cityName}`);
+      return await requests.get(DEFAULT_API_DAY_RATES);
     } catch (err) {
       throw new Error(err);
     }

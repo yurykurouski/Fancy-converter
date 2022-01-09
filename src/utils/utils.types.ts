@@ -3,23 +3,16 @@ import {
   ResultFromAPI,
 } from 'types/avaliable-currencies';
 
-export type GetOnlyCourses = (
-  exchangeCourse: ResultFromAPI[],
-) => ResultFromAPI[];
+export type GetOnlyCourses = (exchangeCourse: ResultFromAPI[]) => OnlyCourses;
+
+export type OnlyCourses = {
+  [key: string]: number;
+};
 
 export type GetCoursesForSelectedCurrencies = (
-  courses: ResultFromAPI[],
+  exchangeCourse: OnlyCourses,
   selectedCurrencies: string[] | [],
-) => ResultFromAPI[];
-
-export type GetFilteredCoursesByOperationType = (
-  operationType: string,
-  coursesForSelectedCurrencies: ResultFromAPI[],
-) => ResultFromAPI[];
-
-export type GetFormattedCourses = (
-  filteredCoursesByOperationType: ResultFromAPI[],
-) => FormattedCurrenciesCourses;
+) => OnlyCourses;
 
 export type GetAdjustedCourses = (
   formattedCourses: FormattedCurrenciesCourses,

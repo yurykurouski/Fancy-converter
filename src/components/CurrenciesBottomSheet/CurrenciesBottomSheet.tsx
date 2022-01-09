@@ -5,28 +5,13 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Animated, BackHandler, Keyboard, Pressable, View } from 'react-native';
 import { SelectedCurrencies } from 'types/avaliable-currencies';
 
+import { BottomSheetBackground } from './BottomSheetBackground';
 import { styles } from './CurrenciesBottomSheet.styles';
 
 type Props = {
   sheetRef: React.MutableRefObject<BottomSheetMethods>;
   selectedCurrencies: SelectedCurrencies;
 };
-
-const animation = new Animated.Value(60);
-
-const shrinkHandle = () =>
-  Animated.timing(animation, {
-    toValue: 30,
-    duration: 100,
-    useNativeDriver: false,
-  }).start();
-
-const expandHandle = () =>
-  Animated.timing(animation, {
-    toValue: 60,
-    duration: 100,
-    useNativeDriver: false,
-  }).start();
 
 const snapPoints = [30, 70, '100%'];
 
@@ -59,7 +44,6 @@ export const CurrenciesBottomSheet = React.memo<Props>(
       const showKeyboardListener = Keyboard.addListener(
         'keyboardDidShow',
         () => {
-          shrinkHandle();
           sheetRef.current?.snapToIndex(0);
           setKeyboardVisible(true);
         },
@@ -69,7 +53,6 @@ export const CurrenciesBottomSheet = React.memo<Props>(
         'keyboardDidHide',
         () => {
           if (!isExpanded) {
-            expandHandle();
             sheetRef.current?.snapToIndex(1);
           }
           setKeyboardVisible(false);
@@ -89,11 +72,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           sheetRef.current?.snapToIndex(1);
           setIsExpanded(false);
         }
-        if (index === 2 && !isKeyboardVisible) {
-          shrinkHandle();
-        }
         if (index == 1 && !isKeyboardVisible) {
-          expandHandle();
           setIsExpanded(false);
         }
         if (index === (0 || 1) && isKeyboardVisible) {
@@ -111,7 +90,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     );
 
     const renderHandle = () => (
-      <Animated.View style={[styles.handleContainer, { height: animation }]}>
+      <Animated.View style={[styles.handleContainer]}>
         <Pressable style={styles.handlePressable} onPress={onPressHandler}>
           <View style={styles.handle} />
         </Pressable>
@@ -121,11 +100,10 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     return (
       <BottomSheet
         index={initialIndex}
-        backgroundStyle={styles.bottomSheet}
-        topInset={isKeyboardVisible ? 0 : 68}
         snapPoints={snapPoints}
         ref={sheetRef}
         handleComponent={renderHandle}
+        backgroundComponent={BottomSheetBackground}
         onChange={handleChange}>
         <BottomSheetScrollView
           style={styles.listContainer}

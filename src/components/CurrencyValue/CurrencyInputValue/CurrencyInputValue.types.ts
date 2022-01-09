@@ -16,7 +16,7 @@ export type ContainerOnPressHandler = () => void;
 
 export type UseCurrencyInputHandlers = (
   setFocusedCurrencyValue: React.Dispatch<React.SetStateAction<string>>,
-  setValue: React.Dispatch<any>,
+  setValue: React.Dispatch<string>,
   setFocusedCurrencyName: React.Dispatch<React.SetStateAction<string>>,
   currencyCode: string,
   inputRef: React.MutableRefObject<any>,

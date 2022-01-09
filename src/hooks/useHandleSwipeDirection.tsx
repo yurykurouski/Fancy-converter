@@ -2,7 +2,7 @@ import {
   HORIZONTAL_SWIPES,
   SWIPE_DIRECTIONS,
   VERTICAL_SWIPES,
-} from 'constants';
+} from 'constants/constants';
 import { useCallback } from 'react';
 import {
   HandlerStateChangeEvent,

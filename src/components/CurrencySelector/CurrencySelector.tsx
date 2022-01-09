@@ -2,7 +2,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import { CurrenciesBottomSheet } from 'components/CurrenciesBottomSheet';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Keyboard, ScrollView } from 'react-native';
-import { ResultFromAPI } from 'types/avaliable-currencies';
+import { OnlyCourses } from 'utils/utils.types';
 
 import { FocusedCurrencyProvider } from '../Context/FocusedCurrencyContext';
 import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
@@ -10,12 +10,11 @@ import { CurrencyValue } from '../CurrencyValue';
 import { styles } from './CurrencySelector.styles';
 
 type Props = {
-  exchangeCourse: ResultFromAPI[] | null;
-  isDrawerOpened: boolean;
+  exchangeCourse: OnlyCourses | null;
 };
 
 export const CurrencySelector: React.FC<Props> = React.memo(
-  ({ exchangeCourse, isDrawerOpened }) => {
+  ({ exchangeCourse }) => {
     const {
       selectedCurrenciesContext: { selectedCurrencies },
     } = useContext(SelectedCurrenciesContext);
@@ -56,7 +55,6 @@ export const CurrencySelector: React.FC<Props> = React.memo(
           )}
         </ScrollView>
         <CurrenciesBottomSheet
-          isDrawerOpened={isDrawerOpened}
           sheetRef={sheetRef}
           selectedCurrencies={selectedCurrencies}
         />

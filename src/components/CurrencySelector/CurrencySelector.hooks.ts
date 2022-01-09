@@ -8,9 +8,9 @@ export const useCurrenciesListToArray: UseCurrenciesListToArray =
       () =>
         Object.keys(avaliableCurrencies).map(value => ({
           [value]: {
-            currencyName: avaliableCurrencies[value].currencyName,
-            currencySymbol: avaliableCurrencies[value].currencySymbol,
-            id: avaliableCurrencies[value].id,
+            Cur_Name: avaliableCurrencies[value].Cur_Name,
+            Cur_Symbol: avaliableCurrencies[value].Cur_Symbol,
+            Cur_Abbreviation: avaliableCurrencies[value].Cur_Abbreviation,
           },
         })),
       [avaliableCurrencies],

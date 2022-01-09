@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-shadow
 export enum AvaliableCurrenciesNames {
   USD = 'USD',
   EUR = 'EUR',
@@ -17,9 +16,13 @@ export enum AvaliableCurrenciesNames {
 }
 
 export type CurrencyDescription = {
-  currencyName: string;
-  currencySymbol: string;
-  id: string;
+  Cur_ID?: number;
+  Date?: string;
+  Cur_Abbreviation: string;
+  Cur_Scale?: number;
+  Cur_Name: string;
+  Cur_OfficialRate?: number;
+  Cur_Symbol?: string;
 };
 
 export type AvaliableCurrenciesInObject = {
@@ -30,9 +33,7 @@ export type AvaliableCurrenciesInArray = {
   [key in AvaliableCurrenciesNames]?: CurrencyDescription;
 };
 
-export type ResultFromAPI = {
-  [key: string]: string;
-};
+export type ResultFromAPI = CurrencyDescription[];
 
 export type FormattedCurrenciesCourses = {
   [key in AvaliableCurrenciesNames]?: string;
