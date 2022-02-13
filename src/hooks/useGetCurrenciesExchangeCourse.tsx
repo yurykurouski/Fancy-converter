@@ -47,7 +47,7 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
       setIsLoading(true);
 
       getFromStorage(StorageKeys.EXCHANGE_COURSES)
-        .then(value => {
+        .then((value: string) => {
           const parsed = JSON.parse(value);
           setExchangeCourse(parsed);
         })

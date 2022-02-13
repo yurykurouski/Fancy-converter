@@ -9,6 +9,7 @@ import {
   increaseOpacity,
   opacityValue,
 } from './drawer-animations';
+import { DrawerContent } from './DrawerContent';
 
 type Props = {
   animatedPosition: Animated.Value;
@@ -68,7 +69,9 @@ export const Drawer = React.memo<Props>(
             style={[
               styles.drawer,
               { transform: [{ translateX: animatedPosition }] },
-            ]}></Animated.View>
+            ]}>
+            <DrawerContent />
+          </Animated.View>
         </PanGestureHandler>
         <Animated.View
           style={[styles.fadeContainer, { opacity: opacityValue }]}
