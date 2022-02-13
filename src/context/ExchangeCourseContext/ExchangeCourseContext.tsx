@@ -1,16 +1,7 @@
 import { useGetCurrenciesExchangeCourse } from 'hooks';
 import React from 'react';
-import { OnlyCourses } from 'utils/utils.types';
 
-type Context = {
-  currentExchangeCourseContext?: {
-    currentExchangeCourse: {
-      exchangeCourse: OnlyCourses | null;
-      isLoading: boolean;
-    };
-    setCurrentExchangeCourse: () => void;
-  };
-};
+import { Context } from './ExchangeCourseContext.types';
 
 export const ExchangeCourseContext = React.createContext<Context>({});
 
