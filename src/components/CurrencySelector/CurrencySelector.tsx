@@ -1,11 +1,10 @@
 import BottomSheet from '@gorhom/bottom-sheet';
-import { CurrenciesBottomSheet } from 'components/CurrenciesBottomSheet';
+import { CurrenciesBottomSheet } from 'components';
+import { FocusedCurrencyProvider, SelectedCurrenciesContext } from 'context';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Keyboard, ScrollView } from 'react-native';
 import { OnlyCourses } from 'utils/utils.types';
 
-import { FocusedCurrencyProvider } from '../Context/FocusedCurrencyContext';
-import { SelectedCurrenciesContext } from '../Context/SelectedCurrenciesContext';
 import { CurrencyValue } from '../CurrencyValue';
 import { styles } from './CurrencySelector.styles';
 
