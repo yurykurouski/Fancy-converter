@@ -20,7 +20,7 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
     const [isLoading, setIsLoading] = useState(false);
     const [exchangeCourse, setExchangeCourse] = useState(null);
 
-    const isCoursesCheckedToday = useCallback(async () => {
+    const isCoursesCheckedLastHour = useCallback(async () => {
       const currentDate = new Date();
       const lastCoursesUpdate = await getFromStorage(
         StorageKeys.LAST_COURSES_UPDATE,
@@ -37,9 +37,10 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
 
       const lastUpdateDate = new Date(Number(lastCoursesUpdate));
       return (
-        currentDate.getDate() == lastUpdateDate.getDate() &&
-        currentDate.getMonth() == lastUpdateDate.getMonth() &&
-        currentDate.getFullYear() == lastUpdateDate.getFullYear()
+        currentDate.getHours() === lastUpdateDate.getHours() &&
+        currentDate.getDate() === lastUpdateDate.getDate() &&
+        currentDate.getMonth() === lastUpdateDate.getMonth() &&
+        currentDate.getFullYear() === lastUpdateDate.getFullYear()
       );
     }, []);
 
@@ -68,14 +69,14 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
     }, []);
 
     useEffect(() => {
-      isCoursesCheckedToday().then(isCheckedToday => {
+      isCoursesCheckedLastHour().then(isCheckedToday => {
         if (!isCheckedToday) {
           reloadCourses();
         } else {
           getCoursesFromStorage();
         }
       });
-    }, [getCoursesFromStorage, isCoursesCheckedToday, reloadCourses]);
+    }, [getCoursesFromStorage, isCoursesCheckedLastHour, reloadCourses]);
 
     return { isLoading, exchangeCourse, reloadCourses };
   };
