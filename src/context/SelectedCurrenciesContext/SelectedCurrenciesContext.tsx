@@ -3,7 +3,7 @@ import { AppState } from 'react-native';
 import { SelectedCurrencies } from 'types/avaliable-currencies';
 import { setToStorage, StorageKeys } from 'utils';
 
-import { LocalStorageContext } from '../LocalStorageProvider/LocalStorageProvider';
+import { LocalStorageContext } from '../LocalStorageProvider';
 
 type SelectedCurrenciesContext = {
   selectedCurrenciesContext?: {

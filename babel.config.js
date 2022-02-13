@@ -26,6 +26,7 @@ module.exports = {
           assets: './src/assets',
           services: './src/services',
           constants: './src/constants',
+          context: './src/context',
         },
       },
     ],

@@ -1,10 +1,8 @@
-import { Drawer } from 'components/Drawer';
-import { Header } from 'components/Header';
+import { Drawer, Header } from 'components';
+import { ExchangeCourseContext, SelectedCurrenciesProvider } from 'context';
 import React, { useContext, useEffect } from 'react';
 import { ActivityIndicator, BackHandler, View } from 'react-native';
 
-import { ExchangeCourseContext } from '../Context/ExchangeCourseContext';
-import { SelectedCurrenciesProvider } from '../Context/SelectedCurrenciesContext';
 import { CurrencySelector } from '../CurrencySelector/CurrencySelector';
 import { useOpenDrawerAnimations } from './CurrenciesMainContent.hooks';
 import { styles } from './CurrenciesMainContent.styles';
