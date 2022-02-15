@@ -1,5 +1,5 @@
-import { useGetCurrenciesExchangeCourse } from 'hooks';
 import React from 'react';
+import { useGetCurrenciesExchangeCourse } from 'hooks';
 
 import { Context } from './ExchangeCourseContext.types';
 

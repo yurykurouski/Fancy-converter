@@ -28,4 +28,24 @@ module.exports = {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
   },
+  overrides: [
+    {
+      files: ['**/*.js', '**/*.ts', '**/*.tsx'],
+      rules: {
+        'simple-import-sort/imports': [
+          'error',
+          {
+            groups: [
+              ['^react$', '^react-native$', 'react', '^next', '^@', '^[a-z]'],
+              ['^~'],
+              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+              ['^.+\\.styles$'],
+              ['^\\u0000'],
+            ],
+          },
+        ],
+      },
+    },
+  ],
 };

@@ -1,7 +1,7 @@
+import React, { useContext } from 'react';
 import { useCurrenciesListToArray } from 'components/CurrencySelector/CurrencySelector.hooks';
 import { CurrencySelectorValue } from 'components/CurrencySelectorValue';
 import { SelectedCurrenciesContext } from 'context/SelectedCurrenciesContext';
-import React, { useContext } from 'react';
 import avaliableCurrencies from 'resources/avaliable-currencies.json';
 
 type Props = {

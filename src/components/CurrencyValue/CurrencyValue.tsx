@@ -1,8 +1,9 @@
-import { useFilteredCourseBySelectedCurrencies } from 'hooks/useFilteredCourseBySelectedCurrencies';
 import React, { useContext } from 'react';
+import { useFilteredCourseBySelectedCurrencies } from 'hooks/useFilteredCourseBySelectedCurrencies';
 import { OnlyCourses } from 'utils/utils.types';
 
 import { FocusedCurrencyContext } from '../../context/FocusedCurrencyContext';
+
 import { CurrencyInputValue } from './CurrencyInputValue/CurrencyInputValue';
 
 type Props = {
