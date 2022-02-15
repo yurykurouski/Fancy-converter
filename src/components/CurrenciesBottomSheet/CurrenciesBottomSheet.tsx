@@ -1,11 +1,12 @@
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Animated, BackHandler, Keyboard, Pressable, View } from 'react-native';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
 import { CurrencySelectorValueMap } from 'components';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Animated, BackHandler, Keyboard, Pressable, View } from 'react-native';
 import { SelectedCurrencies } from 'types/avaliable-currencies';
 
 import { BottomSheetBackground } from './BottomSheetBackground';
+
 import { styles } from './CurrenciesBottomSheet.styles';
 
 type Props = {

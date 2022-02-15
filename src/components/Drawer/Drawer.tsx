@@ -3,13 +3,14 @@ import React, { useCallback, useEffect } from 'react';
 import { Animated, Pressable } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
-import { styles } from './Drawer.styles';
 import {
   decreaseOpacity,
   increaseOpacity,
   opacityValue,
 } from './drawer-animations';
 import { DrawerContent } from './DrawerContent';
+
+import { styles } from './Drawer.styles';
 
 type Props = {
   animatedPosition: Animated.Value;

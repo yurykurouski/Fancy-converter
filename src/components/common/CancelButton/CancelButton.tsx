@@ -1,8 +1,8 @@
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import CloseIconDark from 'assets/icons/close_black_24dp.svg';
 import CloseIconLight from 'assets/icons/close_white_24dp.svg';
 import { OnChangeTextHandler } from 'components/CurrencyValue/CurrencyInputValue/CurrencyInputValue.types';
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import { getCurrentColorTheme } from 'utils';
 
 import { styles } from './CancelButton.styles';

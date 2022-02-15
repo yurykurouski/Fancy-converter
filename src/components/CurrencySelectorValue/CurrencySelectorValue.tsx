@@ -1,13 +1,13 @@
-import { CountryFlag } from 'components/common/CountryFlag';
 import React, { useCallback, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { CountryFlag } from 'components/common/CountryFlag';
 import { AvaliableCurrenciesInObject } from 'types/avaliable-currencies';
 import { getCurrentThemeColors } from 'utils';
 
-const colors = getCurrentThemeColors();
-
 import { styles } from './CurrencySelectorValue.styles';
+
+const colors = getCurrentThemeColors();
 
 type Props = {
   value: AvaliableCurrenciesInObject;

@@ -1,12 +1,14 @@
+import React, { useCallback } from 'react';
+import { Linking, View } from 'react-native';
 import ghDarkIcon from 'assets/icons/github-dark.png';
 import ghLightIcon from 'assets/icons/github-light.png';
 import tgIcon from 'assets/icons/telegram-logo.png';
-import React, { useCallback } from 'react';
-import { Linking, View } from 'react-native';
 import { getCurrentColorTheme } from 'utils';
 
 import { DrawerIcon } from '../DrawerIcon';
+
 import { useAlertMessage } from './DrawerContent.hooks';
+
 import { styles } from './DrawerContent.styles';
 
 const theme = getCurrentColorTheme();

@@ -1,9 +1,9 @@
-import { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
 import React, { useMemo } from 'react';
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
 import { getCurrentThemeColors } from 'utils';
 
 import { styles } from './CurrenciesBottomSheet.styles';

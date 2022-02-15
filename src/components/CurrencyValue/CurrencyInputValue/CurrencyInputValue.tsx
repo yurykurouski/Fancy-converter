@@ -1,15 +1,16 @@
-import { CancelButton } from 'components/common/CancelButton';
-import { CountryFlag } from 'components/common/CountryFlag/CountryFlag';
 import React, { useRef, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
+import { CancelButton } from 'components/common/CancelButton';
+import { CountryFlag } from 'components/common/CountryFlag/CountryFlag';
 
 import {
   useConvertedValues,
   useCurrencyInputHandlers,
   useFormattedValue,
 } from './CurrencyInputValue.hooks';
-import { styles } from './CurrencyInputValue.styles';
 import { Props } from './CurrencyInputValue.types';
+
+import { styles } from './CurrencyInputValue.styles';
 
 export const CurrencyInputValue: React.FC<Props> = ({
   currencyCode,

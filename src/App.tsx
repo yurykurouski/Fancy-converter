@@ -1,11 +1,12 @@
-import { CurrenciesMainContent } from 'components';
-import { ExchangeCourseProvider, LocalStorageProvider } from 'context';
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { CurrenciesMainContent } from 'components';
+import { ExchangeCourseProvider, LocalStorageProvider } from 'context';
+
+import { getCurrentColorTheme, getCurrentThemeColors } from './utils';
 
 import { styles } from './App.styles';
-import { getCurrentColorTheme, getCurrentThemeColors } from './utils';
 
 const currentTheme = getCurrentColorTheme();
 const colors = getCurrentThemeColors();

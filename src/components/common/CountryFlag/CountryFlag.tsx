@@ -15,6 +15,7 @@ import RUB from '../../../assets/flags/RUB.svg';
 import SEK from '../../../assets/flags/SEK.svg';
 import UAH from '../../../assets/flags/UAH.svg';
 import USD from '../../../assets/flags/USD.svg';
+
 import { styles } from './CountryFlag.styles';
 
 const flags = {
