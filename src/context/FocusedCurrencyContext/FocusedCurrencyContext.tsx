@@ -29,7 +29,8 @@ export const FocusedCurrencyProvider: React.FC = ({ children }) => {
           setFocusedCurrencyName,
           setFocusedCurrencyValue,
         },
-      }}>
+      }}
+    >
       {children}
     </FocusedCurrencyContext.Provider>
   );
