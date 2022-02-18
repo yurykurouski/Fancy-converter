@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { Keyboard } from 'react-native';
 
 import { UseCurrenciesListToArray } from './CurrencySelector.types';
 
@@ -15,3 +16,23 @@ export const useCurrenciesListToArray: UseCurrenciesListToArray =
         })),
       [avaliableCurrencies],
     );
+
+export const useTrackKeyboardStatus = () => {
+  const [keyBoardOpened, setKeyBoardOpened] = useState(false);
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyBoardOpened(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyBoardOpened(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
+
+  return keyBoardOpened;
+};
