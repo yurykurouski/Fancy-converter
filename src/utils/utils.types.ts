@@ -17,3 +17,13 @@ export type GetCoursesForSelectedCurrencies = (
 export type GetAdjustedCourses = (
   formattedCourses: FormattedCurrenciesCourses,
 ) => FormattedCurrenciesCourses;
+
+export type ShowNoConnectionAlert = (
+  onPress?: (value?: string) => void,
+  saveDate?: string,
+) => void;
+
+export type CompareDateByHour = (
+  currentDate: Date,
+  lastUpdateDate: Date,
+) => boolean;

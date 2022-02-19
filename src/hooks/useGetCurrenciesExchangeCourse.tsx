@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import {
+  compareDateByHour,
   getFromStorage,
   getOnlyCourses,
   setToStorage,
@@ -38,12 +39,8 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
       }
 
       const lastUpdateDate = new Date(Number(lastCoursesUpdate));
-      return (
-        currentDate.getHours() === lastUpdateDate.getHours() &&
-        currentDate.getDate() === lastUpdateDate.getDate() &&
-        currentDate.getMonth() === lastUpdateDate.getMonth() &&
-        currentDate.getFullYear() === lastUpdateDate.getFullYear()
-      );
+
+      return compareDateByHour(currentDate, lastUpdateDate);
     }, [currentDate]);
 
     const getCoursesFromStorage = useCallback(onInit => {

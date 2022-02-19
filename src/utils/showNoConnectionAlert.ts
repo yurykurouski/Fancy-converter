@@ -1,9 +1,6 @@
 import { Alert } from 'react-native';
 
-type ShowNoConnectionAlert = (
-  onPress?: (value?: string) => void,
-  saveDate?: string,
-) => void;
+import { ShowNoConnectionAlert } from './utils.types';
 
 export const showNoConnectionAlert: ShowNoConnectionAlert = (
   onPress,
