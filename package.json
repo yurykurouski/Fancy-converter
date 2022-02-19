@@ -13,6 +13,7 @@
     "@gorhom/bottom-sheet": "^4",
     "@react-native-async-storage/async-storage": "^1.15.11",
     "@react-native-community/hooks": "^2.8.1",
+    "@react-native-community/netinfo": "^8.0.0",
     "react": "17.0.2",
     "react-native": "0.66.2",
     "react-native-bouncy-checkbox": "^2.1.7",

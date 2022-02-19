@@ -1,27 +1,29 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import NetInfo from '@react-native-community/netinfo';
 import {
   getFromStorage,
   getOnlyCourses,
   setToStorage,
+  showNoConnectionAlert,
   StorageKeys,
 } from 'utils';
-import { OnlyCourses } from 'utils/utils.types';
 
 import { currenciesService } from '../services/currencies-service';
 
-export type UseGetCurrenciesExchangeCourse = () => {
-  isLoading: boolean;
-  exchangeCourse: OnlyCourses;
-  reloadCourses: () => void;
-};
+import { UseGetCurrenciesExchangeCourse } from './types';
 
 export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
   () => {
     const [isLoading, setIsLoading] = useState(false);
     const [exchangeCourse, setExchangeCourse] = useState(null);
 
+    const currentDate = useMemo(() => new Date(), []);
+    const saveDate = `${currentDate.getDate()}-${currentDate.toLocaleString(
+      'default',
+      { month: 'short' },
+    )}-${currentDate.getFullYear()}`;
+
     const isCoursesCheckedLastHour = useCallback(async () => {
-      const currentDate = new Date();
       const lastCoursesUpdate = await getFromStorage(
         StorageKeys.LAST_COURSES_UPDATE,
       );
@@ -42,10 +44,20 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
         currentDate.getMonth() === lastUpdateDate.getMonth() &&
         currentDate.getFullYear() === lastUpdateDate.getFullYear()
       );
-    }, []);
+    }, [currentDate]);
 
-    const getCoursesFromStorage = useCallback(() => {
+    const getCoursesFromStorage = useCallback(onInit => {
       setIsLoading(true);
+
+      if (onInit) {
+        NetInfo.fetch().then(async state => {
+          if (!state.isConnected) {
+            await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(
+              oldDate => showNoConnectionAlert(undefined, oldDate),
+            );
+          }
+        });
+      }
 
       getFromStorage(StorageKeys.EXCHANGE_COURSES)
         .then((value: string) => {
@@ -63,17 +75,25 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
         .then(value => {
           const onlyCourses = getOnlyCourses(value);
           setExchangeCourse(onlyCourses);
+
           setToStorage(StorageKeys.EXCHANGE_COURSES, onlyCourses);
+          setToStorage(StorageKeys.LAST_COURSES_SAVE_DATE, saveDate);
         })
-        .then(() => setIsLoading(false));
-    }, []);
+        .catch(async () => {
+          await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(
+            oldDate => showNoConnectionAlert(getCoursesFromStorage, oldDate),
+          );
+          await setToStorage(StorageKeys.LAST_COURSES_UPDATE, null);
+        })
+        .finally(() => setIsLoading(false));
+    }, [getCoursesFromStorage, saveDate]);
 
     useEffect(() => {
       isCoursesCheckedLastHour().then(isCheckedLastHour => {
         if (!isCheckedLastHour) {
           reloadCourses();
         } else {
-          getCoursesFromStorage();
+          getCoursesFromStorage(true);
         }
       });
     }, [getCoursesFromStorage, isCoursesCheckedLastHour, reloadCourses]);
