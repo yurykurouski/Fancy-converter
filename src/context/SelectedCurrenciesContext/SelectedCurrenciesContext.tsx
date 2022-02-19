@@ -19,7 +19,7 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
   const appState = useRef(AppState.currentState);
   const context = useContext(LocalStorageContext);
 
-  const [selectedCurrencies, setSelectedCurrencies] = useState(() => context);
+  const [selectedCurrencies, setSelectedCurrencies] = useState([]);
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', nextAppState => {
@@ -35,6 +35,10 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
       subscription.remove();
     };
   }, [selectedCurrencies]);
+
+  useEffect(() => {
+    setSelectedCurrencies(context);
+  }, [context]);
 
   return (
     <SelectedCurrenciesContext.Provider

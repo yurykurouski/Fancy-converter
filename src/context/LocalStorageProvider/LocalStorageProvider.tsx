@@ -13,10 +13,9 @@ export const LocalStorageProvider: React.FC = ({ children }) => {
     (async () => {
       const item = await getFromStorage(StorageKeys.SELECTED_CURRENCIES);
 
-      const currenciesArray = converToArray(item);
+      const currenciesArray = convertToArray(item);
       setStorageSelectedCurrencies(currenciesArray);
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -26,7 +25,7 @@ export const LocalStorageProvider: React.FC = ({ children }) => {
   );
 };
 
-const converToArray = (storageValue: string): string[] => {
+const convertToArray = (storageValue: string): string[] => {
   const pasrsed = JSON.parse(storageValue);
   return storageValue === null
     ? []

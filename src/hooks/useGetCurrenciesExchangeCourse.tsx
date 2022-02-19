@@ -69,8 +69,8 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
     }, []);
 
     useEffect(() => {
-      isCoursesCheckedLastHour().then(isCheckedToday => {
-        if (!isCheckedToday) {
+      isCoursesCheckedLastHour().then(isCheckedLastHour => {
+        if (!isCheckedLastHour) {
           reloadCourses();
         } else {
           getCoursesFromStorage();
