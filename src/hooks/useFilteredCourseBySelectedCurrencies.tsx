@@ -1,11 +1,11 @@
-import { FormattedCurrenciesCourses } from 'types/avaliable-currencies';
-import { getAdjustedCourses, getCoursesForSelectedCurrencies } from 'utils';
+import { CurrenciesCourses } from 'types/avaliable-currencies';
+import { getCoursesForSelectedCurrencies } from 'utils';
 import { OnlyCourses } from 'utils/utils.types';
 
 type UseFilteredCourseBySelectedCurrencies = (
   exchangeCourse: OnlyCourses | null,
   selectedCurrencies: string[] | [],
-) => FormattedCurrenciesCourses;
+) => CurrenciesCourses;
 
 export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedCurrencies =
   (exchangeCourse, selectedCurrencies) => {
@@ -13,10 +13,5 @@ export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedC
       return;
     }
 
-    const coursesForSelectedCurrencies = getCoursesForSelectedCurrencies(
-      exchangeCourse,
-      selectedCurrencies,
-    );
-
-    return getAdjustedCourses(coursesForSelectedCurrencies);
+    return getCoursesForSelectedCurrencies(exchangeCourse, selectedCurrencies);
   };
