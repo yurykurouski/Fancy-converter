@@ -8,6 +8,7 @@ import CNY from '../../../assets/flags/CNY.svg';
 import CZK from '../../../assets/flags/CZK.svg';
 import EUR from '../../../assets/flags/EUR.svg';
 import GBP from '../../../assets/flags/GBP.svg';
+import GEL from '../../../assets/flags/GEL.svg';
 import JPY from '../../../assets/flags/JPY.svg';
 import NOK from '../../../assets/flags/NOK.svg';
 import PLN from '../../../assets/flags/PLN.svg';
@@ -33,6 +34,7 @@ const flags = {
   SEK: SEK,
   UAH: UAH,
   USD: USD,
+  GEL: GEL,
 };
 
 type Props = {
