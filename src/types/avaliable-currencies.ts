@@ -13,6 +13,7 @@ export enum AvaliableCurrenciesNames {
   CZK = 'CZK',
   NOK = 'NOK',
   BYN = 'BYN',
+  GEL = 'GEL',
 }
 
 export type CurrencyDescription = {
