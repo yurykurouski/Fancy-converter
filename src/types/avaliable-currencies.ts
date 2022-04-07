@@ -35,8 +35,8 @@ export type AvaliableCurrenciesInArray = {
 
 export type ResultFromAPI = CurrencyDescription[];
 
-export type FormattedCurrenciesCourses = {
-  [key in AvaliableCurrenciesNames]?: string;
+export type CurrenciesCourses = {
+  [key in AvaliableCurrenciesNames]?: CurrencyDescription;
 };
 
 export type SelectedCurrencies = string[] | [];

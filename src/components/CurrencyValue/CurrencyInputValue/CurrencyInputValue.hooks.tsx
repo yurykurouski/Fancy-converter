@@ -49,7 +49,7 @@ export const useConvertedValues: UseConvertedValues = (
   course,
   focusedCurrencyCourse,
 ) => {
-  const coefficient = Number(focusedCurrencyCourse) / Number(course);
+  const coefficient = Number(course) / Number(focusedCurrencyCourse);
 
   const calculatedValue = useMemo(
     () =>

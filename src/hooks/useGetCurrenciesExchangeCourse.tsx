@@ -3,7 +3,6 @@ import NetInfo from '@react-native-community/netinfo';
 import {
   compareDateByHour,
   getFromStorage,
-  getOnlyCourses,
   setToStorage,
   showNoConnectionAlert,
   StorageKeys,
@@ -69,11 +68,10 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
 
       currenciesService
         .getDailyCourses()
-        .then(value => {
-          const onlyCourses = getOnlyCourses(value);
-          setExchangeCourse(onlyCourses);
+        .then(({ rates }) => {
+          setExchangeCourse(rates);
 
-          setToStorage(StorageKeys.EXCHANGE_COURSES, onlyCourses);
+          setToStorage(StorageKeys.EXCHANGE_COURSES, rates);
           setToStorage(StorageKeys.LAST_COURSES_SAVE_DATE, saveDate);
         })
         .catch(async () => {
