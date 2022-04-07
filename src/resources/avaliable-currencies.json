@@ -49,4 +49,10 @@
     "Cur_Symbol": "Kč",
     "Cur_Abbreviation": "CZK"
   }
+  //todo: add GEL
+  // "GEL": {
+  //   "Cur_Name": "Georgian Lari",
+  //   "Cur_Symbol": "₾",
+  //   "Cur_Abbreviation": "GEL"
+  // }
 }
