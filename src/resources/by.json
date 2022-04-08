@@ -13,5 +13,9 @@
   "alert_message.open_link.title": "Перайсці па спасылцы?",
   "alert_message.open_link.description": "Спасылка будзе адкрыта ў знешнім дадатку",
   "alert_message.open_link.ok": "Ок",
-  "alert_message.open_link.cancel": "Скасаваць"
+  "alert_message.open_link.cancel": "Скасаваць",
+  "alert_message.comething_wrong": "Нешта пайшло не так",
+  "alert_message.comething_wrong.no_connection": "Няма падлучэння да Інтэрнэту.",
+  "alert_message.comething_wrong.stored_courses": "Будуць выкарыставаны апошнія захаваныя курсы з",
+  "alert_message.comething_wrong.check_connection": "Калі ласка, праверце падключэнне да сеткі."
 }

@@ -1,4 +1,5 @@
 import { Alert } from 'react-native';
+import { l } from 'resources/localization';
 
 import { ShowNoConnectionAlert } from './utils.types';
 
@@ -7,12 +8,12 @@ export const showNoConnectionAlert: ShowNoConnectionAlert = (
   saveDate,
 ) => {
   Alert.alert(
-    'Something went wrong',
-    `No Internet connection. ${
+    l['alert_message.comething_wrong'],
+    `${l['alert_message.comething_wrong.no_connection']}. ${
       saveDate
-        ? `Will use last stored courses from ${saveDate}.`
-        : 'Check your connection please.'
+        ? `${l['alert_message.comething_wrong.stored_courses']} ${saveDate}.`
+        : l['alert_message.comething_wrong.check_connection']
     }`,
-    [{ text: 'OK', onPress }],
+    [{ text: l['alert_message.open_link.ok'], onPress }],
   );
 };
