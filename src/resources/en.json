@@ -11,7 +11,7 @@
   "CZK": "Czech Koruna",
   "GEL": "Georgian Lari",
   "alert_message.open_link.title": "Open the link?",
-  "alert_message.open_link.description": "Link will be opened in external application",
+  "alert_message.open_link.description": "Link will be open in external application",
   "alert_message.open_link.ok": "Ok",
   "alert_message.open_link.cancel": "Cancel"
 }
