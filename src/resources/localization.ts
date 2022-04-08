@@ -9,5 +9,3 @@ export const l = new LocalizedStrings({
   'be-BY': by,
   'uk-UA': ua,
 });
-
-console.log(l.getInterfaceLanguage());
