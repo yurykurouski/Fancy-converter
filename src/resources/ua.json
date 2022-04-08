@@ -13,5 +13,9 @@
   "alert_message.open_link.title": "Відкрити посилання?",
   "alert_message.open_link.description": "Посилання буде відкрито у сторонньому додатку",
   "alert_message.open_link.ok": "Так",
-  "alert_message.open_link.cancel": "Відмінити"
+  "alert_message.open_link.cancel": "Відмінити",
+  "alert_message.comething_wrong": "Something went wrong",
+  "alert_message.comething_wrong.no_connection": "No Internet connection.",
+  "alert_message.comething_wrong.stored_courses": "Will use last stored courses from",
+  "alert_message.comething_wrong.check_connection": "Check your connection please."
 }
