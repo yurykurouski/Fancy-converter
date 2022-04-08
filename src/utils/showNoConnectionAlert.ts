@@ -9,7 +9,7 @@ export const showNoConnectionAlert: ShowNoConnectionAlert = (
 ) => {
   Alert.alert(
     l['alert_message.comething_wrong'],
-    `${l['alert_message.comething_wrong.no_connection']}. ${
+    `${l['alert_message.comething_wrong.no_connection']} ${
       saveDate
         ? `${l['alert_message.comething_wrong.stored_courses']} ${saveDate}.`
         : l['alert_message.comething_wrong.check_connection']
