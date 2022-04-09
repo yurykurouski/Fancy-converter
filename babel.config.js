@@ -11,7 +11,6 @@ module.exports = {
         path: '.env',
       },
     ],
-    'react-native-reanimated/plugin',
     [
       'module-resolver',
       {
@@ -36,5 +35,6 @@ module.exports = {
         loose: true,
       },
     ],
+    'react-native-reanimated/plugin',
   ],
 };
