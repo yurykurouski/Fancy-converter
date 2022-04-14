@@ -65,21 +65,18 @@ export const Drawer = React.memo<Props>(
       <>
         <PanGestureHandler
           onGestureEvent={gestureHandler}
-          onHandlerStateChange={gestureStateHandler}
-        >
+          onHandlerStateChange={gestureStateHandler}>
           <Animated.View
             style={[
               styles.drawer,
               { transform: [{ translateX: animatedPosition }] },
-            ]}
-          >
+            ]}>
             <DrawerContent />
           </Animated.View>
         </PanGestureHandler>
         <Animated.View
           style={[styles.fadeContainer, { opacity: opacityValue }]}
-          pointerEvents={isDrawerOpened ? 'box-none' : 'none'}
-        >
+          pointerEvents={isDrawerOpened ? 'box-none' : 'none'}>
           <Pressable onPressOut={drawerAnimation} style={[styles.fade]} />
         </Animated.View>
       </>
