@@ -19,8 +19,7 @@ export const ExchangeCourseProvider: React.FC = ({ children }) => {
           },
           setCurrentExchangeCourse: reloadCourses,
         },
-      }}
-    >
+      }}>
       {children}
     </ExchangeCourseContext.Provider>
   );

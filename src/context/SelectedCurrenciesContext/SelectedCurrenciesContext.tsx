@@ -47,8 +47,7 @@ export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
           selectedCurrencies: selectedCurrencies,
           setSelectedCurrencies: setSelectedCurrencies,
         },
-      }}
-    >
+      }}>
       {children}
     </SelectedCurrenciesContext.Provider>
   );
