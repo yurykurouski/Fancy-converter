@@ -16,12 +16,23 @@ module.exports = {
     '@typescript-eslint',
     'prettier',
     'react-hooks',
+    'unused-imports',
   ],
   rules: {
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'react/display-name': 'off',
-    // 'import/no-unresolved': 'warn',
+    'no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
   },
   settings: {
     'import/parsers': {
