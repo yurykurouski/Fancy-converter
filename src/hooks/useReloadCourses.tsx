@@ -7,7 +7,7 @@ import {
   StorageKeys,
 } from 'utils';
 
-import { NOTIFICATION_MESSAGES, UseReloadCourses } from './types';
+import { UseReloadCourses } from './types';
 
 export const useReloadCourses: UseReloadCourses = (
   setIsLoading,
@@ -34,7 +34,9 @@ export const useReloadCourses: UseReloadCourses = (
         await setToStorage(StorageKeys.LAST_COURSES_UPDATE, null);
       })
       .finally(() => setIsLoading(false))
-      .then(() => startNotification(NOTIFICATION_MESSAGES.FROM_NETWORK));
+      .then(() =>
+        startNotification('notification.message.update_courses.network'),
+      );
   }, [
     getCoursesFromStorage,
     saveDate,

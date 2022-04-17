@@ -25,8 +25,3 @@ export type UseReloadCourses = (
   getCoursesFromStorage: GetCoursesFromStorage,
   startNotification: StartNotification,
 ) => ReloadCourses;
-
-export enum NOTIFICATION_MESSAGES {
-  FROM_STORAGE = 'Courses were settled from cache',
-  FROM_NETWORK = 'Courses were updated',
-}

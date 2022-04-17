@@ -1,5 +1,6 @@
 import React from 'react';
 import { Animated, Text } from 'react-native';
+import { l } from 'resources/localization';
 
 import { useNotificationAnimation } from './WithNotification.hooks';
 import { StartNotification } from './WithNotification.types';
@@ -20,7 +21,7 @@ export const WithNotification: React.FC = ({ children }) => {
           styles.container,
           { transform: [{ translateY: animatedPosition }] },
         ]}>
-        <Text style={styles.text}>{message}</Text>
+        <Text style={styles.text}>{l[message]}</Text>
       </Animated.View>
     </NotificationContext.Provider>
   );
