@@ -8,7 +8,7 @@ export type GetCoursesForSelectedCurrencies = (
 ) => OnlyCourses;
 
 export type ShowNoConnectionAlert = (
-  onPress?: (value?: string) => void,
+  onPress?: (value?: unknown) => void,
   saveDate?: string,
 ) => void;
 
@@ -16,3 +16,9 @@ export type CompareDateByHour = (
   currentDate: Date,
   lastUpdateDate: Date,
 ) => boolean;
+
+export type GetIsCoursesCheckedLastHour = (
+  currentDate: Date,
+) => Promise<boolean>;
+
+export type GetSaveDate = (currentDate: Date) => string;
