@@ -1,99 +1,40 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import NetInfo from '@react-native-community/netinfo';
-import {
-  compareDateByHour,
-  getFromStorage,
-  setToStorage,
-  showNoConnectionAlert,
-  StorageKeys,
-} from 'utils';
+import { useEffect, useMemo, useState } from 'react';
+import { useGetCoursesFromStorage, useReloadCourses } from 'hooks';
+import { getIsCoursesCheckedLastHour, getSaveDate } from 'utils';
+import { OnlyCourses } from 'utils/utils.types';
 
-import { currenciesService } from '../services/currencies-service';
-
-import { NOTIFICATION_MESSAGES, UseGetCurrenciesExchangeCourse } from './types';
+import { UseGetCurrenciesExchangeCourse } from './types';
 
 export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
   startNotification => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [exchangeCourse, setExchangeCourse] = useState(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [exchangeCourse, setExchangeCourse] = useState<OnlyCourses>();
 
     const currentDate = useMemo(() => new Date(), []);
-    const saveDate = `${currentDate.getDate()}-${currentDate.toLocaleString(
-      'default',
-      { month: 'short' },
-    )}-${currentDate.getFullYear()}`;
+    const saveDate = getSaveDate(currentDate);
 
-    const isCoursesCheckedLastHour = useCallback(async () => {
-      const lastCoursesUpdate = await getFromStorage(
-        StorageKeys.LAST_COURSES_UPDATE,
-      );
-
-      if (!lastCoursesUpdate) {
-        await setToStorage(
-          StorageKeys.LAST_COURSES_UPDATE,
-          currentDate.getTime(),
-        );
-
-        return false;
-      }
-
-      const lastUpdateDate = new Date(Number(lastCoursesUpdate));
-
-      return compareDateByHour(currentDate, lastUpdateDate);
-    }, [currentDate]);
-
-    const getCoursesFromStorage = useCallback(
-      onInit => {
-        if (onInit) {
-          NetInfo.fetch().then(async state => {
-            if (!state.isConnected) {
-              await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(
-                oldDate => showNoConnectionAlert(undefined, oldDate),
-              );
-            }
-          });
-        }
-
-        getFromStorage(StorageKeys.EXCHANGE_COURSES)
-          .then((value: string) => {
-            const parsed = JSON.parse(value);
-            setExchangeCourse(parsed);
-          })
-          .then(() => startNotification(NOTIFICATION_MESSAGES.FROM_STORAGE));
-      },
-      [startNotification],
+    const getCoursesFromStorage = useGetCoursesFromStorage(
+      setExchangeCourse,
+      startNotification,
     );
 
-    const reloadCourses = useCallback(() => {
-      setIsLoading(true);
-
-      currenciesService
-        .getDailyCourses()
-        .then(({ rates }) => {
-          setExchangeCourse(rates);
-
-          setToStorage(StorageKeys.EXCHANGE_COURSES, rates);
-          setToStorage(StorageKeys.LAST_COURSES_SAVE_DATE, saveDate);
-        })
-        .catch(async () => {
-          await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(
-            oldDate => showNoConnectionAlert(getCoursesFromStorage, oldDate),
-          );
-          await setToStorage(StorageKeys.LAST_COURSES_UPDATE, null);
-        })
-        .finally(() => setIsLoading(false))
-        .then(() => startNotification(NOTIFICATION_MESSAGES.FROM_NETWORK));
-    }, [getCoursesFromStorage, saveDate, startNotification]);
+    const reloadCourses = useReloadCourses(
+      setIsLoading,
+      setExchangeCourse,
+      saveDate,
+      getCoursesFromStorage,
+      startNotification,
+    );
 
     useEffect(() => {
-      isCoursesCheckedLastHour().then(isCheckedLastHour => {
+      getIsCoursesCheckedLastHour(currentDate).then(isCheckedLastHour => {
         if (!isCheckedLastHour) {
           reloadCourses();
         } else {
           getCoursesFromStorage(true);
         }
       });
-    }, [getCoursesFromStorage, isCoursesCheckedLastHour, reloadCourses]);
+    }, [currentDate, getCoursesFromStorage, reloadCourses]);
 
     return { isLoading, exchangeCourse, reloadCourses };
   };
