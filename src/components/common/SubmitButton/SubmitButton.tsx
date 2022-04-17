@@ -20,8 +20,7 @@ export const SubmitButton: React.FC<Props> = ({ onPress, type, title }) => {
   return (
     <RectButton
       style={[styles.buttonWrapper, buttonTypeStyle]}
-      onPress={onPress}
-    >
+      onPress={onPress}>
       <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={[styles.buttonText, buttonTypeTextStyle]}>{title}</Text>
       </TouchableOpacity>

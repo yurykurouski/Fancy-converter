@@ -10,10 +10,10 @@ import {
 
 import { currenciesService } from '../services/currencies-service';
 
-import { UseGetCurrenciesExchangeCourse } from './types';
+import { NOTIFICATION_MESSAGES, UseGetCurrenciesExchangeCourse } from './types';
 
 export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
-  () => {
+  startNotification => {
     const [isLoading, setIsLoading] = useState(false);
     const [exchangeCourse, setExchangeCourse] = useState(null);
 
@@ -42,26 +42,27 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
       return compareDateByHour(currentDate, lastUpdateDate);
     }, [currentDate]);
 
-    const getCoursesFromStorage = useCallback(onInit => {
-      setIsLoading(true);
+    const getCoursesFromStorage = useCallback(
+      onInit => {
+        if (onInit) {
+          NetInfo.fetch().then(async state => {
+            if (!state.isConnected) {
+              await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(
+                oldDate => showNoConnectionAlert(undefined, oldDate),
+              );
+            }
+          });
+        }
 
-      if (onInit) {
-        NetInfo.fetch().then(async state => {
-          if (!state.isConnected) {
-            await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(
-              oldDate => showNoConnectionAlert(undefined, oldDate),
-            );
-          }
-        });
-      }
-
-      getFromStorage(StorageKeys.EXCHANGE_COURSES)
-        .then((value: string) => {
-          const parsed = JSON.parse(value);
-          setExchangeCourse(parsed);
-        })
-        .then(() => setIsLoading(false));
-    }, []);
+        getFromStorage(StorageKeys.EXCHANGE_COURSES)
+          .then((value: string) => {
+            const parsed = JSON.parse(value);
+            setExchangeCourse(parsed);
+          })
+          .then(() => startNotification(NOTIFICATION_MESSAGES.FROM_STORAGE));
+      },
+      [startNotification],
+    );
 
     const reloadCourses = useCallback(() => {
       setIsLoading(true);
@@ -80,8 +81,9 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
           );
           await setToStorage(StorageKeys.LAST_COURSES_UPDATE, null);
         })
-        .finally(() => setIsLoading(false));
-    }, [getCoursesFromStorage, saveDate]);
+        .finally(() => setIsLoading(false))
+        .then(() => startNotification(NOTIFICATION_MESSAGES.FROM_NETWORK));
+    }, [getCoursesFromStorage, saveDate, startNotification]);
 
     useEffect(() => {
       isCoursesCheckedLastHour().then(isCheckedLastHour => {

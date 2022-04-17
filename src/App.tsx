@@ -2,7 +2,11 @@ import React from 'react';
 import { StatusBar, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { CurrenciesMainContent } from 'components';
-import { ExchangeCourseProvider, LocalStorageProvider } from 'context';
+import {
+  ExchangeCourseProvider,
+  LocalStorageProvider,
+  WithNotification,
+} from 'context';
 
 import { getCurrentColorTheme, getCurrentThemeColors } from './utils';
 
@@ -22,9 +26,11 @@ const App = React.memo(() => {
             }
             backgroundColor={colors.APP_BACKGROUND_PRIMARY}
           />
-          <ExchangeCourseProvider>
-            <CurrenciesMainContent />
-          </ExchangeCourseProvider>
+          <WithNotification>
+            <ExchangeCourseProvider>
+              <CurrenciesMainContent />
+            </ExchangeCourseProvider>
+          </WithNotification>
         </View>
       </LocalStorageProvider>
     </GestureHandlerRootView>

@@ -51,17 +51,16 @@ export const CurrencyInputValue: React.FC<Props> = ({
         isFocused
           ? [styles.containerWrapper, styles.containerWrapperFocused]
           : styles.containerWrapper
-      }
-    >
+      }>
       <Pressable
         key={currencyCode}
         onPress={containerOnPressHandler}
         android_ripple={{ borderless: false }}
-        style={styles.container}
-      >
+        style={styles.container}>
         <Text
-          style={isFocused ? [styles.title, styles.titleFocused] : styles.title}
-        >
+          style={
+            isFocused ? [styles.title, styles.titleFocused] : styles.title
+          }>
           {currencyCode}
         </Text>
         <TextInput

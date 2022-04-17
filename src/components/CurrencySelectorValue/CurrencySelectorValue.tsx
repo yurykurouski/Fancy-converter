@@ -57,8 +57,7 @@ export const CurrencySelectorValue: React.FC<Props> = ({
         key={currencyCode}
         style={styles.currencyBlock}
         onPress={onPressHandler}
-        android_ripple={{ borderless: true }}
-      >
+        android_ripple={{ borderless: true }}>
         <View style={styles.currencyInfoWrapper}>
           <CountryFlag currencyCode={currencyCode} size={36} />
           <View style={styles.currencyCodeNameWrapper}>

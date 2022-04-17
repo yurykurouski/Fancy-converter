@@ -47,8 +47,7 @@ export const CurrencySelector: React.FC = React.memo(() => {
             onRefresh={setCurrentExchangeCourse}
             colors={[ColorsDark.MAIN_BUTTON_COLOR]}
           />
-        }
-      >
+        }>
         {!!selectedCurrencies.length && (
           <FocusedCurrencyProvider>
             <CurrencyValue
