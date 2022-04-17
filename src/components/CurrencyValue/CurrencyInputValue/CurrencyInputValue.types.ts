@@ -19,6 +19,7 @@ export type UseCurrencyInputHandlers = (
   setValue: React.Dispatch<string>,
   setFocusedCurrencyName: React.Dispatch<React.SetStateAction<string>>,
   currencyCode: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   inputRef: React.MutableRefObject<any>,
 ) => [OnChangeTextHandler, OnFocusHandler, ContainerOnPressHandler];
 
