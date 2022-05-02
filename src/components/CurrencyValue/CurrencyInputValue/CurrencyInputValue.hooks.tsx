@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
+import { l } from 'resources/localization';
 
 import {
   UseConvertedValues,
@@ -64,7 +65,7 @@ export const useConvertedValues: UseConvertedValues = (
   return calculatedValue === '0.00'
     ? null
     : isNaN(Number(calculatedValue)) && !isFocused
-    ? 'Wrong value!'
+    ? l['currency_input.value.error_message']
     : calculatedValue;
 };
 
