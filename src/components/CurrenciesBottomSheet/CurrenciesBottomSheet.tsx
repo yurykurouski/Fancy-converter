@@ -7,7 +7,7 @@ import { SelectedCurrencies } from 'types/avaliable-currencies';
 
 import { BottomSheetBackground } from './BottomSheetBackground';
 
-import { styles } from './CurrenciesBottomSheet.styles';
+import { useStyles } from './CurrenciesBottomSheet.styles';
 
 type Props = {
   sheetRef: React.MutableRefObject<BottomSheetMethods>;
@@ -20,6 +20,8 @@ export const CurrenciesBottomSheet = React.memo<Props>(
   ({ sheetRef, selectedCurrencies }) => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+
+    const styles = useStyles();
 
     const onPressHandler = useCallback(() => {
       sheetRef.current.snapToIndex(2);

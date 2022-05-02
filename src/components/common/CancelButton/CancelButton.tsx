@@ -5,13 +5,14 @@ import CloseIconLight from 'assets/icons/close_white_24dp.svg';
 import { OnChangeTextHandler } from 'components/CurrencyValue/CurrencyInputValue/CurrencyInputValue.types';
 import { getCurrentColorTheme } from 'utils';
 
-import { styles } from './CancelButton.styles';
+import { useStyles } from './CancelButton.styles';
 
 type Props = {
   onPress: OnChangeTextHandler;
 };
 
 export const CancelButton: React.FC<Props> = ({ onPress }) => {
+  const styles = useStyles();
   return (
     <TouchableOpacity onPress={() => onPress('')} style={styles.buttonWrapper}>
       {getCurrentColorTheme() === 'dark' ? (

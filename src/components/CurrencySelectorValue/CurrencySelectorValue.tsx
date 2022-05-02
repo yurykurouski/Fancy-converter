@@ -1,14 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { CountryFlag } from 'components/common/CountryFlag';
+import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 import { l } from 'resources/localization';
 import { CurrenciesCourses } from 'types/avaliable-currencies';
-import { getCurrentThemeColors } from 'utils';
 
-import { styles } from './CurrencySelectorValue.styles';
-
-const colors = getCurrentThemeColors();
+import { useStyles } from './CurrencySelectorValue.styles';
 
 type Props = {
   value: CurrenciesCourses;
@@ -25,6 +23,9 @@ export const CurrencySelectorValue: React.FC<Props> = ({
   setModalSelectedCurrencies,
   isExpanded,
 }) => {
+  const { themeColors } = useContext(ThemeContext);
+  const styles = useStyles();
+
   const currencyCode = Object.keys(value)[0];
 
   const [isActive, setIsActive] = useState(() =>
@@ -67,7 +68,7 @@ export const CurrencySelectorValue: React.FC<Props> = ({
         </View>
         <BouncyCheckbox
           size={30}
-          fillColor={colors.ACCENT_COLOR_LIGHTER}
+          fillColor={themeColors.ACCENT_COLOR_LIGHTER}
           onPress={onPressHandler}
           isChecked={isActive}
           disableBuiltInState

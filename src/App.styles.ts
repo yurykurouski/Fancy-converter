@@ -1,12 +1,12 @@
-import { StyleSheet } from 'react-native';
-import { getCurrentThemeColors } from 'utils';
+import { withTheme } from './context/ThemeProvider/ThemeProvider.hooks';
 
-const themeColors = getCurrentThemeColors();
-
-export const styles = StyleSheet.create({
-  backgroundStyle: {
-    height: '100%',
-    width: '100%',
-    backgroundColor: themeColors.APP_BACKGROUND_PRIMARY,
-  },
-});
+export const useStyles = () =>
+  withTheme(theme => {
+    return {
+      backgroundStyle: {
+        height: '100%',
+        width: '100%',
+        backgroundColor: theme.APP_BACKGROUND_PRIMARY,
+      },
+    };
+  });

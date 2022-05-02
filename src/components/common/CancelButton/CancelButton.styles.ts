@@ -1,12 +1,10 @@
-import { StyleSheet } from 'react-native';
-import { getCurrentThemeColors } from 'utils';
+import { withTheme } from './../../../context/ThemeProvider/ThemeProvider.hooks';
 
-const colors = getCurrentThemeColors();
-
-export const styles = StyleSheet.create({
-  buttonWrapper: {
-    borderRadius: 24,
-    backgroundColor: colors.ELEMENT_FADE_OR_BACKGROUND,
-    marginHorizontal: 10,
-  },
-});
+export const useStyles = () =>
+  withTheme(theme => ({
+    buttonWrapper: {
+      borderRadius: 24,
+      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
+      marginHorizontal: 10,
+    },
+  }));
