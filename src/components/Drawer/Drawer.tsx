@@ -1,67 +1,30 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { Animated, Pressable } from 'react-native';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import { PanGestureHandler } from 'react-native-gesture-handler';
 
 import {
-  decreaseOpacity,
-  increaseOpacity,
-  opacityValue,
-} from './drawer-animations';
+  useGestureHandler,
+  useGestureStateHandler,
+  useOpacityControl,
+} from './Drawer.hooks';
+import { Props } from './Drawer.types';
+import { opacityValue } from './drawer-animations';
 import { DrawerContent } from './DrawerContent';
 
 import { useStyles } from './Drawer.styles';
-
-type Props = {
-  animatedPosition: Animated.Value;
-  drawerAnimation: () => void;
-  isDrawerOpened: boolean;
-};
 
 export const Drawer = React.memo<Props>(
   ({ animatedPosition, drawerAnimation, isDrawerOpened }) => {
     const styles = useStyles();
 
-    useEffect(() => {
-      if (isDrawerOpened) {
-        increaseOpacity();
-      } else {
-        decreaseOpacity();
-      }
-    }, [isDrawerOpened]);
+    const gestureHandler = useGestureHandler(animatedPosition);
 
-    const gestureHandler = useCallback(
-      ({ nativeEvent }) => {
-        const { translationX } = nativeEvent;
-        if (translationX > 0) return;
-
-        animatedPosition.setValue(translationX);
-      },
-      [animatedPosition],
+    const gestureStateHandler = useGestureStateHandler(
+      drawerAnimation,
+      animatedPosition,
     );
 
-    const gestureStateHandler = useCallback(
-      ({ nativeEvent }) => {
-        const { translationX, oldState } = nativeEvent;
-
-        if (oldState === State.ACTIVE) {
-          if (
-            Math.abs(translationX) >
-            // @ts-ignore
-            Math.abs(animatedPosition._startingValue) / 2
-          ) {
-            drawerAnimation();
-          } else {
-            Animated.timing(animatedPosition, {
-              toValue: 0,
-              duration: 200,
-              useNativeDriver: false,
-            }).start();
-          }
-        }
-      },
-      [animatedPosition, drawerAnimation],
-    );
+    useOpacityControl(isDrawerOpened);
 
     return (
       <>

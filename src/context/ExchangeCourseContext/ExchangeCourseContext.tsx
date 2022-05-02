@@ -4,7 +4,7 @@ import { useGetCurrenciesExchangeCourse } from 'hooks';
 
 import { Context } from './ExchangeCourseContext.types';
 
-export const ExchangeCourseContext = React.createContext<Context>({});
+export const ExchangeCourseContext = React.createContext<Context | null>(null);
 
 export const ExchangeCourseProvider: React.FC = props => {
   const startNotification = useContext(NotificationContext);

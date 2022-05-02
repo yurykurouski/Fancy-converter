@@ -1,23 +1,8 @@
 import { useCallback } from 'react';
-import {
-  HandlerStateChangeEvent,
-  PanGestureHandlerEventPayload,
-  State,
-} from 'react-native-gesture-handler';
-import {
-  HORIZONTAL_SWIPES,
-  SWIPE_DIRECTIONS,
-  VERTICAL_SWIPES,
-} from 'constants/constants';
+import { State } from 'react-native-gesture-handler';
+import { HORIZONTAL_SWIPES, VERTICAL_SWIPES } from 'constants/constants';
 
-type Handler = (
-  e: HandlerStateChangeEvent<PanGestureHandlerEventPayload>,
-) => void;
-
-type UseHandleSwipeDirection = (
-  handler: () => void,
-  direction: SWIPE_DIRECTIONS,
-) => Handler;
+import { UseHandleSwipeDirection } from './types';
 
 export const useHandleSwipeDirection: UseHandleSwipeDirection = (
   handler,

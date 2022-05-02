@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 
-type FocusedCurrencyContext = {
-  focusedCurrencyContext?: {
-    focusedCurrency: {
-      focusedCurrencyName: string;
-      focusedCurrencyValue: string;
-    };
-    setFocusedCurrencyName: React.Dispatch<React.SetStateAction<string>>;
-    setFocusedCurrencyValue: React.Dispatch<React.SetStateAction<string>>;
-  };
-};
+import { FocusedCurrencyContext as Type } from './FocusedCurrencyContext.types';
 
-export const FocusedCurrencyContext =
-  React.createContext<FocusedCurrencyContext>({});
+export const FocusedCurrencyContext = React.createContext<Type | null>(null);
 
 export const FocusedCurrencyProvider: React.FC = ({ children }) => {
   const [focusedCurrencyName, setFocusedCurrencyName] = useState('');

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { SelectedCurrencies } from 'types/avaliable-currencies';
 import { getFromStorage, StorageKeys } from 'utils';
 
-export const LocalStorageContext = React.createContext<SelectedCurrencies>([]);
+export const LocalStorageContext =
+  React.createContext<SelectedCurrencies | null>(null);
 
 export const LocalStorageProvider: React.FC = ({ children }) => {
   const [storageSelectedCurrencies, setStorageSelectedCurrencies] = useState(
