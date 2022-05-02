@@ -13,7 +13,7 @@ type SelectedCurrenciesContext = {
 };
 
 export const SelectedCurrenciesContext =
-  React.createContext<SelectedCurrenciesContext>({});
+  React.createContext<SelectedCurrenciesContext>(null);
 
 export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
   const appState = useRef(AppState.currentState);

@@ -1,11 +1,6 @@
-import { CurrenciesCourses } from 'types/avaliable-currencies';
 import { getCoursesForSelectedCurrencies } from 'utils';
-import { OnlyCourses } from 'utils/utils.types';
 
-type UseFilteredCourseBySelectedCurrencies = (
-  exchangeCourse: OnlyCourses | null,
-  selectedCurrencies: string[] | [],
-) => CurrenciesCourses;
+import { UseFilteredCourseBySelectedCurrencies } from './types';
 
 export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedCurrencies =
   (exchangeCourse, selectedCurrencies) => {

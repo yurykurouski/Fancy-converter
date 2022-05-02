@@ -1,21 +1,14 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 import { l } from 'resources/localization';
-import { CurrenciesCourses } from 'types/avaliable-currencies';
+
+import { useOnPressHandler } from './CurrencySelectorValue.hooks';
+import { Props } from './CurrencySelectorValue.types';
 
 import { useStyles } from './CurrencySelectorValue.styles';
-
-type Props = {
-  value: CurrenciesCourses;
-  modalSelectedCurrencies: string[] | [];
-  setModalSelectedCurrencies: React.Dispatch<
-    React.SetStateAction<string[] | []>
-  >;
-  isExpanded: boolean;
-};
 
 export const CurrencySelectorValue: React.FC<Props> = ({
   value,
@@ -32,25 +25,14 @@ export const CurrencySelectorValue: React.FC<Props> = ({
     (modalSelectedCurrencies as string[]).includes(currencyCode),
   );
 
-  const onPressHandler = useCallback(() => {
-    if (!isExpanded) return;
-    if (isActive) {
-      const filteredCurrenciesList = modalSelectedCurrencies.filter(
-        code => code !== currencyCode,
-      );
-      setModalSelectedCurrencies(filteredCurrenciesList);
-    } else {
-      setModalSelectedCurrencies([...modalSelectedCurrencies, currencyCode]);
-    }
-
-    setIsActive(!isActive);
-  }, [
-    currencyCode,
-    isActive,
+  const onPressHandler = useOnPressHandler(
     isExpanded,
+    isActive,
     modalSelectedCurrencies,
+    currencyCode,
     setModalSelectedCurrencies,
-  ]);
+    setIsActive,
+  );
 
   return (
     <View style={styles.currencyBlockWrapper}>

@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
-import { BackHandler, View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { Drawer, Header } from 'components';
 import { SelectedCurrenciesProvider } from 'context';
 
 import { CurrencySelector } from '../CurrencySelector/CurrencySelector';
 
-import { useOpenDrawerAnimations } from './CurrenciesMainContent.hooks';
+import {
+  useHandleBackPress,
+  useOpenDrawerAnimations,
+} from './CurrenciesMainContent.hooks';
 
 import { styles } from './CurrenciesMainContent.styles';
 
@@ -13,20 +16,7 @@ export const CurrenciesMainContent = () => {
   const { isDrawerOpened, drawerAnimation, animatedPosition } =
     useOpenDrawerAnimations();
 
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      () => {
-        if (isDrawerOpened) {
-          drawerAnimation();
-          return true;
-        }
-        return false;
-      },
-    );
-
-    return () => backHandler.remove();
-  }, [isDrawerOpened, drawerAnimation]);
+  useHandleBackPress(isDrawerOpened, drawerAnimation);
 
   return (
     <>

@@ -1,16 +1,15 @@
-import { useCallback, useState } from 'react';
-import { Animated, Vibration } from 'react-native';
+import { useCallback, useEffect, useState } from 'react';
+import { Animated, BackHandler, Vibration } from 'react-native';
 import { VIBRATION_DURATION } from 'constants/constants';
 import { getScreenWidth } from 'utils';
 
+import {
+  UseHandleBackPress,
+  UseOpenDrawerAnimations,
+} from './CurrenciesMainContent.types';
+
 const screenWidth = getScreenWidth();
 const animatedPosition = new Animated.Value(-(screenWidth * 0.6));
-
-type UseOpenDrawerAnimations = () => {
-  isDrawerOpened: boolean;
-  drawerAnimation: () => void;
-  animatedPosition: Animated.Value;
-};
 
 export const useOpenDrawerAnimations: UseOpenDrawerAnimations = () => {
   const [isDrawerOpened, setIsDrawerOpened] = useState(false);
@@ -43,3 +42,22 @@ export const useOpenDrawerAnimations: UseOpenDrawerAnimations = () => {
     animatedPosition,
   };
 };
+
+export const useHandleBackPress: UseHandleBackPress = (
+  isDrawerOpened,
+  drawerAnimation,
+) =>
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => {
+        if (isDrawerOpened) {
+          drawerAnimation();
+          return true;
+        }
+        return false;
+      },
+    );
+
+    return () => backHandler.remove();
+  }, [isDrawerOpened, drawerAnimation]);

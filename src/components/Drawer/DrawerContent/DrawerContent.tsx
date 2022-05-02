@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Linking, View } from 'react-native';
 import ghDarkIcon from 'assets/icons/github-dark.png';
 import ghLightIcon from 'assets/icons/github-light.png';
 import tgIcon from 'assets/icons/telegram-logo.png';
-import { getCurrentColorTheme } from 'utils';
+import { ThemeContext } from 'context';
 
 import { DrawerIcon } from '../DrawerIcon';
 
@@ -11,11 +11,11 @@ import { useAlertMessage } from './DrawerContent.hooks';
 
 import { styles } from './DrawerContent.styles';
 
-const theme = getCurrentColorTheme();
-
-const ghIcon = theme === 'dark' ? ghLightIcon : ghDarkIcon;
-
 export const DrawerContent = React.memo(() => {
+  const { colorScheme } = useContext(ThemeContext);
+
+  const ghIcon = colorScheme === 'dark' ? ghLightIcon : ghDarkIcon;
+
   const withAlert = useAlertMessage();
 
   const openGH = useCallback(

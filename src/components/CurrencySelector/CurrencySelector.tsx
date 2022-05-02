@@ -15,7 +15,7 @@ import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
 
 import { useStyles } from './CurrencySelector.styles';
 
-export const CurrencySelector: React.FC = React.memo(() => {
+export const CurrencySelector = React.memo(() => {
   const styles = useStyles();
   const {
     selectedCurrenciesContext: { selectedCurrencies },
