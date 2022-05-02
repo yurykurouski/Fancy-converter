@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StatusBar, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { CurrenciesMainContent } from 'components';
@@ -7,34 +7,35 @@ import {
   LocalStorageProvider,
   WithNotification,
 } from 'context';
+import { ThemeProvider } from 'context/ThemeProvider';
+import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 
-import { getCurrentColorTheme, getCurrentThemeColors } from './utils';
-
-import { styles } from './App.styles';
-
-const currentTheme = getCurrentColorTheme();
-const colors = getCurrentThemeColors();
+import { useStyles } from './App.styles';
 
 const App = React.memo(() => {
+  const { themeColors, colorScheme } = useContext(ThemeContext);
+  const styles = useStyles();
   return (
-    <GestureHandlerRootView>
-      <LocalStorageProvider>
-        <View style={styles.backgroundStyle}>
-          <StatusBar
-            barStyle={
-              currentTheme === 'dark' ? 'light-content' : 'dark-content'
-            }
-            backgroundColor={colors.APP_BACKGROUND_PRIMARY}
-          />
-          <WithNotification>
-            <ExchangeCourseProvider>
-              <CurrenciesMainContent />
-            </ExchangeCourseProvider>
-          </WithNotification>
-        </View>
-      </LocalStorageProvider>
-    </GestureHandlerRootView>
+    <View style={styles.backgroundStyle}>
+      <StatusBar
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+        backgroundColor={themeColors.APP_BACKGROUND_PRIMARY}
+      />
+      <WithNotification>
+        <ExchangeCourseProvider>
+          <CurrenciesMainContent />
+        </ExchangeCourseProvider>
+      </WithNotification>
+    </View>
   );
 });
 
-export default App;
+export default () => (
+  <GestureHandlerRootView>
+    <LocalStorageProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </LocalStorageProvider>
+  </GestureHandlerRootView>
+);

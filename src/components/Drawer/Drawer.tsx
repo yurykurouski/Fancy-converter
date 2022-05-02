@@ -10,7 +10,7 @@ import {
 } from './drawer-animations';
 import { DrawerContent } from './DrawerContent';
 
-import { styles } from './Drawer.styles';
+import { useStyles } from './Drawer.styles';
 
 type Props = {
   animatedPosition: Animated.Value;
@@ -20,6 +20,8 @@ type Props = {
 
 export const Drawer = React.memo<Props>(
   ({ animatedPosition, drawerAnimation, isDrawerOpened }) => {
+    const styles = useStyles();
+
     useEffect(() => {
       if (isDrawerOpened) {
         increaseOpacity();

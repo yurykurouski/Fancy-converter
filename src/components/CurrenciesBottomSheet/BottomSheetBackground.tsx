@@ -1,19 +1,20 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
-import { getCurrentThemeColors } from 'utils';
+import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 
-import { styles } from './CurrenciesBottomSheet.styles';
-
-const themeColors = getCurrentThemeColors();
+import { useStyles } from './CurrenciesBottomSheet.styles';
 
 export const BottomSheetBackground: React.FC<BottomSheetBackgroundProps> = ({
   style,
   animatedIndex,
 }) => {
+  const { themeColors } = useContext(ThemeContext);
+  const styles = useStyles();
+
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       animatedIndex.value,

@@ -23,3 +23,10 @@ export enum ColorsLight {
   MAIN_BUTTON_COLOR = '#1a73e8',
   MAIN_BUTTON_TEXT_COLOR = '#fafcfe',
 }
+
+export const THEME_COLORS = {
+  light: ColorsLight,
+  dark: ColorsDark,
+};
+
+export type Theme = typeof ColorsDark | typeof ColorsLight;

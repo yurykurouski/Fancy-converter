@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag/CountryFlag';
+import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 
 import {
   useConvertedValues,
@@ -10,7 +11,7 @@ import {
 } from './CurrencyInputValue.hooks';
 import { Props } from './CurrencyInputValue.types';
 
-import { styles } from './CurrencyInputValue.styles';
+import { useStyles } from './CurrencyInputValue.styles';
 
 export const CurrencyInputValue: React.FC<Props> = ({
   currencyCode,
@@ -21,6 +22,9 @@ export const CurrencyInputValue: React.FC<Props> = ({
   course,
   focusedCurrencyCourse,
 }) => {
+  const { themeColors } = useContext(ThemeContext);
+  const styles = useStyles();
+
   const inputRef = useRef(null);
 
   const [value, setValue] = useState(null);
@@ -65,6 +69,7 @@ export const CurrencyInputValue: React.FC<Props> = ({
         </Text>
         <TextInput
           style={styles.input}
+          placeholderTextColor={themeColors.FONT_COLOR_FADED}
           value={formattedValue}
           onChangeText={onChangeTextHandler}
           onFocus={() => onFocusHandler(caclulatedValue)}

@@ -5,13 +5,15 @@ import { l } from 'resources/localization';
 import { useNotificationAnimation } from './WithNotification.hooks';
 import { StartNotification } from './WithNotification.types';
 
-import { styles } from './WithNotification.styles';
+import { useStyles } from './WithNotification.styles';
 
 export const NotificationContext = React.createContext<StartNotification>(null);
 
 export const WithNotification: React.FC = ({ children }) => {
   const { animatedPosition, startAnimation, message } =
     useNotificationAnimation();
+
+  const styles = useStyles();
 
   return (
     <NotificationContext.Provider value={startAnimation}>

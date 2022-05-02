@@ -13,9 +13,10 @@ import { CurrencyValue } from '../CurrencyValue';
 
 import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
 
-import { styles } from './CurrencySelector.styles';
+import { useStyles } from './CurrencySelector.styles';
 
 export const CurrencySelector: React.FC = React.memo(() => {
+  const styles = useStyles();
   const {
     selectedCurrenciesContext: { selectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
