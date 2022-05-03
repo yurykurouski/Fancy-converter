@@ -20,5 +20,5 @@
   "alert_message.comething_wrong.check_connection": "Check your connection please.",
   "notification.message.update_courses.cache": "Courses were readed from cache",
   "notification.message.update_courses.network": "Courses were updated",
-  "currency_input.value.error_message": "Wrong value!"
+  "currency_input.value.error_message": "Помілка!"
 }
