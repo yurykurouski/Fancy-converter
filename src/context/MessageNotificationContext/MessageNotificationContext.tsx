@@ -1,30 +1,31 @@
 import React from 'react';
-import { Animated, Text } from 'react-native';
-import { l } from 'resources/localization';
+import { Animated, Platform, Text } from 'react-native';
 
-import { useNotificationAnimation } from './WithNotification.hooks';
-import { StartNotification } from './WithNotification.types';
+import { animatedPosition } from './notification-animations';
+import { useNotificationMessage } from './WithNotification.hooks';
+import { ShowMessage } from './WithNotification.types';
 
 import { useStyles } from './WithNotification.styles';
 
-export const NotificationContext = React.createContext<StartNotification>(null);
+export const NotificationContext = React.createContext<ShowMessage>(null);
 
 export const WithNotification: React.FC = ({ children }) => {
-  const { animatedPosition, startAnimation, message } =
-    useNotificationAnimation();
+  const { showMessage, message } = useNotificationMessage();
 
   const styles = useStyles();
 
   return (
-    <NotificationContext.Provider value={startAnimation}>
+    <NotificationContext.Provider value={showMessage}>
       {children}
-      <Animated.View
-        style={[
-          styles.container,
-          { transform: [{ translateY: animatedPosition }] },
-        ]}>
-        <Text style={styles.text}>{l[message]}</Text>
-      </Animated.View>
+      {Platform.OS === 'ios' && (
+        <Animated.View
+          style={[
+            styles.container,
+            { transform: [{ translateY: animatedPosition }] },
+          ]}>
+          <Text style={styles.text}>{message}</Text>
+        </Animated.View>
+      )}
     </NotificationContext.Provider>
   );
 };

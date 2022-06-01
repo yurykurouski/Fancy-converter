@@ -1,9 +1,6 @@
-import { Animated } from 'react-native';
+export type ShowMessage = (msg: string) => void;
 
-export type StartNotification = (msg: string) => void;
-
-export type UseNotificationAnimation = () => {
-  animatedPosition: Animated.Value;
-  startAnimation: StartNotification;
+export type UseNotificationMessage = () => {
+  showMessage: ShowMessage;
   message: string;
 };

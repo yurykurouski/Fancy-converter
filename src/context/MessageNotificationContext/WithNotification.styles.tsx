@@ -13,7 +13,7 @@ export const useStyles = () =>
       justifyContent: 'center',
       alignItems: 'center',
       alignSelf: 'center',
-      padding: 5,
+      padding: 10,
       elevation: 3,
     },
     text: {
