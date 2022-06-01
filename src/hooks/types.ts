@@ -2,7 +2,7 @@ import {
   HandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
-import { StartNotification } from 'context/MessageNotificationContext/WithNotification.types';
+import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
 import { CurrenciesCourses } from 'types/avaliable-currencies';
 import { OnlyCourses } from 'utils/utils.types';
 
@@ -22,7 +22,7 @@ export type GetCoursesFromStorage = (onInit: boolean) => void;
 
 export type UseGetCoursesFromStorage = (
   setExchangeCourse: React.Dispatch<OnlyCourses>,
-  startNotification: StartNotification,
+  startNotification: ShowMessage,
 ) => GetCoursesFromStorage;
 
 export type UseReloadCourses = (
@@ -30,7 +30,7 @@ export type UseReloadCourses = (
   setExchangeCourse: React.Dispatch<OnlyCourses>,
   saveDate: string,
   getCoursesFromStorage: GetCoursesFromStorage,
-  startNotification: StartNotification,
+  startNotification: ShowMessage,
 ) => ReloadCourses;
 
 export type UseFilteredCourseBySelectedCurrencies = (

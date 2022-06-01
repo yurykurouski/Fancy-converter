@@ -27,16 +27,17 @@ export const useReloadCourses: UseReloadCourses = (
         setToStorage(StorageKeys.EXCHANGE_COURSES, rates);
         setToStorage(StorageKeys.LAST_COURSES_SAVE_DATE, saveDate);
       })
+
+      .finally(() => setIsLoading(false))
+      .then(() =>
+        startNotification('notification.message.update_courses.network'),
+      )
       .catch(async () => {
         await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(oldDate =>
           showNoConnectionAlert(getCoursesFromStorage, oldDate),
         );
         await setToStorage(StorageKeys.LAST_COURSES_UPDATE, null);
-      })
-      .finally(() => setIsLoading(false))
-      .then(() =>
-        startNotification('notification.message.update_courses.network'),
-      );
+      });
   }, [
     getCoursesFromStorage,
     saveDate,

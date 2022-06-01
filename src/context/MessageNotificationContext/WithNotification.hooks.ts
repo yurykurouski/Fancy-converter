@@ -1,46 +1,29 @@
 import { useCallback, useState } from 'react';
-import { Animated, Easing } from 'react-native';
+import { Platform, ToastAndroid } from 'react-native';
+import { l } from 'resources/localization';
 
-import { UseNotificationAnimation } from './WithNotification.types';
+import { showNotification } from './notification-animations';
+import { UseNotificationMessage } from './WithNotification.types';
 
-const animatedPosition = new Animated.Value(0);
+export const useNotificationMessage: UseNotificationMessage = () => {
+  const [message, setMessage] = useState(null);
 
-export const useNotificationAnimation: UseNotificationAnimation = () => {
-  const [message, setMessage] = useState('');
-  const startAnimation = useCallback((msg: string) => {
-    setMessage(msg);
+  const showMessage = useCallback((msg: string) => {
+    if (Platform.OS === 'android') {
+      ToastAndroid.showWithGravity(
+        l[msg],
+        ToastAndroid.SHORT,
+        ToastAndroid.TOP,
+      );
+    } else if (Platform.OS === 'ios') {
+      setMessage(l[msg]);
 
-    Animated.sequence([
-      Animated.delay(500),
-      Animated.timing(animatedPosition, {
-        toValue: 70,
-        duration: 200,
-        useNativeDriver: false,
-        easing: Easing.sin,
-      }),
-      Animated.timing(animatedPosition, {
-        toValue: 65,
-        duration: 120,
-        useNativeDriver: false,
-      }),
-      Animated.delay(1300),
-      Animated.timing(animatedPosition, {
-        toValue: 70,
-        duration: 100,
-        useNativeDriver: false,
-      }),
-      Animated.timing(animatedPosition, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: false,
-        easing: Easing.exp,
-      }),
-    ]).start();
+      showNotification();
+    }
   }, []);
 
   return {
-    animatedPosition,
-    startAnimation,
+    showMessage,
     message,
   };
 };
