@@ -1,4 +1,4 @@
-import { CurrenciesCourses } from 'types/avaliable-currencies';
+import { CurrenciesCourses } from 'types';
 
 export type UseOnPressHandler = (
   isExpanded: boolean,

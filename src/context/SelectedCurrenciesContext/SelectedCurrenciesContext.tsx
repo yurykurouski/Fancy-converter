@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AppState } from 'react-native';
-import { SelectedCurrencies } from 'types/avaliable-currencies';
+import { SelectedCurrencies } from 'types';
 import { setToStorage, StorageKeys } from 'utils';
 
 import { LocalStorageContext } from '../LocalStorageProvider';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SelectedCurrencies } from 'types/avaliable-currencies';
+import { SelectedCurrencies } from 'types';
 import { getFromStorage, StorageKeys } from 'utils';
 
 export const LocalStorageContext =
