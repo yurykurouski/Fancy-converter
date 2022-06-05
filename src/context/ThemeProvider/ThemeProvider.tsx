@@ -1,30 +1,26 @@
 import React, { createContext, useState } from 'react';
-import { Appearance, ColorSchemeName } from 'react-native';
-import { Theme, THEME_COLORS } from 'assets/colors';
+import { Appearance } from 'react-native';
 import { getCurrentColorTheme, getCurrentThemeColors } from 'utils';
 
-type ThemeContext = {
-  colorScheme: ColorSchemeName;
-  themeColors: Theme;
-};
+import { useSetColorScheme } from './ThemeProvider.hooks';
+import { ThemeContext as Props } from './ThemeProvider.types';
 
-export const ThemeContext = createContext<ThemeContext | null>(null);
+export const ThemeContext = createContext<Props | null>(null);
 
 export const ThemeProvider: React.FC = ({ children }) => {
-  const [themeColors, setThemeColors] = useState(() => ({
+  const [theme, setTheme] = useState<Omit<Props, 'setColorScheme'>>(() => ({
     colorScheme: getCurrentColorTheme(),
     themeColors: getCurrentThemeColors(),
   }));
 
+  const setColorScheme = useSetColorScheme(setTheme);
+
   Appearance.addChangeListener(({ colorScheme }) =>
-    setThemeColors({
-      colorScheme,
-      themeColors: THEME_COLORS[colorScheme],
-    }),
+    setColorScheme(colorScheme),
   );
 
   return (
-    <ThemeContext.Provider value={themeColors}>
+    <ThemeContext.Provider value={{ ...theme, setColorScheme }}>
       {children}
     </ThemeContext.Provider>
   );

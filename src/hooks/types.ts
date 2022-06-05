@@ -3,7 +3,7 @@ import {
   PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
-import { CurrenciesCourses } from 'types/avaliable-currencies';
+import { CurrenciesCourses } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 
 import { SWIPE_DIRECTIONS } from '../constants';

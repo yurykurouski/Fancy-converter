@@ -1,6 +1,4 @@
-import { CurrenciesCourses } from 'types/avaliable-currencies';
-
-import { AvaliableCurrenciesInArray } from './../../types/avaliable-currencies';
+import { AvaliableCurrenciesInArray, CurrenciesCourses } from 'types';
 
 export type UseCurrenciesListToArray = (
   avaliableCurrencies: CurrenciesCourses,

@@ -1,5 +1,5 @@
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { SelectedCurrencies } from 'types/avaliable-currencies';
+import { SelectedCurrencies } from 'types';
 
 export type Props = {
   sheetRef: React.MutableRefObject<BottomSheetMethods>;
