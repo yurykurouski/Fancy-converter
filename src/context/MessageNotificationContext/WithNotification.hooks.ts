@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import { Platform, ToastAndroid } from 'react-native';
 import { l } from 'resources/localization';
 
 import { showNotification } from './notification-animations';
@@ -9,17 +8,21 @@ export const useNotificationMessage: UseNotificationMessage = () => {
   const [message, setMessage] = useState(null);
 
   const showMessage = useCallback((msg: string) => {
-    if (Platform.OS === 'android') {
+    setMessage(l[msg]);
+
+    showNotification();
+    //todo: for case if i find a solution to change default small app icon
+    /*  if (Platform.OS === 'ios') {
       ToastAndroid.showWithGravity(
         l[msg],
         ToastAndroid.SHORT,
         ToastAndroid.TOP,
       );
-    } else if (Platform.OS === 'ios') {
+    } else if (Platform.OS === 'android') {
       setMessage(l[msg]);
 
       showNotification();
-    }
+    } */
   }, []);
 
   return {
