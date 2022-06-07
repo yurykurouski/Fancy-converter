@@ -14,9 +14,13 @@ import { styles } from './DrawerThemeSwitcher.styles';
 export const DrawerThemeSwitcher: Props = ({ colorScheme, setColorScheme }) => {
   const { container } = styles;
 
-  const { animation } = useThemeSwitcherAnimations();
+  const { animateThemeSwitcher } = useThemeSwitcherAnimations();
 
-  const handlePress = useHandlePress(colorScheme, setColorScheme, animation);
+  const handlePress = useHandlePress(
+    colorScheme,
+    setColorScheme,
+    animateThemeSwitcher,
+  );
 
   return (
     <Pressable onPress={handlePress}>
