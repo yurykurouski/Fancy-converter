@@ -34,7 +34,7 @@ if (getCurrentColorTheme() === 'light') {
 }
 
 export const useThemeSwitcherAnimations: UseThemeSwitcherAnimations = () => {
-  const animation = (colorScheme: ColorSchemeName) =>
+  const animateThemeSwitcher = (colorScheme: ColorSchemeName) =>
     Animated.parallel([
       Animated.timing(ANIMATED_ROTATE, {
         toValue: colorScheme === 'light' ? -135 : 0,
@@ -80,24 +80,20 @@ export const useThemeSwitcherAnimations: UseThemeSwitcherAnimations = () => {
     ]).start();
 
   Appearance.addChangeListener(({ colorScheme }) =>
-    animation(colorScheme === 'light' ? 'dark' : 'light'),
+    animateThemeSwitcher(colorScheme === 'light' ? 'dark' : 'light'),
   );
 
   return {
-    ANIMATED_ROTATE,
-    ANIMATED_SCALE,
-    ANIMATED_OPACITY_DARK,
-    ANIMATED_OPACITY_LIGHT,
-    animation,
+    animateThemeSwitcher,
   };
 };
 
 export const useHandlePress: UseHandlePress = (
   colorScheme,
   setColorScheme,
-  animation,
+  animateThemeSwitcher,
 ) =>
   useCallback(() => {
     setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
-    animation(colorScheme);
-  }, [colorScheme, setColorScheme, animation]);
+    animateThemeSwitcher(colorScheme);
+  }, [setColorScheme, colorScheme, animateThemeSwitcher]);
