@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, Platform, Text } from 'react-native';
+import { Animated, Text } from 'react-native';
 
 import { animatedPosition } from './notification-animations';
 import { useNotificationMessage } from './WithNotification.hooks';
@@ -17,15 +17,13 @@ export const WithNotification: React.FC = ({ children }) => {
   return (
     <NotificationContext.Provider value={showMessage}>
       {children}
-      {Platform.OS === 'ios' && (
-        <Animated.View
-          style={[
-            styles.container,
-            { transform: [{ translateY: animatedPosition }] },
-          ]}>
-          <Text style={styles.text}>{message}</Text>
-        </Animated.View>
-      )}
+      <Animated.View
+        style={[
+          styles.container,
+          { transform: [{ translateY: animatedPosition }] },
+        ]}>
+        <Text style={styles.text}>{message}</Text>
+      </Animated.View>
     </NotificationContext.Provider>
   );
 };
