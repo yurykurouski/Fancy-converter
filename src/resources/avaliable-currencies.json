@@ -50,5 +50,21 @@
   "KZT": {
     "Cur_Symbol": "₸",
     "Cur_Abbreviation": "KZT"
+  },
+  "AMD": {
+    "Cur_Symbol": "֏",
+    "Cur_Abbreviation": "AMD"
+  },
+  "NOK": {
+    "Cur_Symbol": "kr",
+    "Cur_Abbreviation": "NOK"
+  },
+  "SEK": {
+    "Cur_Symbol": "kr",
+    "Cur_Abbreviation": "SEK"
+  },
+  "AZN": {
+    "Cur_Symbol": "₼",
+    "Cur_Abbreviation": "AZN"
   }
 }

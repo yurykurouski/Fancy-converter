@@ -1,3 +1,5 @@
+import AMD from 'assets/flags/AMD.svg';
+import AZN from 'assets/flags/AZN.svg';
 import BYN from 'assets/flags/BYN.svg';
 import CAD from 'assets/flags/CAD.svg';
 import CHF from 'assets/flags/CHF.svg';
@@ -34,4 +36,6 @@ export const flags = {
   GEL: GEL,
   TRY: TRY,
   KZT: KZT,
+  AMD: AMD,
+  AZN: AZN,
 };
