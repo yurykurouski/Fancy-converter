@@ -15,6 +15,7 @@ export enum AvaliableCurrenciesNames {
   BYN = 'BYN',
   GEL = 'GEL',
   TRY = 'TRY',
+  KZT = 'KZT',
 }
 
 export type CurrencyDescription = {

@@ -7,6 +7,7 @@ import EUR from 'assets/flags/EUR.svg';
 import GBP from 'assets/flags/GBP.svg';
 import GEL from 'assets/flags/GEL.svg';
 import JPY from 'assets/flags/JPY.svg';
+import KZT from 'assets/flags/KZT.svg';
 import NOK from 'assets/flags/NOK.svg';
 import PLN from 'assets/flags/PLN.svg';
 import RUB from 'assets/flags/RUB.svg';
@@ -32,4 +33,5 @@ export const flags = {
   USD: USD,
   GEL: GEL,
   TRY: TRY,
+  KZT: KZT,
 };
