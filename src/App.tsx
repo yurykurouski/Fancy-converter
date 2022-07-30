@@ -21,11 +21,7 @@ const App = React.memo(() => {
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
         backgroundColor={themeColors.APP_BACKGROUND_PRIMARY}
       />
-      <WithNotification>
-        <ExchangeCourseProvider>
-          <CurrenciesMainContent />
-        </ExchangeCourseProvider>
-      </WithNotification>
+      <CurrenciesMainContent />
     </View>
   );
 });
@@ -34,7 +30,11 @@ export default () => (
   <GestureHandlerRootView>
     <LocalStorageProvider>
       <ThemeProvider>
-        <App />
+        <WithNotification>
+          <ExchangeCourseProvider>
+            <App />
+          </ExchangeCourseProvider>
+        </WithNotification>
       </ThemeProvider>
     </LocalStorageProvider>
   </GestureHandlerRootView>
