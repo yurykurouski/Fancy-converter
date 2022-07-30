@@ -14,6 +14,7 @@ export enum AvaliableCurrenciesNames {
   NOK = 'NOK',
   BYN = 'BYN',
   GEL = 'GEL',
+  TRY = 'TRY',
 }
 
 export type CurrencyDescription = {
@@ -21,7 +22,6 @@ export type CurrencyDescription = {
   Date?: string;
   Cur_Abbreviation: string;
   Cur_Scale?: number;
-  Cur_Name: string;
   Cur_OfficialRate?: number;
   Cur_Symbol?: string;
 };

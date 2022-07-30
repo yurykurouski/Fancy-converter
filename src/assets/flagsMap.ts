@@ -11,6 +11,7 @@ import NOK from 'assets/flags/NOK.svg';
 import PLN from 'assets/flags/PLN.svg';
 import RUB from 'assets/flags/RUB.svg';
 import SEK from 'assets/flags/SEK.svg';
+import TRY from 'assets/flags/TRY.svg';
 import UAH from 'assets/flags/UAH.svg';
 import USD from 'assets/flags/USD.svg';
 
@@ -30,4 +31,5 @@ export const flags = {
   UAH: UAH,
   USD: USD,
   GEL: GEL,
+  TRY: TRY,
 };

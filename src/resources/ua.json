@@ -10,6 +10,7 @@
   "CNY": "Китайська Йена",
   "CZK": "Чеська Крона",
   "GEL": "Грузинський Ларі",
+    "TRY": "Turkish Lira",
   "alert_message.open_link.title": "Відкрити посилання?",
   "alert_message.open_link.description": "Посилання буде відкрито у сторонньому додатку",
   "alert_message.open_link.ok": "Так",

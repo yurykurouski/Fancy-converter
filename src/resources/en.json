@@ -10,6 +10,7 @@
   "CNY": "Chinese Yuan",
   "CZK": "Czech Koruna",
   "GEL": "Georgian Lari",
+  "TRY": "Turkish Lira",
   "alert_message.open_link.title": "Open the link?",
   "alert_message.open_link.description": "Link will be open in external application",
   "alert_message.open_link.ok": "Ok",

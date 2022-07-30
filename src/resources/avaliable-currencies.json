@@ -1,57 +1,50 @@
 {
   "BYN": {
-    "Cur_Name": "Belarussian Ruble",
     "Cur_Symbol": "Br",
     "Cur_Abbreviation": "BYN"
   },
   "USD": {
-    "Cur_Name": "United States Dollar",
     "Cur_Symbol": "$",
     "Cur_Abbreviation": "USD"
   },
   "EUR": {
-    "Cur_Name": "Euro",
     "Cur_Symbol": "€",
     "Cur_Abbreviation": "EUR"
   },
   "RUB": {
-    "Cur_Name": "Russian Ruble",
     "Cur_Symbol": "руб",
     "Cur_Abbreviation": "RUB"
   },
   "GBP": {
-    "Cur_Name": "British Pound",
     "Cur_Symbol": "£",
     "Cur_Abbreviation": "GBP"
   },
   "PLN": {
-    "Cur_Name": "Polish Zloty",
     "Cur_Symbol": "zł",
     "Cur_Abbreviation": "PLN"
   },
   "UAH": {
-    "Cur_Name": "Ukrainian Hryvnia",
     "Cur_Symbol": "₴",
     "Cur_Abbreviation": "UAH"
   },
   "CHF": {
-    "Cur_Name": "Swiss Franc",
     "Cur_Symbol": "Fr.",
     "Cur_Abbreviation": "CHF"
   },
   "CNY": {
-    "Cur_Name": "Chinese Yuan",
     "Cur_Symbol": "¥",
     "Cur_Abbreviation": "CNY"
   },
   "CZK": {
-    "Cur_Name": "Czech Koruna",
     "Cur_Symbol": "Kč",
     "Cur_Abbreviation": "CZK"
   },
   "GEL": {
-    "Cur_Name": "Georgian Lari",
     "Cur_Symbol": "₾",
     "Cur_Abbreviation": "GEL"
+  },
+  "TRY": {
+    "Cur_Symbol": "₺",
+    "Cur_Abbreviation": "TRY"
   }
 }
