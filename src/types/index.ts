@@ -18,6 +18,15 @@ export enum AvaliableCurrenciesNames {
   KZT = 'KZT',
   AMD = 'AMD',
   AZN = 'AZN',
+  ALL = 'ALL',
+  BAM = 'BAM',
+  BGN = 'BGN',
+  DKK = 'DKK',
+  HRK = 'HRK',
+  MDL = 'MDL',
+  MKD = 'MKD',
+  RON = 'RON',
+  RSD = 'RSD',
 }
 
 export type CurrencyDescription = {

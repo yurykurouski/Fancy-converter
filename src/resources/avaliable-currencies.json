@@ -66,5 +66,41 @@
   "AZN": {
     "Cur_Symbol": "₼",
     "Cur_Abbreviation": "AZN"
+  },
+  "ALL": {
+    "Cur_Symbol": "Lek",
+    "Cur_Abbreviation": "ALL"
+  },
+  "BAM": {
+    "Cur_Symbol": "KM",
+    "Cur_Abbreviation": "BAM"
+  },
+  "BGN": {
+    "Cur_Symbol": "лв",
+    "Cur_Abbreviation": "BGN"
+  },
+  "DKK": {
+    "Cur_Symbol": "kr",
+    "Cur_Abbreviation": "DKK"
+  },
+  "HRK": {
+    "Cur_Symbol": "kn",
+    "Cur_Abbreviation": "HRK"
+  },
+  "MDL": {
+    "Cur_Symbol": "L",
+    "Cur_Abbreviation": "MDL"
+  },
+  "MKD": {
+    "Cur_Symbol": "ден",
+    "Cur_Abbreviation": "MKD"
+  },
+  "RON": {
+    "Cur_Symbol": "lei",
+    "Cur_Abbreviation": "RON"
+  },
+  "RSD": {
+    "Cur_Symbol": "Дин.",
+    "Cur_Abbreviation": "RSD"
   }
 }
