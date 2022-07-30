@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable } from 'react-native';
 
 import { DarkIcon } from './DarkIcon';
 import {
@@ -23,11 +23,9 @@ export const DrawerThemeSwitcher: Props = ({ colorScheme, setColorScheme }) => {
   );
 
   return (
-    <Pressable onPress={handlePress}>
-      <View style={container}>
-        <LightIcon />
-        <DarkIcon />
-      </View>
+    <Pressable onPress={handlePress} style={container}>
+      <LightIcon />
+      <DarkIcon />
     </Pressable>
   );
 };
