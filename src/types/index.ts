@@ -14,6 +14,19 @@ export enum AvaliableCurrenciesNames {
   NOK = 'NOK',
   BYN = 'BYN',
   GEL = 'GEL',
+  TRY = 'TRY',
+  KZT = 'KZT',
+  AMD = 'AMD',
+  AZN = 'AZN',
+  ALL = 'ALL',
+  BAM = 'BAM',
+  BGN = 'BGN',
+  DKK = 'DKK',
+  HRK = 'HRK',
+  MDL = 'MDL',
+  MKD = 'MKD',
+  RON = 'RON',
+  RSD = 'RSD',
 }
 
 export type CurrencyDescription = {
@@ -21,7 +34,6 @@ export type CurrencyDescription = {
   Date?: string;
   Cur_Abbreviation: string;
   Cur_Scale?: number;
-  Cur_Name: string;
   Cur_OfficialRate?: number;
   Cur_Symbol?: string;
 };
