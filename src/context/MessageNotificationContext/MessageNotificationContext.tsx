@@ -1,29 +1,22 @@
-import React from 'react';
-import { Animated, Text } from 'react-native';
+import React, { lazy, Suspense } from 'react';
+import { View } from 'react-native';
 
-import { animatedPosition } from './notification-animations';
 import { useNotificationMessage } from './WithNotification.hooks';
 import { ShowMessage } from './WithNotification.types';
 
-import { useStyles } from './WithNotification.styles';
+const Notification = lazy(() => import('./Notification'));
 
 export const NotificationContext = React.createContext<ShowMessage>(null);
 
 export const WithNotification: React.FC = ({ children }) => {
   const { showMessage, message } = useNotificationMessage();
 
-  const styles = useStyles();
-
   return (
     <NotificationContext.Provider value={showMessage}>
       {children}
-      <Animated.View
-        style={[
-          styles.container,
-          { transform: [{ translateY: animatedPosition }] },
-        ]}>
-        <Text style={styles.text}>{message}</Text>
-      </Animated.View>
+      <Suspense fallback={<View />}>
+        <Notification message={message} />
+      </Suspense>
     </NotificationContext.Provider>
   );
 };
