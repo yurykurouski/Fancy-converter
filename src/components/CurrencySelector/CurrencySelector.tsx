@@ -26,7 +26,7 @@ const CurrenciesBottomSheet = lazy(
 export const CurrencySelector = React.memo(() => {
   const styles = useStyles();
   const {
-    selectedCurrenciesContext: { selectedCurrencies },
+    selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
 
   const {
@@ -72,6 +72,7 @@ export const CurrencySelector = React.memo(() => {
           <CurrenciesBottomSheet
             sheetRef={sheetRef}
             selectedCurrencies={selectedCurrencies}
+            setSelectedCurrencies={setSelectedCurrencies}
           />
         )}
       </Suspense>

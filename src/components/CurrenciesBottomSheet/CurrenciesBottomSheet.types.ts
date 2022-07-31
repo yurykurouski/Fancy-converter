@@ -4,6 +4,7 @@ import { SelectedCurrencies } from 'types';
 export type Props = {
   sheetRef: React.MutableRefObject<BottomSheetMethods>;
   selectedCurrencies: SelectedCurrencies;
+  setSelectedCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 export type UseBottomSheetHandlers = (

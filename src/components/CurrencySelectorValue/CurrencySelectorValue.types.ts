@@ -1,5 +1,3 @@
-import { CurrenciesCourses } from 'types';
-
 export type UseOnPressHandler = (
   isExpanded: boolean,
   isActive: boolean,
@@ -12,7 +10,7 @@ export type UseOnPressHandler = (
 ) => () => void;
 
 export type Props = {
-  value: CurrenciesCourses;
+  currencyCode: string;
   modalSelectedCurrencies: string[] | [];
   setModalSelectedCurrencies: React.Dispatch<
     React.SetStateAction<string[] | []>

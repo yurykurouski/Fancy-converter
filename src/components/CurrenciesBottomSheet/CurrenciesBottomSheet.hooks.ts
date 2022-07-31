@@ -65,8 +65,10 @@ export const useKeyboardHandlers: UseKeyboardHandlers = (
     );
 
     const showKeyboardListener = Keyboard.addListener('keyboardDidShow', () => {
-      sheetRef.current?.snapToIndex(0);
-      setKeyboardVisible(true);
+      if (!isExpanded) {
+        sheetRef.current?.snapToIndex(0);
+        setKeyboardVisible(true);
+      }
     });
 
     const hideKeyboardListener = Keyboard.addListener('keyboardDidHide', () => {

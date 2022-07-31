@@ -1,7 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Animated, Pressable, View } from 'react-native';
-import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
-import { CurrencySelectorValueMap } from 'components';
+import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import { CurrencySelectorValue } from 'components/CurrencySelectorValue';
+import { currencies } from 'resources/avaliable-currencies.json';
 
 import { BottomSheetBackground } from './BottomSheetBackground';
 import {
@@ -9,13 +10,17 @@ import {
   useKeyboardHandlers,
 } from './CurrenciesBottomSheet.hooks';
 import { Props } from './CurrenciesBottomSheet.types';
+import { SearchField } from './SearchField';
 
 import { useStyles } from './CurrenciesBottomSheet.styles';
 
-const snapPoints = [30, 70, '100%'];
+const SNAP_POINTS = [30, 70, '100%'];
 
 const CurrenciesBottomSheet = React.memo<Props>(
-  ({ sheetRef, selectedCurrencies }) => {
+  ({ sheetRef, selectedCurrencies, setSelectedCurrencies }) => {
+    const [avaliableCurrencies, setAvaliableCurrencies] = useState(
+      () => currencies,
+    );
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -35,7 +40,7 @@ const CurrenciesBottomSheet = React.memo<Props>(
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 2), []);
+    const initialIndex = selectedCurrencies.length ? 0 : 2;
 
     const renderHandle = () => (
       <Animated.View style={[styles.handleContainer]}>
@@ -45,19 +50,31 @@ const CurrenciesBottomSheet = React.memo<Props>(
       </Animated.View>
     );
 
+    const renderItem = ({ item }: { item: string }) => (
+      <CurrencySelectorValue
+        currencyCode={item}
+        modalSelectedCurrencies={selectedCurrencies}
+        setModalSelectedCurrencies={setSelectedCurrencies}
+        isExpanded={isExpanded}
+      />
+    );
+
     return (
       <BottomSheet
         index={initialIndex}
-        snapPoints={snapPoints}
+        snapPoints={SNAP_POINTS}
         ref={sheetRef}
         handleComponent={renderHandle}
         backgroundComponent={BottomSheetBackground}
         onChange={onChangeHandler}>
-        <BottomSheetScrollView
+        <BottomSheetFlatList
           style={styles.listContainer}
-          keyboardShouldPersistTaps="handled">
-          <CurrencySelectorValueMap isExpanded={isExpanded} />
-        </BottomSheetScrollView>
+          data={avaliableCurrencies}
+          renderItem={renderItem}
+          keyExtractor={item => item}
+          removeClippedSubviews={false}
+        />
+        <SearchField setAvaliableCurrencies={setAvaliableCurrencies} />
       </BottomSheet>
     );
   },
