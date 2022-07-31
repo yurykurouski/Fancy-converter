@@ -14,7 +14,7 @@ import { useStyles } from './CurrenciesBottomSheet.styles';
 
 const snapPoints = [30, 70, '100%'];
 
-export const CurrenciesBottomSheet = React.memo<Props>(
+const CurrenciesBottomSheet = React.memo<Props>(
   ({ sheetRef, selectedCurrencies }) => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -62,3 +62,5 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     );
   },
 );
+
+export default CurrenciesBottomSheet;

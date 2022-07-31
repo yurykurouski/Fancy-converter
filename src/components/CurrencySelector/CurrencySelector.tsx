@@ -1,8 +1,12 @@
-import React, { useContext, useRef } from 'react';
-import { ActivityIndicator, RefreshControl, ScrollView } from 'react-native';
+import React, { lazy, Suspense, useContext, useRef } from 'react';
+import {
+  ActivityIndicator,
+  RefreshControl,
+  ScrollView,
+  View,
+} from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { ColorsDark } from 'assets/colors';
-import { CurrenciesBottomSheet } from 'components';
 import {
   ExchangeCourseContext,
   FocusedCurrencyProvider,
@@ -14,6 +18,10 @@ import { CurrencyValue } from '../CurrencyValue';
 import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
 
 import { useStyles } from './CurrencySelector.styles';
+
+const CurrenciesBottomSheet = lazy(
+  () => import('../CurrenciesBottomSheet/CurrenciesBottomSheet'),
+);
 
 export const CurrencySelector = React.memo(() => {
   const styles = useStyles();
@@ -34,8 +42,8 @@ export const CurrencySelector = React.memo(() => {
 
   const isKeyBoardOpened = useTrackKeyboardStatus();
 
-  return exchangeCourse ? (
-    <>
+  return (
+    <Suspense fallback={<ActivityIndicator size="large" />}>
       <ScrollView
         style={[
           styles.container,
@@ -49,7 +57,7 @@ export const CurrencySelector = React.memo(() => {
             colors={[ColorsDark.MAIN_BUTTON_COLOR]}
           />
         }>
-        {!!selectedCurrencies.length && (
+        {!!selectedCurrencies.length && exchangeCourse && (
           <FocusedCurrencyProvider>
             <CurrencyValue
               selectedCurrencies={selectedCurrencies}
@@ -58,12 +66,15 @@ export const CurrencySelector = React.memo(() => {
           </FocusedCurrencyProvider>
         )}
       </ScrollView>
-      <CurrenciesBottomSheet
-        sheetRef={sheetRef}
-        selectedCurrencies={selectedCurrencies}
-      />
-    </>
-  ) : (
-    <ActivityIndicator size="large" />
+
+      <Suspense fallback={<View />}>
+        {exchangeCourse && (
+          <CurrenciesBottomSheet
+            sheetRef={sheetRef}
+            selectedCurrencies={selectedCurrencies}
+          />
+        )}
+      </Suspense>
+    </Suspense>
   );
 });
