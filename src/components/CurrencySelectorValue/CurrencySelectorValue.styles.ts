@@ -16,9 +16,11 @@ export const useStyles = () =>
     },
     currencyInfoWrapper: {
       flexDirection: 'row',
+      flex: 1,
     },
     currencyCodeNameWrapper: {
       marginLeft: 10,
+      flex: 1,
     },
     currencyCode: {
       fontSize: 18,
@@ -28,6 +30,8 @@ export const useStyles = () =>
     currencyName: {
       fontSize: 14,
       color: theme.FONT_COLOR_FADED,
+      flexShrink: 0,
+      flexWrap: 'nowrap',
     },
     checkBoxContainer: {
       left: 15,

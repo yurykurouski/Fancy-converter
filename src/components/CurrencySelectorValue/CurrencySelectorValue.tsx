@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import TextTicker from 'react-native-text-ticker';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 import { l } from 'resources/localization';
@@ -9,6 +10,8 @@ import { useOnPressHandler } from './CurrencySelectorValue.hooks';
 import { Props } from './CurrencySelectorValue.types';
 
 import { useStyles } from './CurrencySelectorValue.styles';
+
+const MAX_CURRENCY_NAME_LENGTH = 30;
 
 export const CurrencySelectorValue: React.FC<Props> = ({
   value,
@@ -34,6 +37,26 @@ export const CurrencySelectorValue: React.FC<Props> = ({
     setIsActive,
   );
 
+  const currencyName = l[currencyCode];
+
+  const CurrencyName = () =>
+    currencyName.length > MAX_CURRENCY_NAME_LENGTH ? (
+      <TextTicker
+        style={styles.currencyName}
+        duration={3000}
+        animationType="bounce"
+        bounce={true}
+        repeatSpacer={10}
+        bouncePadding={{
+          left: 0,
+        }}
+        marqueeDelay={1000}>
+        {currencyName}
+      </TextTicker>
+    ) : (
+      <Text style={styles.currencyName}>{currencyName}</Text>
+    );
+
   return (
     <View style={styles.currencyBlockWrapper}>
       <Pressable
@@ -45,7 +68,7 @@ export const CurrencySelectorValue: React.FC<Props> = ({
           <CountryFlag currencyCode={currencyCode} size={36} />
           <View style={styles.currencyCodeNameWrapper}>
             <Text style={styles.currencyCode}>{currencyCode}</Text>
-            <Text style={styles.currencyName}>{l[currencyCode]}</Text>
+            <CurrencyName />
           </View>
         </View>
         <BouncyCheckbox
