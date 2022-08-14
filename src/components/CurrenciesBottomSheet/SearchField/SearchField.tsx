@@ -1,44 +1,32 @@
-import React, {
-  Dispatch,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
-import { Keyboard, Pressable, TextInput, View } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Animated, Keyboard, TextInput, View } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { ThemeContext } from 'context';
 import { currencies } from 'resources/avaliable-currencies.json';
+import { l } from 'resources/localization';
+
+import { animatedPosition } from '../CurrenciesBottomSheet.utils';
+
+import { useHandleTextChange } from './SearchField.hooks';
+import { Props } from './SearchField.types';
 
 import { useStyles } from './SearchField.styles';
 
-type Props = {
-  setAvaliableCurrencies: Dispatch<React.SetStateAction<string[]>>;
-};
-
-export const SearchField: React.FC<Props> = ({ setAvaliableCurrencies }) => {
-  const [searchValue, setSearchValue] = useState('');
+export const SearchField: React.FC<Props> = ({
+  setAvaliableCurrencies,
+  setSearchValue,
+  searchValue,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const styles = useStyles();
   const { themeColors } = useContext(ThemeContext);
 
-  const handleTextChange = useCallback(
-    value => {
-      setSearchValue(value);
-
-      if (!value) {
-        return setAvaliableCurrencies(currencies);
-      }
-
-      const filteredCurrencies = currencies.filter(el =>
-        el.toLowerCase().includes(value.toLowerCase()),
-      );
-
-      setAvaliableCurrencies(filteredCurrencies);
-    },
-    [setAvaliableCurrencies],
-  );
+  const handleTextChange = useHandleTextChange({
+    setSearchValue,
+    setAvaliableCurrencies,
+    currencies,
+  });
 
   useEffect(() => {
     const listener = Keyboard.addListener('keyboardDidHide', () => {
@@ -49,10 +37,12 @@ export const SearchField: React.FC<Props> = ({ setAvaliableCurrencies }) => {
   }, [isFocused]);
 
   return (
-    <View style={styles.inputContainer}>
-      <Pressable
-        onPress={() => setIsFocused(true)}
-        style={[styles.inputWrapper, isFocused && styles.inputFocused]}>
+    <Animated.View
+      style={[
+        styles.inputContainer,
+        { transform: [{ translateY: animatedPosition }] },
+      ]}>
+      <View style={[styles.inputWrapper, isFocused && styles.inputFocused]}>
         <TextInput
           value={searchValue}
           onChangeText={handleTextChange}
@@ -60,12 +50,12 @@ export const SearchField: React.FC<Props> = ({ setAvaliableCurrencies }) => {
           maxLength={30}
           caretHidden={!isFocused}
           onBlur={() => setIsFocused(false)}
-          onPressIn={() => setIsFocused(true)}
-          placeholder="Filter by currency code"
+          onPressOut={() => setIsFocused(true)}
+          placeholder={l['currency_search.input.placeholder']}
           placeholderTextColor={themeColors.FONT_COLOR_FADED}
         />
         {!!searchValue && <CancelButton onPress={handleTextChange} />}
-      </Pressable>
-    </View>
+      </View>
+    </Animated.View>
   );
 };

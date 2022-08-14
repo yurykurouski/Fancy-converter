@@ -3,9 +3,13 @@ import { withTheme } from 'context';
 export const useStyles = () =>
   withTheme(theme => ({
     inputContainer: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
       flexDirection: 'row',
       height: 60,
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
+      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       paddingHorizontal: 10,
       paddingTop: 10,
       paddingBottom: 10,
@@ -15,17 +19,19 @@ export const useStyles = () =>
     },
     inputWrapper: {
       flexDirection: 'row',
-      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
-      borderRadius: 5,
+      backgroundColor: theme.ACCENT_COLOR_DARKER,
+      borderRadius: 20,
       flexGrow: 1,
       alignItems: 'center',
       borderWidth: 1,
-      borderColor: 'transparent',
+      borderColor: theme.ACCENT_COLOR_DARKER,
     },
     input: {
       paddingTop: 5,
+      paddingLeft: 20,
       paddingBottom: 5,
-      fontSize: 18,
+      fontSize: 20,
+      fontWeight: '400',
       flexGrow: 1,
       color: theme.FONT_PRIMARY_COLOR,
     },
