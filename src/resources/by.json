@@ -35,5 +35,6 @@
   "alert_message.comething_wrong.check_connection": "Калі ласка, праверце падключэнне да сеткі.",
   "notification.message.update_courses.cache": "Курсы былі прачытаныя з кэша",
   "notification.message.update_courses.network": "Курсы былі абноўленыя",
-  "currency_input.value.error_message": "Памылка!"
+  "currency_input.value.error_message": "Памылка!",
+  "currency_search.input.placeholder": "Search here"
 }

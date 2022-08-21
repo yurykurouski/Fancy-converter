@@ -1,4 +1,4 @@
-import { withTheme } from './../../../context/ThemeProvider/ThemeProvider.hooks';
+import { withTheme } from 'context/ThemeProvider/ThemeProvider.hooks';
 
 export const useStyles = () =>
   withTheme(theme => ({
@@ -6,5 +6,7 @@ export const useStyles = () =>
       borderRadius: 24,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       marginHorizontal: 10,
+      width: 24,
+      heigth: 24,
     },
   }));

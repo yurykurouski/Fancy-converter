@@ -35,5 +35,6 @@
   "alert_message.comething_wrong.check_connection": "Перевірте ваше з'єднання, будь ласка.",
   "notification.message.update_courses.cache": "Курси були прочитані з кешу",
   "notification.message.update_courses.network": "Курси були оновлені",
-  "currency_input.value.error_message": "Помілка!"
+  "currency_input.value.error_message": "Помілка!",
+  "currency_search.input.placeholder": "Search here"
 }

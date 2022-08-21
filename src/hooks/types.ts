@@ -3,7 +3,6 @@ import {
   PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
-import { CurrenciesCourses } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 
 import { SWIPE_DIRECTIONS } from '../constants';
@@ -36,7 +35,7 @@ export type UseReloadCourses = (
 export type UseFilteredCourseBySelectedCurrencies = (
   exchangeCourse: OnlyCourses | null,
   selectedCurrencies: string[] | [],
-) => CurrenciesCourses;
+) => OnlyCourses;
 
 export type Handler = (
   e: HandlerStateChangeEvent<PanGestureHandlerEventPayload>,

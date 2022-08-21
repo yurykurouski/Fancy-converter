@@ -1,20 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Keyboard } from 'react-native';
-
-import { UseCurrenciesListToArray } from './CurrencySelector.types';
-
-export const useCurrenciesListToArray: UseCurrenciesListToArray =
-  avaliableCurrencies =>
-    useMemo(
-      () =>
-        Object.keys(avaliableCurrencies).map(value => ({
-          [value]: {
-            Cur_Symbol: avaliableCurrencies[value].Cur_Symbol,
-            Cur_Abbreviation: avaliableCurrencies[value].Cur_Abbreviation,
-          },
-        })),
-      [avaliableCurrencies],
-    );
 
 export const useTrackKeyboardStatus = () => {
   const [keyBoardOpened, setKeyBoardOpened] = useState(false);

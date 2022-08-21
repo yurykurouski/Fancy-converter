@@ -4,8 +4,8 @@ export type Props = {
   currencyCode: string;
   focusedCurrencyName: string;
   focusedCurrencyValue: string;
-  course: string;
-  focusedCurrencyCourse: string;
+  course: number;
+  focusedCurrencyCourse: number;
   setFocusedCurrencyName: React.Dispatch<React.SetStateAction<string>>;
   setFocusedCurrencyValue: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -27,6 +27,6 @@ export type UseConvertedValues = (
   isFocused: boolean,
   value: string | null,
   focusedCurrencyValue: string,
-  course: string,
-  focusedCurrencyCourse: string,
+  course: number,
+  focusedCurrencyCourse: number,
 ) => string;

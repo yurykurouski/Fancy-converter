@@ -1,106 +1,30 @@
 {
-  "BYN": {
-    "Cur_Symbol": "Br",
-    "Cur_Abbreviation": "BYN"
-  },
-  "USD": {
-    "Cur_Symbol": "$",
-    "Cur_Abbreviation": "USD"
-  },
-  "EUR": {
-    "Cur_Symbol": "€",
-    "Cur_Abbreviation": "EUR"
-  },
-  "RUB": {
-    "Cur_Symbol": "руб",
-    "Cur_Abbreviation": "RUB"
-  },
-  "GBP": {
-    "Cur_Symbol": "£",
-    "Cur_Abbreviation": "GBP"
-  },
-  "PLN": {
-    "Cur_Symbol": "zł",
-    "Cur_Abbreviation": "PLN"
-  },
-  "UAH": {
-    "Cur_Symbol": "₴",
-    "Cur_Abbreviation": "UAH"
-  },
-  "CHF": {
-    "Cur_Symbol": "Fr.",
-    "Cur_Abbreviation": "CHF"
-  },
-  "CNY": {
-    "Cur_Symbol": "¥",
-    "Cur_Abbreviation": "CNY"
-  },
-  "CZK": {
-    "Cur_Symbol": "Kč",
-    "Cur_Abbreviation": "CZK"
-  },
-  "GEL": {
-    "Cur_Symbol": "₾",
-    "Cur_Abbreviation": "GEL"
-  },
-  "TRY": {
-    "Cur_Symbol": "₺",
-    "Cur_Abbreviation": "TRY"
-  },
-  "KZT": {
-    "Cur_Symbol": "₸",
-    "Cur_Abbreviation": "KZT"
-  },
-  "AMD": {
-    "Cur_Symbol": "֏",
-    "Cur_Abbreviation": "AMD"
-  },
-  "NOK": {
-    "Cur_Symbol": "kr",
-    "Cur_Abbreviation": "NOK"
-  },
-  "SEK": {
-    "Cur_Symbol": "kr",
-    "Cur_Abbreviation": "SEK"
-  },
-  "AZN": {
-    "Cur_Symbol": "₼",
-    "Cur_Abbreviation": "AZN"
-  },
-  "ALL": {
-    "Cur_Symbol": "Lek",
-    "Cur_Abbreviation": "ALL"
-  },
-  "BAM": {
-    "Cur_Symbol": "KM",
-    "Cur_Abbreviation": "BAM"
-  },
-  "BGN": {
-    "Cur_Symbol": "лв",
-    "Cur_Abbreviation": "BGN"
-  },
-  "DKK": {
-    "Cur_Symbol": "kr",
-    "Cur_Abbreviation": "DKK"
-  },
-  "HRK": {
-    "Cur_Symbol": "kn",
-    "Cur_Abbreviation": "HRK"
-  },
-  "MDL": {
-    "Cur_Symbol": "L",
-    "Cur_Abbreviation": "MDL"
-  },
-  "MKD": {
-    "Cur_Symbol": "ден",
-    "Cur_Abbreviation": "MKD"
-  },
-  "RON": {
-    "Cur_Symbol": "lei",
-    "Cur_Abbreviation": "RON"
-  },
-  "RSD": {
-    "Cur_Symbol": "Дин.",
-    "Cur_Abbreviation": "RSD"
-  }
+  "currencies": [
+    "ALL",
+    "AMD",
+    "AZN",
+    "BAM",
+    "BGN",
+    "BYN",
+    "CHF",
+    "CNY",
+    "CZK",
+    "DKK",
+    "EUR",
+    "GBP",
+    "GEL",
+    "HRK",
+    "KZT",
+    "MDL",
+    "MKD",
+    "NOK",
+    "PLN",
+    "RON",
+    "RSD",
+    "RUB",
+    "SEK",
+    "TRY",
+    "UAH",
+    "USD"
+  ]
 }

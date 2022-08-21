@@ -1,5 +1,5 @@
-import React, { useContext, useRef, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Keyboard, Pressable, Text, TextInput, View } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag/CountryFlag';
 import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
@@ -22,6 +22,7 @@ export const CurrencyInputValue: React.FC<Props> = ({
   course,
   focusedCurrencyCourse,
 }) => {
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
   const { themeColors } = useContext(ThemeContext);
   const styles = useStyles();
 
@@ -48,6 +49,21 @@ export const CurrencyInputValue: React.FC<Props> = ({
   );
 
   const formattedValue = useFormattedValue(caclulatedValue);
+
+  useEffect(() => {
+    const removeShowListener = Keyboard.addListener('keyboardDidShow', () => {
+      setIsKeyboardVisible(true);
+    });
+
+    const removeHideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setIsKeyboardVisible(false);
+    });
+
+    return () => {
+      removeShowListener.remove();
+      removeHideListener.remove();
+    };
+  }, []);
 
   return (
     <View
@@ -78,6 +94,7 @@ export const CurrencyInputValue: React.FC<Props> = ({
           contextMenuHidden={true}
           placeholder="0"
           maxLength={14}
+          caretHidden={!isKeyboardVisible}
         />
         {isFocused && !!caclulatedValue && (
           <CancelButton onPress={onChangeTextHandler} />

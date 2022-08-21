@@ -1,0 +1,1 @@
+export { useRenderHandler } from './useRenderHandler';

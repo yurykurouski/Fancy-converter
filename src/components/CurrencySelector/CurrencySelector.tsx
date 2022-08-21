@@ -1,11 +1,10 @@
-import React, { lazy, Suspense, useContext, useRef } from 'react';
+import React, { lazy, Suspense, useContext } from 'react';
 import {
   ActivityIndicator,
   RefreshControl,
   ScrollView,
   View,
 } from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
 import { ColorsDark } from 'assets/colors';
 import {
   ExchangeCourseContext,
@@ -26,7 +25,7 @@ const CurrenciesBottomSheet = lazy(
 export const CurrencySelector = React.memo(() => {
   const styles = useStyles();
   const {
-    selectedCurrenciesContext: { selectedCurrencies },
+    selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
 
   const {
@@ -37,8 +36,6 @@ export const CurrencySelector = React.memo(() => {
   } = useContext(ExchangeCourseContext);
 
   const { isLoading, exchangeCourse } = currentExchangeCourse;
-
-  const sheetRef = useRef<BottomSheet>(null);
 
   const isKeyBoardOpened = useTrackKeyboardStatus();
 
@@ -70,8 +67,8 @@ export const CurrencySelector = React.memo(() => {
       <Suspense fallback={<View />}>
         {exchangeCourse && (
           <CurrenciesBottomSheet
-            sheetRef={sheetRef}
             selectedCurrencies={selectedCurrencies}
+            setSelectedCurrencies={setSelectedCurrencies}
           />
         )}
       </Suspense>
