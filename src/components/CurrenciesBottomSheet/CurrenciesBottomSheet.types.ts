@@ -1,3 +1,4 @@
+import { ListRenderItemInfo } from 'react-native';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
 import { SelectedCurrencies } from 'types';
 
@@ -21,3 +22,18 @@ export type UseKeyboardHandlers = (
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>,
   setKeyboardVisible: React.Dispatch<React.SetStateAction<boolean>>,
 ) => void;
+
+export type CheckIfSeparatorIsNeeded = (
+  itemName: string,
+  index: number,
+  avaliableCurrencies: string[],
+) => boolean;
+
+export type UseRenderListItem = (props: {
+  avaliableCurrencies: string[];
+  selectedCurrencies: SelectedCurrencies;
+  setSelectedCurrencies: React.Dispatch<
+    React.SetStateAction<SelectedCurrencies>
+  >;
+  isExpanded: boolean;
+}) => (props: ListRenderItemInfo<string>) => JSX.Element;

@@ -1,7 +1,9 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { l } from 'resources/localization';
 
 import { UseHandleTextChange } from './SearchField.types';
+
+const filterResults: string[][] = [[]];
 
 const useCurrnciesNamesBasedOnLanguage = (currencies: string[]): string[] =>
   useMemo(() => currencies.map(curr => l[curr]), [currencies]);
@@ -11,14 +13,23 @@ export const useHandleTextChange: UseHandleTextChange = ({
   setAvaliableCurrencies,
   currencies,
 }) => {
+  const [prevQueryLength, setPrevQueryLength] = useState(0);
+
   const currenciesTranslations = useCurrnciesNamesBasedOnLanguage(currencies);
 
   return useCallback(
     value => {
       setSearchValue(value);
-
       if (!value) {
+        filterResults.length = 1;
         return setAvaliableCurrencies(currencies);
+      }
+
+      if (value.length < prevQueryLength) {
+        setAvaliableCurrencies(filterResults[value.length]);
+        setPrevQueryLength(value.length);
+
+        return;
       }
 
       const filteredCurrencies = currencies.filter(
@@ -29,11 +40,15 @@ export const useHandleTextChange: UseHandleTextChange = ({
             .includes(value.toLowerCase()),
       );
 
+      setPrevQueryLength(value.length);
+
       setAvaliableCurrencies(filteredCurrencies);
+      filterResults.push(filteredCurrencies);
     },
     [
       currencies,
       currenciesTranslations,
+      prevQueryLength,
       setAvaliableCurrencies,
       setSearchValue,
     ],

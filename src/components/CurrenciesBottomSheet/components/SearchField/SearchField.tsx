@@ -5,7 +5,7 @@ import { ThemeContext } from 'context';
 import { currencies } from 'resources/avaliable-currencies.json';
 import { l } from 'resources/localization';
 
-import { animatedPosition } from '../CurrenciesBottomSheet.utils';
+import { animatedPosition } from '../../CurrenciesBottomSheet.utils';
 
 import { useHandleTextChange } from './SearchField.hooks';
 import { Props } from './SearchField.types';
