@@ -7,7 +7,7 @@ on:
 
 env:
   APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_TOKEN_CONVERTER_ANDROID_PROD }}
-  APP_NAME: ${{ ‘Fancy converter/ENV_PROD’ }}
+  APP_NAME: ${{ ‘Fancy-converter/ENV_PROD’ }}
   TESTING_GROUP: ${{ ‘ENV_PROD’ }}
   UPLOAD_FILE: ${{ ‘android/app/build/outputs/apk/app-release.apk' }}
 
