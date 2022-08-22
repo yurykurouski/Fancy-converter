@@ -4,6 +4,7 @@
  *
  * @format
  */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { getDefaultConfig } = require('metro-config');
 
 module.exports = (async () => {
