@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Animated } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
-import { SelectedCurrenciesContext } from 'context';
+import { NotificationContext, SelectedCurrenciesContext } from 'context';
 
 import {
   useFlipImageAnimation,
@@ -15,6 +15,7 @@ export const FlagButton = React.memo<Props>(
     const {
       selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
     } = useContext(SelectedCurrenciesContext);
+    const startNotification = useContext(NotificationContext);
 
     const { flipImageAnimation, rotateYAnimatedStyle } =
       useFlipImageAnimation(isReadyToDelete);
@@ -24,6 +25,7 @@ export const FlagButton = React.memo<Props>(
       selectedCurrencies,
       currencyCode,
       setSelectedCurrencies,
+      startNotification,
     });
 
     useEffect(() => {

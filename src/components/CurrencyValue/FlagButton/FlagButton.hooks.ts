@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { Animated } from 'react-native';
+import { l } from 'resources/localization';
 
 import { UseHandleDeletePress } from './FlagButton.types';
 
@@ -8,6 +9,7 @@ export const useHandleDeletePress = ({
   selectedCurrencies,
   currencyCode,
   setSelectedCurrencies,
+  startNotification,
 }: UseHandleDeletePress) =>
   useCallback(() => {
     setIsReadyToDelete(false);
@@ -15,12 +17,18 @@ export const useHandleDeletePress = ({
     const filteredCurrencies = selectedCurrencies.filter(
       el => el !== currencyCode,
     );
+    console.log('currencyCode: ', currencyCode);
     setSelectedCurrencies(filteredCurrencies);
+
+    startNotification(
+      `${currencyCode} ${l['currencies_main.currency_deleted']}`,
+    );
   }, [
     currencyCode,
     selectedCurrencies,
     setIsReadyToDelete,
     setSelectedCurrencies,
+    startNotification,
   ]);
 
 export const useFlipImageAnimation = (isReadyToDelete: boolean) => {

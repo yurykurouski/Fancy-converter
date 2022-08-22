@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import NetInfo from '@react-native-community/netinfo';
+import { l } from 'resources/localization';
 import { getFromStorage, showNoConnectionAlert, StorageKeys } from 'utils';
 
 import { UseGetCoursesFromStorage } from './types';
@@ -26,7 +27,7 @@ export const useGetCoursesFromStorage: UseGetCoursesFromStorage = (
           setExchangeCourse(parsed);
         })
         .then(() =>
-          startNotification('notification.message.update_courses.cache'),
+          startNotification(l['notification.message.update_courses.cache']),
         );
     },
     [setExchangeCourse, startNotification],
