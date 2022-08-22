@@ -8,7 +8,6 @@ export const useOnPressHandler: UseOnPressHandler = (
   modalSelectedCurrencies,
   currencyCode,
   setModalSelectedCurrencies,
-  setIsActive,
 ) =>
   useCallback(() => {
     if (!isExpanded) return;
@@ -20,13 +19,10 @@ export const useOnPressHandler: UseOnPressHandler = (
     } else {
       setModalSelectedCurrencies([...modalSelectedCurrencies, currencyCode]);
     }
-
-    setIsActive(!isActive);
   }, [
     currencyCode,
     isActive,
     isExpanded,
     modalSelectedCurrencies,
-    setIsActive,
     setModalSelectedCurrencies,
   ]);

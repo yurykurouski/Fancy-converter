@@ -5,6 +5,9 @@ export const useStyles = () =>
     listContainer: {
       paddingHorizontal: 10,
     },
+    backgroundStyle: {
+      elevation: 10,
+    },
     background: {
       borderTopRightRadius: 20,
       borderTopLeftRadius: 20,

@@ -4085,6 +4085,7 @@ __metadata:
     react-native-dotenv: ^3.3.0
     react-native-gesture-handler: ^2.4.0
     react-native-gradle-plugin: ^0.0.6
+    react-native-linear-gradient: ^2.6.2
     react-native-localization: ^2.3.1
     react-native-reanimated: ^2.6.0
     react-native-svg: ^12.4.3
@@ -7228,6 +7229,16 @@ __metadata:
   version: 0.0.6
   resolution: "react-native-gradle-plugin@npm:0.0.6"
   checksum: 185ad348931ef4f58065b50bbf80558af668b1ef11c31067aab7f1cd85b18809a62fcf0b7a18444726dacd098042771a570c0ac76bb8976c3ccbe7c86cff0e11
+  languageName: node
+  linkType: hard
+
+"react-native-linear-gradient@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "react-native-linear-gradient@npm:2.6.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: dd0e27d3ddffa239d46919fd397f1ad68cdb6bcaa48c11ec9b01a0f54f0ad383f203a2245f2f06206e63aa4443fe7b2b1cc105ee262bf9a84ee62dabad6028ad
   languageName: node
   linkType: hard
 

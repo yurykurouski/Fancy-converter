@@ -1,8 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Keyboard, Pressable, Text, TextInput, View } from 'react-native';
+import {
+  Keyboard,
+  Pressable,
+  Text,
+  TextInput,
+  Vibration,
+  View,
+} from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
-import { CountryFlag } from 'components/common/CountryFlag/CountryFlag';
 import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
+
+import { FlagButton } from '../FlagButton';
+import { Gradient } from '../Gradient';
 
 import {
   useConvertedValues,
@@ -22,8 +31,10 @@ export const CurrencyInputValue: React.FC<Props> = ({
   course,
   focusedCurrencyCourse,
 }) => {
-  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
   const { themeColors } = useContext(ThemeContext);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+  const [isReadyToDelete, setIsReadyToDelete] = useState(false);
+
   const styles = useStyles();
 
   const inputRef = useRef(null);
@@ -65,42 +76,63 @@ export const CurrencyInputValue: React.FC<Props> = ({
     };
   }, []);
 
+  const handleLongPress = () => {
+    Vibration.vibrate(30);
+    containerOnPressHandler();
+    setIsReadyToDelete(value => !value);
+  };
+
   return (
     <View
-      style={
-        isFocused
-          ? [styles.containerWrapper, styles.containerWrapperFocused]
-          : styles.containerWrapper
-      }>
-      <Pressable
-        key={currencyCode}
-        onPress={containerOnPressHandler}
-        android_ripple={{ borderless: false }}
-        style={styles.container}>
-        <Text
-          style={
-            isFocused ? [styles.title, styles.titleFocused] : styles.title
-          }>
-          {currencyCode}
-        </Text>
-        <TextInput
-          style={styles.input}
-          placeholderTextColor={themeColors.FONT_COLOR_FADED}
-          value={formattedValue}
-          onChangeText={onChangeTextHandler}
-          onFocus={() => onFocusHandler(caclulatedValue)}
-          ref={inputRef}
-          keyboardType="numeric"
-          contextMenuHidden={true}
-          placeholder="0"
-          maxLength={14}
-          caretHidden={!isKeyboardVisible}
-        />
-        {isFocused && !!caclulatedValue && (
-          <CancelButton onPress={onChangeTextHandler} />
-        )}
-        <CountryFlag currencyCode={currencyCode} size={30} />
-      </Pressable>
+      style={{
+        marginBottom: 10,
+        paddingHorizontal: 10,
+      }}>
+      <Gradient isReadyToDelete={isReadyToDelete} isFocused={isFocused} />
+
+      <View
+        style={[
+          styles.containerWrapper,
+          isFocused && !isReadyToDelete && styles.containerWrapperFocused,
+        ]}>
+        <Pressable
+          key={currencyCode}
+          onPress={containerOnPressHandler}
+          android_ripple={{ borderless: false }}
+          style={styles.container}>
+          <Pressable
+            onLongPress={handleLongPress}
+            onPress={containerOnPressHandler}>
+            <Text style={[styles.title, isFocused && styles.titleFocused]}>
+              {currencyCode}
+            </Text>
+          </Pressable>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor={themeColors.FONT_COLOR_FADED}
+            value={formattedValue}
+            onChangeText={onChangeTextHandler}
+            onFocus={() => onFocusHandler(caclulatedValue)}
+            ref={inputRef}
+            keyboardType="numeric"
+            contextMenuHidden={true}
+            placeholder="0"
+            maxLength={14}
+            caretHidden={!isKeyboardVisible}
+          />
+          {isFocused && !!caclulatedValue && !isReadyToDelete && (
+            <CancelButton
+              onPress={onChangeTextHandler}
+              additionalStyle={{ marginHorizontal: 10 }}
+            />
+          )}
+          <FlagButton
+            isReadyToDelete={isReadyToDelete}
+            currencyCode={currencyCode}
+            setIsReadyToDelete={setIsReadyToDelete}
+          />
+        </Pressable>
+      </View>
     </View>
   );
 };

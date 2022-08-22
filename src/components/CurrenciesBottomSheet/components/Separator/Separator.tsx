@@ -1,31 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
-import { ThemeContext } from 'context';
+
+import { useStyles } from './Separator.styles';
 
 export const Separator = React.memo(({ value }: { value: string }) => {
-  const { themeColors } = useContext(ThemeContext);
+  const styles = useStyles();
 
   return (
-    <View
-      style={{
-        marginBottom: 10,
-        alignItems: 'flex-start',
-      }}>
-      <Text
-        style={[
-          {
-            paddingHorizontal: 10,
-            paddingTop: 4,
-            fontSize: 18,
-            lineHeight: 18,
-            fontWeight: '700',
-            color: themeColors.ACCENT_COLOR_LIGHTER,
-            borderRadius: 16,
-            backgroundColor: themeColors.ELEMENT_FADE_OR_BACKGROUND_DARKER,
-          },
-        ]}>
-        {value}
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>{value}</Text>
     </View>
   );
 });

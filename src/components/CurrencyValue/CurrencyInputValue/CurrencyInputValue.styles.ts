@@ -4,7 +4,6 @@ export const useStyles = () =>
   withTheme(theme => ({
     containerWrapper: {
       borderRadius: 15,
-      marginBottom: 10,
       borderColor: 'transparent',
       borderWidth: 2,
       overflow: 'hidden',

@@ -54,7 +54,12 @@ export const SearchField: React.FC<Props> = ({
           placeholder={l['currency_search.input.placeholder']}
           placeholderTextColor={themeColors.FONT_COLOR_FADED}
         />
-        {!!searchValue && <CancelButton onPress={handleTextChange} />}
+        {!!searchValue && (
+          <CancelButton
+            onPress={handleTextChange}
+            additionalStyle={{ marginHorizontal: 10 }}
+          />
+        )}
       </View>
     </Animated.View>
   );

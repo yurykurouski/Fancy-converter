@@ -16,14 +16,11 @@ import { CurrencyValue } from '../CurrencyValue';
 
 import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
 
-import { useStyles } from './CurrencySelector.styles';
-
 const CurrenciesBottomSheet = lazy(
   () => import('../CurrenciesBottomSheet/CurrenciesBottomSheet'),
 );
 
 export const CurrencySelector = React.memo(() => {
-  const styles = useStyles();
   const {
     selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
@@ -42,10 +39,7 @@ export const CurrencySelector = React.memo(() => {
   return (
     <Suspense fallback={<ActivityIndicator size="large" />}>
       <ScrollView
-        style={[
-          styles.container,
-          isKeyBoardOpened ? { marginBottom: 20 } : { marginBottom: 60 },
-        ]}
+        style={isKeyBoardOpened ? { marginBottom: 20 } : { marginBottom: 60 }}
         keyboardShouldPersistTaps="handled"
         refreshControl={
           <RefreshControl
