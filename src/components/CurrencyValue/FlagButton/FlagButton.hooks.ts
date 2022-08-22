@@ -17,7 +17,6 @@ export const useHandleDeletePress = ({
     const filteredCurrencies = selectedCurrencies.filter(
       el => el !== currencyCode,
     );
-    console.log('currencyCode: ', currencyCode);
     setSelectedCurrencies(filteredCurrencies);
 
     startNotification(
