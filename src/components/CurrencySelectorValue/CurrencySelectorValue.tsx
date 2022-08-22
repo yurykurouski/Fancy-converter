@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { CountryFlag } from 'components/common/CountryFlag';
@@ -22,8 +22,8 @@ export const CurrencySelectorValue: React.FC<Props> = React.memo(
     const { themeColors } = useContext(ThemeContext);
     const styles = useStyles();
 
-    const [isActive, setIsActive] = useState(() =>
-      (modalSelectedCurrencies as string[]).includes(currencyCode),
+    const isActive = (modalSelectedCurrencies as string[]).includes(
+      currencyCode,
     );
 
     const onPressHandler = useOnPressHandler(
@@ -32,7 +32,6 @@ export const CurrencySelectorValue: React.FC<Props> = React.memo(
       modalSelectedCurrencies,
       currencyCode,
       setModalSelectedCurrencies,
-      setIsActive,
     );
 
     const currencyName = l[currencyCode];

@@ -6,7 +6,6 @@ export type UseOnPressHandler = (
   setModalSelectedCurrencies: React.Dispatch<
     React.SetStateAction<string[] | []>
   >,
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>,
 ) => () => void;
 
 export type Props = {

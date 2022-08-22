@@ -62,6 +62,7 @@ const CurrenciesBottomSheet = React.memo<Props>(
         ref={sheetRef}
         handleComponent={renderHandle}
         backgroundComponent={BottomSheetBackground}
+        backgroundStyle={styles.backgroundStyle}
         onChange={onChangeHandler}>
         <BottomSheetFlatList
           /* @ts-expect-error because BottomSheetFlatList doesn't have type for onScroll prop*/

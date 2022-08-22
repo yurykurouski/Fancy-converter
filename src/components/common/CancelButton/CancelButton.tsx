@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import CloseIconDark from 'assets/icons/close_black_24dp.svg';
 import CloseIconLight from 'assets/icons/close_white_24dp.svg';
 import { OnChangeTextHandler } from 'components/CurrencyValue/CurrencyInputValue/CurrencyInputValue.types';
@@ -9,17 +9,26 @@ import { useStyles } from './CancelButton.styles';
 
 type Props = {
   onPress: OnChangeTextHandler;
+  size?: number;
+  additionalStyle?: StyleProp<ViewStyle>;
 };
 
-export const CancelButton: React.FC<Props> = ({ onPress }) => {
+export const CancelButton: React.FC<Props> = ({
+  onPress,
+  size = 24,
+  additionalStyle,
+}) => {
   const { colorScheme } = useContext(ThemeContext);
-  const styles = useStyles();
+  const styles = useStyles(size);
+
   return (
-    <TouchableOpacity onPress={() => onPress('')} style={styles.buttonWrapper}>
+    <TouchableOpacity
+      onPress={() => onPress('')}
+      style={[styles.buttonWrapper, additionalStyle]}>
       {colorScheme === 'dark' ? (
-        <CloseIconLight width={24} height={24} />
+        <CloseIconLight width={size} height={size} />
       ) : (
-        <CloseIconDark width={24} height={24} />
+        <CloseIconDark width={size} height={size} />
       )}
     </TouchableOpacity>
   );
