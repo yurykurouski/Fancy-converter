@@ -7,7 +7,7 @@ export const useStyles = () =>
       fontWeight: 'bold',
       fontFamily: 'monospace',
       textTransform: 'uppercase',
-      paddingVertical: 25,
+      paddingTop: 25,
       alignSelf: 'center',
       color: theme.FONT_PRIMARY_COLOR,
     },
