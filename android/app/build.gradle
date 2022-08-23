@@ -79,6 +79,7 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     enableHermes: true,  // clean and rebuild if changing
+     hermesCommand: '../../node_modules/react-native/sdks/hermesc/%OS-BIN%/hermesc'
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -151,12 +152,18 @@ android {
                         "GENERATED_SRC_DIR=$buildDir/generated/source",
                         "PROJECT_BUILD_DIR=$buildDir",
                         "REACT_ANDROID_DIR=$rootDir/../node_modules/react-native/ReactAndroid",
-                        "REACT_ANDROID_BUILD_DIR=$rootDir/../node_modules/react-native/ReactAndroid/build"
+                        "REACT_ANDROID_BUILD_DIR=$rootDir/../node_modules/react-native/ReactAndroid/build",
+                        "NODE_MODULES_DIR=$rootDir/../node_modules"
                     cFlags "-Wall", "-Werror", "-fexceptions", "-frtti", "-DWITH_INSPECTOR=1"
                     cppFlags "-std=c++17"
                     // Make sure this target name is the same you specify inside the
                     // src/main/jni/Android.mk file for the `LOCAL_MODULE` variable.
                     targets "converter_appmodules"
+                }
+            }
+            if (!enableSeparateBuildPerCPUArchitecture) {
+                ndk {
+                    abiFilters (*reactNativeArchitectures())
                 }
             }
         }
@@ -212,12 +219,6 @@ android {
         }
     }
     signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-        }
         release {
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
                 storeFile file(MYAPP_UPLOAD_STORE_FILE)
@@ -225,6 +226,12 @@ android {
                 keyAlias MYAPP_UPLOAD_KEY_ALIAS
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
+        }
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
         }
     }
     buildTypes {
@@ -234,9 +241,9 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
 
@@ -274,14 +281,15 @@ dependencies {
         exclude group:'com.squareup.okhttp3', module:'okhttp'
     }
 
-    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:0.142.0") {
+    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.flipper'
     }
 
     if (enableHermes) {
-        def hermesPath = "../../node_modules/hermes-engine/android/";
-        debugImplementation files(hermesPath + "hermes-debug.aar")
-        releaseImplementation files(hermesPath + "hermes-release.aar")
+        //noinspection GradleDynamicVersion
+        implementation("com.facebook.react:hermes-engine:+") { // From node_modules
+            exclude group:'com.facebook.fbjni'
+        }
     } else {
         implementation jscFlavor
     }
@@ -294,7 +302,11 @@ if (isNewArchitectureEnabled()) {
     configurations.all {
         resolutionStrategy.dependencySubstitution {
             substitute(module("com.facebook.react:react-native"))
-                    .using(project(":ReactAndroid")).because("On New Architecture we're building React Native from source")
+                    .using(project(":ReactAndroid"))
+                    .because("On New Architecture we're building React Native from source")
+            substitute(module("com.facebook.react:hermes-engine"))
+                    .using(project(":ReactAndroid:hermes-engine"))
+                    .because("On New Architecture we're building Hermes from source")
         }
     }
 }
