@@ -4,7 +4,9 @@ on:
     branches:  
       - master
       - 'releases/**'
-      - test
+    push:
+      branches: 
+        - test
 
 env:
   APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_TOKEN_CONVERTER_ANDROID_PROD }}
