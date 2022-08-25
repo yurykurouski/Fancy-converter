@@ -31,8 +31,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build android
-        run: cd android && ./gradlew assembleDebug --stacktrace
+      - name: Build Signed APK
+        run: cd android && ./gradlew assembleDebug --stacktrace -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
+        uses: victorbnl/build-signed-apk@v1.0.0
+        with:
+          keystore_b64: ${{ secrets.keystore }}
+          keystore_password: ${{ secrets.keystore_password }}
+          key_alias: ${{ secrets.key_alias }}
+          key_password: ${{ secrets.key_password }}
         
       - name: Upload to App Center
         uses: wzieba/AppCenter-Github-Action@v1
