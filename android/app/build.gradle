@@ -220,18 +220,12 @@ android {
     }
     signingConfigs {
         release {
-            // if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-            //     storeFile file(MYAPP_UPLOAD_STORE_FILE)
-            //     storePassword MYAPP_UPLOAD_STORE_PASSWORD
-            //     keyAlias MYAPP_UPLOAD_KEY_ALIAS
-            //     keyPassword MYAPP_UPLOAD_KEY_PASSWORD
-            // }
-            release {
-			storeFile file('my_private_key.keystore')
-			storePassword readProperty('keystorePassword')
-			keyAlias 'my_key_alias'
-			keyPassword readProperty('keyAliasPassword')
-		}
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword readProperty('keystorePassword')
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword readProperty('keyAliasPassword')
+            }
         }
         debug {
             storeFile file('debug.keystore')
