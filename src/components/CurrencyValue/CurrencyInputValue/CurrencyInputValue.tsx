@@ -81,7 +81,7 @@ export const CurrencyInputValue: React.FC<Props> = ({
     containerOnPressHandler();
     setIsReadyToDelete(value => !value);
   };
-
+  console.log('test');
   return (
     <View
       style={{
