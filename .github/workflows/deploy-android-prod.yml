@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: Build Signed APK
-        run: cd android && ./gradlew assembleDebug --stacktrace
+        # run: cd android && ./gradlew assembleDebug --stacktrace
         uses: victorbnl/build-signed-apk@v1.0.0
         with:
           # keystore_b64: ${{ secrets.keystore }}
