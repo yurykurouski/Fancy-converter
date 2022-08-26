@@ -50,6 +50,3 @@ jobs:
           file: ${{ env.UPLOAD_FILE }}
           notifyTesters: true
           debug: false
-          
-
-          npm WARN deprecated eslint-plugin-typescript@0.14.0: Deprecated: Use @typescript-eslint/eslint-plugin instead
