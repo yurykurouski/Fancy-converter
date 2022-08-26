@@ -13,6 +13,7 @@ env:
   APP_NAME: ${{ 'Fancy-converter/ENV_PROP' }}
   TESTING_GROUP: ${{ 'ENV_PROD' }}
   UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/app-release.apk' }}
+  KEYSTORE: ${{ secrets.KEYSTORE }}
 
 jobs:
   build:
@@ -32,7 +33,7 @@ jobs:
         run: npm install
 
       - name: Copy the key file to the signing key file
-        run: cp ${{ secrets.KEYSTORE }} $GITHUB_WORKSPACE/signing-key.jks
+        run: cp ${{ env.KEYSTORE }} $GITHUB_WORKSPACE/signing-key.jks
         shell: bash
 
       - name: Build Signed APK
