@@ -39,7 +39,7 @@ jobs:
           keystore_password: ${{ secrets.KEYSTORE_PASSWORD }}
           key_alias: ${{ secrets.KEY_ALIAS }}
           key_password: ${{ secrets.KEY_ALIAS_PASSWORD }}
-          gradlew_dir: '/android'
+          gradlew_dir: 'android'
         
       - name: Upload to App Center
         uses: wzieba/AppCenter-Github-Action@v1
