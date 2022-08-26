@@ -35,8 +35,7 @@ jobs:
         # run: cd android && ./gradlew assembleDebug --stacktrace
         uses: victorbnl/build-signed-apk@v1.0.0
         with:
-          # keystore_b64: ${{ secrets.keystore }}
-          keystore_file: 'android/my_private_key.keystore'
+          keystore_b64: ${{ secrets.keystore }}
           keystore_password: ${{ secrets.KEYSTORE_PASSWORD }}
           key_alias: ${{ secrets.KEY_ALIAS }}
           key_password: ${{ secrets.KEY_ALIAS_PASSWORD }}
