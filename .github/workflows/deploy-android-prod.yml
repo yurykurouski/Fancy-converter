@@ -36,7 +36,7 @@ jobs:
         run: npm install
 
       - name: Copy the key file to the signing key file
-        run: cp ${{ env.KEYSTORE }}* $GITHUB_WORKSPACE/signing-key.jks
+        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
         shell: bash
 
       - name: Build Signed APK
