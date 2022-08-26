@@ -36,16 +36,14 @@ jobs:
         run: npm install
 
       - name: Copy the key file to the signing key file
-        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
+        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/my_private_key.keystore
+        # run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
         shell: bash
 
       - name: Build Signed APK
         # run: cd android && ./gradlew assembleDebug --stacktrace
-        run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease
-          -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks 
-          -Pandroid.injected.signing.store.password=${{ env.KEYSTORE_PASSWORD }} 
-          -Pandroid.injected.signing.key.alias=${{ env.KEY_ALIAS }} 
-          -Pandroid.injected.signing.key.password=${{ env.KEY_ALIAS_PASSWOR }} --stacktrace
+        run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease -PKEYSTORE_PASSWORD=${{ env.KEYSTORE_PASSWORD }} -PKEY_ALIAS_PASSWORD=${{ env.KEY_ALIAS_PASSWORD }} -PKEY_ALIAS=${{ env.KEY_ALIAS }}
+          
         # uses: victorbnl/build-signed-apk@v1.0.0
         # with:
         #   keystore: ${{ secrets.keystore }}
@@ -63,3 +61,6 @@ jobs:
           file: ${{ env.UPLOAD_FILE }}
           notifyTesters: true
           debug: false
+
+
+  # ./gradlew assembleRelease -PKEYSTORE_PASSWORD=$769169Morpheus -PKEY_ALIAS_PASSWORD=$769169Morpheus -PKEY_ALIAS=$my_key_alias
