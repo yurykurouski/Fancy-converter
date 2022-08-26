@@ -220,12 +220,20 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-                storeFile file(MYAPP_UPLOAD_STORE_FILE)
-                storePassword readProperty('keystorePassword')
-                keyAlias MYAPP_UPLOAD_KEY_ALIAS
-                keyPassword readProperty('keyAliasPassword')
-            }
+            storeFile file(findProperty('KEYSTORE') ?: 'default path')
+            storePassword findProperty('KEYSTORE_PASSWORD')
+            keyAlias findProperty('KEY_ALIAS')
+            keyPassword findProperty('KEY_ALIAS_PASSWORD')
+            // storeFile file('.my_private_key.keystore')
+            // storePassword '769169Morpheus'
+            // keyPassword '769169Morpheus'
+            // keyAlias 'my_key_alias'
+            // if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+            //     storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                // storePassword readProperty('keystorePassword')
+                // keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                // keyPassword readProperty('keyAliasPassword')
+            // }
         }
         debug {
             storeFile file('debug.keystore')
