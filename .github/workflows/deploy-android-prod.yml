@@ -6,10 +6,14 @@ on:
       - 'releases/**'
 
 env:
-  APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_TOKEN_CONVERTER_ANDROID_PROD }}
-  APP_NAME: ${{ ‘Fancy-converter/ENV_PROP’ }}
-  TESTING_GROUP: ${{ ‘ENV_PROD’ }}
-  UPLOAD_FILE: ${{ ‘android/app/build/outputs/apk/app-release.apk' }}
+  APP_CENTER_USER_TOKEN: ${{ secrets.APP_CENTER_USER_TOKEN }}
+  APP_NAME: ${{ 'Fancy-converter/ENV_PROP' }}
+  TESTING_GROUP: ${{ 'ENV_PROD' }}
+  UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/release/app-release.apk' }}
+  KEYSTORE: ${{ secrets.KEYSTORE }}
+  KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+  KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+  KEY_ALIAS_PASSWORD: ${{ secrets.KEY_ALIAS_PASSWORD }}
 
 jobs:
   build:
@@ -20,24 +24,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: set up JDK 1.8
+      - name: namefff
+        run: echo $GITHUB_WORKSPACE ls
+        shell: bash
+
+      - name: set up JDK 11
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build android
-        run: npm run cd android && ./gradlew assembleRelease
-        
+      - name: Copy the key file to the signing key file
+        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/release-key.keystore
+        shell: bash
+
+      - name: Build Signed APK
+        run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease -PKEYSTORE=$GITHUB_WORKSPACE/release-key.keystore -PKEYSTORE_PASSWORD=${{ env.KEYSTORE_PASSWORD }} -PKEY_ALIAS_PASSWORD=${{ env.KEY_ALIAS_PASSWORD }} -PKEY_ALIAS=${{ env.KEY_ALIAS }}
+
       - name: Upload to App Center
-        uses: wzieba/AppCenter-Github-Action@v1
+        uses: devussy/AppCenter-Distribute-Github-Action@v1.0.2
         with:
-          appName: ${{ env.APP_NAME }}
-          token: ${{ env.APP_CENTER_TOKEN }}
+          app: ${{ env.APP_NAME }}
+          token: ${{ env.APP_CENTER_USER_TOKEN }}
           group: ${{ env.ENV_PROD }}
           file: ${{ env.UPLOAD_FILE }}
-          notifyTesters: true
-          debug: false
-          
+          silent: false
