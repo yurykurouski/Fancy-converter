@@ -24,12 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: namefff
-        run: echo "${{ GITHUB_WORKSPACE }}" 
-        shell: bash
-
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: namefff
+        run: echo "${{ GITHUB_WORKSPACE }}" 
+        shell: bash
 
       - name: set up JDK 11
         uses: actions/setup-java@v1
