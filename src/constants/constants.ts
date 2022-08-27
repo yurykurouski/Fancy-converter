@@ -20,3 +20,8 @@ export const HORIZONTAL_SWIPES = [
 export const VERTICAL_SWIPES = [SWIPE_DIRECTIONS.UP, SWIPE_DIRECTIONS.DOWN];
 
 export const VIBRATION_DURATION = 30;
+
+export const GITHUB_REPO_URL =
+  'https://github.com/yurykurouski/Fancy-converter';
+export const TG_CHANNEL_URL = 'https://t.me/fancyconverter';
+export const PAYPAL_DONATION_URL = 'https://paypal.me/yurykurouski';

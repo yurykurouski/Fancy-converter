@@ -1,18 +1,13 @@
-import { Alert } from 'react-native';
+import { useCallback } from 'react';
+import { Linking } from 'react-native';
+import { useAlertMessage } from 'hooks';
 import { l } from 'resources/localization';
 
-export const useAlertMessage = () => (onPress: () => void) =>
-  Alert.alert(
-    l['alert_message.open_link.title'],
-    l['alert_message.open_link.description'],
-    [
-      {
-        text: l['alert_message.open_link.cancel'],
-        style: 'cancel',
-      },
-      {
-        text: l['alert_message.open_link.ok'],
-        onPress: onPress,
-      },
-    ],
+export const useButtonOnPress = (url: string, text?: string) => {
+  const withAlert = useAlertMessage();
+
+  return useCallback(
+    () => withAlert(() => Linking.openURL(url), text && l[text]),
+    [text, url, withAlert],
   );
+};
