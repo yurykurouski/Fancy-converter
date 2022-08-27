@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import { l } from 'resources/localization';
 
 import { showNotification } from './notification-animations';
 import { UseNotificationMessage } from './WithNotification.types';
@@ -8,7 +7,7 @@ export const useNotificationMessage: UseNotificationMessage = () => {
   const [message, setMessage] = useState(null);
 
   const showMessage = useCallback((msg: string) => {
-    setMessage(l[msg]);
+    setMessage(msg);
 
     showNotification();
     //todo: for case if i find a solution to change default small app icon

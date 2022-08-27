@@ -1,3 +1,4 @@
+import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
 import { SelectedCurrencies } from 'types';
 
 export type UseHandleDeletePress = {
@@ -5,6 +6,7 @@ export type UseHandleDeletePress = {
   selectedCurrencies: SelectedCurrencies;
   currencyCode: string;
   setSelectedCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
+  startNotification: ShowMessage;
 };
 
 export type Props = {

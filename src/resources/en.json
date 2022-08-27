@@ -36,5 +36,6 @@
   "notification.message.update_courses.cache": "Courses were readed from cache",
   "notification.message.update_courses.network": "Courses were updated",
   "currency_input.value.error_message": "Wrong value!",
-  "currency_search.input.placeholder": "Search here"
+  "currency_search.input.placeholder": "Search here",
+  "currencies_main.currency_deleted": "was deleted"
 }

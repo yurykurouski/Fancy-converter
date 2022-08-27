@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { l } from 'resources/localization';
 import { currenciesService } from 'services/currencies-service';
 import {
   getFromStorage,
@@ -30,7 +31,7 @@ export const useReloadCourses: UseReloadCourses = (
 
       .finally(() => setIsLoading(false))
       .then(() =>
-        startNotification('notification.message.update_courses.network'),
+        startNotification(l['notification.message.update_courses.network']),
       )
       .catch(async () => {
         await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(oldDate =>
