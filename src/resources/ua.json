@@ -33,6 +33,8 @@
   "alert_message.something_wrong.no_connection": "Немає підключення до Інтернету.",
   "alert_message.something_wrong.stored_courses": "Будуть використовуватися останні збережені курси з",
   "alert_message.something_wrong.check_connection": "Перевірте ваше з'єднання, будь ласка.",
+  "alert_message.github_press.description": "You'll be redirected on project GitHub repository",
+  "alert_message.paypal_press.description": "You'll be redirected on page where you can by me a cup of cofee :)",
   "notification.message.update_courses.cache": "Курси були прочитані з кешу",
   "notification.message.update_courses.network": "Курси були оновлені",
   "currency_input.value.error_message": "Помілка!",
