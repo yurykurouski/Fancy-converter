@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: namefff
-        run: echo $GITHUB_WORKSPACE 
+        run: echo $GITHUB_WORKSPACE ls
         shell: bash
 
       - name: set up JDK 11
@@ -40,7 +40,7 @@ jobs:
         run: npm install
 
       - name: Copy the key file to the signing key file
-        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/my_private_key.keystore
+        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/android/my_private_key.keystore
         shell: bash
 
       - name: Build Signed APK
