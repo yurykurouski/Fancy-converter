@@ -50,14 +50,22 @@ jobs:
         run: echo "${{ env.UPLOAD_FILE }}"
 
       - name: Upload to App Center
-        uses: wzieba/AppCenter-Github-Action@v1
+        uses: devussy/AppCenter-Distribute-Github-Action@v1.0.2
         with:
-          appName: ${{ env.APP_NAME }}
+          app: ${{ env.APP_NAME }}
           token: ${{ env.APP_CENTER_TOKEN }}
           group: ${{ env.ENV_PROD }}
           file: ${{ env.UPLOAD_FILE }}
-          notifyTesters: true
-          debug: false
+          silent: false
+      # - name: Upload to App Center
+      #   uses: wzieba/AppCenter-Github-Action@v1
+      #   with:
+      #     appName: ${{ env.APP_NAME }}
+      #     token: ${{ env.APP_CENTER_TOKEN }}
+      #     group: ${{ env.ENV_PROD }}
+      #     file: ${{ env.UPLOAD_FILE }}
+      #     notifyTesters: true
+      #     debug: false
 
 
   # ./gradlew assembleRelease -PKEYSTORE_PASSWORD=769169Morpheus -PKEY_ALIAS_PASSWORD=769169Morpheus -PKEY_ALIAS=my_key_alias
