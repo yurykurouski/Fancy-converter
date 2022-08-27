@@ -24,6 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: namefff
+        run: echo "${{ GITHUB_WORKSPACE }}" 
+        shell: bash
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -36,7 +40,7 @@ jobs:
         run: npm install
 
       - name: Copy the key file to the signing key file
-        run: echo "${{ env.KEYSTORE }}" | base64 -d > $android/my_private_key.keystore
+        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/my_private_key.keystore
         shell: bash
 
       - name: Build Signed APK
