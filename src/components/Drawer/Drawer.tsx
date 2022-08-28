@@ -1,12 +1,9 @@
 import React from 'react';
 import { Animated, Pressable } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
+import { useHorizontalGestureHandler } from 'hooks';
 
-import {
-  useGestureHandler,
-  useGestureStateHandler,
-  useOpacityControl,
-} from './Drawer.hooks';
+import { useGestureStateHandler, useOpacityControl } from './Drawer.hooks';
 import { Props } from './Drawer.types';
 import { opacityValue } from './drawer-animations';
 import { DrawerContent } from './DrawerContent';
@@ -17,7 +14,7 @@ export const Drawer = React.memo<Props>(
   ({ animatedPosition, drawerAnimation, isDrawerOpened }) => {
     const styles = useStyles();
 
-    const gestureHandler = useGestureHandler(animatedPosition);
+    const gestureHandler = useHorizontalGestureHandler(animatedPosition);
 
     const gestureStateHandler = useGestureStateHandler(
       drawerAnimation,

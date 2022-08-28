@@ -3,11 +3,7 @@ import { useCallback, useEffect } from 'react';
 import { Animated } from 'react-native';
 import { State } from 'react-native-gesture-handler';
 
-import {
-  UseGestureHandler,
-  UseGestureStateHandler,
-  UseOpacityControl,
-} from './Drawer.types';
+import { UseGestureStateHandler, UseOpacityControl } from './Drawer.types';
 import { decreaseOpacity, increaseOpacity } from './drawer-animations';
 
 export const useOpacityControl: UseOpacityControl = isDrawerOpened =>
@@ -18,17 +14,6 @@ export const useOpacityControl: UseOpacityControl = isDrawerOpened =>
       decreaseOpacity();
     }
   }, [isDrawerOpened]);
-
-export const useGestureHandler: UseGestureHandler = animatedPosition =>
-  useCallback(
-    ({ nativeEvent }) => {
-      const { translationX } = nativeEvent;
-      if (translationX > 0) return;
-
-      animatedPosition.setValue(translationX);
-    },
-    [animatedPosition],
-  );
 
 export const useGestureStateHandler: UseGestureStateHandler = (
   drawerAnimation,

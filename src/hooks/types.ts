@@ -1,7 +1,9 @@
+import { Animated } from 'react-native';
 import {
   HandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
+import { GestureEvent } from 'react-native-gesture-handler';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
 import { OnlyCourses } from 'utils/utils.types';
 
@@ -45,3 +47,7 @@ export type UseHandleSwipeDirection = (
   handler: () => void,
   direction: SWIPE_DIRECTIONS,
 ) => Handler;
+
+export type UseHorizontalGestureHandler = (
+  animatedPosition: Animated.Value,
+) => (event: GestureEvent<PanGestureHandlerEventPayload>) => void;

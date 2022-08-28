@@ -1,6 +1,5 @@
 import { Animated } from 'react-native';
 import {
-  GestureEvent,
   HandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
@@ -12,10 +11,6 @@ export type Props = {
 };
 
 export type UseOpacityControl = (isDrawerOpened: boolean) => void;
-
-export type UseGestureHandler = (
-  animatedPosition: Animated.Value,
-) => (event: GestureEvent<PanGestureHandlerEventPayload>) => void;
 
 export type UseGestureStateHandler = (
   drawerAnimation: () => void,
