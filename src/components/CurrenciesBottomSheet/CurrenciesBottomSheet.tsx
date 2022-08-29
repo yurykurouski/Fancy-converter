@@ -65,6 +65,7 @@ const CurrenciesBottomSheet = React.memo<Props>(
         backgroundStyle={styles.backgroundStyle}
         onChange={onChangeHandler}>
         <BottomSheetFlatList
+          // @ts-expect-error poor typization from library
           onScroll={handleScroll}
           style={styles.listContainer}
           data={avaliableCurrencies}

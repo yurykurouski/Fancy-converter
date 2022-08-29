@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { StatusBar, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { CurrenciesMainContent } from 'components';
+import { CurrenciesMainContent, Onboarding } from 'components';
 import {
   ExchangeCourseProvider,
   LocalStorageProvider,
@@ -14,15 +14,22 @@ import { useStyles } from './App.styles';
 
 const App = React.memo(() => {
   const { themeColors, colorScheme } = useContext(ThemeContext);
+  const [isOnboarded, setIsOnboarded] = useState(false);
   const styles = useStyles();
   return (
-    <View style={styles.backgroundStyle}>
-      <StatusBar
-        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-        backgroundColor={themeColors.APP_BACKGROUND_PRIMARY}
-      />
-      <CurrenciesMainContent />
-    </View>
+    <>
+      <View style={styles.backgroundStyle}>
+        <StatusBar
+          barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+          backgroundColor={themeColors.APP_BACKGROUND_PRIMARY}
+        />
+        {isOnboarded ? (
+          <CurrenciesMainContent />
+        ) : (
+          <Onboarding setIsOnboarded={setIsOnboarded} />
+        )}
+      </View>
+    </>
   );
 });
 
