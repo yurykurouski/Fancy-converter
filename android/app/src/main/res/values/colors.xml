@@ -1,0 +1,4 @@
+<resources>
+    <color name="bootsplash_background_light">#F0F0F3</color>
+    <color name="bootsplash_background_dark">#202124</color>
+</resources>
