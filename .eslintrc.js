@@ -10,6 +10,7 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:react-hooks/recommended',
     'prettier',
+    'plugin:sonarjs/recommended',
   ],
   plugins: [
     'eslint-plugin-simple-import-sort',
@@ -17,6 +18,7 @@ module.exports = {
     'prettier',
     'react-hooks',
     'unused-imports',
+    'sonarjs',
   ],
   rules: {
     'simple-import-sort/exports': 'error',
