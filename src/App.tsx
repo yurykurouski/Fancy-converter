@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { StatusBar, View } from 'react-native';
-// import RNBootSplash from 'react-native-bootsplash';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import {
