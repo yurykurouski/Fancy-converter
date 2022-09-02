@@ -1,28 +1,23 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
+import { OnboardingContext } from 'context/OnboardingContext';
 
 import { showNotification } from './notification-animations';
 import { UseNotificationMessage } from './WithNotification.types';
 
 export const useNotificationMessage: UseNotificationMessage = () => {
+  const { isOnboarded } = useContext(OnboardingContext);
   const [message, setMessage] = useState(null);
 
-  const showMessage = useCallback((msg: string) => {
-    setMessage(msg);
+  const showMessage = useCallback(
+    (msg: string) => {
+      if (isOnboarded) {
+        setMessage(msg);
 
-    showNotification();
-    //todo: for case if i find a solution to change default small app icon
-    /*  if (Platform.OS === 'ios') {
-      ToastAndroid.showWithGravity(
-        l[msg],
-        ToastAndroid.SHORT,
-        ToastAndroid.TOP,
-      );
-    } else if (Platform.OS === 'android') {
-      setMessage(l[msg]);
-
-      showNotification();
-    } */
-  }, []);
+        showNotification();
+      }
+    },
+    [isOnboarded],
+  );
 
   return {
     showMessage,

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useRef } from 'react';
+import React, { useRef } from 'react';
 import { FlatList, View } from 'react-native';
 
 import { ONBOARDING_SCREENS } from './Onboarding.consts';
@@ -7,11 +7,7 @@ import { OnboardingNavigation } from './OnboardingNavigation';
 
 import { useStyles } from './Onboarding.styles';
 
-export const Onboarding = ({
-  setIsOnboarded,
-}: {
-  setIsOnboarded: Dispatch<SetStateAction<boolean>>;
-}) => {
+export const Onboarding = () => {
   const flatListRef = useRef<FlatList>();
   const styles = useStyles();
 
@@ -33,7 +29,6 @@ export const Onboarding = ({
         horizontal
       />
       <OnboardingNavigation
-        setIsOnboarded={setIsOnboarded}
         currentPage={currentPage}
         flatListRef={flatListRef}
       />

@@ -9,17 +9,12 @@ import { Props } from './OnboardingNavigation.types';
 
 import { useStyles } from './OnboardingNavigation.styles';
 
-export const OnboardingNavigation = ({
-  currentPage,
-  flatListRef,
-  setIsOnboarded,
-}: Props) => {
+export const OnboardingNavigation = ({ currentPage, flatListRef }: Props) => {
   const styles = useStyles();
 
   const { handleNextPress, handleSkip } = useNavigationHandlers({
     currentPage,
     flatListRef,
-    setIsOnboarded,
   });
 
   const rightButtonText =

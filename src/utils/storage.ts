@@ -6,6 +6,7 @@ export enum StorageKeys {
   LAST_COURSES_UPDATE = 'LAST_COURSES_UPDATE',
   LAST_COURSES_SAVE_DATE = 'LAST_COURSES_SAVE_DATE',
   COLOR_SCHEME = 'COLOR_SCHEME',
+  IS_ONBOARDED = 'IS_ONBOARDED',
 }
 
 export const setToStorage = async (key: StorageKeys, value: unknown) =>

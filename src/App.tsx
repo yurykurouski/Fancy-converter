@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { StatusBar, View } from 'react-native';
+// import RNBootSplash from 'react-native-bootsplash';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import {
@@ -7,6 +8,10 @@ import {
   LocalStorageProvider,
   WithNotification,
 } from 'context';
+import {
+  OnboardingContext,
+  OnboardingContextProvider,
+} from 'context/OnboardingContext';
 import { ThemeProvider } from 'context/ThemeProvider';
 import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 
@@ -14,8 +19,10 @@ import { useStyles } from './App.styles';
 
 const App = React.memo(() => {
   const { themeColors, colorScheme } = useContext(ThemeContext);
-  const [isOnboarded, setIsOnboarded] = useState(false);
+  const { isOnboarded } = useContext(OnboardingContext);
+
   const styles = useStyles();
+
   return (
     <>
       <View style={styles.backgroundStyle}>
@@ -23,11 +30,7 @@ const App = React.memo(() => {
           barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
           backgroundColor={themeColors.APP_BACKGROUND_PRIMARY}
         />
-        {isOnboarded ? (
-          <CurrenciesMainContent />
-        ) : (
-          <Onboarding setIsOnboarded={setIsOnboarded} />
-        )}
+        {isOnboarded ? <CurrenciesMainContent /> : <Onboarding />}
       </View>
     </>
   );
@@ -37,11 +40,13 @@ export default () => (
   <GestureHandlerRootView>
     <LocalStorageProvider>
       <ThemeProvider>
-        <WithNotification>
-          <ExchangeCourseProvider>
-            <App />
-          </ExchangeCourseProvider>
-        </WithNotification>
+        <OnboardingContextProvider>
+          <WithNotification>
+            <ExchangeCourseProvider>
+              <App />
+            </ExchangeCourseProvider>
+          </WithNotification>
+        </OnboardingContextProvider>
       </ThemeProvider>
     </LocalStorageProvider>
   </GestureHandlerRootView>
