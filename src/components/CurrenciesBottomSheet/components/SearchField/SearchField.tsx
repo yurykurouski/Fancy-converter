@@ -53,6 +53,7 @@ export const SearchField: React.FC<Props> = ({
           onPressOut={() => setIsFocused(true)}
           placeholder={l['currency_search.input.placeholder']}
           placeholderTextColor={themeColors.FONT_COLOR_FADED}
+          contextMenuHidden
         />
         {!!searchValue && (
           <CancelButton

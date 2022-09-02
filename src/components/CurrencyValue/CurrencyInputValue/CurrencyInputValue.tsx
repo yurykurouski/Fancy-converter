@@ -115,7 +115,7 @@ export const CurrencyInputValue: React.FC<Props> = ({
             onFocus={() => onFocusHandler(caclulatedValue)}
             ref={inputRef}
             keyboardType="numeric"
-            contextMenuHidden={true}
+            contextMenuHidden
             placeholder="0"
             maxLength={14}
             caretHidden={!isKeyboardVisible}
