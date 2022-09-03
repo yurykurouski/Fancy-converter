@@ -35,4 +35,16 @@ export const useStyles = () =>
       fontWeight: '500',
       color: theme.FONT_PRIMARY_COLOR,
     },
+    underlayBackground: {
+      backgroundColor: theme.SUNSET_ORANGE,
+      width: 80,
+      borderTopLeftRadius: 15,
+      borderBottomLeftRadius: 15,
+      height: '100%',
+      borderColor: 'transparent',
+      borderBottomWidth: 2,
+      borderTopWidth: 2,
+      paddingLeft: 10,
+      justifyContent: 'center',
+    },
   }));

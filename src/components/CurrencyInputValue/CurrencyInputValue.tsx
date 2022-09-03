@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   Platform,
   Pressable,
@@ -66,11 +66,10 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
 
     const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
     const [isReadyToDelete, setIsReadyToDelete] = useState(false);
-    const [value, setValue] = useState(null);
 
     const styles = useStyles();
 
-    const inputRef = useRef(null);
+    const inputRef = useRef<TextInput>(null);
 
     const selectedCourses = useFilteredCourseBySelectedCurrencies(
       exchangeCourse,
@@ -82,14 +81,17 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
 
     const isFocused = focusedCurrencyName === currencyCode;
 
-    const { onChangeTextHandler, onFocusHandler, containerOnPressHandler } =
-      useCurrencyInputHandlers(
-        setFocusedCurrencyValue,
-        setValue,
-        setFocusedCurrencyName,
-        currencyCode,
-        inputRef,
-      );
+    const {
+      onChangeTextHandler,
+      onFocusHandler,
+      containerOnPressHandler,
+      value,
+    } = useCurrencyInputHandlers({
+      setFocusedCurrencyValue,
+      setFocusedCurrencyName,
+      currencyCode,
+      inputRef,
+    });
 
     const caclulatedValue = useConvertedValues(
       isFocused,
@@ -116,6 +118,14 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
       startNotification,
     });
 
+    useEffect(() => {
+      if (isReadyToDelete) {
+        setIsReadyToDelete(false);
+        itemRefs.current.get(currencyCode).close();
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [caclulatedValue]);
+
     return (
       <OpacityDecorator>
         <SwipeableItem
@@ -141,19 +151,7 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
           // }}
           overSwipe={OVERSWIPE_DIST}
           renderUnderlayRight={() => (
-            <View
-              style={{
-                backgroundColor: '#ef5350',
-                width: 80,
-                borderTopLeftRadius: 15,
-                borderBottomLeftRadius: 15,
-                height: '100%',
-                borderColor: 'transparent',
-                borderBottomWidth: 2,
-                borderTopWidth: 2,
-                paddingLeft: 10,
-                justifyContent: 'center',
-              }}>
+            <View style={styles.underlayBackground}>
               <CancelButton size={30} onPress={handleDeletePress} />
             </View>
           )}

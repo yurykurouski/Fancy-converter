@@ -4,6 +4,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useState,
 } from 'react';
 import { Keyboard } from 'react-native';
 import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
@@ -15,13 +16,14 @@ import {
   UseHandleDeletePress,
 } from './CurrencyInputValue.types';
 
-export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
+export const useCurrencyInputHandlers: UseCurrencyInputHandlers = ({
   setFocusedCurrencyValue,
-  setValue,
   setFocusedCurrencyName,
   currencyCode,
   inputRef,
-) => {
+}) => {
+  const [value, setValue] = useState<string>(null);
+
   const onChangeTextHandler = useCallback(
     text => {
       const withoutSpaces = text.replace(/\s+/g, '');
@@ -47,7 +49,12 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
     inputRef.current.focus();
   }, [inputRef]);
 
-  return { onChangeTextHandler, onFocusHandler, containerOnPressHandler };
+  return {
+    onChangeTextHandler,
+    onFocusHandler,
+    containerOnPressHandler,
+    value,
+  };
 };
 
 export const useConvertedValues: UseConvertedValues = (

@@ -10,6 +10,7 @@ export enum ColorsDark {
   ACCENT_COLOR_DARKER = '#1a1921',
   MAIN_BUTTON_COLOR = '#4F378B',
   MAIN_BUTTON_TEXT_COLOR = 'white',
+  SUNSET_ORANGE = '#ef5350',
 }
 
 export enum ColorsLight {
@@ -24,6 +25,7 @@ export enum ColorsLight {
   ACCENT_COLOR_DARKER = '#e9e9f0',
   MAIN_BUTTON_COLOR = '#1a73e8',
   MAIN_BUTTON_TEXT_COLOR = '#fafcfe',
+  SUNSET_ORANGE = '#ef5350',
 }
 
 export const THEME_COLORS = {
