@@ -12,6 +12,7 @@ import { l } from 'resources/localization';
 import {
   UseConvertedValues,
   UseCurrencyInputHandlers,
+  UseHandleDeletePress,
 } from './CurrencyInputValue.types';
 
 export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
@@ -110,3 +111,29 @@ export const useKeyboardHandlers = (
       removeHideListener.remove();
     };
   }, [setIsKeyboardVisible]);
+
+export const useHandleDeletePress = ({
+  setIsReadyToDelete,
+  selectedCurrencies,
+  currencyCode,
+  setSelectedCurrencies,
+  startNotification,
+}: UseHandleDeletePress) =>
+  useCallback(() => {
+    setIsReadyToDelete(false);
+
+    const filteredCurrencies = selectedCurrencies.filter(
+      el => el !== currencyCode,
+    );
+    setSelectedCurrencies(filteredCurrencies);
+
+    startNotification(
+      `${currencyCode} ${l['currencies_main.currency_deleted']}`,
+    );
+  }, [
+    currencyCode,
+    selectedCurrencies,
+    setIsReadyToDelete,
+    setSelectedCurrencies,
+    startNotification,
+  ]);

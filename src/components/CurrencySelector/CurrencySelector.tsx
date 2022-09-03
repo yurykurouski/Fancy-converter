@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
-import { RefreshControl } from 'react-native';
-import DraggableFlatList from 'react-native-draggable-flatlist';
-import { RenderItemParams } from 'react-native-draggable-flatlist';
+import React, { useContext, useRef } from 'react';
+import { RefreshControl, View } from 'react-native';
+import DraggableFlatList, {
+  RenderItemParams,
+} from 'react-native-draggable-flatlist';
+import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { ColorsDark } from 'assets/colors';
-import { CurrenciesBottomSheet } from 'components/CurrenciesBottomSheet';
-import { CurrencyInputValue } from 'components/CurrencyInputValue';
+import { CurrenciesBottomSheet, CurrencyInputValue } from 'components';
 import { ExchangeCourseContext, SelectedCurrenciesContext } from 'context';
+import { AvaliableCurrenciesNames } from 'types';
 
+import { ANIMATION_CONFIG } from './CurrencySelector.consts';
 import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
 
 export const CurrencySelector = () => {
@@ -23,29 +26,25 @@ export const CurrencySelector = () => {
 
   const { isLoading, exchangeCourse } = currentExchangeCourse;
 
+  const itemRefs = useRef<
+    Map<AvaliableCurrenciesNames, SwipeableItemImperativeRef>
+  >(new Map());
+
   const isKeyBoardOpened = useTrackKeyboardStatus();
 
-  const renderItem = ({ item, drag }: RenderItemParams<string>) => (
-    <CurrencyInputValue currencyCode={item} drag={drag} />
+  const renderItem = ({
+    item,
+    drag,
+  }: RenderItemParams<AvaliableCurrenciesNames>) => (
+    <CurrencyInputValue currencyCode={item} drag={drag} itemRefs={itemRefs} />
   );
 
   return (
     <>
       <DraggableFlatList
-        animationConfig={{
-          damping: 20,
-          mass: 0.1,
-          stiffness: 100,
-          overshootClamping: false,
-          restSpeedThreshold: 1,
-          restDisplacementThreshold: 1,
-        }}
+        animationConfig={ANIMATION_CONFIG}
         keyboardShouldPersistTaps="handled"
-        containerStyle={
-          isKeyBoardOpened
-            ? { marginBottom: 20, flex: 1 }
-            : { marginBottom: 60, flex: 1 }
-        }
+        containerStyle={{ paddingHorizontal: 10 }}
         data={selectedCurrencies}
         keyExtractor={item => item}
         renderItem={renderItem}
@@ -57,8 +56,12 @@ export const CurrencySelector = () => {
             colors={[ColorsDark.MAIN_BUTTON_COLOR]}
           />
         }
-        onRefresh={setCurrentExchangeCourse}
-        refreshing={isLoading}
+        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+        ListFooterComponent={() => (
+          <View style={{ height: isKeyBoardOpened ? 35 : 75 }} />
+        )}
+        activationDistance={20}
+        showsVerticalScrollIndicator={false}
       />
       {exchangeCourse && (
         <CurrenciesBottomSheet

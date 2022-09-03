@@ -23,7 +23,7 @@ export const CancelButton: React.FC<Props> = ({
 
   return (
     <TouchableOpacity
-      onPress={() => onPress('')}
+      onPressOut={() => onPress('')}
       style={[styles.buttonWrapper, additionalStyle]}>
       {colorScheme === 'dark' ? (
         <CloseIconLight width={size} height={size} />

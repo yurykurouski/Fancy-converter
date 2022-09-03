@@ -1,1 +1,0 @@
-export { FlagButton } from './FlagButton';

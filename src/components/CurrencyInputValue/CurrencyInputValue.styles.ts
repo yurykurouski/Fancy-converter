@@ -11,9 +11,7 @@ export const useStyles = () =>
     },
     container: {
       flexDirection: 'row',
-      borderRadius: 15,
       alignItems: 'center',
-      height: 60,
       paddingRight: 10,
     },
     containerWrapperFocused: {

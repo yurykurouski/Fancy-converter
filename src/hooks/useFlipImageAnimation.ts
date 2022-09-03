@@ -1,35 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { Animated } from 'react-native';
-import { l } from 'resources/localization';
 
-import { UseHandleDeletePress } from './FlagButton.types';
-
-export const useHandleDeletePress = ({
-  setIsReadyToDelete,
-  selectedCurrencies,
-  currencyCode,
-  setSelectedCurrencies,
-  startNotification,
-}: UseHandleDeletePress) =>
-  useCallback(() => {
-    setIsReadyToDelete(false);
-
-    const filteredCurrencies = selectedCurrencies.filter(
-      el => el !== currencyCode,
-    );
-    setSelectedCurrencies(filteredCurrencies);
-
-    startNotification(
-      `${currencyCode} ${l['currencies_main.currency_deleted']}`,
-    );
-  }, [
-    currencyCode,
-    selectedCurrencies,
-    setIsReadyToDelete,
-    setSelectedCurrencies,
-    startNotification,
-  ]);
-
+//! deprecated
 export const useFlipImageAnimation = (isReadyToDelete: boolean) => {
   const animatedValue = useMemo(() => new Animated.Value(180), []);
 

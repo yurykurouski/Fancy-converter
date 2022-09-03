@@ -1,10 +1,21 @@
 import React, { useContext, useRef, useState } from 'react';
-import { Pressable, Text, TextInput, Vibration, View } from 'react-native';
+import {
+  Platform,
+  Pressable,
+  Text,
+  TextInput,
+  UIManager,
+  Vibration,
+  View,
+} from 'react-native';
 import { OpacityDecorator } from 'react-native-draggable-flatlist';
+import SwipeableItem from 'react-native-swipeable-item';
 import { CancelButton } from 'components/common/CancelButton';
+import { CountryFlag } from 'components/common/CountryFlag';
 import {
   ExchangeCourseContext,
   FocusedCurrencyContext,
+  NotificationContext,
   SelectedCurrenciesContext,
 } from 'context';
 import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
@@ -14,16 +25,24 @@ import {
   useConvertedValues,
   useCurrencyInputHandlers,
   useFormattedValue,
+  useHandleDeletePress,
   useKeyboardHandlers,
 } from './CurrencyInputValue.hooks';
 import { Props } from './CurrencyInputValue.types';
-import { FlagButton } from './FlagButton';
 import { Gradient } from './Gradient';
 
 import { useStyles } from './CurrencyInputValue.styles';
 
+const OVERSWIPE_DIST = 10;
+const FEAT_WITH_GRADIENT = false;
+
+if (Platform.OS === 'android') {
+  UIManager.setLayoutAnimationEnabledExperimental &&
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
 export const CurrencyInputValue: React.FC<Props> = React.memo(
-  ({ currencyCode, drag }) => {
+  ({ currencyCode, drag, itemRefs }) => {
     const { themeColors } = useContext(ThemeContext);
     const {
       focusedCurrencyContext: {
@@ -36,8 +55,10 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
       currentExchangeCourseContext: { currentExchangeCourse },
     } = useContext(ExchangeCourseContext);
     const {
-      selectedCurrenciesContext: { selectedCurrencies },
+      selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
     } = useContext(SelectedCurrenciesContext);
+
+    const startNotification = useContext(NotificationContext);
 
     const { focusedCurrencyName, focusedCurrencyValue } = focusedCurrency;
 
@@ -85,23 +106,63 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
     const handleLongPress = () => {
       Vibration.vibrate(30);
       drag();
-      // setIsReadyToDelete(value => !value);
     };
+
+    const handleDeletePress = useHandleDeletePress({
+      setIsReadyToDelete,
+      selectedCurrencies,
+      currencyCode,
+      setSelectedCurrencies,
+      startNotification,
+    });
 
     return (
       <OpacityDecorator>
-        <View
-          style={{
-            marginBottom: 10,
-            paddingHorizontal: 10,
-          }}>
-          <Gradient isReadyToDelete={isReadyToDelete} isFocused={isFocused} />
-
+        <SwipeableItem
+          item={currencyCode}
+          ref={ref => {
+            if (ref && !itemRefs.current.get(currencyCode)) {
+              itemRefs.current.set(currencyCode, ref);
+            }
+          }}
+          //*remove comment to enable gradient
+          // onChange={({ openDirection }) => {
+          //   if (
+          //     openDirection === OpenDirection.RIGHT ||
+          //     openDirection === OpenDirection.NONE
+          //   ) {
+          //     setIsReadyToDelete(value => !value);
+          //   }
+          // }}
+          overSwipe={OVERSWIPE_DIST}
+          renderUnderlayRight={() => (
+            <View
+              style={{
+                backgroundColor: '#ef5350',
+                width: 80,
+                borderTopLeftRadius: 15,
+                borderBottomLeftRadius: 15,
+                height: '100%',
+                borderColor: 'transparent',
+                borderBottomWidth: 2,
+                borderTopWidth: 2,
+                paddingLeft: 10,
+                justifyContent: 'center',
+              }}>
+              <CancelButton size={30} onPress={handleDeletePress} />
+            </View>
+          )}
+          snapPointsRight={[0, 60]}>
+          {/** whait for decision about gradient */}
+          {FEAT_WITH_GRADIENT && (
+            <Gradient isReadyToDelete={isReadyToDelete} isFocused={isFocused} />
+          )}
           <View
             style={[
               styles.containerWrapper,
               styles.container,
-              isFocused && !isReadyToDelete && styles.containerWrapperFocused,
+              //* to enable gradient style just add !isReadyToDelete
+              isFocused && styles.containerWrapperFocused,
             ]}>
             <Pressable
               onLongPress={handleLongPress}
@@ -129,13 +190,9 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
                 additionalStyle={{ marginHorizontal: 10 }}
               />
             )}
-            <FlagButton
-              isReadyToDelete={isReadyToDelete}
-              currencyCode={currencyCode}
-              setIsReadyToDelete={setIsReadyToDelete}
-            />
+            <CountryFlag currencyCode={currencyCode} size={30} />
           </View>
-        </View>
+        </SwipeableItem>
       </OpacityDecorator>
     );
   },

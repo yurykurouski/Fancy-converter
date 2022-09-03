@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
+import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
+import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
+import { AvaliableCurrenciesNames, SelectedCurrencies } from 'types';
 
 export type Props = {
-  currencyCode: string;
+  currencyCode: AvaliableCurrenciesNames;
   drag: () => void;
+  itemRefs: MutableRefObject<
+    Map<AvaliableCurrenciesNames, SwipeableItemImperativeRef>
+  >;
 };
 
 export type OnChangeTextHandler = (text: string) => void;
@@ -29,3 +35,11 @@ export type UseConvertedValues = (
   course: number,
   focusedCurrencyCourse: number,
 ) => string;
+
+export type UseHandleDeletePress = {
+  setIsReadyToDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedCurrencies: SelectedCurrencies;
+  currencyCode: string;
+  setSelectedCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
+  startNotification: ShowMessage;
+};
