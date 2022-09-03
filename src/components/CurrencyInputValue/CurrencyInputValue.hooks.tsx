@@ -1,19 +1,29 @@
-import { useCallback, useMemo } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { Keyboard } from 'react-native';
 import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
 import { l } from 'resources/localization';
 
 import {
   UseConvertedValues,
   UseCurrencyInputHandlers,
+  UseHandleDeletePress,
 } from './CurrencyInputValue.types';
 
-export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
+export const useCurrencyInputHandlers: UseCurrencyInputHandlers = ({
   setFocusedCurrencyValue,
-  setValue,
   setFocusedCurrencyName,
   currencyCode,
   inputRef,
-) => {
+}) => {
+  const [value, setValue] = useState<string>(null);
+
   const onChangeTextHandler = useCallback(
     text => {
       const withoutSpaces = text.replace(/\s+/g, '');
@@ -35,12 +45,16 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
     [currencyCode, setFocusedCurrencyName, setFocusedCurrencyValue, setValue],
   );
 
-  const containerOnPressHandler = useCallback(
-    () => inputRef.current.focus(),
-    [inputRef],
-  );
+  const containerOnPressHandler = useCallback(() => {
+    inputRef.current.focus();
+  }, [inputRef]);
 
-  return [onChangeTextHandler, onFocusHandler, containerOnPressHandler];
+  return {
+    onChangeTextHandler,
+    onFocusHandler,
+    containerOnPressHandler,
+    value,
+  };
 };
 
 export const useConvertedValues: UseConvertedValues = (
@@ -86,3 +100,47 @@ export const useFormattedValue = (value: string) => {
     ? `${formatted.reverse().join('')}.${fraction}`
     : `${formatted.reverse().join('')}`;
 };
+
+export const useKeyboardHandlers = (
+  setIsKeyboardVisible: Dispatch<SetStateAction<boolean>>,
+) =>
+  useEffect(() => {
+    const removeShowListener = Keyboard.addListener('keyboardDidShow', () => {
+      setIsKeyboardVisible(true);
+    });
+
+    const removeHideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setIsKeyboardVisible(false);
+    });
+
+    return () => {
+      removeShowListener.remove();
+      removeHideListener.remove();
+    };
+  }, [setIsKeyboardVisible]);
+
+export const useHandleDeletePress = ({
+  setIsReadyToDelete,
+  selectedCurrencies,
+  currencyCode,
+  setSelectedCurrencies,
+  startNotification,
+}: UseHandleDeletePress) =>
+  useCallback(() => {
+    setIsReadyToDelete(false);
+
+    const filteredCurrencies = selectedCurrencies.filter(
+      el => el !== currencyCode,
+    );
+    setSelectedCurrencies(filteredCurrencies);
+
+    startNotification(
+      `${currencyCode} ${l['currencies_main.currency_deleted']}`,
+    );
+  }, [
+    currencyCode,
+    selectedCurrencies,
+    setIsReadyToDelete,
+    setSelectedCurrencies,
+    startNotification,
+  ]);

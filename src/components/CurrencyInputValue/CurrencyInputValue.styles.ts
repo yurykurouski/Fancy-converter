@@ -11,9 +11,7 @@ export const useStyles = () =>
     },
     container: {
       flexDirection: 'row',
-      borderRadius: 15,
       alignItems: 'center',
-      height: 60,
       paddingRight: 10,
     },
     containerWrapperFocused: {
@@ -36,5 +34,16 @@ export const useStyles = () =>
       fontSize: 24,
       fontWeight: '500',
       color: theme.FONT_PRIMARY_COLOR,
+    },
+    underlayBackground: {
+      backgroundColor: theme.SUNSET_ORANGE,
+      width: 80,
+      borderTopLeftRadius: 15,
+      borderBottomLeftRadius: 15,
+      height: '100%',
+      borderColor: 'transparent',
+      borderWidth: 2,
+      paddingLeft: 10,
+      justifyContent: 'center',
     },
   }));
