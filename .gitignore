@@ -71,3 +71,4 @@ buck-out/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.vscode/

@@ -13,11 +13,11 @@ export type Props = {
 
 export type UseOpacityControl = (isDrawerOpened: boolean) => void;
 
-export type UseGestureHandler = (
-  animatedPosition: Animated.Value,
-) => (event: GestureEvent<PanGestureHandlerEventPayload>) => void;
-
 export type UseGestureStateHandler = (
   drawerAnimation: () => void,
   animatedPosition: Animated.Value,
 ) => (event: HandlerStateChangeEvent<PanGestureHandlerEventPayload>) => void;
+
+export type UseGestureHandler = (
+  animatedPosition: Animated.Value,
+) => (event: GestureEvent<PanGestureHandlerEventPayload>) => void;

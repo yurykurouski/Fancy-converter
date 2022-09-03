@@ -10,7 +10,7 @@ import {
   GITHUB_REPO_URL,
   PAYPAL_DONATION_URL,
   TG_CHANNEL_URL,
-} from 'constants';
+} from 'constants/constants';
 import { ThemeContext } from 'context';
 
 import { DrawerIcon } from '../DrawerIcon';

@@ -12,7 +12,7 @@ import {
 
 import { styles } from './CurrenciesMainContent.styles';
 
-export const CurrenciesMainContent = () => {
+export const CurrenciesMainContent = React.memo(() => {
   const { isDrawerOpened, drawerAnimation, animatedPosition } =
     useOpenDrawerAnimations();
 
@@ -33,4 +33,4 @@ export const CurrenciesMainContent = () => {
       </SelectedCurrenciesProvider>
     </>
   );
-};
+});

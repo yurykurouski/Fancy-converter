@@ -19,17 +19,6 @@ export const useOpacityControl: UseOpacityControl = isDrawerOpened =>
     }
   }, [isDrawerOpened]);
 
-export const useGestureHandler: UseGestureHandler = animatedPosition =>
-  useCallback(
-    ({ nativeEvent }) => {
-      const { translationX } = nativeEvent;
-      if (translationX > 0) return;
-
-      animatedPosition.setValue(translationX);
-    },
-    [animatedPosition],
-  );
-
 export const useGestureStateHandler: UseGestureStateHandler = (
   drawerAnimation,
   animatedPosition,
@@ -55,4 +44,15 @@ export const useGestureStateHandler: UseGestureStateHandler = (
       }
     },
     [animatedPosition, drawerAnimation],
+  );
+
+export const useGestureHandler: UseGestureHandler = animatedPosition =>
+  useCallback(
+    ({ nativeEvent }) => {
+      const { translationX } = nativeEvent;
+      if (translationX > 0) return;
+
+      animatedPosition.setValue(translationX);
+    },
+    [animatedPosition],
   );
