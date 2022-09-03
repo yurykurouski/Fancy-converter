@@ -2,12 +2,7 @@ import React from 'react';
 
 export type Props = {
   currencyCode: string;
-  focusedCurrencyName: string;
-  focusedCurrencyValue: string;
-  course: number;
-  focusedCurrencyCourse: number;
-  setFocusedCurrencyName: React.Dispatch<React.SetStateAction<string>>;
-  setFocusedCurrencyValue: React.Dispatch<React.SetStateAction<string>>;
+  drag: () => void;
 };
 
 export type OnChangeTextHandler = (text: string) => void;
@@ -21,7 +16,11 @@ export type UseCurrencyInputHandlers = (
   currencyCode: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   inputRef: React.MutableRefObject<any>,
-) => [OnChangeTextHandler, OnFocusHandler, ContainerOnPressHandler];
+) => {
+  onChangeTextHandler: OnChangeTextHandler;
+  onFocusHandler: OnFocusHandler;
+  containerOnPressHandler: ContainerOnPressHandler;
+};
 
 export type UseConvertedValues = (
   isFocused: boolean,

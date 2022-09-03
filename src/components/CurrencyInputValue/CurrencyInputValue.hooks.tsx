@@ -1,4 +1,11 @@
-import { useCallback, useMemo } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+} from 'react';
+import { Keyboard } from 'react-native';
 import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
 import { l } from 'resources/localization';
 
@@ -35,12 +42,11 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = (
     [currencyCode, setFocusedCurrencyName, setFocusedCurrencyValue, setValue],
   );
 
-  const containerOnPressHandler = useCallback(
-    () => inputRef.current.focus(),
-    [inputRef],
-  );
+  const containerOnPressHandler = useCallback(() => {
+    inputRef.current.focus();
+  }, [inputRef]);
 
-  return [onChangeTextHandler, onFocusHandler, containerOnPressHandler];
+  return { onChangeTextHandler, onFocusHandler, containerOnPressHandler };
 };
 
 export const useConvertedValues: UseConvertedValues = (
@@ -86,3 +92,21 @@ export const useFormattedValue = (value: string) => {
     ? `${formatted.reverse().join('')}.${fraction}`
     : `${formatted.reverse().join('')}`;
 };
+
+export const useKeyboardHandlers = (
+  setIsKeyboardVisible: Dispatch<SetStateAction<boolean>>,
+) =>
+  useEffect(() => {
+    const removeShowListener = Keyboard.addListener('keyboardDidShow', () => {
+      setIsKeyboardVisible(true);
+    });
+
+    const removeHideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setIsKeyboardVisible(false);
+    });
+
+    return () => {
+      removeShowListener.remove();
+      removeHideListener.remove();
+    };
+  }, [setIsKeyboardVisible]);

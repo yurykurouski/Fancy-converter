@@ -16,7 +16,7 @@ import {
 
 import { useStyles } from './CurrenciesBottomSheet.styles';
 
-const CurrenciesBottomSheet = React.memo<Props>(
+export const CurrenciesBottomSheet = React.memo<Props>(
   ({ selectedCurrencies, setSelectedCurrencies }) => {
     const [avaliableCurrencies, setAvaliableCurrencies] = useState(currencies);
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -83,5 +83,3 @@ const CurrenciesBottomSheet = React.memo<Props>(
     );
   },
 );
-
-export default CurrenciesBottomSheet;

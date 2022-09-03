@@ -1,26 +1,15 @@
-import React, { lazy, Suspense, useContext } from 'react';
-import {
-  ActivityIndicator,
-  RefreshControl,
-  ScrollView,
-  View,
-} from 'react-native';
+import React, { useContext } from 'react';
+import { RefreshControl } from 'react-native';
+import DraggableFlatList from 'react-native-draggable-flatlist';
+import { RenderItemParams } from 'react-native-draggable-flatlist';
 import { ColorsDark } from 'assets/colors';
-import {
-  ExchangeCourseContext,
-  FocusedCurrencyProvider,
-  SelectedCurrenciesContext,
-} from 'context';
-
-import { CurrencyValue } from '../CurrencyValue';
+import { CurrenciesBottomSheet } from 'components/CurrenciesBottomSheet';
+import { CurrencyInputValue } from 'components/CurrencyInputValue';
+import { ExchangeCourseContext, SelectedCurrenciesContext } from 'context';
 
 import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
 
-const CurrenciesBottomSheet = lazy(
-  () => import('../CurrenciesBottomSheet/CurrenciesBottomSheet'),
-);
-
-export const CurrencySelector = React.memo(() => {
+export const CurrencySelector = () => {
   const {
     selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
@@ -36,36 +25,47 @@ export const CurrencySelector = React.memo(() => {
 
   const isKeyBoardOpened = useTrackKeyboardStatus();
 
+  const renderItem = ({ item, drag }: RenderItemParams<string>) => (
+    <CurrencyInputValue currencyCode={item} drag={drag} />
+  );
+
   return (
-    <Suspense fallback={<ActivityIndicator size="large" />}>
-      <ScrollView
-        style={isKeyBoardOpened ? { marginBottom: 20 } : { marginBottom: 60 }}
+    <>
+      <DraggableFlatList
+        animationConfig={{
+          damping: 20,
+          mass: 0.1,
+          stiffness: 100,
+          overshootClamping: false,
+          restSpeedThreshold: 1,
+          restDisplacementThreshold: 1,
+        }}
         keyboardShouldPersistTaps="handled"
+        containerStyle={
+          isKeyBoardOpened
+            ? { marginBottom: 20, flex: 1 }
+            : { marginBottom: 60, flex: 1 }
+        }
+        data={selectedCurrencies}
+        keyExtractor={item => item}
+        renderItem={renderItem}
+        onDragEnd={props => setSelectedCurrencies(props.data)}
         refreshControl={
           <RefreshControl
             refreshing={isLoading}
             onRefresh={setCurrentExchangeCourse}
             colors={[ColorsDark.MAIN_BUTTON_COLOR]}
           />
-        }>
-        {!!selectedCurrencies.length && exchangeCourse && (
-          <FocusedCurrencyProvider>
-            <CurrencyValue
-              selectedCurrencies={selectedCurrencies}
-              exchangeCourse={exchangeCourse}
-            />
-          </FocusedCurrencyProvider>
-        )}
-      </ScrollView>
-
-      <Suspense fallback={<View />}>
-        {exchangeCourse && (
-          <CurrenciesBottomSheet
-            selectedCurrencies={selectedCurrencies}
-            setSelectedCurrencies={setSelectedCurrencies}
-          />
-        )}
-      </Suspense>
-    </Suspense>
+        }
+        onRefresh={setCurrentExchangeCourse}
+        refreshing={isLoading}
+      />
+      {exchangeCourse && (
+        <CurrenciesBottomSheet
+          selectedCurrencies={selectedCurrencies}
+          setSelectedCurrencies={setSelectedCurrencies}
+        />
+      )}
+    </>
   );
-});
+};
