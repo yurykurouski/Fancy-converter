@@ -27,6 +27,7 @@
     "react-native-localization": "^2.3.1",
     "react-native-reanimated": "^2.10.0",
     "react-native-svg": "^13.0.0",
+    "react-native-swipeable-item": "^2.0.9",
     "react-native-text-ticker": "^1.14.0"
   },
   "devDependencies": {
