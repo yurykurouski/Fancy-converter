@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import { OpacityDecorator } from 'react-native-draggable-flatlist';
-import SwipeableItem from 'react-native-swipeable-item';
+import SwipeableItem, { OpenDirection } from 'react-native-swipeable-item';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
 import {
@@ -124,6 +124,11 @@ export const CurrencyInputValue: React.FC<Props> = React.memo(
             if (ref && !itemRefs.current.get(currencyCode)) {
               itemRefs.current.set(currencyCode, ref);
             }
+          }}
+          onChange={({ openDirection }) => {
+            openDirection === OpenDirection.RIGHT
+              ? setIsReadyToDelete(true)
+              : setIsReadyToDelete(false);
           }}
           //*remove comment to enable gradient
           // onChange={({ openDirection }) => {

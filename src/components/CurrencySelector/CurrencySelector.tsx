@@ -60,7 +60,7 @@ export const CurrencySelector = () => {
         ListFooterComponent={() => (
           <View style={{ height: isKeyBoardOpened ? 35 : 75 }} />
         )}
-        activationDistance={20}
+        activationDistance={10}
         showsVerticalScrollIndicator={false}
       />
       {exchangeCourse && (
