@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from 'react';
+import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import { TextInput } from 'react-native';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
@@ -17,10 +17,8 @@ export type OnFocusHandler = (text: string) => void;
 export type ContainerOnPressHandler = () => void;
 
 export type UseCurrencyInputHandlers = (props: {
-  setFocusedCurrencyValue: React.Dispatch<React.SetStateAction<string>>;
-  setFocusedCurrencyName: React.Dispatch<
-    React.SetStateAction<AvaliableCurrenciesNames>
-  >;
+  setFocusedCurrencyValue: Dispatch<SetStateAction<string>>;
+  setFocusedCurrencyName: Dispatch<SetStateAction<AvaliableCurrenciesNames>>;
   currencyCode: AvaliableCurrenciesNames;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   inputRef: MutableRefObject<TextInput>;
@@ -40,9 +38,9 @@ export type UseConvertedValues = (
 ) => string;
 
 export type UseHandleDeletePress = {
-  setIsReadyToDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsReadyToDelete: Dispatch<SetStateAction<boolean>>;
   selectedCurrencies: SelectedCurrencies;
   currencyCode: string;
-  setSelectedCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
+  setSelectedCurrencies: Dispatch<SetStateAction<string[]>>;
   startNotification: ShowMessage;
 };

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, FC, useEffect, useRef, useState } from 'react';
 import { Appearance, AppState, ColorSchemeName } from 'react-native';
 import { useThemeSwitcherAnimations } from 'components/Drawer/DrawerThemeSwitcher/DrawerThemeSwitcher.hooks';
 import {
@@ -14,7 +14,7 @@ import { ThemeContext as Props } from './ThemeProvider.types';
 
 export const ThemeContext = createContext<Props | null>(null);
 
-export const ThemeProvider: React.FC = ({ children }) => {
+export const ThemeProvider: FC = ({ children }) => {
   const [theme, setTheme] = useState<Omit<Props, 'setColorScheme'>>(() => ({
     colorScheme: getCurrentColorTheme(),
     themeColors: getCurrentThemeColors(),

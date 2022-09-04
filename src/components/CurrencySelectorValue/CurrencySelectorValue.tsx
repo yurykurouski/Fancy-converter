@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { CountryFlag } from 'components/common/CountryFlag';
@@ -12,7 +12,7 @@ import { useStyles } from './CurrencySelectorValue.styles';
 
 // const MAX_CURRENCY_NAME_LENGTH = 30;
 
-export const CurrencySelectorValue: React.FC<Props> = React.memo(
+export const CurrencySelectorValue: FC<Props> = React.memo(
   ({
     currencyCode,
     modalSelectedCurrencies,

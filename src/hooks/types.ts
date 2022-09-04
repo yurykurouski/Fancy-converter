@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import {
   HandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
@@ -20,13 +21,13 @@ export type UseGetCurrenciesExchangeCourse = (
 export type GetCoursesFromStorage = (onInit: boolean) => void;
 
 export type UseGetCoursesFromStorage = (
-  setExchangeCourse: React.Dispatch<OnlyCourses>,
+  setExchangeCourse: Dispatch<OnlyCourses>,
   startNotification: ShowMessage,
 ) => GetCoursesFromStorage;
 
 export type UseReloadCourses = (
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-  setExchangeCourse: React.Dispatch<OnlyCourses>,
+  setIsLoading: Dispatch<SetStateAction<boolean>>,
+  setExchangeCourse: Dispatch<OnlyCourses>,
   saveDate: string,
   getCoursesFromStorage: GetCoursesFromStorage,
   startNotification: ShowMessage,
