@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import {
   Platform,
   Pressable,
@@ -41,7 +41,7 @@ if (Platform.OS === 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-export const CurrencyInputValue: React.FC<Props> = React.memo(
+export const CurrencyInputValue: FC<Props> = React.memo(
   ({ currencyCode, drag, itemRefs }) => {
     const { themeColors } = useContext(ThemeContext);
     const {

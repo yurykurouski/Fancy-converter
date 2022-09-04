@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { createContext, FC, useState } from 'react';
 
 import { FocusedCurrencyContext as Type } from './FocusedCurrencyContext.types';
 
-export const FocusedCurrencyContext = React.createContext<Type | null>(null);
+export const FocusedCurrencyContext = createContext<Type | null>(null);
 
-export const FocusedCurrencyProvider: React.FC = ({ children }) => {
+export const FocusedCurrencyProvider: FC = ({ children }) => {
   const [focusedCurrencyName, setFocusedCurrencyName] = useState('');
   const [focusedCurrencyValue, setFocusedCurrencyValue] = useState('');
 

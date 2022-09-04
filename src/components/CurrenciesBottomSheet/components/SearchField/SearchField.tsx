@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { Animated, Keyboard, TextInput, View } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { ThemeContext } from 'context';
@@ -12,7 +12,7 @@ import { Props } from './SearchField.types';
 
 import { useStyles } from './SearchField.styles';
 
-export const SearchField: React.FC<Props> = ({
+export const SearchField: FC<Props> = ({
   setAvaliableCurrencies,
   setSearchValue,
   searchValue,

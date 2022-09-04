@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import CloseIconDark from 'assets/icons/close_black_24dp.svg';
 import CloseIconLight from 'assets/icons/close_white_24dp.svg';
@@ -13,7 +13,7 @@ type Props = {
   additionalStyle?: StyleProp<ViewStyle>;
 };
 
-export const CancelButton: React.FC<Props> = ({
+export const CancelButton: FC<Props> = ({
   onPress,
   size = 24,
   additionalStyle,

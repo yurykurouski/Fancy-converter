@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, FC, useEffect, useState } from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import { getFromStorage, setToStorage, StorageKeys } from 'utils';
 
 export const OnboardingContext = createContext(null);
 
-export const OnboardingContextProvider: React.FC = ({ children }) => {
+export const OnboardingContextProvider: FC = ({ children }) => {
   const [isOnboarded, setIsOnboarded] = useState<boolean>(null);
 
   const setOnboardingStatus = async (value: boolean) => {

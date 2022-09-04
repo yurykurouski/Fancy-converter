@@ -1,4 +1,13 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { AppState } from 'react-native';
 import { SelectedCurrencies } from 'types';
 import { setToStorage, StorageKeys } from 'utils';
@@ -8,14 +17,14 @@ import { LocalStorageContext } from '../LocalStorageProvider';
 type SelectedCurrenciesContext = {
   selectedCurrenciesContext?: {
     selectedCurrencies: SelectedCurrencies;
-    setSelectedCurrencies: React.Dispatch<React.SetStateAction<string[]>>;
+    setSelectedCurrencies: Dispatch<SetStateAction<string[]>>;
   };
 };
 
 export const SelectedCurrenciesContext =
-  React.createContext<SelectedCurrenciesContext>(null);
+  createContext<SelectedCurrenciesContext>(null);
 
-export const SelectedCurrenciesProvider: React.FC = ({ children }) => {
+export const SelectedCurrenciesProvider: FC = ({ children }) => {
   const appState = useRef(AppState.currentState);
   const context = useContext(LocalStorageContext);
 

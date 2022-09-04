@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React, { createContext, FC, useContext } from 'react';
 import { NotificationContext } from 'context/MessageNotificationContext';
 import { useGetCurrenciesExchangeCourse } from 'hooks';
 
 import { Context } from './ExchangeCourseContext.types';
 
-export const ExchangeCourseContext = React.createContext<Context | null>(null);
+export const ExchangeCourseContext = createContext<Context | null>(null);
 
-export const ExchangeCourseProvider: React.FC = props => {
+export const ExchangeCourseProvider: FC = props => {
   const startNotification = useContext(NotificationContext);
 
   const { isLoading, exchangeCourse, reloadCourses } =

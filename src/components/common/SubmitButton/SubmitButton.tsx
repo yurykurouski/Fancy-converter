@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -10,7 +10,7 @@ type Props = {
   title: string;
 };
 
-export const SubmitButton: React.FC<Props> = ({ onPress, type, title }) => {
+export const SubmitButton: FC<Props> = ({ onPress, type, title }) => {
   const styles = useStyles();
 
   const buttonTypeStyle =

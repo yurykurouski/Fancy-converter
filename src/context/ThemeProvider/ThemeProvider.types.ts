@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import { ColorSchemeName, StyleSheet } from 'react-native';
 import { Theme } from 'assets/colors';
 
@@ -14,7 +15,5 @@ export type WithTheme = <T extends StyleSheet.NamedStyles<T>>(
 export type setColorScheme = (colorScheme: ColorSchemeName) => void;
 
 export type UseSetColorScheme = (
-  setTheme: React.Dispatch<
-    React.SetStateAction<Omit<ThemeContext, 'setColorScheme'>>
-  >,
+  setTheme: Dispatch<SetStateAction<Omit<ThemeContext, 'setColorScheme'>>>,
 ) => setColorScheme;
