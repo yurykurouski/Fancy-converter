@@ -3,6 +3,7 @@ import { RefreshControl, View } from 'react-native';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
+import { Layout, SlideOutRight } from 'react-native-reanimated';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { ColorsDark } from 'assets/colors';
 import { CurrenciesBottomSheet, CurrencyInputValue } from 'components';
@@ -62,6 +63,9 @@ export const CurrencySelector = () => {
         )}
         activationDistance={10}
         showsVerticalScrollIndicator={false}
+        enableLayoutAnimationExperimental
+        itemExitingAnimation={SlideOutRight.duration(250)}
+        itemLayoutAnimation={Layout.delay(250).duration(150)}
       />
       {exchangeCourse && (
         <CurrenciesBottomSheet
