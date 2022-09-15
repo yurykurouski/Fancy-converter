@@ -50,6 +50,7 @@
     "eslint-plugin-sonarjs": "^0.15.0",
     "eslint-plugin-typescript": "^0.14.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.1",
     "metro-react-native-babel-preset": "^0.72.1",
     "prettier": "^2.7.1",
     "react-native-bootsplash-cli-fork": "^4.3.2",
