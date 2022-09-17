@@ -1722,7 +1722,7 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.7.2
     "@jimp/utils": ^0.16.1
-    jpeg-js: 0.4.2
+    jpeg-js: 0.4.4
   peerDependencies:
     "@jimp/custom": ">=0.3.5"
   checksum: a080d3c5f510cb6b24a052e44a42d6edde9f93fa32e4eaaf4bbdae03e0063cc85ee6db3949ca1faa4eb27bf65825571db6016d80368f96d5ec469adc69897813
@@ -6580,10 +6580,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jpeg-js@npm:0.4.2":
-  version: 0.4.2
-  resolution: "jpeg-js@npm:0.4.2"
-  checksum: def900757c395e6376446aef5c13ed122cae1ab15308e84784d260c8d3c14d30c2092eaf32a4f57528d6e1f96a6b240a801e92122f00c9f3bb5d5c4d38df5bc0
+"jpeg-js@npm:0.4.4":
+  version: 0.4.4
+  resolution: "jpeg-js@npm:0.4.4"
+  checksum: bd7cb61aa8df40a9ee2c2106839c3df6054891e56cfc22c0ac581402e06c6295f962a4754b0b2ac50a401789131b1c6dc9df8d24400f1352168be1894833c590
   languageName: node
   linkType: hard
 
