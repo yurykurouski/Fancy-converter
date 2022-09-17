@@ -18,15 +18,24 @@ export const useOnboardingHandlers: UseOnboardingHandlers = flatListRef => {
   };
 
   const handleEndDrag: EventHandler = event => {
-    const { contentOffset } = event.nativeEvent;
+    const { contentOffset, velocity } = event.nativeEvent;
 
     const roundedEnd = Math.round(contentOffset.x / SCREEN_WIDTH);
     const absoluteDiff = Math.abs(scrollStart) - Math.abs(contentOffset.x);
 
+    if ((roundedEnd === 3 || roundedEnd === 0) && absoluteDiff === 0) return;
+
+    if (Math.abs(velocity.x) > 0.5) {
+      return flatListRef?.current?.scrollToIndex({
+        animated: true,
+        index: absoluteDiff < 0 ? roundedEnd + 1 : roundedEnd - 1,
+      });
+    }
+
     if (Math.abs(absoluteDiff) > SCREEN_WIDTH / 2) {
       flatListRef?.current?.scrollToIndex({
         animated: true,
-        index: absoluteDiff < 0 ? roundedEnd : roundedEnd !== 0 && roundedEnd,
+        index: roundedEnd,
       });
     } else {
       flatListRef?.current?.scrollToIndex({
