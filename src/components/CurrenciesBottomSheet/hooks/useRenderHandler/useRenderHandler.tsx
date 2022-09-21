@@ -3,7 +3,7 @@ import { Pressable, View } from 'react-native';
 
 import { useStyles } from './styles';
 
-export const useRenderHandler = (onPress: () => void) => {
+export const useRenderHandler = (onPress?: () => void) => {
   const styles = useStyles();
 
   return () => (
