@@ -8,7 +8,7 @@ import { ThemeContext } from 'context/ThemeProvider';
 import { useStyles } from './CancelButton.styles';
 
 type Props = {
-  onPress?: OnChangeTextHandler;
+  onPress: OnChangeTextHandler;
   size?: number;
   additionalStyle?: StyleProp<ViewStyle>;
 };
@@ -23,7 +23,7 @@ export const CancelButton: FC<Props> = ({
 
   return (
     <TouchableOpacity
-      onPressOut={() => onPress?.('')}
+      onPressOut={() => onPress('')}
       style={[styles.buttonWrapper, additionalStyle]}>
       {colorScheme === 'dark' ? (
         <CloseIconLight width={size} height={size} />
