@@ -1,17 +1,49 @@
 import React from 'react';
-import { Animated, Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { useRenderHandler } from 'components/CurrenciesBottomSheet/hooks';
 import { SCREEN_WIDTH } from 'constants/constants';
+import { l } from 'resources/localization';
 
-import { useStyles } from '../../../../Onboarding';
+import { useStyles as useTextStyles } from '../../../../Onboarding';
+
+import { QUANTITY_CONFIG } from './SecondScreen.consts';
+import { Selector } from './Selector';
+
+import { useStyles } from './SecondScreen.styles';
 
 export const SecondScreen = () => {
   const styles = useStyles();
+  const textStyles = useTextStyles();
+
+  const Handle = useRenderHandler();
+
+  const screenTitle = l['onboarding_second-screen_title'];
+
   return (
-    <Animated.View style={{ width: SCREEN_WIDTH }}>
-      <Text style={[styles.mainText, styles.title]}>
-        HEY!{'\n'}
-        Let's take a brief overview
-      </Text>
-    </Animated.View>
+    <View style={{ width: SCREEN_WIDTH, justifyContent: 'space-between' }}>
+      <Text style={[textStyles.mainText, textStyles.title]}>{screenTitle}</Text>
+      <View style={styles.backgroundContainer}>
+        <Handle />
+        <ScrollView removeClippedSubviews>
+          <View style={styles.separatorContainer}>
+            <View style={styles.separatorBackground}>
+              <View style={styles.separatorItem} />
+            </View>
+          </View>
+          {QUANTITY_CONFIG.map(el => (
+            <Selector key={el} />
+          ))}
+          <View style={styles.separatorContainer}>
+            <View style={styles.separatorBackground}>
+              <View style={styles.separatorItem} />
+            </View>
+          </View>
+          {QUANTITY_CONFIG.map(el => (
+            <Selector key={el} />
+          ))}
+        </ScrollView>
+      </View>
+    </View>
   );
 };

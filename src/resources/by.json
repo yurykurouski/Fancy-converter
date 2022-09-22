@@ -39,5 +39,10 @@
   "notification.message.update_courses.network": "Курсы былі абноўленыя",
   "currency_input.value.error_message": "Памылка!",
   "currency_search.input.placeholder": "Search here",
-  "currencies_main.currency_deleted": "was deleted"
+  "currencies_main.currency_deleted": "was deleted",
+  "onboarding_first-screen": "HEY!\nLet's take a brief overview",
+  "onboarding_second-screen_title": "You can select your favorite currencies",
+  "onboarding_third-screen_title": "And manage them on main screen",
+  "onboarding_third-screen_subtitle-swipe": "Swipe to delete:",
+  "onboarding_third-screen_subtitle-drag": "Drag to reorder:"
 }
