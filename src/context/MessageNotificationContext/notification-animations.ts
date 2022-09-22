@@ -7,24 +7,24 @@ export const showNotification = () =>
     Animated.timing(animatedPosition, {
       toValue: 70,
       duration: 200,
-      useNativeDriver: false,
+      useNativeDriver: true,
       easing: Easing.sin,
     }),
     Animated.timing(animatedPosition, {
       toValue: 65,
       duration: 120,
-      useNativeDriver: false,
+      useNativeDriver: true,
     }),
     Animated.delay(1300),
     Animated.timing(animatedPosition, {
       toValue: 70,
       duration: 100,
-      useNativeDriver: false,
+      useNativeDriver: true,
     }),
     Animated.timing(animatedPosition, {
       toValue: 0,
       duration: 300,
-      useNativeDriver: false,
+      useNativeDriver: true,
       easing: Easing.exp,
     }),
   ]).start();
