@@ -1,14 +1,12 @@
+import { SCREEN_WIDTH } from 'constants/constants';
 import { withTheme } from 'context';
-import { getScreenWidth } from 'utils';
-
-const screenWidth = getScreenWidth();
 
 export const useStyles = () =>
   withTheme(theme => ({
     drawer: {
       position: 'absolute',
       height: '100%',
-      width: screenWidth * 0.6,
+      width: SCREEN_WIDTH * 0.6,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       elevation: 20,
       shadowColor: 'black',
