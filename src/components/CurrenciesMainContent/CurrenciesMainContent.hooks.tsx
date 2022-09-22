@@ -1,15 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Animated, BackHandler, Vibration } from 'react-native';
-import { VIBRATION_DURATION } from 'constants/constants';
-import { getScreenWidth } from 'utils';
+import { SCREEN_WIDTH, VIBRATION_DURATION } from 'constants/constants';
 
 import {
   UseHandleBackPress,
   UseOpenDrawerAnimations,
 } from './CurrenciesMainContent.types';
 
-const screenWidth = getScreenWidth();
-const animatedPosition = new Animated.Value(-(screenWidth * 0.6));
+const animatedPosition = new Animated.Value(-(SCREEN_WIDTH * 0.6));
 
 export const useOpenDrawerAnimations: UseOpenDrawerAnimations = () => {
   const [isDrawerOpened, setIsDrawerOpened] = useState(false);
@@ -27,7 +25,7 @@ export const useOpenDrawerAnimations: UseOpenDrawerAnimations = () => {
       setIsDrawerOpened(true);
     } else {
       Animated.timing(animatedPosition, {
-        toValue: -(screenWidth * 0.6),
+        toValue: -(SCREEN_WIDTH * 0.6),
         duration: 200,
         useNativeDriver: false,
       }).start();
