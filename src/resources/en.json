@@ -34,7 +34,7 @@
   "alert_message.something_wrong.stored_courses": "Will use last stored courses from",
   "alert_message.something_wrong.check_connection": "Check your connection please.",
   "alert_message.github_press.description": "You'll be redirected on project GitHub repository",
-  "alert_message.paypal_press.description": "You'll be redirected on page where you can by me a cup of cofee :)",
+  "alert_message.paypal_press.description": "You'll be redirected on page where you can donate me for a cup of cofee :)",
   "notification.message.update_courses.cache": "Courses were readed from cache",
   "notification.message.update_courses.network": "Courses were updated",
   "currency_input.value.error_message": "Wrong value!",
