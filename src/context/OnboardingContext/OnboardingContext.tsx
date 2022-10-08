@@ -2,10 +2,17 @@ import React, { createContext, FC, useEffect, useState } from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import { getFromStorage, setToStorage, StorageKeys } from 'utils';
 
-export const OnboardingContext = createContext(null);
+type OnboardingContext = {
+  isOnboarded: boolean;
+  setOnboardingStatus: (value: boolean) => Promise<void>;
+  isLoading: boolean;
+};
+
+export const OnboardingContext = createContext<OnboardingContext>(null);
 
 export const OnboardingContextProvider: FC = ({ children }) => {
-  const [isOnboarded, setIsOnboarded] = useState<boolean>(null);
+  const [isOnboarded, setIsOnboarded] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const setOnboardingStatus = async (value: boolean) => {
     setIsOnboarded(value);
@@ -14,9 +21,9 @@ export const OnboardingContextProvider: FC = ({ children }) => {
 
   useEffect(() => {
     const checkOnboardingStatus = async () => {
-      const isOnboarded = await getFromStorage(StorageKeys.IS_ONBOARDED);
-
-      setIsOnboarded(JSON.parse(isOnboarded));
+      await getFromStorage(StorageKeys.IS_ONBOARDED)
+        .then(value => setIsOnboarded(JSON.parse(value) || false))
+        .then(() => setIsLoading(false));
     };
 
     checkOnboardingStatus().finally(
@@ -25,7 +32,8 @@ export const OnboardingContextProvider: FC = ({ children }) => {
   }, []);
 
   return (
-    <OnboardingContext.Provider value={{ isOnboarded, setOnboardingStatus }}>
+    <OnboardingContext.Provider
+      value={{ isOnboarded, setOnboardingStatus, isLoading }}>
       {children}
     </OnboardingContext.Provider>
   );

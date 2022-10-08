@@ -18,9 +18,11 @@ import { useStyles } from './App.styles';
 
 const App = React.memo(() => {
   const { themeColors, colorScheme } = useContext(ThemeContext);
-  const { isOnboarded } = useContext(OnboardingContext);
+  const { isOnboarded, isLoading } = useContext(OnboardingContext);
 
   const styles = useStyles();
+
+  if (isLoading) return;
 
   return (
     <>
