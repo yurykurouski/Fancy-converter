@@ -17,4 +17,12 @@ export const useStyles = () =>
       position: 'absolute',
       width: '100%',
     },
+    searchEmptyStateContainer: {
+      width: '100%',
+      alignItems: 'center',
+      marginTop: '50%',
+    },
+    searchEmptyStatetext: {
+      color: theme.FONT_COLOR_FADED,
+    },
   }));

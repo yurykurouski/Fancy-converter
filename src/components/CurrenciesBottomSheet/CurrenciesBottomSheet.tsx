@@ -1,8 +1,9 @@
 import React, { useContext, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { ThemeContext } from 'context';
 import { currencies } from 'resources/avaliable-currencies.json';
+import { l } from 'resources/localization';
 
 import { SearchField } from './components/SearchField';
 import { BottomSheetBackground } from './BottomSheetBackground';
@@ -80,6 +81,13 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           renderItem={renderItem}
           keyExtractor={item => item}
           removeClippedSubviews={false}
+          ListEmptyComponent={
+            <View style={styles.searchEmptyStateContainer}>
+              <Text style={styles.searchEmptyStatetext}>
+                {l['currencies-bootomsheet_empty-search-result']}
+              </Text>
+            </View>
+          }
         />
         <SearchField
           setAvaliableCurrencies={setAvaliableCurrencies}

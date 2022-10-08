@@ -44,5 +44,6 @@
   "onboarding_second-screen_title": "Вы можаце вылучыць выбраныя вамі валюты",
   "onboarding_third-screen_title": "І кіраваць імі на голоўным экране",
   "onboarding_third-screen_subtitle-swipe": "Правядзіце каб выдаліць",
-  "onboarding_third-screen_subtitle-drag": "Перацягніце, каб змяніць парадак"
+  "onboarding_third-screen_subtitle-drag": "Перацягніце, каб змяніць парадак",
+  "currencies-bootomsheet_empty-search-result": "Нічога не знойдзена"
 }
