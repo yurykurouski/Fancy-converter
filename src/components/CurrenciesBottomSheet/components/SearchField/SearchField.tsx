@@ -2,7 +2,6 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import { Animated, Keyboard, TextInput, View } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { ThemeContext } from 'context';
-import { currencies } from 'resources/avaliable-currencies.json';
 import { l } from 'resources/localization';
 
 import { animatedPosition } from '../../CurrenciesBottomSheet.utils';
@@ -14,19 +13,25 @@ import { useStyles } from './SearchField.styles';
 
 export const SearchField: FC<Props> = ({
   setAvaliableCurrencies,
-  setSearchValue,
-  searchValue,
+  setIsCalculatingValue,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
-  const styles = useStyles();
   const { themeColors } = useContext(ThemeContext);
 
+  const styles = useStyles();
+
   const handleTextChange = useHandleTextChange({
-    setSearchValue,
     setAvaliableCurrencies,
-    currencies,
+    setIsCalculatingValue,
   });
+
+  const handleChange = (value: string) => {
+    setSearchValue(value);
+    setIsCalculatingValue(true);
+    handleTextChange(value);
+  };
 
   useEffect(() => {
     const listener = Keyboard.addListener('keyboardDidHide', () => {
@@ -45,7 +50,7 @@ export const SearchField: FC<Props> = ({
       <View style={[styles.inputWrapper, isFocused && styles.inputFocused]}>
         <TextInput
           value={searchValue}
-          onChangeText={handleTextChange}
+          onChangeText={handleChange}
           style={styles.input}
           maxLength={30}
           caretHidden={!isFocused}
@@ -57,7 +62,7 @@ export const SearchField: FC<Props> = ({
         />
         {!!searchValue && (
           <CancelButton
-            onPress={handleTextChange}
+            onPress={handleChange}
             additionalStyle={{ marginHorizontal: 10 }}
           />
         )}

@@ -1,56 +1,66 @@
-import { useCallback, useMemo, useState } from 'react';
-import { l } from 'resources/localization';
+import { useCallback } from 'react';
+import { debounce } from 'lodash';
+import { currencies } from 'resources/avaliable-currencies.json';
 
 import { UseHandleTextChange } from './SearchField.types';
+import {
+  filterCurrencies,
+  mapCurrenciesNamesBasedOnLanguage,
+} from './SearchField.utils';
 
-const filterResults: string[][] = [[]];
-
-const useCurrnciesNamesBasedOnLanguage = (currencies: string[]): string[] =>
-  useMemo(() => currencies.map(curr => l[curr]), [currencies]);
+const filterResults: string[][] = [];
+let prevQueryLength = 0;
 
 export const useHandleTextChange: UseHandleTextChange = ({
-  setSearchValue,
   setAvaliableCurrencies,
-  currencies,
-}) => {
-  const [prevQueryLength, setPrevQueryLength] = useState(0);
-
-  const currenciesTranslations = useCurrnciesNamesBasedOnLanguage(currencies);
-
-  return useCallback(
-    value => {
-      setSearchValue(value);
+  setIsCalculatingValue,
+}) =>
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useCallback(
+    debounce(value => {
       if (!value) {
-        filterResults.length = 1;
-        return setAvaliableCurrencies(currencies);
-      }
+        filterResults.length = 0;
 
-      if (value.length < prevQueryLength) {
-        setAvaliableCurrencies(filterResults[value.length]);
-        setPrevQueryLength(value.length);
-
+        setTimeout(() => {
+          setAvaliableCurrencies(currencies);
+          setIsCalculatingValue(false);
+        });
+        prevQueryLength = 0;
         return;
       }
 
-      const filteredCurrencies = currencies.filter(
-        (el, index) =>
-          el.toLowerCase().includes(value.toLowerCase()) ||
-          currenciesTranslations[index]
-            .toLowerCase()
-            .includes(value.toLowerCase()),
-      );
+      let filteredCurrencies;
+      const valueUpperCase = value.trim().toUpperCase();
 
-      setPrevQueryLength(value.length);
+      setTimeout(() => {
+        if (value.length < prevQueryLength || !filterResults.length) {
+          filteredCurrencies = currencies.filter((el, index) => {
+            const namesBasedOnLanguage =
+              mapCurrenciesNamesBasedOnLanguage(currencies)[index];
 
-      setAvaliableCurrencies(filteredCurrencies);
-      filterResults.push(filteredCurrencies);
-    },
-    [
-      currencies,
-      currenciesTranslations,
-      prevQueryLength,
-      setAvaliableCurrencies,
-      setSearchValue,
-    ],
+            return filterCurrencies(el, valueUpperCase, namesBasedOnLanguage);
+          });
+
+          filterResults.pop();
+        } else {
+          filteredCurrencies = filterResults[filterResults.length - 1].filter(
+            (el, index) => {
+              const namesBasedOnLanguage = mapCurrenciesNamesBasedOnLanguage(
+                filterResults[filterResults.length - 1],
+              )[index];
+
+              return filterCurrencies(el, valueUpperCase, namesBasedOnLanguage);
+            },
+          );
+
+          filterResults.push(filteredCurrencies);
+        }
+
+        setAvaliableCurrencies(filteredCurrencies);
+        setIsCalculatingValue(false);
+
+        prevQueryLength = value.length;
+      });
+    }, 300),
+    [],
   );
-};

@@ -35,6 +35,7 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
+    'no-console': 'warn',
   },
   settings: {
     'import/parsers': {

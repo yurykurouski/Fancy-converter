@@ -2714,6 +2714,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.debounce@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "@types/lodash.debounce@npm:4.0.7"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: e873b2d77f89010876baba3437ef826b17221b98948e00b5590828334a481dea1c8f9d28543210e564adc53199584f42c3cb171f8b6c3614fefc0b4e0888679c
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.186
+  resolution: "@types/lodash@npm:4.14.186"
+  checksum: ee0c1368a8100bb6efb88335107473a41928fc307ff1ef4ff1278868ccddba9c04c68c36d1ffe3a0392ef4a956e1955f7de3203ec09df4f1655dd1b88485c549
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 17.0.23
   resolution: "@types/node@npm:17.0.23"
@@ -5192,6 +5208,7 @@ __metadata:
     "@react-native-community/eslint-config": ^3.1.0
     "@react-native-community/hooks": ^2.8.1
     "@react-native-community/netinfo": ^9.3.0
+    "@types/lodash.debounce": ^4.0.7
     "@types/react-native": ^0.69.10
     "@types/react-native-dotenv": ^0.2.0
     "@typescript-eslint/eslint-plugin": ^5.37.0
@@ -5209,6 +5226,7 @@ __metadata:
     eslint-plugin-unused-imports: ^2.0.0
     hermes-engine: ^0.11.0
     husky: ^8.0.1
+    lodash.debounce: ^4.0.8
     metro-react-native-babel-preset: ^0.72.3
     prettier: ^2.7.1
     react: 18.0.0

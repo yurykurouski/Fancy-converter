@@ -1,10 +1,12 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useContext, useMemo, useRef, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import { ThemeContext } from 'context';
 import { currencies } from 'resources/avaliable-currencies.json';
 
 import { SearchField } from './components/SearchField';
 import { BottomSheetBackground } from './BottomSheetBackground';
-import { OFFSET, SNAP_POINTS } from './CurrenciesBottomSheet.consts';
+import { SNAP_POINTS } from './CurrenciesBottomSheet.consts';
 import { Props } from './CurrenciesBottomSheet.types';
 import {
   useBottomSheetHandlers,
@@ -21,11 +23,12 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     const [avaliableCurrencies, setAvaliableCurrencies] = useState(currencies);
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [searchValue, setSearchValue] = useState('');
+    const [isCalculatingValue, setIsCalculatingValue] = useState(false);
 
     const sheetRef = useRef<BottomSheet>(null);
 
     const styles = useStyles();
+    const { themeColors } = useContext(ThemeContext);
 
     const { onPressHandler, onChangeHandler } = useBottomSheetHandlers(
       sheetRef,
@@ -64,6 +67,11 @@ export const CurrenciesBottomSheet = React.memo<Props>(
         backgroundComponent={BottomSheetBackground}
         backgroundStyle={styles.backgroundStyle}
         onChange={onChangeHandler}>
+        {isCalculatingValue && (
+          <View style={styles.activityIndicatorContainer}>
+            <ActivityIndicator color={themeColors.ACCENT_COLOR_LIGHTER} />
+          </View>
+        )}
         <BottomSheetFlatList
           // @ts-expect-error poor typization from library
           onScroll={handleScroll}
@@ -74,10 +82,8 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           removeClippedSubviews={false}
         />
         <SearchField
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
           setAvaliableCurrencies={setAvaliableCurrencies}
-          offset={OFFSET.offset}
+          setIsCalculatingValue={setIsCalculatingValue}
         />
       </BottomSheet>
     );

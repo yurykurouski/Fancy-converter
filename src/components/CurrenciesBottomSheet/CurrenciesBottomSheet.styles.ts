@@ -13,4 +13,8 @@ export const useStyles = () =>
       borderTopLeftRadius: 20,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
     },
+    activityIndicatorContainer: {
+      position: 'absolute',
+      width: '100%',
+    },
   }));
