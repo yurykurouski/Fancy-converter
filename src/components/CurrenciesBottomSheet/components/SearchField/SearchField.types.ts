@@ -1,14 +1,12 @@
 import { Dispatch, SetStateAction } from 'react';
+import { DebouncedFunc } from 'lodash';
 
 export type UseHandleTextChange = (props: {
-  setSearchValue: Dispatch<SetStateAction<string>>;
   setAvaliableCurrencies: Dispatch<SetStateAction<string[]>>;
-  currencies: string[];
-}) => (value: string) => void;
+  setIsCalculatingValue: Dispatch<SetStateAction<boolean>>;
+}) => DebouncedFunc<(value: string) => void>;
 
 export type Props = {
-  searchValue: string;
-  setSearchValue: Dispatch<SetStateAction<string>>;
-  offset: number;
+  setIsCalculatingValue: Dispatch<SetStateAction<boolean>>;
   setAvaliableCurrencies: Dispatch<SetStateAction<string[]>>;
 };
