@@ -44,5 +44,6 @@
   "onboarding_second-screen_title": "You can select your favorite currencies",
   "onboarding_third-screen_title": "And manage them on main screen",
   "onboarding_third-screen_subtitle-swipe": "Swipe to delete:",
-  "onboarding_third-screen_subtitle-drag": "Drag to reorder:"
+  "onboarding_third-screen_subtitle-drag": "Drag to reorder:",
+  "currencies-bootomsheet_empty-search-result": "No result found"
 }
