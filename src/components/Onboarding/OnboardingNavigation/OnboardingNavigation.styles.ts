@@ -1,4 +1,5 @@
 import { withTheme } from 'context';
+import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
   withTheme(theme => ({
@@ -16,7 +17,7 @@ export const useStyles = () =>
       textAlign: 'center',
       fontSize: 18,
       fontWeight: 'bold',
-      fontFamily: 'monospace',
+      ...(isAndroid && { fontFamily: 'monospace' }),
       textTransform: 'uppercase',
       color: theme.FONT_PRIMARY_COLOR,
     },

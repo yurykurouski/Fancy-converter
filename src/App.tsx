@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StatusBar, View } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import {
@@ -26,13 +26,13 @@ const App = React.memo(() => {
 
   return (
     <>
-      <View style={styles.backgroundStyle}>
+      <SafeAreaView style={styles.backgroundStyle}>
         <StatusBar
           barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
           backgroundColor={themeColors.APP_BACKGROUND_PRIMARY}
         />
         {isOnboarded ? <CurrenciesMainContent /> : <Onboarding />}
-      </View>
+      </SafeAreaView>
     </>
   );
 });
