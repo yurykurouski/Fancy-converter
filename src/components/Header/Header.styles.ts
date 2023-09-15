@@ -1,11 +1,12 @@
 import { withTheme } from 'context';
+import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
   withTheme(theme => ({
     header: {
       fontSize: 18,
       fontWeight: 'bold',
-      fontFamily: 'monospace',
+      ...(isAndroid && { fontFamily: 'monospace' }),
       textTransform: 'uppercase',
       paddingTop: 25,
       alignSelf: 'center',
