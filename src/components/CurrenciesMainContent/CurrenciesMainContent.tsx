@@ -24,7 +24,7 @@ export const CurrenciesMainContent = React.memo(() => {
       <SelectedCurrenciesProvider>
         <View style={styles.container}>
           <FocusedCurrencyProvider>
-            <CurrencySelector />
+            <CurrencySelector isDrawerOpened={isDrawerOpened} />
           </FocusedCurrencyProvider>
         </View>
         <Drawer

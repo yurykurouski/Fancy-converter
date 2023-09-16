@@ -13,7 +13,11 @@ import { AvaliableCurrenciesNames } from 'types';
 import { ANIMATION_CONFIG } from './CurrencySelector.consts';
 import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
 
-export const CurrencySelector = () => {
+export const CurrencySelector = ({
+  isDrawerOpened,
+}: {
+  isDrawerOpened: boolean;
+}) => {
   const {
     selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
   } = useContext(SelectedCurrenciesContext);
@@ -69,6 +73,7 @@ export const CurrencySelector = () => {
       />
       {exchangeCourse && (
         <CurrenciesBottomSheet
+          isDrawerOpened={isDrawerOpened}
           selectedCurrencies={selectedCurrencies}
           setSelectedCurrencies={setSelectedCurrencies}
         />
