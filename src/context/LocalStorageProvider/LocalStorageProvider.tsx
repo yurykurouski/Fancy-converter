@@ -28,8 +28,8 @@ export const LocalStorageProvider: FC = ({ children }) => {
 };
 
 const convertToArray = (storageValue: string): string[] => {
-  const pasrsed = JSON.parse(storageValue);
+  const parsed = JSON.parse(storageValue);
   return storageValue === null
     ? []
-    : Object.keys(pasrsed).map(key => pasrsed[key]);
+    : Object.keys(parsed).map(key => parsed[key]);
 };
