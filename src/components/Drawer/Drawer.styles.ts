@@ -1,10 +1,11 @@
 import { SCREEN_WIDTH } from 'constants/constants';
 import { withTheme } from 'context';
 
-export const useStyles = () =>
+export const useStyles = (bottom: number) =>
   withTheme(theme => ({
     drawer: {
       position: 'absolute',
+      bottom,
       height: '100%',
       width: SCREEN_WIDTH * 0.6,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
@@ -15,7 +16,7 @@ export const useStyles = () =>
     fadeContainer: {
       position: 'absolute',
       height: '100%',
-      top: 0,
+      bottom,
       left: 0,
       right: 0,
       zIndex: 1,
