@@ -6,6 +6,7 @@ import { SelectedCurrencies } from 'types';
 export type Props = {
   selectedCurrencies: SelectedCurrencies;
   setSelectedCurrencies: Dispatch<SetStateAction<string[]>>;
+  isDrawerOpened: boolean;
 };
 
 export type UseBottomSheetHandlers = (

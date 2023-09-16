@@ -20,14 +20,13 @@ import {
 import { useStyles } from './CurrenciesBottomSheet.styles';
 
 export const CurrenciesBottomSheet = React.memo<Props>(
-  ({ selectedCurrencies, setSelectedCurrencies }) => {
+  ({ selectedCurrencies, setSelectedCurrencies, isDrawerOpened }) => {
     const [avaliableCurrencies, setAvaliableCurrencies] = useState(currencies);
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [isCalculatingValue, setIsCalculatingValue] = useState(false);
 
     const sheetRef = useRef<BottomSheet>(null);
-
     const styles = useStyles();
     const { themeColors } = useContext(ThemeContext);
 
@@ -49,6 +48,12 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     //*to prevent rerendering bottomsheet when selectedCurrencies changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 2), []);
+
+    if (!isExpanded) {
+      isDrawerOpened
+        ? sheetRef.current?.close()
+        : sheetRef.current?.snapToIndex(1);
+    }
 
     const renderHandle = useRenderHandler(onPressHandler);
 
