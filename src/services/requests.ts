@@ -7,8 +7,8 @@ class Requests implements RequestsInterface {
   response: Response;
 
   constructor() {
-    this.response = async (url, method, data) =>
-      await fetch(`${DEFAULT_API_URL}${url}`, {
+    this.response = async (method, data) =>
+      await fetch(DEFAULT_API_URL, {
         method,
         body: JSON.stringify(data),
         headers: {
@@ -17,10 +17,9 @@ class Requests implements RequestsInterface {
       });
   }
 
-  async get(url: string) {
+  async get() {
     try {
-      const response = await this.response(url, REQUEST_GET);
-      return response.json();
+      return this.response(REQUEST_GET).then(response => response.json());
     } catch (err) {
       throw new Error(err);
     }

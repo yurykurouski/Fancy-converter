@@ -1,7 +1,5 @@
 declare module '@env' {
   export const DEFAULT_API_URL: string;
-  export const DEFAULT_API_DAY_RATES: string;
-  export const DEFAULT_API_CITY_REQUEST: string;
 }
 
 declare module '*.svg' {

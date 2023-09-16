@@ -32,7 +32,8 @@ export const SelectedCurrenciesProvider: FC = ({ children }) => {
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', nextAppState => {
-      if (appState.current === 'active' && nextAppState === 'background') {
+      //TODO: possible woks only on iOS:
+      if (appState.current === 'inactive' && nextAppState === 'background') {
         const result = Object.assign({}, selectedCurrencies);
         setToStorage(StorageKeys.SELECTED_CURRENCIES, result);
       }
