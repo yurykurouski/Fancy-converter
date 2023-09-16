@@ -1,22 +1,28 @@
 import { useCallback, useContext, useState } from 'react';
 import { OnboardingContext } from 'context/OnboardingContext';
+import { useIsHasIsland } from 'hooks/useHasIsland';
 
-import { showNotification } from './notification-animations';
+import {
+  showNotification,
+  showNotificationForIsland,
+} from './notification-animations';
 import { UseNotificationMessage } from './WithNotification.types';
 
 export const useNotificationMessage: UseNotificationMessage = () => {
-  const { isOnboarded } = useContext(OnboardingContext);
+  const { isOnboarded: isOnboard } = useContext(OnboardingContext);
   const [message, setMessage] = useState(null);
+
+  const hasIsland = useIsHasIsland();
 
   const showMessage = useCallback(
     (msg: string) => {
-      if (isOnboarded) {
+      if (isOnboard) {
         setMessage(msg);
 
-        showNotification();
+        hasIsland ? showNotificationForIsland() : showNotification();
       }
     },
-    [isOnboarded],
+    [hasIsland, isOnboard],
   );
 
   return {

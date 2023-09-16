@@ -23,4 +23,8 @@ export const useStyles = () =>
       textAlign: 'center',
       color: theme.FONT_SECONDARY_COLOR,
     },
+    withIslandContainer: {
+      top: 12,
+      height: 36,
+    },
   }));

@@ -72,3 +72,4 @@ buck-out/
 !.yarn/sdks
 !.yarn/versions
 .vscode/
+.vscode/settings.json
