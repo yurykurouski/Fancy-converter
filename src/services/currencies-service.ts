@@ -1,11 +1,9 @@
-import { DEFAULT_API_DAY_RATES } from '@env';
-
 import { requests } from './requests';
 
 class CurrenciesService {
   async getDailyCourses() {
     try {
-      return await requests.get(DEFAULT_API_DAY_RATES);
+      return await requests.get();
     } catch (err) {
       throw new Error(err);
     }
