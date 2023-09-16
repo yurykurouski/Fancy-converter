@@ -29,7 +29,7 @@ export const showNotification = () =>
     }),
   ]).start();
 
-export const animatedWidth = new Animated.Value(0);
+export const animatedScaleX = new Animated.Value(0);
 export const showNotificationForIsland = () =>
   Animated.sequence([
     Animated.delay(500),
@@ -37,42 +37,42 @@ export const showNotificationForIsland = () =>
       Animated.timing(animatedPosition, {
         toValue: 44,
         duration: 200,
-        useNativeDriver: false,
+        useNativeDriver: true,
         easing: Easing.sin,
       }),
       Animated.sequence([
         Animated.delay(100),
-        Animated.timing(animatedWidth, {
+        Animated.timing(animatedScaleX, {
           toValue: 1,
           duration: 120,
-          useNativeDriver: false,
+          useNativeDriver: true,
         }),
       ]),
     ]),
     Animated.timing(animatedPosition, {
       toValue: 40,
       duration: 120,
-      useNativeDriver: false,
+      useNativeDriver: true,
     }),
     Animated.delay(1300),
     Animated.timing(animatedPosition, {
       toValue: 44,
       duration: 120,
-      useNativeDriver: false,
+      useNativeDriver: true,
     }),
     Animated.parallel([
       Animated.timing(animatedPosition, {
         toValue: 0,
         duration: 200,
-        useNativeDriver: false,
+        useNativeDriver: true,
         easing: Easing.sin,
       }),
       Animated.sequence([
         Animated.delay(100),
-        Animated.timing(animatedWidth, {
+        Animated.timing(animatedScaleX, {
           toValue: 0,
           duration: 120,
-          useNativeDriver: false,
+          useNativeDriver: true,
         }),
       ]),
     ]),

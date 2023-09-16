@@ -3,7 +3,7 @@ import { Animated, Text } from 'react-native';
 import { useAppState } from '@react-native-community/hooks';
 import { useIsHasIsland } from 'hooks/useHasIsland';
 
-import { animatedPosition, animatedWidth } from './notification-animations';
+import { animatedPosition, animatedScaleX } from './notification-animations';
 
 import { useStyles } from './WithNotification.styles';
 
@@ -13,11 +13,6 @@ const Notification = ({ message }: { message: string }) => {
   const styles = useStyles();
 
   const hasIsland = useIsHasIsland();
-
-  const widthInterpolate = animatedWidth.interpolate({
-    inputRange: [0, 1],
-    outputRange: [124, 200],
-  });
 
   const appState = useAppState();
 
@@ -30,9 +25,12 @@ const Notification = ({ message }: { message: string }) => {
           styles.container,
           styles.withIslandContainer,
           {
-            transform: [{ translateY: animatedPosition }],
+            transform: [
+              { translateY: animatedPosition },
+              { scaleX: animatedScaleX },
+            ],
           },
-          { width: widthInterpolate, opacity },
+          { opacity },
         ]}>
         <Text style={styles.text}>{message}</Text>
       </Animated.View>
