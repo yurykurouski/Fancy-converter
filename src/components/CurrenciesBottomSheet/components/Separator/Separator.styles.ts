@@ -13,7 +13,8 @@ export const useStyles = () =>
       lineHeight: 18,
       fontWeight: '700',
       color: theme.ACCENT_COLOR_LIGHTER,
-      borderRadius: 16,
+      borderRadius: 8,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_DARKER,
+      overflow: 'hidden',
     },
   }));
