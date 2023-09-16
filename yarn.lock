@@ -1550,30 +1550,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gorhom/bottom-sheet@npm:^4.4.4":
-  version: 4.4.4
-  resolution: "@gorhom/bottom-sheet@npm:4.4.4"
+"@gorhom/bottom-sheet@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "@gorhom/bottom-sheet@npm:4.5.0"
   dependencies:
-    "@gorhom/portal": 1.0.13
+    "@gorhom/portal": 1.0.14
     invariant: ^2.2.4
   peerDependencies:
+    "@types/react": "*"
+    "@types/react-native": "*"
     react: "*"
     react-native: "*"
     react-native-gesture-handler: ">=1.10.1"
     react-native-reanimated: ">=2.2.0"
-  checksum: 7424aa087dfcd1f1e15028989013260d0ab7451a94186dd9f6fc527bcf509d47b6cd627499ade990faaa375b9c21236e20651e0821b5b9a5e06291ead542b8bd
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-native":
+      optional: true
+  checksum: 4a1b69c1077ab70f39c0ba219110d7382fef5bec1fb5f1dc569f700afac055d3478b6f871237b14474aee60d6e55c86c1ade77f41f8ae6601aac1710796b8ea4
   languageName: node
   linkType: hard
 
-"@gorhom/portal@npm:1.0.13":
-  version: 1.0.13
-  resolution: "@gorhom/portal@npm:1.0.13"
+"@gorhom/portal@npm:1.0.14":
+  version: 1.0.14
+  resolution: "@gorhom/portal@npm:1.0.14"
   dependencies:
     nanoid: ^3.3.1
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 4dd471feedc0dbcc06e9ba725695727448b79550fdc95e5888ea3c2aa9dd51ffffaa0ec2c3e762526c8eef4a36cebd625f73271a3bc31b80786af5a90ba2ea5b
+  checksum: 227bb96a2db854ab29bb9da8d4f3823c7f7448358de459709dd1b78522110da564c9a8734c6bc7d7153ed7c99320e0fb5d60b420c2ebb75ecaf2f0d757f410f9
   languageName: node
   linkType: hard
 
@@ -5203,7 +5210,7 @@ __metadata:
     "@babel/core": ^7.19.1
     "@babel/preset-typescript": ^7.18.6
     "@babel/runtime": ^7.19.0
-    "@gorhom/bottom-sheet": ^4.4.4
+    "@gorhom/bottom-sheet": ^4.5.0
     "@react-native-async-storage/async-storage": ^1.17.10
     "@react-native-community/eslint-config": ^3.1.0
     "@react-native-community/hooks": ^2.8.1
