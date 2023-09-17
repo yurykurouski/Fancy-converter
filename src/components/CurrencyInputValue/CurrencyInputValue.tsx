@@ -29,12 +29,10 @@ import {
   useKeyboardHandlers,
 } from './CurrencyInputValue.hooks';
 import { Props } from './CurrencyInputValue.types';
-import { Gradient } from './Gradient';
 
 import { useStyles } from './CurrencyInputValue.styles';
 
 const OVERSWIPE_DIST = 10;
-const FEAT_WITH_GRADIENT = false;
 
 if (Platform.OS === 'android') {
   UIManager.setLayoutAnimationEnabledExperimental &&
@@ -140,15 +138,6 @@ export const CurrencyInputValue: FC<Props> = React.memo(
               ? setIsReadyToDelete(true)
               : setIsReadyToDelete(false);
           }}
-          //*remove comment to enable gradient
-          // onChange={({ openDirection }) => {
-          //   if (
-          //     openDirection === OpenDirection.RIGHT ||
-          //     openDirection === OpenDirection.NONE
-          //   ) {
-          //     setIsReadyToDelete(value => !value);
-          //   }
-          // }}
           overSwipe={OVERSWIPE_DIST}
           renderUnderlayRight={() => (
             <View style={styles.underlayBackground}>
@@ -156,15 +145,10 @@ export const CurrencyInputValue: FC<Props> = React.memo(
             </View>
           )}
           snapPointsRight={[0, 60]}>
-          {/** whait for decision about gradient */}
-          {FEAT_WITH_GRADIENT && (
-            <Gradient isReadyToDelete={isReadyToDelete} isFocused={isFocused} />
-          )}
           <View
             style={[
               styles.containerWrapper,
               styles.container,
-              //* to enable gradient style just add !isReadyToDelete
               isFocused && styles.containerWrapperFocused,
             ]}>
             <Pressable
