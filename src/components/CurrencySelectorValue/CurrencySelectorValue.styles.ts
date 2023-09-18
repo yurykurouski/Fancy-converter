@@ -1,7 +1,7 @@
-import { withTheme } from 'utils';
+import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  withTheme(theme => ({
+  useTheme(theme => ({
     currencyBlockWrapper: {
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       marginBottom: 10,

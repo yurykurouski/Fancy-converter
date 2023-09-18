@@ -1,8 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
+import { StyleSheet } from 'react-native';
 import {
   HandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
+import { Theme } from 'assets/colors';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
 import { OnlyCourses } from 'utils/utils.types';
 
@@ -46,3 +48,7 @@ export type UseHandleSwipeDirection = (
   handler: () => void,
   direction: SWIPE_DIRECTIONS,
 ) => Handler;
+
+export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
+  mapStyles: (theme: Theme) => T,
+) => T;

@@ -1,7 +1,7 @@
-import { withTheme } from 'utils';
+import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  withTheme(theme => ({
+  useTheme(theme => ({
     handleContainer: {
       height: 30,
       alignItems: 'center',

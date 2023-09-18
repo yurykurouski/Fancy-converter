@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
-import { WithTheme } from './utils.types';
+import { TUseTheme } from './types';
 
-export const withTheme: WithTheme = mapStyles => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+export const useTheme: TUseTheme = mapStyles => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   return StyleSheet.create(mapStyles(THEME_COLORS[colorScheme]));

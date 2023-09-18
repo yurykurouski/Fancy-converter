@@ -1,6 +1,3 @@
-import { StyleSheet } from 'react-native';
-import { Theme } from 'assets/colors';
-
 export type OnlyCourses = {
   [key: string]: number;
 };
@@ -25,7 +22,3 @@ export type GetIsCoursesCheckedLastHour = (
 ) => Promise<boolean>;
 
 export type GetSaveDate = (currentDate: Date) => string;
-
-export type WithTheme = <T extends StyleSheet.NamedStyles<T>>(
-  mapStyles: (theme: Theme) => T,
-) => T;

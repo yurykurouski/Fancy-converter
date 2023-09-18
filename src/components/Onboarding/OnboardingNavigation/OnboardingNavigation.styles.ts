@@ -1,7 +1,8 @@
-import { isAndroid, withTheme } from 'utils';
+import { useTheme } from 'hooks';
+import { isAndroid } from 'utils';
 
 export const useStyles = () =>
-  withTheme(theme => ({
+  useTheme(theme => ({
     container: {
       marginTop: 'auto',
     },
