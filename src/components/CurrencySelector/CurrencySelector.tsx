@@ -8,7 +8,9 @@ import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColorsDark } from 'assets/colors';
 import { CurrenciesBottomSheet, CurrencyInputValue } from 'components';
-import { ExchangeCourseContext } from 'context';
+import { NotificationContext } from 'context';
+import { useGetCurrenciesExchangeCourse } from 'hooks';
+import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { AvaliableCurrenciesNames } from 'types';
@@ -21,19 +23,17 @@ export const CurrencySelector = ({
 }: {
   isDrawerOpened: boolean;
 }) => {
-  const {
-    currentExchangeCourseContext: {
-      currentExchangeCourse,
-      setCurrentExchangeCourse,
-    },
-  } = useContext(ExchangeCourseContext);
+  const startNotification = useContext(NotificationContext);
+
+  const { exchangeCourses, isLoading } = useSelector(selectExchangeCourses);
+
+  const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
 
   const dispatch = useDispatch();
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
   const setSelectedCurrencies = (value: string[]) => {
     dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value));
   };
-  const { isLoading, exchangeCourse } = currentExchangeCourse;
 
   const itemRefs = useRef<
     Map<AvaliableCurrenciesNames, SwipeableItemImperativeRef>
@@ -61,7 +61,7 @@ export const CurrencySelector = ({
         refreshControl={
           <RefreshControl
             refreshing={isLoading}
-            onRefresh={setCurrentExchangeCourse}
+            onRefresh={reloadCourses}
             colors={[ColorsDark.MAIN_BUTTON_COLOR]}
           />
         }
@@ -75,7 +75,7 @@ export const CurrencySelector = ({
         itemExitingAnimation={SlideOutRight.duration(250)}
         itemLayoutAnimation={Layout.delay(250).duration(150)}
       />
-      {exchangeCourse && (
+      {exchangeCourses && (
         <CurrenciesBottomSheet
           isDrawerOpened={isDrawerOpened}
           selectedCurrencies={selectedCurrencies}

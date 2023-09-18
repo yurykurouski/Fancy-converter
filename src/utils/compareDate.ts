@@ -20,7 +20,7 @@ export const getIsCoursesCheckedLastHour: GetIsCoursesCheckedLastHour =
       StorageKeys.LAST_COURSES_UPDATE,
     );
 
-    if (!lastCoursesUpdate) {
+    if (!!!lastCoursesUpdate) {
       await setToStorage(
         StorageKeys.LAST_COURSES_UPDATE,
         currentDate.getTime(),

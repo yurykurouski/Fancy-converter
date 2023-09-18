@@ -1,26 +1,35 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 import { useGetCoursesFromStorage, useReloadCourses } from 'hooks';
+import { ExchangeCourseSlice } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { getIsCoursesCheckedLastHour, getSaveDate } from 'utils';
-import { OnlyCourses } from 'utils/utils.types';
 
 import { UseGetCurrenciesExchangeCourse } from './types';
 
+//TODO: need refactor
 export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
   startNotification => {
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [exchangeCourse, setExchangeCourse] = useState<OnlyCourses>();
+    const dispatch = useDispatch();
 
+    const setExchangeCourses = useCallback(
+      value => dispatch(ExchangeCourseSlice.actions.setExchangeCourses(value)),
+      [dispatch],
+    );
+    const setIsLoading = useCallback(
+      value => dispatch(ExchangeCourseSlice.actions.setIsLoading(value)),
+      [dispatch],
+    );
     const currentDate = useMemo(() => new Date(), []);
     const saveDate = getSaveDate(currentDate);
 
     const getCoursesFromStorage = useGetCoursesFromStorage(
-      setExchangeCourse,
+      setExchangeCourses,
       startNotification,
     );
 
     const reloadCourses = useReloadCourses(
       setIsLoading,
-      setExchangeCourse,
+      setExchangeCourses,
       saveDate,
       getCoursesFromStorage,
       startNotification,
@@ -36,5 +45,5 @@ export const useGetCurrenciesExchangeCourse: UseGetCurrenciesExchangeCourse =
       });
     }, [currentDate, getCoursesFromStorage, reloadCourses]);
 
-    return { isLoading, exchangeCourse, reloadCourses };
+    return { reloadCourses };
   };

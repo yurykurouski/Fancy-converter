@@ -15,8 +15,6 @@ type ReloadCourses = () => void;
 export type UseGetCurrenciesExchangeCourse = (
   startNotification: (message: string) => void,
 ) => {
-  isLoading: boolean;
-  exchangeCourse: OnlyCourses;
   reloadCourses: ReloadCourses;
 };
 
