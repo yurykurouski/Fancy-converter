@@ -1,4 +1,11 @@
-import React, { FC, useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import {
   Platform,
   Pressable,
@@ -14,12 +21,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
-import { FocusedCurrencyContext, NotificationContext } from 'context';
+import { NotificationContext } from 'context';
 import { useFilteredCourseBySelectedCurrencies } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
+import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
+import { FocusedCurrencySlice } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
+import { AvailableCurrenciesNames } from 'types';
 
 import {
   useConvertedValues,
@@ -41,18 +51,14 @@ if (Platform.OS === 'android') {
 
 export const CurrencyInputValue: FC<Props> = React.memo(
   ({ currencyCode, drag, itemRefs }) => {
-    const {
-      focusedCurrencyContext: {
-        focusedCurrency,
-        setFocusedCurrencyName,
-        setFocusedCurrencyValue,
-      },
-    } = useContext(FocusedCurrencyContext);
     const startNotification = useContext(NotificationContext);
 
     const { colorScheme } = useSelector(selectColorSchemeState);
     const { exchangeCourses } = useSelector(selectExchangeCourses);
     const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+    const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
+      selectFocusedCurrency,
+    );
 
     const dispatch = useDispatch();
 
@@ -60,7 +66,16 @@ export const CurrencyInputValue: FC<Props> = React.memo(
       dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value));
     };
 
-    const { focusedCurrencyName, focusedCurrencyValue } = focusedCurrency;
+    const setFocusedCurrencyValue = useCallback(
+      (value: string) =>
+        dispatch(FocusedCurrencySlice.actions.setFocusedCurrencyValue(value)),
+      [dispatch],
+    );
+    const setFocusedCurrencyName = useCallback(
+      (name: AvailableCurrenciesNames) =>
+        dispatch(FocusedCurrencySlice.actions.setFocusedCurrencyName(name)),
+      [dispatch],
+    );
 
     const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
     const [isReadyToDelete, setIsReadyToDelete] = useState(false);

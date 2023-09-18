@@ -1,4 +1,4 @@
-export enum AvaliableCurrenciesNames {
+export enum AvailableCurrenciesNames {
   USD = 'USD',
   EUR = 'EUR',
   RUB = 'RUB',

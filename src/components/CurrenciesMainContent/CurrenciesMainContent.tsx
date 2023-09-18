@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Drawer, Header } from 'components';
-import { FocusedCurrencyProvider } from 'context';
 
 import { CurrencySelector } from '../CurrencySelector/CurrencySelector';
 
@@ -22,9 +21,7 @@ export const CurrenciesMainContent = React.memo(() => {
     <>
       <Header onLongPress={drawerAnimation} />
       <View style={styles.container}>
-        <FocusedCurrencyProvider>
-          <CurrencySelector isDrawerOpened={isDrawerOpened} />
-        </FocusedCurrencyProvider>
+        <CurrencySelector isDrawerOpened={isDrawerOpened} />
       </View>
       <Drawer
         animatedPosition={animatedPosition}
