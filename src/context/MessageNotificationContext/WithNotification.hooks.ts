@@ -1,6 +1,7 @@
-import { useCallback, useContext, useState } from 'react';
-import { OnboardingContext } from 'context/OnboardingContext';
+import { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useIsHasIsland } from 'hooks/useHasIsland';
+import { selectOnBoardingStatus } from 'store/onboardingStatus/selectors';
 
 import {
   showNotification,
@@ -9,20 +10,20 @@ import {
 import { UseNotificationMessage } from './WithNotification.types';
 
 export const useNotificationMessage: UseNotificationMessage = () => {
-  const { isOnboarded: isOnboard } = useContext(OnboardingContext);
+  const { isOnBoarded } = useSelector(selectOnBoardingStatus);
   const [message, setMessage] = useState(null);
 
   const hasIsland = useIsHasIsland();
 
   const showMessage = useCallback(
     (msg: string) => {
-      if (isOnboard) {
+      if (isOnBoarded) {
         setMessage(msg);
 
         hasIsland ? showNotificationForIsland() : showNotification();
       }
     },
-    [hasIsland, isOnboard],
+    [hasIsland, isOnBoarded],
   );
 
   return {

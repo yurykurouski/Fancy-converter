@@ -1,6 +1,7 @@
-import { MutableRefObject, useContext } from 'react';
+import { MutableRefObject } from 'react';
 import { FlatList } from 'react-native';
-import { OnboardingContext } from 'context/OnboardingContext';
+import { useDispatch } from 'react-redux';
+import { OnBoardingStatusSlice } from 'store/onboardingStatus/slices/OnBoardingStatusSlice';
 
 import { ONBOARDING_SCREENS } from '../Onboarding.consts';
 
@@ -11,7 +12,10 @@ export const useNavigationHandlers = ({
   currentPage: number;
   flatListRef: MutableRefObject<FlatList<unknown>>;
 }) => {
-  const { setOnboardingStatus } = useContext(OnboardingContext);
+  const dispatch = useDispatch();
+
+  const setOnboardingStatus = (value: boolean) =>
+    dispatch(OnBoardingStatusSlice.actions.setIsOnBoarded(value));
 
   const handleNextPress = () => {
     if (currentPage === ONBOARDING_SCREENS.length - 1) {
