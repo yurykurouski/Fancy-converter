@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { OpacityDecorator } from 'react-native-draggable-flatlist';
 import SwipeableItem, { OpenDirection } from 'react-native-swipeable-item';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
@@ -18,10 +18,11 @@ import {
   ExchangeCourseContext,
   FocusedCurrencyContext,
   NotificationContext,
-  SelectedCurrenciesContext,
 } from 'context';
 import { useFilteredCourseBySelectedCurrencies } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 
 import {
   useConvertedValues,
@@ -55,9 +56,13 @@ export const CurrencyInputValue: FC<Props> = React.memo(
     const {
       currentExchangeCourseContext: { currentExchangeCourse },
     } = useContext(ExchangeCourseContext);
-    const {
-      selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
-    } = useContext(SelectedCurrenciesContext);
+
+    const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+    const dispatch = useDispatch();
+
+    const setSelectedCurrencies = (value: string[]) => {
+      dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value));
+    };
 
     const startNotification = useContext(NotificationContext);
 

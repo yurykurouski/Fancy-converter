@@ -2,11 +2,11 @@ import { ColorSchemeName } from 'react-native';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getCurrentColorTheme } from 'utils';
 
-export type TApplicationSlice = {
+export type TColorSchemeSlice = {
   colorScheme: ColorSchemeName;
 };
 
-const initialState: TApplicationSlice = {
+const initialState: TColorSchemeSlice = {
   colorScheme: getCurrentColorTheme(),
 };
 

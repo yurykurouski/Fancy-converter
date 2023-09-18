@@ -5,9 +5,12 @@ import DraggableFlatList, {
 } from 'react-native-draggable-flatlist';
 import { Layout, SlideOutRight } from 'react-native-reanimated';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
+import { useDispatch, useSelector } from 'react-redux';
 import { ColorsDark } from 'assets/colors';
 import { CurrenciesBottomSheet, CurrencyInputValue } from 'components';
-import { ExchangeCourseContext, SelectedCurrenciesContext } from 'context';
+import { ExchangeCourseContext } from 'context';
+import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { AvaliableCurrenciesNames } from 'types';
 
 import { ANIMATION_CONFIG } from './CurrencySelector.consts';
@@ -19,16 +22,17 @@ export const CurrencySelector = ({
   isDrawerOpened: boolean;
 }) => {
   const {
-    selectedCurrenciesContext: { selectedCurrencies, setSelectedCurrencies },
-  } = useContext(SelectedCurrenciesContext);
-
-  const {
     currentExchangeCourseContext: {
       currentExchangeCourse,
       setCurrentExchangeCourse,
     },
   } = useContext(ExchangeCourseContext);
 
+  const dispatch = useDispatch();
+  const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+  const setSelectedCurrencies = (value: string[]) => {
+    dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value));
+  };
   const { isLoading, exchangeCourse } = currentExchangeCourse;
 
   const itemRefs = useRef<
