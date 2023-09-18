@@ -26,7 +26,7 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = ({
 
   const onChangeTextHandler = useCallback(
     text => {
-      const withoutSpaces = text.replace(/\s+/g, '');
+      const withoutSpaces = text.replace(/\s+/g, '') as string;
 
       if (INPUT_VALIDATION_REXEXP.test(withoutSpaces) || !withoutSpaces) {
         setFocusedCurrencyValue(withoutSpaces);

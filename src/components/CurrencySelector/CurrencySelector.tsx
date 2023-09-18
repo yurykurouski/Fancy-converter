@@ -13,7 +13,7 @@ import { useGetCurrenciesExchangeCourse } from 'hooks';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
-import { AvaliableCurrenciesNames } from 'types';
+import { AvailableCurrenciesNames } from 'types';
 
 import { ANIMATION_CONFIG } from './CurrencySelector.consts';
 import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
@@ -36,7 +36,7 @@ export const CurrencySelector = ({
   };
 
   const itemRefs = useRef<
-    Map<AvaliableCurrenciesNames, SwipeableItemImperativeRef>
+    Map<AvailableCurrenciesNames, SwipeableItemImperativeRef>
   >(new Map());
 
   const isKeyBoardOpened = useTrackKeyboardStatus();
@@ -44,7 +44,7 @@ export const CurrencySelector = ({
   const renderItem = ({
     item,
     drag,
-  }: RenderItemParams<AvaliableCurrenciesNames>) => (
+  }: RenderItemParams<AvailableCurrenciesNames>) => (
     <CurrencyInputValue currencyCode={item} drag={drag} itemRefs={itemRefs} />
   );
 

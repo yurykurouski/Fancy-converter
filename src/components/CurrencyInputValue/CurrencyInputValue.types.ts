@@ -1,14 +1,15 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import { TextInput } from 'react-native';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
-import { AvaliableCurrenciesNames, SelectedCurrencies } from 'types';
+import { AvailableCurrenciesNames, SelectedCurrencies } from 'types';
 
 export type Props = {
-  currencyCode: AvaliableCurrenciesNames;
+  currencyCode: AvailableCurrenciesNames;
   drag: () => void;
   itemRefs: MutableRefObject<
-    Map<AvaliableCurrenciesNames, SwipeableItemImperativeRef>
+    Map<AvailableCurrenciesNames, SwipeableItemImperativeRef>
   >;
 };
 
@@ -17,9 +18,11 @@ export type OnFocusHandler = (text: string) => void;
 export type ContainerOnPressHandler = () => void;
 
 export type UseCurrencyInputHandlers = (props: {
-  setFocusedCurrencyValue: Dispatch<SetStateAction<string>>;
-  setFocusedCurrencyName: Dispatch<SetStateAction<AvaliableCurrenciesNames>>;
-  currencyCode: AvaliableCurrenciesNames;
+  setFocusedCurrencyValue: (value: string) => PayloadAction<string>;
+  setFocusedCurrencyName: (
+    name: AvailableCurrenciesNames,
+  ) => PayloadAction<AvailableCurrenciesNames>;
+  currencyCode: AvailableCurrenciesNames;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   inputRef: MutableRefObject<TextInput>;
 }) => {
