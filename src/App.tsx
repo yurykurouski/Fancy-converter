@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import {
   ExchangeCourseProvider,
@@ -14,6 +15,7 @@ import {
 } from 'context/OnboardingContext';
 import { ThemeProvider } from 'context/ThemeProvider';
 import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
+import store from 'store';
 
 import { useStyles } from './App.styles';
 
@@ -42,15 +44,17 @@ export default () => (
   <SafeAreaProvider>
     <GestureHandlerRootView>
       <LocalStorageProvider>
-        <ThemeProvider>
-          <OnboardingContextProvider>
-            <WithNotification>
-              <ExchangeCourseProvider>
-                <App />
-              </ExchangeCourseProvider>
-            </WithNotification>
-          </OnboardingContextProvider>
-        </ThemeProvider>
+        <Provider store={store}>
+          <ThemeProvider>
+            <OnboardingContextProvider>
+              <WithNotification>
+                <ExchangeCourseProvider>
+                  <App />
+                </ExchangeCourseProvider>
+              </WithNotification>
+            </OnboardingContextProvider>
+          </ThemeProvider>
+        </Provider>
       </LocalStorageProvider>
     </GestureHandlerRootView>
   </SafeAreaProvider>

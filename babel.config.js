@@ -26,6 +26,7 @@ module.exports = {
           services: './src/services',
           constants: './src/constants',
           context: './src/context',
+          store: './src/store',
         },
       },
     ],
