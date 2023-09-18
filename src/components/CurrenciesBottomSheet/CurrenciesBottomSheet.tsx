@@ -54,7 +54,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     if (!isExpanded) {
       isDrawerOpened
         ? sheetRef.current?.close()
-        : sheetRef.current?.snapToIndex(1);
+        : sheetRef.current?.snapToIndex(0);
     }
 
     const renderHandle = useRenderHandler(onPressHandler);
