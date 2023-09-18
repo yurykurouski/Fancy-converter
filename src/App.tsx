@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -7,16 +7,13 @@ import { THEME_COLORS } from 'assets/colors';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import { WithNotification } from 'context';
 import {
-  OnboardingContext,
-  OnboardingContextProvider,
-} from 'context/OnboardingContext';
-import {
+  useAppearanceChangeListener,
   useMultiSetToStorageOnBackground,
-  useSetCustomColorSchemeFromStorage,
 } from 'hooks';
-import { useSetCurrenciesFromStorage } from 'hooks/useSetCurrenciesFromStorage';
+import { useInitDataFromStorage } from 'hooks/useInitDataFromStorage';
 import store from 'store';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectOnBoardingStatus } from 'store/onboardingStatus/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { StorageKeys } from 'utils';
 
@@ -25,20 +22,22 @@ import { useStyles } from './App.styles';
 const App = React.memo(() => {
   const { colorScheme } = useSelector(selectColorSchemeState);
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
-  const { isOnboarded, isLoading } = useContext(OnboardingContext);
+  const { isOnBoarded, isLoadingStatus } = useSelector(selectOnBoardingStatus);
 
   const styles = useStyles();
 
-  const result = selectedCurrencies.join(',');
+  const currenciesStringified = selectedCurrencies.join(',');
 
-  useSetCustomColorSchemeFromStorage();
-  useSetCurrenciesFromStorage();
+  useInitDataFromStorage();
+
   useMultiSetToStorageOnBackground([
     [StorageKeys.COLOR_SCHEME, colorScheme],
-    [StorageKeys.SELECTED_CURRENCIES, result],
+    [StorageKeys.SELECTED_CURRENCIES, currenciesStringified],
   ]);
 
-  if (isLoading) return;
+  useAppearanceChangeListener();
+
+  if (isLoadingStatus) return;
 
   return (
     <>
@@ -47,7 +46,7 @@ const App = React.memo(() => {
           barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
           backgroundColor={THEME_COLORS[colorScheme].APP_BACKGROUND_PRIMARY}
         />
-        {isOnboarded ? <CurrenciesMainContent /> : <Onboarding />}
+        {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
       </SafeAreaView>
     </>
   );
@@ -57,11 +56,9 @@ export default () => (
   <SafeAreaProvider>
     <GestureHandlerRootView>
       <Provider store={store}>
-        <OnboardingContextProvider>
-          <WithNotification>
-            <App />
-          </WithNotification>
-        </OnboardingContextProvider>
+        <WithNotification>
+          <App />
+        </WithNotification>
       </Provider>
     </GestureHandlerRootView>
   </SafeAreaProvider>

@@ -1,9 +1,13 @@
 export { useAlertMessage } from './useAlertMessage';
+export { useAppearanceChangeListener } from './useAppearanceChangeListener';
 export * from './useFilteredCourseBySelectedCurrencies';
 export * from './useGetCoursesFromStorage';
 export * from './useGetCurrenciesExchangeCourse';
 export * from './useHandleSwipeDirection';
+export { useMultiGet } from './useMultiGet';
 export { useMultiSetToStorageOnBackground } from './useMultiSetToStorageOnBackground';
 export * from './useReloadCourses';
-export { useSetCustomColorSchemeFromStorage } from './useSetCustomColorSchemeFromStorage';
+export { useSetColorScheme } from './useSetColorScheme';
+export { useSetOnBoardingStatus } from './useSetOnBoardingStatus';
+export { useSetSelectedCurrencies } from './useSetSelectedCurrencies';
 export { useTheme } from './useTheme';

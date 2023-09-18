@@ -50,3 +50,5 @@ export type UseHandleSwipeDirection = (
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
   mapStyles: (theme: Theme) => T,
 ) => T;
+
+export type TUseMultiGet = <T>(actionsMap: T) => () => Promise<void>;

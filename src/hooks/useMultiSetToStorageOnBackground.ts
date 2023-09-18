@@ -3,17 +3,17 @@ import { AppState } from 'react-native';
 import { multiSetToStorage, StorageKeys } from 'utils';
 
 export const useMultiSetToStorageOnBackground = (
-  values: [StorageKeys, string][],
+  keyValuePairs: [StorageKeys, string][],
 ) => {
   useEffect(() => {
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (nextAppState === 'background') {
-        multiSetToStorage(values);
+        multiSetToStorage(keyValuePairs);
       }
     });
 
     return () => {
       subscription.remove();
     };
-  }, [values]);
+  }, [keyValuePairs]);
 };

@@ -30,6 +30,7 @@ export const CurrencySelector = ({
   const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
 
   const dispatch = useDispatch();
+
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
   const setSelectedCurrencies = (value: string[]) => {
     dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value));
