@@ -5,7 +5,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Provider, useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CurrenciesMainContent, Onboarding } from 'components';
-import { ExchangeCourseProvider, WithNotification } from 'context';
+import { WithNotification } from 'context';
 import {
   OnboardingContext,
   OnboardingContextProvider,
@@ -59,9 +59,7 @@ export default () => (
       <Provider store={store}>
         <OnboardingContextProvider>
           <WithNotification>
-            <ExchangeCourseProvider>
-              <App />
-            </ExchangeCourseProvider>
+            <App />
           </WithNotification>
         </OnboardingContextProvider>
       </Provider>

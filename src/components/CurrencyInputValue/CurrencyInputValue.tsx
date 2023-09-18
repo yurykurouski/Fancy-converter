@@ -14,13 +14,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
-import {
-  ExchangeCourseContext,
-  FocusedCurrencyContext,
-  NotificationContext,
-} from 'context';
+import { FocusedCurrencyContext, NotificationContext } from 'context';
 import { useFilteredCourseBySelectedCurrencies } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 
@@ -44,8 +41,6 @@ if (Platform.OS === 'android') {
 
 export const CurrencyInputValue: FC<Props> = React.memo(
   ({ currencyCode, drag, itemRefs }) => {
-    const { colorScheme } = useSelector(selectColorSchemeState);
-
     const {
       focusedCurrencyContext: {
         focusedCurrency,
@@ -53,22 +48,19 @@ export const CurrencyInputValue: FC<Props> = React.memo(
         setFocusedCurrencyValue,
       },
     } = useContext(FocusedCurrencyContext);
-    const {
-      currentExchangeCourseContext: { currentExchangeCourse },
-    } = useContext(ExchangeCourseContext);
+    const startNotification = useContext(NotificationContext);
 
+    const { colorScheme } = useSelector(selectColorSchemeState);
+    const { exchangeCourses } = useSelector(selectExchangeCourses);
     const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+
     const dispatch = useDispatch();
 
     const setSelectedCurrencies = (value: string[]) => {
       dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value));
     };
 
-    const startNotification = useContext(NotificationContext);
-
     const { focusedCurrencyName, focusedCurrencyValue } = focusedCurrency;
-
-    const { exchangeCourse } = currentExchangeCourse;
 
     const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
     const [isReadyToDelete, setIsReadyToDelete] = useState(false);
@@ -78,7 +70,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(
     const inputRef = useRef<TextInput>(null);
 
     const selectedCourses = useFilteredCourseBySelectedCurrencies(
-      exchangeCourse,
+      exchangeCourses,
       selectedCurrencies,
     );
 
