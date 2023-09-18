@@ -1,16 +1,16 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
 import { CountryFlag } from 'components/common/CountryFlag';
-import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 import { l } from 'resources/localization';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
 import { Props } from './CurrencySelectorValue.types';
 
 import { useStyles } from './CurrencySelectorValue.styles';
-
-// const MAX_CURRENCY_NAME_LENGTH = 30;
 
 export const CurrencySelectorValue: FC<Props> = React.memo(
   ({
@@ -19,7 +19,7 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
     setModalSelectedCurrencies,
     isExpanded,
   }) => {
-    const { themeColors } = useContext(ThemeContext);
+    const { colorScheme } = useSelector(selectColorSchemeState);
     const styles = useStyles();
 
     const isActive = (modalSelectedCurrencies as string[]).includes(
@@ -35,25 +35,6 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
     );
 
     const currencyName = l[currencyCode];
-
-    // const CurrencyName = () =>
-    //   //todo: fix this(crash)
-    //   currencyName.length === MAX_CURRENCY_NAME_LENGTH ? (
-    //     <TextTicker
-    //       style={styles.currencyName}
-    //       duration={3000}
-    //       animationType="bounce"
-    //       bounce={true}
-    //       repeatSpacer={10}
-    //       bouncePadding={{
-    //         left: 0,
-    //       }}
-    //       marqueeDelay={1000}>
-    //       {currencyName}
-    //     </TextTicker>
-    //   ) : (
-    //     <Text style={styles.currencyName}>{currencyName}</Text>
-    //   );
 
     return (
       <View style={styles.currencyBlockWrapper}>
@@ -71,7 +52,7 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
           </View>
           <BouncyCheckbox
             size={30}
-            fillColor={themeColors.ACCENT_COLOR_LIGHTER}
+            fillColor={THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER}
             onPress={onPressHandler}
             isChecked={isActive}
             disableBuiltInState

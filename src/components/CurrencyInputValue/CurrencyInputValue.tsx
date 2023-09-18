@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { OpacityDecorator } from 'react-native-draggable-flatlist';
 import SwipeableItem, { OpenDirection } from 'react-native-swipeable-item';
+import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
 import {
@@ -18,8 +20,8 @@ import {
   NotificationContext,
   SelectedCurrenciesContext,
 } from 'context';
-import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
 import { useFilteredCourseBySelectedCurrencies } from 'hooks';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import {
   useConvertedValues,
@@ -41,7 +43,8 @@ if (Platform.OS === 'android') {
 
 export const CurrencyInputValue: FC<Props> = React.memo(
   ({ currencyCode, drag, itemRefs }) => {
-    const { themeColors } = useContext(ThemeContext);
+    const { colorScheme } = useSelector(selectColorSchemeState);
+
     const {
       focusedCurrencyContext: {
         focusedCurrency,
@@ -160,7 +163,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(
             </Pressable>
             <TextInput
               style={styles.input}
-              placeholderTextColor={themeColors.FONT_COLOR_FADED}
+              placeholderTextColor={THEME_COLORS[colorScheme].FONT_COLOR_FADED}
               value={formattedValue}
               onChangeText={onChangeTextHandler}
               onFocus={() => onFocusHandler(caclulatedValue)}

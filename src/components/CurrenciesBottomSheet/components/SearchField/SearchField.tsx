@@ -1,8 +1,10 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Animated, Keyboard, TextInput, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
-import { ThemeContext } from 'context';
 import { l } from 'resources/localization';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { animatedPosition } from '../../CurrenciesBottomSheet.utils';
 
@@ -18,7 +20,7 @@ export const SearchField: FC<Props> = ({
   const [isFocused, setIsFocused] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
-  const { themeColors } = useContext(ThemeContext);
+  const { colorScheme } = useSelector(selectColorSchemeState);
 
   const styles = useStyles();
 
@@ -57,7 +59,7 @@ export const SearchField: FC<Props> = ({
           onBlur={() => setIsFocused(false)}
           onPressOut={() => setIsFocused(true)}
           placeholder={l['currency_search.input.placeholder']}
-          placeholderTextColor={themeColors.FONT_COLOR_FADED}
+          placeholderTextColor={THEME_COLORS[colorScheme].FONT_COLOR_FADED}
           contextMenuHidden
         />
         {!!searchValue && (

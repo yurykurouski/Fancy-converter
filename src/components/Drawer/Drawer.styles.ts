@@ -1,5 +1,5 @@
 import { SCREEN_WIDTH } from 'constants/constants';
-import { withTheme } from 'context';
+import { withTheme } from 'utils';
 
 export const useStyles = (bottom: number) =>
   withTheme(theme => ({

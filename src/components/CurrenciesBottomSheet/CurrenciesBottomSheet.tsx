@@ -1,9 +1,11 @@
-import React, { useContext, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
-import { ThemeContext } from 'context';
+import { THEME_COLORS } from 'assets/colors';
 import { currencies } from 'resources/avaliable-currencies.json';
 import { l } from 'resources/localization';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { SearchField } from './components/SearchField';
 import { BottomSheetBackground } from './BottomSheetBackground';
@@ -28,7 +30,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
 
     const sheetRef = useRef<BottomSheet>(null);
     const styles = useStyles();
-    const { themeColors } = useContext(ThemeContext);
+    const { colorScheme } = useSelector(selectColorSchemeState);
 
     const { onPressHandler, onChangeHandler } = useBottomSheetHandlers(
       sheetRef,
@@ -75,7 +77,9 @@ export const CurrenciesBottomSheet = React.memo<Props>(
         onChange={onChangeHandler}>
         {isCalculatingValue && (
           <View style={styles.activityIndicatorContainer}>
-            <ActivityIndicator color={themeColors.ACCENT_COLOR_LIGHTER} />
+            <ActivityIndicator
+              color={THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER}
+            />
           </View>
         )}
         <BottomSheetFlatList

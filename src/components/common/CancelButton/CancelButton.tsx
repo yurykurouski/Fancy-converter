@@ -1,9 +1,10 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
+import { useSelector } from 'react-redux';
 import CloseIconDark from 'assets/icons/close_black_24dp.svg';
 import CloseIconLight from 'assets/icons/close_white_24dp.svg';
 import { OnChangeTextHandler } from 'components/CurrencyInputValue/CurrencyInputValue.types';
-import { ThemeContext } from 'context/ThemeProvider';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { useStyles } from './CancelButton.styles';
 
@@ -18,7 +19,7 @@ export const CancelButton: FC<Props> = ({
   size = 24,
   additionalStyle,
 }) => {
-  const { colorScheme } = useContext(ThemeContext);
+  const { colorScheme } = useSelector(selectColorSchemeState);
   const styles = useStyles(size);
 
   return (
