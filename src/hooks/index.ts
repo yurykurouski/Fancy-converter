@@ -6,3 +6,4 @@ export * from './useHandleSwipeDirection';
 export { useMultiSetToStorageOnBackground } from './useMultiSetToStorageOnBackground';
 export * from './useReloadCourses';
 export { useSetCustomColorSchemeFromStorage } from './useSetCustomColorSchemeFromStorage';
+export { useTheme } from './useTheme';

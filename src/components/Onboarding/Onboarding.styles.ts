@@ -1,8 +1,8 @@
-import { withTheme } from 'utils';
+import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
-  withTheme(theme => ({
+  useTheme(theme => ({
     contentContainer: {
       position: 'absolute',
       top: 0,

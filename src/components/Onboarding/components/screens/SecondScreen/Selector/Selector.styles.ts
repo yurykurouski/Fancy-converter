@@ -1,7 +1,7 @@
-import { withTheme } from 'utils';
+import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  withTheme(theme => ({
+  useTheme(theme => ({
     currencyWrapper: {
       borderBottomLeftRadius: 20,
       borderBottomEndRadius: 20,

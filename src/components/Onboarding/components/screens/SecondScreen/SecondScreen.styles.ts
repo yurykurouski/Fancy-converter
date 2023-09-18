@@ -1,7 +1,7 @@
-import { withTheme } from 'utils/withTheme';
+import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  withTheme(theme => ({
+  useTheme(theme => ({
     backgroundContainer: {
       height: '60%',
       marginTop: 'auto',

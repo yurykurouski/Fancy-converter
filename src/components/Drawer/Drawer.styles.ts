@@ -1,8 +1,8 @@
 import { SCREEN_WIDTH } from 'constants/constants';
-import { withTheme } from 'utils';
+import { useTheme } from 'hooks';
 
 export const useStyles = (bottom: number) =>
-  withTheme(theme => ({
+  useTheme(theme => ({
     drawer: {
       position: 'absolute',
       bottom,
