@@ -14,3 +14,6 @@ export const setToStorage = async (key: StorageKeys, value: unknown) =>
 
 export const getFromStorage = async (key: StorageKeys) =>
   await AsyncStorage.getItem(key);
+
+export const multiSetToStorage = async (keyValuePairs: [string, string][]) =>
+  AsyncStorage.multiSet(keyValuePairs);

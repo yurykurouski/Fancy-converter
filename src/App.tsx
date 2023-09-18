@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import {
   ExchangeCourseProvider,
@@ -13,17 +14,24 @@ import {
   OnboardingContext,
   OnboardingContextProvider,
 } from 'context/OnboardingContext';
-import { ThemeProvider } from 'context/ThemeProvider';
-import { ThemeContext } from 'context/ThemeProvider/ThemeProvider';
+import {
+  useMultiSetToStorageOnBackground,
+  useSetCustomColorSchemeFromStorage,
+} from 'hooks';
 import store from 'store';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { StorageKeys } from 'utils';
 
 import { useStyles } from './App.styles';
 
 const App = React.memo(() => {
-  const { themeColors, colorScheme } = useContext(ThemeContext);
+  const { colorScheme } = useSelector(selectColorSchemeState);
   const { isOnboarded, isLoading } = useContext(OnboardingContext);
 
   const styles = useStyles();
+
+  useMultiSetToStorageOnBackground([StorageKeys.COLOR_SCHEME, colorScheme]);
+  useSetCustomColorSchemeFromStorage();
 
   if (isLoading) return;
 
@@ -32,7 +40,7 @@ const App = React.memo(() => {
       <SafeAreaView style={styles.backgroundStyle}>
         <StatusBar
           barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-          backgroundColor={themeColors.APP_BACKGROUND_PRIMARY}
+          backgroundColor={THEME_COLORS[colorScheme].APP_BACKGROUND_PRIMARY}
         />
         {isOnboarded ? <CurrenciesMainContent /> : <Onboarding />}
       </SafeAreaView>
@@ -45,15 +53,13 @@ export default () => (
     <GestureHandlerRootView>
       <LocalStorageProvider>
         <Provider store={store}>
-          <ThemeProvider>
-            <OnboardingContextProvider>
-              <WithNotification>
-                <ExchangeCourseProvider>
-                  <App />
-                </ExchangeCourseProvider>
-              </WithNotification>
-            </OnboardingContextProvider>
-          </ThemeProvider>
+          <OnboardingContextProvider>
+            <WithNotification>
+              <ExchangeCourseProvider>
+                <App />
+              </ExchangeCourseProvider>
+            </WithNotification>
+          </OnboardingContextProvider>
         </Provider>
       </LocalStorageProvider>
     </GestureHandlerRootView>

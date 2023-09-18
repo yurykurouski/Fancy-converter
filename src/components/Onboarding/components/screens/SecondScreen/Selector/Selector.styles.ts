@@ -1,4 +1,4 @@
-import { withTheme } from 'context/ThemeProvider';
+import { withTheme } from 'utils';
 
 export const useStyles = () =>
   withTheme(theme => ({

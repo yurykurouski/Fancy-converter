@@ -1,6 +1,7 @@
-import { useContext } from 'react';
 import { Animated } from 'react-native';
-import { ThemeContext } from 'context';
+import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 const MAIN_ITEM_OFFSET = new Animated.Value(0);
 const SECOND_ITEM_OFFSET = new Animated.Value(0);
@@ -11,7 +12,7 @@ const HANDLE_COLOR_VALUE = new Animated.Value(0);
 const MAIN_ITEM_OPACITY = new Animated.Value(1);
 
 export const useDragAnimatedStyles = () => {
-  const { themeColors } = useContext(ThemeContext);
+  const { colorScheme } = useSelector(selectColorSchemeState);
 
   return {
     animatedMainStyles: {
@@ -26,8 +27,8 @@ export const useDragAnimatedStyles = () => {
       backgroundColor: HANDLE_COLOR_VALUE.interpolate({
         inputRange: [0, 1],
         outputRange: [
-          themeColors.FONT_COLOR_FADED,
-          themeColors.ACCENT_COLOR_LIGHTER,
+          THEME_COLORS[colorScheme].FONT_COLOR_FADED,
+          THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER,
         ],
       }),
     },

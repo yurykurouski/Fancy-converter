@@ -1,9 +1,13 @@
 import { ColorSchemeName } from 'react-native';
-import { setColorScheme } from 'context/ThemeProvider/ThemeProvider.types';
+
+type TSetColorScheme = (theme: ColorSchemeName) => {
+  payload: ColorSchemeName;
+  type: 'ColorScheme/setColorScheme';
+};
 
 export type DrawerThemeSwitcher = (props: {
   colorScheme: ColorSchemeName;
-  setColorScheme: setColorScheme;
+  setColorScheme: TSetColorScheme;
 }) => JSX.Element;
 
 export type UseThemeSwitcherAnimations = () => {
@@ -12,6 +16,6 @@ export type UseThemeSwitcherAnimations = () => {
 
 export type UseHandlePress = (
   colorScheme: ColorSchemeName,
-  setColorScheme: setColorScheme,
+  setColorScheme: TSetColorScheme,
   animation: (colorScheme: ColorSchemeName) => void,
 ) => () => void;

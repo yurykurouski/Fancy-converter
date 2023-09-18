@@ -1,13 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { ThemeContext } from 'context';
+import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { useStyles } from './Selector.styles';
 
 export const Selector = () => {
   const [isChecked, setIschecked] = useState(false);
-  const { themeColors } = useContext(ThemeContext);
+  const { colorScheme } = useSelector(selectColorSchemeState);
 
   const styles = useStyles();
 
@@ -34,7 +36,7 @@ export const Selector = () => {
         </View>
         <BouncyCheckbox
           size={30}
-          fillColor={themeColors.ACCENT_COLOR_LIGHTER}
+          fillColor={THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER}
           onPress={onPressHandler}
           isChecked={isChecked}
           disableBuiltInState

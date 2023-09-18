@@ -1,5 +1,4 @@
-import { withTheme } from 'context';
-import { isAndroid } from 'utils/platform';
+import { isAndroid, withTheme } from 'utils';
 
 export const useStyles = () =>
   withTheme(theme => ({

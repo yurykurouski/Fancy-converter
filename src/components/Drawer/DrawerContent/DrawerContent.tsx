@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import cupDark from 'assets/icons/cup_dark.png';
 import cupLight from 'assets/icons/cup_light.png';
 import ghDarkIcon from 'assets/icons/github-dark.png';
@@ -11,7 +12,8 @@ import {
   PAYPAL_DONATION_URL,
   TG_CHANNEL_URL,
 } from 'constants/constants';
-import { ThemeContext } from 'context';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { ColorSchemeSlice } from 'store/colorScheme/slices/ColorSchemeSlice';
 
 import { DrawerIcon } from '../DrawerIcon';
 import { DrawerThemeSwitcher } from '../DrawerThemeSwitcher';
@@ -23,7 +25,15 @@ import { styles } from './DrawerContent.styles';
 const ENABLE_TG_BUTTON = false;
 
 export const DrawerContent = React.memo(() => {
-  const { colorScheme, setColorScheme } = useContext(ThemeContext);
+  const { colorScheme } = useSelector(selectColorSchemeState);
+  const dispatch = useDispatch();
+
+  const setColorScheme = () =>
+    dispatch(
+      ColorSchemeSlice.actions.setColorScheme(
+        colorScheme === 'dark' ? 'light' : 'dark',
+      ),
+    );
 
   const ghIcon = colorScheme === 'dark' ? ghLightIcon : ghDarkIcon;
   const cupIcon = colorScheme === 'dark' ? cupDark : cupLight;
