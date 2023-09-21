@@ -4476,24 +4476,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cycle@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "cycle@npm:1.0.3"
-  checksum: b9f131094fb832a8c4ba18c6d2dc9c87fc80d3242847a45f0a5f70911b2acab68abc1c25eb23e5155fcf2135a27d8fcc3635556745b03b488c4f360cfbc352df
-  languageName: node
-  linkType: hard
-
 "dayjs@npm:^1.8.15":
   version: 1.11.0
   resolution: "dayjs@npm:1.11.0"
   checksum: 2d36f6d71345114cdcd89147adf9e05b4f8fe81684e08c8bf1f86b140aa0b86ecc3cae661a9348d96feb7fbefd03e1bc3697303688e95209670abcb36b4ece15
-  languageName: node
-  linkType: hard
-
-"dayjs@npm:^1.8.29":
-  version: 1.11.9
-  resolution: "dayjs@npm:1.11.9"
-  checksum: a4844d83dc87f921348bb9b1b93af851c51e6f71fa259604809cfe1b49d1230e6b0212dab44d1cb01994c096ad3a77ea1cf18fa55154da6efcc9d3610526ac38
   languageName: node
   linkType: hard
 
@@ -5545,7 +5531,6 @@ __metadata:
     react-native-bouncy-checkbox: ^3.0.7
     react-native-dotenv: ^3.4.0
     react-native-draggable-flatlist: 4.0.1
-    react-native-flipper: ^0.212.0
     react-native-gesture-handler: ^2.12.1
     react-native-gradle-plugin: ^0.70.3
     react-native-localization: ^2.3.1
@@ -5555,7 +5540,6 @@ __metadata:
     react-native-svg-transformer: ^1.1.0
     react-native-swipeable-item: ^2.0.9
     react-redux: ^8.1.2
-    redux-flipper: ^2.0.2
     typescript: ^4.8.3
   languageName: unknown
   linkType: soft
@@ -9169,16 +9153,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-flipper@npm:^0.212.0":
-  version: 0.212.0
-  resolution: "react-native-flipper@npm:0.212.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-native: ">0.62.0"
-  checksum: 41841277b1760d19adc3eaf52e16241ab9050e83185cce394db5ab864480fb46fb9cd2f856ccb4d4762988c91b85a582d121403804aad31522af1a931c9dd89a
-  languageName: node
-  linkType: hard
-
 "react-native-gesture-handler@npm:^2.12.1":
   version: 2.12.1
   resolution: "react-native-gesture-handler@npm:2.12.1"
@@ -9452,20 +9426,6 @@ __metadata:
     source-map: ~0.6.1
     tslib: ^2.0.1
   checksum: 14c35115cd9965950724cb2968f069a247fa79ce890643ab6dc3795c705b363f7b92a45238e9f765387c306763be9955f72047bb9d15b5d60b0a55f9e7912d5a
-  languageName: node
-  linkType: hard
-
-"redux-flipper@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "redux-flipper@npm:2.0.2"
-  dependencies:
-    cycle: ^1.0.3
-    dayjs: ^1.8.29
-  peerDependencies:
-    react-native: ">=0.63.0"
-    react-native-flipper: ">=0.100.0"
-    redux: ^4
-  checksum: 6638e73f565d443bd8df3e65b0f6559b24aab9ccda747857238659c82e0978f0aa6f0fd9a554047f4824f0cf42c8d834f1efefbcf4295df466d7b9d7cda68a1c
   languageName: node
   linkType: hard
 
