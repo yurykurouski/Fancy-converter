@@ -362,7 +362,7 @@ PODS:
     - React-Core
   - RNCAsyncStorage (1.17.10):
     - React-Core
-  - RNGestureHandler (2.12.1):
+  - RNGestureHandler (2.13.1):
     - React-Core
   - RNReanimated (2.17.0):
     - DoubleConversion
@@ -393,7 +393,7 @@ PODS:
     - Yoga
   - RNSVG (13.13.0):
     - React-Core
-  - SocketRocket (0.6.0)
+  - SocketRocket (0.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -583,7 +583,7 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: cbdee19bdd4e7f05472a66ce290f1b729ba3cb86
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
+  glog: 3d02b25ca00c2d456734d0bcff864cbc62f6ae1a
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: b9d9fe1fc70114b751c076104e52f3b1b5e5a95a
@@ -618,10 +618,10 @@ SPEC CHECKSUMS:
   ReactNativeLocalization: 076497d7ca70341c751cd3b3e7c86187332a182d
   RNBootSplash: 85f6b879c080e958afdb4c62ee04497b05fd7552
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
-  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
+  RNGestureHandler: 38aa38413896620338948fbb5c90579a7b1c3fde
   RNReanimated: c6f8f70e96dd6ca21b65aef9b3e4efe4965db905
   RNSVG: ed492aaf3af9ca01bc945f7a149d76d62e73ec82
-  SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 8a90b50af67eaa9fe94fd03e550bfeab06096873
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
