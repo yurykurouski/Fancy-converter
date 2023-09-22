@@ -8,19 +8,22 @@ import {
 } from '../CurrenciesBottomSheet.consts';
 import { handleScrollDirectionChange } from '../CurrenciesBottomSheet.utils';
 
-export const useHandleScroll = () =>
-  useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const currentOffset = event.nativeEvent.contentOffset.y;
-    const dif = currentOffset - OFFSET.offset;
+export const useHandleScroll = (bottom: number) =>
+  useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const currentOffset = event.nativeEvent.contentOffset.y;
+      const dif = currentOffset - OFFSET.offset;
 
-    if (Math.abs(dif) < 25) return;
+      if (Math.abs(dif) < 25) return;
 
-    const direction = dif > 0 ? DIRECTIONS_DOWN : DIRECTIONS_UP;
-    OFFSET.offset = currentOffset;
+      const direction = dif > 0 ? DIRECTIONS_DOWN : DIRECTIONS_UP;
+      OFFSET.offset = currentOffset;
 
-    if (direction === OFFSET.direction) return;
+      if (direction === OFFSET.direction) return;
 
-    OFFSET.direction = dif > 0 ? DIRECTIONS_DOWN : DIRECTIONS_UP;
+      OFFSET.direction = dif > 0 ? DIRECTIONS_DOWN : DIRECTIONS_UP;
 
-    handleScrollDirectionChange(OFFSET.direction);
-  }, []);
+      handleScrollDirectionChange(OFFSET.direction, bottom);
+    },
+    [bottom],
+  );
