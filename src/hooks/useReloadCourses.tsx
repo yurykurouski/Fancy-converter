@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
+import { useLoadCourses } from 'hooks';
 import { l } from 'resources/localization';
-import { currenciesService } from 'services/currencies-service';
 import {
   getFromStorage,
   setToStorage,
@@ -12,23 +12,15 @@ import { UseReloadCourses } from './types';
 
 export const useReloadCourses: UseReloadCourses = (
   setIsLoading,
-  setExchangeCourse,
-  saveDate: string,
   getCoursesFromStorage,
   startNotification,
-) =>
-  useCallback(() => {
+) => {
+  const loadCourses = useLoadCourses();
+
+  return useCallback(() => {
     setIsLoading(true);
 
-    currenciesService
-      .getDailyCourses()
-      .then(({ rates }) => {
-        setExchangeCourse(rates);
-
-        setToStorage(StorageKeys.EXCHANGE_COURSES, rates);
-        setToStorage(StorageKeys.LAST_COURSES_SAVE_DATE, saveDate);
-      })
-
+    loadCourses()
       .finally(() => setIsLoading(false))
       .then(() =>
         startNotification(l['notification.message.update_courses.network']),
@@ -39,10 +31,5 @@ export const useReloadCourses: UseReloadCourses = (
         );
         await setToStorage(StorageKeys.LAST_COURSES_UPDATE, null);
       });
-  }, [
-    getCoursesFromStorage,
-    saveDate,
-    setExchangeCourse,
-    setIsLoading,
-    startNotification,
-  ]);
+  }, [getCoursesFromStorage, loadCourses, setIsLoading, startNotification]);
+};

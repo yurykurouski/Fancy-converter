@@ -1,11 +1,11 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
+import { TSetSelectedCurrencies } from 'hooks/store/types';
 import { SelectedCurrencies } from 'types';
 
 export type Props = {
   selectedCurrencies: SelectedCurrencies;
-  setSelectedCurrencies: Dispatch<SetStateAction<string[]>>;
   isDrawerOpened: boolean;
 };
 
@@ -28,12 +28,12 @@ export type UseKeyboardHandlers = (
 export type CheckIfSeparatorIsNeeded = (
   itemName: string,
   index: number,
-  avaliableCurrencies: string[],
+  availableCurrencies: string[],
 ) => boolean;
 
 export type UseRenderListItem = (props: {
-  avaliableCurrencies: string[];
+  availableCurrencies: string[];
   selectedCurrencies: SelectedCurrencies;
-  setSelectedCurrencies: Dispatch<SetStateAction<SelectedCurrencies>>;
+  setSelectedCurrencies: TSetSelectedCurrencies;
   isExpanded: boolean;
 }) => (props: ListRenderItemInfo<string>) => JSX.Element;

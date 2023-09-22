@@ -17,3 +17,5 @@ export const SelectedCurrenciesSlice = createSlice({
     },
   },
 });
+
+export const { actions: SelectedCurrenciesActions } = SelectedCurrenciesSlice;

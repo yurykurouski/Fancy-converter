@@ -1,6 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Animated, BackHandler, Vibration } from 'react-native';
+import { useSelector } from 'react-redux';
 import { SCREEN_WIDTH, VIBRATION_DURATION } from 'constants/constants';
+import { useSetDrawerStatus } from 'hooks';
+import { selectDrawerOpenStatus } from 'store/drawer/selectors';
 
 import {
   UseHandleBackPress,
@@ -10,7 +13,9 @@ import {
 const animatedPosition = new Animated.Value(-(SCREEN_WIDTH * 0.6));
 
 export const useOpenDrawerAnimations: UseOpenDrawerAnimations = () => {
-  const [isDrawerOpened, setIsDrawerOpened] = useState(false);
+  const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
+
+  const setIsDrawerOpened = useSetDrawerStatus();
 
   const drawerAnimation = useCallback(() => {
     if (!isDrawerOpened) {
@@ -32,7 +37,7 @@ export const useOpenDrawerAnimations: UseOpenDrawerAnimations = () => {
 
       setIsDrawerOpened(false);
     }
-  }, [isDrawerOpened]);
+  }, [isDrawerOpened, setIsDrawerOpened]);
 
   return {
     isDrawerOpened,

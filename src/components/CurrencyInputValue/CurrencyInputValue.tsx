@@ -22,13 +22,15 @@ import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { NotificationContext } from 'context';
-import { useFilteredCourseBySelectedCurrencies } from 'hooks';
+import {
+  useFilteredCourseBySelectedCurrencies,
+  useSetSelectedCurrencies,
+} from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { FocusedCurrencySlice } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { AvailableCurrenciesNames } from 'types';
 
 import {
@@ -62,9 +64,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(
 
     const dispatch = useDispatch();
 
-    const setSelectedCurrencies = (value: string[]) => {
-      dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value));
-    };
+    const setSelectedCurrencies = useSetSelectedCurrencies();
 
     const setFocusedCurrencyValue = useCallback(
       (value: string) =>

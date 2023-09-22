@@ -21,7 +21,7 @@ export const CurrenciesMainContent = React.memo(() => {
     <>
       <Header onLongPress={drawerAnimation} />
       <View style={styles.container}>
-        <CurrencySelector isDrawerOpened={isDrawerOpened} />
+        <CurrencySelector />
       </View>
       <Drawer
         animatedPosition={animatedPosition}
