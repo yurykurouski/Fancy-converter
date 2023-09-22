@@ -12,7 +12,7 @@ const filterResults: string[][] = [];
 let prevQueryLength = 0;
 
 export const useHandleTextChange: UseHandleTextChange = ({
-  setAvaliableCurrencies,
+  setAvailableCurrencies,
   setIsCalculatingValue,
 }) =>
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,7 +22,7 @@ export const useHandleTextChange: UseHandleTextChange = ({
         filterResults.length = 0;
 
         setTimeout(() => {
-          setAvaliableCurrencies(currencies);
+          setAvailableCurrencies(currencies);
           setIsCalculatingValue(false);
         });
         prevQueryLength = 0;
@@ -56,7 +56,7 @@ export const useHandleTextChange: UseHandleTextChange = ({
           filterResults.push(filteredCurrencies);
         }
 
-        setAvaliableCurrencies(filteredCurrencies);
+        setAvailableCurrencies(filteredCurrencies);
         setIsCalculatingValue(false);
 
         prevQueryLength = value.length;

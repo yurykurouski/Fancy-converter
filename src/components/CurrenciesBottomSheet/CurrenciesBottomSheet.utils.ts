@@ -23,10 +23,10 @@ export const handleScrollDirectionChange = (offset: string) => {
 export const checkIfSeparatorIsNeeded: CheckIfSeparatorIsNeeded = (
   itemName,
   index,
-  avaliableCurrencies,
+  availableCurrencies,
 ) => {
   if (index === 0) {
     return true;
   }
-  return itemName[0] !== avaliableCurrencies[index - 1]?.[0];
+  return itemName[0] !== availableCurrencies[index - 1]?.[0];
 };
