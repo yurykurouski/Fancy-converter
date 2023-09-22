@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Animated, Keyboard, TextInput, View } from 'react-native';
+import { Animated, Keyboard, View } from 'react-native';
 import { useSelector } from 'react-redux';
+import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { l } from 'resources/localization';
@@ -50,7 +51,7 @@ export const SearchField: FC<Props> = ({
         { transform: [{ translateY: animatedPosition }] },
       ]}>
       <View style={[styles.inputWrapper, isFocused && styles.inputFocused]}>
-        <TextInput
+        <BottomSheetTextInput
           value={searchValue}
           onChangeText={handleChange}
           style={styles.input}
