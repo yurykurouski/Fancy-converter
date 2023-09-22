@@ -27,8 +27,6 @@ export type UseGetCoursesFromStorage = (
 
 export type UseReloadCourses = (
   setIsLoading: Dispatch<SetStateAction<boolean>>,
-  setExchangeCourse: Dispatch<OnlyCourses>,
-  saveDate: string,
   getCoursesFromStorage: GetCoursesFromStorage,
   startNotification: ShowMessage,
 ) => ReloadCourses;

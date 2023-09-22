@@ -1,3 +1,5 @@
+import { Action } from '@reduxjs/toolkit';
+
 export enum AvailableCurrenciesNames {
   USD = 'USD',
   EUR = 'EUR',
@@ -30,3 +32,5 @@ export enum AvailableCurrenciesNames {
 }
 
 export type SelectedCurrencies = string[] | [];
+
+export type TDispatchCallback<T, A> = (value: T) => Action<A>;

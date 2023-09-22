@@ -2,23 +2,35 @@ import { useEffect, useMemo } from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import { StorageKeys } from 'utils';
 
+import { useSetLastUpdateDate } from './store';
 import { useMultiGet } from './useMultiGet';
-import { useSetColorScheme } from './useSetColorScheme';
-import { useSetOnBoardingStatus } from './useSetOnBoardingStatus';
-import { useSetSelectedCurrencies } from './useSetSelectedCurrencies';
+import { useSetColorSchemeFromStorage } from './useSetColorSchemeFromStorage';
+import { useSetExchangeCoursesFromStorage } from './useSetExchangeCoursesFromStorage';
+import { useSetOnboardingFromStorage } from './useSetOnboardingFromStorage';
+import { useSetSelectedCurrenciesFromStorage } from './useSetSelectedCurrenciesFromStorage';
 
 export const useInitDataFromStorage = () => {
-  const setColorScheme = useSetColorScheme();
-  const setOnBoardingStatus = useSetOnBoardingStatus();
-  const setSelectedCurrencies = useSetSelectedCurrencies();
+  const setColorScheme = useSetColorSchemeFromStorage();
+  const setOnBoardingStatus = useSetOnboardingFromStorage();
+  const setSelectedCurrencies = useSetSelectedCurrenciesFromStorage();
+  const setExchangeCourses = useSetExchangeCoursesFromStorage();
+  const setLastUpdateDate = useSetLastUpdateDate();
 
   const actionsMap = useMemo(
     () => ({
       [StorageKeys.COLOR_SCHEME]: setColorScheme,
       [StorageKeys.SELECTED_CURRENCIES]: setSelectedCurrencies,
       [StorageKeys.IS_ONBOARDED]: setOnBoardingStatus,
+      [StorageKeys.LAST_COURSES_UPDATE]: setLastUpdateDate,
+      [StorageKeys.EXCHANGE_COURSES]: setExchangeCourses,
     }),
-    [setColorScheme, setOnBoardingStatus, setSelectedCurrencies],
+    [
+      setColorScheme,
+      setExchangeCourses,
+      setLastUpdateDate,
+      setOnBoardingStatus,
+      setSelectedCurrencies,
+    ],
   );
 
   const multiGet = useMultiGet<typeof actionsMap>(actionsMap);

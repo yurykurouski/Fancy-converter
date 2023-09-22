@@ -2,7 +2,9 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { OnBoardingStatusSlice } from 'store/onboardingStatus/slices/OnBoardingStatusSlice';
 
-export const useSetOnBoardingStatus = () => {
+import { TSetOnBoardingStatus } from './types';
+
+export const useSetOnBoardingStatus = (): TSetOnBoardingStatus => {
   const dispatch = useDispatch();
 
   return useCallback(

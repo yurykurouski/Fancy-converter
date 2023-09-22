@@ -2,17 +2,14 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 
-export const useSetSelectedCurrencies = () => {
+import { TSetSelectedCurrencies } from './types';
+
+export const useSetSelectedCurrencies = (): TSetSelectedCurrencies => {
   const dispatch = useDispatch();
 
   return useCallback(
-    (value: string) => {
-      const currenciesArray = value.length > 1 ? value.split(',') : [];
-
-      dispatch(
-        SelectedCurrenciesSlice.actions.setSelectedCurrencies(currenciesArray),
-      );
-    },
+    (value: string[]) =>
+      dispatch(SelectedCurrenciesSlice.actions.setSelectedCurrencies(value)),
     [dispatch],
   );
 };

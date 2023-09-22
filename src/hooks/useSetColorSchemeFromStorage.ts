@@ -1,25 +1,25 @@
 import { useCallback } from 'react';
 import { ColorSchemeName } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { useThemeSwitcherAnimations } from 'components/Drawer/DrawerThemeSwitcher/DrawerThemeSwitcher.hooks';
-import { ColorSchemeSlice } from 'store/colorScheme/slices/ColorSchemeSlice';
+import { getCurrentColorTheme } from 'utils';
 
-export const useSetColorScheme = () => {
-  const dispatch = useDispatch();
+import { useSetColorScheme } from './store';
 
+export const useSetColorSchemeFromStorage = () => {
   const { animateThemeSwitcher } = useThemeSwitcherAnimations();
 
-  const setColorScheme = useCallback(
-    (theme: ColorSchemeName) =>
-      dispatch(ColorSchemeSlice.actions.setColorScheme(theme)),
-    [dispatch],
-  );
+  const setColorScheme = useSetColorScheme();
 
   return useCallback(
     (colorScheme: ColorSchemeName) => {
       if (colorScheme) {
         setColorScheme(colorScheme);
         animateThemeSwitcher(colorScheme === 'dark' ? 'light' : 'dark');
+      } else {
+        const scheme = getCurrentColorTheme();
+
+        setColorScheme(scheme);
+        animateThemeSwitcher(scheme === 'dark' ? 'light' : 'dark');
       }
     },
     [animateThemeSwitcher, setColorScheme],
