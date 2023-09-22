@@ -29,6 +29,8 @@
     "react-native-gesture-handler": "2.13.1",
     "react-native-gradle-plugin": "0.70.3",
     "react-native-localization": "2.3.1",
+    "react-native-performance": "^5.1.0",
+    "react-native-performance-flipper-reporter": "^5.0.0",
     "react-native-reanimated": "2.17.0",
     "react-native-safe-area-context": "4.7.2",
     "react-native-svg": "13.13.0",

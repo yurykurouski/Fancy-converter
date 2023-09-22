@@ -1,9 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, Middleware } from '@reduxjs/toolkit';
 import createDebugger from 'redux-flipper';
 
 import { rootReducer } from './rootReducer';
 
-const middlewares = [createDebugger()];
+const middlewares: Middleware[] = [];
+
+if (__DEV__) {
+  middlewares.push(createDebugger());
+}
 
 const store = configureStore({
   reducer: rootReducer,
