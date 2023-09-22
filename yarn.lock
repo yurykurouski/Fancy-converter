@@ -3620,6 +3620,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"asyncstorage-inspector-flipper@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "asyncstorage-inspector-flipper@npm:1.0.2"
+  dependencies:
+    react-native-flipper: ^0.87.0
+  peerDependencies:
+    "@react-native-async-storage/async-storage": 1.x.x
+    react-native: ">=0.64.0"
+    react-native-flipper: ">=0.87.0"
+  checksum: 91c7b56a79a8d7ed8b23b2714ae8e07d51a6ad48ca34edd9a15085fc0721612a98219222f77ac74c70b8ef5a96db966b9f6090017b793bb680561da18dbd4898
+  languageName: node
+  linkType: hard
+
 "atob@npm:^2.1.2":
   version: 2.1.2
   resolution: "atob@npm:2.1.2"
@@ -5522,6 +5535,7 @@ __metadata:
     "@types/react-native-dotenv": ^0.2.0
     "@typescript-eslint/eslint-plugin": ^5.37.0
     "@typescript-eslint/parser": ^5.37.0
+    asyncstorage-inspector-flipper: ^1.0.2
     babel-plugin-module-resolver: ^4.1.0
     eslint: ^8.23.1
     eslint-import-resolver-babel-module: ^5.3.1
@@ -5549,6 +5563,8 @@ __metadata:
     react-native-gesture-handler: 2.13.1
     react-native-gradle-plugin: 0.70.3
     react-native-localization: 2.3.1
+    react-native-performance: ^5.1.0
+    react-native-performance-flipper-reporter: ^5.0.0
     react-native-reanimated: 2.17.0
     react-native-safe-area-context: 4.7.2
     react-native-svg: 13.13.0
@@ -9179,6 +9195,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-flipper@npm:^0.87.0":
+  version: 0.87.0
+  resolution: "react-native-flipper@npm:0.87.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-native: ">0.62.0"
+  checksum: d8998f62d1da6fb57a1bcff79916f59619ca740a255f492e1aa9c2d39bed7e2c02c8a11e5dd0670ea6407b17e417c8ecf948af4c4e961fe5c84aeb1f177793d3
+  languageName: node
+  linkType: hard
+
 "react-native-gesture-handler@npm:2.13.1":
   version: 2.13.1
   resolution: "react-native-gesture-handler@npm:2.13.1"
@@ -9222,6 +9248,25 @@ __metadata:
     react-native-windows:
       optional: true
   checksum: 72c5f084a6d4a1e1589a0fcc95c7ce4cea576f451e64ee55638fc7b4f007d08ce067411a0be691535f1106120697fb3d7ed4d6ad758cd974ae2fd3f4f9a69605
+  languageName: node
+  linkType: hard
+
+"react-native-performance-flipper-reporter@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "react-native-performance-flipper-reporter@npm:5.0.0"
+  peerDependencies:
+    react-native-flipper: "*"
+    react-native-performance: "*"
+  checksum: af7adf12031bf2d6a7ba4cbcbbf0710ff2ee61aa9a791b632d8dbf97b335977fa6498eadf486bc04432fa79ffad7443767a1a3f02265a502ec01c16bd3e533a9
+  languageName: node
+  linkType: hard
+
+"react-native-performance@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "react-native-performance@npm:5.1.0"
+  peerDependencies:
+    react-native: "*"
+  checksum: 01563cb0a2cec575474b85a3663eddd93de6f5c260380997d445433916488863049e5acd9d2b45cf2f1e140c411890113934341d219394f4ba53b79aa7161037
   languageName: node
   linkType: hard
 
