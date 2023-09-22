@@ -1,16 +1,17 @@
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
-export const useStyles = () =>
+export const useStyles = (bottom?: number) =>
   useTheme(theme => ({
     contentContainer: {
       position: 'absolute',
-      top: 0,
+      top: bottom,
       left: 0,
+      bottom: 0,
       width: '100%',
-      height: '100%',
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       zIndex: 5,
+      paddingBottom: bottom,
     },
     title: {
       marginTop: 60,

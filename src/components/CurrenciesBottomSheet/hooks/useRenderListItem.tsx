@@ -6,7 +6,7 @@ import { UseRenderListItem } from '../CurrenciesBottomSheet.types';
 import { checkIfSeparatorIsNeeded } from '../CurrenciesBottomSheet.utils';
 
 export const useRenderListItem: UseRenderListItem = ({
-  avaliableCurrencies,
+  availableCurrencies,
   selectedCurrencies,
   setSelectedCurrencies,
   isExpanded,
@@ -16,7 +16,7 @@ export const useRenderListItem: UseRenderListItem = ({
       const isSeparatorNeeded = checkIfSeparatorIsNeeded(
         item,
         index,
-        avaliableCurrencies,
+        availableCurrencies,
       );
 
       const separatorValue = isSeparatorNeeded && item[0];
@@ -34,7 +34,7 @@ export const useRenderListItem: UseRenderListItem = ({
       );
     },
     [
-      avaliableCurrencies,
+      availableCurrencies,
       isExpanded,
       selectedCurrencies,
       setSelectedCurrencies,

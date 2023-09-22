@@ -14,7 +14,7 @@ import { Props } from './SearchField.types';
 import { useStyles } from './SearchField.styles';
 
 export const SearchField: FC<Props> = ({
-  setAvaliableCurrencies,
+  setAvailableCurrencies,
   setIsCalculatingValue,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -25,7 +25,7 @@ export const SearchField: FC<Props> = ({
   const styles = useStyles();
 
   const handleTextChange = useHandleTextChange({
-    setAvaliableCurrencies,
+    setAvailableCurrencies,
     setIsCalculatingValue,
   });
 

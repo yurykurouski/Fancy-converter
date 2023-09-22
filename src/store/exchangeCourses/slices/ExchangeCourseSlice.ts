@@ -4,11 +4,13 @@ import { OnlyCourses } from 'utils/utils.types';
 export type TExchangeCourseSlice = {
   exchangeCourses: OnlyCourses;
   isLoading: boolean;
+  lastUpdated: string;
 };
 
 const initialState: TExchangeCourseSlice = {
   exchangeCourses: undefined,
   isLoading: false,
+  lastUpdated: undefined,
 };
 
 export const ExchangeCourseSlice = createSlice({
@@ -22,5 +24,11 @@ export const ExchangeCourseSlice = createSlice({
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+
+    setLastUpdateDate: (state, action: PayloadAction<string>) => {
+      state.lastUpdated = action.payload;
+    },
   },
 });
+
+export const { actions: ExchangeCourseSliceActions } = ExchangeCourseSlice;

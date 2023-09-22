@@ -3,6 +3,7 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
+import { useSetSelectedCurrencies } from 'hooks';
 import { currencies } from 'resources/avaliable-currencies.json';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
@@ -22,8 +23,8 @@ import {
 import { useStyles } from './CurrenciesBottomSheet.styles';
 
 export const CurrenciesBottomSheet = React.memo<Props>(
-  ({ selectedCurrencies, setSelectedCurrencies, isDrawerOpened }) => {
-    const [avaliableCurrencies, setAvaliableCurrencies] = useState(currencies);
+  ({ selectedCurrencies, isDrawerOpened }) => {
+    const [availableCurrencies, setAvailableCurrencies] = useState(currencies);
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [isCalculatingValue, setIsCalculatingValue] = useState(false);
@@ -31,6 +32,8 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     const sheetRef = useRef<BottomSheet>(null);
     const styles = useStyles();
     const { colorScheme } = useSelector(selectColorSchemeState);
+
+    const setSelectedCurrencies = useSetSelectedCurrencies();
 
     const { onPressHandler, onChangeHandler } = useBottomSheetHandlers(
       sheetRef,
@@ -60,7 +63,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     const renderHandle = useRenderHandler(onPressHandler);
 
     const renderItem = useRenderListItem({
-      avaliableCurrencies,
+      availableCurrencies,
       selectedCurrencies,
       setSelectedCurrencies,
       isExpanded,
@@ -86,7 +89,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           // @ts-expect-error poor typization from library
           onScroll={handleScroll}
           style={styles.listContainer}
-          data={avaliableCurrencies}
+          data={availableCurrencies}
           renderItem={renderItem}
           keyExtractor={item => item}
           removeClippedSubviews={false}
@@ -99,7 +102,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           }
         />
         <SearchField
-          setAvaliableCurrencies={setAvaliableCurrencies}
+          setAvailableCurrencies={setAvailableCurrencies}
           setIsCalculatingValue={setIsCalculatingValue}
         />
       </BottomSheet>

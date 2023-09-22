@@ -19,3 +19,5 @@ export const ColorSchemeSlice = createSlice({
     },
   },
 });
+
+export const { actions: ColorSchemeActions } = ColorSchemeSlice;
