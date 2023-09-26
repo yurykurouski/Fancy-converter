@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useRenderHandler } from 'components/CurrenciesBottomSheet/hooks';
-import { SCREEN_WIDTH } from 'constants/constants';
 import { l } from 'resources/localization';
 
 import { useStyles as useTextStyles } from '../../../../Onboarding';
@@ -21,7 +20,7 @@ export const SecondScreen = () => {
   const screenTitle = l['onboarding_second-screen_title'];
 
   return (
-    <View style={{ width: SCREEN_WIDTH, justifyContent: 'space-between' }}>
+    <View style={styles.container}>
       <Text style={[textStyles.mainText, textStyles.title]}>{screenTitle}</Text>
       <View style={styles.backgroundContainer}>
         <Handle />

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { SCREEN_WIDTH } from '@gorhom/bottom-sheet';
 import { l } from 'resources/localization';
 
 import { useStyles as useTextStyles } from '../../../../Onboarding';
 
 import { DraggableExample } from './DraggableExample';
-import { SwipableExample } from './SwipableExample';
+import { SwipeableExample } from './SwipeableExample';
 
 import { styles } from './ThirdScreen.styles';
+
 export const ThirdScreen = () => {
   const textStyles = useTextStyles();
 
@@ -17,14 +17,14 @@ export const ThirdScreen = () => {
   const screenSubTitleDrag = l['onboarding_third-screen_subtitle-drag'];
 
   return (
-    <View style={{ width: SCREEN_WIDTH, paddingHorizontal: 10 }}>
+    <View style={styles.container}>
       <Text style={[textStyles.mainText, textStyles.title]}>{screenTitle}</Text>
       <Text style={[textStyles.mainText, textStyles.title, styles.subTitle]}>
         {screenSubTitleSwipe}
       </Text>
-      <SwipableExample />
+      <SwipeableExample />
       <Text
-        style={[textStyles.mainText, textStyles.title, { marginBottom: 20 }]}>
+        style={[textStyles.mainText, textStyles.title, styles.subTitleDrag]}>
         {screenSubTitleDrag}
       </Text>
       <DraggableExample />

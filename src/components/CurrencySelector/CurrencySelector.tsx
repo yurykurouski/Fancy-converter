@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { RefreshControl, View } from 'react-native';
+import { RefreshControl, StyleSheet } from 'react-native';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
@@ -17,8 +17,15 @@ import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { AvailableCurrenciesNames } from 'types';
 
+import { ListFooterComponent } from './components/FooterComponent';
+import { SeparatorComponent } from './components/SeparatorComponent';
 import { ANIMATION_CONFIG } from './CurrencySelector.consts';
-import { useTrackKeyboardStatus } from './CurrencySelector.hooks';
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 10,
+  },
+});
 
 export const CurrencySelector = () => {
   const startNotification = useContext(NotificationContext);
@@ -35,8 +42,6 @@ export const CurrencySelector = () => {
     Map<AvailableCurrenciesNames, SwipeableItemImperativeRef>
   >(new Map());
 
-  const isKeyBoardOpened = useTrackKeyboardStatus();
-
   const renderItem = ({
     item,
     drag,
@@ -48,7 +53,7 @@ export const CurrencySelector = () => {
     <DraggableFlatList
       animationConfig={ANIMATION_CONFIG}
       keyboardShouldPersistTaps="handled"
-      containerStyle={{ paddingHorizontal: 10 }}
+      containerStyle={styles.container}
       data={selectedCurrencies}
       keyExtractor={item => item}
       renderItem={renderItem}
@@ -61,10 +66,8 @@ export const CurrencySelector = () => {
           colors={[ColorsDark.MAIN_BUTTON_COLOR]}
         />
       }
-      ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-      ListFooterComponent={() => (
-        <View style={{ height: isKeyBoardOpened ? 35 : 75 }} />
-      )}
+      ItemSeparatorComponent={SeparatorComponent}
+      ListFooterComponent={ListFooterComponent}
       activationDistance={10}
       showsVerticalScrollIndicator={false}
       enableLayoutAnimationExperimental

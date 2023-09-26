@@ -31,10 +31,6 @@ export const LightIcon = () => {
             ],
           },
           { opacity: ANIMATED_OPACITY_LIGHT },
-          {
-            resizeMode: 'cover',
-            position: 'absolute',
-          },
         ]}
         source={sunRaysIcon}
       />

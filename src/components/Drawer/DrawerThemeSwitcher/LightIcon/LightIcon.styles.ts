@@ -9,5 +9,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     zIndex: 1,
+    resizeMode: 'cover',
+    position: 'absolute',
   },
 });

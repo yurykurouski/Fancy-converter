@@ -25,4 +25,7 @@ export const useStyles = (bottom?: number) =>
       textTransform: 'uppercase',
       color: theme.FONT_PRIMARY_COLOR,
     },
+    appIcon: {
+      alignSelf: 'center',
+    },
   }));

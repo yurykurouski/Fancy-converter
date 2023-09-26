@@ -31,7 +31,6 @@ export const DarkIcon = () => {
             ],
           },
           { opacity: ANIMATED_OPACITY_DARK },
-          { resizeMode: 'cover', position: 'absolute' },
         ]}
         source={moonCore}
       />
@@ -40,7 +39,6 @@ export const DarkIcon = () => {
           stars,
           { transform: [{ scale: ANIMATED_STARS_SCALE }] },
           { opacity: ANIMATED_OPACITY_DARK },
-          { resizeMode: 'cover', position: 'absolute' },
         ]}
         source={moonStars}
       />

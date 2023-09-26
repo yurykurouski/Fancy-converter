@@ -6,7 +6,7 @@ import { useChangeDotScale } from './StepIndicator.utils';
 import { useStyles } from './StepIndicator.styles';
 
 export const StepIndicator = ({ isActive }: { isActive: boolean }) => {
-  const styles = useStyles();
+  const styles = useStyles(isActive);
   const { scaleValue, changeDotScale } = useChangeDotScale();
 
   useEffect(() => {
@@ -15,11 +15,7 @@ export const StepIndicator = ({ isActive }: { isActive: boolean }) => {
 
   return (
     <Animated.View
-      style={[
-        styles.container,
-        { elevation: isActive ? 2 : 1 },
-        { transform: [{ scale: scaleValue }] },
-      ]}
+      style={[styles.container, { transform: [{ scale: scaleValue }] }]}
     />
   );
 };

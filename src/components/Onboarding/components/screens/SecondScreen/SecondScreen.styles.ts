@@ -1,7 +1,12 @@
+import { SCREEN_WIDTH } from 'constants/constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
   useTheme(theme => ({
+    container: {
+      width: SCREEN_WIDTH,
+      justifyContent: 'space-between',
+    },
     backgroundContainer: {
       height: '60%',
       marginTop: 'auto',

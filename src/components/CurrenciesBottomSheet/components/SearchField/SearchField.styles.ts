@@ -39,4 +39,7 @@ export const useStyles = () =>
     inputFocused: {
       borderColor: theme.ACCENT_COLOR_LIGHTER,
     },
+    cancelBtn: {
+      marginHorizontal: 10,
+    },
   }));

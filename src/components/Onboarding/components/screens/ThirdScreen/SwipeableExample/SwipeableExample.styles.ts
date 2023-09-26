@@ -9,4 +9,6 @@ export const useStyles = () =>
       height: 54,
       alignItems: 'center',
     },
+    cancelBtnAdditional: { marginLeft: 10 },
+    selector: { position: 'absolute', width: '100%' },
   }));

@@ -46,4 +46,7 @@ export const useStyles = () =>
       paddingLeft: 10,
       justifyContent: 'center',
     },
+    cancelBtnAdditional: {
+      marginHorizontal: 10,
+    },
   }));
