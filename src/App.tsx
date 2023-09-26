@@ -37,7 +37,7 @@ const App = React.memo(() => {
   useInitDataFromStorage();
 
   useMultiSetToStorageOnBackground([
-    [StorageKeys.COLOR_SCHEME, colorScheme],
+    [StorageKeys.COLOR_SCHEME, colorScheme!],
     [StorageKeys.SELECTED_CURRENCIES, selectedCurrencies.join(',')],
     [StorageKeys.IS_ONBOARDED, JSON.stringify(isOnBoarded)],
     [StorageKeys.EXCHANGE_COURSES, JSON.stringify(exchangeCourses)],
@@ -46,14 +46,16 @@ const App = React.memo(() => {
 
   useAppearanceChangeListener();
 
-  if (isLoadingStatus) return;
+  if (isLoadingStatus) {
+    return null;
+  }
 
   return (
     <>
       <SafeAreaView style={styles.backgroundStyle}>
         <StatusBar
           barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-          backgroundColor={THEME_COLORS[colorScheme].APP_BACKGROUND_PRIMARY}
+          backgroundColor={THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY}
         />
         {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
         <CurrenciesBottomSheet

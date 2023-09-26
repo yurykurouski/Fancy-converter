@@ -1,16 +1,16 @@
-import { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import { Dispatch, RefObject, SetStateAction } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
 import { TSetSelectedCurrencies } from 'hooks/store/types';
-import { SelectedCurrencies } from 'types';
+import { AvailableCurrenciesNames } from 'types';
 
 export type Props = {
-  selectedCurrencies: SelectedCurrencies;
+  selectedCurrencies: AvailableCurrenciesNames[];
   isDrawerOpened: boolean;
 };
 
 export type UseBottomSheetHandlers = (
-  sheetRef: MutableRefObject<BottomSheetMethods>,
+  sheetRef: RefObject<BottomSheetMethods>,
   setIsExpanded: Dispatch<SetStateAction<boolean>>,
   isKeyboardVisible: boolean,
 ) => {
@@ -20,7 +20,7 @@ export type UseBottomSheetHandlers = (
 
 export type UseKeyboardHandlers = (
   isExpanded: boolean,
-  sheetRef: MutableRefObject<BottomSheetMethods>,
+  sheetRef: RefObject<BottomSheetMethods>,
   setIsExpanded: Dispatch<SetStateAction<boolean>>,
   setKeyboardVisible: Dispatch<SetStateAction<boolean>>,
 ) => void;
@@ -28,12 +28,12 @@ export type UseKeyboardHandlers = (
 export type CheckIfSeparatorIsNeeded = (
   itemName: string,
   index: number,
-  availableCurrencies: string[],
+  availableCurrencies: AvailableCurrenciesNames[],
 ) => boolean;
 
 export type UseRenderListItem = (props: {
-  availableCurrencies: string[];
-  selectedCurrencies: SelectedCurrencies;
+  availableCurrencies: AvailableCurrenciesNames[];
+  selectedCurrencies: AvailableCurrenciesNames[];
   setSelectedCurrencies: TSetSelectedCurrencies;
   isExpanded: boolean;
-}) => (props: ListRenderItemInfo<string>) => JSX.Element;
+}) => (props: ListRenderItemInfo<AvailableCurrenciesNames>) => JSX.Element;

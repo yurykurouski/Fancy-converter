@@ -14,12 +14,16 @@ export const useHandleScroll = (bottom: number) =>
       const currentOffset = event.nativeEvent.contentOffset.y;
       const dif = currentOffset - OFFSET.offset;
 
-      if (Math.abs(dif) < 25) return;
+      if (Math.abs(dif) < 25) {
+        return;
+      }
 
       const direction = dif > 0 ? DIRECTIONS_DOWN : DIRECTIONS_UP;
       OFFSET.offset = currentOffset;
 
-      if (direction === OFFSET.direction) return;
+      if (direction === OFFSET.direction) {
+        return;
+      }
 
       OFFSET.direction = dif > 0 ? DIRECTIONS_DOWN : DIRECTIONS_UP;
 

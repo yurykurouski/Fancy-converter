@@ -1,15 +1,17 @@
+import { AvailableCurrenciesNames } from 'types';
+
 export type OnlyCourses = {
-  [key: string]: number;
+  [key in AvailableCurrenciesNames]: number;
 };
 
-export type GetCoursesForSelectedCurrencies = (
+export type TGetCoursesForSelectedCurrencies = (
   exchangeCourse: OnlyCourses,
-  selectedCurrencies: string[] | [],
-) => OnlyCourses;
+  selectedCurrencies: AvailableCurrenciesNames[] | [],
+) => OnlyCourses | undefined;
 
 export type ShowNoConnectionAlert = (
-  onPress?: (value?: unknown) => void,
-  saveDate?: string,
+  onPress?: (value?: any) => void,
+  saveDate?: string | null,
 ) => void;
 
 export type CompareDateByHour = (

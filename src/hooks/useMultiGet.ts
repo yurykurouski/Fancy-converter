@@ -4,15 +4,17 @@ import { makeObjectFromKeyValuePairArray } from 'utils/makeObjectFromKeyValuePai
 
 import { TUseMultiGet } from './types';
 
-export const useMultiGet: TUseMultiGet = actionsMap =>
+export const useMultiGet: TUseMultiGet<Function> = actionsMap =>
   useCallback(async () => {
-    const keyValuePairs = await multiGetFromFromStorage(
+    const keyValuePairs = (await multiGetFromFromStorage(
       Object.keys(actionsMap) as StorageKeys[],
-    );
+    )) as [StorageKeys, string][];
 
     const properties = makeObjectFromKeyValuePairArray(keyValuePairs);
 
     for (const key in properties) {
-      actionsMap[key](properties?.[key]);
+      actionsMap[key as keyof typeof properties]?.(
+        properties?.[key as keyof typeof properties],
+      );
     }
   }, [actionsMap]);

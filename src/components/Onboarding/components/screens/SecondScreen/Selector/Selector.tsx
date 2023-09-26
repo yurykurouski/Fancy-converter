@@ -8,17 +8,17 @@ import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { useStyles } from './Selector.styles';
 
 export const Selector = () => {
-  const [isChecked, setIschecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   const styles = useStyles();
 
-  const onPressHandler = () => setIschecked(value => !value);
+  const onPressHandler = () => setIsChecked(value => !value);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       const randomValue = Math.floor(Math.random() * 2);
-      setIschecked(!!randomValue);
+      setIsChecked(!!randomValue);
     }, 1500);
     return () => clearTimeout(intervalId);
   }, []);
@@ -36,7 +36,7 @@ export const Selector = () => {
         </View>
         <BouncyCheckbox
           size={30}
-          fillColor={THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER}
+          fillColor={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
           onPress={onPressHandler}
           isChecked={isChecked}
           disableBuiltInState

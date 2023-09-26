@@ -11,7 +11,7 @@ import { UseNotificationMessage } from './WithNotification.types';
 
 export const useNotificationMessage: UseNotificationMessage = () => {
   const { isOnBoarded } = useSelector(selectOnBoardingStatus);
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState<string>('');
 
   const hasIsland = useIsHasIsland();
 

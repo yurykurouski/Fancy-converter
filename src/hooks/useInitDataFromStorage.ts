@@ -33,7 +33,7 @@ export const useInitDataFromStorage = () => {
     ],
   );
 
-  const multiGet = useMultiGet<typeof actionsMap>(actionsMap);
+  const multiGet = useMultiGet(actionsMap);
 
   useEffect(() => {
     multiGet().finally(() => {

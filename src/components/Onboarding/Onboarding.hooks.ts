@@ -23,12 +23,21 @@ export const useOnboardingHandlers: UseOnboardingHandlers = flatListRef => {
     const roundedEnd = Math.round(contentOffset.x / SCREEN_WIDTH);
     const absoluteDiff = Math.abs(scrollStart) - Math.abs(contentOffset.x);
 
-    if ((roundedEnd === 3 || roundedEnd === 0) && absoluteDiff === 0) return;
-    if (velocity.x > 0 && currentPage === 2) return;
-    if (velocity.x < 0 && currentPage === 0) return;
+    if (
+      ((roundedEnd === 3 || roundedEnd === 0) && absoluteDiff === 0) ||
+      !velocity
+    ) {
+      return;
+    }
+    if (velocity?.x > 0 && currentPage === 2) {
+      return;
+    }
+    if (velocity?.x < 0 && currentPage === 0) {
+      return;
+    }
 
     try {
-      if (Math.abs(velocity.x) > 0.5) {
+      if (Math.abs(velocity?.x) > 0.5) {
         return flatListRef?.current?.scrollToIndex({
           animated: true,
           index: absoluteDiff < 0 ? roundedEnd + 1 : roundedEnd - 1,

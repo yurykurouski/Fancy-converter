@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AvailableCurrenciesNames } from 'types';
 
 export type TFocusedCurrency = {
-  focusedCurrencyName: string | AvailableCurrenciesNames;
-  focusedCurrencyValue: string;
+  focusedCurrencyName: AvailableCurrenciesNames | undefined;
+  focusedCurrencyValue: string | undefined;
 };
 
 const initialState: TFocusedCurrency = {
-  focusedCurrencyName: '',
-  focusedCurrencyValue: '',
+  focusedCurrencyName: undefined,
+  focusedCurrencyValue: undefined,
 };
 
 export const FocusedCurrencySlice = createSlice({

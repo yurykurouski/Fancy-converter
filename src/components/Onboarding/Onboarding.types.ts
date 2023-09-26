@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { RefObject } from 'react';
 import {
   FlatList,
   NativeScrollEvent,
@@ -10,7 +10,7 @@ export type EventHandler = (
 ) => void;
 
 export type UseOnboardingHandlers = (
-  flatListRef: MutableRefObject<FlatList<unknown>>,
+  flatListRef: RefObject<FlatList<unknown>>,
 ) => {
   currentPage: number;
   handleScroll: EventHandler;

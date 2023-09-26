@@ -1,9 +1,10 @@
-import { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import { Dispatch, MutableRefObject, RefObject, SetStateAction } from 'react';
 import { TextInput } from 'react-native';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
-import { AvailableCurrenciesNames, SelectedCurrencies } from 'types';
+import { TSetSelectedCurrencies } from 'hooks/store/types';
+import { AvailableCurrenciesNames } from 'types';
 
 export type Props = {
   currencyCode: AvailableCurrenciesNames;
@@ -23,8 +24,7 @@ export type UseCurrencyInputHandlers = (props: {
     name: AvailableCurrenciesNames,
   ) => PayloadAction<AvailableCurrenciesNames>;
   currencyCode: AvailableCurrenciesNames;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  inputRef: MutableRefObject<TextInput>;
+  inputRef: RefObject<TextInput>;
 }) => {
   onChangeTextHandler: OnChangeTextHandler;
   onFocusHandler: OnFocusHandler;
@@ -32,18 +32,18 @@ export type UseCurrencyInputHandlers = (props: {
   value: string;
 };
 
-export type UseConvertedValues = (
+export type TUseConvertedValues = (
   isFocused: boolean,
-  value: string | null,
-  focusedCurrencyValue: string,
-  course: number,
-  focusedCurrencyCourse: number,
+  value: string,
+  focusedCurrencyValue: string | undefined,
+  course: number | undefined,
+  focusedCurrencyCourse: number | undefined,
 ) => string;
 
 export type UseHandleDeletePress = {
   setIsReadyToDelete: Dispatch<SetStateAction<boolean>>;
-  selectedCurrencies: SelectedCurrencies;
-  currencyCode: string;
-  setSelectedCurrencies: Dispatch<SetStateAction<string[]>>;
-  startNotification: ShowMessage;
+  selectedCurrencies: AvailableCurrenciesNames[];
+  currencyCode: AvailableCurrenciesNames;
+  setSelectedCurrencies: TSetSelectedCurrencies;
+  startNotification: ShowMessage | null;
 };

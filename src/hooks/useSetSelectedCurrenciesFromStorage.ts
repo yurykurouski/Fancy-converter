@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { AvailableCurrenciesNames } from 'types';
 
 import { useSetSelectedCurrencies } from './store';
 
@@ -9,7 +10,7 @@ export const useSetSelectedCurrenciesFromStorage = () => {
     (value: string) => {
       const currenciesArray = value?.length > 1 ? value.split(',') : [];
 
-      setSelectedCurrencies(currenciesArray);
+      setSelectedCurrencies(currenciesArray as AvailableCurrenciesNames[]);
     },
     [setSelectedCurrencies],
   );

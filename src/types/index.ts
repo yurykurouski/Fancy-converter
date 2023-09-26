@@ -1,5 +1,9 @@
 import { Action } from '@reduxjs/toolkit';
+import by from 'resources/by.json';
+import en from 'resources/en.json';
+import ua from 'resources/ua.json';
 
+//TODO: move to resources
 export enum AvailableCurrenciesNames {
   USD = 'USD',
   EUR = 'EUR',
@@ -31,6 +35,6 @@ export enum AvailableCurrenciesNames {
   RSD = 'RSD',
 }
 
-export type SelectedCurrencies = string[] | [];
-
 export type TDispatchCallback<T, A> = (value: T) => Action<A>;
+
+export type TLocaleString = keyof typeof en | keyof typeof by | keyof typeof ua;

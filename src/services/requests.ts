@@ -2,7 +2,6 @@ import { DEFAULT_API_URL } from '@env';
 import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/constants';
 
 import { RequestsInterface, Response } from './requests.types';
-
 class Requests implements RequestsInterface {
   response: Response;
 
@@ -21,7 +20,7 @@ class Requests implements RequestsInterface {
     try {
       return this.response(REQUEST_GET).then(response => response.json());
     } catch (err) {
-      throw new Error(err);
+      throw new Error(err as string);
     }
   }
 }

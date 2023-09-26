@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type TOnBoardingStatusSlice = {
-  isOnBoarded: boolean;
+  isOnBoarded: boolean | undefined;
   isLoadingStatus: boolean;
 };
 

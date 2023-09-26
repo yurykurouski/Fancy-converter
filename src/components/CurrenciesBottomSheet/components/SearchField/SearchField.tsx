@@ -60,13 +60,13 @@ export const SearchField: FC<Props> = ({
           onBlur={() => setIsFocused(false)}
           onPressOut={() => setIsFocused(true)}
           placeholder={l['currency_search.input.placeholder']}
-          placeholderTextColor={THEME_COLORS[colorScheme].FONT_COLOR_FADED}
+          placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
           contextMenuHidden
         />
         {!!searchValue && (
           <CancelButton
             onPress={handleChange}
-            additionalStyle={{ marginHorizontal: 10 }}
+            additionalStyle={styles.cancelBtn}
           />
         )}
       </View>

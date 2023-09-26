@@ -8,5 +8,5 @@ import { TUseTheme } from './types';
 export const useTheme: TUseTheme = mapStyles => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
-  return StyleSheet.create(mapStyles(THEME_COLORS[colorScheme]));
+  return StyleSheet.create(mapStyles(THEME_COLORS[colorScheme!]));
 };
