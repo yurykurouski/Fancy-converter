@@ -63,7 +63,9 @@ export const CurrencySelector = () => {
         />
       }
       ItemSeparatorComponent={SeparatorComponent}
-      ListFooterComponent={ListFooterComponent}
+      ListFooterComponent={
+        selectedCurrencies.length ? ListFooterComponent : null
+      }
       activationDistance={10}
       showsVerticalScrollIndicator={false}
       enableLayoutAnimationExperimental

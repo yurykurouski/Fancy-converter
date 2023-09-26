@@ -43,7 +43,6 @@ export const useInitCourses = () => {
           .then(value => {
             //@ts-expect-error todo
             setCourses(value);
-            // console.log('value: ', value);
           })
           // .then(async () => await RNBootSplash.hide({ fade: true }))
           .then(() => {

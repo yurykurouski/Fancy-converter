@@ -2,7 +2,7 @@ import { getFromStorage, setToStorage, StorageKeys } from './storage';
 import {
   CompareDateByHour,
   GetIsCoursesCheckedLastHour,
-  GetSaveDate,
+  TGetSaveDateReadable,
 } from './utils.types';
 
 export const compareDateByHour: CompareDateByHour = (
@@ -34,7 +34,7 @@ export const getIsCoursesCheckedLastHour: GetIsCoursesCheckedLastHour =
     return compareDateByHour(currentDate, lastUpdateDate);
   };
 
-export const getSaveDate: GetSaveDate = currentDate =>
-  `${currentDate.getDate()}-${currentDate.toLocaleString('default', {
+export const getSaveDateReadable: TGetSaveDateReadable = currentDate =>
+  `${currentDate.getDate()} ${currentDate.toLocaleString('default', {
     month: 'short',
-  })}-${currentDate.getFullYear()}`;
+  })} ${currentDate.getHours()}:${currentDate.getMinutes()}`;
