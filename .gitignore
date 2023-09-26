@@ -30,6 +30,9 @@ build/
 local.properties
 *.iml
 *.hprof
+.cxx/
+*.keystore
+!debug.keystore
 
 # node.js
 #
@@ -37,9 +40,6 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
-# BUCK
-buck-out/
-\.buckd/
 *.keystore
 !debug.keystore
 
@@ -73,3 +73,8 @@ buck-out/
 !.yarn/versions
 .vscode/
 .vscode/settings.json
+
+# Temporary files created by Metro to check the health of the file watcher
+.metro-health-check*
+# testing
+/coverage

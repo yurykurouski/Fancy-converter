@@ -11,6 +11,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier',
     'plugin:sonarjs/recommended',
+    '@react-native',
   ],
   plugins: [
     'eslint-plugin-simple-import-sort',
