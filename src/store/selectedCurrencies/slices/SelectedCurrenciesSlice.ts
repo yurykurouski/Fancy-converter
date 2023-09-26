@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AvailableCurrenciesNames } from 'types';
 
 export type TSelectedCurrenciesSlice = {
-  selectedCurrencies: string[];
+  selectedCurrencies: AvailableCurrenciesNames[];
 };
 
 const initialState: TSelectedCurrenciesSlice = {
@@ -12,7 +13,10 @@ export const SelectedCurrenciesSlice = createSlice({
   name: 'SelectedCurrencies',
   initialState,
   reducers: {
-    setSelectedCurrencies: (state, action: PayloadAction<string[]>) => {
+    setSelectedCurrencies: (
+      state,
+      action: PayloadAction<AvailableCurrenciesNames[]>,
+    ) => {
       state.selectedCurrencies = action.payload;
     },
   },

@@ -3,11 +3,11 @@ import { ColorSchemeActions } from 'store/colorScheme/slices/ColorSchemeSlice';
 import { DrawerSliceActions } from 'store/drawer/slices/DrawerSlice';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
-import { TDispatchCallback } from 'types';
+import { AvailableCurrenciesNames, TDispatchCallback } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 
 export type TSetSelectedCurrencies = TDispatchCallback<
-  string[],
+  AvailableCurrenciesNames[],
   typeof SelectedCurrenciesActions.setSelectedCurrencies.type
 >;
 
@@ -22,6 +22,10 @@ export type TSetExchangeCourses = TDispatchCallback<
 export type TSetLastUpdateDate = TDispatchCallback<
   string,
   typeof ExchangeCourseSliceActions.setLastUpdateDate.type
+>;
+export type TSetCoursesRequestError = TDispatchCallback<
+  string,
+  typeof ExchangeCourseSliceActions.setRequestError.type
 >;
 
 export type TSetColorScheme = TDispatchCallback<
