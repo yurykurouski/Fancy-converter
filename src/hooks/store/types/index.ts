@@ -20,7 +20,7 @@ export type TSetExchangeCourses = TDispatchCallback<
   typeof ExchangeCourseSliceActions.setExchangeCourses.type
 >;
 export type TSetLastUpdateDate = TDispatchCallback<
-  string,
+  number,
   typeof ExchangeCourseSliceActions.setLastUpdateDate.type
 >;
 export type TSetCoursesRequestError = TDispatchCallback<

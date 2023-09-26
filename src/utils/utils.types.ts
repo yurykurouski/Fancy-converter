@@ -23,4 +23,4 @@ export type GetIsCoursesCheckedLastHour = (
   currentDate: Date,
 ) => Promise<boolean>;
 
-export type GetSaveDate = (currentDate: Date) => string;
+export type TGetSaveDateReadable = (currentDate: Date) => string;

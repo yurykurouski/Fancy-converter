@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { RefreshControl, StyleSheet } from 'react-native';
+import { RefreshControl } from 'react-native';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
@@ -17,15 +17,11 @@ import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { AvailableCurrenciesNames } from 'types';
 
-import { ListFooterComponent } from './components/FooterComponent';
+import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
 import { SeparatorComponent } from './components/SeparatorComponent';
 import { ANIMATION_CONFIG } from './CurrencySelector.consts';
 
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-  },
-});
+import { styles } from './CurrencySelector.styles';
 
 export const CurrencySelector = () => {
   const startNotification = useContext(NotificationContext);
@@ -67,7 +63,9 @@ export const CurrencySelector = () => {
         />
       }
       ItemSeparatorComponent={SeparatorComponent}
-      ListFooterComponent={ListFooterComponent}
+      ListFooterComponent={
+        selectedCurrencies.length ? ListFooterComponent : null
+      }
       activationDistance={10}
       showsVerticalScrollIndicator={false}
       enableLayoutAnimationExperimental

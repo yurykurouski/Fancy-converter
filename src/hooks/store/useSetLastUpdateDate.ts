@@ -8,7 +8,7 @@ export const useSetLastUpdateDate = (): TSetLastUpdateDate => {
   const dispatch = useDispatch();
 
   return useCallback(
-    (value: string) =>
+    (value: number) =>
       dispatch(ExchangeCourseSlice.actions.setLastUpdateDate(value)),
     [dispatch],
   );

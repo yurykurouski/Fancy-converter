@@ -10,7 +10,7 @@ type Props = {
 export const Header = React.memo<Props>(({ onLongPress }) => {
   const styles = useStyles();
   return (
-    <Pressable onLongPress={onLongPress}>
+    <Pressable onLongPress={onLongPress} style={styles.container}>
       <Text style={styles.header}>Fancy converter</Text>
     </Pressable>
   );

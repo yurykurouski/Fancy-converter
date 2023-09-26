@@ -2,10 +2,10 @@ import { useEffect, useMemo } from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import { StorageKeys } from 'utils';
 
-import { useSetLastUpdateDate } from './store';
 import { useMultiGet } from './useMultiGet';
 import { useSetColorSchemeFromStorage } from './useSetColorSchemeFromStorage';
 import { useSetExchangeCoursesFromStorage } from './useSetExchangeCoursesFromStorage';
+import { useSetLastUpdateDateFromStorage } from './useSetLastUpdateDateFromStorage';
 import { useSetOnboardingFromStorage } from './useSetOnboardingFromStorage';
 import { useSetSelectedCurrenciesFromStorage } from './useSetSelectedCurrenciesFromStorage';
 
@@ -14,7 +14,7 @@ export const useInitDataFromStorage = () => {
   const setOnBoardingStatus = useSetOnboardingFromStorage();
   const setSelectedCurrencies = useSetSelectedCurrenciesFromStorage();
   const setExchangeCourses = useSetExchangeCoursesFromStorage();
-  const setLastUpdateDate = useSetLastUpdateDate();
+  const setLastUpdateDate = useSetLastUpdateDateFromStorage();
 
   const actionsMap = useMemo(
     () => ({
