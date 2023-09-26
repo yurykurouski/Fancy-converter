@@ -4544,7 +4544,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.0":
+"dotenv@npm:^16.3.1":
   version: 16.3.1
   resolution: "dotenv@npm:16.3.1"
   checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
@@ -5325,7 +5325,7 @@ __metadata:
     react-native-bootsplash: 4.7.5
     react-native-bootsplash-cli-fork: ^4.3.2
     react-native-bouncy-checkbox: 3.0.7
-    react-native-dotenv: 3.4.0
+    react-native-dotenv: 3.4.9
     react-native-draggable-flatlist: 4.0.1
     react-native-flipper: 0.212.0
     react-native-gesture-handler: 2.13.1
@@ -8977,12 +8977,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-dotenv@npm:3.4.0":
-  version: 3.4.0
-  resolution: "react-native-dotenv@npm:3.4.0"
+"react-native-dotenv@npm:3.4.9":
+  version: 3.4.9
+  resolution: "react-native-dotenv@npm:3.4.9"
   dependencies:
-    dotenv: ^16.0.0
-  checksum: 3bc8ef4fc2acc930b754ff6b7ae5f5abdf38864e717bced7459902c6b3f8262db234001530ee296f40112a5db467635ba249ae64b954ec29ab84dc80c2c47312
+    dotenv: ^16.3.1
+  peerDependencies:
+    "@babel/runtime": ^7.20.6
+  checksum: 9727c6a08e1b3e53b31d620ac1e9daedd899b61c0fd5413fb4593a209c0bf73e245506fc02bdb0d3caa4abf4f4145fa8499afff8e48e22bcf317cd90dbe18b87
   languageName: node
   linkType: hard
 
@@ -8996,6 +8998,19 @@ __metadata:
     react-native-gesture-handler: ">=2.0.0"
     react-native-reanimated: ">=2.8.0"
   checksum: f904e3f30737a883b683e12e119856188e81d7b6cd8811e38124353630391326385bec040a3c200a06535bcd4bbbe973e504c2e0546f7aa4cc96aa573787813d
+  languageName: node
+  linkType: hard
+
+"react-native-draggable-flatlist@patch:react-native-draggable-flatlist@npm:4.0.1#.yarn/patches/react-native-draggable-flatlist-npm-4.0.1-4a95e98e27.patch::locator=fancy-converter%40workspace%3A.":
+  version: 4.0.1
+  resolution: "react-native-draggable-flatlist@patch:react-native-draggable-flatlist@npm%3A4.0.1#.yarn/patches/react-native-draggable-flatlist-npm-4.0.1-4a95e98e27.patch::version=4.0.1&hash=5d5164&locator=fancy-converter%40workspace%3A."
+  dependencies:
+    "@babel/preset-typescript": ^7.17.12
+  peerDependencies:
+    react-native: ">=0.64.0"
+    react-native-gesture-handler: ">=2.0.0"
+    react-native-reanimated: ">=2.8.0"
+  checksum: 7f96a8e32f933c0f2322676042938034d0a802dcbe44941b599cac41f539b6c777b4d01bac667be4056164739e24b3ec6572370ee463aca35ff3cc092774932d
   languageName: node
   linkType: hard
 
