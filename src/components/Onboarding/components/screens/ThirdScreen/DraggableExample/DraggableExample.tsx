@@ -8,6 +8,8 @@ import {
   useDragAnimation,
 } from './DraggableExample.hooks';
 
+import { styles } from './DraggableExample.styles';
+
 const DRAGGABLE_ITEMS = [1, 2];
 
 export const DraggableExample = () => {
@@ -36,7 +38,7 @@ export const DraggableExample = () => {
 
         return (
           <Animated.View
-            style={[{ marginBottom: 10 }, dragAnimationVariant]}
+            style={[styles.container, dragAnimationVariant]}
             key={index}>
             <Selector
               withRipple={index === 0}

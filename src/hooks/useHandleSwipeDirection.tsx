@@ -18,7 +18,9 @@ export const useHandleSwipeDirection: UseHandleSwipeDirection = (
             ? HORIZONTAL_SWIPES
             : VERTICAL_SWIPES;
 
-        if (!swipeAxis.includes(direction)) return;
+        if (!swipeAxis.includes(direction)) {
+          return;
+        }
 
         const vecityAxis =
           swipeAxis === HORIZONTAL_SWIPES
@@ -27,7 +29,9 @@ export const useHandleSwipeDirection: UseHandleSwipeDirection = (
 
         const swipeDirection = vecityAxis < 0 ? swipeAxis[0] : swipeAxis[1];
 
-        if (swipeDirection === direction) handler();
+        if (swipeDirection === direction) {
+          handler();
+        }
       }
     },
     [direction, handler],

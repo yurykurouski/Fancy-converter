@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { debounce } from 'lodash';
-import { currencies } from 'resources/avaliable-currencies.json';
+import currencies from 'resources/avaliable-currencies';
+import { AvailableCurrenciesNames } from 'types';
 
 import { UseHandleTextChange } from './SearchField.types';
 import {
@@ -8,7 +9,7 @@ import {
   mapCurrenciesNamesBasedOnLanguage,
 } from './SearchField.utils';
 
-const filterResults: string[][] = [];
+const filterResults: AvailableCurrenciesNames[][] = [];
 let prevQueryLength = 0;
 
 export const useHandleTextChange: UseHandleTextChange = ({
@@ -29,7 +30,7 @@ export const useHandleTextChange: UseHandleTextChange = ({
         return;
       }
 
-      let filteredCurrencies;
+      let filteredCurrencies: AvailableCurrenciesNames[];
       const valueUpperCase = value.trim().toUpperCase();
 
       setTimeout(() => {

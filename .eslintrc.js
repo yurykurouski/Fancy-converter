@@ -5,7 +5,7 @@ module.exports = {
     allowImportExportEverywhere: true,
   },
   extends: [
-    'plugin:@typescript-eslint/recommended',
+    '@react-native',
     'plugin:prettier/recommended',
     'plugin:import/typescript',
     'plugin:react-hooks/recommended',
@@ -14,7 +14,6 @@ module.exports = {
   ],
   plugins: [
     'eslint-plugin-simple-import-sort',
-    '@typescript-eslint',
     'prettier',
     'react-hooks',
     'unused-imports',

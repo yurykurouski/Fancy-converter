@@ -11,20 +11,14 @@ import { screenStyles } from './FirstScreen.styles';
 export const FirstScreen = () => {
   const styles = useStyles();
 
-  const screenTitile = l['onboarding_first-screen'];
+  const screenTitle = l['onboarding_first-screen'];
 
   return (
     <View style={{ width: SCREEN_WIDTH }}>
       <View style={screenStyles.iconBack}>
-        <AppIcon
-          width="160"
-          height="160"
-          style={{
-            alignSelf: 'center',
-          }}
-        />
+        <AppIcon width="160" height="160" style={styles.appIcon} />
       </View>
-      <Text style={[styles.mainText, styles.title]}>{screenTitile}</Text>
+      <Text style={[styles.mainText, styles.title]}>{screenTitle}</Text>
     </View>
   );
 };

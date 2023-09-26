@@ -90,7 +90,8 @@ export const CurrencyInputValue: FC<Props> = React.memo(
     );
 
     const course = selectedCourses?.[currencyCode];
-    const focusedCurrencyCourse = selectedCourses?.[focusedCurrencyName];
+    const focusedCurrencyCourse =
+      focusedCurrencyName && selectedCourses?.[focusedCurrencyName];
 
     const isFocused = focusedCurrencyName === currencyCode;
 
@@ -106,7 +107,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(
       inputRef,
     });
 
-    const caclulatedValue = useConvertedValues(
+    const calculatedValue = useConvertedValues(
       isFocused,
       value,
       focusedCurrencyValue,
@@ -114,7 +115,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(
       focusedCurrencyCourse,
     );
 
-    const formattedValue = useFormattedValue(caclulatedValue);
+    const formattedValue = useFormattedValue(calculatedValue);
 
     useKeyboardHandlers(setIsKeyboardVisible);
 
@@ -134,10 +135,10 @@ export const CurrencyInputValue: FC<Props> = React.memo(
     useEffect(() => {
       if (isReadyToDelete) {
         setIsReadyToDelete(false);
-        itemRefs.current.get(currencyCode).close();
+        itemRefs.current?.get(currencyCode)?.close();
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [caclulatedValue]);
+    }, [calculatedValue]);
 
     return (
       <OpacityDecorator>
@@ -175,10 +176,10 @@ export const CurrencyInputValue: FC<Props> = React.memo(
             </Pressable>
             <TextInput
               style={styles.input}
-              placeholderTextColor={THEME_COLORS[colorScheme].FONT_COLOR_FADED}
+              placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
               value={formattedValue}
               onChangeText={onChangeTextHandler}
-              onFocus={() => onFocusHandler(caclulatedValue)}
+              onFocus={() => onFocusHandler(calculatedValue)}
               ref={inputRef}
               keyboardType="numeric"
               contextMenuHidden
@@ -186,10 +187,10 @@ export const CurrencyInputValue: FC<Props> = React.memo(
               maxLength={14}
               caretHidden={!isKeyboardVisible}
             />
-            {isFocused && !!caclulatedValue && !isReadyToDelete && (
+            {isFocused && !!calculatedValue && !isReadyToDelete && (
               <CancelButton
                 onPress={onChangeTextHandler}
-                additionalStyle={{ marginHorizontal: 10 }}
+                additionalStyle={styles.cancelBtnAdditional}
               />
             )}
             <CountryFlag currencyCode={currencyCode} size={30} />

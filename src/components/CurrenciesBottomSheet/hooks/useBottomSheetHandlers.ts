@@ -8,17 +8,17 @@ export const useBottomSheetHandlers: UseBottomSheetHandlers = (
   isKeyboardVisible,
 ) => {
   const onPressHandler = useCallback(() => {
-    sheetRef.current.snapToIndex(2);
+    sheetRef.current?.snapToIndex(2);
     setIsExpanded(true);
   }, [setIsExpanded, sheetRef]);
 
   const onChangeHandler = useCallback(
-    index => {
+    (index: number) => {
       if (index === 0 && !isKeyboardVisible) {
         sheetRef.current?.snapToIndex(1);
         setIsExpanded(false);
       }
-      if (index == 1 && !isKeyboardVisible) {
+      if (index === 1 && !isKeyboardVisible) {
         setIsExpanded(false);
       }
       if (index === (0 || 1) && isKeyboardVisible) {

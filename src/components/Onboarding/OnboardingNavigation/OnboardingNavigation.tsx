@@ -17,6 +17,7 @@ export const OnboardingNavigation = ({ currentPage, flatListRef }: Props) => {
     flatListRef,
   });
 
+  //TODO: add translations
   const rightButtonText =
     currentPage === ONBOARDING_SCREENS.length - 1 ? 'Done' : 'Next';
 

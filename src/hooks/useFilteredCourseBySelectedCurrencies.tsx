@@ -1,8 +1,8 @@
 import { getCoursesForSelectedCurrencies } from 'utils';
 
-import { UseFilteredCourseBySelectedCurrencies } from './types';
+import { TUseFilteredCourseBySelectedCurrencies } from './types';
 
-export const useFilteredCourseBySelectedCurrencies: UseFilteredCourseBySelectedCurrencies =
+export const useFilteredCourseBySelectedCurrencies: TUseFilteredCourseBySelectedCurrencies =
   (exchangeCourse, selectedCurrencies) => {
     if (!exchangeCourse) {
       return;

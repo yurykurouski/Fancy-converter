@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { RefObject } from 'react';
 import { FlatList } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { OnBoardingStatusSlice } from 'store/onboardingStatus/slices/OnBoardingStatusSlice';
@@ -10,7 +10,7 @@ export const useNavigationHandlers = ({
   flatListRef,
 }: {
   currentPage: number;
-  flatListRef: MutableRefObject<FlatList<unknown>>;
+  flatListRef: RefObject<FlatList<unknown>>;
 }) => {
   const dispatch = useDispatch();
 
@@ -22,8 +22,12 @@ export const useNavigationHandlers = ({
       return setOnboardingStatus(true);
     }
 
-    if (currentPage === ONBOARDING_SCREENS.length - 1 || !flatListRef?.current)
+    if (
+      currentPage === ONBOARDING_SCREENS.length - 1 ||
+      !flatListRef?.current
+    ) {
       return;
+    }
     flatListRef.current.scrollToIndex({
       animated: true,
       index: currentPage + 1,
@@ -31,7 +35,7 @@ export const useNavigationHandlers = ({
   };
 
   const handleSkip = () => {
-    flatListRef.current.scrollToIndex({
+    flatListRef.current?.scrollToIndex({
       animated: true,
       index: ONBOARDING_SCREENS.length - 1,
     });

@@ -19,7 +19,7 @@ export const useRenderListItem: UseRenderListItem = ({
         availableCurrencies,
       );
 
-      const separatorValue = isSeparatorNeeded && item[0];
+      const separatorValue = item[0];
 
       return (
         <>

@@ -14,7 +14,7 @@ export const useKeyboardHandlers: UseKeyboardHandlers = (
       'hardwareBackPress',
       () => {
         if (isExpanded) {
-          sheetRef.current.snapToIndex(0);
+          sheetRef.current?.snapToIndex(0);
           setIsExpanded(false);
           return true;
         }

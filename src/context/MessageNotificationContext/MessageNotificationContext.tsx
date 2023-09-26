@@ -1,4 +1,10 @@
-import React, { createContext, FC, lazy, Suspense } from 'react';
+import React, {
+  createContext,
+  FC,
+  lazy,
+  PropsWithChildren,
+  Suspense,
+} from 'react';
 import { View } from 'react-native';
 
 import { useNotificationMessage } from './WithNotification.hooks';
@@ -6,9 +12,11 @@ import { ShowMessage } from './WithNotification.types';
 
 const Notification = lazy(() => import('./Notification'));
 
-export const NotificationContext = createContext<ShowMessage>(null);
+//TODO: think about refactoring
+//@ts-expect-error
+export const NotificationContext = createContext<ShowMessage>();
 
-export const WithNotification: FC = ({ children }) => {
+export const WithNotification: FC<PropsWithChildren> = ({ children }) => {
   const { showMessage, message } = useNotificationMessage();
 
   return (

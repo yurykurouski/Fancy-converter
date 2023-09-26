@@ -22,9 +22,11 @@ export const useGetCoursesFromStorage: UseGetCoursesFromStorage = (
       }
 
       getFromStorage(StorageKeys.EXCHANGE_COURSES)
-        .then((value: string) => {
-          const parsed = JSON.parse(value);
-          setExchangeCourse(parsed);
+        .then(value => {
+          if (value) {
+            const parsed = JSON.parse(value);
+            setExchangeCourse(parsed);
+          }
         })
         .then(() =>
           startNotification(l['notification.message.update_courses.cache']),

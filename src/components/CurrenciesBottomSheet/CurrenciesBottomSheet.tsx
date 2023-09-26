@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { useSetSelectedCurrencies } from 'hooks';
-import { currencies } from 'resources/avaliable-currencies.json';
+import currencies from 'resources/avaliable-currencies';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
@@ -73,7 +73,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     });
 
     const snapPoints = useMemo(() => getSnapPoints(bottom, top), [bottom, top]);
-
+    //TODO: use SectionList here
     return (
       <>
         <BottomSheet
@@ -89,7 +89,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           {isCalculatingValue && (
             <View style={styles.activityIndicatorContainer}>
               <ActivityIndicator
-                color={THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER}
+                color={THEME_COLORS[colorScheme!]?.ACCENT_COLOR_LIGHTER}
               />
             </View>
           )}

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useCallback, useEffect } from 'react';
 import { Animated } from 'react-native';
 import { State } from 'react-native-gesture-handler';
@@ -50,7 +49,9 @@ export const useGestureHandler: UseGestureHandler = animatedPosition =>
   useCallback(
     ({ nativeEvent }) => {
       const { translationX } = nativeEvent;
-      if (translationX > 0) return;
+      if (translationX > 0) {
+        return;
+      }
 
       animatedPosition.setValue(translationX);
     },

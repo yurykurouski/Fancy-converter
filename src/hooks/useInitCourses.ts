@@ -34,7 +34,9 @@ export const useInitCourses = () => {
         loadCourses()
           // .then(async () => await RNBootSplash.hide({ fade: true }))
           .then(async () => {
-            startNotification(l['notification.message.update_courses.network']);
+            startNotification?.(
+              l['notification.message.update_courses.network'],
+            );
           });
       } else {
         getFromStorage(StorageKeys.EXCHANGE_COURSES)
@@ -45,7 +47,7 @@ export const useInitCourses = () => {
           })
           // .then(async () => await RNBootSplash.hide({ fade: true }))
           .then(() => {
-            startNotification(l['notification.message.update_courses.cache']);
+            startNotification?.(l['notification.message.update_courses.cache']);
           });
       }
     });

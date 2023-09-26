@@ -22,9 +22,7 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
     const { colorScheme } = useSelector(selectColorSchemeState);
     const styles = useStyles();
 
-    const isActive = (modalSelectedCurrencies as string[]).includes(
-      currencyCode,
-    );
+    const isActive = modalSelectedCurrencies.includes(currencyCode);
 
     const onPressHandler = useOnPressHandler(
       isExpanded,
@@ -52,7 +50,7 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
           </View>
           <BouncyCheckbox
             size={30}
-            fillColor={THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER}
+            fillColor={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
             onPress={onPressHandler}
             isChecked={isActive}
             disableBuiltInState

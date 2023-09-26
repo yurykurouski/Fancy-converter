@@ -4,11 +4,14 @@ import { CancelButton } from 'components/common/CancelButton';
 
 import { Selector } from '../Selector';
 
-import { useAnimationStyles, useSwipeAnimation } from './SwipableExample.hooks';
+import {
+  useAnimationStyles,
+  useSwipeAnimation,
+} from './SwipeableExample.hooks';
 
-import { useStyles } from './SwipableExample.styles';
+import { useStyles } from './SwipeableExample.styles';
 
-export const SwipableExample = () => {
+export const SwipeableExample = () => {
   const styles = useStyles();
 
   const { selectorContainerStyle, animatedRippleStyle } = useAnimationStyles();
@@ -23,12 +26,8 @@ export const SwipableExample = () => {
 
   return (
     <View style={styles.underlayBackground}>
-      <CancelButton size={30} additionalStyle={{ marginLeft: 10 }} />
-      <Animated.View
-        style={[
-          { position: 'absolute', width: '100%' },
-          selectorContainerStyle,
-        ]}>
+      <CancelButton size={30} additionalStyle={styles.cancelBtnAdditional} />
+      <Animated.View style={[styles.selector, selectorContainerStyle]}>
         <Selector withRipple animatedRippleStyle={animatedRippleStyle} />
       </Animated.View>
     </View>

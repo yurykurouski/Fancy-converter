@@ -27,8 +27,8 @@ export const useDragAnimatedStyles = () => {
       backgroundColor: HANDLE_COLOR_VALUE.interpolate({
         inputRange: [0, 1],
         outputRange: [
-          THEME_COLORS[colorScheme].FONT_COLOR_FADED,
-          THEME_COLORS[colorScheme].ACCENT_COLOR_LIGHTER,
+          THEME_COLORS[colorScheme!].FONT_COLOR_FADED,
+          THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER,
         ],
       }),
     },

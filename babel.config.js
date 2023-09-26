@@ -4,13 +4,7 @@ module.exports = {
     '@babel/preset-typescript',
   ],
   plugins: [
-    [
-      'module:react-native-dotenv',
-      {
-        moduleName: '@env',
-        path: '.env',
-      },
-    ],
+    ['module:react-native-dotenv'],
     [
       'module-resolver',
       {
@@ -28,12 +22,6 @@ module.exports = {
           context: './src/context',
           store: './src/store',
         },
-      },
-    ],
-    [
-      '@babel/plugin-transform-spread',
-      {
-        loose: true,
       },
     ],
     'react-native-reanimated/plugin',

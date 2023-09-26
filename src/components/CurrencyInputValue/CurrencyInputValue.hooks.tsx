@@ -11,7 +11,7 @@ import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
 import { l } from 'resources/localization';
 
 import {
-  UseConvertedValues,
+  TUseConvertedValues,
   UseCurrencyInputHandlers,
   UseHandleDeletePress,
 } from './CurrencyInputValue.types';
@@ -22,10 +22,10 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = ({
   currencyCode,
   inputRef,
 }) => {
-  const [value, setValue] = useState<string>(null);
+  const [value, setValue] = useState<string>('');
 
   const onChangeTextHandler = useCallback(
-    text => {
+    (text: string) => {
       const withoutSpaces = text.replace(/\s+/g, '') as string;
 
       if (INPUT_VALIDATION_REXEXP.test(withoutSpaces) || !withoutSpaces) {
@@ -37,16 +37,16 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = ({
   );
 
   const onFocusHandler = useCallback(
-    value => {
+    (inputValue: string) => {
       setFocusedCurrencyName(currencyCode);
-      setFocusedCurrencyValue(value);
-      setValue(value);
+      setFocusedCurrencyValue(inputValue);
+      setValue(inputValue);
     },
     [currencyCode, setFocusedCurrencyName, setFocusedCurrencyValue, setValue],
   );
 
   const containerOnPressHandler = useCallback(() => {
-    inputRef.current.focus();
+    inputRef.current?.focus();
   }, [inputRef]);
 
   return {
@@ -57,7 +57,7 @@ export const useCurrencyInputHandlers: UseCurrencyInputHandlers = ({
   };
 };
 
-export const useConvertedValues: UseConvertedValues = (
+export const useConvertedValues: TUseConvertedValues = (
   isFocused,
   value,
   focusedCurrencyValue,
@@ -71,20 +71,22 @@ export const useConvertedValues: UseConvertedValues = (
       isFocused
         ? value
         : isNaN(coefficient)
-        ? null
+        ? ''
         : (Number(focusedCurrencyValue) * coefficient).toFixed(2),
     [coefficient, focusedCurrencyValue, isFocused, value],
   );
 
   return calculatedValue === '0.00'
-    ? null
+    ? ''
     : isNaN(Number(calculatedValue)) && !isFocused
     ? l['currency_input.value.error_message']
     : calculatedValue;
 };
 
-export const useFormattedValue = (value: string) => {
-  if (!value || isNaN(Number(value))) return value;
+export const useFormattedValue = (value: string | null): string => {
+  if (!value || isNaN(Number(value))) {
+    return '';
+  }
 
   const haveFraction = value.includes('.');
   const [integer, fraction] = value.split('.');
@@ -92,8 +94,8 @@ export const useFormattedValue = (value: string) => {
   const formatted = integer
     .split('')
     .reverse()
-    .reduce((acc, value, index) => {
-      return [...acc, index % 3 === 0 && index > 0 ? `${value} ` : value];
+    .reduce((acc: string[], char: string, index) => {
+      return [...acc, index % 3 === 0 && index > 0 ? `${char} ` : char];
     }, []);
 
   return haveFraction
@@ -134,7 +136,7 @@ export const useHandleDeletePress = ({
     );
     setSelectedCurrencies(filteredCurrencies);
 
-    startNotification(
+    startNotification?.(
       `${currencyCode} ${l['currencies_main.currency_deleted']}`,
     );
   }, [

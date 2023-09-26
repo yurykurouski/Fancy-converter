@@ -5,7 +5,8 @@ class CurrenciesService {
     try {
       return await requests.get();
     } catch (err) {
-      throw new Error(err);
+      //TODO: add error handling
+      throw new Error(err as string);
     }
   }
 }

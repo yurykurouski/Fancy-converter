@@ -5,20 +5,32 @@ export const useChangeDotScale = () => {
   const scaleValue = useMemo(() => new Animated.Value(1), []);
 
   const changeDotScale = useCallback(
-    isActive => {
-      if (isActive) {
-        Animated.timing(scaleValue, {
-          toValue: 1.9,
-          duration: 150,
-          useNativeDriver: true,
-        }).start();
-      } else {
-        Animated.timing(scaleValue, {
-          toValue: 1,
-          duration: 150,
-          useNativeDriver: true,
-        }).start();
-      }
+    (isActive: boolean) => {
+      isActive
+        ? Animated.timing(scaleValue, {
+            toValue: 1.9,
+            duration: 150,
+            useNativeDriver: true,
+          }).start()
+        : Animated.timing(scaleValue, {
+            toValue: 1,
+            duration: 150,
+            useNativeDriver: true,
+          }).start();
+
+      // if (isActive) {
+      //   Animated.timing(scaleValue, {
+      //     toValue: 1.9,
+      //     duration: 150,
+      //     useNativeDriver: true,
+      //   }).start();
+      // } else {
+      //   Animated.timing(scaleValue, {
+      //     toValue: 1,
+      //     duration: 150,
+      //     useNativeDriver: true,
+      //   }).start();
+      // }
     },
     [scaleValue],
   );

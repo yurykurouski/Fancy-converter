@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 
-import { UseOnPressHandler } from './CurrencySelectorValue.types';
+import { TUseOnPressHandler } from './CurrencySelectorValue.types';
 
-export const useOnPressHandler: UseOnPressHandler = (
+export const useOnPressHandler: TUseOnPressHandler = (
   isExpanded,
   isActive,
   modalSelectedCurrencies,
@@ -10,11 +10,14 @@ export const useOnPressHandler: UseOnPressHandler = (
   setModalSelectedCurrencies,
 ) =>
   useCallback(() => {
-    if (!isExpanded) return;
+    if (!isExpanded) {
+      return;
+    }
     if (isActive) {
       const filteredCurrenciesList = modalSelectedCurrencies.filter(
         code => code !== currencyCode,
       );
+
       setModalSelectedCurrencies(filteredCurrenciesList);
     } else {
       setModalSelectedCurrencies([...modalSelectedCurrencies, currencyCode]);

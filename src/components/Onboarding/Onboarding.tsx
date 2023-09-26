@@ -9,7 +9,7 @@ import { OnboardingNavigation } from './OnboardingNavigation';
 import { useStyles } from './Onboarding.styles';
 
 export const Onboarding = () => {
-  const flatListRef = useRef<FlatList>();
+  const flatListRef = useRef<FlatList>(null);
 
   const { bottom } = useSafeAreaInsets();
   const styles = useStyles(bottom);
