@@ -17,32 +17,18 @@ import {
 import { useInitDataFromStorage } from 'hooks/useInitDataFromStorage';
 import store from 'store';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { selectDrawerOpenStatus } from 'store/drawer/selectors';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectOnBoardingStatus } from 'store/onboardingStatus/selectors';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { StorageKeys } from 'utils';
 
 import { useStyles } from './App.styles';
 
 const App = React.memo(() => {
   const { colorScheme } = useSelector(selectColorSchemeState);
-  const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
   const { isOnBoarded, isLoadingStatus } = useSelector(selectOnBoardingStatus);
-  const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
-  const { exchangeCourses, lastUpdated } = useSelector(selectExchangeCourses);
 
   const styles = useStyles();
 
   useInitDataFromStorage();
-
-  useMultiSetToStorageOnBackground([
-    [StorageKeys.COLOR_SCHEME, colorScheme!],
-    [StorageKeys.SELECTED_CURRENCIES, selectedCurrencies.join(',')],
-    [StorageKeys.IS_ONBOARDED, JSON.stringify(isOnBoarded)],
-    [StorageKeys.EXCHANGE_COURSES, JSON.stringify(exchangeCourses)],
-    [StorageKeys.LAST_COURSES_UPDATE, JSON.stringify(lastUpdated)],
-  ]);
+  useMultiSetToStorageOnBackground();
 
   useAppearanceChangeListener();
 
@@ -58,10 +44,7 @@ const App = React.memo(() => {
       />
       <View style={styles.container}>
         {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
-        <CurrenciesBottomSheet
-          isDrawerOpened={isDrawerOpened}
-          selectedCurrencies={selectedCurrencies}
-        />
+        <CurrenciesBottomSheet />
       </View>
     </>
   );

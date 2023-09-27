@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { AppState } from 'react-native';
-import { multiSetToStorage, StorageKeys } from 'utils';
+import { multiSetToStorage } from 'utils';
 
-export const useMultiSetToStorageOnBackground = (
-  keyValuePairs: [StorageKeys, string][],
-) => {
+import { useGetKeyValuePairs } from './useGetKeyValuePairs';
+
+export const useMultiSetToStorageOnBackground = () => {
+  const keyValuePairs = useGetKeyValuePairs();
+
   useEffect(() => {
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (nextAppState === 'background') {
