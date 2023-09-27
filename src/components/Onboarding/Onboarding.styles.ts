@@ -1,8 +1,8 @@
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
-export const useStyles = (bottom?: number) =>
-  useTheme(theme => ({
+export const useStyles = () =>
+  useTheme((theme, { bottom }) => ({
     contentContainer: {
       position: 'absolute',
       top: bottom,
@@ -13,6 +13,10 @@ export const useStyles = (bottom?: number) =>
       zIndex: 5,
       paddingBottom: bottom,
     },
+  }));
+
+export const useCommonOnboardingStyles = () =>
+  useTheme(theme => ({
     title: {
       marginTop: 60,
     },
@@ -24,8 +28,5 @@ export const useStyles = (bottom?: number) =>
       ...(isAndroid && { fontFamily: 'monospace' }),
       textTransform: 'uppercase',
       color: theme.FONT_PRIMARY_COLOR,
-    },
-    appIcon: {
-      alignSelf: 'center',
     },
   }));

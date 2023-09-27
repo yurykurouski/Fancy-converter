@@ -4,6 +4,7 @@ import {
   HandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
+import { EdgeInsets } from 'react-native-safe-area-context';
 import { Theme } from 'assets/colors';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
 import { AvailableCurrenciesNames } from 'types';
@@ -53,10 +54,9 @@ export type UseHandleSwipeDirection = (
 ) => Handler;
 
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
-  mapStyles: (theme: Theme) => T,
+  mapStyles: (theme: Theme, insets: EdgeInsets) => T,
 ) => T;
 
-// export type TUseMultiGet = <T>(actionsMap: T) => () => Promise<void>;
 export type TActionsMap<T> = {
   [key in StorageKeys]?: T;
 };

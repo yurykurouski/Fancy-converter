@@ -35,7 +35,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     const sheetRef = useRef<BottomSheet>(null);
 
     const { bottom, top } = useSafeAreaInsets();
-    const styles = useStyles(bottom);
+    const styles = useStyles();
     const { colorScheme } = useSelector(selectColorSchemeState);
 
     const setSelectedCurrencies = useSetSelectedCurrencies();

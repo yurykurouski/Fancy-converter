@@ -5,7 +5,6 @@ import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
 import { Layout, SlideOutRight } from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { useSelector } from 'react-redux';
 import { ColorsDark } from 'assets/colors';
@@ -24,13 +23,15 @@ import { SeparatorComponent } from './components/SeparatorComponent';
 import { ANIMATION_CONFIG } from './CurrencySelector.consts';
 import { useOnScrollOffsetChange } from './CurrencySelector.hooks';
 
-import { styles } from './CurrencySelector.styles';
+import { useStyles } from './CurrencySelector.styles';
 
 export const CurrencySelector = ({
   setIsHeaderBlurred,
 }: {
   setIsHeaderBlurred: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const styles = useStyles();
+
   const startNotification = useContext(NotificationContext);
 
   const { isLoading } = useSelector(selectExchangeCourses);
@@ -39,8 +40,6 @@ export const CurrencySelector = ({
   const setSelectedCurrencies = useSetSelectedCurrencies();
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
-
-  const { top, bottom } = useSafeAreaInsets();
 
   const itemRefs = useRef<
     Map<AvailableCurrenciesNames, SwipeableItemImperativeRef>
@@ -59,7 +58,7 @@ export const CurrencySelector = ({
     <DraggableFlatList
       animationConfig={ANIMATION_CONFIG}
       keyboardShouldPersistTaps="handled"
-      containerStyle={[styles.container, { marginBottom: bottom }]}
+      containerStyle={styles.container}
       data={selectedCurrencies}
       keyExtractor={item => item}
       renderItem={renderItem}
@@ -77,9 +76,7 @@ export const CurrencySelector = ({
       ListFooterComponent={
         selectedCurrencies.length ? ListFooterComponent : null
       }
-      ListHeaderComponent={
-        <View style={[styles.headerComponent, { height: 34 + top }]} />
-      }
+      ListHeaderComponent={<View style={styles.headerComponent} />}
       activationDistance={10}
       showsVerticalScrollIndicator={false}
       enableLayoutAnimationExperimental

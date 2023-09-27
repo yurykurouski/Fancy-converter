@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { FlatList, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ONBOARDING_SCREENS } from './Onboarding.consts';
 import { useOnboardingHandlers } from './Onboarding.hooks';
@@ -11,8 +10,7 @@ import { useStyles } from './Onboarding.styles';
 export const Onboarding = () => {
   const flatListRef = useRef<FlatList>(null);
 
-  const { bottom } = useSafeAreaInsets();
-  const styles = useStyles(bottom);
+  const styles = useStyles();
 
   const { currentPage, handleScroll, handleEndDrag, handleStartDrag } =
     useOnboardingHandlers(flatListRef);

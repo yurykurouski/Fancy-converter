@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
-export const useStyles = (bottom?: number) =>
-  useTheme(theme => ({
+export const useStyles = () =>
+  useTheme((theme, { bottom }) => ({
     listContainer: {
       paddingHorizontal: 10,
     },
@@ -11,11 +11,6 @@ export const useStyles = (bottom?: number) =>
     },
     backgroundStyle: {
       elevation: 10,
-    },
-    background: {
-      borderTopRightRadius: 20,
-      borderTopLeftRadius: 20,
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
     },
     activityIndicatorContainer: {
       position: 'absolute',

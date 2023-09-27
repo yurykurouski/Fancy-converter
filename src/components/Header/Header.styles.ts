@@ -3,7 +3,7 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
 export const useStyles = (headerBlur: boolean) =>
-  useTheme(theme => ({
+  useTheme((theme, { top }) => ({
     blurView: {
       position: 'absolute',
       width: '100%',
@@ -11,6 +11,7 @@ export const useStyles = (headerBlur: boolean) =>
       zIndex: 1,
     },
     container: {
+      paddingTop: top,
       paddingBottom: 12,
       alignItems: 'center',
       backgroundColor: Platform.select({
