@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { View } from 'react-native';
+import { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
 import { useTheme } from 'hooks';
 
 const useStyles = () =>
@@ -11,8 +12,16 @@ const useStyles = () =>
     },
   }));
 
-export const BottomSheetBackground = () => {
+export const BottomSheetBackground: FC<BottomSheetBackgroundProps> = ({
+  style,
+  pointerEvents,
+}) => {
   const styles = useStyles();
 
-  return <View pointerEvents="none" style={styles.backgroundStyle} />;
+  return (
+    <View
+      pointerEvents={pointerEvents}
+      style={[style, styles.backgroundStyle]}
+    />
+  );
 };
