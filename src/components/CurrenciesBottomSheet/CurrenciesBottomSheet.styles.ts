@@ -1,9 +1,13 @@
 import { useTheme } from 'hooks';
 
-export const useStyles = () =>
+export const useStyles = (bottom?: number) =>
   useTheme(theme => ({
     listContainer: {
       paddingHorizontal: 10,
+    },
+    containerStyle: {
+      marginBottom: bottom,
+      zIndex: 2,
     },
     backgroundStyle: {
       elevation: 10,

@@ -1,9 +1,11 @@
-import React, { useContext, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useRef } from 'react';
 import { RefreshControl } from 'react-native';
+import { View } from 'react-native';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
 import { Layout, SlideOutRight } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { useSelector } from 'react-redux';
 import { ColorsDark } from 'assets/colors';
@@ -20,19 +22,25 @@ import { AvailableCurrenciesNames } from 'types';
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
 import { SeparatorComponent } from './components/SeparatorComponent';
 import { ANIMATION_CONFIG } from './CurrencySelector.consts';
+import { useOnScrollOffsetChange } from './CurrencySelector.hooks';
 
 import { styles } from './CurrencySelector.styles';
 
-export const CurrencySelector = () => {
+export const CurrencySelector = ({
+  setIsHeaderBlurred,
+}: {
+  setIsHeaderBlurred: Dispatch<SetStateAction<boolean>>;
+}) => {
   const startNotification = useContext(NotificationContext);
 
   const { isLoading } = useSelector(selectExchangeCourses);
-
-  const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
-
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
 
   const setSelectedCurrencies = useSetSelectedCurrencies();
+
+  const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
+
+  const { top, bottom } = useSafeAreaInsets();
 
   const itemRefs = useRef<
     Map<AvailableCurrenciesNames, SwipeableItemImperativeRef>
@@ -45,14 +53,17 @@ export const CurrencySelector = () => {
     <CurrencyInputValue currencyCode={item} drag={drag} itemRefs={itemRefs} />
   );
 
+  const onOffsetChange = useOnScrollOffsetChange(setIsHeaderBlurred);
+
   return (
     <DraggableFlatList
       animationConfig={ANIMATION_CONFIG}
       keyboardShouldPersistTaps="handled"
-      containerStyle={styles.container}
+      containerStyle={[styles.container, { marginBottom: bottom }]}
       data={selectedCurrencies}
       keyExtractor={item => item}
       renderItem={renderItem}
+      onScrollOffsetChange={onOffsetChange}
       //TODO
       onDragEnd={props => setSelectedCurrencies(props.data)}
       refreshControl={
@@ -65,6 +76,9 @@ export const CurrencySelector = () => {
       ItemSeparatorComponent={SeparatorComponent}
       ListFooterComponent={
         selectedCurrencies.length ? ListFooterComponent : null
+      }
+      ListHeaderComponent={
+        <View style={[styles.headerComponent, { height: 34 + top }]} />
       }
       activationDistance={10}
       showsVerticalScrollIndicator={false}

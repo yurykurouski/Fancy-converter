@@ -1,5 +1,6 @@
 import { Animated, Dimensions } from 'react-native';
 
+import { isIos } from './../../utils/platform';
 import { DIRECTIONS_DOWN, DIRECTIONS_UP } from './CurrenciesBottomSheet.consts';
 import { CheckIfSeparatorIsNeeded } from './CurrenciesBottomSheet.types';
 
@@ -40,5 +41,5 @@ const windowHeight = Dimensions.get('window').height;
 export const getSnapPoints = (bottomInset: number, topInset: number) => [
   30,
   70,
-  windowHeight - (70 + bottomInset + topInset),
+  windowHeight - ((isIos ? 34 : 36) + bottomInset + topInset),
 ];

@@ -375,6 +375,8 @@ PODS:
   - React-jsinspector (0.72.5)
   - React-logger (0.72.5):
     - glog
+  - react-native-blur (4.3.2):
+    - React-Core
   - react-native-flipper (0.212.0):
     - React-Core
   - react-native-netinfo (9.3.0):
@@ -583,6 +585,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-performance (from `../node_modules/react-native-performance`)
@@ -673,6 +676,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-blur:
+    :path: "../node_modules/@react-native-community/blur"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
   react-native-netinfo:
@@ -764,6 +769,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: ff70a72027dea5cc7d71cfcc6fad7f599f63987a
   React-jsinspector: aef73cbd43b70675f572214d10fa438c89bf11ba
   React-logger: 2e4aee3e11b3ec4fa6cfd8004610bbb3b8d6cca4
+  react-native-blur: cfdad7b3c01d725ab62a8a729f42ea463998afa2
   react-native-flipper: 9c1957af24b76493ba74f46d000a5c1d485e7731
   react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-performance: cef2b618d47b277fb5c3280b81a3aad1e72f2886

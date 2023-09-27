@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Drawer, Header } from 'components';
 
@@ -12,6 +12,8 @@ import {
 import { styles } from './CurrenciesMainContent.styles';
 
 export const CurrenciesMainContent = React.memo(() => {
+  const [isHeaderBlurred, setIsHeaderBlurred] = useState<boolean>(false);
+
   const { isDrawerOpened, drawerAnimation, animatedPosition } =
     useOpenDrawerAnimations();
 
@@ -19,9 +21,9 @@ export const CurrenciesMainContent = React.memo(() => {
 
   return (
     <>
-      <Header onLongPress={drawerAnimation} />
+      <Header onLongPress={drawerAnimation} isHeaderBlurred={isHeaderBlurred} />
       <View style={styles.container}>
-        <CurrencySelector />
+        <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
       </View>
       <Drawer
         animatedPosition={animatedPosition}
