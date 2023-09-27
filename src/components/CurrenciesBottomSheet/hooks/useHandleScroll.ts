@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import { useCallback } from 'react';
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 
@@ -11,6 +12,9 @@ import { handleScrollDirectionChange } from '../CurrenciesBottomSheet.utils';
 export const useHandleScroll = (bottom: number) =>
   useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      //NOTE: make decision
+      return;
+
       const currentOffset = event.nativeEvent.contentOffset.y;
       const dif = currentOffset - OFFSET.offset;
 
