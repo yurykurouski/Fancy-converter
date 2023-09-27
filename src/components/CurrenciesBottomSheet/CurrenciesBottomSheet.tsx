@@ -56,12 +56,12 @@ export const CurrenciesBottomSheet = React.memo<Props>(
 
     //*to prevent rerendering bottomsheet when selectedCurrencies changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 2), []);
+    const initialIndex = useMemo(() => (selectedCurrencies.length ? 1 : 2), []);
 
     if (!isExpanded) {
       isDrawerOpened
         ? sheetRef.current?.close()
-        : sheetRef.current?.snapToIndex(0);
+        : sheetRef.current?.snapToIndex(1);
     }
 
     const renderHandle = useRenderHandler(onPressHandler);
