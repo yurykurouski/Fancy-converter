@@ -8,6 +8,7 @@ import { useSetSelectedCurrencies } from 'hooks';
 import currencies from 'resources/avaliable-currencies';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { isIos } from 'utils';
 
 import { BottomSheetFooterComponent } from './components/BottomSheetFooterComponent/BottomSheetFooterComponent';
 import { SearchField } from './components/SearchField';
@@ -86,7 +87,8 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           backgroundStyle={styles.backgroundStyle}
           onChange={onChangeHandler}
           containerStyle={{ marginBottom: bottom }}
-          keyboardBehavior="extend">
+          android_keyboardInputMode="adjustResize"
+          keyboardBehavior={isIos ? 'extend' : 'interactive'}>
           {isCalculatingValue && (
             <View style={styles.activityIndicatorContainer}>
               <ActivityIndicator
@@ -110,6 +112,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
               </View>
             }
             ListFooterComponent={BottomSheetFooterComponent}
+            overScrollMode="always"
           />
           <SearchField
             setAvailableCurrencies={setAvailableCurrencies}

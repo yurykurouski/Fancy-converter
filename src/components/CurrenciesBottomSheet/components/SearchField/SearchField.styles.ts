@@ -4,7 +4,7 @@ export const useStyles = () =>
   useTheme(theme => ({
     inputContainer: {
       position: 'absolute',
-      bottom: 0,
+      bottom: -1,
       left: 0,
       right: 0,
       flexDirection: 'row',
