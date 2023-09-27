@@ -5,15 +5,17 @@ import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
 import { Layout, SlideOutRight } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { useSelector } from 'react-redux';
-import { ColorsDark } from 'assets/colors';
+import { THEME_COLORS } from 'assets/colors';
 import { CurrencyInputValue } from 'components';
 import { NotificationContext } from 'context';
 import {
   useGetCurrenciesExchangeCourse,
   useSetSelectedCurrencies,
 } from 'hooks';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { AvailableCurrenciesNames } from 'types';
@@ -32,10 +34,13 @@ export const CurrencySelector = ({
 }) => {
   const styles = useStyles();
 
+  const { top } = useSafeAreaInsets();
+
   const startNotification = useContext(NotificationContext);
 
   const { isLoading } = useSelector(selectExchangeCourses);
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+  const { colorScheme } = useSelector(selectColorSchemeState);
 
   const setSelectedCurrencies = useSetSelectedCurrencies();
 
@@ -68,8 +73,15 @@ export const CurrencySelector = ({
       refreshControl={
         <RefreshControl
           refreshing={isLoading}
+          progressViewOffset={top}
           onRefresh={reloadCourses}
-          colors={[ColorsDark.MAIN_BUTTON_COLOR]}
+          //android
+          colors={[THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR]}
+          progressBackgroundColor={
+            THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
+          }
+          //ios
+          tintColor={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
         />
       }
       ItemSeparatorComponent={SeparatorComponent}
