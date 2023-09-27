@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   iconsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    padding: 5,
+    gap: 16,
+    paddingHorizontal: 20,
     marginTop: 'auto',
   },
 });

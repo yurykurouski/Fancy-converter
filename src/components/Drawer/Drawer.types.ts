@@ -11,8 +11,6 @@ export type Props = {
   isDrawerOpened: boolean;
 };
 
-export type UseOpacityControl = (isDrawerOpened: boolean) => void;
-
 export type UseGestureStateHandler = (
   drawerAnimation: () => void,
   animatedPosition: Animated.Value,

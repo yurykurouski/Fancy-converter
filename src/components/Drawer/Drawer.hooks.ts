@@ -1,22 +1,8 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Animated } from 'react-native';
 import { State } from 'react-native-gesture-handler';
 
-import {
-  UseGestureHandler,
-  UseGestureStateHandler,
-  UseOpacityControl,
-} from './Drawer.types';
-import { decreaseOpacity, increaseOpacity } from './drawer-animations';
-
-export const useOpacityControl: UseOpacityControl = isDrawerOpened =>
-  useEffect(() => {
-    if (isDrawerOpened) {
-      increaseOpacity();
-    } else {
-      decreaseOpacity();
-    }
-  }, [isDrawerOpened]);
+import { UseGestureHandler, UseGestureStateHandler } from './Drawer.types';
 
 export const useGestureStateHandler: UseGestureStateHandler = (
   drawerAnimation,
