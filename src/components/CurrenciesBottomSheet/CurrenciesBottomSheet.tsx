@@ -9,6 +9,7 @@ import currencies from 'resources/avaliable-currencies';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
+import { BottomSheetFooterComponent } from './components/BottomSheetFooterComponent/BottomSheetFooterComponent';
 import { SearchField } from './components/SearchField';
 import { BottomSheetBackground } from './BottomSheetBackground';
 import { Props } from './CurrenciesBottomSheet.types';
@@ -108,6 +109,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
                 </Text>
               </View>
             }
+            ListFooterComponent={BottomSheetFooterComponent}
           />
           <SearchField
             setAvailableCurrencies={setAvailableCurrencies}

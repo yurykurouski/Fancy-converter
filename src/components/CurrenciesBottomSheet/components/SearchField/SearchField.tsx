@@ -61,6 +61,7 @@ export const SearchField: FC<Props> = ({
           onPressOut={() => setIsFocused(true)}
           placeholder={l['currency_search.input.placeholder']}
           placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
+          keyboardAppearance={colorScheme!}
           contextMenuHidden
         />
         {!!searchValue && (
