@@ -1,14 +1,14 @@
 import React from 'react';
-import { Animated, Pressable } from 'react-native';
+import { Animated, Pressable, StyleSheet } from 'react-native';
+import { BlurView } from '@react-native-community/blur';
 import { PanGestureHandler } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { isIos } from 'utils';
 
-import {
-  useGestureHandler,
-  useGestureStateHandler,
-  useOpacityControl,
-} from './Drawer.hooks';
+import { useGestureHandler, useGestureStateHandler } from './Drawer.hooks';
 import { Props } from './Drawer.types';
-import { opacityValue } from './drawer-animations';
 import { DrawerContent } from './DrawerContent';
 
 import { useStyles } from './Drawer.styles';
@@ -16,6 +16,7 @@ import { useStyles } from './Drawer.styles';
 export const Drawer = React.memo<Props>(
   ({ animatedPosition, drawerAnimation, isDrawerOpened }) => {
     const styles = useStyles();
+    const { colorScheme } = useSelector(selectColorSchemeState);
 
     const gestureHandler = useGestureHandler(animatedPosition);
 
@@ -23,8 +24,6 @@ export const Drawer = React.memo<Props>(
       drawerAnimation,
       animatedPosition,
     );
-
-    useOpacityControl(isDrawerOpened);
 
     return (
       <>
@@ -39,11 +38,21 @@ export const Drawer = React.memo<Props>(
             <DrawerContent />
           </Animated.View>
         </PanGestureHandler>
-        <Animated.View
-          style={[styles.fadeContainer, { opacity: opacityValue }]}
-          pointerEvents={isDrawerOpened ? 'box-none' : 'none'}>
-          <Pressable onPressOut={drawerAnimation} style={[styles.fade]} />
-        </Animated.View>
+        {isDrawerOpened && (
+          <BlurView
+            style={[styles.fadeContainer]}
+            reducedTransparencyFallbackColor={
+              THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
+            }
+            blurType={colorScheme!}
+            blurRadius={isIos ? 10 : 4}
+            pointerEvents={isDrawerOpened ? 'box-none' : 'none'}>
+            <Pressable
+              onPressOut={drawerAnimation}
+              style={StyleSheet.absoluteFill}
+            />
+          </BlurView>
+        )}
       </>
     );
   },

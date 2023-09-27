@@ -1,29 +1,19 @@
-import { SCREEN_WIDTH } from 'constants/constants';
+import { StyleSheet } from 'react-native';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
   useTheme((theme, { bottom }) => ({
     drawer: {
       position: 'absolute',
-      bottom,
       height: '100%',
-      width: SCREEN_WIDTH * 0.6,
+      paddingBottom: bottom,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       elevation: 20,
       shadowColor: 'black',
-      zIndex: 2,
+      zIndex: 4,
     },
     fadeContainer: {
-      position: 'absolute',
-      height: '100%',
-      bottom,
-      left: 0,
-      right: 0,
-      zIndex: 1,
-      backgroundColor: 'black',
-    },
-    fade: {
-      height: '100%',
-      width: '100%',
+      ...StyleSheet.absoluteFillObject,
+      zIndex: 3,
     },
   }));
