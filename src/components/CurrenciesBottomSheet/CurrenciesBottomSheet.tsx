@@ -35,7 +35,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
     const sheetRef = useRef<BottomSheet>(null);
 
     const { bottom, top } = useSafeAreaInsets();
-    const styles = useStyles();
+    const styles = useStyles(bottom);
     const { colorScheme } = useSelector(selectColorSchemeState);
 
     const setSelectedCurrencies = useSetSelectedCurrencies();
@@ -86,7 +86,7 @@ export const CurrenciesBottomSheet = React.memo<Props>(
           backgroundComponent={BottomSheetBackground}
           backgroundStyle={styles.backgroundStyle}
           onChange={onChangeHandler}
-          containerStyle={{ marginBottom: bottom }}
+          containerStyle={styles.containerStyle}
           android_keyboardInputMode="adjustResize"
           keyboardBehavior={isIos ? 'extend' : 'interactive'}>
           {isCalculatingValue && (

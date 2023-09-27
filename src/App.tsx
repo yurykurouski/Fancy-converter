@@ -1,7 +1,7 @@
 import React from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider, useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import {
@@ -56,13 +56,13 @@ const App = React.memo(() => {
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
         backgroundColor={THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY}
       />
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
         <CurrenciesBottomSheet
           isDrawerOpened={isDrawerOpened}
           selectedCurrencies={selectedCurrencies}
         />
-      </SafeAreaView>
+      </View>
     </>
   );
 });

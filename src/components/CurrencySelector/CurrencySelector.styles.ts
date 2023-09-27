@@ -5,4 +5,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flex: 1,
   },
+  headerComponent: {
+    marginBottom: 10,
+  },
 });

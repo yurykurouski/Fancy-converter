@@ -1,4 +1,10 @@
-import { useEffect, useState } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { Keyboard } from 'react-native';
 
 export const useTrackKeyboardStatus = () => {
@@ -19,4 +25,25 @@ export const useTrackKeyboardStatus = () => {
   }, []);
 
   return keyBoardOpened;
+};
+
+let headerState = false;
+
+export const useOnScrollOffsetChange = (
+  setHeaderBlur: Dispatch<SetStateAction<boolean>>,
+) => {
+  return useCallback(
+    (e: number) => {
+      if (e >= 10 && !headerState) {
+        headerState = true;
+
+        setHeaderBlur(true);
+      } else if (e < 10 && headerState) {
+        headerState = false;
+
+        setHeaderBlur(false);
+      }
+    },
+    [setHeaderBlur],
+  );
 };
