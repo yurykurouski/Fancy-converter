@@ -14,8 +14,8 @@ export const useStyles = (headerBlur: boolean) =>
       paddingBottom: 12,
       alignItems: 'center',
       backgroundColor: Platform.select({
-        ios: headerBlur ? 'transparent' : theme.APP_BACKGROUND_PRIMARY,
-        android: theme.APP_BACKGROUND_PRIMARY,
+        ios: headerBlur ? 'transparent' : theme.ACCENT_COLOR_DARKER,
+        android: theme.ACCENT_COLOR_DARKER,
       }),
       width: '100%',
       borderBottomColor: headerBlur
