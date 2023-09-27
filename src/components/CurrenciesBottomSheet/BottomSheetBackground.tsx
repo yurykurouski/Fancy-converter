@@ -1,13 +1,18 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
-import { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
+import { useTheme } from 'hooks';
 
-import { useStyles } from './CurrenciesBottomSheet.styles';
+const useStyles = () =>
+  useTheme(theme => ({
+    backgroundStyle: {
+      borderTopRightRadius: 20,
+      borderTopLeftRadius: 20,
+      backgroundColor: theme.ACCENT_COLOR_DARKER,
+    },
+  }));
 
-export const BottomSheetBackground: FC<BottomSheetBackgroundProps> = ({
-  style,
-}) => {
+export const BottomSheetBackground = () => {
   const styles = useStyles();
 
-  return <View pointerEvents="none" style={[style, styles.background]} />;
+  return <View pointerEvents="none" style={styles.backgroundStyle} />;
 };

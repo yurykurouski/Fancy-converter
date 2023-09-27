@@ -1,11 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { useTheme } from 'hooks';
 
-export const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-    flex: 1,
-  },
-  headerComponent: {
-    marginBottom: 10,
-  },
-});
+export const useStyles = () =>
+  useTheme((_, { top, bottom }) => ({
+    container: {
+      paddingHorizontal: 10,
+      marginBottom: bottom,
+      flex: 1,
+    },
+    headerComponent: {
+      marginBottom: 10,
+      height: 34 + top,
+    },
+  }));

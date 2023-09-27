@@ -1,7 +1,6 @@
 import React from 'react';
 import { Animated, Pressable } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
   useGestureHandler,
@@ -16,9 +15,7 @@ import { useStyles } from './Drawer.styles';
 
 export const Drawer = React.memo<Props>(
   ({ animatedPosition, drawerAnimation, isDrawerOpened }) => {
-    const { bottom } = useSafeAreaInsets();
-
-    const styles = useStyles(bottom);
+    const styles = useStyles();
 
     const gestureHandler = useGestureHandler(animatedPosition);
 

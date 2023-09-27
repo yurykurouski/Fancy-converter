@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
@@ -19,8 +18,6 @@ export const Header = React.memo<Props>(({ onLongPress, isHeaderBlurred }) => {
 
   const { colorScheme } = useSelector(selectColorSchemeState);
 
-  const { top } = useSafeAreaInsets();
-
   //TODO: try to find solution for android
   return isIos ? (
     <BlurView
@@ -31,17 +28,13 @@ export const Header = React.memo<Props>(({ onLongPress, isHeaderBlurred }) => {
       }
       blurType={colorScheme!}
       pointerEvents="box-none">
-      <Pressable
-        onLongPress={onLongPress}
-        style={[styles.container, { paddingTop: top }]}>
+      <Pressable onLongPress={onLongPress} style={styles.container}>
         <Text style={styles.header}>Fancy converter</Text>
       </Pressable>
     </BlurView>
   ) : (
     <View style={styles.blurView} pointerEvents="box-none">
-      <Pressable
-        onLongPress={onLongPress}
-        style={[styles.container, { paddingTop: top }]}>
+      <Pressable onLongPress={onLongPress} style={styles.container}>
         <Text style={styles.header}>Fancy converter</Text>
       </Pressable>
     </View>

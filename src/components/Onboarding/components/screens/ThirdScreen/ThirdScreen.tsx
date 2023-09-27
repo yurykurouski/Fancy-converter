@@ -2,15 +2,14 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { l } from 'resources/localization';
 
-import { useStyles as useTextStyles } from '../../../../Onboarding';
-
 import { DraggableExample } from './DraggableExample';
 import { SwipeableExample } from './SwipeableExample';
 
 import { styles } from './ThirdScreen.styles';
+import { useCommonOnboardingStyles } from 'components/Onboarding/Onboarding.styles';
 
 export const ThirdScreen = () => {
-  const textStyles = useTextStyles();
+  const textStyles = useCommonOnboardingStyles();
 
   const screenTitle = l['onboarding_third-screen_title'];
   const screenSubTitleSwipe = l['onboarding_third-screen_subtitle-swipe'];

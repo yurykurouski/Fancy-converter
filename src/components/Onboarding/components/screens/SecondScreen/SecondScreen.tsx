@@ -4,16 +4,15 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useRenderHandler } from 'components/CurrenciesBottomSheet/hooks';
 import { l } from 'resources/localization';
 
-import { useStyles as useTextStyles } from '../../../../Onboarding';
-
 import { QUANTITY_CONFIG } from './SecondScreen.consts';
 import { Selector } from './Selector';
 
 import { useStyles } from './SecondScreen.styles';
+import { useCommonOnboardingStyles } from 'components/Onboarding/Onboarding.styles';
 
 export const SecondScreen = () => {
   const styles = useStyles();
-  const textStyles = useTextStyles();
+  const textStyles = useCommonOnboardingStyles();
 
   const Handle = useRenderHandler();
 

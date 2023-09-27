@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export const screenStyles = StyleSheet.create({
+  appIcon: {
+    alignSelf: 'center',
+  },
   iconBack: {
     borderRadius: 80,
     justifyContent: 'center',
