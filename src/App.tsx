@@ -35,7 +35,7 @@ const App = React.memo(() => {
   if (isLoadingStatus) {
     return null;
   }
-
+  console.log('test');
   return (
     <>
       <StatusBar
