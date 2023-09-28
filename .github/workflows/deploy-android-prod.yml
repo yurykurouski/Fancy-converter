@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - "releases/**"
+      - "release/**"
 
 env:
   APP_CENTER_USER_TOKEN: ${{ secrets.APP_CENTER_USER_TOKEN }}
