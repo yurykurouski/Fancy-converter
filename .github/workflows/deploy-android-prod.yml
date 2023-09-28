@@ -4,11 +4,7 @@ on:
     branches:
       - master
       - "releases/**"
-  push:
-    branches:
-      - test
  
-
 env:
   APP_CENTER_USER_TOKEN: ${{ secrets.APP_CENTER_USER_TOKEN }}
   APP_NAME: ${{ 'Fancy-converter/Converter_PROD' }}
@@ -28,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: namefff
+      - name: Echo workspace dir
         run: echo $GITHUB_WORKSPACE ls
         shell: bash
 
@@ -39,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        
+
       - name: Install appcenter cli
         run: npm install -g appcenter-cli
 
@@ -63,12 +59,3 @@ jobs:
           path: ${{ env.UPLOAD_FILE }}
           app: ${{ env.APP_NAME }}
           group: Collaborators
-
-      - name: Upload to App Center
-        uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
-        with:
-          app: ${{ env.APP_NAME }}
-          token: ${{ env.APP_CENTER_USER_TOKEN }}
-          group: ${{ env.ENV_PROD }}
-          file: ${{ env.UPLOAD_FILE }}
-          silent: false
