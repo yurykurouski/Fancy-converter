@@ -1,21 +1,6 @@
-import { Animated } from 'react-native';
-import {
-  GestureEvent,
-  HandlerStateChangeEvent,
-  PanGestureHandlerEventPayload,
-} from 'react-native-gesture-handler';
+import { SharedValue } from 'react-native-reanimated';
 
-export type Props = {
-  animatedPosition: Animated.Value;
-  drawerAnimation: () => void;
-  isDrawerOpened: boolean;
+export type TProps = {
+  animatedPosition: SharedValue<number>;
+  closeDrawer: () => void;
 };
-
-export type UseGestureStateHandler = (
-  drawerAnimation: () => void,
-  animatedPosition: Animated.Value,
-) => (event: HandlerStateChangeEvent<PanGestureHandlerEventPayload>) => void;
-
-export type UseGestureHandler = (
-  animatedPosition: Animated.Value,
-) => (event: GestureEvent<PanGestureHandlerEventPayload>) => void;

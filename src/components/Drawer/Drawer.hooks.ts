@@ -1,45 +1,55 @@
-import { useCallback } from 'react';
-import { Animated } from 'react-native';
-import { State } from 'react-native-gesture-handler';
+import { Gesture } from 'react-native-gesture-handler';
+import {
+  interpolate,
+  runOnJS,
+  SharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
+import { useSetDrawerStatus } from 'hooks';
 
-import { UseGestureHandler, UseGestureStateHandler } from './Drawer.types';
+import { DRAWER_CONTENT_WIDTH } from './Drawer.constants';
 
-export const useGestureStateHandler: UseGestureStateHandler = (
-  drawerAnimation,
-  animatedPosition,
-) =>
-  useCallback(
-    ({ nativeEvent }) => {
-      const { translationX, oldState } = nativeEvent;
+export const usePanGesture = (animatedPosition: SharedValue<number>) => {
+  const setIsDrawerOpened = useSetDrawerStatus();
 
-      if (oldState === State.ACTIVE) {
-        if (
-          Math.abs(translationX) >
-          // @ts-ignore
-          Math.abs(animatedPosition._startingValue) / 2
-        ) {
-          drawerAnimation();
-        } else {
-          Animated.timing(animatedPosition, {
-            toValue: 0,
-            duration: 200,
-            useNativeDriver: false,
-          }).start();
-        }
-      }
-    },
-    [animatedPosition, drawerAnimation],
-  );
-
-export const useGestureHandler: UseGestureHandler = animatedPosition =>
-  useCallback(
-    ({ nativeEvent }) => {
+  return Gesture.Pan()
+    .onUpdate(nativeEvent => {
       const { translationX } = nativeEvent;
+
       if (translationX > 0) {
         return;
       }
 
-      animatedPosition.setValue(translationX);
-    },
-    [animatedPosition],
-  );
+      animatedPosition.value = translationX;
+    })
+    .onEnd(nativeEvent => {
+      const { translationX, velocityX } = nativeEvent;
+
+      if (translationX < -80 || velocityX < -800) {
+        animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
+          duration: 150,
+        });
+
+        runOnJS(setIsDrawerOpened)(false);
+      } else {
+        animatedPosition.value = withTiming(0, { duration: 150 });
+      }
+    });
+};
+
+export const useDrawerAnimatedStyles = (
+  animatedPosition: SharedValue<number>,
+) =>
+  useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: animatedPosition.value }],
+    };
+  });
+
+export const useDrawerBlurAnimatedStyles = (
+  animatedPosition: SharedValue<number>,
+) =>
+  useAnimatedStyle(() => ({
+    opacity: interpolate(animatedPosition.value, [-220, 0], [0, 1]),
+  }));
