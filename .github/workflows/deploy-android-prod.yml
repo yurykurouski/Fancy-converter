@@ -39,6 +39,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
+      - name: Install appcenter cli
+        run: npm install -g appcenter-cli
 
       - name: Copy the key file to the signing key file
         run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/release-key.keystore
