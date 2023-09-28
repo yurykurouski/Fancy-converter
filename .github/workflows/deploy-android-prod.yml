@@ -62,6 +62,7 @@ jobs:
           token: ${{ secrets.APP_CENTER_USER_TOKEN }}
           path: ${{ env.UPLOAD_FILE }}
           app: Fancy-converter/Converter_PROD
+          group: Collaborators
 
       - name: Upload to App Center
         uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
