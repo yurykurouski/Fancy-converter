@@ -48,11 +48,10 @@ jobs:
         run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease -PKEYSTORE=$GITHUB_WORKSPACE/release-key.keystore -PKEYSTORE_PASSWORD=${{ env.KEYSTORE_PASSWORD }} -PKEY_ALIAS_PASSWORD=${{ env.KEY_ALIAS_PASSWORD }} -PKEY_ALIAS=${{ env.KEY_ALIAS }}
 
       - name: Upload to App Center
-        uses: devussy/AppCenter-Distribute-Github-Action@v1.0.2
+        uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
         with:
           app: ${{ env.APP_NAME }}
           token: ${{ env.APP_CENTER_USER_TOKEN }}
           group: ${{ env.ENV_PROD }}
           file: ${{ env.UPLOAD_FILE }}
-          debug: true
           silent: false
