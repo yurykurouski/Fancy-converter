@@ -1,12 +1,9 @@
-import { Animated } from 'react-native';
+import { SharedValue } from 'react-native-reanimated';
 
-export type UseOpenDrawerAnimations = () => {
-  isDrawerOpened: boolean;
-  drawerAnimation: () => void;
-  animatedPosition: Animated.Value;
+export type TUseOpenDrawerAnimations = () => {
+  animatedPosition: SharedValue<number>;
+  closeDrawer: () => void;
+  openDrawer: () => void;
 };
 
-export type UseHandleBackPress = (
-  isDrawerOpened: boolean,
-  drawerAnimation: () => void,
-) => void;
+export type TUseHandleBackPress = (closeDrawer: () => void) => void;

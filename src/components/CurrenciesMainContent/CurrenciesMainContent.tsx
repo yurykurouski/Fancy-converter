@@ -11,20 +11,16 @@ import {
 export const CurrenciesMainContent = React.memo(() => {
   const [isHeaderBlurred, setIsHeaderBlurred] = useState<boolean>(false);
 
-  const { isDrawerOpened, drawerAnimation, animatedPosition } =
+  const { animatedPosition, closeDrawer, openDrawer } =
     useOpenDrawerAnimations();
 
-  useHandleBackPress(isDrawerOpened, drawerAnimation);
+  useHandleBackPress(closeDrawer);
 
   return (
     <>
-      <Header onLongPress={drawerAnimation} isHeaderBlurred={isHeaderBlurred} />
+      <Header onLongPress={openDrawer} isHeaderBlurred={isHeaderBlurred} />
       <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
-      <Drawer
-        animatedPosition={animatedPosition}
-        drawerAnimation={drawerAnimation}
-        isDrawerOpened={isDrawerOpened}
-      />
+      <Drawer animatedPosition={animatedPosition} closeDrawer={closeDrawer} />
     </>
   );
 });

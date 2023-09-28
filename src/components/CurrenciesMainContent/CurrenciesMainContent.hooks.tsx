@@ -1,61 +1,54 @@
 import { useCallback, useEffect } from 'react';
-import { Animated, BackHandler, Vibration } from 'react-native';
+import { BackHandler, Vibration } from 'react-native';
+import { useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { SCREEN_WIDTH, VIBRATION_DURATION } from 'constants/constants';
+import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
+import { VIBRATION_DURATION } from 'constants/constants';
 import { useSetDrawerStatus } from 'hooks';
 import { selectDrawerOpenStatus } from 'store/drawer/selectors';
 
 import {
-  UseHandleBackPress,
-  UseOpenDrawerAnimations,
+  TUseHandleBackPress,
+  TUseOpenDrawerAnimations,
 } from './CurrenciesMainContent.types';
 
-const animatedPosition = new Animated.Value(-(SCREEN_WIDTH * 0.6));
-
-export const useOpenDrawerAnimations: UseOpenDrawerAnimations = () => {
-  const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
-
+export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = () => {
   const setIsDrawerOpened = useSetDrawerStatus();
 
-  const drawerAnimation = useCallback(() => {
-    if (!isDrawerOpened) {
-      Vibration.vibrate(VIBRATION_DURATION);
+  const animatedPosition = useSharedValue(-DRAWER_CONTENT_WIDTH);
 
-      Animated.timing(animatedPosition, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
+  const closeDrawer = useCallback(() => {
+    animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
+      duration: 150,
+    });
 
-      setIsDrawerOpened(true);
-    } else {
-      Animated.timing(animatedPosition, {
-        toValue: -(SCREEN_WIDTH * 0.6),
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
+    setIsDrawerOpened(false);
+  }, [animatedPosition, setIsDrawerOpened]);
 
-      setIsDrawerOpened(false);
-    }
-  }, [isDrawerOpened, setIsDrawerOpened]);
+  const openDrawer = useCallback(() => {
+    Vibration.vibrate(VIBRATION_DURATION);
+
+    animatedPosition.value = withTiming(0, { duration: 150 });
+
+    setIsDrawerOpened(true);
+  }, [animatedPosition, setIsDrawerOpened]);
 
   return {
-    isDrawerOpened,
-    drawerAnimation,
     animatedPosition,
+    closeDrawer,
+    openDrawer,
   };
 };
 
-export const useHandleBackPress: UseHandleBackPress = (
-  isDrawerOpened,
-  drawerAnimation,
-) =>
+export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
+  const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
+
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
         if (isDrawerOpened) {
-          drawerAnimation();
+          closeDrawer();
           return true;
         }
         return false;
@@ -63,4 +56,5 @@ export const useHandleBackPress: UseHandleBackPress = (
     );
 
     return () => backHandler.remove();
-  }, [isDrawerOpened, drawerAnimation]);
+  }, [isDrawerOpened, closeDrawer]);
+};

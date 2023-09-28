@@ -10,9 +10,13 @@ export const useStyles = () =>
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       elevation: 20,
       shadowColor: 'black',
-      zIndex: 4,
+      zIndex: 10,
     },
     fadeContainer: {
+      ...StyleSheet.absoluteFillObject,
+      zIndex: 4,
+    },
+    fade: {
       ...StyleSheet.absoluteFillObject,
       zIndex: 3,
     },
