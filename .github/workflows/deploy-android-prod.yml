@@ -1,13 +1,13 @@
 name: Deploy-Android-PROD
 on:
   pull_request:
-    branches:  
+    branches:
       - master
-      - 'releases/**'
+      - "releases/**"
 
 env:
   APP_CENTER_USER_TOKEN: ${{ secrets.APP_CENTER_USER_TOKEN }}
-  APP_NAME: ${{ 'Fancy-converter/ENV_PROP' }}
+  APP_NAME: ${{ 'Fancy-converter/Converter_PROD' }}
   TESTING_GROUP: ${{ 'ENV_PROD' }}
   UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/release/app-release.apk' }}
   KEYSTORE: ${{ secrets.KEYSTORE }}
@@ -19,12 +19,12 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: namefff
+      - name: Echo workspace dir
         run: echo $GITHUB_WORKSPACE ls
         shell: bash
 
@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install appcenter cli
+        run: npm install -g appcenter-cli
+
       - name: Copy the key file to the signing key file
         run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/release-key.keystore
         shell: bash
@@ -43,11 +46,16 @@ jobs:
       - name: Build Signed APK
         run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease -PKEYSTORE=$GITHUB_WORKSPACE/release-key.keystore -PKEYSTORE_PASSWORD=${{ env.KEYSTORE_PASSWORD }} -PKEY_ALIAS_PASSWORD=${{ env.KEY_ALIAS_PASSWORD }} -PKEY_ALIAS=${{ env.KEY_ALIAS }}
 
-      - name: Upload to App Center
-        uses: devussy/AppCenter-Distribute-Github-Action@v1.0.2
+      # - name: Archive production artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: android-release
+      #     path: ${{ env.UPLOAD_FILE }}
+
+      - name: Distribute apk to App Center
+        uses: akiojin/appcenter-distribute-github-action@v1
         with:
+          token: ${{ secrets.APP_CENTER_USER_TOKEN }}
+          path: ${{ env.UPLOAD_FILE }}
           app: ${{ env.APP_NAME }}
-          token: ${{ env.APP_CENTER_USER_TOKEN }}
-          group: ${{ env.ENV_PROD }}
-          file: ${{ env.UPLOAD_FILE }}
-          silent: false
+          group: Collaborators
