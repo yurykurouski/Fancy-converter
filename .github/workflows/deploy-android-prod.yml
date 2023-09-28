@@ -61,7 +61,7 @@ jobs:
         with:
           token: ${{ secrets.APP_CENTER_USER_TOKEN }}
           path: ${{ env.UPLOAD_FILE }}
-          app: Fancy-converter/Converter_PROD
+          app: ${{ env.APP_NAME }}
           group: Collaborators
 
       - name: Upload to App Center
