@@ -53,12 +53,12 @@ jobs:
           name: android-release
           path: ${{ env.UPLOAD_FILE }}
 
-    # - name: Distribute apk to App Center
-    #   uses: akiojin/appcenter-distribute-github-action@v1
-    #   with:
-    #     token: ${{ secrets.APP_CENTER_USER_TOKEN }}
-    #     path: ${{ env.UPLOAD_FILE }}
-    #     app: Converter
+      - name: Distribute apk to App Center
+        uses: akiojin/appcenter-distribute-github-action@v1
+        with:
+          token: ${{ secrets.APP_CENTER_USER_TOKEN }}
+          path: ${{ env.UPLOAD_FILE }}
+          app: Fancy-converter/Converter_PROD
 
       - name: Upload to App Center
         uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
