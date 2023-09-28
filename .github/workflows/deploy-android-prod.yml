@@ -47,6 +47,12 @@ jobs:
       - name: Build Signed APK
         run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease -PKEYSTORE=$GITHUB_WORKSPACE/release-key.keystore -PKEYSTORE_PASSWORD=${{ env.KEYSTORE_PASSWORD }} -PKEY_ALIAS_PASSWORD=${{ env.KEY_ALIAS_PASSWORD }} -PKEY_ALIAS=${{ env.KEY_ALIAS }}
 
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-release
+          path: ${{ env.UPLOAD_FILE }}
+
       - name: Upload to App Center
         uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
         with:
