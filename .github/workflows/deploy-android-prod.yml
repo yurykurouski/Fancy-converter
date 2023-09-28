@@ -11,7 +11,7 @@ on:
 
 env:
   APP_CENTER_USER_TOKEN: ${{ secrets.APP_CENTER_USER_TOKEN }}
-  APP_NAME: ${{ 'Fancy-converter/ENV_PROP' }}
+  APP_NAME: ${{ 'Fancy-converter/Converter_PROD' }}
   TESTING_GROUP: ${{ 'ENV_PROD' }}
   UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/release/app-release.apk' }}
   KEYSTORE: ${{ secrets.KEYSTORE }}
@@ -53,18 +53,18 @@ jobs:
           name: android-release
           path: ${{ env.UPLOAD_FILE }}
 
-      - name: Distribute apk to App Center
-        uses: akiojin/appcenter-distribute-github-action@v1
-        with:
-          token: ${{ secrets.APP_CENTER_USER_TOKEN }}
-          path: ${{ env.UPLOAD_FILE }}
-          app: Converter
-
-      # - name: Upload to App Center
-      #   uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
+      # - name: Distribute apk to App Center
+      #   uses: akiojin/appcenter-distribute-github-action@v1
       #   with:
-      #     app: ${{ env.APP_NAME }}
-      #     token: ${{ env.APP_CENTER_USER_TOKEN }}
-      #     group: ${{ env.ENV_PROD }}
-      #     file: ${{ env.UPLOAD_FILE }}
-      #     silent: false
+      #     token: ${{ secrets.APP_CENTER_USER_TOKEN }}
+      #     path: ${{ env.UPLOAD_FILE }}
+      #     app: Converter
+
+      - name: Upload to App Center
+        uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
+        with:
+          app: ${{ env.APP_NAME }}
+          token: ${{ env.APP_CENTER_USER_TOKEN }}
+          group: ${{ env.ENV_PROD }}
+          file: ${{ env.UPLOAD_FILE }}
+          silent: false
