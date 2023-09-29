@@ -1,48 +1,55 @@
-import { RefObject } from 'react';
-import { FlatList } from 'react-native';
+import { Dimensions } from 'react-native';
+import Animated, { AnimatedRef } from 'react-native-reanimated';
 import { useDispatch } from 'react-redux';
 import { OnBoardingStatusSlice } from 'store/onboardingStatus/slices/OnBoardingStatusSlice';
 
 import { ONBOARDING_SCREENS } from '../Onboarding.consts';
 
-export const useNavigationHandlers = ({
+const useScrollToNextScreen =
+  (currentPage: number, scrollListRef: AnimatedRef<Animated.ScrollView>) =>
+  () => {
+    const windowWidth = Dimensions.get('window').width;
+
+    if (
+      currentPage === ONBOARDING_SCREENS.length - 1 ||
+      !scrollListRef?.current
+    ) {
+      return;
+    }
+    scrollListRef.current.scrollTo({
+      x: (currentPage + 1) * windowWidth,
+    });
+  };
+
+export const useHandleOnboardingSkip =
+  (scrollListRef: AnimatedRef<Animated.ScrollView>) => () => {
+    const windowWidth = Dimensions.get('window').width;
+
+    scrollListRef.current?.scrollTo({
+      x: (ONBOARDING_SCREENS.length - 1) * windowWidth,
+      animated: true,
+    });
+  };
+
+export const useHandleOnboardingNextPress = ({
   currentPage,
-  flatListRef,
+  scrollListRef,
 }: {
   currentPage: number;
-  flatListRef: RefObject<FlatList<unknown>>;
+  scrollListRef: AnimatedRef<Animated.ScrollView>;
 }) => {
   const dispatch = useDispatch();
 
   const setOnboardingStatus = (value: boolean) =>
     dispatch(OnBoardingStatusSlice.actions.setIsOnBoarded(value));
 
-  const handleNextPress = () => {
+  const scrollToNextScreen = useScrollToNextScreen(currentPage, scrollListRef);
+
+  return () => {
     if (currentPage === ONBOARDING_SCREENS.length - 1) {
-      return setOnboardingStatus(true);
+      return setOnboardingStatus(false);
     }
 
-    if (
-      currentPage === ONBOARDING_SCREENS.length - 1 ||
-      !flatListRef?.current
-    ) {
-      return;
-    }
-    flatListRef.current.scrollToIndex({
-      animated: true,
-      index: currentPage + 1,
-    });
-  };
-
-  const handleSkip = () => {
-    flatListRef.current?.scrollToIndex({
-      animated: true,
-      index: ONBOARDING_SCREENS.length - 1,
-    });
-  };
-
-  return {
-    handleNextPress,
-    handleSkip,
+    scrollToNextScreen();
   };
 };

@@ -4,11 +4,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider, useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import {
-  CurrenciesBottomSheet,
-  CurrenciesMainContent,
-  Onboarding,
-} from 'components';
+import { CurrenciesMainContent, Onboarding } from 'components';
 import { WithNotification } from 'context';
 import {
   useAppearanceChangeListener,
@@ -44,7 +40,6 @@ const App = React.memo(() => {
       />
       <View style={styles.container}>
         {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
-        <CurrenciesBottomSheet />
       </View>
     </>
   );

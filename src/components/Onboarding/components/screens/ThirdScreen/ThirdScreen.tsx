@@ -5,10 +5,11 @@ import { l } from 'resources/localization';
 import { DraggableExample } from './DraggableExample';
 import { SwipeableExample } from './SwipeableExample';
 
-import { styles } from './ThirdScreen.styles';
+import { useScreenStyles } from './ThirdScreen.styles';
 import { useCommonOnboardingStyles } from 'components/Onboarding/Onboarding.styles';
 
-export const ThirdScreen = () => {
+export const ThirdScreen = ({ windowWidth }: { windowWidth: number }) => {
+  const styles = useScreenStyles(windowWidth);
   const textStyles = useCommonOnboardingStyles();
 
   const screenTitle = l['onboarding_third-screen_title'];
@@ -18,15 +19,17 @@ export const ThirdScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={[textStyles.mainText, textStyles.title]}>{screenTitle}</Text>
-      <Text style={[textStyles.mainText, textStyles.title, styles.subTitle]}>
-        {screenSubTitleSwipe}
-      </Text>
-      <SwipeableExample />
-      <Text
-        style={[textStyles.mainText, textStyles.title, styles.subTitleDrag]}>
-        {screenSubTitleDrag}
-      </Text>
-      <DraggableExample />
+      <View style={styles.contentContainer}>
+        <Text style={[textStyles.mainText, textStyles.title, styles.subTitle]}>
+          {screenSubTitleSwipe}
+        </Text>
+        <SwipeableExample />
+        <Text
+          style={[textStyles.mainText, textStyles.title, styles.subTitleDrag]}>
+          {screenSubTitleDrag}
+        </Text>
+        <DraggableExample />
+      </View>
     </View>
   );
 };

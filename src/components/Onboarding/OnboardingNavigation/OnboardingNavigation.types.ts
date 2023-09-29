@@ -1,7 +1,6 @@
-import { RefObject } from 'react';
-import { FlatList } from 'react-native';
+import Animated, { AnimatedRef } from 'react-native-reanimated';
 
 export type Props = {
   currentPage: number;
-  flatListRef: RefObject<FlatList<unknown>>;
+  scrollListRef: AnimatedRef<Animated.ScrollView>;
 };
