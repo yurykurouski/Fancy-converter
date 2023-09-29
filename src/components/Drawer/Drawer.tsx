@@ -5,9 +5,9 @@ import { GestureDetector } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
+import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectDrawerOpenStatus } from 'store/drawer/selectors';
-import { isIos } from 'utils';
 
 import {
   useDrawerAnimatedStyles,
@@ -46,7 +46,8 @@ export const Drawer = React.memo<TProps>(
                 THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
               }
               blurType={colorScheme!}
-              blurRadius={isIos ? 10 : 4}
+              blurRadius={BLUR_RADIUS}
+              blurAmount={BLUR_AMOUNT}
               pointerEvents={isDrawerOpened ? 'box-none' : 'none'}>
               <Pressable
                 onPressOut={closeDrawer}
