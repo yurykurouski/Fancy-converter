@@ -47,7 +47,7 @@ export const useHandleOnboardingNextPress = ({
 
   return () => {
     if (currentPage === ONBOARDING_SCREENS.length - 1) {
-      return setOnboardingStatus(false);
+      return setOnboardingStatus(true);
     }
 
     scrollToNextScreen();
