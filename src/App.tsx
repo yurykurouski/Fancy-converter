@@ -3,7 +3,6 @@ import { StatusBar, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider, useSelector } from 'react-redux';
-import { THEME_COLORS } from 'assets/colors';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import { WithNotification } from 'context';
 import {
@@ -36,7 +35,9 @@ const App = React.memo(() => {
     <>
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-        backgroundColor={THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY}
+        backgroundColor={'transparent'}
+        translucent
+        animated
       />
       <View style={styles.container}>
         {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}

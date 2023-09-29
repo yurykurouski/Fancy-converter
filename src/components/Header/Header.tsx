@@ -1,10 +1,10 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
+import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { isIos } from 'utils';
 
 import { useStyles } from './Header.styles';
 
@@ -18,11 +18,12 @@ export const Header = React.memo<Props>(({ onLongPress, isHeaderBlurred }) => {
 
   const { colorScheme } = useSelector(selectColorSchemeState);
 
-  //TODO: try to find solution for android
-  return isIos ? (
+  return (
     <BlurView
       style={styles.blurView}
-      overlayColor={THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY}
+      overlayColor="transparent"
+      blurAmount={BLUR_AMOUNT}
+      blurRadius={BLUR_RADIUS}
       reducedTransparencyFallbackColor={
         THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
       }
@@ -32,11 +33,5 @@ export const Header = React.memo<Props>(({ onLongPress, isHeaderBlurred }) => {
         <Text style={styles.header}>Fancy converter</Text>
       </Pressable>
     </BlurView>
-  ) : (
-    <View style={styles.blurView} pointerEvents="box-none">
-      <Pressable onLongPress={onLongPress} style={styles.container}>
-        <Text style={styles.header}>Fancy converter</Text>
-      </Pressable>
-    </View>
   );
 });

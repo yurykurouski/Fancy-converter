@@ -1,4 +1,5 @@
-import { Animated, Dimensions } from 'react-native';
+import { Animated } from 'react-native';
+import { WINDOW_HEIGHT } from '@gorhom/bottom-sheet';
 
 import { isIos } from './../../utils/platform';
 import { DIRECTIONS_DOWN, DIRECTIONS_UP } from './CurrenciesBottomSheet.consts';
@@ -36,10 +37,8 @@ export const checkIfSeparatorIsNeeded: CheckIfSeparatorIsNeeded = (
   return itemName[0] !== availableCurrencies[index - 1]?.[0];
 };
 
-const windowHeight = Dimensions.get('window').height;
-
 export const getSnapPoints = (bottomInset: number, topInset: number) => [
   30,
   70,
-  windowHeight - ((isIos ? 34 : 36) + bottomInset + topInset),
+  WINDOW_HEIGHT - ((isIos ? 34 : -8) + bottomInset + topInset),
 ];
