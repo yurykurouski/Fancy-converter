@@ -27,3 +27,6 @@ export const TG_CHANNEL_URL = 'https://t.me/fancyconverter';
 export const PAYPAL_DONATION_URL = 'https://paypal.me/yurykurouski';
 
 export const TOP_INSET_WITH_ISLAND = 59;
+
+export const BLUR_AMOUNT = 26;
+export const BLUR_RADIUS = 16;

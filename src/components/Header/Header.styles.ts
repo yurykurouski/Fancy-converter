@@ -1,8 +1,7 @@
-import { Platform } from 'react-native';
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
-export const useStyles = (headerBlur: boolean) =>
+export const useStyles = (headerBlurred: boolean) =>
   useTheme((theme, { top }) => ({
     blurView: {
       position: 'absolute',
@@ -14,12 +13,11 @@ export const useStyles = (headerBlur: boolean) =>
       paddingTop: top,
       paddingBottom: 12,
       alignItems: 'center',
-      backgroundColor: Platform.select({
-        ios: headerBlur ? 'transparent' : theme.APP_BACKGROUND_PRIMARY,
-        android: theme.APP_BACKGROUND_PRIMARY,
-      }),
+      backgroundColor: headerBlurred
+        ? 'transparent'
+        : theme.APP_BACKGROUND_PRIMARY,
       width: '100%',
-      borderBottomColor: headerBlur
+      borderBottomColor: headerBlurred
         ? theme.ELEMENT_FADE_OR_BACKGROUND
         : 'transparent',
       borderBottomWidth: 1,
