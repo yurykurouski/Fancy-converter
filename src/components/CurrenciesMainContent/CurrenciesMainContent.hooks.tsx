@@ -1,6 +1,12 @@
 import { useCallback, useEffect } from 'react';
 import { BackHandler, Vibration } from 'react-native';
-import { useSharedValue, withTiming } from 'react-native-reanimated';
+import {
+  interpolate,
+  SharedValue,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
 import { VIBRATION_DURATION } from 'constants/constants';
@@ -39,6 +45,23 @@ export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = () => {
     openDrawer,
   };
 };
+
+export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
+  useAnimatedStyle(() => {
+    const translateX = interpolate(
+      animatedPosition.value,
+      [-DRAWER_CONTENT_WIDTH, 0],
+      [0, 10],
+    );
+
+    return {
+      transform: [
+        {
+          translateX: translateX,
+        },
+      ],
+    };
+  });
 
 export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
   const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
