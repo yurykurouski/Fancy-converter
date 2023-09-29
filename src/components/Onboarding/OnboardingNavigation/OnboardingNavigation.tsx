@@ -4,18 +4,23 @@ import { Pressable, Text, View } from 'react-native';
 import { ProgressBar } from '../components';
 import { ONBOARDING_SCREENS } from '../Onboarding.consts';
 
-import { useNavigationHandlers } from './OnboardingNavigation.hooks';
+import {
+  useHandleOnboardingNextPress,
+  useHandleOnboardingSkip,
+} from './OnboardingNavigation.hooks';
 import { Props } from './OnboardingNavigation.types';
 
 import { useStyles } from './OnboardingNavigation.styles';
 
-export const OnboardingNavigation = ({ currentPage, flatListRef }: Props) => {
+export const OnboardingNavigation = ({ currentPage, scrollListRef }: Props) => {
   const styles = useStyles();
 
-  const { handleNextPress, handleSkip } = useNavigationHandlers({
+  const handleNextPress = useHandleOnboardingNextPress({
     currentPage,
-    flatListRef,
+    scrollListRef,
   });
+
+  const handleSkip = useHandleOnboardingSkip(scrollListRef);
 
   //TODO: add translations
   const rightButtonText =

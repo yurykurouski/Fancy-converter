@@ -1,8 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { SCREEN_WIDTH } from '@gorhom/bottom-sheet';
 
-export const styles = StyleSheet.create({
-  container: { width: SCREEN_WIDTH, paddingHorizontal: 10 },
-  subTitle: { marginTop: '60%', marginBottom: 20 },
-  subTitleDrag: { marginBottom: 20 },
-});
+export const useScreenStyles = (windowWidth: number) =>
+  StyleSheet.create({
+    container: { flex: 1, paddingHorizontal: 10, width: windowWidth },
+    contentContainer: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    subTitle: { marginBottom: 20 },
+    subTitleDrag: { marginBottom: 20 },
+  });

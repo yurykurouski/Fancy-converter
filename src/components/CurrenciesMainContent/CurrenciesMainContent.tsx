@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Header } from 'components';
+import { CurrenciesBottomSheet, Drawer, Header } from 'components';
 
 import { CurrencySelector } from '../CurrencySelector/CurrencySelector';
 
@@ -21,6 +21,7 @@ export const CurrenciesMainContent = React.memo(() => {
       <Header onLongPress={openDrawer} isHeaderBlurred={isHeaderBlurred} />
       <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
       <Drawer animatedPosition={animatedPosition} closeDrawer={closeDrawer} />
+      <CurrenciesBottomSheet />
     </>
   );
 });

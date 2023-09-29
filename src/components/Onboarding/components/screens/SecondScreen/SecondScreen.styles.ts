@@ -1,10 +1,10 @@
-import { SCREEN_WIDTH } from 'constants/constants';
 import { useTheme } from 'hooks';
 
-export const useStyles = () =>
+export const useStyles = (windowWidth: number) =>
   useTheme(theme => ({
     container: {
-      width: SCREEN_WIDTH,
+      flex: 1,
+      width: windowWidth,
       justifyContent: 'space-between',
     },
     backgroundContainer: {

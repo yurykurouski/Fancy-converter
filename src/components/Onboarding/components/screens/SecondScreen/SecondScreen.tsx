@@ -10,8 +10,8 @@ import { Selector } from './Selector';
 import { useStyles } from './SecondScreen.styles';
 import { useCommonOnboardingStyles } from 'components/Onboarding/Onboarding.styles';
 
-export const SecondScreen = () => {
-  const styles = useStyles();
+export const SecondScreen = ({ windowWidth }: { windowWidth: number }) => {
+  const styles = useStyles(windowWidth);
   const textStyles = useCommonOnboardingStyles();
 
   const Handle = useRenderHandler();

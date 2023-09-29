@@ -1,37 +1,51 @@
-import React, { useRef } from 'react';
-import { FlatList, View } from 'react-native';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import Animated, { useAnimatedRef } from 'react-native-reanimated';
+import { WINDOW_WIDTH } from '@gorhom/bottom-sheet';
 
 import { ONBOARDING_SCREENS } from './Onboarding.consts';
-import { useOnboardingHandlers } from './Onboarding.hooks';
+import {
+  useHandleOnboardingScroll,
+  useOnboardingScreenSizeChange,
+} from './Onboarding.hooks';
 import { OnboardingNavigation } from './OnboardingNavigation';
 
 import { useStyles } from './Onboarding.styles';
 
 export const Onboarding = () => {
-  const flatListRef = useRef<FlatList>(null);
+  //NOTE: for cases if window size is changing during onboarding
+  const [windowWidth, setWindowWidth] = useState(WINDOW_WIDTH);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const scrollListRef = useAnimatedRef<Animated.ScrollView>();
 
   const styles = useStyles();
 
-  const { currentPage, handleScroll, handleEndDrag, handleStartDrag } =
-    useOnboardingHandlers(flatListRef);
+  const handleScroll = useHandleOnboardingScroll(
+    currentPage,
+    setCurrentPage,
+    windowWidth,
+  );
+
+  useOnboardingScreenSizeChange(setWindowWidth);
 
   return (
     <View style={styles.contentContainer}>
-      <FlatList
-        ref={flatListRef}
-        data={ONBOARDING_SCREENS}
-        renderItem={({ item }) => item}
+      <Animated.ScrollView
+        ref={scrollListRef}
         onScroll={handleScroll}
-        onScrollEndDrag={handleEndDrag}
-        onScrollBeginDrag={handleStartDrag}
         showsHorizontalScrollIndicator={false}
-        decelerationRate={0}
+        decelerationRate={'fast'}
+        snapToOffsets={[0, windowWidth, windowWidth * 2]}
         overScrollMode="never"
-        horizontal
-      />
+        horizontal>
+        {ONBOARDING_SCREENS.map((Component, i) => (
+          <Component windowWidth={windowWidth} key={i} />
+        ))}
+      </Animated.ScrollView>
       <OnboardingNavigation
         currentPage={currentPage}
-        flatListRef={flatListRef}
+        scrollListRef={scrollListRef}
       />
     </View>
   );

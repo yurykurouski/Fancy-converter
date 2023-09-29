@@ -1,14 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-export const screenStyles = StyleSheet.create({
-  appIcon: {
-    alignSelf: 'center',
-  },
-  iconBack: {
-    borderRadius: 80,
-    justifyContent: 'center',
-    elevation: 10,
-    alignSelf: 'center',
-    marginTop: '50%',
-  },
-});
+export const useScreenStyles = (windowWidth: number) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      width: windowWidth,
+      justifyContent: 'center',
+    },
+    appIcon: {
+      alignSelf: 'center',
+    },
+  });

@@ -1,7 +1,3 @@
-import { Dimensions } from 'react-native';
-
-export const SCREEN_WIDTH = Dimensions.get('screen').width;
-
 export const REQUEST_GET = 'GET';
 export const REQUEST_CT_APPLICATION_JSON = 'application/json';
 
