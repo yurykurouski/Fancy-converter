@@ -38,24 +38,23 @@ export const Drawer = React.memo<TProps>(
             <DrawerContent />
           </Animated.View>
         </GestureDetector>
-        {isDrawerOpened && (
-          <Animated.View style={[styles.fadeContainer, animatedOpacity]}>
-            <BlurView
-              style={styles.fade}
-              reducedTransparencyFallbackColor={
-                THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
-              }
-              blurType={colorScheme!}
-              blurRadius={BLUR_RADIUS}
-              blurAmount={BLUR_AMOUNT}
-              pointerEvents={isDrawerOpened ? 'box-none' : 'none'}>
-              <Pressable
-                onPressOut={closeDrawer}
-                style={StyleSheet.absoluteFill}
-              />
-            </BlurView>
-          </Animated.View>
-        )}
+        <Animated.View
+          pointerEvents={isDrawerOpened ? 'box-none' : 'none'}
+          style={[styles.fadeContainer, animatedOpacity]}>
+          <BlurView
+            style={styles.fade}
+            reducedTransparencyFallbackColor={
+              THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
+            }
+            blurType={colorScheme!}
+            blurRadius={BLUR_RADIUS}
+            blurAmount={BLUR_AMOUNT}>
+            <Pressable
+              onPressOut={closeDrawer}
+              style={StyleSheet.absoluteFill}
+            />
+          </BlurView>
+        </Animated.View>
       </>
     );
   },
