@@ -10,6 +10,22 @@ export type TSetSelectedCurrencies = TDispatchCallback<
   AvailableCurrenciesNames[],
   typeof SelectedCurrenciesActions.setSelectedCurrencies.type
 >;
+export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
+  AvailableCurrenciesNames,
+  typeof SelectedCurrenciesActions.addToSelectedCurrenciesInEdit.type
+>;
+export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
+  AvailableCurrenciesNames,
+  typeof SelectedCurrenciesActions.removeFromSelectedCurrenciesInEdit.type
+>;
+export type TSetSelectedCurrEditMode = TDispatchCallback<
+  boolean,
+  typeof SelectedCurrenciesActions.setIsInEditMode.type
+>;
+export type TClearSelectedCurrenciesInEdit = TDispatchCallback<
+  undefined,
+  typeof SelectedCurrenciesActions.clearSelectedCurrenciesInEdit.type
+>;
 
 export type TSetCoursesLoading = TDispatchCallback<
   boolean,
