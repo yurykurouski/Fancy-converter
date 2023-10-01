@@ -26,3 +26,5 @@ export const FocusedCurrencySlice = createSlice({
     },
   },
 });
+
+export const { actions: FocusedCurrencySliceActions } = FocusedCurrencySlice;
