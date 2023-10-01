@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Keyboard, Vibration } from 'react-native';
-import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
+import { INPUT_VALIDATION_REGEXP } from 'constants/constants';
 import { l } from 'resources/localization';
 
 import {
@@ -26,7 +26,7 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
 
       const withoutSpaces = text.replace(/\s+/g, '') as string;
 
-      if (INPUT_VALIDATION_REXEXP.test(withoutSpaces) || !withoutSpaces) {
+      if (INPUT_VALIDATION_REGEXP.test(withoutSpaces) || !withoutSpaces) {
         setFocusedCurrencyValue(withoutSpaces);
         setValue(withoutSpaces);
       }
