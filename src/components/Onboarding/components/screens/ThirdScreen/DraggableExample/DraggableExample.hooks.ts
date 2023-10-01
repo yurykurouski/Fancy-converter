@@ -1,6 +1,7 @@
 import { Animated } from 'react-native';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 const MAIN_ITEM_OFFSET = new Animated.Value(0);
@@ -138,13 +139,13 @@ export const useDragAnimation = () => {
         Animated.delay(1200),
         Animated.timing(SECOND_ITEM_OFFSET, {
           toValue: -65,
-          duration: 150,
+          duration: DEFAULT_ANIMATION_DURATION,
           useNativeDriver: true,
         }),
         Animated.delay(4250),
         Animated.timing(SECOND_ITEM_OFFSET, {
           toValue: 0,
-          duration: 150,
+          duration: DEFAULT_ANIMATION_DURATION,
           useNativeDriver: true,
         }),
       ]),

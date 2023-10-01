@@ -30,3 +30,5 @@ export const TOP_INSET_WITH_ISLAND = 59;
 
 export const BLUR_AMOUNT = 26;
 export const BLUR_RADIUS = 16;
+
+export const DEFAULT_ANIMATION_DURATION = 150;
