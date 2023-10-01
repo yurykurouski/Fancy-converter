@@ -1,202 +1,163 @@
-import React, {
-  FC,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import {
-  Platform,
-  Pressable,
-  Text,
-  TextInput,
-  UIManager,
-  Vibration,
-  View,
-} from 'react-native';
-import { OpacityDecorator } from 'react-native-draggable-flatlist';
-import SwipeableItem, { OpenDirection } from 'react-native-swipeable-item';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useRef } from 'react';
+import { Pressable, Text, TextInput } from 'react-native';
+import Animated, {
+  FadeInRight,
+  FadeOutRight,
+  SlideOutRight,
+} from 'react-native-reanimated';
+import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
-import { CountryFlag } from 'components/common/CountryFlag';
-import { NotificationContext } from 'context';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
+import { useFilteredCourseBySelectedCurrencies } from 'hooks';
 import {
-  useFilteredCourseBySelectedCurrencies,
-  useSetSelectedCurrencies,
-} from 'hooks';
+  useSetFocusedCurrencyName,
+  useSetFocusedCurrencyValue,
+} from 'hooks/store/FocusedCurrency';
+import {
+  useAddToSelectedCurrenciesInEdit,
+  useRemoveFromSelectedCurrenciesInEdit,
+  useSetSelectedCurrEditMode,
+} from 'hooks/store/SelectedCurrencies';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
-import { FocusedCurrencySlice } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { AvailableCurrenciesNames } from 'types';
 
+import { CurrencyInputIcon } from './CurrencyInputIcon/CurrencyInputIcon';
 import {
   useConvertedValues,
   useCurrencyInputHandlers,
   useFormattedValue,
-  useHandleDeletePress,
-  useKeyboardHandlers,
+  useHandleLongPress,
+  useOnContainerPress,
 } from './CurrencyInputValue.hooks';
 import { Props } from './CurrencyInputValue.types';
 
 import { useStyles } from './CurrencyInputValue.styles';
 
-const OVERSWIPE_DIST = 10;
+export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
+  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { exchangeCourses } = useSelector(selectExchangeCourses);
+  const { selectedCurrencies, isInEditMode, selectedCurrenciesInEdit } =
+    useSelector(selectSelectedCurrencies);
+  const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
+    selectFocusedCurrency,
+  );
 
-if (Platform.OS === 'android') {
-  UIManager.setLayoutAnimationEnabledExperimental &&
-    UIManager.setLayoutAnimationEnabledExperimental(true);
-}
+  const setSelectedCurrInEditMode = useSetSelectedCurrEditMode();
+  const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
+  const removeFromSelectedCurrenciesInEdit =
+    useRemoveFromSelectedCurrenciesInEdit();
 
-export const CurrencyInputValue: FC<Props> = React.memo(
-  ({ currencyCode, drag, itemRefs }) => {
-    const startNotification = useContext(NotificationContext);
+  const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
+  const setFocusedCurrencyName = useSetFocusedCurrencyName();
 
-    const { colorScheme } = useSelector(selectColorSchemeState);
-    const { exchangeCourses } = useSelector(selectExchangeCourses);
-    const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
-    const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
-      selectFocusedCurrency,
-    );
+  const styles = useStyles();
 
-    const dispatch = useDispatch();
+  const inputRef = useRef<TextInput>(null);
 
-    const setSelectedCurrencies = useSetSelectedCurrencies();
+  const selectedCourses = useFilteredCourseBySelectedCurrencies(
+    exchangeCourses,
+    selectedCurrencies,
+  );
 
-    const setFocusedCurrencyValue = useCallback(
-      (value: string) =>
-        dispatch(FocusedCurrencySlice.actions.setFocusedCurrencyValue(value)),
-      [dispatch],
-    );
-    const setFocusedCurrencyName = useCallback(
-      (name: AvailableCurrenciesNames) =>
-        dispatch(FocusedCurrencySlice.actions.setFocusedCurrencyName(name)),
-      [dispatch],
-    );
+  const course = selectedCourses?.[currencyCode];
+  const focusedCurrencyCourse =
+    focusedCurrencyName && selectedCourses?.[focusedCurrencyName];
 
-    const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
-    const [isReadyToDelete, setIsReadyToDelete] = useState(false);
+  const isFocused = focusedCurrencyName === currencyCode;
+  const isSelectedForEdit: boolean =
+    selectedCurrenciesInEdit.includes(currencyCode);
 
-    const styles = useStyles();
+  const {
+    onChangeTextHandler,
+    onFocusHandler,
+    containerOnPressHandler,
+    value,
+  } = useCurrencyInputHandlers({
+    setFocusedCurrencyValue,
+    setFocusedCurrencyName,
+    currencyCode,
+    inputRef,
+    isInEditMode,
+  });
 
-    const inputRef = useRef<TextInput>(null);
+  const onContainerPress = useOnContainerPress({
+    isInEditMode,
+    currencyCode,
+    addToCurrInEdit,
+    selectedCurrenciesInEdit,
+    removeFromSelectedCurrenciesInEdit,
+    setSelectedCurrInEditMode,
+  });
 
-    const selectedCourses = useFilteredCourseBySelectedCurrencies(
-      exchangeCourses,
-      selectedCurrencies,
-    );
+  const calculatedValue = useConvertedValues(
+    isFocused,
+    value,
+    focusedCurrencyValue,
+    course,
+    focusedCurrencyCourse,
+  );
 
-    const course = selectedCourses?.[currencyCode];
-    const focusedCurrencyCourse =
-      focusedCurrencyName && selectedCourses?.[focusedCurrencyName];
+  const formattedValue = useFormattedValue(calculatedValue);
 
-    const isFocused = focusedCurrencyName === currencyCode;
+  const handleLongPress = useHandleLongPress({
+    isInEditMode,
+    setSelectedCurrInEditMode,
+    addToCurrInEdit,
+    currencyCode,
+  });
 
-    const {
-      onChangeTextHandler,
-      onFocusHandler,
-      containerOnPressHandler,
-      value,
-    } = useCurrencyInputHandlers({
-      setFocusedCurrencyValue,
-      setFocusedCurrencyName,
-      currencyCode,
-      inputRef,
-    });
-
-    const calculatedValue = useConvertedValues(
-      isFocused,
-      value,
-      focusedCurrencyValue,
-      course,
-      focusedCurrencyCourse,
-    );
-
-    const formattedValue = useFormattedValue(calculatedValue);
-
-    useKeyboardHandlers(setIsKeyboardVisible);
-
-    const handleLongPress = () => {
-      Vibration.vibrate(30);
-      drag();
-    };
-
-    const handleDeletePress = useHandleDeletePress({
-      setIsReadyToDelete,
-      selectedCurrencies,
-      currencyCode,
-      setSelectedCurrencies,
-      startNotification,
-    });
-
-    useEffect(() => {
-      if (isReadyToDelete) {
-        setIsReadyToDelete(false);
-        itemRefs.current?.get(currencyCode)?.close();
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [calculatedValue]);
-
-    return (
-      <OpacityDecorator>
-        <SwipeableItem
-          item={currencyCode}
-          ref={ref => {
-            if (ref && !itemRefs.current.get(currencyCode)) {
-              itemRefs.current.set(currencyCode, ref);
-            }
-          }}
-          onChange={({ openDirection }) => {
-            openDirection === OpenDirection.RIGHT
-              ? setIsReadyToDelete(true)
-              : setIsReadyToDelete(false);
-          }}
-          overSwipe={OVERSWIPE_DIST}
-          renderUnderlayRight={() => (
-            <View style={styles.underlayBackground}>
-              <CancelButton size={30} onPress={handleDeletePress} />
-            </View>
-          )}
-          snapPointsRight={[0, 60]}>
-          <View
+  return (
+    <Animated.View
+      style={[
+        styles.containerWrapper,
+        isFocused && styles.containerWrapperFocused,
+      ]}
+      exiting={SlideOutRight.duration(DEFAULT_ANIMATION_DURATION)}>
+      <Pressable
+        onPress={onContainerPress}
+        style={styles.container}
+        pointerEvents={isInEditMode ? 'box-only' : 'box-none'}>
+        <Pressable
+          onLongPress={handleLongPress}
+          onPress={containerOnPressHandler}>
+          <Text
             style={[
-              styles.containerWrapper,
-              styles.container,
-              isFocused && styles.containerWrapperFocused,
+              styles.title,
+              (isFocused || isSelectedForEdit) && styles.titleFocused,
             ]}>
-            <Pressable
-              onLongPress={handleLongPress}
-              onPress={containerOnPressHandler}>
-              <Text style={[styles.title, isFocused && styles.titleFocused]}>
-                {currencyCode}
-              </Text>
-            </Pressable>
-            <TextInput
-              style={styles.input}
-              placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
-              value={formattedValue}
-              onChangeText={onChangeTextHandler}
-              onFocus={() => onFocusHandler(calculatedValue)}
-              ref={inputRef}
-              keyboardType="numeric"
-              contextMenuHidden
-              placeholder="0"
-              maxLength={14}
-              caretHidden={!isKeyboardVisible}
-            />
-            {isFocused && !!calculatedValue && !isReadyToDelete && (
-              <CancelButton
-                onPress={onChangeTextHandler}
-                additionalStyle={styles.cancelBtnAdditional}
-              />
-            )}
-            <CountryFlag currencyCode={currencyCode} size={30} />
-          </View>
-        </SwipeableItem>
-      </OpacityDecorator>
-    );
-  },
-);
+            {currencyCode}
+          </Text>
+        </Pressable>
+        <TextInput
+          style={styles.input}
+          placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
+          value={formattedValue}
+          onChangeText={onChangeTextHandler}
+          onFocus={() => onFocusHandler(calculatedValue)}
+          ref={inputRef}
+          keyboardType="numeric"
+          contextMenuHidden
+          placeholder="0"
+          maxLength={14}
+        />
+        {isFocused && !!calculatedValue && !isInEditMode && (
+          <AnimatedCancelIcon
+            onPress={onChangeTextHandler}
+            additionalStyle={styles.cancelBtnAdditional}
+            entering={FadeInRight.duration(DEFAULT_ANIMATION_DURATION)}
+            exiting={FadeOutRight.duration(DEFAULT_ANIMATION_DURATION)}
+          />
+        )}
+        <CurrencyInputIcon
+          isSelectedForEdit={isSelectedForEdit}
+          currencyCode={currencyCode}
+        />
+      </Pressable>
+    </Animated.View>
+  );
+});
+
+const AnimatedCancelIcon = Animated.createAnimatedComponent(CancelButton);
