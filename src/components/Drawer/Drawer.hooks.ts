@@ -6,6 +6,7 @@ import {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { useSetDrawerStatus } from 'hooks';
 
 import { DRAWER_CONTENT_WIDTH } from './Drawer.constants';
@@ -28,12 +29,14 @@ export const usePanGesture = (animatedPosition: SharedValue<number>) => {
 
       if (translationX < -80 || velocityX < -800) {
         animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
-          duration: 150,
+          duration: DEFAULT_ANIMATION_DURATION,
         });
 
         runOnJS(setIsDrawerOpened)(false);
       } else {
-        animatedPosition.value = withTiming(0, { duration: 150 });
+        animatedPosition.value = withTiming(0, {
+          duration: DEFAULT_ANIMATION_DURATION,
+        });
       }
     });
 };

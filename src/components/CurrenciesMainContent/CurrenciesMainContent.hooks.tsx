@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { BackHandler, Vibration } from 'react-native';
+import { BackHandler, Keyboard, Vibration } from 'react-native';
 import {
   interpolate,
   SharedValue,
@@ -9,9 +9,17 @@ import {
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
-import { VIBRATION_DURATION } from 'constants/constants';
+import {
+  DEFAULT_ANIMATION_DURATION,
+  VIBRATION_DURATION,
+} from 'constants/constants';
 import { useSetDrawerStatus } from 'hooks';
+import {
+  useClearSelectedCurrenciesInEdit,
+  useSetSelectedCurrEditMode,
+} from 'hooks/store/SelectedCurrencies';
 import { selectDrawerOpenStatus } from 'store/drawer/selectors';
+import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
 import {
   TUseHandleBackPress,
@@ -25,7 +33,7 @@ export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = () => {
 
   const closeDrawer = useCallback(() => {
     animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
-      duration: 150,
+      duration: DEFAULT_ANIMATION_DURATION,
     });
 
     setIsDrawerOpened(false);
@@ -33,8 +41,11 @@ export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = () => {
 
   const openDrawer = useCallback(() => {
     Vibration.vibrate(VIBRATION_DURATION);
+    Keyboard.dismiss();
 
-    animatedPosition.value = withTiming(0, { duration: 150 });
+    animatedPosition.value = withTiming(0, {
+      duration: DEFAULT_ANIMATION_DURATION,
+    });
 
     setIsDrawerOpened(true);
   }, [animatedPosition, setIsDrawerOpened]);
@@ -65,11 +76,21 @@ export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
 
 export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
   const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
+  const { isInEditMode } = useSelector(selectSelectedCurrencies);
+
+  const clearSelectedCurrenciesInEdit = useClearSelectedCurrenciesInEdit();
+  const setSelectedCurrInEditMode = useSetSelectedCurrEditMode();
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
+        if (isInEditMode) {
+          setSelectedCurrInEditMode(false);
+          clearSelectedCurrenciesInEdit(undefined);
+          return true;
+        }
+
         if (isDrawerOpened) {
           closeDrawer();
           return true;
@@ -79,5 +100,11 @@ export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
     );
 
     return () => backHandler.remove();
-  }, [isDrawerOpened, closeDrawer]);
+  }, [
+    isDrawerOpened,
+    closeDrawer,
+    isInEditMode,
+    clearSelectedCurrenciesInEdit,
+    setSelectedCurrInEditMode,
+  ]);
 };

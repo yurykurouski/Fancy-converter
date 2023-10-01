@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { Animated } from 'react-native';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 
 export const useChangeDotScale = () => {
   const scaleValue = useMemo(() => new Animated.Value(1), []);
@@ -9,12 +10,12 @@ export const useChangeDotScale = () => {
       isActive
         ? Animated.timing(scaleValue, {
             toValue: 1.9,
-            duration: 150,
+            duration: DEFAULT_ANIMATION_DURATION,
             useNativeDriver: true,
           }).start()
         : Animated.timing(scaleValue, {
             toValue: 1,
-            duration: 150,
+            duration: DEFAULT_ANIMATION_DURATION,
             useNativeDriver: true,
           }).start();
 

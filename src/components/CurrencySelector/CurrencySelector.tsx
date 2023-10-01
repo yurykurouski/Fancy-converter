@@ -1,20 +1,14 @@
-import React, { Dispatch, SetStateAction, useContext, useRef } from 'react';
-import { RefreshControl } from 'react-native';
+import React, { Dispatch, SetStateAction, useContext } from 'react';
+import { ListRenderItem, RefreshControl } from 'react-native';
 import { View } from 'react-native';
-import DraggableFlatList, {
-  RenderItemParams,
-} from 'react-native-draggable-flatlist';
-import { Layout, SlideOutRight } from 'react-native-reanimated';
+import Animated, { Layout } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CurrencyInputValue } from 'components';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { NotificationContext } from 'context';
-import {
-  useGetCurrenciesExchangeCourse,
-  useSetSelectedCurrencies,
-} from 'hooks';
+import { useGetCurrenciesExchangeCourse } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
@@ -22,7 +16,6 @@ import { AvailableCurrenciesNames } from 'types';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
 import { SeparatorComponent } from './components/SeparatorComponent';
-import { ANIMATION_CONFIG } from './CurrencySelector.consts';
 import { useOnScrollOffsetChange } from './CurrencySelector.hooks';
 
 import { useStyles } from './CurrencySelector.styles';
@@ -42,34 +35,22 @@ export const CurrencySelector = ({
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
   const { colorScheme } = useSelector(selectColorSchemeState);
 
-  const setSelectedCurrencies = useSetSelectedCurrencies();
-
   const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
 
-  const itemRefs = useRef<
-    Map<AvailableCurrenciesNames, SwipeableItemImperativeRef>
-  >(new Map());
-
-  const renderItem = ({
-    item,
-    drag,
-  }: RenderItemParams<AvailableCurrenciesNames>) => (
-    <CurrencyInputValue currencyCode={item} drag={drag} itemRefs={itemRefs} />
+  const renderItem: ListRenderItem<AvailableCurrenciesNames> = ({ item }) => (
+    <CurrencyInputValue currencyCode={item} />
   );
 
   const onOffsetChange = useOnScrollOffsetChange(setIsHeaderBlurred);
 
   return (
-    <DraggableFlatList
-      animationConfig={ANIMATION_CONFIG}
+    <Animated.FlatList
       keyboardShouldPersistTaps="handled"
-      containerStyle={styles.container}
+      style={styles.container}
       data={selectedCurrencies}
       keyExtractor={item => item}
       renderItem={renderItem}
-      onScrollOffsetChange={onOffsetChange}
-      //TODO
-      onDragEnd={props => setSelectedCurrencies(props.data)}
+      onScroll={onOffsetChange}
       refreshControl={
         <RefreshControl
           refreshing={isLoading}
@@ -89,11 +70,15 @@ export const CurrencySelector = ({
         selectedCurrencies.length ? ListFooterComponent : null
       }
       ListHeaderComponent={<View style={styles.headerComponent} />}
-      activationDistance={10}
       showsVerticalScrollIndicator={false}
-      enableLayoutAnimationExperimental
-      itemExitingAnimation={SlideOutRight.duration(250)}
-      itemLayoutAnimation={Layout.delay(250).duration(150)}
+      itemLayoutAnimation={Layout.delay(DEFAULT_ANIMATION_DURATION).duration(
+        DEFAULT_ANIMATION_DURATION,
+      )}
+      getItemLayout={(data, index) => ({
+        length: 74,
+        offset: 74 * index,
+        index,
+      })}
     />
   );
 };

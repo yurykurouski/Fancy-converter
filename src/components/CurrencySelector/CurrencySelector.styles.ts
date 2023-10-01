@@ -8,7 +8,7 @@ export const useStyles = () =>
       flex: 1,
     },
     headerComponent: {
-      marginBottom: 10,
+      marginBottom: 12,
       height: 34 + top,
     },
   }));

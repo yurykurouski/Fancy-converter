@@ -1,5 +1,11 @@
-import React, { FC } from 'react';
-import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
+import React, { forwardRef } from 'react';
+import {
+  Pressable,
+  PressableProps,
+  StyleProp,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { useSelector } from 'react-redux';
 import CloseIconDark from 'assets/icons/close_black_24dp.svg';
 import CloseIconLight from 'assets/icons/close_white_24dp.svg';
@@ -8,29 +14,30 @@ import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { useStyles } from './CancelButton.styles';
 
-type Props = {
+type TProps = {
   onPress?: OnChangeTextHandler;
   size?: number;
   additionalStyle?: StyleProp<ViewStyle>;
+  pointerEvents?: PressableProps['pointerEvents'];
 };
 
-export const CancelButton: FC<Props> = ({
-  onPress,
-  size = 24,
-  additionalStyle,
-}) => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
-  const styles = useStyles(size);
+export const CancelButton = forwardRef<View, TProps>(
+  ({ onPress, size = 24, additionalStyle, pointerEvents = 'auto' }, ref) => {
+    const { colorScheme } = useSelector(selectColorSchemeState);
+    const styles = useStyles(size);
 
-  return (
-    <TouchableOpacity
-      onPressOut={() => onPress?.('')}
-      style={[styles.buttonWrapper, additionalStyle]}>
-      {colorScheme === 'dark' ? (
-        <CloseIconLight width={size} height={size} />
-      ) : (
-        <CloseIconDark width={size} height={size} />
-      )}
-    </TouchableOpacity>
-  );
-};
+    return (
+      <Pressable
+        ref={ref}
+        pointerEvents={pointerEvents}
+        onPressOut={() => onPress?.('')}
+        style={[styles.buttonWrapper, additionalStyle]}>
+        {colorScheme === 'dark' ? (
+          <CloseIconLight width={size} height={size} />
+        ) : (
+          <CloseIconDark width={size} height={size} />
+        )}
+      </Pressable>
+    );
+  },
+);

@@ -1,30 +1,30 @@
-import { Dispatch, MutableRefObject, RefObject, SetStateAction } from 'react';
+import { Dispatch, RefObject, SetStateAction } from 'react';
 import { TextInput } from 'react-native';
-import { SwipeableItemImperativeRef } from 'react-native-swipeable-item';
-import { PayloadAction } from '@reduxjs/toolkit';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
-import { TSetSelectedCurrencies } from 'hooks/store/types';
+import {
+  TAddToSelectedCurrenciesInEdit,
+  TRemoveFromSelectedCurrenciesInEdit,
+  TSetFocusedCurrencyName,
+  TSetFocusedCurrencyValue,
+  TSetSelectedCurrEditMode,
+  TSetSelectedCurrencies,
+} from 'hooks/store/types';
 import { AvailableCurrenciesNames } from 'types';
 
 export type Props = {
   currencyCode: AvailableCurrenciesNames;
-  drag: () => void;
-  itemRefs: MutableRefObject<
-    Map<AvailableCurrenciesNames, SwipeableItemImperativeRef>
-  >;
 };
 
 export type OnChangeTextHandler = (text: string) => void;
 export type OnFocusHandler = (text: string) => void;
 export type ContainerOnPressHandler = () => void;
 
-export type UseCurrencyInputHandlers = (props: {
-  setFocusedCurrencyValue: (value: string) => PayloadAction<string>;
-  setFocusedCurrencyName: (
-    name: AvailableCurrenciesNames,
-  ) => PayloadAction<AvailableCurrenciesNames>;
+export type TUseCurrencyInputHandlers = (props: {
+  setFocusedCurrencyValue: TSetFocusedCurrencyValue;
+  setFocusedCurrencyName: TSetFocusedCurrencyName;
   currencyCode: AvailableCurrenciesNames;
   inputRef: RefObject<TextInput>;
+  isInEditMode: boolean;
 }) => {
   onChangeTextHandler: OnChangeTextHandler;
   onFocusHandler: OnFocusHandler;
@@ -46,4 +46,20 @@ export type UseHandleDeletePress = {
   currencyCode: AvailableCurrenciesNames;
   setSelectedCurrencies: TSetSelectedCurrencies;
   startNotification: ShowMessage | null;
+};
+
+export type TUseOnContainerPressParams = {
+  isInEditMode: boolean;
+  currencyCode: AvailableCurrenciesNames;
+  addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
+  selectedCurrenciesInEdit: AvailableCurrenciesNames[];
+  removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
+  setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
+};
+
+export type TUseHandleLongPressParams = {
+  isInEditMode: boolean;
+  setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
+  addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
+  currencyCode: AvailableCurrenciesNames;
 };

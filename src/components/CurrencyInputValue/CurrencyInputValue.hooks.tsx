@@ -1,53 +1,60 @@
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-import { Keyboard } from 'react-native';
-import { INPUT_VALIDATION_REXEXP } from 'constants/constants';
+import { useCallback, useMemo, useState } from 'react';
+import { Keyboard, Vibration } from 'react-native';
+import { INPUT_VALIDATION_REGEXP } from 'constants/constants';
 import { l } from 'resources/localization';
 
 import {
   TUseConvertedValues,
-  UseCurrencyInputHandlers,
+  TUseCurrencyInputHandlers,
+  TUseHandleLongPressParams,
+  TUseOnContainerPressParams,
   UseHandleDeletePress,
 } from './CurrencyInputValue.types';
 
-export const useCurrencyInputHandlers: UseCurrencyInputHandlers = ({
+export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
   setFocusedCurrencyValue,
   setFocusedCurrencyName,
   currencyCode,
   inputRef,
+  isInEditMode,
 }) => {
   const [value, setValue] = useState<string>('');
 
   const onChangeTextHandler = useCallback(
     (text: string) => {
+      if (isInEditMode) return;
+
       const withoutSpaces = text.replace(/\s+/g, '') as string;
 
-      if (INPUT_VALIDATION_REXEXP.test(withoutSpaces) || !withoutSpaces) {
+      if (INPUT_VALIDATION_REGEXP.test(withoutSpaces) || !withoutSpaces) {
         setFocusedCurrencyValue(withoutSpaces);
         setValue(withoutSpaces);
       }
     },
-    [setFocusedCurrencyValue, setValue],
+    [isInEditMode, setFocusedCurrencyValue],
   );
 
   const onFocusHandler = useCallback(
     (inputValue: string) => {
+      if (isInEditMode) return;
+
       setFocusedCurrencyName(currencyCode);
       setFocusedCurrencyValue(inputValue);
       setValue(inputValue);
     },
-    [currencyCode, setFocusedCurrencyName, setFocusedCurrencyValue, setValue],
+    [
+      currencyCode,
+      isInEditMode,
+      setFocusedCurrencyName,
+      setFocusedCurrencyValue,
+    ],
   );
 
   const containerOnPressHandler = useCallback(() => {
+    if (isInEditMode) return;
+
     inputRef.current?.focus();
-  }, [inputRef]);
+  }, [inputRef, isInEditMode]);
 
   return {
     onChangeTextHandler,
@@ -103,24 +110,7 @@ export const useFormattedValue = (value: string | null): string => {
     : `${formatted.reverse().join('')}`;
 };
 
-export const useKeyboardHandlers = (
-  setIsKeyboardVisible: Dispatch<SetStateAction<boolean>>,
-) =>
-  useEffect(() => {
-    const removeShowListener = Keyboard.addListener('keyboardDidShow', () => {
-      setIsKeyboardVisible(true);
-    });
-
-    const removeHideListener = Keyboard.addListener('keyboardDidHide', () => {
-      setIsKeyboardVisible(false);
-    });
-
-    return () => {
-      removeShowListener.remove();
-      removeHideListener.remove();
-    };
-  }, [setIsKeyboardVisible]);
-
+//odd
 export const useHandleDeletePress = ({
   setIsReadyToDelete,
   selectedCurrencies,
@@ -146,3 +136,42 @@ export const useHandleDeletePress = ({
     setSelectedCurrencies,
     startNotification,
   ]);
+
+export const useOnContainerPress = ({
+  isInEditMode,
+  currencyCode,
+  addToCurrInEdit,
+  selectedCurrenciesInEdit,
+  removeFromSelectedCurrenciesInEdit,
+  setSelectedCurrInEditMode,
+}: TUseOnContainerPressParams) => {
+  return () => {
+    if (isInEditMode) {
+      if (!selectedCurrenciesInEdit.includes(currencyCode)) {
+        addToCurrInEdit(currencyCode);
+      } else {
+        removeFromSelectedCurrenciesInEdit(currencyCode);
+
+        if (selectedCurrenciesInEdit.length === 1) {
+          setSelectedCurrInEditMode(false);
+        }
+      }
+    }
+  };
+};
+
+export const useHandleLongPress = ({
+  isInEditMode,
+  setSelectedCurrInEditMode,
+  addToCurrInEdit,
+  currencyCode,
+}: TUseHandleLongPressParams) =>
+  useCallback(() => {
+    if (!isInEditMode) {
+      Vibration.vibrate(30);
+      Keyboard.dismiss();
+
+      setSelectedCurrInEditMode(true);
+      addToCurrInEdit(currencyCode);
+    }
+  }, [addToCurrInEdit, currencyCode, isInEditMode, setSelectedCurrInEditMode]);

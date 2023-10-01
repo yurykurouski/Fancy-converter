@@ -1,0 +1,1 @@
+export { AnimatedFlipIcon } from './AnimatedFlipIcon';
