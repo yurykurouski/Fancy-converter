@@ -7,7 +7,7 @@ import { styles } from './CountryFlag.styles';
 
 type Props = {
   currencyCode: AvailableCurrenciesNames;
-  size: number;
+  size?: number;
 };
 
 export const CountryFlag = React.memo<Props>(({ currencyCode, size }) => {
