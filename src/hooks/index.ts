@@ -1,6 +1,7 @@
 export * from './store';
 export { useSetOnBoardingStatus } from './store/useSetOnBoardingStatus';
 export { useAlertMessage } from './useAlertMessage';
+export { useAndroidRippleConfig } from './useAndroidRippleConfig';
 export { useAppearanceChangeListener } from './useAppearanceChangeListener';
 export * from './useFilteredCourseBySelectedCurrencies';
 export * from './useGetCoursesFromStorage';
