@@ -40,5 +40,5 @@ export const checkIfSeparatorIsNeeded: CheckIfSeparatorIsNeeded = (
 export const getSnapPoints = (bottomInset: number, topInset: number) => [
   30,
   70,
-  WINDOW_HEIGHT - ((isIos ? 34 : -8) + bottomInset + topInset),
+  WINDOW_HEIGHT - ((isIos ? 44 : 0) + bottomInset + topInset),
 ];
