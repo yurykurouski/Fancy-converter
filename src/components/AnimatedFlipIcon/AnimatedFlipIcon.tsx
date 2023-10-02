@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useRef } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -13,12 +14,14 @@ type TProps = {
   DefaultIcon: ReactElement<any>;
   NextIcon: ReactElement<any>;
   size?: number;
+  containerStyle?: StyleProp<ViewStyle>;
 };
 
 export const AnimatedFlipIcon = ({
   nextState,
   DefaultIcon,
   NextIcon,
+  containerStyle,
 }: TProps) => {
   const animatedRotateValue = useSharedValue(0);
   const animatedDefaultIconOpacity = useSharedValue(1);
@@ -82,7 +85,7 @@ export const AnimatedFlipIcon = ({
   ]);
 
   return (
-    <Animated.View style={animatedContainerStyle}>
+    <Animated.View style={[containerStyle, animatedContainerStyle]}>
       <Animated.View style={[styles.iconContainer, animatedNextIconStyle]}>
         {NextIcon}
       </Animated.View>

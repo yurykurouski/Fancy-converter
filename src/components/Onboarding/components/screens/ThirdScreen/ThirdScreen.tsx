@@ -16,6 +16,7 @@ export const ThirdScreen = ({ windowWidth }: { windowWidth: number }) => {
   const screenSubTitleSwipe = l['onboarding_third-screen_subtitle-swipe'];
   const screenSubTitleDrag = l['onboarding_third-screen_subtitle-drag'];
 
+  //TODO: change examples
   return (
     <View style={styles.container}>
       <Text style={[textStyles.mainText, textStyles.title]}>{screenTitle}</Text>

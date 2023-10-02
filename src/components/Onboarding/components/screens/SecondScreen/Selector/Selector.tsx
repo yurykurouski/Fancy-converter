@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, View } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
+import { CheckIcon } from 'assets/icons';
+import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { useStyles } from './Selector.styles';
@@ -34,14 +35,16 @@ export const Selector = () => {
           <View style={styles.currencyCodePlaceholder} />
           <View style={styles.currencyNamePlaceholder} />
         </View>
-        <BouncyCheckbox
-          size={30}
-          fillColor={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
-          onPress={onPressHandler}
-          isChecked={isChecked}
-          disableBuiltInState
-          bounceFriction={4}
-          style={styles.checkbox}
+        <AnimatedFlipIcon
+          containerStyle={styles.iconContainer}
+          nextState={isChecked}
+          DefaultIcon={<View style={styles.checkbox} />}
+          NextIcon={
+            <CheckIcon
+              size={30}
+              color={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
+            />
+          }
         />
       </Pressable>
     </View>

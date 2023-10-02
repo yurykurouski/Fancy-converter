@@ -36,4 +36,11 @@ export const useStyles = () =>
     checkBoxContainer: {
       left: 15,
     },
+    deselectedIcon: {
+      height: 30,
+      width: 30,
+      borderWidth: 3,
+      borderColor: theme.FONT_COLOR_FADED,
+      borderRadius: 30,
+    },
   }));

@@ -9,6 +9,7 @@ export const useStyles = () =>
       borderTopRightRadius: 20,
       marginBottom: 10,
       marginHorizontal: 10,
+      backgroundColor: 'red',
     },
     currencyContainer: {
       paddingVertical: 15,
@@ -41,7 +42,14 @@ export const useStyles = () =>
       borderRadius: 6,
       backgroundColor: theme.FONT_COLOR_FADED,
     },
-    checkbox: {
+    iconContainer: {
       marginLeft: 'auto',
+    },
+    checkbox: {
+      height: 30,
+      width: 30,
+      borderWidth: 3,
+      borderColor: theme.FONT_COLOR_FADED,
+      borderRadius: 30,
     },
   }));
