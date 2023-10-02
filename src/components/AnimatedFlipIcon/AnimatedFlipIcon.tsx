@@ -20,7 +20,7 @@ export const AnimatedFlipIcon = ({
   DefaultIcon,
   NextIcon,
 }: TProps) => {
-  const animatedRotateValue = useSharedValue(180);
+  const animatedRotateValue = useSharedValue(0);
   const animatedDefaultIconOpacity = useSharedValue(1);
   const animatedNextIconOpacity = useSharedValue(0);
 
@@ -48,7 +48,7 @@ export const AnimatedFlipIcon = ({
 
   useEffect(() => {
     if (nextState) {
-      animatedRotateValue.value = withTiming(0, {
+      animatedRotateValue.value = withTiming(180, {
         duration: DEFAULT_ANIMATION_DURATION,
       });
 
@@ -61,7 +61,7 @@ export const AnimatedFlipIcon = ({
 
       changedStateRef.current = true;
     } else if (changedStateRef.current) {
-      animatedRotateValue.value = withTiming(180, {
+      animatedRotateValue.value = withTiming(0, {
         duration: DEFAULT_ANIMATION_DURATION,
       });
 
