@@ -11,7 +11,7 @@ export const useStyles = (headerBlurred: boolean) =>
     },
     container: {
       paddingTop: top,
-      paddingHorizontal: 5,
+      paddingLeft: 15,
       alignItems: 'flex-end',
       backgroundColor: headerBlurred
         ? 'transparent'

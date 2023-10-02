@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
@@ -37,11 +38,11 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
 
     return (
       <View style={styles.currencyBlockWrapper}>
-        <Pressable
+        <ButtonWithIPadOSInteraction
+          hitSlop={5}
           key={currencyCode}
-          style={styles.currencyBlock}
-          onPress={onPressHandler}
-          android_ripple={{ borderless: true }}>
+          containerStyle={styles.currencyBlock}
+          onPress={onPressHandler}>
           <View style={styles.currencyInfoWrapper}>
             <CountryFlag currencyCode={currencyCode} size={36} />
             <View style={styles.currencyCodeNameWrapper}>
@@ -59,7 +60,7 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
               />
             }
           />
-        </Pressable>
+        </ButtonWithIPadOSInteraction>
       </View>
     );
   },

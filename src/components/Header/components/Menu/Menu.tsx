@@ -1,12 +1,14 @@
 import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { MenuIcon } from 'assets/icons';
-import { useAndroidRippleConfig } from 'hooks';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 
 const styles = StyleSheet.create({
   container: {
     padding: 5,
+    marginLeft: 5,
     borderRadius: 10,
+    overflow: 'hidden',
   },
 });
 
@@ -15,15 +17,12 @@ type TProps = {
 };
 
 export const Menu = ({ onOpenDrawer }: TProps) => {
-  const rippleConfig = useAndroidRippleConfig();
-
   return (
-    <Pressable
+    <ButtonWithIPadOSInteraction
       onPress={onOpenDrawer}
       hitSlop={5}
-      android_ripple={rippleConfig}
-      style={styles.container}>
-      <MenuIcon size={24} />
-    </Pressable>
+      containerStyle={styles.container}>
+      <MenuIcon size={22} />
+    </ButtonWithIPadOSInteraction>
   );
 };

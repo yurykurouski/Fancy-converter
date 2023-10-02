@@ -13,6 +13,7 @@ export const useStyles = () =>
       justifyContent: 'space-between',
       paddingVertical: 15,
       paddingHorizontal: 10,
+      borderRadius: 20,
     },
     currencyInfoWrapper: {
       flexDirection: 'row',

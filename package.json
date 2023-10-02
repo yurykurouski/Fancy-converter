@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "type:check": "tsc --noemit --skipLibCheck",
     "upgrade": "yarn upgrade-interactive",
-    "nuke": "rm -rf node_modules; rm -rf ios/build; rm -rf ios/Pods; rm -rf ios/Podfile.lock; yarn; yarn podinstall",
+    "nuke": "rm -rf node_modules; rm -rf ios/build; rm -rf ios/Pods; rm -rf ios/Podfile.lock; yarn; yarn podinstall"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "4.5.1",

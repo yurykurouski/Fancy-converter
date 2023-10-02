@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
-import { useAndroidRippleConfig } from 'hooks';
 import {
   useClearSelectedCurrenciesInEdit,
   useSetSelectedCurrEditMode,
@@ -19,7 +19,6 @@ import { useStyles } from './Counter.styles';
 
 export const Counter = () => {
   const styles = useStyles();
-  const rippleConfig = useAndroidRippleConfig();
 
   const animatedOffset = useSharedValue(0);
 
@@ -51,11 +50,10 @@ export const Counter = () => {
   }, [animatedOffset, selectedCurrenciesInEdit.length]);
 
   return (
-    <Pressable
+    <ButtonWithIPadOSInteraction
       onPress={onCancelPress}
-      style={styles.container}
-      hitSlop={5}
-      android_ripple={rippleConfig}>
+      containerStyle={styles.container}
+      hitSlop={5}>
       <CancelButton pointerEvents="none" />
       <View style={styles.counterContainer}>
         <Animated.View style={[animatedStyle]}>
@@ -67,6 +65,6 @@ export const Counter = () => {
           ))}
         </Animated.View>
       </View>
-    </Pressable>
+    </ButtonWithIPadOSInteraction>
   );
 };

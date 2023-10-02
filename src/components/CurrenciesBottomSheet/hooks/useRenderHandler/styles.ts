@@ -7,8 +7,7 @@ export const useStyles = () =>
       alignItems: 'center',
     },
     handlePressable: {
-      paddingVertical: 12,
-      paddingHorizontal: 10,
+      marginTop: 10,
     },
     handle: {
       width: 50,

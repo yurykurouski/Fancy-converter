@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 
 import { useStyles } from './styles';
 
@@ -8,9 +9,12 @@ export const useRenderHandler = (onPress?: () => void) => {
 
   return () => (
     <View style={styles.handleContainer}>
-      <Pressable style={styles.handlePressable} onPress={onPress}>
+      <ButtonWithIPadOSInteraction
+        containerStyle={styles.handlePressable}
+        onPress={onPress}
+        hitSlop={10}>
         <View style={styles.handle} />
-      </Pressable>
+      </ButtonWithIPadOSInteraction>
     </View>
   );
 };
