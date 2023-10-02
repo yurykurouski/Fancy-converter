@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
+import { CheckIcon } from 'assets/icons';
+import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
@@ -48,14 +49,15 @@ export const CurrencySelectorValue: FC<Props> = React.memo(
               <Text style={styles.currencyName}>{currencyName}</Text>
             </View>
           </View>
-          <BouncyCheckbox
-            size={30}
-            fillColor={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
-            onPress={onPressHandler}
-            isChecked={isActive}
-            disableBuiltInState
-            bounceFriction={4}
-            style={styles.checkBoxContainer}
+          <AnimatedFlipIcon
+            nextState={isActive}
+            DefaultIcon={<View style={styles.deselectedIcon} />}
+            NextIcon={
+              <CheckIcon
+                size={30}
+                color={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
+              />
+            }
           />
         </Pressable>
       </View>

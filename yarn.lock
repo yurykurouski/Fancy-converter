@@ -5335,7 +5335,6 @@ __metadata:
     react-native: 0.72.5
     react-native-bootsplash: 4.7.5
     react-native-bootsplash-cli-fork: ^4.3.2
-    react-native-bouncy-checkbox: 3.0.7
     react-native-dotenv: 3.4.9
     react-native-draggable-flatlist: 4.0.1
     react-native-flipper: 0.212.0
@@ -8975,16 +8974,6 @@ __metadata:
   peerDependencies:
     react-native: ">=0.65.0"
   checksum: fe1530b0d72fc08aa038eacf0da5d90f338dade57a9a1edd9413ea636596ebe347f09fef9ece888015e73e3112448963511d6450663ebd619b653fd15868ad70
-  languageName: node
-  linkType: hard
-
-"react-native-bouncy-checkbox@npm:3.0.7":
-  version: 3.0.7
-  resolution: "react-native-bouncy-checkbox@npm:3.0.7"
-  peerDependencies:
-    react: ">= 16.x.x"
-    react-native: ">= 0.55.x"
-  checksum: f30d18971ebbaafdd17046d87e324ddf5142ac283280d95a7ccb023bf960ddaaa251922b521e56a30d32b2f9b2e313ea1dd71bdd38814fd0106523f2cb164b06
   languageName: node
   linkType: hard
 
