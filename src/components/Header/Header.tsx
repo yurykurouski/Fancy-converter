@@ -1,37 +1,38 @@
-import React from 'react';
-import { Pressable } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
-import Animated, {
-  SlideInDown,
-  SlideInUp,
-  SlideOutDown,
-  SlideOutUp,
-} from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import {
-  BLUR_AMOUNT,
-  BLUR_RADIUS,
-  DEFAULT_ANIMATION_DURATION,
-} from 'constants/constants';
+import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
 import { Counter } from './components/Counter';
+import { Menu } from './components/Menu';
 import { RemoveSweep } from './components/RemoveSweep';
 
 import { useStyles } from './Header.styles';
 
 type Props = {
-  onLongPress: () => void;
+  onOpenDrawer: () => void;
   isHeaderBlurred: boolean;
 };
 
-export const Header = React.memo<Props>(({ onLongPress, isHeaderBlurred }) => {
+export const Header = React.memo<Props>(({ onOpenDrawer, isHeaderBlurred }) => {
   const styles = useStyles(isHeaderBlurred);
+
+  const scrollRef = useRef<ScrollView>(null);
 
   const { colorScheme } = useSelector(selectColorSchemeState);
   const { isInEditMode } = useSelector(selectSelectedCurrencies);
+
+  useEffect(() => {
+    if (isInEditMode) {
+      scrollRef.current?.scrollToEnd({ animated: true });
+    } else {
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
+    }
+  }, [isInEditMode]);
 
   return (
     <BlurView
@@ -44,24 +45,22 @@ export const Header = React.memo<Props>(({ onLongPress, isHeaderBlurred }) => {
       }
       blurType={colorScheme!}
       pointerEvents="box-none">
-      <Pressable onLongPress={onLongPress} style={styles.container}>
-        {isInEditMode ? (
-          <Animated.View
-            style={styles.controlsContainer}
-            entering={SlideInDown.duration(DEFAULT_ANIMATION_DURATION)}
-            exiting={SlideOutDown.duration(DEFAULT_ANIMATION_DURATION)}>
+      <View style={styles.container}>
+        <ScrollView
+          ref={scrollRef}
+          scrollEnabled={false}
+          style={styles.scrollContainer}
+          showsVerticalScrollIndicator={false}>
+          <View style={styles.containerFrame}>
+            <Menu onOpenDrawer={onOpenDrawer} />
+            <Text style={styles.header}>Fancy converter</Text>
+          </View>
+          <View style={styles.containerFrame}>
             <Counter />
             <RemoveSweep />
-          </Animated.View>
-        ) : (
-          <Animated.Text
-            style={styles.header}
-            entering={SlideInUp.duration(DEFAULT_ANIMATION_DURATION)}
-            exiting={SlideOutUp.duration(DEFAULT_ANIMATION_DURATION)}>
-            Fancy converter
-          </Animated.Text>
-        )}
-      </Pressable>
+          </View>
+        </ScrollView>
+      </View>
     </BlurView>
   );
 });

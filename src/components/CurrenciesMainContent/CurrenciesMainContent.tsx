@@ -28,7 +28,7 @@ export const CurrenciesMainContent = React.memo(() => {
   return (
     <>
       <Animated.View style={[style.container, animatedScreenStyle]}>
-        <Header onLongPress={openDrawer} isHeaderBlurred={isHeaderBlurred} />
+        <Header onOpenDrawer={openDrawer} isHeaderBlurred={isHeaderBlurred} />
         <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
         <CurrenciesBottomSheet />
       </Animated.View>
