@@ -503,6 +503,8 @@ PODS:
     - React-Core
   - RNGestureHandler (2.13.1):
     - React-Core
+  - RNPointerInteractions (1.1.0):
+    - React-Core
   - RNReanimated (3.5.4):
     - DoubleConversion
     - FBLazyVector
@@ -611,6 +613,7 @@ DEPENDENCIES:
   - RNBootSplash (from `../node_modules/react-native-bootsplash`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - "RNPointerInteractions (from `../node_modules/@thefunbots/react-native-pointer-interactions`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -728,6 +731,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNPointerInteractions:
+    :path: "../node_modules/@thefunbots/react-native-pointer-interactions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNSVG:
@@ -795,6 +800,7 @@ SPEC CHECKSUMS:
   RNBootSplash: 85f6b879c080e958afdb4c62ee04497b05fd7552
   RNCAsyncStorage: c913ede1fa163a71cea118ed4670bbaaa4b511bb
   RNGestureHandler: 38aa38413896620338948fbb5c90579a7b1c3fde
+  RNPointerInteractions: 9e1db0a35404207a8a2996a0c8f99e5312d3bfc9
   RNReanimated: ab2e96c6d5591c3dfbb38a464f54c8d17fb34a87
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17

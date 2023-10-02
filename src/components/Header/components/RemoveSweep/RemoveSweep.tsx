@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-import { Pressable } from 'react-native';
 import { useSelector } from 'react-redux';
 import { DeleteSweepIcon } from 'assets/icons';
-import { useAndroidRippleConfig, useSetSelectedCurrencies } from 'hooks';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
+import { useSetSelectedCurrencies } from 'hooks';
 import {
   useClearSelectedCurrenciesInEdit,
   useSetSelectedCurrEditMode,
@@ -22,8 +22,6 @@ export const RemoveSweep = () => {
   const setSelectedCurrencies = useSetSelectedCurrencies();
   const setEditMode = useSetSelectedCurrEditMode();
 
-  const rippleConfig = useAndroidRippleConfig();
-
   const onAllRemovePress = useCallback(() => {
     const filtered = removeDuplicates<AvailableCurrenciesNames>(
       selectedCurrencies,
@@ -42,12 +40,11 @@ export const RemoveSweep = () => {
   ]);
 
   return (
-    <Pressable
+    <ButtonWithIPadOSInteraction
       onPress={onAllRemovePress}
-      style={styles.container}
-      hitSlop={5}
-      android_ripple={rippleConfig}>
+      containerStyle={styles.container}
+      hitSlop={5}>
       <DeleteSweepIcon size={24} />
-    </Pressable>
+    </ButtonWithIPadOSInteraction>
   );
 };

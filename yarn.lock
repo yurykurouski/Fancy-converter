@@ -2165,6 +2165,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@raydeck/xcode@npm:^2.2.0":
+  version: 2.2.1
+  resolution: "@raydeck/xcode@npm:2.2.1"
+  dependencies:
+    simple-plist: ^0.2.1
+    uuid: 3.0.1
+  checksum: 114594c2631e926a43dec2fbf9c258970c931cf220f2fcdf99882c342185f3b4da524e3fb7eabd1c009baa049be48cdc5b72edca3890ffc29799a65ff28b73bc
+  languageName: node
+  linkType: hard
+
 "@react-native-async-storage/async-storage@npm:1.19.3":
   version: 1.19.3
   resolution: "@react-native-async-storage/async-storage@npm:1.19.3"
@@ -2704,6 +2714,15 @@ __metadata:
   peerDependencies:
     "@svgr/core": "*"
   checksum: 59d9d214cebaacca9ca71a561f463d8b7e5a68ca9443e4792a42d903acd52259b1790c0680bc6afecc3f00a255a6cbd7ea278a9f625bac443620ea58a590c2d0
+  languageName: node
+  linkType: hard
+
+"@thefunbots/react-native-pointer-interactions@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@thefunbots/react-native-pointer-interactions@npm:1.1.0"
+  peerDependencies:
+    react-native: ">=0.60.5"
+  checksum: 798a2ab529b1b56d1e7273fb779a6c84080e35bf6025bbe7d6ac671f56e7b765d84a78fb80abfa1cadf21c75d483fec7ad503e8652a4234529f2b2842185167a
   languageName: node
   linkType: hard
 
@@ -3659,10 +3678,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"base64-js@npm:1.1.2":
+  version: 1.1.2
+  resolution: "base64-js@npm:1.1.2"
+  checksum: 1d815640b2acc7cfdcbf443fe968cd27bb2f58b7615bff828d4662131d0fa9cd281059e09b8c3b0eff89aca77953ec4d1541ec2c13303d192aad1fb5a64b5693
+  languageName: node
+  linkType: hard
+
 "base64-js@npm:^1.1.2, base64-js@npm:^1.3.1":
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: 669632eb3745404c2f822a18fc3a0122d2f9a7a13f7fb8b5823ee19d1d2ff9ee5b52c53367176ea4ad093c332fd5ab4bd0ebae5a8e27917a4105a4cfc86b1005
+  languageName: node
+  linkType: hard
+
+"big-integer@npm:^1.6.7":
+  version: 1.6.51
+  resolution: "big-integer@npm:1.6.51"
+  checksum: 3d444173d1b2e20747e2c175568bedeebd8315b0637ea95d75fd27830d3b8e8ba36c6af40374f36bdaea7b5de376dcada1b07587cb2a79a928fccdb6e6e3c518
   languageName: node
   linkType: hard
 
@@ -3681,6 +3714,24 @@ __metadata:
   version: 1.0.0
   resolution: "boolbase@npm:1.0.0"
   checksum: 3e25c80ef626c3a3487c73dbfc70ac322ec830666c9ad915d11b701142fab25ec1e63eff2c450c74347acfd2de854ccde865cd79ef4db1683f7c7b046ea43bb0
+  languageName: node
+  linkType: hard
+
+"bplist-creator@npm:0.0.7":
+  version: 0.0.7
+  resolution: "bplist-creator@npm:0.0.7"
+  dependencies:
+    stream-buffers: ~2.2.0
+  checksum: 5bcf4091c5a0e5934d56643d9f2705b5149a0b0b62b8314762f6ad4b3208d313c75ad03bab97a3c42b6e17db3d73530d3642d082ca249b55f952c90056c2b2ad
+  languageName: node
+  linkType: hard
+
+"bplist-parser@npm:0.1.1":
+  version: 0.1.1
+  resolution: "bplist-parser@npm:0.1.1"
+  dependencies:
+    big-integer: ^1.6.7
+  checksum: 1501d52f009c9f23ecee6855940e84ac55a6120c0f05570b1f51c8d494023416ec12f4d91b5ac97d6c0941d96dd41d7cb0bc1a9c0a02092df5b4b511acb8dda5
   languageName: node
   linkType: hard
 
@@ -5304,6 +5355,7 @@ __metadata:
     "@react-native/eslint-config": ^0.72.2
     "@react-native/metro-config": ^0.72.11
     "@reduxjs/toolkit": 1.9.5
+    "@thefunbots/react-native-pointer-interactions": ^1.1.0
     "@tsconfig/react-native": ^3.0.0
     "@types/lodash.debounce": ^4.0.7
     "@types/react": ^18.0.24
@@ -5347,6 +5399,7 @@ __metadata:
     react-native-safe-area-context: 4.7.2
     react-native-svg: 13.14.0
     react-native-svg-transformer: ^1.1.0
+    react-native-swift: ^1.2.3
     react-native-swipeable-item: 2.0.9
     react-redux: 8.1.2
     react-test-renderer: 18.2.0
@@ -5794,7 +5847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
+"glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
   dependencies:
@@ -8724,6 +8777,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"plist@npm:2.0.1":
+  version: 2.0.1
+  resolution: "plist@npm:2.0.1"
+  dependencies:
+    base64-js: 1.1.2
+    xmlbuilder: 8.2.2
+    xmldom: 0.1.x
+  checksum: 6e357d1c8d8e74089fdc611f9af3abffae0860a4c414a2edb2e49336d9c08c356e0186ba35ab1ba5d7a174d91a23c3e6832a844767b72f754df40a64fcce1374
+  languageName: node
+  linkType: hard
+
 "prebuild-install@npm:^7.1.1":
   version: 7.1.1
   resolution: "prebuild-install@npm:7.1.1"
@@ -9148,6 +9212,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 4668028563ae0ca669003cc29ff5f03fd5b13a61d53273f294f04a496cbc0af6003277025793d01fb9c3a53af4515839185578d59e9eecb072587178b751c234
+  languageName: node
+  linkType: hard
+
+"react-native-swift@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "react-native-swift@npm:1.2.3"
+  dependencies:
+    "@raydeck/xcode": ^2.2.0
+    glob: ^7.1.2
+  checksum: 694dd51a63664327586d5da6a09ce3c4eb55d741d1c703fd511a1e7c8324acca10e2133bdd463abfb5db2dfccae348dbbf2a2d4079db973ec6071a599b3be10b
   languageName: node
   linkType: hard
 
@@ -9895,6 +9969,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"simple-plist@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "simple-plist@npm:0.2.1"
+  dependencies:
+    bplist-creator: 0.0.7
+    bplist-parser: 0.1.1
+    plist: 2.0.1
+  checksum: e9f44d8c91d5301fc73c3f8075cd1d3024fe8e8abdb352cc6d008a7c70a8b9dc9be730cc7596e8d8769a000c60ed13bf78cdbbd6d14ba44180ee1a9ccb46734b
+  languageName: node
+  linkType: hard
+
 "simple-swizzle@npm:^0.2.2":
   version: 0.2.2
   resolution: "simple-swizzle@npm:0.2.2"
@@ -10067,6 +10152,13 @@ __metadata:
   version: 1.5.0
   resolution: "statuses@npm:1.5.0"
   checksum: c469b9519de16a4bb19600205cffb39ee471a5f17b82589757ca7bd40a8d92ebb6ed9f98b5a540c5d302ccbc78f15dc03cc0280dd6e00df1335568a5d5758a5c
+  languageName: node
+  linkType: hard
+
+"stream-buffers@npm:~2.2.0":
+  version: 2.2.0
+  resolution: "stream-buffers@npm:2.2.0"
+  checksum: 4587d9e8f050d689fb38b4295e73408401b16de8edecc12026c6f4ae92956705ecfd995ae3845d7fa3ebf19502d5754df9143d91447fd881d86e518f43882c1c
   languageName: node
   linkType: hard
 
@@ -10773,6 +10865,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"uuid@npm:3.0.1":
+  version: 3.0.1
+  resolution: "uuid@npm:3.0.1"
+  bin:
+    uuid: ./bin/uuid
+  checksum: 3e18e3bf6fcf92f379c55a816c0d4b2e85c1a15bd67a5c9798a40bac91810673d0e6209a4cc3c334966ec105e861953da49e8cd4e7db05a45c03f6b6a3b6a64b
+  languageName: node
+  linkType: hard
+
 "v8-to-istanbul@npm:^9.0.1":
   version: 9.1.0
   resolution: "v8-to-istanbul@npm:9.1.0"
@@ -11007,6 +11108,20 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: c3c100a181b731f40b7f2fddf004aa023f79d64f489706a28bc23ff88e87f6a64b3c6651fbec3a84a53960b75159574d7a7385709847a62ddb7ad6af76f49138
+  languageName: node
+  linkType: hard
+
+"xmlbuilder@npm:8.2.2":
+  version: 8.2.2
+  resolution: "xmlbuilder@npm:8.2.2"
+  checksum: 6e07fcee91aa77186302961e882c94a58d0a8d26f6cdeb637d2bc2cf9fb228a03d3214a6f9380846265c89a8536c19424468373f9e3f551c3be7a74819bd0777
+  languageName: node
+  linkType: hard
+
+"xmldom@npm:0.1.x":
+  version: 0.1.31
+  resolution: "xmldom@npm:0.1.31"
+  checksum: 3073ca4a096892f86991ad0fce9aa1e874f16a974aa2c0911b1a218922d80fe3762b56aa3a2d9fe4a46d61416193c6dc0839776748b24e0cfb56197babf77a94
   languageName: node
   linkType: hard
 
