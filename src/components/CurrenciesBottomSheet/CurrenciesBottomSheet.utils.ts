@@ -1,5 +1,3 @@
-import { WINDOW_HEIGHT } from '@gorhom/bottom-sheet';
-
 import { isIos } from './../../utils/platform';
 import { CheckIfSeparatorIsNeeded } from './CurrenciesBottomSheet.types';
 
@@ -14,8 +12,8 @@ export const checkIfSeparatorIsNeeded: CheckIfSeparatorIsNeeded = (
   return itemName[0] !== availableCurrencies[index - 1]?.[0];
 };
 
-export const getSnapPoints = (bottomInset: number, topInset: number) => [
-  30,
-  70,
-  WINDOW_HEIGHT - ((isIos ? 40 : -4) + bottomInset + topInset),
-];
+export const getSnapPoints = (
+  bottomInset: number,
+  topInset: number,
+  windowHeight: number,
+) => [30, 70, windowHeight - ((isIos ? 40 : -4) + bottomInset + topInset)];

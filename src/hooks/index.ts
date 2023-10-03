@@ -15,3 +15,4 @@ export * from './useReloadCourses';
 export { useSetExchangeCoursesFromStorage } from './useSetExchangeCoursesFromStorage';
 export { useSetSelectedCurrenciesFromStorage } from './useSetSelectedCurrenciesFromStorage';
 export { useTheme } from './useTheme';
+export { useWindowDimensionChange } from './useWindowDimensionChange';
