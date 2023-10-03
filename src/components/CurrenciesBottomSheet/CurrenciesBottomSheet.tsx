@@ -9,7 +9,7 @@ import currencies from 'resources/avaliable-currencies';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectDrawerOpenStatus } from 'store/drawer/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { groupByName, isIos, makeSectionsData } from 'utils';
+import { groupByName, makeSectionsData } from 'utils';
 
 import { BottomSheetEmpty } from './components/BottomSheetEmpty';
 import { BottomSheetFooterComponent } from './components/BottomSheetFooterComponent/BottomSheetFooterComponent';
@@ -92,8 +92,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
         backgroundStyle={styles.backgroundStyle}
         onChange={onChangeHandler}
         containerStyle={styles.containerStyle}
-        android_keyboardInputMode="adjustResize"
-        keyboardBehavior={isIos ? 'extend' : 'interactive'}>
+        keyboardBehavior="extend">
         {isCalculatingValue && (
           <View style={styles.activityIndicatorContainer}>
             <ActivityIndicator
