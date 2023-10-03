@@ -3,8 +3,9 @@ import { useTheme } from 'hooks';
 export const useStyles = () =>
   useTheme(theme => ({
     container: {
-      marginBottom: 10,
+      paddingBottom: 10,
       alignItems: 'flex-start',
+      backgroundColor: theme.ACCENT_COLOR_DARKER,
     },
     text: {
       paddingHorizontal: 10,
@@ -16,5 +17,6 @@ export const useStyles = () =>
       borderRadius: 8,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_DARKER,
       overflow: 'hidden',
+      zIndex: 10,
     },
   }));

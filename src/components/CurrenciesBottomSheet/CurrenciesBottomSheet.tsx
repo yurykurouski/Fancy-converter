@@ -1,24 +1,24 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
-import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { useSetSelectedCurrencies } from 'hooks';
 import currencies from 'resources/avaliable-currencies';
-import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectDrawerOpenStatus } from 'store/drawer/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { isIos } from 'utils';
+import { groupByName, isIos, makeSectionsData } from 'utils';
 
+import { BottomSheetEmpty } from './components/BottomSheetEmpty';
 import { BottomSheetFooterComponent } from './components/BottomSheetFooterComponent/BottomSheetFooterComponent';
 import { SearchField } from './components/SearchField';
 import { BottomSheetBackground } from './BottomSheetBackground';
+import { SectionTitle } from './components';
 import { getSnapPoints } from './CurrenciesBottomSheet.utils';
 import {
   useBottomSheetHandlers,
-  useHandleScroll,
   useKeyboardHandlers,
   useRenderHandler,
   useRenderListItem,
@@ -51,8 +51,6 @@ export const CurrenciesBottomSheet = React.memo(() => {
 
   useKeyboardHandlers(isExpanded, sheetRef, setIsExpanded, setKeyboardVisible);
 
-  const handleScroll = useHandleScroll(bottom);
-
   //*to prevent rerendering bottomsheet when selectedCurrencies changes
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialIndex = useMemo(() => (selectedCurrencies.length ? 1 : 2), []);
@@ -72,8 +70,17 @@ export const CurrenciesBottomSheet = React.memo(() => {
     isExpanded,
   });
 
+  const groupedData = useMemo(
+    () => groupByName(availableCurrencies),
+    [availableCurrencies],
+  );
+  const sectionsData = useMemo(
+    () => makeSectionsData(groupedData),
+    [groupedData],
+  );
+
   const snapPoints = useMemo(() => getSnapPoints(bottom, top), [bottom, top]);
-  //TODO: use SectionList here
+
   return (
     <>
       <BottomSheet
@@ -94,23 +101,19 @@ export const CurrenciesBottomSheet = React.memo(() => {
             />
           </View>
         )}
-        <BottomSheetFlatList
-          // @ts-expect-error poor typization from library
-          onScroll={handleScroll}
+        <BottomSheetSectionList
           style={styles.listContainer}
-          data={availableCurrencies}
+          sections={sectionsData}
           renderItem={renderItem}
+          renderSectionHeader={({ section }) => (
+            <SectionTitle value={section.title} />
+          )}
           keyExtractor={item => item}
           removeClippedSubviews={false}
-          ListEmptyComponent={
-            <View style={styles.searchEmptyStateContainer}>
-              <Text style={styles.searchEmptyStatetext}>
-                {l['currencies-bootomsheet_empty-search-result']}
-              </Text>
-            </View>
-          }
+          ListEmptyComponent={BottomSheetEmpty}
           ListFooterComponent={BottomSheetFooterComponent}
           overScrollMode="always"
+          stickySectionHeadersEnabled
         />
         <SearchField
           setAvailableCurrencies={setAvailableCurrencies}

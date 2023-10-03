@@ -1,30 +1,7 @@
-import { Animated } from 'react-native';
 import { WINDOW_HEIGHT } from '@gorhom/bottom-sheet';
 
 import { isIos } from './../../utils/platform';
-import { DIRECTIONS_DOWN, DIRECTIONS_UP } from './CurrenciesBottomSheet.consts';
 import { CheckIfSeparatorIsNeeded } from './CurrenciesBottomSheet.types';
-
-export const animatedPosition = new Animated.Value(0);
-
-export const handleScrollDirectionChange = (
-  offset: string,
-  bottomInset: number,
-) => {
-  if (offset === DIRECTIONS_UP) {
-    Animated.timing(animatedPosition, {
-      toValue: 0,
-      duration: 300,
-      useNativeDriver: true,
-    }).start();
-  } else if (offset === DIRECTIONS_DOWN) {
-    Animated.timing(animatedPosition, {
-      toValue: 60 + bottomInset,
-      duration: 300,
-      useNativeDriver: true,
-    }).start();
-  }
-};
 
 export const checkIfSeparatorIsNeeded: CheckIfSeparatorIsNeeded = (
   itemName,
@@ -40,5 +17,5 @@ export const checkIfSeparatorIsNeeded: CheckIfSeparatorIsNeeded = (
 export const getSnapPoints = (bottomInset: number, topInset: number) => [
   30,
   70,
-  WINDOW_HEIGHT - ((isIos ? 44 : 0) + bottomInset + topInset),
+  WINDOW_HEIGHT - ((isIos ? 40 : -4) + bottomInset + topInset),
 ];

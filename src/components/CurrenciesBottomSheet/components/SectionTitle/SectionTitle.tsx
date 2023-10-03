@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { useStyles } from './Separator.styles';
+import { useStyles } from './SectionTitle.styles';
 
-export const Separator = React.memo(({ value }: { value: string }) => {
+export const SectionTitle = React.memo(({ value }: { value: string }) => {
   const styles = useStyles();
 
   return (
