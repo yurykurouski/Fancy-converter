@@ -4,11 +4,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import BottomSheet, { BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
-import { useSetSelectedCurrencies } from 'hooks';
+import { useSetSelectedCurrencies, useWindowDimensionChange } from 'hooks';
 import currencies from 'resources/avaliable-currencies';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectDrawerOpenStatus } from 'store/drawer/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { EDimensions } from 'types';
 import { groupByName, makeSectionsData } from 'utils';
 
 import { BottomSheetEmpty } from './components/BottomSheetEmpty';
@@ -36,6 +37,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
 
   const { bottom, top } = useSafeAreaInsets();
   const styles = useStyles();
+  const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
   const { colorScheme } = useSelector(selectColorSchemeState);
   const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
@@ -79,7 +81,10 @@ export const CurrenciesBottomSheet = React.memo(() => {
     [groupedData],
   );
 
-  const snapPoints = useMemo(() => getSnapPoints(bottom, top), [bottom, top]);
+  const snapPoints = useMemo(
+    () => getSnapPoints(bottom, top, windowHeight),
+    [bottom, top, windowHeight],
+  );
 
   return (
     <>

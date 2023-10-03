@@ -1,3 +1,6 @@
+import { Dimensions } from 'react-native';
+import { EDimensions } from 'types';
+
 export const REQUEST_GET = 'GET';
 export const REQUEST_CT_APPLICATION_JSON = 'application/json';
 
@@ -33,3 +36,8 @@ export const BLUR_AMOUNT = 26;
 export const BLUR_RADIUS = 16;
 
 export const DEFAULT_ANIMATION_DURATION = 150;
+
+export const WindowDimensions = {
+  [EDimensions.WIDTH]: Dimensions.get('window').width,
+  [EDimensions.HEIGHT]: Dimensions.get('window').height,
+};

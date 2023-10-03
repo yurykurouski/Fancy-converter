@@ -1,5 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
-import { Dimensions } from 'react-native';
+import { Dispatch, SetStateAction, useCallback } from 'react';
 
 import { TEventHandler } from './Onboarding.types';
 
@@ -20,17 +19,3 @@ export const useHandleOnboardingScroll = (
     },
     [currentPage, setCurrentPage, windowWidth],
   );
-
-export const useOnboardingScreenSizeChange = (
-  setWindowWidth: Dispatch<SetStateAction<number>>,
-) => {
-  useEffect(() => {
-    const subscription = Dimensions.addEventListener(
-      'change',
-      ({ window: { width } }) => {
-        setWindowWidth(width);
-      },
-    );
-    return () => subscription?.remove();
-  }, [setWindowWidth]);
-};

@@ -42,3 +42,8 @@ export type TLocaleString = keyof typeof en | keyof typeof by | keyof typeof ua;
 export type TGroupByName<T> = (data: T[]) => {
   [key: string]: T[];
 };
+
+export enum EDimensions {
+  WIDTH = 'width',
+  HEIGHT = 'height',
+}
