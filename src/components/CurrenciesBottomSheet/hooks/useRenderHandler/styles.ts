@@ -5,6 +5,7 @@ export const useStyles = () =>
     handleContainer: {
       height: 10,
       alignItems: 'center',
+      backgroundColor: theme.ACCENT_COLOR_DARKER,
     },
     handlePressable: {
       transform: [

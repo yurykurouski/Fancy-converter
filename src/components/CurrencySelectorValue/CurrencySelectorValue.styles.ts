@@ -11,7 +11,7 @@ export const useStyles = () =>
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingVertical: 15,
+      paddingVertical: 14,
       paddingHorizontal: 10,
       borderRadius: 20,
     },
