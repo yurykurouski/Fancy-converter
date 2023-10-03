@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme((theme, { bottom }) => ({
+  useTheme((_, { bottom }) => ({
     listContainer: {
       paddingHorizontal: 10,
     },
@@ -15,13 +15,6 @@ export const useStyles = () =>
     activityIndicatorContainer: {
       position: 'absolute',
       width: '100%',
-    },
-    searchEmptyStateContainer: {
-      width: '100%',
-      alignItems: 'center',
-      marginTop: '50%',
-    },
-    searchEmptyStatetext: {
-      color: theme.FONT_COLOR_FADED,
+      top: 10,
     },
   }));

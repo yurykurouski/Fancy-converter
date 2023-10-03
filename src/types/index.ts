@@ -38,3 +38,7 @@ export enum AvailableCurrenciesNames {
 export type TDispatchCallback<T, A> = (value: T) => Action<A>;
 
 export type TLocaleString = keyof typeof en | keyof typeof by | keyof typeof ua;
+
+export type TGroupByName<T> = (data: T[]) => {
+  [key: string]: T[];
+};

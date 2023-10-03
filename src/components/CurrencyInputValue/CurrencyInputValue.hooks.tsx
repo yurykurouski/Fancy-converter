@@ -168,7 +168,7 @@ export const useHandleLongPress = ({
 }: TUseHandleLongPressParams) =>
   useCallback(() => {
     if (!isInEditMode) {
-      Vibration.vibrate(30);
+      Vibration.vibrate(1);
       Keyboard.dismiss();
 
       setSelectedCurrInEditMode(true);

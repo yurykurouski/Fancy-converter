@@ -1,13 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Animated, Keyboard, View } from 'react-native';
+import { Keyboard, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
-
-import { animatedPosition } from '../../CurrenciesBottomSheet.utils';
 
 import { useHandleTextChange } from './SearchField.hooks';
 import { Props } from './SearchField.types';
@@ -45,17 +43,13 @@ export const SearchField: FC<Props> = ({
   }, [isFocused]);
 
   return (
-    <Animated.View
-      style={[
-        styles.inputContainer,
-        { transform: [{ translateY: animatedPosition }] },
-      ]}>
+    <View style={styles.inputContainer}>
       <View style={[styles.inputWrapper, isFocused && styles.inputFocused]}>
         <BottomSheetTextInput
           value={searchValue}
           onChangeText={handleChange}
           style={styles.input}
-          maxLength={30}
+          maxLength={25}
           caretHidden={!isFocused}
           onBlur={() => setIsFocused(false)}
           onPressOut={() => setIsFocused(true)}
@@ -71,6 +65,6 @@ export const SearchField: FC<Props> = ({
           />
         )}
       </View>
-    </Animated.View>
+    </View>
   );
 };
