@@ -2,12 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type TOnBoardingStatusSlice = {
   isOnBoarded: boolean | undefined;
-  isLoadingStatus: boolean;
 };
 
 const initialState: TOnBoardingStatusSlice = {
   isOnBoarded: undefined,
-  isLoadingStatus: true,
 };
 
 export const OnBoardingStatusSlice = createSlice({
@@ -16,10 +14,6 @@ export const OnBoardingStatusSlice = createSlice({
   reducers: {
     setIsOnBoarded: (state, action: PayloadAction<boolean>) => {
       state.isOnBoarded = action.payload;
-    },
-
-    setIsLoadingStatus: (state, action: PayloadAction<boolean>) => {
-      state.isLoadingStatus = action.payload;
     },
   },
 });

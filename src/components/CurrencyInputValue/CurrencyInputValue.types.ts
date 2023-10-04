@@ -29,13 +29,11 @@ export type TUseCurrencyInputHandlers = (props: {
   onChangeTextHandler: OnChangeTextHandler;
   onFocusHandler: OnFocusHandler;
   containerOnPressHandler: ContainerOnPressHandler;
-  value: string;
 };
 
 export type TUseConvertedValues = (
   isFocused: boolean,
-  value: string,
-  focusedCurrencyValue: string | undefined,
+  focusedCurrencyValue: string,
   course: number | undefined,
   focusedCurrencyCourse: number | undefined,
 ) => string;

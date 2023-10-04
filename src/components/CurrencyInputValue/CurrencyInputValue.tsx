@@ -70,18 +70,14 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const isSelectedForEdit: boolean =
     selectedCurrenciesInEdit.includes(currencyCode);
 
-  const {
-    onChangeTextHandler,
-    onFocusHandler,
-    containerOnPressHandler,
-    value,
-  } = useCurrencyInputHandlers({
-    setFocusedCurrencyValue,
-    setFocusedCurrencyName,
-    currencyCode,
-    inputRef,
-    isInEditMode,
-  });
+  const { onChangeTextHandler, onFocusHandler, containerOnPressHandler } =
+    useCurrencyInputHandlers({
+      setFocusedCurrencyValue,
+      setFocusedCurrencyName,
+      currencyCode,
+      inputRef,
+      isInEditMode,
+    });
 
   const onContainerPress = useOnContainerPress({
     isInEditMode,
@@ -94,7 +90,6 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const calculatedValue = useConvertedValues(
     isFocused,
-    value,
     focusedCurrencyValue,
     course,
     focusedCurrencyCourse,
