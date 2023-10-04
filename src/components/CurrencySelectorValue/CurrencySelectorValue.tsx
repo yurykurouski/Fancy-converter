@@ -13,21 +13,14 @@ import { useOnPressHandler } from './CurrencySelectorValue.hooks';
 import { Props } from './CurrencySelectorValue.types';
 
 import { useStyles } from './CurrencySelectorValue.styles';
-
 export const CurrencySelectorValue: FC<Props> = React.memo(
-  ({
-    currencyCode,
-    modalSelectedCurrencies,
-    setModalSelectedCurrencies,
-    isExpanded,
-  }) => {
+  ({ currencyCode, modalSelectedCurrencies, setModalSelectedCurrencies }) => {
     const { colorScheme } = useSelector(selectColorSchemeState);
     const styles = useStyles();
 
     const isActive = modalSelectedCurrencies.includes(currencyCode);
 
     const onPressHandler = useOnPressHandler(
-      isExpanded,
       isActive,
       modalSelectedCurrencies,
       currencyCode,

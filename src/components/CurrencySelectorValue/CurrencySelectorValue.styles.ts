@@ -6,6 +6,7 @@ export const useStyles = () =>
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       marginBottom: 10,
       borderRadius: 20,
+      zIndex: 0,
     },
     currencyBlock: {
       alignItems: 'center',

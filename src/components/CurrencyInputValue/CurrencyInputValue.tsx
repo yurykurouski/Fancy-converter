@@ -3,6 +3,7 @@ import { Pressable, Text, TextInput } from 'react-native';
 import Animated, {
   FadeInRight,
   FadeOutRight,
+  SlideInRight,
   SlideOutRight,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
@@ -110,7 +111,8 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
         styles.containerWrapper,
         isFocused && styles.containerWrapperFocused,
       ]}
-      exiting={SlideOutRight.duration(DEFAULT_ANIMATION_DURATION)}>
+      exiting={SlideOutRight.duration(DEFAULT_ANIMATION_DURATION)}
+      entering={SlideInRight.duration(DEFAULT_ANIMATION_DURATION)}>
       <Pressable
         onPress={onContainerPress}
         style={styles.container}

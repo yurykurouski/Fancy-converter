@@ -6,6 +6,7 @@ export const useStyles = () =>
       paddingBottom: 10,
       alignItems: 'flex-start',
       backgroundColor: theme.ACCENT_COLOR_DARKER,
+      zIndex: 1,
     },
     text: {
       paddingHorizontal: 10,
@@ -17,6 +18,5 @@ export const useStyles = () =>
       borderRadius: 8,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_DARKER,
       overflow: 'hidden',
-      zIndex: 10,
     },
   }));

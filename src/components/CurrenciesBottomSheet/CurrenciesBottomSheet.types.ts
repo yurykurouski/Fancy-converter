@@ -11,12 +11,7 @@ export type Props = {
 
 export type UseBottomSheetHandlers = (
   sheetRef: RefObject<BottomSheetMethods>,
-  setIsExpanded: Dispatch<SetStateAction<boolean>>,
-  isKeyboardVisible: boolean,
-) => {
-  onPressHandler: () => void;
-  onChangeHandler: (index: number) => void;
-};
+) => () => void;
 
 export type UseKeyboardHandlers = (
   isExpanded: boolean,
@@ -35,5 +30,4 @@ export type UseRenderListItem = (props: {
   availableCurrencies: AvailableCurrenciesNames[];
   selectedCurrencies: AvailableCurrenciesNames[];
   setSelectedCurrencies: TSetSelectedCurrencies;
-  isExpanded: boolean;
 }) => (props: ListRenderItemInfo<AvailableCurrenciesNames>) => JSX.Element;

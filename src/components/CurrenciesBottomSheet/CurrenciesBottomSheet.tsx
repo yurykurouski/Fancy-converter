@@ -7,10 +7,9 @@ import { THEME_COLORS } from 'assets/colors';
 import { useSetSelectedCurrencies, useWindowDimensionChange } from 'hooks';
 import currencies from 'resources/avaliable-currencies';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { selectDrawerOpenStatus } from 'store/drawer/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { EDimensions } from 'types';
-import { groupByName, makeSectionsData } from 'utils';
+import { groupByName, isIos, makeSectionsData } from 'utils';
 
 import { BottomSheetEmpty } from './components/BottomSheetEmpty';
 import { BottomSheetFooterComponent } from './components/BottomSheetFooterComponent/BottomSheetFooterComponent';
@@ -20,7 +19,6 @@ import { SectionTitle } from './components';
 import { getSnapPoints } from './CurrenciesBottomSheet.utils';
 import {
   useBottomSheetHandlers,
-  useKeyboardHandlers,
   useRenderHandler,
   useRenderListItem,
 } from './hooks';
@@ -29,8 +27,6 @@ import { useStyles } from './CurrenciesBottomSheet.styles';
 
 export const CurrenciesBottomSheet = React.memo(() => {
   const [availableCurrencies, setAvailableCurrencies] = useState(currencies);
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isCalculatingValue, setIsCalculatingValue] = useState(false);
 
   const sheetRef = useRef<BottomSheet>(null);
@@ -40,28 +36,15 @@ export const CurrenciesBottomSheet = React.memo(() => {
   const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
   const { colorScheme } = useSelector(selectColorSchemeState);
-  const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
 
   const setSelectedCurrencies = useSetSelectedCurrencies();
 
-  const { onPressHandler, onChangeHandler } = useBottomSheetHandlers(
-    sheetRef,
-    setIsExpanded,
-    isKeyboardVisible,
-  );
-
-  useKeyboardHandlers(isExpanded, sheetRef, setIsExpanded, setKeyboardVisible);
+  const onPressHandler = useBottomSheetHandlers(sheetRef);
 
   //*to prevent rerendering bottomsheet when selectedCurrencies changes
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const initialIndex = useMemo(() => (selectedCurrencies.length ? 1 : 2), []);
-
-  if (!isExpanded) {
-    isDrawerOpened
-      ? sheetRef.current?.close()
-      : sheetRef.current?.snapToIndex(1);
-  }
+  const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 1), []);
 
   const renderHandle = useRenderHandler(onPressHandler);
 
@@ -69,7 +52,6 @@ export const CurrenciesBottomSheet = React.memo(() => {
     availableCurrencies,
     selectedCurrencies,
     setSelectedCurrencies,
-    isExpanded,
   });
 
   const groupedData = useMemo(
@@ -87,43 +69,42 @@ export const CurrenciesBottomSheet = React.memo(() => {
   );
 
   return (
-    <>
-      <BottomSheet
-        index={initialIndex}
-        snapPoints={snapPoints}
-        ref={sheetRef}
-        handleComponent={renderHandle}
-        backgroundComponent={BottomSheetBackground}
-        backgroundStyle={styles.backgroundStyle}
-        onChange={onChangeHandler}
-        containerStyle={styles.containerStyle}
-        keyboardBehavior="extend">
-        {isCalculatingValue && (
-          <View style={styles.activityIndicatorContainer}>
-            <ActivityIndicator
-              color={THEME_COLORS[colorScheme!]?.ACCENT_COLOR_LIGHTER}
-            />
-          </View>
+    <BottomSheet
+      index={initialIndex}
+      snapPoints={snapPoints}
+      ref={sheetRef}
+      handleHeight={10}
+      topInset={top + (isIos ? 40 : -4)}
+      handleComponent={renderHandle}
+      backgroundComponent={BottomSheetBackground}
+      backgroundStyle={styles.backgroundStyle}
+      containerStyle={styles.containerStyle}
+      keyboardBehavior="extend">
+      {isCalculatingValue && (
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator
+            color={THEME_COLORS[colorScheme!]?.ACCENT_COLOR_LIGHTER}
+          />
+        </View>
+      )}
+      <BottomSheetSectionList
+        style={styles.listContainer}
+        sections={sectionsData}
+        renderItem={renderItem}
+        renderSectionHeader={({ section }) => (
+          <SectionTitle value={section.title} />
         )}
-        <BottomSheetSectionList
-          style={styles.listContainer}
-          sections={sectionsData}
-          renderItem={renderItem}
-          renderSectionHeader={({ section }) => (
-            <SectionTitle value={section.title} />
-          )}
-          keyExtractor={item => item}
-          removeClippedSubviews={false}
-          ListEmptyComponent={BottomSheetEmpty}
-          ListFooterComponent={BottomSheetFooterComponent}
-          overScrollMode="always"
-          stickySectionHeadersEnabled
-        />
-        <SearchField
-          setAvailableCurrencies={setAvailableCurrencies}
-          setIsCalculatingValue={setIsCalculatingValue}
-        />
-      </BottomSheet>
-    </>
+        keyExtractor={item => item}
+        removeClippedSubviews={false}
+        ListEmptyComponent={BottomSheetEmpty}
+        ListFooterComponent={BottomSheetFooterComponent}
+        overScrollMode="always"
+        stickySectionHeadersEnabled
+      />
+      <SearchField
+        setAvailableCurrencies={setAvailableCurrencies}
+        setIsCalculatingValue={setIsCalculatingValue}
+      />
+    </BottomSheet>
   );
 });

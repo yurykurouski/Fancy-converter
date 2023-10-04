@@ -6,7 +6,6 @@ import { UseRenderListItem } from '../CurrenciesBottomSheet.types';
 export const useRenderListItem: UseRenderListItem = ({
   selectedCurrencies,
   setSelectedCurrencies,
-  isExpanded,
 }) =>
   useCallback(
     ({ item }) => (
@@ -14,8 +13,7 @@ export const useRenderListItem: UseRenderListItem = ({
         currencyCode={item}
         modalSelectedCurrencies={selectedCurrencies}
         setModalSelectedCurrencies={setSelectedCurrencies}
-        isExpanded={isExpanded}
       />
     ),
-    [isExpanded, selectedCurrencies, setSelectedCurrencies],
+    [selectedCurrencies, setSelectedCurrencies],
   );
