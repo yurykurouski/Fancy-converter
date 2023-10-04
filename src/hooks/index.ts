@@ -1,5 +1,4 @@
 export * from './store';
-export { useSetOnBoardingStatus } from './store/useSetOnBoardingStatus';
 export { useAlertMessage } from './useAlertMessage';
 export { useAndroidRippleConfig } from './useAndroidRippleConfig';
 export { useAppearanceChangeListener } from './useAppearanceChangeListener';
@@ -10,9 +9,6 @@ export * from './useHandleSwipeDirection';
 export { useInitCourses } from './useInitCourses';
 export { useLoadCourses } from './useLoadCourses';
 export { useMultiGet } from './useMultiGet';
-export { useMultiSetToStorageOnBackground } from './useMultiSetToStorageOnBackground';
 export * from './useReloadCourses';
-export { useSetExchangeCoursesFromStorage } from './useSetExchangeCoursesFromStorage';
-export { useSetSelectedCurrenciesFromStorage } from './useSetSelectedCurrenciesFromStorage';
 export { useTheme } from './useTheme';
 export { useWindowDimensionChange } from './useWindowDimensionChange';

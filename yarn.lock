@@ -5404,6 +5404,7 @@ __metadata:
     react-redux: 8.1.2
     react-test-renderer: 18.2.0
     redux-flipper: 2.0.2
+    redux-persist: ^6.0.0
     typescript: 4.8.4
   languageName: unknown
   linkType: soft
@@ -9415,6 +9416,15 @@ __metadata:
     react-native-flipper: ">=0.100.0"
     redux: ^4
   checksum: 6638e73f565d443bd8df3e65b0f6559b24aab9ccda747857238659c82e0978f0aa6f0fd9a554047f4824f0cf42c8d834f1efefbcf4295df466d7b9d7cda68a1c
+  languageName: node
+  linkType: hard
+
+"redux-persist@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "redux-persist@npm:6.0.0"
+  peerDependencies:
+    redux: ">4.0.0"
+  checksum: edaf10dbf17351ce8058d0802357adae8665b3a1ff39371834e37838ddbe1a79cccbc717b8ba54acb5307651ccf51d0f7dc1cbc8dbae0726ff952d11ef61c6b8
   languageName: node
   linkType: hard
 

@@ -66,5 +66,3 @@ export type TSetFocusedCurrencyName = TDispatchCallback<
   AvailableCurrenciesNames,
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
 >;
-
-export type TSetOnBoardingStatus = (value: boolean) => void;

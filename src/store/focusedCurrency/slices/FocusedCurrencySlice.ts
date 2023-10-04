@@ -3,12 +3,12 @@ import { AvailableCurrenciesNames } from 'types';
 
 export type TFocusedCurrency = {
   focusedCurrencyName: AvailableCurrenciesNames | undefined;
-  focusedCurrencyValue: string | undefined;
+  focusedCurrencyValue: string;
 };
 
 const initialState: TFocusedCurrency = {
   focusedCurrencyName: undefined,
-  focusedCurrencyValue: undefined,
+  focusedCurrencyValue: '',
 };
 
 export const FocusedCurrencySlice = createSlice({

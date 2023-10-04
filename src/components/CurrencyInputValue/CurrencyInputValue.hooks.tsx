@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Keyboard, Vibration } from 'react-native';
 import { INPUT_VALIDATION_REGEXP } from 'constants/constants';
 import { l } from 'resources/localization';
@@ -18,8 +18,6 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
   inputRef,
   isInEditMode,
 }) => {
-  const [value, setValue] = useState<string>('');
-
   const onChangeTextHandler = useCallback(
     (text: string) => {
       if (isInEditMode) return;
@@ -28,7 +26,6 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
 
       if (INPUT_VALIDATION_REGEXP.test(withoutSpaces) || !withoutSpaces) {
         setFocusedCurrencyValue(withoutSpaces);
-        setValue(withoutSpaces);
       }
     },
     [isInEditMode, setFocusedCurrencyValue],
@@ -40,7 +37,6 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
 
       setFocusedCurrencyName(currencyCode);
       setFocusedCurrencyValue(inputValue);
-      setValue(inputValue);
     },
     [
       currencyCode,
@@ -60,13 +56,11 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
     onChangeTextHandler,
     onFocusHandler,
     containerOnPressHandler,
-    value,
   };
 };
 
 export const useConvertedValues: TUseConvertedValues = (
   isFocused,
-  value,
   focusedCurrencyValue,
   course,
   focusedCurrencyCourse,
@@ -76,11 +70,11 @@ export const useConvertedValues: TUseConvertedValues = (
   const calculatedValue = useMemo(
     () =>
       isFocused
-        ? value
+        ? focusedCurrencyValue
         : isNaN(coefficient)
         ? ''
         : (Number(focusedCurrencyValue) * coefficient).toFixed(2),
-    [coefficient, focusedCurrencyValue, isFocused, value],
+    [coefficient, focusedCurrencyValue, isFocused],
   );
 
   return calculatedValue === '0.00'
