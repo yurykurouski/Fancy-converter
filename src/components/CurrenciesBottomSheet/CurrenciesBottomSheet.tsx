@@ -40,7 +40,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
 
   const renderHandle = useRenderHandler(onPressHandler);
   const renderSectionHeader = useRenderSectionHeader();
-  const renderItem1 = useRenderListItem();
+  const renderItem = useRenderListItem();
 
   const groupedData = useMemo(
     () => groupByName(availableCurrencies),
@@ -71,7 +71,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
       <BottomSheetSectionList
         style={styles.listContainer}
         sections={sectionsData}
-        renderItem={renderItem1}
+        renderItem={renderItem}
         renderSectionHeader={renderSectionHeader}
         keyExtractor={item => item}
         removeClippedSubviews={false}
