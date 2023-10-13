@@ -41,3 +41,5 @@ export const WindowDimensions = {
   [EDimensions.WIDTH]: Dimensions.get('window').width,
   [EDimensions.HEIGHT]: Dimensions.get('window').height,
 };
+
+export const HOUR_IN_MS = 3600000;

@@ -13,12 +13,14 @@ import {
   DEFAULT_ANIMATION_DURATION,
   VIBRATION_DURATION,
 } from 'constants/constants';
-import { useSetDrawerStatus } from 'hooks';
+import { HOUR_IN_MS } from 'constants/constants';
+import { useLoadCourses, useSetDrawerStatus } from 'hooks';
 import {
   useClearSelectedCurrenciesInEdit,
   useSetSelectedCurrEditMode,
 } from 'hooks/store/SelectedCurrencies';
 import { selectDrawerOpenStatus } from 'store/drawer/selectors';
+import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
 import {
@@ -107,4 +109,22 @@ export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
     clearSelectedCurrenciesInEdit,
     setSelectedCurrInEditMode,
   ]);
+};
+
+export const useUpdateCourses = () => {
+  const loadCourses = useLoadCourses();
+
+  const { lastUpdated } = useSelector(selectExchangeCourses);
+
+  useEffect(() => {
+    if (lastUpdated) {
+      const dateDiff = Date.now() - lastUpdated;
+
+      if (dateDiff > HOUR_IN_MS) {
+        loadCourses();
+      }
+    } else {
+      loadCourses();
+    }
+  }, [lastUpdated, loadCourses]);
 };

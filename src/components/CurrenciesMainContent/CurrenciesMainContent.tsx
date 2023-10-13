@@ -8,6 +8,7 @@ import {
   useAnimatedScreenStyle,
   useHandleBackPress,
   useOpenDrawerAnimations,
+  useUpdateCourses,
 } from './CurrenciesMainContent.hooks';
 
 const style = StyleSheet.create({
@@ -21,6 +22,7 @@ export const CurrenciesMainContent = React.memo(() => {
     useOpenDrawerAnimations();
 
   useHandleBackPress(closeDrawer);
+  useUpdateCourses();
 
   const animatedScreenStyle = useAnimatedScreenStyle(animatedPosition);
 
