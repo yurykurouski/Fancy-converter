@@ -1,7 +1,10 @@
 import React from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+} from 'react-native-safe-area-context';
 import { Provider, useSelector } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { CurrenciesMainContent, Onboarding } from 'components';
@@ -41,7 +44,7 @@ const { container } = StyleSheet.create({
 });
 
 export default () => (
-  <SafeAreaProvider>
+  <SafeAreaProvider initialMetrics={initialWindowMetrics}>
     <GestureHandlerRootView style={container}>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
