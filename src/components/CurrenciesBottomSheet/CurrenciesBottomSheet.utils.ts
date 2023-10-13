@@ -16,4 +16,4 @@ export const getSnapPoints = (
   bottomInset: number,
   topInset: number,
   windowHeight: number,
-) => [30, 70, windowHeight - ((isIos ? 40 : -4) + bottomInset + topInset)];
+) => [70, windowHeight - ((isIos ? 40 : -4) + bottomInset + topInset)];

@@ -1,67 +1,36 @@
-import { useCallback } from 'react';
+import { Dispatch, SetStateAction, useCallback } from 'react';
 import { debounce } from 'lodash';
 import currencies from 'resources/avaliable-currencies';
 import { AvailableCurrenciesNames } from 'types';
 
-import { UseHandleTextChange } from './SearchField.types';
 import {
   filterCurrencies,
   mapCurrenciesNamesBasedOnLanguage,
 } from './SearchField.utils';
 
-const filterResults: AvailableCurrenciesNames[][] = [];
-let prevQueryLength = 0;
+const searchHash: { [key: string]: AvailableCurrenciesNames[] } = {};
 
-export const useHandleTextChange: UseHandleTextChange = ({
-  setAvailableCurrencies,
-  setIsCalculatingValue,
-}) =>
+export const useHandleTextChange = (
+  setAvailableCurrencies: Dispatch<SetStateAction<AvailableCurrenciesNames[]>>,
+) =>
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useCallback(
-    debounce(value => {
-      if (!value) {
-        filterResults.length = 0;
-
-        setTimeout(() => {
-          setAvailableCurrencies(currencies);
-          setIsCalculatingValue(false);
-        });
-        prevQueryLength = 0;
-        return;
+    debounce((value: string) => {
+      if (searchHash[value]) {
+        return setAvailableCurrencies(searchHash[value]);
       }
 
-      let filteredCurrencies: AvailableCurrenciesNames[];
       const valueUpperCase = value.trim().toUpperCase();
 
-      setTimeout(() => {
-        if (value.length < prevQueryLength || !filterResults.length) {
-          filteredCurrencies = currencies.filter((el, index) => {
-            const namesBasedOnLanguage =
-              mapCurrenciesNamesBasedOnLanguage(currencies)[index];
+      const filteredArray = currencies.filter((el, index) => {
+        const namesBasedOnLanguage =
+          mapCurrenciesNamesBasedOnLanguage(currencies)[index];
 
-            return filterCurrencies(el, valueUpperCase, namesBasedOnLanguage);
-          });
-
-          filterResults.pop();
-        } else {
-          filteredCurrencies = filterResults[filterResults.length - 1].filter(
-            (el, index) => {
-              const namesBasedOnLanguage = mapCurrenciesNamesBasedOnLanguage(
-                filterResults[filterResults.length - 1],
-              )[index];
-
-              return filterCurrencies(el, valueUpperCase, namesBasedOnLanguage);
-            },
-          );
-
-          filterResults.push(filteredCurrencies);
-        }
-
-        setAvailableCurrencies(filteredCurrencies);
-        setIsCalculatingValue(false);
-
-        prevQueryLength = value.length;
+        return filterCurrencies(el, valueUpperCase, namesBasedOnLanguage);
       });
-    }, 300),
-    [],
+
+      searchHash[value] = filteredArray;
+      setAvailableCurrencies(searchHash[value]);
+    }, 200),
+    [setAvailableCurrencies],
   );

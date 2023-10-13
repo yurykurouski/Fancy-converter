@@ -1,7 +1,6 @@
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { TSetSelectedCurrencies } from 'hooks/store/types';
 import { AvailableCurrenciesNames } from 'types';
 
 export type Props = {
@@ -9,14 +8,9 @@ export type Props = {
   isDrawerOpened: boolean;
 };
 
-export type UseBottomSheetHandlers = (
+export type TUseBottomSheetOnPressHandler = (
   sheetRef: RefObject<BottomSheetMethods>,
-  setIsExpanded: Dispatch<SetStateAction<boolean>>,
-  isKeyboardVisible: boolean,
-) => {
-  onPressHandler: () => void;
-  onChangeHandler: (index: number) => void;
-};
+) => () => void;
 
 export type UseKeyboardHandlers = (
   isExpanded: boolean,
@@ -31,9 +25,6 @@ export type CheckIfSeparatorIsNeeded = (
   availableCurrencies: AvailableCurrenciesNames[],
 ) => boolean;
 
-export type UseRenderListItem = (props: {
-  availableCurrencies: AvailableCurrenciesNames[];
-  selectedCurrencies: AvailableCurrenciesNames[];
-  setSelectedCurrencies: TSetSelectedCurrencies;
-  isExpanded: boolean;
-}) => (props: ListRenderItemInfo<AvailableCurrenciesNames>) => JSX.Element;
+export type UseRenderListItem = () => (
+  props: ListRenderItemInfo<AvailableCurrenciesNames>,
+) => JSX.Element;

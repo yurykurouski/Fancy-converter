@@ -3,20 +3,11 @@ import { useTheme } from 'hooks';
 export const useStyles = () =>
   useTheme(theme => ({
     inputContainer: {
-      position: 'absolute',
-      bottom: -1,
-      left: 0,
-      right: 0,
-      flexDirection: 'row',
-      height: 60,
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
-      paddingHorizontal: 10,
-      elevation: 5,
-      paddingTop: 10,
-      paddingBottom: 10,
-      borderTopLeftRadius: 15,
-      borderTopRightRadius: 15,
-      gap: 10,
+      elevation: 1,
+      padding: 10,
+      borderTopLeftRadius: 16,
+      borderTopRightRadius: 16,
     },
     inputWrapper: {
       flexDirection: 'row',

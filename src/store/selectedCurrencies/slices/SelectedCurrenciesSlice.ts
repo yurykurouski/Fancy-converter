@@ -5,12 +5,14 @@ export type TSelectedCurrenciesSlice = {
   selectedCurrencies: AvailableCurrenciesNames[];
   selectedCurrenciesInEdit: AvailableCurrenciesNames[];
   isInEditMode: boolean;
+  searchValue: string;
 };
 
 const initialState: TSelectedCurrenciesSlice = {
   selectedCurrencies: [],
   selectedCurrenciesInEdit: [],
   isInEditMode: false,
+  searchValue: '',
 };
 
 export const SelectedCurrenciesSlice = createSlice({
@@ -44,6 +46,10 @@ export const SelectedCurrenciesSlice = createSlice({
     },
     clearSelectedCurrenciesInEdit: state => {
       state.selectedCurrenciesInEdit = [];
+    },
+
+    searchCurrenciesValue: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload;
     },
   },
 });

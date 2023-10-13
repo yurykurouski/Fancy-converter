@@ -3,16 +3,12 @@ import { useCallback } from 'react';
 import { TUseOnPressHandler } from './CurrencySelectorValue.types';
 
 export const useOnPressHandler: TUseOnPressHandler = (
-  isExpanded,
   isActive,
   modalSelectedCurrencies,
   currencyCode,
   setModalSelectedCurrencies,
 ) =>
   useCallback(() => {
-    if (!isExpanded) {
-      return;
-    }
     if (isActive) {
       const filteredCurrenciesList = modalSelectedCurrencies.filter(
         code => code !== currencyCode,
@@ -25,7 +21,6 @@ export const useOnPressHandler: TUseOnPressHandler = (
   }, [
     currencyCode,
     isActive,
-    isExpanded,
     modalSelectedCurrencies,
     setModalSelectedCurrencies,
   ]);

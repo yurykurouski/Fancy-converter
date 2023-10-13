@@ -2,12 +2,9 @@ import { useTheme } from 'hooks';
 
 export const useStyles = () =>
   useTheme(theme => ({
-    currencyBlockWrapper: {
+    currencyBlock: {
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       marginBottom: 10,
-      borderRadius: 20,
-    },
-    currencyBlock: {
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',

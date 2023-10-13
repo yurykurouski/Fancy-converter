@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { CurrenciesBottomSheet, Drawer, Header } from 'components';
-
-import { CurrencySelector } from '../CurrencySelector/CurrencySelector';
+import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
 
 import {
   useAnimatedScreenStyle,
