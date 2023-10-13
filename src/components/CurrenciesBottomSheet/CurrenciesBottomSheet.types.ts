@@ -8,7 +8,7 @@ export type Props = {
   isDrawerOpened: boolean;
 };
 
-export type UseBottomSheetHandlers = (
+export type TUseBottomSheetOnPressHandler = (
   sheetRef: RefObject<BottomSheetMethods>,
 ) => () => void;
 

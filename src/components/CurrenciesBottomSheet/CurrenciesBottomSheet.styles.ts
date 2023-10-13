@@ -3,7 +3,6 @@ import { useTheme } from 'hooks';
 export const useStyles = () =>
   useTheme((_, { bottom }) => ({
     listContainer: {
-      marginTop: 0,
       paddingHorizontal: 10,
     },
     containerStyle: {

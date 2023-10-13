@@ -13,7 +13,7 @@ import { SearchField } from './components/SearchField';
 import { BottomSheetBackground } from './BottomSheetBackground';
 import { getSnapPoints } from './CurrenciesBottomSheet.utils';
 import {
-  useBottomSheetHandlers,
+  useBottomSheetOnPressHandler,
   useRenderHandler,
   useRenderListItem,
   useRenderSectionHeader,
@@ -32,7 +32,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
 
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
 
-  const onPressHandler = useBottomSheetHandlers(sheetRef);
+  const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
 
   //*to prevent rerendering bottomsheet when selectedCurrencies changes
   // eslint-disable-next-line react-hooks/exhaustive-deps
