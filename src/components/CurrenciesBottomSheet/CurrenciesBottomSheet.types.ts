@@ -1,7 +1,6 @@
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { TSetSelectedCurrencies } from 'hooks/store/types';
 import { AvailableCurrenciesNames } from 'types';
 
 export type Props = {
@@ -26,8 +25,6 @@ export type CheckIfSeparatorIsNeeded = (
   availableCurrencies: AvailableCurrenciesNames[],
 ) => boolean;
 
-export type UseRenderListItem = (props: {
-  availableCurrencies: AvailableCurrenciesNames[];
-  selectedCurrencies: AvailableCurrenciesNames[];
-  setSelectedCurrencies: TSetSelectedCurrencies;
-}) => (props: ListRenderItemInfo<AvailableCurrenciesNames>) => JSX.Element;
+export type UseRenderListItem = () => (
+  props: ListRenderItemInfo<AvailableCurrenciesNames>,
+) => JSX.Element;

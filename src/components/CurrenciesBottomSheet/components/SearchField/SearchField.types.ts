@@ -7,7 +7,6 @@ export type UseHandleTextChange = (props: {
   setIsCalculatingValue: Dispatch<SetStateAction<boolean>>;
 }) => DebouncedFunc<(value: string) => void>;
 
-export type Props = {
-  setIsCalculatingValue: Dispatch<SetStateAction<boolean>>;
+export type TProps = {
   setAvailableCurrencies: Dispatch<SetStateAction<AvailableCurrenciesNames[]>>;
 };

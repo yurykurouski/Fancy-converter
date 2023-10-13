@@ -8,8 +8,6 @@ export type TUseOnPressHandler = (
   setModalSelectedCurrencies: TSetSelectedCurrencies,
 ) => () => void;
 
-export type Props = {
+export type TProps = {
   currencyCode: AvailableCurrenciesNames;
-  modalSelectedCurrencies: AvailableCurrenciesNames[];
-  setModalSelectedCurrencies: TSetSelectedCurrencies;
 };

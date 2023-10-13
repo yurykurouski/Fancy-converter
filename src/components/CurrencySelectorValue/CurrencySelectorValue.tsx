@@ -6,55 +6,60 @@ import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
+import { useSetSelectedCurrencies } from 'hooks';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
-import { Props } from './CurrencySelectorValue.types';
+import { TProps } from './CurrencySelectorValue.types';
 
 import { useStyles } from './CurrencySelectorValue.styles';
-export const CurrencySelectorValue: FC<Props> = React.memo(
-  ({ currencyCode, modalSelectedCurrencies, setModalSelectedCurrencies }) => {
-    const { colorScheme } = useSelector(selectColorSchemeState);
+
+export const CurrencySelectorValue: FC<TProps> = React.memo(
+  ({ currencyCode }) => {
     const styles = useStyles();
 
-    const isActive = modalSelectedCurrencies.includes(currencyCode);
+    const { colorScheme } = useSelector(selectColorSchemeState);
+    const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+
+    const setSelectedCurrencies = useSetSelectedCurrencies();
+
+    const isActive = selectedCurrencies.includes(currencyCode);
 
     const onPressHandler = useOnPressHandler(
       isActive,
-      modalSelectedCurrencies,
+      selectedCurrencies,
       currencyCode,
-      setModalSelectedCurrencies,
+      setSelectedCurrencies,
     );
 
     const currencyName = l[currencyCode];
 
     return (
-      <View style={styles.currencyBlockWrapper}>
-        <ButtonWithIPadOSInteraction
-          hitSlop={5}
-          key={currencyCode}
-          containerStyle={styles.currencyBlock}
-          onPress={onPressHandler}>
-          <View style={styles.currencyInfoWrapper}>
-            <CountryFlag currencyCode={currencyCode} size={36} />
-            <View style={styles.currencyCodeNameWrapper}>
-              <Text style={styles.currencyCode}>{currencyCode}</Text>
-              <Text style={styles.currencyName}>{currencyName}</Text>
-            </View>
+      <ButtonWithIPadOSInteraction
+        hitSlop={5}
+        key={currencyCode}
+        containerStyle={styles.currencyBlock}
+        onPress={onPressHandler}>
+        <View style={styles.currencyInfoWrapper}>
+          <CountryFlag currencyCode={currencyCode} size={36} />
+          <View style={styles.currencyCodeNameWrapper}>
+            <Text style={styles.currencyCode}>{currencyCode}</Text>
+            <Text style={styles.currencyName}>{currencyName}</Text>
           </View>
-          <AnimatedFlipIcon
-            nextState={isActive}
-            DefaultIcon={<View style={styles.deselectedIcon} />}
-            NextIcon={
-              <CheckIcon
-                size={30}
-                color={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
-              />
-            }
-          />
-        </ButtonWithIPadOSInteraction>
-      </View>
+        </View>
+        <AnimatedFlipIcon
+          nextState={isActive}
+          DefaultIcon={<View style={styles.deselectedIcon} />}
+          NextIcon={
+            <CheckIcon
+              size={30}
+              color={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
+            />
+          }
+        />
+      </ButtonWithIPadOSInteraction>
     );
   },
 );

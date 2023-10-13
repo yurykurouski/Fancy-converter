@@ -74,7 +74,7 @@ export const CurrencySelector = ({
       itemLayoutAnimation={Layout.delay(DEFAULT_ANIMATION_DURATION).duration(
         DEFAULT_ANIMATION_DURATION,
       )}
-      getItemLayout={(data, index) => ({
+      getItemLayout={(_, index) => ({
         length: 74,
         offset: 74 * index,
         index,
