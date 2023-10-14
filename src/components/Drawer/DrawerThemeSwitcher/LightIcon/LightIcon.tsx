@@ -1,43 +1,49 @@
 import React from 'react';
-import { Animated } from 'react-native';
-import sunCore from 'assets/icons/light_mode/sun_core.png';
+import { View } from 'react-native';
+import Animated, {
+  interpolate,
+  SharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 import sunRaysIcon from 'assets/icons/light_mode/sun_rays.png';
 
-import {
-  ANIMATED_OPACITY_LIGHT,
-  ANIMATED_RAYS_SCALE,
-  ANIMATED_ROTATE,
-} from '../DrawerThemeSwitcher.consts';
+import { useStyles } from './LightIcon.styles';
 
-import { styles } from './LightIcon.styles';
+type TRops = {
+  animatedValue: SharedValue<number>;
+};
 
-export const LightIcon = () => {
-  const { core, rays } = styles;
+export const LightIcon = ({ animatedValue }: TRops) => {
+  const styles = useStyles();
+
+  const animatedRays = useAnimatedStyle(() => {
+    const value = interpolate(animatedValue.value, [0, 135], [0, 1]);
+
+    return {
+      transform: [
+        {
+          rotate: `${animatedValue.value}deg`,
+        },
+        { scale: value },
+      ],
+    };
+  });
+
+  const opacityStyle = useAnimatedStyle(() => {
+    const value = interpolate(animatedValue.value, [0, 135], [0, 1]);
+
+    return {
+      opacity: value,
+    };
+  });
 
   return (
-    <>
+    <Animated.View style={[styles.container, opacityStyle]}>
       <Animated.Image
-        style={[
-          rays,
-          {
-            transform: [
-              {
-                rotate: ANIMATED_ROTATE.interpolate({
-                  inputRange: [0, 135],
-                  outputRange: ['0deg', '135deg'],
-                }),
-              },
-              { scale: ANIMATED_RAYS_SCALE },
-            ],
-          },
-          { opacity: ANIMATED_OPACITY_LIGHT },
-        ]}
+        style={[styles.rays, animatedRays]}
         source={sunRaysIcon}
       />
-      <Animated.Image
-        style={[core, { opacity: ANIMATED_OPACITY_LIGHT }]}
-        source={sunCore}
-      />
-    </>
+      <View style={styles.core} />
+    </Animated.View>
   );
 };

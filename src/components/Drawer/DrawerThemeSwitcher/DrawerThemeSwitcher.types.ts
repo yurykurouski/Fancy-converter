@@ -7,8 +7,4 @@ export type TDrawerThemeSwitcherProps = (props: {
   schemeBehavior: EColorSchemeBehavior;
 }) => JSX.Element;
 
-export type UseThemeSwitcherAnimations = () => {
-  animateThemeSwitcher: (colorScheme: ColorSchemeName) => void;
-};
-
-export type UseHandlePress = (setColorScheme: () => void) => () => void;
+export type TUseHandlePress = (setColorScheme: () => void) => () => void;

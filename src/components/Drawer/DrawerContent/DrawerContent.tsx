@@ -17,6 +17,7 @@ import {
   useSetColorScheme,
   useSetColorSchemeBehavior,
 } from 'hooks/store/ColorScheme';
+import debounce from 'lodash.debounce';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
@@ -47,10 +48,10 @@ export const DrawerContent = React.memo(() => {
     setColorScheme(systemScheme);
   };
 
-  const onSetColorScheme = () => {
+  const onSetColorScheme = debounce(() => {
     setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
     setColorSchemeBehavior(EColorSchemeBehavior.MANUAL);
-  };
+  }, 200);
 
   const ghIcon = colorScheme === 'dark' ? ghLightIcon : ghDarkIcon;
   const cupIcon = colorScheme === 'dark' ? cupDark : cupLight;

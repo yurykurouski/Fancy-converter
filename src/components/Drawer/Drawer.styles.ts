@@ -8,7 +8,7 @@ export const useStyles = () =>
       height: '100%',
       paddingHorizontal: 10,
       paddingBottom: bottom,
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
+      backgroundColor: `${theme.ACCENT_COLOR_DARKER}99`,
       zIndex: 99,
     },
     fadeContainer: {

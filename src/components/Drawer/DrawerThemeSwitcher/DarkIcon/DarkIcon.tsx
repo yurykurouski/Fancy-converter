@@ -1,45 +1,44 @@
 import React from 'react';
-import { Animated } from 'react-native';
+import Animated, {
+  interpolate,
+  SharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 import moonCore from 'assets/icons/dark_mode/moon_core.png';
 import moonStars from 'assets/icons/dark_mode/moon_stars.png';
 
-import {
-  ANIMATED_OPACITY_DARK,
-  ANIMATED_ROTATE,
-  ANIMATED_SCALE,
-  ANIMATED_STARS_SCALE,
-} from '../DrawerThemeSwitcher.consts';
-
 import { styles } from './DarkIcon.styles';
 
-export const DarkIcon = () => {
-  const { stars, moon } = styles;
+type TProps = {
+  animatedValue: SharedValue<number>;
+};
+
+export const DarkIcon = ({ animatedValue }: TProps) => {
+  const animatedContainerStyle = useAnimatedStyle(() => {
+    const value = interpolate(animatedValue.value, [0, 135], [1, 0]);
+
+    return {
+      transform: [{ rotate: `${animatedValue.value}deg` }],
+      opacity: value,
+    };
+  });
+
+  const animatedStarStyle = useAnimatedStyle(() => {
+    const value = interpolate(animatedValue.value, [0, 135], [1, 0]);
+
+    return {
+      transform: [{ scale: value }],
+    };
+  });
+
   return (
     <>
       <Animated.Image
-        style={[
-          moon,
-          {
-            transform: [
-              {
-                rotate: ANIMATED_ROTATE.interpolate({
-                  inputRange: [0, 135],
-                  outputRange: ['0deg', '135deg'],
-                }),
-              },
-              { scale: ANIMATED_SCALE },
-            ],
-          },
-          { opacity: ANIMATED_OPACITY_DARK },
-        ]}
+        style={[styles.moon, animatedContainerStyle]}
         source={moonCore}
       />
       <Animated.Image
-        style={[
-          stars,
-          { transform: [{ scale: ANIMATED_STARS_SCALE }] },
-          { opacity: ANIMATED_OPACITY_DARK },
-        ]}
+        style={[styles.stars, animatedStarStyle]}
         source={moonStars}
       />
     </>

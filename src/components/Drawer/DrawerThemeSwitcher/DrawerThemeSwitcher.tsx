@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { Pressable, Text } from 'react-native';
+import {
+  ReduceMotion,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
 import { EColorSchemeBehavior } from 'types';
 
 import { DarkIcon } from './DarkIcon';
-import {
-  useHandlePress,
-  useThemeSwitcherAnimations,
-} from './DrawerThemeSwitcher.hooks';
 import { TDrawerThemeSwitcherProps } from './DrawerThemeSwitcher.types';
 import { LightIcon } from './LightIcon';
 
@@ -19,18 +20,21 @@ export const DrawerThemeSwitcher: TDrawerThemeSwitcherProps = ({
 }) => {
   const styles = useStyles();
 
-  const { animateThemeSwitcher } = useThemeSwitcherAnimations();
-
-  const handlePress = useHandlePress(setColorScheme);
+  const animatedValue = useSharedValue(0);
 
   useEffect(() => {
-    animateThemeSwitcher(colorScheme);
-  }, [animateThemeSwitcher, colorScheme]);
+    const toValue = colorScheme === 'dark' ? 135 : 0;
+
+    animatedValue.value = withSpring(toValue, {
+      dampingRatio: 0.7,
+      reduceMotion: ReduceMotion.System,
+    });
+  }, [animatedValue, colorScheme]);
 
   return (
-    <Pressable onPress={handlePress} style={styles.container}>
-      <LightIcon />
-      <DarkIcon />
+    <Pressable onPress={setColorScheme} style={styles.container}>
+      <LightIcon animatedValue={animatedValue} />
+      <DarkIcon animatedValue={animatedValue} />
       {schemeBehavior === EColorSchemeBehavior.AUTO && (
         <Text style={styles.behaviorIndicator}>A</Text>
       )}
