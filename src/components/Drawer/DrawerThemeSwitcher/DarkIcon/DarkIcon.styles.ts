@@ -2,17 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   moon: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+    width: 40,
+    height: 40,
     position: 'absolute',
   },
   stars: {
-    width: '40%',
-    height: '40%',
+    width: 16,
+    height: 16,
     right: 20,
-    top: -0,
-    resizeMode: 'cover',
+    top: 0,
     position: 'absolute',
   },
 });

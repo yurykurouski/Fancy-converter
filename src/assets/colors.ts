@@ -1,6 +1,7 @@
 export enum ColorsDark {
   APP_BACKGROUND_PRIMARY = '#202124',
   FONT_PRIMARY_COLOR = 'white',
+  FONT_PRIMARY_COLOR_INVERTED = '#363535',
   FONT_SECONDARY_COLOR = 'white',
   FONT_COLOR_FADED = 'grey',
   ELEMENT_FADE_OR_BACKGROUND = '#323236',
@@ -16,6 +17,7 @@ export enum ColorsDark {
 export enum ColorsLight {
   APP_BACKGROUND_PRIMARY = '#f0f0f3',
   FONT_PRIMARY_COLOR = '#363535',
+  FONT_PRIMARY_COLOR_INVERTED = 'white',
   FONT_SECONDARY_COLOR = '#fafcfe',
   FONT_COLOR_FADED = 'grey',
   ELEMENT_FADE_OR_BACKGROUND = '#E1E1E3',

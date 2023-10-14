@@ -54,5 +54,9 @@ export const useDrawerBlurAnimatedStyles = (
   animatedPosition: SharedValue<number>,
 ) =>
   useAnimatedStyle(() => ({
-    opacity: interpolate(animatedPosition.value, [-220, 0], [0, 1]),
+    opacity: interpolate(
+      animatedPosition.value,
+      [-DRAWER_CONTENT_WIDTH, 0],
+      [0, 1],
+    ),
   }));

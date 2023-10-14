@@ -47,5 +47,6 @@
   "onboarding_third-screen_title": "And manage them on main screen",
   "onboarding_third-screen_subtitle-swipe": "Swipe to delete:",
   "onboarding_third-screen_subtitle-drag": "Drag to reorder:",
-  "currencies-bootomsheet_empty-search-result": "No result found"
+  "currencies-bootomsheet_empty-search-result": "No result found",
+  "settings_auto-theme_switch": "Use system theme"
 }

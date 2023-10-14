@@ -1,4 +1,3 @@
-export { useSetColorScheme } from './useSetColorScheme';
 export { useSetCoursesLoading } from './useSetCoursesLoading';
 export { useSetCoursesRequestErr } from './useSetCoursesRequestErr';
 export { useSetDrawerStatus } from './useSetDrawerStatus';

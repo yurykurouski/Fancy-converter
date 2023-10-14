@@ -4,7 +4,11 @@ import { DrawerSliceActions } from 'store/drawer/slices/DrawerSlice';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
-import { AvailableCurrenciesNames, TDispatchCallback } from 'types';
+import {
+  AvailableCurrenciesNames,
+  EColorSchemeBehavior,
+  TDispatchCallback,
+} from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 
 //SelectedCurrencies
@@ -48,13 +52,19 @@ export type TSetCoursesRequestError = TDispatchCallback<
 >;
 
 //DrawerStatus
+export type TSetDrawerStatus = TDispatchCallback<
+  boolean,
+  typeof DrawerSliceActions.setDrawerOpenedState.type
+>;
+
+//ColorScheme
 export type TSetColorScheme = TDispatchCallback<
   ColorSchemeName,
   typeof ColorSchemeActions.setColorScheme.type
 >;
-export type TSetDrawerStatus = TDispatchCallback<
-  boolean,
-  typeof DrawerSliceActions.setDrawerOpenedState.type
+export type TSetColorSchemeBehavior = TDispatchCallback<
+  EColorSchemeBehavior,
+  typeof ColorSchemeActions.setColorSchemeBehavior.type
 >;
 
 //FocusedCurrency

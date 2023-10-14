@@ -1,39 +1,57 @@
 import React from 'react';
-import { View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { Appearance, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import cupDark from 'assets/icons/cup_dark.png';
 import cupLight from 'assets/icons/cup_light.png';
 import ghDarkIcon from 'assets/icons/github-dark.png';
 import ghLightIcon from 'assets/icons/github-light.png';
 import tgIcon from 'assets/icons/telegram-logo.png';
+import { Switch } from 'components/common/Switch';
 import {} from 'constants';
 import {
   GITHUB_REPO_URL,
   PAYPAL_DONATION_URL,
   TG_CHANNEL_URL,
 } from 'constants/constants';
+import {
+  useSetColorScheme,
+  useSetColorSchemeBehavior,
+} from 'hooks/store/ColorScheme';
+import debounce from 'lodash.debounce';
+import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { ColorSchemeSlice } from 'store/colorScheme/slices/ColorSchemeSlice';
+import { EColorSchemeBehavior } from 'types';
 
 import { DrawerIcon } from '../DrawerIcon';
 import { DrawerThemeSwitcher } from '../DrawerThemeSwitcher';
 
 import { useButtonOnPress } from './DrawerContent.hooks';
 
-import { styles } from './DrawerContent.styles';
+import { useStyles } from './DrawerContent.styles';
 
 const ENABLE_TG_BUTTON = false;
 
 export const DrawerContent = React.memo(() => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
-  const dispatch = useDispatch();
+  const styles = useStyles();
+  const { colorScheme, behavior } = useSelector(selectColorSchemeState);
 
-  const setColorScheme = () =>
-    dispatch(
-      ColorSchemeSlice.actions.setColorScheme(
-        colorScheme === 'dark' ? 'light' : 'dark',
-      ),
+  const setColorSchemeBehavior = useSetColorSchemeBehavior();
+  const setColorScheme = useSetColorScheme();
+
+  const onBehaviorChange = (val: boolean) => {
+    const systemScheme = Appearance.getColorScheme();
+
+    setColorSchemeBehavior(
+      val ? EColorSchemeBehavior.AUTO : EColorSchemeBehavior.MANUAL,
     );
+
+    setColorScheme(systemScheme);
+  };
+
+  const onSetColorScheme = debounce(() => {
+    setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+    setColorSchemeBehavior(EColorSchemeBehavior.MANUAL);
+  }, 200);
 
   const ghIcon = colorScheme === 'dark' ? ghLightIcon : ghDarkIcon;
   const cupIcon = colorScheme === 'dark' ? cupDark : cupLight;
@@ -51,17 +69,30 @@ export const DrawerContent = React.memo(() => {
   );
 
   return (
-    <View style={styles.iconsContainer}>
-      <DrawerIcon onPress={openGH} icon={ghIcon} />
-      {ENABLE_TG_BUTTON ? (
-        <DrawerIcon onPress={openTG} icon={tgIcon} />
-      ) : (
-        <DrawerIcon onPress={openPayPal} icon={cupIcon} />
-      )}
-      <DrawerThemeSwitcher
-        colorScheme={colorScheme}
-        setColorScheme={setColorScheme}
-      />
+    <View style={styles.contentContainer}>
+      <View style={styles.controlsContainer}>
+        <Text style={styles.switchLabel}>
+          {l['settings_auto-theme_switch']}
+        </Text>
+        <Switch
+          value={behavior === EColorSchemeBehavior.AUTO}
+          onValueChange={onBehaviorChange}
+        />
+      </View>
+
+      <View style={styles.iconsContainer}>
+        <DrawerIcon onPress={openGH} icon={ghIcon} />
+        {ENABLE_TG_BUTTON ? (
+          <DrawerIcon onPress={openTG} icon={tgIcon} />
+        ) : (
+          <DrawerIcon onPress={openPayPal} icon={cupIcon} />
+        )}
+        <DrawerThemeSwitcher
+          colorScheme={colorScheme}
+          setColorScheme={onSetColorScheme}
+          schemeBehavior={behavior}
+        />
+      </View>
     </View>
   );
 });

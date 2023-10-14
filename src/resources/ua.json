@@ -47,5 +47,6 @@
   "onboarding_third-screen_title": "Та керувати ними на головному екрані",
   "onboarding_third-screen_subtitle-swipe": "Свайпніть, щоб видалити::",
   "onboarding_third-screen_subtitle-drag": "Перетягніть, щоб змінити порядок:",
-  "currencies-bootomsheet_empty-search-result": "Нічого не знайдено"
+  "currencies-bootomsheet_empty-search-result": "Нічого не знайдено",
+  "settings_auto-theme_switch": "Use system theme"
 }
