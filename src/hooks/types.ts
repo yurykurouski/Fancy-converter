@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { StyleSheet } from 'react-native';
+import { ColorSchemeName, StyleSheet } from 'react-native';
 import {
   HandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
@@ -54,7 +54,11 @@ export type UseHandleSwipeDirection = (
 ) => Handler;
 
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
-  mapStyles: (theme: Theme, insets: EdgeInsets) => T,
+  mapStyles: (
+    theme: Theme,
+    insets: EdgeInsets,
+    colorScheme: ColorSchemeName,
+  ) => T,
 ) => T;
 
 export type TActionsMap<T> = {

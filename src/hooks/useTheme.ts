@@ -18,6 +18,6 @@ export const useTheme: TUseTheme = mapStyles => {
   const insets = useSafeAreaInsets();
 
   return StyleSheet.create(
-    mapStyles(THEME_COLORS[colorScheme!], insets ?? defaultInsets),
+    mapStyles(THEME_COLORS[colorScheme!], insets ?? defaultInsets, colorScheme),
   );
 };

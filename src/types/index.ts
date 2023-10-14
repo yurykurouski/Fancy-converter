@@ -47,3 +47,8 @@ export enum EDimensions {
   WIDTH = 'width',
   HEIGHT = 'height',
 }
+
+export enum EColorSchemeBehavior {
+  MANUAL = 'MANUAL',
+  AUTO = 'AUTO',
+}

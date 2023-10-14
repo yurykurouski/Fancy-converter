@@ -1,21 +1,14 @@
 import { ColorSchemeName } from 'react-native';
+import { EColorSchemeBehavior } from 'types';
 
-type TSetColorScheme = (theme: ColorSchemeName) => {
-  payload: ColorSchemeName;
-  type: 'ColorScheme/setColorScheme';
-};
-
-export type DrawerThemeSwitcher = (props: {
+export type TDrawerThemeSwitcherProps = (props: {
   colorScheme: ColorSchemeName;
-  setColorScheme: TSetColorScheme;
+  setColorScheme: () => void;
+  schemeBehavior: EColorSchemeBehavior;
 }) => JSX.Element;
 
 export type UseThemeSwitcherAnimations = () => {
   animateThemeSwitcher: (colorScheme: ColorSchemeName) => void;
 };
 
-export type UseHandlePress = (
-  colorScheme: ColorSchemeName,
-  setColorScheme: TSetColorScheme,
-  animation: (colorScheme: ColorSchemeName) => void,
-) => () => void;
+export type UseHandlePress = (setColorScheme: () => void) => () => void;

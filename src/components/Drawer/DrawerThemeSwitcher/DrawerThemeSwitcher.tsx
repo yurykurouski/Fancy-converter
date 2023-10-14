@@ -1,31 +1,39 @@
-import React from 'react';
-import { Pressable } from 'react-native';
+import React, { useEffect } from 'react';
+import { Pressable, Text } from 'react-native';
+import { EColorSchemeBehavior } from 'types';
 
 import { DarkIcon } from './DarkIcon';
 import {
   useHandlePress,
   useThemeSwitcherAnimations,
 } from './DrawerThemeSwitcher.hooks';
-import { DrawerThemeSwitcher as Props } from './DrawerThemeSwitcher.types';
+import { TDrawerThemeSwitcherProps } from './DrawerThemeSwitcher.types';
 import { LightIcon } from './LightIcon';
 
-import { styles } from './DrawerThemeSwitcher.styles';
+import { useStyles } from './DrawerThemeSwitcher.styles';
 
-export const DrawerThemeSwitcher: Props = ({ colorScheme, setColorScheme }) => {
-  const { container } = styles;
+export const DrawerThemeSwitcher: TDrawerThemeSwitcherProps = ({
+  colorScheme,
+  setColorScheme,
+  schemeBehavior,
+}) => {
+  const styles = useStyles();
 
   const { animateThemeSwitcher } = useThemeSwitcherAnimations();
 
-  const handlePress = useHandlePress(
-    colorScheme,
-    setColorScheme,
-    animateThemeSwitcher,
-  );
+  const handlePress = useHandlePress(setColorScheme);
+
+  useEffect(() => {
+    animateThemeSwitcher(colorScheme);
+  }, [animateThemeSwitcher, colorScheme]);
 
   return (
-    <Pressable onPress={handlePress} style={container}>
+    <Pressable onPress={handlePress} style={styles.container}>
       <LightIcon />
       <DarkIcon />
+      {schemeBehavior === EColorSchemeBehavior.AUTO && (
+        <Text style={styles.behaviorIndicator}>A</Text>
+      )}
     </Pressable>
   );
 };

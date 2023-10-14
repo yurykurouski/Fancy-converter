@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Animated, Appearance, ColorSchemeName, Easing } from 'react-native';
+import { Animated, ColorSchemeName, Easing } from 'react-native';
 import { getCurrentColorTheme } from 'utils/getCurrentColorTheme';
 
 import {
@@ -37,30 +37,30 @@ export const useThemeSwitcherAnimations: UseThemeSwitcherAnimations = () => {
   const animateThemeSwitcher = (colorScheme: ColorSchemeName) =>
     Animated.parallel([
       Animated.timing(ANIMATED_ROTATE, {
-        toValue: colorScheme === 'light' ? -135 : 0,
+        toValue: colorScheme !== 'light' ? -135 : 0,
         duration: 800,
         useNativeDriver: true,
         easing: Easing.elastic(1),
       }),
       Animated.timing(ANIMATED_OPACITY_LIGHT, {
-        toValue: colorScheme === 'light' ? 1 : 0,
+        toValue: colorScheme !== 'light' ? 1 : 0,
         duration: 300,
         useNativeDriver: true,
         easing: Easing.elastic(1),
       }),
       Animated.timing(ANIMATED_OPACITY_DARK, {
-        toValue: colorScheme === 'light' ? 0 : 1,
+        toValue: colorScheme !== 'light' ? 0 : 1,
         duration: 300,
         useNativeDriver: true,
       }),
       Animated.timing(ANIMATED_RAYS_SCALE, {
-        toValue: colorScheme === 'light' ? 1 : 0.5,
+        toValue: colorScheme !== 'light' ? 1 : 0.5,
         duration: 600,
         useNativeDriver: true,
         easing: Easing.elastic(1),
       }),
       Animated.timing(ANIMATED_STARS_SCALE, {
-        toValue: colorScheme === 'light' ? 0.5 : 1,
+        toValue: colorScheme !== 'light' ? 0.5 : 1,
         duration: 600,
         useNativeDriver: true,
         easing: Easing.elastic(1),
@@ -79,21 +79,12 @@ export const useThemeSwitcherAnimations: UseThemeSwitcherAnimations = () => {
       ]),
     ]).start();
 
-  Appearance.addChangeListener(({ colorScheme }) =>
-    animateThemeSwitcher(colorScheme === 'light' ? 'dark' : 'light'),
-  );
-
   return {
     animateThemeSwitcher,
   };
 };
 
-export const useHandlePress: UseHandlePress = (
-  colorScheme,
-  setColorScheme,
-  animateThemeSwitcher,
-) =>
+export const useHandlePress: UseHandlePress = setColorScheme =>
   useCallback(() => {
-    setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
-    animateThemeSwitcher(colorScheme);
-  }, [setColorScheme, colorScheme, animateThemeSwitcher]);
+    setColorScheme();
+  }, [setColorScheme]);

@@ -3,7 +3,7 @@ import { ColorSchemeName } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { ColorSchemeSlice } from 'store/colorScheme/slices/ColorSchemeSlice';
 
-import { TSetColorScheme } from './types';
+import { TSetColorScheme } from '../types';
 
 export const useSetColorScheme = (): TSetColorScheme => {
   const dispatch = useDispatch();
