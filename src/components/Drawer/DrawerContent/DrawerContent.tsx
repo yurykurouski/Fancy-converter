@@ -1,6 +1,5 @@
 import React from 'react';
-import { Appearance, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Appearance, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import cupDark from 'assets/icons/cup_dark.png';
 import cupLight from 'assets/icons/cup_light.png';
@@ -18,6 +17,7 @@ import {
   useSetColorScheme,
   useSetColorSchemeBehavior,
 } from 'hooks/store/ColorScheme';
+import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
 
@@ -70,8 +70,8 @@ export const DrawerContent = React.memo(() => {
   return (
     <View style={styles.contentContainer}>
       <View style={styles.controlsContainer}>
-        <Text variant="bodyLarge" style={styles.switchLabel}>
-          Use system theme
+        <Text style={styles.switchLabel}>
+          {l['settings_auto-theme_switch']}
         </Text>
         <Switch
           value={behavior === EColorSchemeBehavior.AUTO}
