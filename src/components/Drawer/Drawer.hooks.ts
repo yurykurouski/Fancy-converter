@@ -62,6 +62,6 @@ export const useDrawerBlurAnimatedStyles = (
     opacity: interpolate(
       animatedPosition.value,
       [-DRAWER_CONTENT_WIDTH, 0],
-      [0, 1],
+      [0, 0.9],
     ),
   }));
