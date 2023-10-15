@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Gesture } from 'react-native-gesture-handler';
 import {
   interpolate,
@@ -14,31 +15,35 @@ import { DRAWER_CONTENT_WIDTH } from './Drawer.constants';
 export const usePanGesture = (animatedPosition: SharedValue<number>) => {
   const setIsDrawerOpened = useSetDrawerStatus();
 
-  return Gesture.Pan()
-    .onUpdate(nativeEvent => {
-      const { translationX } = nativeEvent;
+  return useMemo(
+    () =>
+      Gesture.Pan()
+        .onUpdate(nativeEvent => {
+          const { translationX } = nativeEvent;
 
-      if (translationX > 0) {
-        return;
-      }
+          if (translationX > 0) {
+            return;
+          }
 
-      animatedPosition.value = translationX;
-    })
-    .onEnd(nativeEvent => {
-      const { translationX, velocityX } = nativeEvent;
+          animatedPosition.value = translationX;
+        })
+        .onEnd(nativeEvent => {
+          const { translationX, velocityX } = nativeEvent;
 
-      if (translationX < -80 || velocityX < -800) {
-        animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
-          duration: DEFAULT_ANIMATION_DURATION,
-        });
+          if (translationX < -80 || velocityX < -800) {
+            animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
+              duration: DEFAULT_ANIMATION_DURATION,
+            });
 
-        runOnJS(setIsDrawerOpened)(false);
-      } else {
-        animatedPosition.value = withTiming(0, {
-          duration: DEFAULT_ANIMATION_DURATION,
-        });
-      }
-    });
+            runOnJS(setIsDrawerOpened)(false);
+          } else {
+            animatedPosition.value = withTiming(0, {
+              duration: DEFAULT_ANIMATION_DURATION,
+            });
+          }
+        }),
+    [animatedPosition, setIsDrawerOpened],
+  );
 };
 
 export const useDrawerAnimatedStyles = (

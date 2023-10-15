@@ -14,8 +14,6 @@ import {
   TGetCoursesForSelectedCurrencies,
 } from 'utils/utils.types';
 
-import { SWIPE_DIRECTIONS } from '../constants';
-
 import { TSetCoursesLoading } from './store/types';
 
 type ReloadCourses = () => void;
@@ -47,11 +45,6 @@ export type TUseFilteredCourseBySelectedCurrencies = (
 export type Handler = (
   e: HandlerStateChangeEvent<PanGestureHandlerEventPayload>,
 ) => void;
-
-export type UseHandleSwipeDirection = (
-  handler: () => void,
-  direction: SWIPE_DIRECTIONS,
-) => Handler;
 
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
   mapStyles: (
