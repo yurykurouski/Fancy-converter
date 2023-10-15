@@ -1,7 +1,9 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { BackHandler, Keyboard, Vibration } from 'react-native';
+import { Gesture } from 'react-native-gesture-handler';
 import {
   interpolate,
+  runOnJS,
   SharedValue,
   useAnimatedStyle,
   useSharedValue,
@@ -9,10 +11,7 @@ import {
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
-import {
-  DEFAULT_ANIMATION_DURATION,
-  VIBRATION_DURATION,
-} from 'constants/constants';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { HOUR_IN_MS } from 'constants/constants';
 import { useLoadCourses, useSetDrawerStatus } from 'hooks';
 import {
@@ -42,7 +41,7 @@ export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = () => {
   }, [animatedPosition, setIsDrawerOpened]);
 
   const openDrawer = useCallback(() => {
-    Vibration.vibrate(VIBRATION_DURATION);
+    Vibration.vibrate(1);
     Keyboard.dismiss();
 
     animatedPosition.value = withTiming(0, {
@@ -127,4 +126,34 @@ export const useUpdateCourses = () => {
       loadCourses();
     }
   }, [lastUpdated, loadCourses]);
+};
+
+export const useOpedDrawerGesture = (animatedPosition: SharedValue<number>) => {
+  const setIsDrawerOpened = useSetDrawerStatus();
+
+  return useMemo(
+    () =>
+      Gesture.Pan()
+        .onUpdate(e => {
+          if (e.translationX < 0) return;
+
+          animatedPosition.value = -DRAWER_CONTENT_WIDTH + e.translationX;
+        })
+        .onEnd(e => {
+          const { translationX, velocityX } = e;
+
+          if (translationX > 100 || velocityX > 800) {
+            animatedPosition.value = withTiming(0, {
+              duration: DEFAULT_ANIMATION_DURATION,
+            });
+
+            runOnJS(setIsDrawerOpened)(true);
+          } else {
+            animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
+              duration: DEFAULT_ANIMATION_DURATION,
+            });
+          }
+        }),
+    [animatedPosition, setIsDrawerOpened],
+  );
 };

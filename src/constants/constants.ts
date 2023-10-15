@@ -10,21 +10,6 @@ export const OPERATION_TYPE_IN = 'in';
 //todo rename
 export const INPUT_VALIDATION_REGEXP = new RegExp('^[0-9]*.[0-9]*$');
 
-export enum SWIPE_DIRECTIONS {
-  UP = 'UP',
-  DOWN = 'DOWN',
-  LEFT = 'LEFT',
-  RIGHT = 'RIGHT',
-}
-
-export const HORIZONTAL_SWIPES = [
-  SWIPE_DIRECTIONS.LEFT,
-  SWIPE_DIRECTIONS.RIGHT,
-];
-export const VERTICAL_SWIPES = [SWIPE_DIRECTIONS.UP, SWIPE_DIRECTIONS.DOWN];
-
-export const VIBRATION_DURATION = 30;
-
 export const GITHUB_REPO_URL =
   'https://github.com/yurykurouski/Fancy-converter';
 export const TG_CHANNEL_URL = 'https://t.me/fancyconverter';
