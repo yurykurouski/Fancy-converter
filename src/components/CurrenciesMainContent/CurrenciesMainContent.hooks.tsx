@@ -135,7 +135,8 @@ export const useOpedDrawerGesture = (animatedPosition: SharedValue<number>) => {
     () =>
       Gesture.Pan()
         .onUpdate(e => {
-          if (e.translationX < 0) return;
+          if (e.translationX < 0 || e.translationX >= DRAWER_CONTENT_WIDTH)
+            return;
 
           animatedPosition.value = -DRAWER_CONTENT_WIDTH + e.translationX;
         })

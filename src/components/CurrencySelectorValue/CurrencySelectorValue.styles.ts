@@ -11,6 +11,7 @@ export const useStyles = () =>
       paddingVertical: 14,
       paddingHorizontal: 10,
       borderRadius: 20,
+      overflow: 'hidden',
     },
     currencyInfoWrapper: {
       flexDirection: 'row',

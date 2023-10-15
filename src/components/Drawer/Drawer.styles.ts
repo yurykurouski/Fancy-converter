@@ -8,15 +8,12 @@ export const useStyles = () =>
       height: '100%',
       paddingHorizontal: 10,
       paddingBottom: bottom,
-      backgroundColor: `${theme.ACCENT_COLOR_DARKER}99`,
+      backgroundColor: theme.ACCENT_COLOR_DARKER,
       zIndex: 99,
     },
     fadeContainer: {
       ...StyleSheet.absoluteFillObject,
+      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_DARKER,
       zIndex: 4,
-    },
-    fade: {
-      ...StyleSheet.absoluteFillObject,
-      zIndex: 3,
     },
   }));
