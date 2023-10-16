@@ -12,7 +12,6 @@ const useStyles = () =>
       justifyContent: 'flex-end',
       alignItems: 'center',
       paddingVertical: 6,
-      marginBottom: 70,
     },
     text: {
       color: theme.FONT_COLOR_FADED,
