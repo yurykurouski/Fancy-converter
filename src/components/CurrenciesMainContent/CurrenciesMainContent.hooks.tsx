@@ -3,6 +3,7 @@ import { BackHandler, Keyboard, Vibration } from 'react-native';
 import { Gesture } from 'react-native-gesture-handler';
 import {
   interpolate,
+  ReduceMotion,
   runOnJS,
   SharedValue,
   useAnimatedStyle,
@@ -152,6 +153,7 @@ export const useOpedDrawerGesture = (animatedPosition: SharedValue<number>) => {
           } else {
             animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
               duration: DEFAULT_ANIMATION_DURATION,
+              reduceMotion: ReduceMotion.System,
             });
           }
         }),

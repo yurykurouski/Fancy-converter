@@ -1,11 +1,9 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme((_, { top, bottom }) => ({
+  useTheme((_, { top }) => ({
     container: {
       paddingHorizontal: 10,
-      marginBottom: bottom,
-      flex: 1,
     },
     headerComponent: {
       marginBottom: 12,

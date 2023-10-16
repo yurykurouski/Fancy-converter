@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { GestureDetector } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { CurrenciesBottomSheet, Drawer, Header } from 'components';
@@ -13,11 +13,11 @@ import {
   useUpdateCourses,
 } from './CurrenciesMainContent.hooks';
 
-const style = StyleSheet.create({
-  container: { flex: 1 },
-});
+import { useStyles } from './CurrenciesMainContent.styles';
 
 export const CurrenciesMainContent = React.memo(() => {
+  const styles = useStyles();
+
   const [isHeaderBlurred, setIsHeaderBlurred] = useState<boolean>(false);
 
   const { animatedPosition, closeDrawer, openDrawer } =
@@ -31,13 +31,14 @@ export const CurrenciesMainContent = React.memo(() => {
 
   return (
     <>
-      <GestureDetector gesture={panGesture}>
-        <Animated.View style={[style.container, animatedScreenStyle]}>
-          <Header onOpenDrawer={openDrawer} isHeaderBlurred={isHeaderBlurred} />
-          <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
-          <CurrenciesBottomSheet />
-        </Animated.View>
-      </GestureDetector>
+      <Animated.View style={[styles.container, animatedScreenStyle]}>
+        <Header onOpenDrawer={openDrawer} isHeaderBlurred={isHeaderBlurred} />
+        <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
+        <GestureDetector gesture={panGesture}>
+          <View style={styles.gestureHandler} />
+        </GestureDetector>
+        <CurrenciesBottomSheet />
+      </Animated.View>
       <Drawer animatedPosition={animatedPosition} closeDrawer={closeDrawer} />
     </>
   );

@@ -67,7 +67,8 @@ export const CurrenciesBottomSheet = React.memo(() => {
       backgroundComponent={BottomSheetBackground}
       backgroundStyle={styles.backgroundStyle}
       containerStyle={styles.containerStyle}
-      keyboardBehavior="extend">
+      keyboardBehavior="extend"
+      animateOnMount={false}>
       <BottomSheetSectionList
         style={styles.listContainer}
         sections={sectionsData}
