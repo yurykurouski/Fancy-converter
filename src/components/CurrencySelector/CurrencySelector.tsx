@@ -1,16 +1,18 @@
 import React, { Dispatch, SetStateAction, useContext } from 'react';
 import { ListRenderItem, RefreshControl, View } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { Layout } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CurrencyInputValue } from 'components';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { NotificationContext } from 'context';
 import { useGetCurrenciesExchangeCourse } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { AvailableCurrenciesNames } from 'types';
+import { isIos } from 'utils';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
 import { SeparatorComponent } from './components/SeparatorComponent';
@@ -69,6 +71,13 @@ export const CurrencySelector = ({
       }
       ListHeaderComponent={<View style={styles.headerComponent} />}
       showsVerticalScrollIndicator={false}
+      itemLayoutAnimation={
+        isIos
+          ? Layout.delay(DEFAULT_ANIMATION_DURATION).duration(
+              DEFAULT_ANIMATION_DURATION,
+            )
+          : undefined
+      }
       getItemLayout={(_, index) => ({
         length: 74,
         offset: 74 * index,
