@@ -8,7 +8,6 @@ import {
   TUseCurrencyInputHandlers,
   TUseHandleLongPressParams,
   TUseOnContainerPressParams,
-  UseHandleDeletePress,
 } from './CurrencyInputValue.types';
 
 export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
@@ -103,33 +102,6 @@ export const useFormattedValue = (value: string | null): string => {
     ? `${formatted.reverse().join('')}.${fraction}`
     : `${formatted.reverse().join('')}`;
 };
-
-//odd
-export const useHandleDeletePress = ({
-  setIsReadyToDelete,
-  selectedCurrencies,
-  currencyCode,
-  setSelectedCurrencies,
-  startNotification,
-}: UseHandleDeletePress) =>
-  useCallback(() => {
-    setIsReadyToDelete(false);
-
-    const filteredCurrencies = selectedCurrencies.filter(
-      el => el !== currencyCode,
-    );
-    setSelectedCurrencies(filteredCurrencies);
-
-    startNotification?.(
-      `${currencyCode} ${l['currencies_main.currency_deleted']}`,
-    );
-  }, [
-    currencyCode,
-    selectedCurrencies,
-    setIsReadyToDelete,
-    setSelectedCurrencies,
-    startNotification,
-  ]);
 
 export const useOnContainerPress = ({
   isInEditMode,

@@ -1,13 +1,11 @@
-import { Dispatch, RefObject, SetStateAction } from 'react';
+import { RefObject } from 'react';
 import { TextInput } from 'react-native';
-import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
 import {
   TAddToSelectedCurrenciesInEdit,
   TRemoveFromSelectedCurrenciesInEdit,
   TSetFocusedCurrencyName,
   TSetFocusedCurrencyValue,
   TSetSelectedCurrEditMode,
-  TSetSelectedCurrencies,
 } from 'hooks/store/types';
 import { AvailableCurrenciesNames } from 'types';
 
@@ -37,14 +35,6 @@ export type TUseConvertedValues = (
   course: number | undefined,
   focusedCurrencyCourse: number | undefined,
 ) => string;
-
-export type UseHandleDeletePress = {
-  setIsReadyToDelete: Dispatch<SetStateAction<boolean>>;
-  selectedCurrencies: AvailableCurrenciesNames[];
-  currencyCode: AvailableCurrenciesNames;
-  setSelectedCurrencies: TSetSelectedCurrencies;
-  startNotification: ShowMessage | null;
-};
 
 export type TUseOnContainerPressParams = {
   isInEditMode: boolean;

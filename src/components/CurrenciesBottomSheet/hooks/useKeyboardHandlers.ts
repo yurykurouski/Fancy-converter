@@ -3,6 +3,7 @@ import { BackHandler, Keyboard } from 'react-native';
 
 import { UseKeyboardHandlers } from '../CurrenciesBottomSheet.types';
 
+//TODO: add handler for back press
 export const useKeyboardHandlers: UseKeyboardHandlers = (
   isExpanded,
   sheetRef,

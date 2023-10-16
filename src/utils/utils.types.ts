@@ -14,13 +14,4 @@ export type ShowNoConnectionAlert = (
   saveDate?: string | null,
 ) => void;
 
-export type CompareDateByHour = (
-  currentDate: Date,
-  lastUpdateDate: Date,
-) => boolean;
-
-export type GetIsCoursesCheckedLastHour = (
-  currentDate: Date,
-) => Promise<boolean>;
-
 export type TGetSaveDateReadable = (currentDate: Date) => string;

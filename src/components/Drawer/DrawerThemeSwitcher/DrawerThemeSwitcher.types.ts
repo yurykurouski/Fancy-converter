@@ -6,5 +6,3 @@ export type TDrawerThemeSwitcherProps = (props: {
   setColorScheme: () => void;
   schemeBehavior: EColorSchemeBehavior;
 }) => JSX.Element;
-
-export type TUseHandlePress = (setColorScheme: () => void) => () => void;
