@@ -1,13 +1,18 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
-import BottomSheet, { BottomSheetSectionList } from '@gorhom/bottom-sheet';
+import BottomSheet, {
+  BottomSheetFlatList,
+  BottomSheetFlatListMethods,
+  BottomSheetSectionList,
+  WINDOW_WIDTH,
+} from '@gorhom/bottom-sheet';
 import { useWindowDimensionChange } from 'hooks';
 import { useSetSetBottomSheetStatus } from 'hooks/store/UIStatus';
 import currencies from 'resources/avaliable-currencies';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { selectUIStatus } from 'store/ui/selectors';
-import { EDimensions } from 'types';
+import { ECurrencyType, EDimensions } from 'types';
 import { groupByName, isIos, makeSectionsData } from 'utils';
 
 import { BottomSheetEmpty } from './components/BottomSheetEmpty';
@@ -28,20 +33,21 @@ export const CurrenciesBottomSheet = React.memo(() => {
   const [availableCurrencies, setAvailableCurrencies] = useState(currencies);
 
   const sheetRef = useRef<BottomSheet>(null);
+  const containerListRef = useRef<BottomSheetFlatListMethods>(null);
 
   const { bottom, top } = useSafeAreaInsets();
   const styles = useStyles();
   const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
-  const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+  const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
   const { bottomSheetIndex } = useSelector(selectUIStatus);
   const setBSStatus = useSetSetBottomSheetStatus();
 
   const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
 
   //*to prevent rerendering bottomsheet when selectedCurrencies changes
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 1), []);
+
+  // const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 1), []);
 
   const renderHandle = useRenderHandler(onPressHandler);
   const renderSectionHeader = useRenderSectionHeader();
@@ -63,9 +69,23 @@ export const CurrenciesBottomSheet = React.memo(() => {
     [bottom, top, windowHeight],
   );
 
+  useEffect(() => {
+    if (activeCurrencyType === ECurrencyType.FLAT) {
+      containerListRef.current?.scrollToIndex({
+        index: 0,
+        animated: true,
+      });
+    } else {
+      containerListRef.current?.scrollToIndex({
+        index: 1,
+        animated: true,
+      });
+    }
+  }, [activeCurrencyType]);
+
   return (
     <BottomSheet
-      index={initialIndex}
+      index={bottomSheetIndex}
       snapPoints={snapPoints}
       ref={sheetRef}
       handleHeight={10}
@@ -77,21 +97,38 @@ export const CurrenciesBottomSheet = React.memo(() => {
       keyboardBehavior="extend"
       onChange={setBSStatus}
       animateOnMount={false}>
-      <BottomSheetSectionList
-        style={styles.listContainer}
-        sections={sectionsData}
-        renderItem={renderItem}
-        renderSectionHeader={renderSectionHeader}
-        keyExtractor={item => item}
-        removeClippedSubviews={false}
-        ListEmptyComponent={BottomSheetEmpty}
-        overScrollMode="always"
-        stickySectionHeadersEnabled
-        getItemLayout={(data, index) => ({
-          length: 76,
-          offset: 76 * index,
+      <BottomSheetFlatList
+        ref={containerListRef}
+        getItemLayout={(_, index) => ({
+          length: WINDOW_WIDTH,
+          offset: WINDOW_WIDTH * index,
           index,
         })}
+        pointerEvents={'box-none'}
+        data={['flat', 'crypto']}
+        horizontal
+        scrollEnabled={false}
+        showsHorizontalScrollIndicator={false}
+        overScrollMode="never"
+        initialScrollIndex={activeCurrencyType === ECurrencyType.FLAT ? 0 : 1}
+        renderItem={() => (
+          <BottomSheetSectionList
+            contentContainerStyle={[styles.listContainer]}
+            sections={sectionsData}
+            renderItem={renderItem}
+            renderSectionHeader={renderSectionHeader}
+            keyExtractor={item => item}
+            removeClippedSubviews={false}
+            ListEmptyComponent={BottomSheetEmpty}
+            overScrollMode="always"
+            stickySectionHeadersEnabled
+            getItemLayout={(_, index) => ({
+              length: 76,
+              offset: 76 * index,
+              index,
+            })}
+          />
+        )}
       />
       <SearchField setAvailableCurrencies={setAvailableCurrencies} />
     </BottomSheet>

@@ -7,6 +7,7 @@ import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
   AvailableCurrenciesNames,
   EColorSchemeBehavior,
+  ECurrencyType,
   TDispatchCallback,
 } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
@@ -31,6 +32,10 @@ export type TSetSelectedCurrEditMode = TDispatchCallback<
 export type TClearSelectedCurrenciesInEdit = TDispatchCallback<
   undefined,
   typeof SelectedCurrenciesActions.clearSelectedCurrenciesInEdit.type
+>;
+export type TSetActiveCurrencyType = TDispatchCallback<
+  ECurrencyType,
+  typeof SelectedCurrenciesActions.setActiveCurrencyType.type
 >;
 
 //ExchangeCourses

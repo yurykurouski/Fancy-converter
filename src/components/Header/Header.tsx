@@ -6,8 +6,10 @@ import { THEME_COLORS } from 'assets/colors';
 import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectUIStatus } from 'store/ui/selectors';
 
 import { Counter } from './components/Counter';
+import { CurrencyTypeMenu } from './components/CurrencyTypeMenu';
 import { Menu } from './components/Menu';
 import { RemoveSweep } from './components/RemoveSweep';
 
@@ -24,15 +26,25 @@ export const Header = React.memo<Props>(({ onOpenDrawer, isHeaderBlurred }) => {
   const scrollRef = useRef<ScrollView>(null);
 
   const { colorScheme } = useSelector(selectColorSchemeState);
-  const { isInEditMode } = useSelector(selectSelectedCurrencies);
+  const { isInEditMode, activeCurrencyType } = useSelector(
+    selectSelectedCurrencies,
+  );
+  const { bottomSheetIndex } = useSelector(selectUIStatus);
+
+  const handleMenuPress = () => {
+    if (bottomSheetIndex) return;
+    onOpenDrawer();
+  };
 
   useEffect(() => {
-    if (isInEditMode) {
+    if (bottomSheetIndex) {
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
+    } else if (isInEditMode) {
       scrollRef.current?.scrollToEnd({ animated: true });
     } else {
-      scrollRef.current?.scrollTo({ y: 0, animated: true });
+      scrollRef.current?.scrollTo({ y: 32, animated: true });
     }
-  }, [isInEditMode]);
+  }, [bottomSheetIndex, isInEditMode]);
 
   return (
     <BlurView
@@ -47,12 +59,16 @@ export const Header = React.memo<Props>(({ onOpenDrawer, isHeaderBlurred }) => {
       pointerEvents="box-none">
       <View style={styles.container}>
         <ScrollView
+          contentOffset={{ x: 0, y: 32 }}
           ref={scrollRef}
           scrollEnabled={false}
           style={styles.scrollContainer}
           showsVerticalScrollIndicator={false}>
+          <View style={[styles.containerFrame]}>
+            <CurrencyTypeMenu activeCurrencyType={activeCurrencyType} />
+          </View>
           <View style={styles.containerFrame}>
-            <Menu onOpenDrawer={onOpenDrawer} />
+            <Menu onOpenDrawer={handleMenuPress} />
             <Text style={styles.header}>Fancy converter</Text>
           </View>
           <View style={styles.containerFrame}>

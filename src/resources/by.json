@@ -48,5 +48,7 @@
   "onboarding_third-screen_subtitle-swipe": "Правядзіце каб выдаліць",
   "onboarding_third-screen_subtitle-drag": "Перацягніце, каб змяніць парадак",
   "currencies-bootomsheet_empty-search-result": "Нічога не знойдзена",
-  "settings_auto-theme_switch": "Use system theme"
+  "settings_auto-theme_switch": "Use system theme",
+  "header-menu_currency_flat": "Flat",
+  "header-menu_currency_crypto": "Crypto"
 }

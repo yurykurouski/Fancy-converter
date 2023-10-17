@@ -52,3 +52,8 @@ export enum EColorSchemeBehavior {
   MANUAL = 'MANUAL',
   AUTO = 'AUTO',
 }
+
+export enum ECurrencyType {
+  FLAT = 'FLAT',
+  CRYPTO = 'CRYPTO',
+}

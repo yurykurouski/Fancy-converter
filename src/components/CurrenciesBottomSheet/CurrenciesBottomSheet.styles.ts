@@ -1,9 +1,11 @@
+import { WINDOW_WIDTH } from '@gorhom/bottom-sheet';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
   useTheme((_, { bottom }) => ({
     listContainer: {
       paddingHorizontal: 10,
+      width: WINDOW_WIDTH,
     },
     containerStyle: {
       marginBottom: bottom,
