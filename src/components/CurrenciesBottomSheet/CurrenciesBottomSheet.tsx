@@ -6,11 +6,13 @@ import { useWindowDimensionChange } from 'hooks';
 import { useSetSetBottomSheetStatus } from 'hooks/store/UIStatus';
 import currencies from 'resources/avaliable-currencies';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectUIStatus } from 'store/ui/selectors';
 import { EDimensions } from 'types';
 import { groupByName, isIos, makeSectionsData } from 'utils';
 
 import { BottomSheetEmpty } from './components/BottomSheetEmpty';
 import { SearchField } from './components/SearchField';
+import { useBackButtonHandler } from './hooks/useBackButtonHandler';
 import { BottomSheetBackground } from './BottomSheetBackground';
 import { getSnapPoints } from './CurrenciesBottomSheet.utils';
 import {
@@ -32,6 +34,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
   const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+  const { bottomSheetIndex } = useSelector(selectUIStatus);
   const setBSStatus = useSetSetBottomSheetStatus();
 
   const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
@@ -43,6 +46,8 @@ export const CurrenciesBottomSheet = React.memo(() => {
   const renderHandle = useRenderHandler(onPressHandler);
   const renderSectionHeader = useRenderSectionHeader();
   const renderItem = useRenderListItem();
+
+  useBackButtonHandler(bottomSheetIndex, sheetRef);
 
   const groupedData = useMemo(
     () => groupByName(availableCurrencies),
