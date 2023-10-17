@@ -3,7 +3,7 @@ import { ColorSchemeName, StyleSheet } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
 import { Theme } from 'assets/colors';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
-import { AvailableFlatNames } from 'types';
+import { AvailableFiatNames } from 'types';
 import { StorageKeys } from 'utils';
 import {
   OnlyCourses,
@@ -35,7 +35,7 @@ export type UseReloadCourses = (
 
 export type TUseFilteredCourseBySelectedCurrencies = (
   exchangeCourse: OnlyCourses | undefined,
-  selectedCurrencies: AvailableFlatNames[] | [],
+  selectedCurrencies: AvailableFiatNames[] | [],
 ) => ReturnType<TGetCoursesForSelectedCurrencies>;
 
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(

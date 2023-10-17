@@ -21,14 +21,14 @@ export const CurrencyTypeMenu = ({
       <ButtonWithIPadOSInteraction
         containerStyle={styles.container}
         onPress={() => {
-          setCurrencyType(ECurrencyType.FLAT);
+          setCurrencyType(ECurrencyType.FIAT);
         }}>
         <Text
           style={[
             styles.activeTab,
             activeCurrencyType === ECurrencyType.CRYPTO && styles.inactiveTab,
           ]}>
-          {l['header-menu_currency_flat']}
+          {l['header-menu_currency_fiat']}
         </Text>
       </ButtonWithIPadOSInteraction>
       <ButtonWithIPadOSInteraction
@@ -39,7 +39,7 @@ export const CurrencyTypeMenu = ({
         <Text
           style={[
             styles.activeTab,
-            activeCurrencyType === ECurrencyType.FLAT && styles.inactiveTab,
+            activeCurrencyType === ECurrencyType.FIAT && styles.inactiveTab,
           ]}>
           {l['header-menu_currency_crypto']}
         </Text>

@@ -7,7 +7,7 @@ import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/Selec
 import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
   AvailableCryptoNames,
-  AvailableFlatNames,
+  AvailableFiatNames,
   EColorSchemeBehavior,
   ECurrencyType,
   TDispatchCallback,
@@ -16,15 +16,15 @@ import { OnlyCourses } from 'utils/utils.types';
 
 //SelectedCurrencies
 export type TSetSelectedCurrencies = TDispatchCallback<
-  AvailableFlatNames[],
+  AvailableFiatNames[],
   typeof SelectedCurrenciesActions.setSelectedCurrencies.type
 >;
 export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
-  AvailableFlatNames,
+  AvailableFiatNames,
   typeof SelectedCurrenciesActions.addToSelectedCurrenciesInEdit.type
 >;
 export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
-  AvailableFlatNames,
+  AvailableFiatNames,
   typeof SelectedCurrenciesActions.removeFromSelectedCurrenciesInEdit.type
 >;
 export type TSetSelectedCurrEditMode = TDispatchCallback<
@@ -41,7 +41,7 @@ export type TSetActiveCurrencyType = TDispatchCallback<
 >;
 export type TSetFilteredCurrencies = (
   type: ECurrencyType,
-  value: AvailableFlatNames[] | AvailableCryptoNames[],
+  value: AvailableFiatNames[] | AvailableCryptoNames[],
 ) => Action<typeof SelectedCurrenciesActions.setFilteredCurrencies.type>;
 
 //ExchangeCourses
@@ -88,6 +88,6 @@ export type TSetFocusedCurrencyValue = TDispatchCallback<
   typeof FocusedCurrencySliceActions.setFocusedCurrencyValue.type
 >;
 export type TSetFocusedCurrencyName = TDispatchCallback<
-  AvailableFlatNames,
+  AvailableFiatNames,
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
 >;

@@ -1,13 +1,13 @@
 import { TSetSelectedCurrencies } from 'hooks/store/types';
-import { AvailableFlatNames } from 'types';
+import { AvailableFiatNames } from 'types';
 
 export type TUseOnPressHandler = (
   isActive: boolean,
-  modalSelectedCurrencies: AvailableFlatNames[],
-  currencyCode: AvailableFlatNames,
+  modalSelectedCurrencies: AvailableFiatNames[],
+  currencyCode: AvailableFiatNames,
   setModalSelectedCurrencies: TSetSelectedCurrencies,
 ) => () => void;
 
 export type TProps = {
-  currencyCode: AvailableFlatNames;
+  currencyCode: AvailableFiatNames;
 };

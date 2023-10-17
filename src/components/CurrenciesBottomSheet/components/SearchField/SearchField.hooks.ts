@@ -17,7 +17,7 @@ const searchHash: {
     [key: string]: TAvailableCurrencies[ECurrencyType];
   };
 } = {
-  [ECurrencyType.FLAT]: {},
+  [ECurrencyType.FIAT]: {},
   [ECurrencyType.CRYPTO]: {},
 };
 
