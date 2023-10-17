@@ -4,7 +4,7 @@ import en from 'resources/en.json';
 import ua from 'resources/ua.json';
 
 //TODO: move to resources
-export enum AvailableFlatNames {
+export enum AvailableFiatNames {
   USD = 'USD',
   EUR = 'EUR',
   RUB = 'RUB',
@@ -102,11 +102,11 @@ export enum EColorSchemeBehavior {
 }
 
 export enum ECurrencyType {
-  FLAT = 'FLAT',
+  FIAT = 'FIAT',
   CRYPTO = 'CRYPTO',
 }
 
 export type TAvailableCurrencies = {
-  [ECurrencyType.FLAT]: AvailableFlatNames[];
+  [ECurrencyType.FIAT]: AvailableFiatNames[];
   [ECurrencyType.CRYPTO]: AvailableCryptoNames[];
 };

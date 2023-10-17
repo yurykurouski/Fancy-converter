@@ -94,6 +94,6 @@
   "onboarding_third-screen_subtitle-drag": "Перетягніть, щоб змінити порядок:",
   "currencies-bootomsheet_empty-search-result": "Нічого не знайдено",
   "settings_auto-theme_switch": "Use system theme",
-  "header-menu_currency_flat": "Flat",
+  "header-menu_currency_fiat": "Fiat",
   "header-menu_currency_crypto": "Crypto"
 }

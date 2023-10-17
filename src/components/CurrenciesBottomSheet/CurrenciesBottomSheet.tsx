@@ -22,7 +22,7 @@ import { useBottomSheetOnPressHandler, useRenderHandler } from './hooks';
 
 import { useStyles } from './CurrenciesBottomSheet.styles';
 
-const TABS_DATA = [ECurrencyType.FLAT, ECurrencyType.CRYPTO];
+const TABS_DATA = [ECurrencyType.FIAT, ECurrencyType.CRYPTO];
 
 export const CurrenciesBottomSheet = React.memo(() => {
   const sheetRef = useRef<BottomSheet>(null);
@@ -53,7 +53,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
   );
 
   useEffect(() => {
-    if (activeCurrencyType === ECurrencyType.FLAT) {
+    if (activeCurrencyType === ECurrencyType.FIAT) {
       containerListRef.current?.scrollToIndex({
         index: 0,
         animated: true,
@@ -93,7 +93,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
         overScrollMode="never"
-        initialScrollIndex={activeCurrencyType === ECurrencyType.FLAT ? 0 : 1}
+        initialScrollIndex={activeCurrencyType === ECurrencyType.FIAT ? 0 : 1}
         renderItem={renderTabList}
       />
       <SearchField />
