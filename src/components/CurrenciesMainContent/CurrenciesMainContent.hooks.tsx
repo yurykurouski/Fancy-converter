@@ -19,9 +19,9 @@ import {
   useClearSelectedCurrenciesInEdit,
   useSetSelectedCurrEditMode,
 } from 'hooks/store/SelectedCurrencies';
-import { selectDrawerOpenStatus } from 'store/drawer/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectUIStatus } from 'store/ui/selectors';
 
 import {
   TUseHandleBackPress,
@@ -77,7 +77,7 @@ export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
   });
 
 export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
-  const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
+  const { isDrawerOpened } = useSelector(selectUIStatus);
   const { isInEditMode } = useSelector(selectSelectedCurrencies);
 
   const clearSelectedCurrenciesInEdit = useClearSelectedCurrenciesInEdit();

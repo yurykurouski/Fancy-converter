@@ -3,7 +3,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import { GestureDetector } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { selectDrawerOpenStatus } from 'store/drawer/selectors';
+import { selectUIStatus } from 'store/ui/selectors';
 
 import {
   useDrawerAnimatedStyles,
@@ -19,7 +19,7 @@ export const Drawer = React.memo<TProps>(
   ({ animatedPosition, closeDrawer }) => {
     const styles = useStyles();
 
-    const { isDrawerOpened } = useSelector(selectDrawerOpenStatus);
+    const { isDrawerOpened } = useSelector(selectUIStatus);
 
     const panGesture = usePanGesture(animatedPosition);
 
