@@ -11,7 +11,7 @@ import { useGetCurrenciesExchangeCourse } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 import { isIos } from 'utils';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
@@ -37,7 +37,7 @@ export const CurrencySelector = ({
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
 
-  const renderItem: ListRenderItem<AvailableCurrenciesNames> = ({ item }) => (
+  const renderItem: ListRenderItem<AvailableFlatNames> = ({ item }) => (
     <CurrencyInputValue currencyCode={item} />
   );
 

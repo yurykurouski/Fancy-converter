@@ -1,12 +1,12 @@
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 export type OnlyCourses = {
-  [key in AvailableCurrenciesNames]: number;
+  [key in AvailableFlatNames]: number;
 };
 
 export type TGetCoursesForSelectedCurrencies = (
   exchangeCourse: OnlyCourses,
-  selectedCurrencies: AvailableCurrenciesNames[] | [],
+  selectedCurrencies: AvailableFlatNames[] | [],
 ) => OnlyCourses | undefined;
 
 export type ShowNoConnectionAlert = (

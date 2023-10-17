@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 export type TUseBottomSheetOnPressHandler = (
   sheetRef: RefObject<BottomSheetMethods>,
@@ -13,5 +13,5 @@ export type TUseBackButtonHandler = (
 ) => void;
 
 export type UseRenderListItem = () => (
-  props: ListRenderItemInfo<AvailableCurrenciesNames>,
+  props: ListRenderItemInfo<AvailableFlatNames>,
 ) => JSX.Element;

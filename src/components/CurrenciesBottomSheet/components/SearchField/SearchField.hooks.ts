@@ -1,17 +1,17 @@
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import { debounce } from 'lodash';
 import currencies from 'resources/avaliable-currencies';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 import {
   filterCurrencies,
   mapCurrenciesNamesBasedOnLanguage,
 } from './SearchField.utils';
 
-const searchHash: { [key: string]: AvailableCurrenciesNames[] } = {};
+const searchHash: { [key: string]: AvailableFlatNames[] } = {};
 
 export const useHandleTextChange = (
-  setAvailableCurrencies: Dispatch<SetStateAction<AvailableCurrenciesNames[]>>,
+  setAvailableCurrencies: Dispatch<SetStateAction<AvailableFlatNames[]>>,
 ) =>
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useCallback(

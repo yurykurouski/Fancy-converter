@@ -4,7 +4,7 @@ import en from 'resources/en.json';
 import ua from 'resources/ua.json';
 
 //TODO: move to resources
-export enum AvailableCurrenciesNames {
+export enum AvailableFlatNames {
   USD = 'USD',
   EUR = 'EUR',
   RUB = 'RUB',
@@ -33,6 +33,55 @@ export enum AvailableCurrenciesNames {
   MKD = 'MKD',
   RON = 'RON',
   RSD = 'RSD',
+}
+
+export enum AvailableCryptoNames {
+  BTC = 'BTC',
+  ETH = 'ETH',
+  ETH2 = 'ETH2',
+  USDC = 'USDC',
+  ADA = 'ADA',
+  DAI = 'DAI',
+  WBTC = 'WBTC',
+  DOT = 'DOT',
+  LINK = 'LINK',
+  AVAX = 'AVAX',
+  ATOM = 'ATOM',
+  ETC = 'ETC',
+  USDT = 'USDT',
+  XRP = 'XRP',
+  SOL = 'SOL',
+  DOGE = 'DOGE',
+  MATIC = 'MATIC',
+  LTC = 'LTC',
+  BCH = 'BCH',
+  SHIB = 'SHIB',
+  XLM = 'XLM',
+  BUSD = 'BUSD',
+  HBAR = 'HBAR',
+  ICP = 'ICP',
+  APT = 'APT',
+  OP = 'OP',
+  ARB = 'ARB',
+  NEAR = 'NEAR',
+  STX = 'STX',
+  GRT = 'GRT',
+  INJ = 'INJ',
+  IMX = 'IMX',
+  XTZ = 'XTZ',
+  AXS = 'AXS',
+  SAND = 'SAND',
+  FIL = 'FIL',
+  LDO = 'LDO',
+  CRO = 'CRO',
+  VET = 'VET',
+  QNT = 'QNT',
+  AAVE = 'AAVE',
+  BSV = 'BSV',
+  ALGO = 'ALGO',
+  RNDR = 'RNDR',
+  EGLD = 'EGLD',
+  EOS = 'EOS',
 }
 
 export type TDispatchCallback<T, A> = (value: T) => Action<A>;

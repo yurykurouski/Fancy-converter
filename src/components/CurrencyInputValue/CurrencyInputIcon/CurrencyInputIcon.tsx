@@ -2,14 +2,14 @@ import React from 'react';
 import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { CountryFlag } from 'components/common/CountryFlag';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 export const CurrencyInputIcon = ({
   isSelectedForEdit,
   currencyCode,
 }: {
   isSelectedForEdit: boolean;
-  currencyCode: AvailableCurrenciesNames;
+  currencyCode: AvailableFlatNames;
 }) => (
   <AnimatedFlipIcon
     nextState={isSelectedForEdit}

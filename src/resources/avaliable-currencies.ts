@@ -1,5 +1,5 @@
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
-const availableCurrenciesNames = Object.values(AvailableCurrenciesNames).sort();
+const availableFlatNames = Object.values(AvailableFlatNames).sort();
 
-export default availableCurrenciesNames;
+export default availableFlatNames;

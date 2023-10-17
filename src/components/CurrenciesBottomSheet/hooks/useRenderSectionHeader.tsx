@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { SectionListData } from 'react-native';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 import { SectionTitle } from '../components';
 
 type TSection = {
   section: SectionListData<
-    AvailableCurrenciesNames,
+    AvailableFlatNames,
     {
       title: string;
-      data: AvailableCurrenciesNames[];
+      data: AvailableFlatNames[];
     }
   >;
 };

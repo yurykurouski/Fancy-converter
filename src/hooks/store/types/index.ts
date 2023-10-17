@@ -5,7 +5,7 @@ import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/Focuse
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
-  AvailableCurrenciesNames,
+  AvailableFlatNames,
   EColorSchemeBehavior,
   ECurrencyType,
   TDispatchCallback,
@@ -14,15 +14,15 @@ import { OnlyCourses } from 'utils/utils.types';
 
 //SelectedCurrencies
 export type TSetSelectedCurrencies = TDispatchCallback<
-  AvailableCurrenciesNames[],
+  AvailableFlatNames[],
   typeof SelectedCurrenciesActions.setSelectedCurrencies.type
 >;
 export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
-  AvailableCurrenciesNames,
+  AvailableFlatNames,
   typeof SelectedCurrenciesActions.addToSelectedCurrenciesInEdit.type
 >;
 export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
-  AvailableCurrenciesNames,
+  AvailableFlatNames,
   typeof SelectedCurrenciesActions.removeFromSelectedCurrenciesInEdit.type
 >;
 export type TSetSelectedCurrEditMode = TDispatchCallback<
@@ -82,6 +82,6 @@ export type TSetFocusedCurrencyValue = TDispatchCallback<
   typeof FocusedCurrencySliceActions.setFocusedCurrencyValue.type
 >;
 export type TSetFocusedCurrencyName = TDispatchCallback<
-  AvailableCurrenciesNames,
+  AvailableFlatNames,
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
 >;
