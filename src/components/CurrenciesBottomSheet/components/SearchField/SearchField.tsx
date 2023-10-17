@@ -1,30 +1,39 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Keyboard, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
+import { useSetFilteredCurrencies } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 
 import { useHandleTextChange } from './SearchField.hooks';
-import { TProps } from './SearchField.types';
 
 import { useStyles } from './SearchField.styles';
 
-export const SearchField: FC<TProps> = ({ setAvailableCurrencies }) => {
+export const SearchField = () => {
   const [isFocused, setIsFocused] = useState(false);
+
+  const ref = useRef();
 
   const dispatch = useDispatch();
 
   const { colorScheme } = useSelector(selectColorSchemeState);
-  const { searchValue } = useSelector(selectSelectedCurrencies);
+  const { searchValue, activeCurrencyType } = useSelector(
+    selectSelectedCurrencies,
+  );
+
+  const setFilteredCurrencies = useSetFilteredCurrencies();
 
   const styles = useStyles();
 
-  const handleTextChange = useHandleTextChange(setAvailableCurrencies);
+  const handleTextChange = useHandleTextChange(
+    setFilteredCurrencies,
+    activeCurrencyType,
+  );
 
   const handleChange = (value: string) => {
     handleTextChange(value);
@@ -39,10 +48,16 @@ export const SearchField: FC<TProps> = ({ setAvailableCurrencies }) => {
     return () => listener.remove();
   }, [isFocused]);
 
+  useEffect(() => {
+    handleTextChange(searchValue);
+  }, [handleTextChange, searchValue]);
+
   return (
     <View style={styles.inputContainer}>
       <View style={[styles.inputWrapper, isFocused && styles.inputFocused]}>
         <BottomSheetTextInput
+          //@ts-expect-error
+          ref={ref}
           value={searchValue}
           onChangeText={handleChange}
           style={styles.input}

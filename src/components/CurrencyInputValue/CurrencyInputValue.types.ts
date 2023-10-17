@@ -7,10 +7,10 @@ import {
   TSetFocusedCurrencyValue,
   TSetSelectedCurrEditMode,
 } from 'hooks/store/types';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 export type Props = {
-  currencyCode: AvailableCurrenciesNames;
+  currencyCode: AvailableFlatNames;
 };
 
 export type OnChangeTextHandler = (text: string) => void;
@@ -20,7 +20,7 @@ export type ContainerOnPressHandler = () => void;
 export type TUseCurrencyInputHandlers = (props: {
   setFocusedCurrencyValue: TSetFocusedCurrencyValue;
   setFocusedCurrencyName: TSetFocusedCurrencyName;
-  currencyCode: AvailableCurrenciesNames;
+  currencyCode: AvailableFlatNames;
   inputRef: RefObject<TextInput>;
   isInEditMode: boolean;
 }) => {
@@ -38,9 +38,9 @@ export type TUseConvertedValues = (
 
 export type TUseOnContainerPressParams = {
   isInEditMode: boolean;
-  currencyCode: AvailableCurrenciesNames;
+  currencyCode: AvailableFlatNames;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
-  selectedCurrenciesInEdit: AvailableCurrenciesNames[];
+  selectedCurrenciesInEdit: AvailableFlatNames[];
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
   setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
 };
@@ -49,5 +49,5 @@ export type TUseHandleLongPressParams = {
   isInEditMode: boolean;
   setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
-  currencyCode: AvailableCurrenciesNames;
+  currencyCode: AvailableFlatNames;
 };

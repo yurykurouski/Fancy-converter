@@ -26,35 +26,125 @@ import SEK from 'assets/flags/SEK.svg';
 import TRY from 'assets/flags/TRY.svg';
 import UAH from 'assets/flags/UAH.svg';
 import USD from 'assets/flags/USD.svg';
-import { AvailableCurrenciesNames } from 'types';
+import AAVE from 'assets/icons/crypto/AAVE.svg';
+import ADA from 'assets/icons/crypto/ADA.svg';
+import ALGO from 'assets/icons/crypto/ALGO.svg';
+import APT from 'assets/icons/crypto/APT.svg';
+import ARB from 'assets/icons/crypto/ARB.svg';
+import ATOM from 'assets/icons/crypto/ATOM.svg';
+import AVAX from 'assets/icons/crypto/AVAX.svg';
+import AXS from 'assets/icons/crypto/AXS.svg';
+import BCH from 'assets/icons/crypto/BCH.svg';
+import BSV from 'assets/icons/crypto/BSV.svg';
+import BTC from 'assets/icons/crypto/BTC.svg';
+import BUSD from 'assets/icons/crypto/BUSD.svg';
+import CRO from 'assets/icons/crypto/CRO.svg';
+import DAI from 'assets/icons/crypto/DAI.svg';
+import DOGE from 'assets/icons/crypto/DOGE.svg';
+import DOT from 'assets/icons/crypto/DOT.svg';
+import EGLD from 'assets/icons/crypto/EGLD.svg';
+import EOS from 'assets/icons/crypto/EOS.svg';
+import ETC from 'assets/icons/crypto/ETC.svg';
+import ETH from 'assets/icons/crypto/ETH.svg';
+import FIL from 'assets/icons/crypto/FIL.svg';
+import GRT from 'assets/icons/crypto/GRT.svg';
+import HBAR from 'assets/icons/crypto/HBAR.svg';
+import ICP from 'assets/icons/crypto/ICP.svg';
+import IMX from 'assets/icons/crypto/IMX.svg';
+import INJ from 'assets/icons/crypto/INJ.svg';
+import LDO from 'assets/icons/crypto/LDO.svg';
+import LINK from 'assets/icons/crypto/LINK.svg';
+import LTC from 'assets/icons/crypto/LTC.svg';
+import MATIC from 'assets/icons/crypto/MATIC.svg';
+import NEAR from 'assets/icons/crypto/NEAR.svg';
+import OP from 'assets/icons/crypto/OP.svg';
+import QNT from 'assets/icons/crypto/QNT.svg';
+import RNDR from 'assets/icons/crypto/RNDR.svg';
+import SAND from 'assets/icons/crypto/SAND.svg';
+import SHIB from 'assets/icons/crypto/SHIB.svg';
+import SOL from 'assets/icons/crypto/SOL.svg';
+import STX from 'assets/icons/crypto/STX.svg';
+import USDC from 'assets/icons/crypto/USDC.svg';
+import USDT from 'assets/icons/crypto/USDT.svg';
+import VET from 'assets/icons/crypto/VET.svg';
+import WBTC from 'assets/icons/crypto/WBTC.svg';
+import XLM from 'assets/icons/crypto/XLM.svg';
+import XRP from 'assets/icons/crypto/XRP.svg';
+import XTZ from 'assets/icons/crypto/XTZ.svg';
+import { AvailableCryptoNames, AvailableFlatNames } from 'types';
 
 export const flags = {
-  [AvailableCurrenciesNames.BYN]: BYN,
-  [AvailableCurrenciesNames.CAD]: CAD,
-  [AvailableCurrenciesNames.CHF]: CHF,
-  [AvailableCurrenciesNames.CNY]: CNY,
-  [AvailableCurrenciesNames.CZK]: CZK,
-  [AvailableCurrenciesNames.EUR]: EUR,
-  [AvailableCurrenciesNames.GBP]: GBP,
-  [AvailableCurrenciesNames.JPY]: JPY,
-  [AvailableCurrenciesNames.NOK]: NOK,
-  [AvailableCurrenciesNames.PLN]: PLN,
-  [AvailableCurrenciesNames.RUB]: RUB,
-  [AvailableCurrenciesNames.SEK]: SEK,
-  [AvailableCurrenciesNames.UAH]: UAH,
-  [AvailableCurrenciesNames.USD]: USD,
-  [AvailableCurrenciesNames.GEL]: GEL,
-  [AvailableCurrenciesNames.TRY]: TRY,
-  [AvailableCurrenciesNames.KZT]: KZT,
-  [AvailableCurrenciesNames.AMD]: AMD,
-  [AvailableCurrenciesNames.AZN]: AZN,
-  [AvailableCurrenciesNames.ALL]: ALL,
-  [AvailableCurrenciesNames.BAM]: BAM,
-  [AvailableCurrenciesNames.BGN]: BGN,
-  [AvailableCurrenciesNames.DKK]: DKK,
-  [AvailableCurrenciesNames.HRK]: HRK,
-  [AvailableCurrenciesNames.MDL]: MDL,
-  [AvailableCurrenciesNames.MKD]: MKD,
-  [AvailableCurrenciesNames.RON]: RON,
-  [AvailableCurrenciesNames.RSD]: RSD,
+  [AvailableFlatNames.BYN]: BYN,
+  [AvailableFlatNames.CAD]: CAD,
+  [AvailableFlatNames.CHF]: CHF,
+  [AvailableFlatNames.CNY]: CNY,
+  [AvailableFlatNames.CZK]: CZK,
+  [AvailableFlatNames.EUR]: EUR,
+  [AvailableFlatNames.GBP]: GBP,
+  [AvailableFlatNames.JPY]: JPY,
+  [AvailableFlatNames.NOK]: NOK,
+  [AvailableFlatNames.PLN]: PLN,
+  [AvailableFlatNames.RUB]: RUB,
+  [AvailableFlatNames.SEK]: SEK,
+  [AvailableFlatNames.UAH]: UAH,
+  [AvailableFlatNames.USD]: USD,
+  [AvailableFlatNames.GEL]: GEL,
+  [AvailableFlatNames.TRY]: TRY,
+  [AvailableFlatNames.KZT]: KZT,
+  [AvailableFlatNames.AMD]: AMD,
+  [AvailableFlatNames.AZN]: AZN,
+  [AvailableFlatNames.ALL]: ALL,
+  [AvailableFlatNames.BAM]: BAM,
+  [AvailableFlatNames.BGN]: BGN,
+  [AvailableFlatNames.DKK]: DKK,
+  [AvailableFlatNames.HRK]: HRK,
+  [AvailableFlatNames.MDL]: MDL,
+  [AvailableFlatNames.MKD]: MKD,
+  [AvailableFlatNames.RON]: RON,
+  [AvailableFlatNames.RSD]: RSD,
+  [AvailableCryptoNames.BTC]: BTC,
+  [AvailableCryptoNames.ETH]: ETH,
+  [AvailableCryptoNames.USDC]: USDC,
+  [AvailableCryptoNames.ADA]: ADA,
+  [AvailableCryptoNames.DAI]: DAI,
+  [AvailableCryptoNames.WBTC]: WBTC,
+  [AvailableCryptoNames.DOT]: DOT,
+  [AvailableCryptoNames.LINK]: LINK,
+  [AvailableCryptoNames.AVAX]: AVAX,
+  [AvailableCryptoNames.ATOM]: ATOM,
+  [AvailableCryptoNames.ETC]: ETC,
+  [AvailableCryptoNames.USDT]: USDT,
+  [AvailableCryptoNames.XRP]: XRP,
+  [AvailableCryptoNames.SOL]: SOL,
+  [AvailableCryptoNames.DOGE]: DOGE,
+  [AvailableCryptoNames.MATIC]: MATIC,
+  [AvailableCryptoNames.LTC]: LTC,
+  [AvailableCryptoNames.BCH]: BCH,
+  [AvailableCryptoNames.SHIB]: SHIB,
+  [AvailableCryptoNames.XLM]: XLM,
+  [AvailableCryptoNames.BUSD]: BUSD,
+  [AvailableCryptoNames.HBAR]: HBAR,
+  [AvailableCryptoNames.ICP]: ICP,
+  [AvailableCryptoNames.APT]: APT,
+  [AvailableCryptoNames.OP]: OP,
+  [AvailableCryptoNames.ARB]: ARB,
+  [AvailableCryptoNames.NEAR]: NEAR,
+  [AvailableCryptoNames.STX]: STX,
+  [AvailableCryptoNames.GRT]: GRT,
+  [AvailableCryptoNames.INJ]: INJ,
+  [AvailableCryptoNames.IMX]: IMX,
+  [AvailableCryptoNames.XTZ]: XTZ,
+  [AvailableCryptoNames.AXS]: AXS,
+  [AvailableCryptoNames.SAND]: SAND,
+  [AvailableCryptoNames.FIL]: FIL,
+  [AvailableCryptoNames.LDO]: LDO,
+  [AvailableCryptoNames.CRO]: CRO,
+  [AvailableCryptoNames.VET]: VET,
+  [AvailableCryptoNames.QNT]: QNT,
+  [AvailableCryptoNames.AAVE]: AAVE,
+  [AvailableCryptoNames.BSV]: BSV,
+  [AvailableCryptoNames.ALGO]: ALGO,
+  [AvailableCryptoNames.RNDR]: RNDR,
+  [AvailableCryptoNames.EGLD]: EGLD,
+  [AvailableCryptoNames.EOS]: EOS,
 };

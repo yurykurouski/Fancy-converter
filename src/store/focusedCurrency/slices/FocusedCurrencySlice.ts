@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 export type TFocusedCurrency = {
-  focusedCurrencyName: AvailableCurrenciesNames | undefined;
+  focusedCurrencyName: AvailableFlatNames | undefined;
   focusedCurrencyValue: string;
 };
 
@@ -17,7 +17,7 @@ export const FocusedCurrencySlice = createSlice({
   reducers: {
     setFocusedCurrencyName: (
       state,
-      action: PayloadAction<AvailableCurrenciesNames>,
+      action: PayloadAction<AvailableFlatNames>,
     ) => {
       state.focusedCurrencyName = action.payload;
     },

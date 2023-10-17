@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AvailableCurrenciesNames } from 'types';
+import availableCurrencies from 'resources/avaliable-currencies';
+import { AvailableFlatNames, ECurrencyType, TAvailableCurrencies } from 'types';
 
 export type TSelectedCurrenciesSlice = {
-  selectedCurrencies: AvailableCurrenciesNames[];
-  selectedCurrenciesInEdit: AvailableCurrenciesNames[];
+  selectedCurrencies: AvailableFlatNames[];
+  selectedCurrenciesInEdit: AvailableFlatNames[];
   isInEditMode: boolean;
   searchValue: string;
+  activeCurrencyType: ECurrencyType;
+  filteredCurrencies: TAvailableCurrencies;
 };
 
 const initialState: TSelectedCurrenciesSlice = {
@@ -13,6 +16,8 @@ const initialState: TSelectedCurrenciesSlice = {
   selectedCurrenciesInEdit: [],
   isInEditMode: false,
   searchValue: '',
+  activeCurrencyType: ECurrencyType.FLAT,
+  filteredCurrencies: availableCurrencies,
 };
 
 export const SelectedCurrenciesSlice = createSlice({
@@ -21,7 +26,7 @@ export const SelectedCurrenciesSlice = createSlice({
   reducers: {
     setSelectedCurrencies: (
       state,
-      action: PayloadAction<AvailableCurrenciesNames[]>,
+      action: PayloadAction<AvailableFlatNames[]>,
     ) => {
       state.selectedCurrencies = action.payload;
     },
@@ -32,13 +37,13 @@ export const SelectedCurrenciesSlice = createSlice({
 
     addToSelectedCurrenciesInEdit: (
       state,
-      action: PayloadAction<AvailableCurrenciesNames>,
+      action: PayloadAction<AvailableFlatNames>,
     ) => {
       state.selectedCurrenciesInEdit.push(action.payload);
     },
     removeFromSelectedCurrenciesInEdit: (
       state,
-      action: PayloadAction<AvailableCurrenciesNames>,
+      action: PayloadAction<AvailableFlatNames>,
     ) => {
       state.selectedCurrenciesInEdit = state.selectedCurrenciesInEdit.filter(
         el => el !== action.payload,
@@ -50,6 +55,23 @@ export const SelectedCurrenciesSlice = createSlice({
 
     searchCurrenciesValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
+    },
+
+    setFilteredCurrencies: (
+      state,
+      action: PayloadAction<{
+        type: ECurrencyType;
+        value: TAvailableCurrencies[ECurrencyType];
+      }>,
+    ) => {
+      const { type, value } = action.payload;
+
+      //@ts-expect-error
+      state.filteredCurrencies[type] = value;
+    },
+
+    setActiveCurrencyType: (state, action: PayloadAction<ECurrencyType>) => {
+      state.activeCurrencyType = action.payload;
     },
   },
 });

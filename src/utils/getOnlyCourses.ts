@@ -1,4 +1,4 @@
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
 import { OnlyCourses, TGetCoursesForSelectedCurrencies } from './utils.types';
 
@@ -8,7 +8,7 @@ export const getCoursesForSelectedCurrencies: TGetCoursesForSelectedCurrencies =
       return;
     }
 
-    return (selectedCurrencies as AvailableCurrenciesNames[]).reduce(
+    return (selectedCurrencies as AvailableFlatNames[]).reduce(
       (acc, currencyName) => ({
         ...acc,
         [currencyName]: onlyCourses[currencyName],

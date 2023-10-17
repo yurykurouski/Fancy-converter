@@ -1,16 +1,18 @@
 import React from 'react';
 import { View } from 'react-native';
 import { flags } from 'assets/flagsMap';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableFlatNames } from 'types';
 
-import { styles } from './CountryFlag.styles';
+import { useStyles } from './CountryFlag.styles';
 
 type Props = {
-  currencyCode: AvailableCurrenciesNames;
+  currencyCode: AvailableFlatNames;
   size?: number;
 };
 
 export const CountryFlag = React.memo<Props>(({ currencyCode, size }) => {
+  const styles = useStyles();
+
   const Flag = flags[currencyCode];
 
   return (

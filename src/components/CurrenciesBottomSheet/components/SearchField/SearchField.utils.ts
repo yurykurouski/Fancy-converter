@@ -1,8 +1,8 @@
 import { l } from 'resources/localization';
-import { AvailableCurrenciesNames } from 'types';
+import { AvailableCryptoNames, AvailableFlatNames } from 'types';
 
 export const mapCurrenciesNamesBasedOnLanguage = (
-  currencies: AvailableCurrenciesNames[],
+  currencies: AvailableFlatNames[] | AvailableCryptoNames[],
 ): string[] => currencies.map(curr => l[curr].toUpperCase());
 
 export const filterCurrencies = (

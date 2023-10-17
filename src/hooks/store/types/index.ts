@@ -1,27 +1,30 @@
 import { ColorSchemeName } from 'react-native';
+import { Action } from '@reduxjs/toolkit';
 import { ColorSchemeActions } from 'store/colorScheme/slices/ColorSchemeSlice';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
-  AvailableCurrenciesNames,
+  AvailableCryptoNames,
+  AvailableFlatNames,
   EColorSchemeBehavior,
+  ECurrencyType,
   TDispatchCallback,
 } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 
 //SelectedCurrencies
 export type TSetSelectedCurrencies = TDispatchCallback<
-  AvailableCurrenciesNames[],
+  AvailableFlatNames[],
   typeof SelectedCurrenciesActions.setSelectedCurrencies.type
 >;
 export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
-  AvailableCurrenciesNames,
+  AvailableFlatNames,
   typeof SelectedCurrenciesActions.addToSelectedCurrenciesInEdit.type
 >;
 export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
-  AvailableCurrenciesNames,
+  AvailableFlatNames,
   typeof SelectedCurrenciesActions.removeFromSelectedCurrenciesInEdit.type
 >;
 export type TSetSelectedCurrEditMode = TDispatchCallback<
@@ -32,6 +35,14 @@ export type TClearSelectedCurrenciesInEdit = TDispatchCallback<
   undefined,
   typeof SelectedCurrenciesActions.clearSelectedCurrenciesInEdit.type
 >;
+export type TSetActiveCurrencyType = TDispatchCallback<
+  ECurrencyType,
+  typeof SelectedCurrenciesActions.setActiveCurrencyType.type
+>;
+export type TSetFilteredCurrencies = (
+  type: ECurrencyType,
+  value: AvailableFlatNames[] | AvailableCryptoNames[],
+) => Action<typeof SelectedCurrenciesActions.setFilteredCurrencies.type>;
 
 //ExchangeCourses
 export type TSetCoursesLoading = TDispatchCallback<
@@ -77,6 +88,6 @@ export type TSetFocusedCurrencyValue = TDispatchCallback<
   typeof FocusedCurrencySliceActions.setFocusedCurrencyValue.type
 >;
 export type TSetFocusedCurrencyName = TDispatchCallback<
-  AvailableCurrenciesNames,
+  AvailableFlatNames,
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
 >;
