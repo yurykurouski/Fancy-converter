@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AvailableFlatNames, ECurrencyType } from 'types';
+import availableCurrencies from 'resources/avaliable-currencies';
+import { AvailableFlatNames, ECurrencyType, TAvailableCurrencies } from 'types';
 
 export type TSelectedCurrenciesSlice = {
   selectedCurrencies: AvailableFlatNames[];
@@ -7,6 +8,7 @@ export type TSelectedCurrenciesSlice = {
   isInEditMode: boolean;
   searchValue: string;
   activeCurrencyType: ECurrencyType;
+  filteredCurrencies: TAvailableCurrencies;
 };
 
 const initialState: TSelectedCurrenciesSlice = {
@@ -15,6 +17,7 @@ const initialState: TSelectedCurrenciesSlice = {
   isInEditMode: false,
   searchValue: '',
   activeCurrencyType: ECurrencyType.FLAT,
+  filteredCurrencies: availableCurrencies,
 };
 
 export const SelectedCurrenciesSlice = createSlice({
@@ -52,6 +55,19 @@ export const SelectedCurrenciesSlice = createSlice({
 
     searchCurrenciesValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
+    },
+
+    setFilteredCurrencies: (
+      state,
+      action: PayloadAction<{
+        type: ECurrencyType;
+        value: TAvailableCurrencies[ECurrencyType];
+      }>,
+    ) => {
+      const { type, value } = action.payload;
+
+      //@ts-expect-error
+      state.filteredCurrencies[type] = value;
     },
 
     setActiveCurrencyType: (state, action: PayloadAction<ECurrencyType>) => {

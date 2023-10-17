@@ -13,13 +13,16 @@ export const CurrencyTypeMenu = ({
   activeCurrencyType: ECurrencyType;
 }) => {
   const styles = useStyles();
+
   const setCurrencyType = useSetActiveCurrencyType();
 
   return (
     <>
       <ButtonWithIPadOSInteraction
         containerStyle={styles.container}
-        onPress={() => setCurrencyType(ECurrencyType.FLAT)}>
+        onPress={() => {
+          setCurrencyType(ECurrencyType.FLAT);
+        }}>
         <Text
           style={[
             styles.activeTab,
@@ -30,7 +33,9 @@ export const CurrencyTypeMenu = ({
       </ButtonWithIPadOSInteraction>
       <ButtonWithIPadOSInteraction
         containerStyle={styles.container}
-        onPress={() => setCurrencyType(ECurrencyType.CRYPTO)}>
+        onPress={() => {
+          setCurrencyType(ECurrencyType.CRYPTO);
+        }}>
         <Text
           style={[
             styles.activeTab,

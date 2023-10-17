@@ -1,36 +1,58 @@
-import { Dispatch, SetStateAction, useCallback } from 'react';
+//@ts-nocheck
+import { useCallback } from 'react';
+import { TSetFilteredCurrencies } from 'hooks/store/types';
 import { debounce } from 'lodash';
 import currencies from 'resources/avaliable-currencies';
-import { AvailableFlatNames } from 'types';
+import { ECurrencyType, TAvailableCurrencies } from 'types';
 
 import {
   filterCurrencies,
   mapCurrenciesNamesBasedOnLanguage,
 } from './SearchField.utils';
 
-const searchHash: { [key: string]: AvailableFlatNames[] } = {};
+//TODO: deal with types in this file :)
+
+const searchHash: {
+  [k in ECurrencyType]: {
+    [key: string]: TAvailableCurrencies[ECurrencyType];
+  };
+} = {
+  [ECurrencyType.FLAT]: {},
+  [ECurrencyType.CRYPTO]: {},
+};
 
 export const useHandleTextChange = (
-  setAvailableCurrencies: Dispatch<SetStateAction<AvailableFlatNames[]>>,
+  setFilteredCurrencies: TSetFilteredCurrencies,
+  activeCurrencyType: ECurrencyType,
 ) =>
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useCallback(
     debounce((value: string) => {
-      if (searchHash[value]) {
-        return setAvailableCurrencies(searchHash[value]);
+      if (searchHash[activeCurrencyType][value]) {
+        return setFilteredCurrencies(
+          activeCurrencyType,
+          searchHash[activeCurrencyType][value],
+        );
       }
 
       const valueUpperCase = value.trim().toUpperCase();
 
-      const filteredArray = currencies.filter((el, index) => {
-        const namesBasedOnLanguage =
-          mapCurrenciesNamesBasedOnLanguage(currencies)[index];
+      const filteredArray = currencies[activeCurrencyType].filter(
+        (el, index) => {
+          const namesBasedOnLanguage = mapCurrenciesNamesBasedOnLanguage(
+            currencies[activeCurrencyType],
+          )[index];
 
-        return filterCurrencies(el, valueUpperCase, namesBasedOnLanguage);
-      });
+          return filterCurrencies(el, valueUpperCase, namesBasedOnLanguage);
+        },
+      );
 
-      searchHash[value] = filteredArray;
-      setAvailableCurrencies(searchHash[value]);
+      //@ts-expect-error
+      searchHash[activeCurrencyType][value] = filteredArray;
+      setFilteredCurrencies(
+        activeCurrencyType,
+        searchHash[activeCurrencyType][value],
+      );
     }, 200),
-    [setAvailableCurrencies],
+    [setFilteredCurrencies, activeCurrencyType],
   );

@@ -1,37 +1,30 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import BottomSheet, {
   BottomSheetFlatList,
   BottomSheetFlatListMethods,
-  BottomSheetSectionList,
   WINDOW_WIDTH,
 } from '@gorhom/bottom-sheet';
 import { useWindowDimensionChange } from 'hooks';
 import { useSetSetBottomSheetStatus } from 'hooks/store/UIStatus';
-import currencies from 'resources/avaliable-currencies';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { selectUIStatus } from 'store/ui/selectors';
 import { ECurrencyType, EDimensions } from 'types';
-import { groupByName, isIos, makeSectionsData } from 'utils';
+import { isIos } from 'utils';
 
-import { BottomSheetEmpty } from './components/BottomSheetEmpty';
 import { SearchField } from './components/SearchField';
 import { useBackButtonHandler } from './hooks/useBackButtonHandler';
+import { useRenderBottomSheetTabList } from './hooks/useRenderBottomSheetTabList';
 import { BottomSheetBackground } from './BottomSheetBackground';
 import { getSnapPoints } from './CurrenciesBottomSheet.utils';
-import {
-  useBottomSheetOnPressHandler,
-  useRenderHandler,
-  useRenderListItem,
-  useRenderSectionHeader,
-} from './hooks';
+import { useBottomSheetOnPressHandler, useRenderHandler } from './hooks';
 
 import { useStyles } from './CurrenciesBottomSheet.styles';
 
-export const CurrenciesBottomSheet = React.memo(() => {
-  const [availableCurrencies, setAvailableCurrencies] = useState(currencies);
+const TABS_DATA = [ECurrencyType.FLAT, ECurrencyType.CRYPTO];
 
+export const CurrenciesBottomSheet = React.memo(() => {
   const sheetRef = useRef<BottomSheet>(null);
   const containerListRef = useRef<BottomSheetFlatListMethods>(null);
 
@@ -50,19 +43,9 @@ export const CurrenciesBottomSheet = React.memo(() => {
   // const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 1), []);
 
   const renderHandle = useRenderHandler(onPressHandler);
-  const renderSectionHeader = useRenderSectionHeader();
-  const renderItem = useRenderListItem();
+  const renderTabList = useRenderBottomSheetTabList();
 
   useBackButtonHandler(bottomSheetIndex, sheetRef);
-
-  const groupedData = useMemo(
-    () => groupByName(availableCurrencies),
-    [availableCurrencies],
-  );
-  const sectionsData = useMemo(
-    () => makeSectionsData(groupedData),
-    [groupedData],
-  );
 
   const snapPoints = useMemo(
     () => getSnapPoints(bottom, top, windowHeight),
@@ -105,32 +88,15 @@ export const CurrenciesBottomSheet = React.memo(() => {
           index,
         })}
         pointerEvents={'box-none'}
-        data={['flat', 'crypto']}
+        data={TABS_DATA}
         horizontal
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
         overScrollMode="never"
         initialScrollIndex={activeCurrencyType === ECurrencyType.FLAT ? 0 : 1}
-        renderItem={() => (
-          <BottomSheetSectionList
-            contentContainerStyle={[styles.listContainer]}
-            sections={sectionsData}
-            renderItem={renderItem}
-            renderSectionHeader={renderSectionHeader}
-            keyExtractor={item => item}
-            removeClippedSubviews={false}
-            ListEmptyComponent={BottomSheetEmpty}
-            overScrollMode="always"
-            stickySectionHeadersEnabled
-            getItemLayout={(_, index) => ({
-              length: 76,
-              offset: 76 * index,
-              index,
-            })}
-          />
-        )}
+        renderItem={renderTabList}
       />
-      <SearchField setAvailableCurrencies={setAvailableCurrencies} />
+      <SearchField />
     </BottomSheet>
   );
 });

@@ -1,10 +1,12 @@
 import { ColorSchemeName } from 'react-native';
+import { Action } from '@reduxjs/toolkit';
 import { ColorSchemeActions } from 'store/colorScheme/slices/ColorSchemeSlice';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
+  AvailableCryptoNames,
   AvailableFlatNames,
   EColorSchemeBehavior,
   ECurrencyType,
@@ -37,6 +39,10 @@ export type TSetActiveCurrencyType = TDispatchCallback<
   ECurrencyType,
   typeof SelectedCurrenciesActions.setActiveCurrencyType.type
 >;
+export type TSetFilteredCurrencies = (
+  type: ECurrencyType,
+  value: AvailableFlatNames[] | AvailableCryptoNames[],
+) => Action<typeof SelectedCurrenciesActions.setFilteredCurrencies.type>;
 
 //ExchangeCourses
 export type TSetCoursesLoading = TDispatchCallback<
