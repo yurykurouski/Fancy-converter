@@ -38,7 +38,6 @@ export enum AvailableFlatNames {
 export enum AvailableCryptoNames {
   BTC = 'BTC',
   ETH = 'ETH',
-  ETH2 = 'ETH2',
   USDC = 'USDC',
   ADA = 'ADA',
   DAI = 'DAI',
@@ -106,3 +105,8 @@ export enum ECurrencyType {
   FLAT = 'FLAT',
   CRYPTO = 'CRYPTO',
 }
+
+export type TAvailableCurrencies = {
+  [ECurrencyType.FLAT]: AvailableFlatNames[];
+  [ECurrencyType.CRYPTO]: AvailableCryptoNames[];
+};
