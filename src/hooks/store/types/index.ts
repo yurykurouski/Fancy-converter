@@ -1,9 +1,9 @@
 import { ColorSchemeName } from 'react-native';
 import { ColorSchemeActions } from 'store/colorScheme/slices/ColorSchemeSlice';
-import { DrawerSliceActions } from 'store/drawer/slices/DrawerSlice';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
+import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
   AvailableCurrenciesNames,
   EColorSchemeBehavior,
@@ -51,10 +51,10 @@ export type TSetCoursesRequestError = TDispatchCallback<
   typeof ExchangeCourseSliceActions.setRequestError.type
 >;
 
-//DrawerStatus
+//UIStatus
 export type TSetDrawerStatus = TDispatchCallback<
   boolean,
-  typeof DrawerSliceActions.setDrawerOpenedState.type
+  typeof UISliceActions.setDrawerOpenedState.type
 >;
 
 //ColorScheme

@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type TDrawerSlice = {
+export type TUISlice = {
   isDrawerOpened: boolean;
 };
 
-const initialState: TDrawerSlice = {
+const initialState: TUISlice = {
   isDrawerOpened: false,
 };
 
-export const DrawerSlice = createSlice({
-  name: 'DrawerStatus',
+export const UISlice = createSlice({
+  name: 'UIStatus',
   initialState,
   reducers: {
     setDrawerOpenedState: (state, action: PayloadAction<boolean>) => {
@@ -18,4 +18,4 @@ export const DrawerSlice = createSlice({
   },
 });
 
-export const { actions: DrawerSliceActions } = DrawerSlice;
+export const { actions: UISliceActions } = UISlice;
