@@ -1,9 +1,5 @@
 import { Dispatch } from 'react';
 import { ColorSchemeName, StyleSheet } from 'react-native';
-import {
-  HandlerStateChangeEvent,
-  PanGestureHandlerEventPayload,
-} from 'react-native-gesture-handler';
 import { EdgeInsets } from 'react-native-safe-area-context';
 import { Theme } from 'assets/colors';
 import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
@@ -42,10 +38,6 @@ export type TUseFilteredCourseBySelectedCurrencies = (
   selectedCurrencies: AvailableCurrenciesNames[] | [],
 ) => ReturnType<TGetCoursesForSelectedCurrencies>;
 
-export type Handler = (
-  e: HandlerStateChangeEvent<PanGestureHandlerEventPayload>,
-) => void;
-
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
   mapStyles: (
     theme: Theme,
@@ -57,7 +49,3 @@ export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
 export type TActionsMap<T> = {
   [key in StorageKeys]?: T;
 };
-
-export type TUseMultiGet<T> = (
-  actionsMap: TActionsMap<T>,
-) => () => Promise<void>;

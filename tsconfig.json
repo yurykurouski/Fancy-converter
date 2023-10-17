@@ -3,6 +3,9 @@
   "compilerOptions": {
     "jsx": "react-native",
     "baseUrl": "src", /* Base directory to resolve non-absolute module names. */
+    "types": [
+      "react-native",
+    ],
   },
   "typeRoots": [
     "./node_modules/@types"

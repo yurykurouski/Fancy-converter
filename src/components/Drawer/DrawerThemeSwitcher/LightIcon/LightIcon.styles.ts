@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
@@ -24,5 +23,3 @@ export const useStyles = () =>
       position: 'absolute',
     },
   }));
-
-export const styles = StyleSheet.create({});

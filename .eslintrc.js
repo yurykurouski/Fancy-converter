@@ -1,20 +1,13 @@
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    allowImportExportEverywhere: true,
-  },
   extends: [
     '@react-native',
     'plugin:prettier/recommended',
-    'plugin:import/typescript',
     'plugin:react-hooks/recommended',
-    'prettier',
     'plugin:sonarjs/recommended',
   ],
   plugins: [
     'eslint-plugin-simple-import-sort',
-    'prettier',
     'react-hooks',
     'unused-imports',
     'sonarjs',
@@ -23,13 +16,17 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'react/display-name': 'off',
-    'unused-imports/no-unused-imports': 'error',
     'no-console': 'warn',
-  },
-  settings: {
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
   },
   overrides: [
     {
