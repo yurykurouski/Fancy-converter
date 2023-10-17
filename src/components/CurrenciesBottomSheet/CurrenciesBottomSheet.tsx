@@ -3,6 +3,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import BottomSheet, { BottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { useWindowDimensionChange } from 'hooks';
+import { useSetSetBottomSheetStatus } from 'hooks/store/UIStatus';
 import currencies from 'resources/avaliable-currencies';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { EDimensions } from 'types';
@@ -31,6 +32,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
   const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+  const setBSStatus = useSetSetBottomSheetStatus();
 
   const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
 
@@ -68,6 +70,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
       backgroundStyle={styles.backgroundStyle}
       containerStyle={styles.containerStyle}
       keyboardBehavior="extend"
+      onChange={setBSStatus}
       animateOnMount={false}>
       <BottomSheetSectionList
         style={styles.listContainer}

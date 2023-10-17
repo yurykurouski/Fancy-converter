@@ -2,6 +2,7 @@ import { DEFAULT_API_URL } from '@env';
 import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/constants';
 
 import { RequestsInterface, Response } from './requests.types';
+
 class Requests implements RequestsInterface {
   response: Response;
 

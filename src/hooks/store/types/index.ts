@@ -56,6 +56,10 @@ export type TSetDrawerStatus = TDispatchCallback<
   boolean,
   typeof UISliceActions.setDrawerOpenedState.type
 >;
+export type TSetBSStatus = TDispatchCallback<
+  number,
+  typeof UISliceActions.setBottomSheetState.type
+>;
 
 //ColorScheme
 export type TSetColorScheme = TDispatchCallback<
