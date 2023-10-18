@@ -15,7 +15,7 @@ export const useLoadCourses = () => {
     async () =>
       currenciesService
         .getDailyCourses()
-        .then(({ rates }) => {
+        .then(({ data: { rates } }) => {
           setExchangeCourses(rates);
           setLastUpdateDate(currentDate);
         })

@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import availableCurrencies from 'resources/avaliable-currencies';
-import { AvailableFlatNames, ECurrencyType, TAvailableCurrencies } from 'types';
+import { AvailableFiatNames, ECurrencyType, TAvailableCurrencies } from 'types';
 
 export type TSelectedCurrenciesSlice = {
-  selectedCurrencies: AvailableFlatNames[];
-  selectedCurrenciesInEdit: AvailableFlatNames[];
+  selectedCurrencies: AvailableFiatNames[];
+  selectedCurrenciesInEdit: AvailableFiatNames[];
   isInEditMode: boolean;
   searchValue: string;
   activeCurrencyType: ECurrencyType;
@@ -16,7 +16,7 @@ const initialState: TSelectedCurrenciesSlice = {
   selectedCurrenciesInEdit: [],
   isInEditMode: false,
   searchValue: '',
-  activeCurrencyType: ECurrencyType.FLAT,
+  activeCurrencyType: ECurrencyType.FIAT,
   filteredCurrencies: availableCurrencies,
 };
 
@@ -26,7 +26,7 @@ export const SelectedCurrenciesSlice = createSlice({
   reducers: {
     setSelectedCurrencies: (
       state,
-      action: PayloadAction<AvailableFlatNames[]>,
+      action: PayloadAction<AvailableFiatNames[]>,
     ) => {
       state.selectedCurrencies = action.payload;
     },
@@ -37,13 +37,13 @@ export const SelectedCurrenciesSlice = createSlice({
 
     addToSelectedCurrenciesInEdit: (
       state,
-      action: PayloadAction<AvailableFlatNames>,
+      action: PayloadAction<AvailableFiatNames>,
     ) => {
       state.selectedCurrenciesInEdit.push(action.payload);
     },
     removeFromSelectedCurrenciesInEdit: (
       state,
-      action: PayloadAction<AvailableFlatNames>,
+      action: PayloadAction<AvailableFiatNames>,
     ) => {
       state.selectedCurrenciesInEdit = state.selectedCurrenciesInEdit.filter(
         el => el !== action.payload,

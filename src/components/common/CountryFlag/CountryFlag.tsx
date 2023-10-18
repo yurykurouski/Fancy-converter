@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 import { flags } from 'assets/flagsMap';
-import { AvailableFlatNames } from 'types';
+import { AvailableFiatNames } from 'types';
 
 import { useStyles } from './CountryFlag.styles';
 
 type Props = {
-  currencyCode: AvailableFlatNames;
+  currencyCode: AvailableFiatNames;
   size?: number;
 };
 

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
-import { AvailableFlatNames } from 'types';
+import { AvailableFiatNames } from 'types';
 
 export type TProps = {
-  setAvailableCurrencies: Dispatch<SetStateAction<AvailableFlatNames[]>>;
+  setAvailableCurrencies: Dispatch<SetStateAction<AvailableFiatNames[]>>;
 };
