@@ -1,31 +1,93 @@
+import AED from 'assets/flags/AED.svg';
 import ALL from 'assets/flags/ALL.svg';
 import AMD from 'assets/flags/AMD.svg';
+import ARS from 'assets/flags/ARS.svg';
 import AZN from 'assets/flags/AZN.svg';
 import BAM from 'assets/flags/BAM.svg';
 import BGN from 'assets/flags/BGN.svg';
+import BRL from 'assets/flags/BRL.svg';
 import BYN from 'assets/flags/BYN.svg';
 import CAD from 'assets/flags/CAD.svg';
 import CHF from 'assets/flags/CHF.svg';
+import CLP from 'assets/flags/CLP.svg';
 import CNY from 'assets/flags/CNY.svg';
 import CZK from 'assets/flags/CZK.svg';
 import DKK from 'assets/flags/DKK.svg';
+import EGP from 'assets/flags/EGP.svg';
 import EUR from 'assets/flags/EUR.svg';
 import GBP from 'assets/flags/GBP.svg';
 import GEL from 'assets/flags/GEL.svg';
+import GTQ from 'assets/flags/GTQ.svg';
+import HKD from 'assets/flags/HKD.svg';
 import HRK from 'assets/flags/HRK.svg';
+import HUF from 'assets/flags/HUF.svg';
+import IDR from 'assets/flags/IDR.svg';
+import ILS from 'assets/flags/ILS.svg';
+import INR from 'assets/flags/INR.svg';
+import IQD from 'assets/flags/IQD.svg';
+import IRR from 'assets/flags/IRR.svg';
+import ISK from 'assets/flags/ISK.svg';
+import JMD from 'assets/flags/JMD.svg';
+import JOD from 'assets/flags/JOD.svg';
 import JPY from 'assets/flags/JPY.svg';
+import KES from 'assets/flags/KES.svg';
+import KGS from 'assets/flags/KGS.svg';
+import KHR from 'assets/flags/KHR.svg';
+import KMF from 'assets/flags/KMF.svg';
+import KRW from 'assets/flags/KRW.svg';
+import KWD from 'assets/flags/KWD.svg';
+import KYD from 'assets/flags/KYD.svg';
 import KZT from 'assets/flags/KZT.svg';
+import LAK from 'assets/flags/LAK.svg';
+import LBP from 'assets/flags/LBP.svg';
+import LKR from 'assets/flags/LKR.svg';
+import LSL from 'assets/flags/LSL.svg';
+import MAD from 'assets/flags/MAD.svg';
 import MDL from 'assets/flags/MDL.svg';
 import MKD from 'assets/flags/MKD.svg';
+import MNT from 'assets/flags/MNT.svg';
+import MRU from 'assets/flags/MRU.svg';
+import MVR from 'assets/flags/MVR.svg';
+import MXN from 'assets/flags/MXN.svg';
+import MYR from 'assets/flags/MYR.svg';
+import NAD from 'assets/flags/NAD.svg';
+import NGN from 'assets/flags/NGN.svg';
+import NIO from 'assets/flags/NIO.svg';
 import NOK from 'assets/flags/NOK.svg';
+import NPR from 'assets/flags/NPR.svg';
+import NZD from 'assets/flags/NZD.svg';
+import OMR from 'assets/flags/OMR.svg';
+import PAB from 'assets/flags/PAB.svg';
+import PEN from 'assets/flags/PEN.svg';
+import PGK from 'assets/flags/PGK.svg';
+import PHP from 'assets/flags/PHP.svg';
+import PKR from 'assets/flags/PKR.svg';
 import PLN from 'assets/flags/PLN.svg';
+import PYG from 'assets/flags/PYG.svg';
+import QAR from 'assets/flags/QAR.svg';
 import RON from 'assets/flags/RON.svg';
 import RSD from 'assets/flags/RSD.svg';
 import RUB from 'assets/flags/RUB.svg';
+import SAR from 'assets/flags/SAR.svg';
+import SCR from 'assets/flags/SCR.svg';
 import SEK from 'assets/flags/SEK.svg';
+import SGD from 'assets/flags/SGD.svg';
+import SKK from 'assets/flags/SKK.svg';
+import SLL from 'assets/flags/SLL.svg';
+import SYP from 'assets/flags/SYP.svg';
+import THB from 'assets/flags/THB.svg';
+import TJS from 'assets/flags/TJS.svg';
+import TND from 'assets/flags/TND.svg';
 import TRY from 'assets/flags/TRY.svg';
+import TWD from 'assets/flags/TWD.svg';
+import TZS from 'assets/flags/TZS.svg';
 import UAH from 'assets/flags/UAH.svg';
 import USD from 'assets/flags/USD.svg';
+import UZS from 'assets/flags/UZS.svg';
+import VES from 'assets/flags/VES.svg';
+import VND from 'assets/flags/VND.svg';
+import XAF from 'assets/flags/XAF.svg';
+import ZAR from 'assets/flags/ZAR.svg';
 import AAVE from 'assets/icons/crypto/AAVE.svg';
 import ADA from 'assets/icons/crypto/ADA.svg';
 import ALGO from 'assets/icons/crypto/ALGO.svg';
@@ -102,6 +164,81 @@ export const flags = {
   [AvailableFiatNames.MKD]: MKD,
   [AvailableFiatNames.RON]: RON,
   [AvailableFiatNames.RSD]: RSD,
+  [AvailableFiatNames.ARS]: ARS,
+  [AvailableFiatNames.AED]: AED,
+  [AvailableFiatNames.BRL]: BRL,
+  [AvailableFiatNames.CLP]: CLP,
+  [AvailableFiatNames.EGP]: EGP,
+  [AvailableFiatNames.GTQ]: GTQ,
+  [AvailableFiatNames.HKD]: HKD,
+  [AvailableFiatNames.HUF]: HUF,
+  [AvailableFiatNames.IDR]: IDR,
+  [AvailableFiatNames.ILS]: ILS,
+  [AvailableFiatNames.INR]: INR,
+  [AvailableFiatNames.IRR]: IRR,
+  [AvailableFiatNames.IQD]: IQD,
+  [AvailableFiatNames.ISK]: ISK,
+  [AvailableFiatNames.JMD]: JMD,
+  [AvailableFiatNames.JOD]: JOD,
+  [AvailableFiatNames.KES]: KES,
+  [AvailableFiatNames.KGS]: KGS,
+  [AvailableFiatNames.KHR]: KHR,
+  [AvailableFiatNames.KMF]: KMF,
+  [AvailableFiatNames.KRW]: KRW,
+  [AvailableFiatNames.KWD]: KWD,
+  [AvailableFiatNames.KYD]: KYD,
+  [AvailableFiatNames.LAK]: LAK,
+  [AvailableFiatNames.LBP]: LBP,
+  [AvailableFiatNames.LKR]: LKR,
+  // [AvailableFiatNames.LRD]: LRD,
+  [AvailableFiatNames.LSL]: LSL,
+  // [AvailableFiatNames.LYD]: LYD,
+  [AvailableFiatNames.MAD]: MAD,
+  // [AvailableFiatNames.MMK]: MMK,
+  [AvailableFiatNames.MNT]: MNT,
+  [AvailableFiatNames.MRU]: MRU,
+  // [AvailableFiatNames.MUR]: MUR,
+  [AvailableFiatNames.MVR]: MVR,
+  [AvailableFiatNames.MXN]: MXN,
+  [AvailableFiatNames.MYR]: MYR,
+  // [AvailableFiatNames.MZN]: MZN,
+  [AvailableFiatNames.NAD]: NAD,
+  [AvailableFiatNames.NGN]: NGN,
+  [AvailableFiatNames.NIO]: NIO,
+  [AvailableFiatNames.NPR]: NPR,
+  [AvailableFiatNames.NZD]: NZD,
+  [AvailableFiatNames.OMR]: OMR,
+  [AvailableFiatNames.PAB]: PAB,
+  [AvailableFiatNames.PEN]: PEN,
+  [AvailableFiatNames.PGK]: PGK,
+  [AvailableFiatNames.PHP]: PHP,
+  [AvailableFiatNames.PKR]: PKR,
+  [AvailableFiatNames.PYG]: PYG,
+  [AvailableFiatNames.QAR]: QAR,
+  [AvailableFiatNames.SAR]: SAR,
+  // [AvailableFiatNames.SBD]: SBD,
+  [AvailableFiatNames.SCR]: SCR,
+  [AvailableFiatNames.SGD]: SGD,
+  [AvailableFiatNames.SKK]: SKK,
+  [AvailableFiatNames.SLL]: SLL,
+  // [AvailableFiatNames.SVC]: SVC,
+  [AvailableFiatNames.SYP]: SYP,
+  [AvailableFiatNames.THB]: THB,
+  [AvailableFiatNames.TJS]: TJS,
+  // [AvailableFiatNames.TMT]: TMT,
+  [AvailableFiatNames.TND]: TND,
+  [AvailableFiatNames.TWD]: TWD,
+  [AvailableFiatNames.TZS]: TZS,
+  [AvailableFiatNames.UZS]: UZS,
+  [AvailableFiatNames.VES]: VES,
+  [AvailableFiatNames.VND]: VND,
+  // [AvailableFiatNames.WST]: WST,
+  [AvailableFiatNames.XAF]: XAF,
+  // [AvailableFiatNames.YER]: YER,
+  [AvailableFiatNames.ZAR]: ZAR,
+  // [AvailableFiatNames.ZMK]: ZMK,
+  // [AvailableFiatNames.JEP]: JEP,
+  // [AvailableFiatNames.IMP]: IMP,
   [AvailableCryptoNames.BTC]: BTC,
   [AvailableCryptoNames.ETH]: ETH,
   [AvailableCryptoNames.USDC]: USDC,
