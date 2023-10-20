@@ -4,7 +4,6 @@ export const useStyles = () =>
   useTheme(theme => ({
     currencyBlock: {
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
-      marginBottom: 10,
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',

@@ -4,7 +4,8 @@ export const useStyles = () =>
   useTheme(theme => ({
     text: {
       paddingHorizontal: 10,
-      paddingTop: 4,
+      paddingTop: 14,
+      paddingBottom: 4,
       fontSize: 18,
       lineHeight: 18,
       fontWeight: '700',
@@ -13,6 +14,6 @@ export const useStyles = () =>
       borderBottomRightRadius: 8,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       overflow: 'hidden',
-      marginBottom: 10,
+      marginBottom: 6,
     },
   }));

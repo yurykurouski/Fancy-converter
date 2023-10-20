@@ -19,4 +19,7 @@ export const useStyles = () =>
       width: '100%',
       top: 10,
     },
+    separator: {
+      height: 10,
+    },
   }));

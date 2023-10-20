@@ -90,6 +90,7 @@ export const CurrenciesBottomSheet = React.memo(() => {
         pointerEvents={'box-none'}
         data={TABS_DATA}
         horizontal
+        initialNumToRender={1}
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
         overScrollMode="never"
