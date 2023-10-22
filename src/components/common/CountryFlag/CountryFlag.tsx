@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Image } from 'react-native';
 import { flags } from 'assets/flagsMap';
 import { AvailableFiatNames } from 'types';
 
@@ -11,13 +11,9 @@ type Props = {
 };
 
 export const CountryFlag = React.memo<Props>(({ currencyCode, size }) => {
-  const styles = useStyles();
+  const styles = useStyles(size);
 
-  const Flag = flags[currencyCode];
+  const flagImg = flags[currencyCode];
 
-  return (
-    <View style={styles.flagContainer}>
-      <Flag width={size} height={size} />
-    </View>
-  );
+  return <Image source={flagImg} style={styles.flagContainer} />;
 });
