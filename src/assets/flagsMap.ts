@@ -1,76 +1,151 @@
-import ALL from 'assets/flags/ALL.svg';
-import AMD from 'assets/flags/AMD.svg';
-import AZN from 'assets/flags/AZN.svg';
-import BAM from 'assets/flags/BAM.svg';
-import BGN from 'assets/flags/BGN.svg';
-import BYN from 'assets/flags/BYN.svg';
-import CAD from 'assets/flags/CAD.svg';
-import CHF from 'assets/flags/CHF.svg';
-import CNY from 'assets/flags/CNY.svg';
-import CZK from 'assets/flags/CZK.svg';
-import DKK from 'assets/flags/DKK.svg';
-import EUR from 'assets/flags/EUR.svg';
-import GBP from 'assets/flags/GBP.svg';
-import GEL from 'assets/flags/GEL.svg';
-import HRK from 'assets/flags/HRK.svg';
-import JPY from 'assets/flags/JPY.svg';
-import KZT from 'assets/flags/KZT.svg';
-import MDL from 'assets/flags/MDL.svg';
-import MKD from 'assets/flags/MKD.svg';
-import NOK from 'assets/flags/NOK.svg';
-import PLN from 'assets/flags/PLN.svg';
-import RON from 'assets/flags/RON.svg';
-import RSD from 'assets/flags/RSD.svg';
-import RUB from 'assets/flags/RUB.svg';
-import SEK from 'assets/flags/SEK.svg';
-import TRY from 'assets/flags/TRY.svg';
-import UAH from 'assets/flags/UAH.svg';
-import USD from 'assets/flags/USD.svg';
-import AAVE from 'assets/icons/crypto/AAVE.svg';
-import ADA from 'assets/icons/crypto/ADA.svg';
-import ALGO from 'assets/icons/crypto/ALGO.svg';
-import APT from 'assets/icons/crypto/APT.svg';
-import ARB from 'assets/icons/crypto/ARB.svg';
-import ATOM from 'assets/icons/crypto/ATOM.svg';
-import AVAX from 'assets/icons/crypto/AVAX.svg';
-import AXS from 'assets/icons/crypto/AXS.svg';
-import BCH from 'assets/icons/crypto/BCH.svg';
-import BSV from 'assets/icons/crypto/BSV.svg';
-import BTC from 'assets/icons/crypto/BTC.svg';
-import BUSD from 'assets/icons/crypto/BUSD.svg';
-import CRO from 'assets/icons/crypto/CRO.svg';
-import DAI from 'assets/icons/crypto/DAI.svg';
-import DOGE from 'assets/icons/crypto/DOGE.svg';
-import DOT from 'assets/icons/crypto/DOT.svg';
-import EGLD from 'assets/icons/crypto/EGLD.svg';
-import EOS from 'assets/icons/crypto/EOS.svg';
-import ETC from 'assets/icons/crypto/ETC.svg';
-import ETH from 'assets/icons/crypto/ETH.svg';
-import FIL from 'assets/icons/crypto/FIL.svg';
-import GRT from 'assets/icons/crypto/GRT.svg';
-import HBAR from 'assets/icons/crypto/HBAR.svg';
-import ICP from 'assets/icons/crypto/ICP.svg';
-import IMX from 'assets/icons/crypto/IMX.svg';
-import INJ from 'assets/icons/crypto/INJ.svg';
-import LDO from 'assets/icons/crypto/LDO.svg';
-import LINK from 'assets/icons/crypto/LINK.svg';
-import LTC from 'assets/icons/crypto/LTC.svg';
-import MATIC from 'assets/icons/crypto/MATIC.svg';
-import NEAR from 'assets/icons/crypto/NEAR.svg';
-import OP from 'assets/icons/crypto/OP.svg';
-import QNT from 'assets/icons/crypto/QNT.svg';
-import RNDR from 'assets/icons/crypto/RNDR.svg';
-import SAND from 'assets/icons/crypto/SAND.svg';
-import SHIB from 'assets/icons/crypto/SHIB.svg';
-import SOL from 'assets/icons/crypto/SOL.svg';
-import STX from 'assets/icons/crypto/STX.svg';
-import USDC from 'assets/icons/crypto/USDC.svg';
-import USDT from 'assets/icons/crypto/USDT.svg';
-import VET from 'assets/icons/crypto/VET.svg';
-import WBTC from 'assets/icons/crypto/WBTC.svg';
-import XLM from 'assets/icons/crypto/XLM.svg';
-import XRP from 'assets/icons/crypto/XRP.svg';
-import XTZ from 'assets/icons/crypto/XTZ.svg';
+import AAVE from 'assets/flags/crypto/AAVE.png';
+import ADA from 'assets/flags/crypto/ADA.png';
+import ALGO from 'assets/flags/crypto/ALGO.png';
+import APT from 'assets/flags/crypto/APT.png';
+import ARB from 'assets/flags/crypto/ARB.png';
+import ATOM from 'assets/flags/crypto/ATOM.png';
+import AVAX from 'assets/flags/crypto/AVAX.png';
+import AXS from 'assets/flags/crypto/AXS.png';
+import BCH from 'assets/flags/crypto/BCH.png';
+import BSV from 'assets/flags/crypto/BSV.png';
+import BTC from 'assets/flags/crypto/BTC.png';
+import BUSD from 'assets/flags/crypto/BUSD.png';
+import CRO from 'assets/flags/crypto/CRO.png';
+import DAI from 'assets/flags/crypto/DAI.png';
+import DOGE from 'assets/flags/crypto/DOGE.png';
+import DOT from 'assets/flags/crypto/DOT.png';
+import EGLD from 'assets/flags/crypto/EGLD.png';
+import EOS from 'assets/flags/crypto/EOS.png';
+import ETC from 'assets/flags/crypto/ETC.png';
+import ETH from 'assets/flags/crypto/ETH.png';
+import FIL from 'assets/flags/crypto/FIL.png';
+import GRT from 'assets/flags/crypto/GRT.png';
+import HBAR from 'assets/flags/crypto/HBAR.png';
+import ICP from 'assets/flags/crypto/ICP.png';
+import IMX from 'assets/flags/crypto/IMX.png';
+import INJ from 'assets/flags/crypto/INJ.png';
+import LDO from 'assets/flags/crypto/LDO.png';
+import LINK from 'assets/flags/crypto/LINK.png';
+import LTC from 'assets/flags/crypto/LTC.png';
+import MATIC from 'assets/flags/crypto/MATIC.png';
+import NEAR from 'assets/flags/crypto/NEAR.png';
+import OP from 'assets/flags/crypto/OP.png';
+import QNT from 'assets/flags/crypto/QNT.png';
+import RNDR from 'assets/flags/crypto/RNDR.png';
+import SAND from 'assets/flags/crypto/SAND.png';
+import SHIB from 'assets/flags/crypto/SHIB.png';
+import SOL from 'assets/flags/crypto/SOL.png';
+import STX from 'assets/flags/crypto/STX.png';
+import USDC from 'assets/flags/crypto/USDC.png';
+import USDT from 'assets/flags/crypto/USDT.png';
+import VET from 'assets/flags/crypto/VET.png';
+import WBTC from 'assets/flags/crypto/WBTC.png';
+import XLM from 'assets/flags/crypto/XLM.png';
+import XRP from 'assets/flags/crypto/XRP.png';
+import XTZ from 'assets/flags/crypto/XTZ.png';
+import AED from 'assets/flags/fiat/AED.png';
+import ALL from 'assets/flags/fiat/ALL.png';
+import AMD from 'assets/flags/fiat/AMD.png';
+import ARS from 'assets/flags/fiat/ARS.png';
+import AZN from 'assets/flags/fiat/AZN.png';
+import BAM from 'assets/flags/fiat/BAM.png';
+import BGN from 'assets/flags/fiat/BGN.png';
+import BRL from 'assets/flags/fiat/BRL.png';
+import BYN from 'assets/flags/fiat/BYN.png';
+import CAD from 'assets/flags/fiat/CAD.png';
+import CHF from 'assets/flags/fiat/CHF.png';
+import CLP from 'assets/flags/fiat/CLP.png';
+import CNY from 'assets/flags/fiat/CNY.png';
+import CZK from 'assets/flags/fiat/CZK.png';
+import DKK from 'assets/flags/fiat/DKK.png';
+import EGP from 'assets/flags/fiat/EGP.png';
+import EUR from 'assets/flags/fiat/EUR.png';
+import GBP from 'assets/flags/fiat/GBP.png';
+import GEL from 'assets/flags/fiat/GEL.png';
+import GTQ from 'assets/flags/fiat/GTQ.png';
+import HKD from 'assets/flags/fiat/HKD.png';
+import HRK from 'assets/flags/fiat/HRK.png';
+import HUF from 'assets/flags/fiat/HUF.png';
+import IDR from 'assets/flags/fiat/IDR.png';
+import ILS from 'assets/flags/fiat/ILS.png';
+import IMP from 'assets/flags/fiat/IMP.png';
+import INR from 'assets/flags/fiat/INR.png';
+import IQD from 'assets/flags/fiat/IQD.png';
+import IRR from 'assets/flags/fiat/IRR.png';
+import ISK from 'assets/flags/fiat/ISK.png';
+import JEP from 'assets/flags/fiat/JEP.png';
+import JMD from 'assets/flags/fiat/JMD.png';
+import JOD from 'assets/flags/fiat/JOD.png';
+import JPY from 'assets/flags/fiat/JPY.png';
+import KES from 'assets/flags/fiat/KES.png';
+import KGS from 'assets/flags/fiat/KGS.png';
+import KHR from 'assets/flags/fiat/KHR.png';
+import KMF from 'assets/flags/fiat/KMF.png';
+import KRW from 'assets/flags/fiat/KRW.png';
+import KWD from 'assets/flags/fiat/KWD.png';
+import KYD from 'assets/flags/fiat/KYD.png';
+import KZT from 'assets/flags/fiat/KZT.png';
+import LAK from 'assets/flags/fiat/LAK.png';
+import LBP from 'assets/flags/fiat/LBP.png';
+import LKR from 'assets/flags/fiat/LKR.png';
+import LRD from 'assets/flags/fiat/LRD.png';
+import LSL from 'assets/flags/fiat/LSL.png';
+import LYD from 'assets/flags/fiat/LYD.png';
+import MAD from 'assets/flags/fiat/MAD.png';
+import MDL from 'assets/flags/fiat/MDL.png';
+import MKD from 'assets/flags/fiat/MKD.png';
+import MMK from 'assets/flags/fiat/MMK.png';
+import MNT from 'assets/flags/fiat/MNT.png';
+import MRU from 'assets/flags/fiat/MRU.png';
+import MUR from 'assets/flags/fiat/MUR.png';
+import MVR from 'assets/flags/fiat/MVR.png';
+import MXN from 'assets/flags/fiat/MXN.png';
+import MYR from 'assets/flags/fiat/MYR.png';
+import MZN from 'assets/flags/fiat/MZN.png';
+import NAD from 'assets/flags/fiat/NAD.png';
+import NGN from 'assets/flags/fiat/NGN.png';
+import NIO from 'assets/flags/fiat/NIO.png';
+import NOK from 'assets/flags/fiat/NOK.png';
+import NPR from 'assets/flags/fiat/NPR.png';
+import NZD from 'assets/flags/fiat/NZD.png';
+import OMR from 'assets/flags/fiat/OMR.png';
+import PAB from 'assets/flags/fiat/PAB.png';
+import PEN from 'assets/flags/fiat/PEN.png';
+import PGK from 'assets/flags/fiat/PGK.png';
+import PHP from 'assets/flags/fiat/PHP.png';
+import PKR from 'assets/flags/fiat/PKR.png';
+import PLN from 'assets/flags/fiat/PLN.png';
+import PYG from 'assets/flags/fiat/PYG.png';
+import QAR from 'assets/flags/fiat/QAR.png';
+import RON from 'assets/flags/fiat/RON.png';
+import RSD from 'assets/flags/fiat/RSD.png';
+import RUB from 'assets/flags/fiat/RUB.png';
+import SAR from 'assets/flags/fiat/SAR.png';
+import SBD from 'assets/flags/fiat/SBD.png';
+import SCR from 'assets/flags/fiat/SCR.png';
+import SEK from 'assets/flags/fiat/SEK.png';
+import SGD from 'assets/flags/fiat/SGD.png';
+import SKK from 'assets/flags/fiat/SKK.png';
+import SLL from 'assets/flags/fiat/SLL.png';
+import SVC from 'assets/flags/fiat/SVC.png';
+import SYP from 'assets/flags/fiat/SYP.png';
+import THB from 'assets/flags/fiat/THB.png';
+import TJS from 'assets/flags/fiat/TJS.png';
+import TMT from 'assets/flags/fiat/TMT.png';
+import TND from 'assets/flags/fiat/TND.png';
+import TRY from 'assets/flags/fiat/TRY.png';
+import TWD from 'assets/flags/fiat/TWD.png';
+import TZS from 'assets/flags/fiat/TZS.png';
+import UAH from 'assets/flags/fiat/UAH.png';
+import USD from 'assets/flags/fiat/USD.png';
+import UZS from 'assets/flags/fiat/UZS.png';
+import VES from 'assets/flags/fiat/VES.png';
+import VND from 'assets/flags/fiat/VND.png';
+import WST from 'assets/flags/fiat/WST.png';
+import XAF from 'assets/flags/fiat/XAF.png';
+import YER from 'assets/flags/fiat/YER.png';
+import ZAR from 'assets/flags/fiat/ZAR.png';
+import ZMK from 'assets/flags/fiat/ZMK.png';
 import { AvailableCryptoNames, AvailableFiatNames } from 'types';
 
 export const flags = {
@@ -102,6 +177,81 @@ export const flags = {
   [AvailableFiatNames.MKD]: MKD,
   [AvailableFiatNames.RON]: RON,
   [AvailableFiatNames.RSD]: RSD,
+  [AvailableFiatNames.ARS]: ARS,
+  [AvailableFiatNames.AED]: AED,
+  [AvailableFiatNames.BRL]: BRL,
+  [AvailableFiatNames.CLP]: CLP,
+  [AvailableFiatNames.EGP]: EGP,
+  [AvailableFiatNames.GTQ]: GTQ,
+  [AvailableFiatNames.HKD]: HKD,
+  [AvailableFiatNames.HUF]: HUF,
+  [AvailableFiatNames.IDR]: IDR,
+  [AvailableFiatNames.ILS]: ILS,
+  [AvailableFiatNames.INR]: INR,
+  [AvailableFiatNames.IRR]: IRR,
+  [AvailableFiatNames.IQD]: IQD,
+  [AvailableFiatNames.ISK]: ISK,
+  [AvailableFiatNames.JMD]: JMD,
+  [AvailableFiatNames.JOD]: JOD,
+  [AvailableFiatNames.KES]: KES,
+  [AvailableFiatNames.KGS]: KGS,
+  [AvailableFiatNames.KHR]: KHR,
+  [AvailableFiatNames.KMF]: KMF,
+  [AvailableFiatNames.KRW]: KRW,
+  [AvailableFiatNames.KWD]: KWD,
+  [AvailableFiatNames.KYD]: KYD,
+  [AvailableFiatNames.LAK]: LAK,
+  [AvailableFiatNames.LBP]: LBP,
+  [AvailableFiatNames.LKR]: LKR,
+  [AvailableFiatNames.LRD]: LRD,
+  [AvailableFiatNames.LSL]: LSL,
+  [AvailableFiatNames.LYD]: LYD,
+  [AvailableFiatNames.MAD]: MAD,
+  [AvailableFiatNames.MMK]: MMK,
+  [AvailableFiatNames.MNT]: MNT,
+  [AvailableFiatNames.MRU]: MRU,
+  [AvailableFiatNames.MUR]: MUR,
+  [AvailableFiatNames.MVR]: MVR,
+  [AvailableFiatNames.MXN]: MXN,
+  [AvailableFiatNames.MYR]: MYR,
+  [AvailableFiatNames.MZN]: MZN,
+  [AvailableFiatNames.NAD]: NAD,
+  [AvailableFiatNames.NGN]: NGN,
+  [AvailableFiatNames.NIO]: NIO,
+  [AvailableFiatNames.NPR]: NPR,
+  [AvailableFiatNames.NZD]: NZD,
+  [AvailableFiatNames.OMR]: OMR,
+  [AvailableFiatNames.PAB]: PAB,
+  [AvailableFiatNames.PEN]: PEN,
+  [AvailableFiatNames.PGK]: PGK,
+  [AvailableFiatNames.PHP]: PHP,
+  [AvailableFiatNames.PKR]: PKR,
+  [AvailableFiatNames.PYG]: PYG,
+  [AvailableFiatNames.QAR]: QAR,
+  [AvailableFiatNames.SAR]: SAR,
+  [AvailableFiatNames.SBD]: SBD,
+  [AvailableFiatNames.SCR]: SCR,
+  [AvailableFiatNames.SGD]: SGD,
+  [AvailableFiatNames.SKK]: SKK,
+  [AvailableFiatNames.SLL]: SLL,
+  [AvailableFiatNames.SVC]: SVC,
+  [AvailableFiatNames.SYP]: SYP,
+  [AvailableFiatNames.THB]: THB,
+  [AvailableFiatNames.TJS]: TJS,
+  [AvailableFiatNames.TMT]: TMT,
+  [AvailableFiatNames.TND]: TND,
+  [AvailableFiatNames.TWD]: TWD,
+  [AvailableFiatNames.TZS]: TZS,
+  [AvailableFiatNames.UZS]: UZS,
+  [AvailableFiatNames.VES]: VES,
+  [AvailableFiatNames.VND]: VND,
+  [AvailableFiatNames.WST]: WST,
+  [AvailableFiatNames.XAF]: XAF,
+  [AvailableFiatNames.YER]: YER,
+  [AvailableFiatNames.ZAR]: ZAR,
+  [AvailableFiatNames.ZMK]: ZMK,
+  [AvailableFiatNames.JEP]: JEP,
+  [AvailableFiatNames.IMP]: IMP,
   [AvailableCryptoNames.BTC]: BTC,
   [AvailableCryptoNames.ETH]: ETH,
   [AvailableCryptoNames.USDC]: USDC,

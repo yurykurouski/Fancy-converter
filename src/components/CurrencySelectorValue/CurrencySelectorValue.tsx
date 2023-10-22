@@ -39,7 +39,6 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     return (
       <ButtonWithIPadOSInteraction
         hitSlop={5}
-        key={currencyCode}
         containerStyle={styles.currencyBlock}
         onPress={onPressHandler}>
         <View style={styles.currencyInfoWrapper}>

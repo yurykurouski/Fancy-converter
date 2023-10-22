@@ -13,6 +13,5 @@ export const useStyles = () =>
       borderBottomRightRadius: 8,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       overflow: 'hidden',
-      marginBottom: 10,
     },
   }));
