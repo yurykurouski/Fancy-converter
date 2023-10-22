@@ -26,12 +26,21 @@ export const groupByName: TGroupByName<
     {},
   );
 
+// export const makeSectionsData = (
+//   data: ReturnType<TGroupByName<AvailableFiatNames | AvailableCryptoNames>>,
+// ) =>
+//   Object.keys(data).map(el => {
+//     return {
+//       title: el,
+//       data: data[el],
+//     };
+//   });
+
 export const makeSectionsData = (
   data: ReturnType<TGroupByName<AvailableFiatNames | AvailableCryptoNames>>,
 ) =>
-  Object.keys(data).map(el => {
-    return {
-      title: el,
-      data: data[el],
-    };
-  });
+  Object.keys(data)
+    .map(el => {
+      return [el, ...data[el]];
+    })
+    .flat();

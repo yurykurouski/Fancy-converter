@@ -3,7 +3,7 @@ import { useTheme } from 'hooks';
 export const useStyles = () =>
   useTheme(theme => ({
     handleContainer: {
-      height: 10,
+      height: 30,
       alignItems: 'center',
     },
     handlePressable: {

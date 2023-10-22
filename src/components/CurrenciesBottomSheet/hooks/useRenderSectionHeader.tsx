@@ -15,7 +15,4 @@ type TSection = {
 };
 
 export const useRenderSectionHeader = () =>
-  useCallback(
-    ({ section }: TSection) => <SectionTitle value={section.title} />,
-    [],
-  );
+  useCallback((value: string) => <SectionTitle value={value} />, []);

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { CurrencySelectorValue } from 'components/CurrencySelectorValue';
 
-import { UseRenderListItem } from '../CurrenciesBottomSheet.types';
+import { TUseRenderListItem } from '../CurrenciesBottomSheet.types';
 
-export const useRenderListItem: UseRenderListItem = () =>
-  useCallback(({ item }) => <CurrencySelectorValue currencyCode={item} />, []);
+export const useRenderListItem: TUseRenderListItem = () =>
+  useCallback(item => <CurrencySelectorValue currencyCode={item} />, []);

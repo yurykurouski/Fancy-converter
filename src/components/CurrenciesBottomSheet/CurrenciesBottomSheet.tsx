@@ -38,19 +38,15 @@ export const CurrenciesBottomSheet = React.memo(() => {
 
   const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
 
-  //*to prevent rerendering bottomsheet when selectedCurrencies changes
-
-  // const initialIndex = useMemo(() => (selectedCurrencies.length ? 0 : 1), []);
-
-  const renderHandle = useRenderHandler(onPressHandler);
-  const renderTabList = useRenderBottomSheetTabList();
-
-  useBackButtonHandler(bottomSheetIndex, sheetRef);
-
   const snapPoints = useMemo(
     () => getSnapPoints(bottom, top, windowHeight),
     [bottom, top, windowHeight],
   );
+
+  const renderHandle = useRenderHandler(onPressHandler);
+  const renderTabList = useRenderBottomSheetTabList(snapPoints[1] - 90);
+
+  useBackButtonHandler(bottomSheetIndex, sheetRef);
 
   useEffect(() => {
     if (activeCurrencyType === ECurrencyType.FIAT) {
