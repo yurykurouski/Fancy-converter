@@ -8,7 +8,7 @@ import {
   useSetSelectedCurrEditMode,
 } from 'hooks/store/SelectedCurrencies';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { AvailableFiatNames } from 'types';
+import { EAvailableFiatNames } from 'types';
 import { removeDuplicates } from 'utils';
 
 import { styles } from './RemoveSweep.styles';
@@ -23,7 +23,7 @@ export const RemoveSweep = () => {
   const setEditMode = useSetSelectedCurrEditMode();
 
   const onAllRemovePress = useCallback(() => {
-    const filtered = removeDuplicates<AvailableFiatNames>(
+    const filtered = removeDuplicates<EAvailableFiatNames>(
       selectedCurrencies,
       selectedCurrenciesInEdit,
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { CountryFlag } from 'components/common/CountryFlag';
-import { AvailableFiatNames } from 'types';
+import { EAvailableFiatNames } from 'types';
 
 export const CurrencyInputIcon = ({
   isSelectedForEdit,
@@ -10,7 +10,7 @@ export const CurrencyInputIcon = ({
   bookmark,
 }: {
   isSelectedForEdit: boolean;
-  currencyCode: AvailableFiatNames;
+  currencyCode: EAvailableFiatNames;
   bookmark: boolean;
 }) => (
   <AnimatedFlipIcon

@@ -11,7 +11,7 @@ import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { AvailableFiatNames } from 'types';
+import { EAvailableFiatNames } from 'types';
 import { isIos } from 'utils';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
@@ -36,7 +36,7 @@ export const CurrencySelector = ({
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse();
 
-  const renderItem: ListRenderItem<AvailableFiatNames> = ({ item }) => (
+  const renderItem: ListRenderItem<EAvailableFiatNames> = ({ item }) => (
     <CurrencyInputValue currencyCode={item} />
   );
 

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { FocusedCurrencySlice } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
-import { AvailableFiatNames } from 'types';
+import { EAvailableFiatNames } from 'types';
 
 import { TSetFocusedCurrencyName } from '../types';
 
@@ -9,7 +9,7 @@ export const useSetFocusedCurrencyName = (): TSetFocusedCurrencyName => {
   const dispatch = useDispatch();
 
   return useCallback(
-    (name: AvailableFiatNames) =>
+    (name: EAvailableFiatNames) =>
       dispatch(FocusedCurrencySlice.actions.setFocusedCurrencyName(name)),
     [dispatch],
   );

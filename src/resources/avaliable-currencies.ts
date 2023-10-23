@@ -1,9 +1,13 @@
-import { AvailableCryptoNames, AvailableFiatNames, ECurrencyType } from 'types';
+import {
+  EAvailableCryptoNames,
+  EAvailableFiatNames,
+  ECurrencyType,
+} from 'types';
 
-const availableFiatNames = Object.values(AvailableFiatNames).sort();
-const availableCryptoNames = Object.values(AvailableCryptoNames).sort();
+const AvailableFiatNames = Object.values(EAvailableFiatNames).sort();
+const AvailableCryptoNames = Object.values(EAvailableCryptoNames).sort();
 
 export default {
-  [ECurrencyType.FIAT]: availableFiatNames,
-  [ECurrencyType.CRYPTO]: availableCryptoNames,
+  [ECurrencyType.FIAT]: AvailableFiatNames,
+  [ECurrencyType.CRYPTO]: AvailableCryptoNames,
 };
