@@ -1,12 +1,12 @@
-import { AvailableFiatNames } from 'types';
+import { EAvailableFiatNames } from 'types';
 
 export type OnlyCourses = {
-  [key in AvailableFiatNames]: number;
+  [key in EAvailableFiatNames]: number;
 };
 
 export type TGetCoursesForSelectedCurrencies = (
   exchangeCourse: OnlyCourses,
-  selectedCurrencies: AvailableFiatNames[] | [],
+  selectedCurrencies: EAvailableFiatNames[] | [],
 ) => OnlyCourses | undefined;
 
 export type ShowNoConnectionAlert = (

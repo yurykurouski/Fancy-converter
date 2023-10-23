@@ -1,4 +1,8 @@
-import { AvailableCryptoNames, AvailableFiatNames, TGroupByName } from 'types';
+import {
+  EAvailableCryptoNames,
+  EAvailableFiatNames,
+  TGroupByName,
+} from 'types';
 
 export * from './compareDate';
 export * from './getCurrentColorTheme';
@@ -9,11 +13,13 @@ export * from './showNoConnectionAlert';
 export * from './storage';
 
 export const groupByName: TGroupByName<
-  AvailableFiatNames | AvailableCryptoNames
+  EAvailableFiatNames | EAvailableCryptoNames
 > = data =>
   data.reduce(
     (
-      acc: ReturnType<TGroupByName<AvailableFiatNames | AvailableCryptoNames>>,
+      acc: ReturnType<
+        TGroupByName<EAvailableFiatNames | EAvailableCryptoNames>
+      >,
       el,
     ) => {
       const char = el[0];
@@ -27,7 +33,7 @@ export const groupByName: TGroupByName<
   );
 
 // export const makeSectionsData = (
-//   data: ReturnType<TGroupByName<AvailableFiatNames | AvailableCryptoNames>>,
+//   data: ReturnType<TGroupByName<EAvailableFiatNames | EAvailableCryptoNames>>,
 // ) =>
 //   Object.keys(data).map(el => {
 //     return {
@@ -37,7 +43,7 @@ export const groupByName: TGroupByName<
 //   });
 
 export const makeSectionsData = (
-  data: ReturnType<TGroupByName<AvailableFiatNames | AvailableCryptoNames>>,
+  data: ReturnType<TGroupByName<EAvailableFiatNames | EAvailableCryptoNames>>,
 ) =>
   Object.keys(data)
     .map(el => {

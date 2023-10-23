@@ -10,7 +10,7 @@ import { FlashList, ListRenderItem } from '@shopify/flash-list';
 import { BottomSheetEmpty } from 'components/CurrenciesBottomSheet/components/BottomSheetEmpty';
 import { BOTTOMSHEET_EL_HEIGHT } from 'constants/constants';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { AvailableFiatNames, ECurrencyType } from 'types';
+import { EAvailableFiatNames, ECurrencyType } from 'types';
 import { groupByName, isIos, makeSectionsData } from 'utils';
 
 import { useRenderListItem } from '../useRenderListItem';
@@ -30,9 +30,9 @@ export const useRenderBottomSheetTabList = (height: number) => {
     [styles.separator],
   );
 
-  const render = useCallback<ListRenderItem<AvailableFiatNames | string>>(
+  const render = useCallback<ListRenderItem<EAvailableFiatNames | string>>(
     ({ item }) => {
-      if (item.length !== 1) return renderItem(item as AvailableFiatNames);
+      if (item.length !== 1) return renderItem(item as EAvailableFiatNames);
       return renderSectionHeader(item);
     },
     [renderItem, renderSectionHeader],

@@ -1,9 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AvailableCryptoNames, AvailableFiatNames, ECurrencyType } from 'types';
+import {
+  EAvailableCryptoNames,
+  EAvailableFiatNames,
+  ECurrencyType,
+} from 'types';
 
 export type TFocusedCurrency = {
   favoriteCurrencies: Partial<
-    Record<AvailableFiatNames | AvailableCryptoNames, ECurrencyType>
+    Record<EAvailableFiatNames | EAvailableCryptoNames, ECurrencyType>
   >;
 };
 
@@ -18,7 +22,7 @@ export const FavoriteCurrenciesSlice = createSlice({
     setFavoriteCurrency: (
       state,
       action: PayloadAction<{
-        currencyName: AvailableFiatNames | AvailableCryptoNames;
+        currencyName: EAvailableFiatNames | EAvailableCryptoNames;
         currencyType: ECurrencyType;
       }>,
     ) => {
@@ -28,7 +32,7 @@ export const FavoriteCurrenciesSlice = createSlice({
 
     removeFavoriteCurrency: (
       state,
-      action: PayloadAction<AvailableFiatNames | AvailableCryptoNames>,
+      action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
     ) => {
       delete state.favoriteCurrencies[action.payload];
     },

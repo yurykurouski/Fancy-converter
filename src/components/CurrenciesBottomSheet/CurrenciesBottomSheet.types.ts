@@ -1,6 +1,6 @@
 import { RefObject } from 'react';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { AvailableFiatNames } from 'types';
+import { EAvailableFiatNames } from 'types';
 
 export type TUseBottomSheetOnPressHandler = (
   sheetRef: RefObject<BottomSheetMethods>,
@@ -12,5 +12,5 @@ export type TUseBackButtonHandler = (
 ) => void;
 
 export type TUseRenderListItem = () => (
-  item: AvailableFiatNames,
+  item: EAvailableFiatNames,
 ) => JSX.Element;
