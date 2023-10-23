@@ -26,7 +26,9 @@ export const WithNotificationHOC = ({
 
   const { notificationData } = useSelector(selectUIStatus);
 
-  const message = `${notificationData.data} ${l[notificationData?.type]}`;
+  const message = `${notificationData?.data ?? ''} ${
+    l[notificationData?.type]
+  }`;
 
   const appState = useAppState();
   const opacity = appState === 'inactive' ? 0 : 1;
@@ -51,10 +53,10 @@ export const WithNotificationHOC = ({
   });
 
   useEffect(() => {
-    if (notificationData.data) {
+    if (notificationData?.timeStamp) {
       showNotification(animatedValue, hasIsland);
     }
-  }, [animatedValue, hasIsland, notificationData.data]);
+  }, [animatedValue, hasIsland, notificationData?.timeStamp]);
 
   return (
     <>

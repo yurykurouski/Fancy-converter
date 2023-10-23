@@ -11,6 +11,7 @@ import {
   EColorSchemeBehavior,
   ECurrencyType,
   TDispatchCallback,
+  TNotificationData,
 } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 
@@ -70,6 +71,10 @@ export type TSetDrawerStatus = TDispatchCallback<
 export type TSetBSStatus = TDispatchCallback<
   number,
   typeof UISliceActions.setBottomSheetState.type
+>;
+export type TSetNotificationData = TDispatchCallback<
+  TNotificationData,
+  typeof UISliceActions.setNotificationData.type
 >;
 
 //ColorScheme

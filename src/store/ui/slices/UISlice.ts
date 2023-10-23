@@ -1,24 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FavoriteCurrenciesSliceActions } from 'store/favoriteCurrencies/slices/FavoriteCurrenciesSlice';
-
-enum ENotificationType {
-  ADD_FAVORITE = 'ADD_FAVORITE',
-  REMOVE_FAVORITE = 'REMOVE_FAVORITE',
-}
+import { ENotificationType, TNotificationData } from 'types';
 
 export type TUISlice = {
   isDrawerOpened: boolean;
   bottomSheetIndex: number;
-  notificationData: {
-    type: ENotificationType;
-    data: unknown;
-  };
+  notificationData: TNotificationData | null;
 };
 
 const initialState: TUISlice = {
   isDrawerOpened: false,
   bottomSheetIndex: 0,
-  notificationData: {},
+  notificationData: null,
 };
 
 export const UISlice = createSlice({
@@ -33,7 +27,7 @@ export const UISlice = createSlice({
       state.bottomSheetIndex = action.payload;
     },
 
-    setNotificationShown: (state, action: PayloadAction<boolean>) => {
+    setNotificationData: (state, action: PayloadAction<TNotificationData>) => {
       state.notificationData = action.payload;
     },
   },
@@ -44,6 +38,7 @@ export const UISlice = createSlice({
         (state, action) => {
           state.notificationData = {
             type: ENotificationType.ADD_FAVORITE,
+            timeStamp: Date.now(),
             data: action.payload.currencyName,
           };
         },
@@ -53,10 +48,18 @@ export const UISlice = createSlice({
         (state, action) => {
           state.notificationData = {
             type: ENotificationType.REMOVE_FAVORITE,
+            timeStamp: Date.now(),
             data: action.payload,
           };
         },
-      );
+      )
+      .addCase(ExchangeCourseSliceActions.setExchangeCourses, state => {
+        state.notificationData = {
+          type: ENotificationType.RATES_UPDATED,
+          timeStamp: Date.now(),
+          data: null,
+        };
+      });
   },
 });
 

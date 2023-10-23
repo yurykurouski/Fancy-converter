@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { useLoadCourses } from 'hooks';
-import { l } from 'resources/localization';
 import {
   getFromStorage,
   setToStorage,
@@ -8,12 +7,11 @@ import {
   StorageKeys,
 } from 'utils';
 
-import { UseReloadCourses } from './types';
+import { TUseReloadCourses } from './types';
 
-export const useReloadCourses: UseReloadCourses = (
+export const useReloadCourses: TUseReloadCourses = (
   setIsLoading,
   getCoursesFromStorage,
-  startNotification,
 ) => {
   const loadCourses = useLoadCourses();
 
@@ -22,14 +20,11 @@ export const useReloadCourses: UseReloadCourses = (
 
     loadCourses()
       .finally(() => setIsLoading(false))
-      .then(() =>
-        startNotification(l['notification.message.update_courses.network']),
-      )
       .catch(async () => {
         await getFromStorage(StorageKeys.LAST_COURSES_SAVE_DATE).then(oldDate =>
           showNoConnectionAlert(getCoursesFromStorage, oldDate),
         );
         await setToStorage(StorageKeys.LAST_COURSES_UPDATE, null);
       });
-  }, [getCoursesFromStorage, loadCourses, setIsLoading, startNotification]);
+  }, [getCoursesFromStorage, loadCourses, setIsLoading]);
 };

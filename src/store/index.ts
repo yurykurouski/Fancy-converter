@@ -13,6 +13,7 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 
+import { UISlice } from './ui/slices/UISlice';
 import { rootReducer } from './rootReducer';
 
 const middlewares: Middleware[] = [];
@@ -24,6 +25,7 @@ if (__DEV__) {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  blacklist: [UISlice.name],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

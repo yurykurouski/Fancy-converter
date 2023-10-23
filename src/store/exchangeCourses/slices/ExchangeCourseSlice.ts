@@ -21,6 +21,7 @@ export const ExchangeCourseSlice = createSlice({
   reducers: {
     setExchangeCourses: (state, action: PayloadAction<OnlyCourses>) => {
       state.exchangeCourses = action.payload;
+      state.lastUpdated = Date.now();
     },
 
     setIsLoading: (state, action) => {

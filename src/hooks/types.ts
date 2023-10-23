@@ -2,7 +2,6 @@ import { Dispatch } from 'react';
 import { ColorSchemeName, StyleSheet } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
 import { Theme } from 'assets/colors';
-import { ShowMessage } from 'context/MessageNotificationContext/WithNotification.types';
 import { AvailableFiatNames } from 'types';
 import { StorageKeys } from 'utils';
 import {
@@ -14,9 +13,7 @@ import { TSetCoursesLoading } from './store/types';
 
 type ReloadCourses = () => void;
 
-export type UseGetCurrenciesExchangeCourse = (
-  startNotification: (message: string) => void,
-) => {
+export type UseGetCurrenciesExchangeCourse = () => {
   reloadCourses: ReloadCourses;
 };
 
@@ -24,13 +21,11 @@ export type GetCoursesFromStorage = (onInit: boolean) => void;
 
 export type UseGetCoursesFromStorage = (
   setExchangeCourse: Dispatch<OnlyCourses>,
-  startNotification: ShowMessage,
 ) => GetCoursesFromStorage;
 
-export type UseReloadCourses = (
+export type TUseReloadCourses = (
   setIsLoading: TSetCoursesLoading,
   getCoursesFromStorage: GetCoursesFromStorage,
-  startNotification: ShowMessage,
 ) => ReloadCourses;
 
 export type TUseFilteredCourseBySelectedCurrencies = (
