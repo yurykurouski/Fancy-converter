@@ -21,6 +21,7 @@ import {
 } from 'hooks/store/SelectedCurrencies';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
+import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
@@ -44,6 +45,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
     selectFocusedCurrency,
   );
+  const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
   const setSelectedCurrInEditMode = useSetSelectedCurrEditMode();
   const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
@@ -149,6 +151,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
         <CurrencyInputIcon
           isSelectedForEdit={isSelectedForEdit}
           currencyCode={currencyCode}
+          bookmark={!!favoriteCurrencies[currencyCode]}
         />
       </Pressable>
     </Animated.View>

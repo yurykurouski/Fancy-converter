@@ -1,6 +1,6 @@
 import { useTheme } from 'hooks';
 
-export const useStyles = (size: number) =>
+export const useStyles = (size?: number) =>
   useTheme(theme => ({
     flagContainer: {
       alignSelf: 'center',
@@ -14,4 +14,5 @@ export const useStyles = (size: number) =>
       width: size,
       height: size,
     },
+    bookmarkIcon: { position: 'absolute', bottom: 0, right: 0 },
   }));

@@ -20,10 +20,18 @@ export const useStyles = () =>
       marginLeft: 10,
       flex: 1,
     },
+    currencyCodeContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: '22%',
+      gap: 10,
+      justifyContent: 'space-between',
+    },
     currencyCode: {
       fontSize: 18,
       fontWeight: '500',
       color: theme.FONT_PRIMARY_COLOR,
+      alignItems: 'center',
     },
     currencyName: {
       fontSize: 14,
