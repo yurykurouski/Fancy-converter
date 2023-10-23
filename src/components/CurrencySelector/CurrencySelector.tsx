@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useContext } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useMemo } from 'react';
 import { ListRenderItem, RefreshControl, View } from 'react-native';
 import Animated, { Layout } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,6 +10,7 @@ import { NotificationContext } from 'context';
 import { useGetCurrenciesExchangeCourse } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
+import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { AvailableFiatNames } from 'types';
 import { isIos } from 'utils';
@@ -34,6 +35,7 @@ export const CurrencySelector = ({
   const { isLoading } = useSelector(selectExchangeCourses);
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
   const { colorScheme } = useSelector(selectColorSchemeState);
+  const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
 
@@ -43,11 +45,18 @@ export const CurrencySelector = ({
 
   const onOffsetChange = useOnScrollOffsetChange(setIsHeaderBlurred);
 
+  const sortedWithFavorites = useMemo(() => {
+    return [...selectedCurrencies].sort(a => {
+      if (favoriteCurrencies[a]) return -1;
+      return 1;
+    });
+  }, [favoriteCurrencies, selectedCurrencies]);
+
   return (
     <Animated.FlatList
       keyboardShouldPersistTaps="handled"
       style={styles.container}
-      data={selectedCurrencies}
+      data={sortedWithFavorites}
       keyExtractor={item => item}
       renderItem={renderItem}
       onScroll={onOffsetChange}
