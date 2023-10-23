@@ -9,6 +9,7 @@ import {
 export const showNotification = (
   animatedPosition: SharedValue<number>,
   hasIsland: boolean,
+  top: number,
 ) =>
   (animatedPosition.value = hasIsland
     ? withSequence(
@@ -32,7 +33,7 @@ export const showNotification = (
     : withSequence(
         withDelay(
           500,
-          withSpring(58, {
+          withSpring(top + 38, {
             dampingRatio: 0.7,
             reduceMotion: ReduceMotion.System,
             duration: 800,
