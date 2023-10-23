@@ -185,3 +185,15 @@ export type TAvailableCurrencies = {
   [ECurrencyType.FIAT]: AvailableFiatNames[];
   [ECurrencyType.CRYPTO]: AvailableCryptoNames[];
 };
+
+export enum ENotificationType {
+  ADD_FAVORITE = 'ADD_FAVORITE',
+  REMOVE_FAVORITE = 'REMOVE_FAVORITE',
+  RATES_UPDATED = 'RATES_UPDATED',
+}
+
+export type TNotificationData = {
+  type: ENotificationType;
+  timeStamp: number;
+  data?: unknown;
+};

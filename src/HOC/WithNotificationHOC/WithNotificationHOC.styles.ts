@@ -7,8 +7,8 @@ export const useStyles = () =>
       backgroundColor: theme.ACCENT_COLOR_LIGHTER,
       minWidth: '50%',
       maxWidth: '100%',
-      top: -50,
-      minHeight: 32,
+      top: -38,
+      height: 38,
       borderRadius: 50,
       justifyContent: 'center',
       alignItems: 'center',
@@ -25,6 +25,6 @@ export const useStyles = () =>
     },
     withIslandContainer: {
       top: 12,
-      height: 36,
+      height: 35,
     },
   }));

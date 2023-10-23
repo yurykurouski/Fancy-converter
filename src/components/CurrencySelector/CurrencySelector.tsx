@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useContext, useMemo } from 'react';
+import React, { Dispatch, SetStateAction, useMemo } from 'react';
 import { ListRenderItem, RefreshControl, View } from 'react-native';
 import Animated, { Layout } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CurrencyInputValue } from 'components';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
-import { NotificationContext } from 'context';
 import { useGetCurrenciesExchangeCourse } from 'hooks';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
@@ -30,14 +29,12 @@ export const CurrencySelector = ({
 
   const { top } = useSafeAreaInsets();
 
-  const startNotification = useContext(NotificationContext);
-
   const { isLoading } = useSelector(selectExchangeCourses);
   const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
   const { colorScheme } = useSelector(selectColorSchemeState);
   const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
-  const { reloadCourses } = useGetCurrenciesExchangeCourse(startNotification);
+  const { reloadCourses } = useGetCurrenciesExchangeCourse();
 
   const renderItem: ListRenderItem<AvailableFiatNames> = ({ item }) => (
     <CurrencyInputValue currencyCode={item} />

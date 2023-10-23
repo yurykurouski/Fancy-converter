@@ -8,13 +8,14 @@ import {
 import { Provider, useSelector } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { CurrenciesMainContent, Onboarding } from 'components';
-import { WithNotification } from 'context';
 import { useAppearanceChangeListener } from 'hooks';
 import store, { persistor } from 'store';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectOnBoardingStatus } from 'store/onboardingStatus/selectors';
 
 import { useStyles } from './App.styles';
+
+import { WithNotificationHOC } from 'HOC/WithNotificationHOC';
 
 const App = React.memo(() => {
   const { colorScheme } = useSelector(selectColorSchemeState);
@@ -48,9 +49,9 @@ export default () => (
     <GestureHandlerRootView style={container}>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <WithNotification>
+          <WithNotificationHOC>
             <App />
-          </WithNotification>
+          </WithNotificationHOC>
         </PersistGate>
       </Provider>
     </GestureHandlerRootView>

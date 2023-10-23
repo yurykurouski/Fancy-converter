@@ -21,6 +21,7 @@ module.exports = {
           constants: './src/constants',
           context: './src/context',
           store: './src/store',
+          HOC: './src/HOC',
         },
       },
     ],
