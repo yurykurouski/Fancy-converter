@@ -6,6 +6,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { useIsHasIsland } from 'hooks/useHasIsland';
 import { l } from 'resources/localization';
@@ -21,14 +22,11 @@ export const WithNotificationHOC = ({
   children: JSX.Element;
 }) => {
   const styles = useStyles();
+  const { top } = useSafeAreaInsets();
 
   const animatedValue = useSharedValue(0);
 
   const { notificationData } = useSelector(selectUIStatus);
-
-  const message = `${notificationData?.data ?? ''} ${
-    l[notificationData?.type]
-  }`;
 
   const appState = useAppState();
   const opacity = appState === 'inactive' ? 0 : 1;
@@ -38,7 +36,7 @@ export const WithNotificationHOC = ({
   const animatedStyles = useAnimatedStyle(() => {
     const interpolatedScale = interpolate(
       animatedValue.value,
-      [0, hasIsland ? 46 : 58],
+      [0, hasIsland ? top : top + 38],
       [0.3, 1],
     );
 
@@ -54,21 +52,25 @@ export const WithNotificationHOC = ({
 
   useEffect(() => {
     if (notificationData?.timeStamp) {
-      showNotification(animatedValue, hasIsland);
+      showNotification(animatedValue, hasIsland, top);
     }
-  }, [animatedValue, hasIsland, notificationData?.timeStamp]);
+  }, [animatedValue, hasIsland, notificationData?.timeStamp, top]);
 
   return (
     <>
       {children}
-      <Animated.View
-        style={[
-          styles.container,
-          hasIsland && { opacity } && styles.withIslandContainer,
-          animatedStyles,
-        ]}>
-        <Text style={styles.text}>{message}</Text>
-      </Animated.View>
+      {notificationData?.type && (
+        <Animated.View
+          style={[
+            styles.container,
+            hasIsland && { opacity } && styles.withIslandContainer,
+            animatedStyles,
+          ]}>
+          <Text style={styles.text}>
+            {`${notificationData?.data ?? ''} ${l[notificationData?.type]}`}
+          </Text>
+        </Animated.View>
+      )}
     </>
   );
 };
