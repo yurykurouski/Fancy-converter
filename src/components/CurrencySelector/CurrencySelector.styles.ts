@@ -4,7 +4,6 @@ export const useStyles = () =>
   useTheme((_, { top }) => ({
     container: {
       paddingHorizontal: 10,
-      overflow: 'visible',
     },
     headerComponent: {
       marginBottom: 12,
