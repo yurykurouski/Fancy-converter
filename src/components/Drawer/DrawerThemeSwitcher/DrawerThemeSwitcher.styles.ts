@@ -3,7 +3,7 @@ import { useTheme } from 'hooks/useTheme';
 export const useStyles = () =>
   useTheme((theme, _, colorScheme) => ({
     container: {
-      margin: 5,
+      margin: 4,
       width: 40,
       height: 40,
       justifyContent: 'center',
