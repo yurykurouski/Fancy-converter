@@ -136,6 +136,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
           onFocus={() => onFocusHandler(calculatedValue)}
           ref={inputRef}
           keyboardType="numeric"
+          keyboardAppearance={colorScheme!}
           contextMenuHidden
           placeholder="0"
           maxLength={14}

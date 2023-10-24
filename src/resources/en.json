@@ -170,7 +170,7 @@
   "onboarding_third-screen_subtitle-swipe": "Swipe to delete:",
   "onboarding_third-screen_subtitle-drag": "Drag to reorder:",
   "currencies-bootomsheet_empty-search-result": "No result found",
-  "settings_auto-theme_switch": "Use system theme",
+  "settings_auto-theme_switch": "Follow system theme",
   "header-menu_currency_fiat": "Fiat",
   "header-menu_currency_crypto": "Crypto"
 }

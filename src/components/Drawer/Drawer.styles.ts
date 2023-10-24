@@ -6,10 +6,17 @@ export const useStyles = () =>
     drawer: {
       position: 'absolute',
       height: '100%',
-      paddingHorizontal: 10,
       paddingBottom: bottom,
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
       zIndex: 99,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+
+      elevation: 5,
     },
     fadeContainer: {
       ...StyleSheet.absoluteFillObject,

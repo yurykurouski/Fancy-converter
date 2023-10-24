@@ -7,7 +7,6 @@ import ghDarkIcon from 'assets/icons/github-dark.png';
 import ghLightIcon from 'assets/icons/github-light.png';
 import tgIcon from 'assets/icons/telegram-logo.png';
 import { Switch } from 'components/common/Switch';
-import {} from 'constants';
 import {
   GITHUB_REPO_URL,
   PAYPAL_DONATION_URL,
@@ -38,13 +37,15 @@ export const DrawerContent = React.memo(() => {
   const setColorSchemeBehavior = useSetColorSchemeBehavior();
   const setColorScheme = useSetColorScheme();
 
-  const onBehaviorChange = (val: boolean) => {
+  const onBehaviorChange = () => {
     const systemScheme = Appearance.getColorScheme();
 
     setColorSchemeBehavior(
-      val ? EColorSchemeBehavior.AUTO : EColorSchemeBehavior.MANUAL,
+      behavior !== EColorSchemeBehavior.AUTO
+        ? EColorSchemeBehavior.AUTO
+        : EColorSchemeBehavior.MANUAL,
     );
-
+    //TODO: use extra reducer here
     setColorScheme(systemScheme);
   };
 
@@ -71,7 +72,10 @@ export const DrawerContent = React.memo(() => {
   return (
     <View style={styles.contentContainer}>
       <View style={styles.controlsContainer}>
-        <Text style={styles.switchLabel}>
+        <Text
+          style={styles.switchLabel}
+          onPress={onBehaviorChange}
+          suppressHighlighting>
           {l['settings_auto-theme_switch']}
         </Text>
         <Switch
