@@ -23,8 +23,7 @@ export const useStyles = () =>
     currencyCodeContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      width: '22%',
-      gap: 10,
+      width: 62,
       justifyContent: 'space-between',
     },
     currencyCode: {
