@@ -1,10 +1,12 @@
-import { WINDOW_WIDTH } from '@gorhom/bottom-sheet';
-import { useTheme } from 'hooks';
+import { useTheme, useWindowDimensionChange } from 'hooks';
+import { EDimensions } from 'types';
 
-export const useStyles = (height?: number) =>
-  useTheme((_, { bottom }) => ({
+export const useStyles = (height?: number) => {
+  const windowWidth = useWindowDimensionChange(EDimensions.WIDTH);
+
+  return useTheme((_, { bottom }) => ({
     container: {
-      width: WINDOW_WIDTH,
+      width: windowWidth,
       height,
     },
     listContainer: {
@@ -26,3 +28,4 @@ export const useStyles = (height?: number) =>
       height: 10,
     },
   }));
+};
