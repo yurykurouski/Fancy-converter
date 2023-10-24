@@ -20,6 +20,8 @@ import { useOnScrollOffsetChange } from './CurrencySelector.hooks';
 
 import { useStyles } from './CurrencySelector.styles';
 
+import { KeyboardAvoidingHOC } from 'HOC/KeyboardAvoidingHOC';
+
 export const CurrencySelector = ({
   setIsHeaderBlurred,
 }: {
@@ -50,45 +52,47 @@ export const CurrencySelector = ({
   }, [favoriteCurrencies, selectedCurrencies]);
 
   return (
-    <Animated.FlatList
-      keyboardShouldPersistTaps="handled"
-      style={styles.container}
-      data={sortedWithFavorites}
-      keyExtractor={item => item}
-      renderItem={renderItem}
-      onScroll={onOffsetChange}
-      refreshControl={
-        <RefreshControl
-          refreshing={isLoading}
-          progressViewOffset={top}
-          onRefresh={reloadCourses}
-          //android
-          colors={[THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR]}
-          progressBackgroundColor={
-            THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
-          }
-          //ios
-          tintColor={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
-        />
-      }
-      ItemSeparatorComponent={SeparatorComponent}
-      ListFooterComponent={
-        selectedCurrencies.length ? ListFooterComponent : null
-      }
-      ListHeaderComponent={<View style={styles.headerComponent} />}
-      showsVerticalScrollIndicator={false}
-      itemLayoutAnimation={
-        isIos
-          ? Layout.delay(DEFAULT_ANIMATION_DURATION).duration(
-              DEFAULT_ANIMATION_DURATION,
-            )
-          : undefined
-      }
-      getItemLayout={(_, index) => ({
-        length: 74,
-        offset: 74 * index,
-        index,
-      })}
-    />
+    <KeyboardAvoidingHOC>
+      <Animated.FlatList
+        keyboardShouldPersistTaps="handled"
+        style={styles.container}
+        data={sortedWithFavorites}
+        keyExtractor={item => item}
+        renderItem={renderItem}
+        onScroll={onOffsetChange}
+        refreshControl={
+          <RefreshControl
+            refreshing={isLoading}
+            progressViewOffset={top}
+            onRefresh={reloadCourses}
+            //android
+            colors={[THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR]}
+            progressBackgroundColor={
+              THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
+            }
+            //ios
+            tintColor={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
+          />
+        }
+        ItemSeparatorComponent={SeparatorComponent}
+        ListFooterComponent={
+          selectedCurrencies.length ? ListFooterComponent : null
+        }
+        ListHeaderComponent={<View style={styles.headerComponent} />}
+        showsVerticalScrollIndicator={false}
+        itemLayoutAnimation={
+          isIos
+            ? Layout.delay(DEFAULT_ANIMATION_DURATION).duration(
+                DEFAULT_ANIMATION_DURATION,
+              )
+            : undefined
+        }
+        getItemLayout={(_, index) => ({
+          length: 74,
+          offset: 74 * index,
+          index,
+        })}
+      />
+    </KeyboardAvoidingHOC>
   );
 };
