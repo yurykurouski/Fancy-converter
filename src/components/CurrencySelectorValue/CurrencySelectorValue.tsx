@@ -70,7 +70,6 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
               <Text style={styles.currencyCode}>{currencyCode}</Text>
               {isFavorite && <BookmarkIcon size={15} />}
             </View>
-
             <Text style={styles.currencyName}>{currencyName}</Text>
           </View>
         </View>
@@ -80,7 +79,7 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
           NextIcon={
             <CheckIcon
               size={30}
-              color={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
+              color={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
             />
           }
         />
