@@ -63,7 +63,7 @@ export const CurrencySelector = ({
         refreshControl={
           <RefreshControl
             refreshing={isLoading}
-            progressViewOffset={top}
+            progressViewOffset={top + (isIos ? 26 : 18)}
             onRefresh={reloadCourses}
             //android
             colors={[THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR]}

@@ -20,9 +20,10 @@ export const useStyles = () =>
     title: {
       textAlignVertical: 'center',
       textAlign: 'center',
-      padding: 10,
+      paddingVertical: 10,
       color: theme.FONT_COLOR_FADED,
       fontSize: 22,
+      width: 62,
     },
     titleFocused: {
       color: theme.FONT_PRIMARY_COLOR,
