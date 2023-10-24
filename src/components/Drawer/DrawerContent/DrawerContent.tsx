@@ -6,6 +6,7 @@ import cupLight from 'assets/icons/cup_light.png';
 import ghDarkIcon from 'assets/icons/github-dark.png';
 import ghLightIcon from 'assets/icons/github-light.png';
 import tgIcon from 'assets/icons/telegram-logo.png';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { Switch } from 'components/common/Switch';
 import {
   GITHUB_REPO_URL,
@@ -72,12 +73,11 @@ export const DrawerContent = React.memo(() => {
   return (
     <View style={styles.contentContainer}>
       <View style={styles.controlsContainer}>
-        <Text
-          style={styles.switchLabel}
-          onPress={onBehaviorChange}
-          suppressHighlighting>
-          {l['settings_auto-theme_switch']}
-        </Text>
+        <ButtonWithIPadOSInteraction onPress={onBehaviorChange}>
+          <Text style={styles.switchLabel}>
+            {l['settings_auto-theme_switch']}
+          </Text>
+        </ButtonWithIPadOSInteraction>
         <Switch
           value={behavior === EColorSchemeBehavior.AUTO}
           onValueChange={onBehaviorChange}

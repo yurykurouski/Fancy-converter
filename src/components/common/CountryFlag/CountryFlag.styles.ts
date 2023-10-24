@@ -13,6 +13,7 @@ export const useStyles = (size?: number) =>
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_LIGHTER,
       width: size,
       height: size,
+      zIndex: 1,
     },
-    bookmarkIcon: { position: 'absolute', bottom: 0, right: 0 },
+    bookmarkIcon: { position: 'absolute', bottom: 0, right: 1 },
   }));

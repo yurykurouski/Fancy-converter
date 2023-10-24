@@ -22,11 +22,7 @@ export const CountryFlag = React.memo<Props>(
       <View>
         <Image source={flagImg} style={styles.flagContainer} />
         {bookmark && (
-          <BookmarkIcon
-            size={8}
-            style={styles.bookmarkIcon}
-            fillColor="white"
-          />
+          <BookmarkIcon size={8} style={styles.bookmarkIcon} fillColor="grey" />
         )}
       </View>
     );
