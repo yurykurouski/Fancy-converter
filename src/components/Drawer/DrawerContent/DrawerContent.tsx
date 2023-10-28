@@ -19,7 +19,7 @@ import {
 } from 'hooks/store/ColorScheme';
 import debounce from 'lodash.debounce';
 import { l } from 'resources/localization';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectColorSchemeState } from 'store/ui/selectors';
 import { EColorSchemeBehavior } from 'types';
 
 import { DrawerIcon } from '../DrawerIcon';
@@ -91,11 +91,7 @@ export const DrawerContent = React.memo(() => {
         ) : (
           <DrawerIcon onPress={openPayPal} icon={cupIcon} />
         )}
-        <DrawerThemeSwitcher
-          colorScheme={colorScheme}
-          setColorScheme={onSetColorScheme}
-          schemeBehavior={behavior}
-        />
+        <DrawerThemeSwitcher />
       </View>
     </View>
   );
