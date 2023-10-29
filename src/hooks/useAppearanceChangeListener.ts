@@ -1,27 +1,28 @@
 import { useEffect } from 'react';
 import { Appearance } from 'react-native';
 import { useSelector } from 'react-redux';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectColorSchemeState } from 'store/ui/selectors';
 import { EColorSchemeBehavior } from 'types';
 
-import { useSetColorScheme } from './store/ColorScheme';
+import { useSwitchColorScheme } from './store/UIStatus';
 
 export const useAppearanceChangeListener = () => {
-  const { behavior } = useSelector(selectColorSchemeState);
+  const { behavior, colorScheme: currentColorScheme } = useSelector(
+    selectColorSchemeState,
+  );
 
-  const setColorScheme = useSetColorScheme();
+  const switchColorScheme = useSwitchColorScheme();
 
   useEffect(() => {
-    if (behavior === EColorSchemeBehavior.AUTO) {
-      setColorScheme(Appearance.getColorScheme());
-    }
-
-    const listener = Appearance.addChangeListener(({ colorScheme }) => {
-      if (behavior === EColorSchemeBehavior.AUTO) {
-        setColorScheme(colorScheme);
+    const listener = Appearance.addChangeListener(prop => {
+      if (
+        behavior === EColorSchemeBehavior.AUTO &&
+        currentColorScheme !== prop.colorScheme
+      ) {
+        switchColorScheme();
       }
     });
 
     return () => listener.remove();
-  }, [behavior, setColorScheme]);
+  }, [behavior, currentColorScheme, switchColorScheme]);
 };

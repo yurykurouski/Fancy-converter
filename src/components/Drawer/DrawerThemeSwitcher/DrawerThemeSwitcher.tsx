@@ -5,20 +5,22 @@ import {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
+import { useSelector } from 'react-redux';
+import { useSwitchColorScheme } from 'hooks/store/UIStatus';
+import { selectColorSchemeState } from 'store/ui/selectors';
 import { EColorSchemeBehavior } from 'types';
 
 import { DarkIcon } from './DarkIcon';
-import { TDrawerThemeSwitcherProps } from './DrawerThemeSwitcher.types';
 import { LightIcon } from './LightIcon';
 
 import { useStyles } from './DrawerThemeSwitcher.styles';
 
-export const DrawerThemeSwitcher: TDrawerThemeSwitcherProps = ({
-  colorScheme,
-  setColorScheme,
-  schemeBehavior,
-}) => {
+export const DrawerThemeSwitcher = () => {
   const styles = useStyles();
+
+  const { colorScheme, behavior } = useSelector(selectColorSchemeState);
+
+  const switchColorScheme = useSwitchColorScheme();
 
   const animatedValue = useSharedValue(0);
 
@@ -32,10 +34,10 @@ export const DrawerThemeSwitcher: TDrawerThemeSwitcherProps = ({
   }, [animatedValue, colorScheme]);
 
   return (
-    <Pressable onPress={setColorScheme} style={styles.container}>
+    <Pressable onPress={switchColorScheme} style={styles.container}>
       <LightIcon animatedValue={animatedValue} />
       <DarkIcon animatedValue={animatedValue} />
-      {schemeBehavior === EColorSchemeBehavior.AUTO && (
+      {behavior === EColorSchemeBehavior.AUTO && (
         <Text style={styles.behaviorIndicator}>A</Text>
       )}
     </Pressable>
