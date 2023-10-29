@@ -7,3 +7,7 @@ export const selectColorSchemeState = createSelector(selectUIStatus, value => ({
   colorScheme: value.colorScheme,
   behavior: value.behavior,
 }));
+export const selectBottomSheetIndex = createSelector(
+  selectUIStatus,
+  value => value.bottomSheetIndex,
+);
