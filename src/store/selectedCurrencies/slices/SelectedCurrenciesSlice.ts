@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import availableCurrencies from 'resources/avaliable-currencies';
-import { EAvailableFiatNames, ECurrencyType, TAvailableCurrencies } from 'types';
+import {
+  EAvailableFiatNames,
+  ECurrencyType,
+  TAvailableCurrencies,
+} from 'types';
 
 export type TSelectedCurrenciesSlice = {
   selectedCurrencies: EAvailableFiatNames[];

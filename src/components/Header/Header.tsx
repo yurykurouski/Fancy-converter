@@ -4,9 +4,8 @@ import { BlurView } from '@react-native-community/blur';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { selectUIStatus } from 'store/ui/selectors';
+import { selectColorSchemeState, selectUIStatus } from 'store/ui/selectors';
 
 import { Counter } from './components/Counter';
 import { CurrencyTypeMenu } from './components/CurrencyTypeMenu';

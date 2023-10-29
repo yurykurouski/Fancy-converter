@@ -3,6 +3,7 @@ import {
   GestureResponderEvent,
   Insets,
   Pressable,
+  PressableProps,
   StyleProp,
   ViewStyle,
 } from 'react-native';
@@ -10,10 +11,10 @@ import { PointerInteractionView } from '@thefunbots/react-native-pointer-interac
 import { useAndroidRippleConfig } from 'hooks';
 import { isAndroid, isIos } from 'utils';
 
-type TProps = {
+type TProps = PressableProps & {
   children: JSX.Element | JSX.Element[];
   onPress: null | ((event: GestureResponderEvent) => void) | undefined;
-  containerStyle: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   hitSlop?: number | Insets;
 };
 

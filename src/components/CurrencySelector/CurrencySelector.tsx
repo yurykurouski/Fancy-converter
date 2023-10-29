@@ -7,10 +7,10 @@ import { THEME_COLORS } from 'assets/colors';
 import { CurrencyInputValue } from 'components';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { useGetCurrenciesExchangeCourse } from 'hooks';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectColorSchemeState } from 'store/ui/selectors';
 import { EAvailableFiatNames } from 'types';
 import { isIos } from 'utils';
 

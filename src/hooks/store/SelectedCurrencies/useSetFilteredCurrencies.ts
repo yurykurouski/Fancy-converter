@@ -1,7 +1,11 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
-import { EAvailableCryptoNames, EAvailableFiatNames, ECurrencyType } from 'types';
+import {
+  EAvailableCryptoNames,
+  EAvailableFiatNames,
+  ECurrencyType,
+} from 'types';
 
 import { TSetFilteredCurrencies } from '../types';
 

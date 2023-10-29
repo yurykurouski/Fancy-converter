@@ -19,11 +19,11 @@ import {
   useRemoveFromSelectedCurrenciesInEdit,
   useSetSelectedCurrEditMode,
 } from 'hooks/store/SelectedCurrencies';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectColorSchemeState } from 'store/ui/selectors';
 
 import { CurrencyInputIcon } from './CurrencyInputIcon/CurrencyInputIcon';
 import {

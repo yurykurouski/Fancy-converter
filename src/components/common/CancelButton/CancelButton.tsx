@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import CloseIconDark from 'assets/icons/close_black_24dp.svg';
 import CloseIconLight from 'assets/icons/close_white_24dp.svg';
 import { OnChangeTextHandler } from 'components/CurrencyInputValue/CurrencyInputValue.types';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectColorSchemeState } from 'store/ui/selectors';
 
 import { useStyles } from './CancelButton.styles';
 
