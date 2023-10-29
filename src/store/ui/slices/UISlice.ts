@@ -43,6 +43,10 @@ export const UISlice = createSlice({
 
     switchColorScheme: state => {
       state.colorScheme = state.colorScheme === 'light' ? 'dark' : 'light';
+
+      if (state.behavior === EColorSchemeBehavior.AUTO) {
+        state.behavior = EColorSchemeBehavior.MANUAL;
+      }
     },
 
     switchAppearanceBehavior: state => {
