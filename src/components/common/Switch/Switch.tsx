@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch as RNSwitch, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { selectColorSchemeState } from 'store/ui/selectors';
 import { isAndroid } from 'utils';
 
 import { useStyles } from './Switch.styles';

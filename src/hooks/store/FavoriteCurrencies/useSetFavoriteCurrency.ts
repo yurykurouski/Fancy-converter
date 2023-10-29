@@ -1,7 +1,11 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { FavoriteCurrenciesSlice } from 'store/favoriteCurrencies/slices/FavoriteCurrenciesSlice';
-import { EAvailableCryptoNames, EAvailableFiatNames, ECurrencyType } from 'types';
+import {
+  EAvailableCryptoNames,
+  EAvailableFiatNames,
+  ECurrencyType,
+} from 'types';
 
 export const useSetFavoriteCurrency = () => {
   const dispatch = useDispatch();

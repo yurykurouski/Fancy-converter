@@ -10,8 +10,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { CurrenciesMainContent, Onboarding } from 'components';
 import { useAppearanceChangeListener } from 'hooks';
 import store, { persistor } from 'store';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectOnBoardingStatus } from 'store/onboardingStatus/selectors';
+import { selectColorSchemeState } from 'store/ui/selectors';
 
 import { useStyles } from './App.styles';
 
