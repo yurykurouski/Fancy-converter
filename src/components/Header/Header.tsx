@@ -44,14 +44,14 @@ export const Header = React.memo<Props>(
       onOpenDrawer();
     };
 
-    useDerivedValue(() => {
+    useDerivedValue(() =>
       scrollTo(
         animatedScrollRef,
         0,
         interpolate(headerSharedValue.value, [-1, 1], [0, 2]) * 32,
         true,
-      );
-    });
+      ),
+    );
 
     useEffect(() => {
       if (isInEditMode) {
