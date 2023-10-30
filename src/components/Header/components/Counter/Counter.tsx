@@ -34,15 +34,16 @@ export const Counter = () => {
   );
 
   const setEditMode = useSetSelectedCurrEditMode();
+  const selectedCurrenciesLength = Object.keys(selectedCurrenciesInEdit).length;
 
   const onCancelPress = () => {
     setEditMode(false);
   };
   useEffect(() => {
-    animatedOffset.value = withTiming(selectedCurrenciesInEdit.length * 20, {
+    animatedOffset.value = withTiming(selectedCurrenciesLength * 20, {
       duration: DEFAULT_ANIMATION_DURATION,
     });
-  }, [animatedOffset, selectedCurrenciesInEdit.length]);
+  }, [animatedOffset, selectedCurrenciesLength]);
 
   return (
     <ButtonWithIPadOSInteraction

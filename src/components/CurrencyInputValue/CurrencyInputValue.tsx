@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
-import { useFilteredCourseBySelectedCurrencies } from 'hooks';
 import {
   useSetFocusedCurrencyName,
   useSetFocusedCurrencyValue,
@@ -17,7 +16,6 @@ import {
 import {
   useAddToSelectedCurrenciesInEdit,
   useRemoveFromSelectedCurrenciesInEdit,
-  useSetSelectedCurrEditMode,
 } from 'hooks/store/SelectedCurrencies';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
@@ -40,14 +38,14 @@ import { useStyles } from './CurrencyInputValue.styles';
 export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
   const { exchangeCourses } = useSelector(selectExchangeCourses);
-  const { selectedCurrencies, isInEditMode, selectedCurrenciesInEdit } =
-    useSelector(selectSelectedCurrencies);
+  const { isInEditMode, selectedCurrenciesInEdit } = useSelector(
+    selectSelectedCurrencies,
+  );
   const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
     selectFocusedCurrency,
   );
   const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
-  const setSelectedCurrInEditMode = useSetSelectedCurrEditMode();
   const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
   const removeFromSelectedCurrenciesInEdit =
     useRemoveFromSelectedCurrenciesInEdit();
@@ -59,18 +57,12 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const inputRef = useRef<TextInput>(null);
 
-  const selectedCourses = useFilteredCourseBySelectedCurrencies(
-    exchangeCourses,
-    selectedCurrencies,
-  );
-
-  const course = selectedCourses?.[currencyCode];
+  const course = exchangeCourses?.[currencyCode];
   const focusedCurrencyCourse =
-    focusedCurrencyName && selectedCourses?.[focusedCurrencyName];
+    focusedCurrencyName && exchangeCourses?.[focusedCurrencyName];
 
   const isFocused = focusedCurrencyName === currencyCode;
-  const isSelectedForEdit: boolean =
-    selectedCurrenciesInEdit.includes(currencyCode);
+  const isSelectedForEdit = !!selectedCurrenciesInEdit[currencyCode];
 
   const { onChangeTextHandler, onFocusHandler, containerOnPressHandler } =
     useCurrencyInputHandlers({
@@ -87,7 +79,6 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
     addToCurrInEdit,
     selectedCurrenciesInEdit,
     removeFromSelectedCurrenciesInEdit,
-    setSelectedCurrInEditMode,
   });
 
   const calculatedValue = useConvertedValues(
@@ -101,7 +92,6 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const handleLongPress = useHandleLongPress({
     isInEditMode,
-    setSelectedCurrInEditMode,
     addToCurrInEdit,
     currencyCode,
   });

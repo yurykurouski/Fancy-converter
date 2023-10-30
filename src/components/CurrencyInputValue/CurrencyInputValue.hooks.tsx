@@ -34,15 +34,10 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
     (inputValue: string) => {
       if (isInEditMode) return;
 
-      setFocusedCurrencyName(currencyCode);
-      setFocusedCurrencyValue(inputValue);
+      setFocusedCurrencyName({ currencyCode, value: inputValue });
+      // setFocusedCurrencyValue(inputValue);
     },
-    [
-      currencyCode,
-      isInEditMode,
-      setFocusedCurrencyName,
-      setFocusedCurrencyValue,
-    ],
+    [currencyCode, isInEditMode, setFocusedCurrencyName],
   );
 
   const containerOnPressHandler = useCallback(() => {
@@ -109,18 +104,13 @@ export const useOnContainerPress = ({
   addToCurrInEdit,
   selectedCurrenciesInEdit,
   removeFromSelectedCurrenciesInEdit,
-  setSelectedCurrInEditMode,
 }: TUseOnContainerPressParams) => {
   return () => {
     if (isInEditMode) {
-      if (!selectedCurrenciesInEdit.includes(currencyCode)) {
+      if (!selectedCurrenciesInEdit[currencyCode]) {
         addToCurrInEdit(currencyCode);
       } else {
         removeFromSelectedCurrenciesInEdit(currencyCode);
-
-        if (selectedCurrenciesInEdit.length === 1) {
-          setSelectedCurrInEditMode(false);
-        }
       }
     }
   };
@@ -128,7 +118,6 @@ export const useOnContainerPress = ({
 
 export const useHandleLongPress = ({
   isInEditMode,
-  setSelectedCurrInEditMode,
   addToCurrInEdit,
   currencyCode,
 }: TUseHandleLongPressParams) =>
@@ -137,7 +126,6 @@ export const useHandleLongPress = ({
       Vibration.vibrate(1);
       Keyboard.dismiss();
 
-      setSelectedCurrInEditMode(true);
       addToCurrInEdit(currencyCode);
     }
-  }, [addToCurrInEdit, currencyCode, isInEditMode, setSelectedCurrInEditMode]);
+  }, [addToCurrInEdit, currencyCode, isInEditMode]);

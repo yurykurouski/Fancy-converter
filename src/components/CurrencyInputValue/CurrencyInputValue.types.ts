@@ -5,9 +5,8 @@ import {
   TRemoveFromSelectedCurrenciesInEdit,
   TSetFocusedCurrencyName,
   TSetFocusedCurrencyValue,
-  TSetSelectedCurrEditMode,
 } from 'hooks/store/types';
-import { EAvailableFiatNames } from 'types';
+import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 
 export type Props = {
   currencyCode: EAvailableFiatNames;
@@ -40,14 +39,14 @@ export type TUseOnContainerPressParams = {
   isInEditMode: boolean;
   currencyCode: EAvailableFiatNames;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
-  selectedCurrenciesInEdit: EAvailableFiatNames[];
+  selectedCurrenciesInEdit: {
+    [key in EAvailableFiatNames | EAvailableCryptoNames]?: number;
+  };
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
-  setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
 };
 
 export type TUseHandleLongPressParams = {
   isInEditMode: boolean;
-  setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
   currencyCode: EAvailableFiatNames;
 };

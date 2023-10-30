@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { Text, View } from 'react-native';
 import { Vibration } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -7,11 +7,14 @@ import { BookmarkIcon, CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
-import { useSetSelectedCurrencies } from 'hooks';
 import {
   useRemoveFavoriteCurrency,
   useSetFavoriteCurrency,
 } from 'hooks/store/FavoriteCurrencies';
+import {
+  useAddSelected,
+  useRemoveSelected,
+} from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
@@ -27,33 +30,40 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     const styles = useStyles();
 
     const { colorScheme } = useSelector(selectColorSchemeState);
-    const { selectedCurrencies, activeCurrencyType } = useSelector(
+    const { activeCurrencyType, currencies } = useSelector(
       selectSelectedCurrencies,
     );
     const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
-    const setSelectedCurrencies = useSetSelectedCurrencies();
     const setFavoriteCurrency = useSetFavoriteCurrency();
     const removeFavCurrency = useRemoveFavoriteCurrency();
+    const removeSelected = useRemoveSelected();
+    const addSelected = useAddSelected();
 
-    const isActive = selectedCurrencies.includes(currencyCode);
+    const isActive = currencies.hasOwnProperty(currencyCode);
     const isFavorite = !!favoriteCurrencies[currencyCode];
 
     const onPressHandler = useOnPressHandler(
       isActive,
-      selectedCurrencies,
       currencyCode,
-      setSelectedCurrencies,
+      removeSelected,
+      addSelected,
     );
 
-    const onLongPress = () => {
+    const onLongPress = useCallback(() => {
       Vibration.vibrate(1);
       if (isFavorite) {
         removeFavCurrency(currencyCode);
       } else {
         setFavoriteCurrency(currencyCode, activeCurrencyType);
       }
-    };
+    }, [
+      activeCurrencyType,
+      currencyCode,
+      isFavorite,
+      removeFavCurrency,
+      setFavoriteCurrency,
+    ]);
 
     const currencyName = l[currencyCode];
 
