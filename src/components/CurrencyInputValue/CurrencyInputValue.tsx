@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useMemo, useRef } from 'react';
 import { Pressable, Text, TextInput } from 'react-native';
 import Animated, {
   FadeInRight,
@@ -22,6 +22,7 @@ import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { selectColorSchemeState } from 'store/ui/selectors';
+import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 
 import { CurrencyInputIcon } from './CurrencyInputIcon/CurrencyInputIcon';
 import {
@@ -35,14 +36,27 @@ import { Props } from './CurrencyInputValue.types';
 
 import { useStyles } from './CurrencyInputValue.styles';
 
+const useMemoizedValues = (
+  currencyCode: EAvailableFiatNames | EAvailableCryptoNames,
+) => {
+  const { exchangeCourses } = useSelector(selectExchangeCourses);
+  const { focusedCurrencyName } = useSelector(selectFocusedCurrency);
+
+  return useMemo(
+    () => ({
+      focusedCurrencyRate:
+        focusedCurrencyName && exchangeCourses?.[focusedCurrencyName],
+      isFocused: focusedCurrencyName === currencyCode,
+      rate: exchangeCourses?.[currencyCode],
+    }),
+    [currencyCode, exchangeCourses, focusedCurrencyName],
+  );
+};
+
 export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
-  const { exchangeCourses } = useSelector(selectExchangeCourses);
   const { isInEditMode, selectedCurrenciesInEdit } = useSelector(
     selectSelectedCurrencies,
-  );
-  const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
-    selectFocusedCurrency,
   );
   const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
@@ -53,15 +67,13 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
   const setFocusedCurrencyName = useSetFocusedCurrencyName();
 
+  const { focusedCurrencyRate, isFocused, rate } =
+    useMemoizedValues(currencyCode);
+
   const styles = useStyles();
 
   const inputRef = useRef<TextInput>(null);
 
-  const course = exchangeCourses?.[currencyCode];
-  const focusedCurrencyCourse =
-    focusedCurrencyName && exchangeCourses?.[focusedCurrencyName];
-
-  const isFocused = focusedCurrencyName === currencyCode;
   const isSelectedForEdit = !!selectedCurrenciesInEdit[currencyCode];
 
   const { onChangeTextHandler, onFocusHandler, containerOnPressHandler } =
@@ -83,9 +95,8 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const calculatedValue = useConvertedValues(
     isFocused,
-    focusedCurrencyValue,
-    course,
-    focusedCurrencyCourse,
+    rate,
+    focusedCurrencyRate,
   );
 
   const formattedValue = useFormattedValue(calculatedValue);

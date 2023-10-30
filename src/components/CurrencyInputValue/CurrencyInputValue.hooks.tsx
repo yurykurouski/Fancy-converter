@@ -1,7 +1,9 @@
 import { useCallback, useMemo } from 'react';
 import { Keyboard, Vibration } from 'react-native';
+import { useSelector } from 'react-redux';
 import { INPUT_VALIDATION_REGEXP } from 'constants/constants';
 import { l } from 'resources/localization';
+import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 
 import {
   TUseConvertedValues,
@@ -35,7 +37,6 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
       if (isInEditMode) return;
 
       setFocusedCurrencyName({ currencyCode, value: inputValue });
-      // setFocusedCurrencyValue(inputValue);
     },
     [currencyCode, isInEditMode, setFocusedCurrencyName],
   );
@@ -55,10 +56,11 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
 
 export const useConvertedValues: TUseConvertedValues = (
   isFocused,
-  focusedCurrencyValue,
   course,
   focusedCurrencyCourse,
 ) => {
+  const { focusedCurrencyValue } = useSelector(selectFocusedCurrency);
+
   const coefficient = Number(course) / Number(focusedCurrencyCourse);
 
   const calculatedValue = useMemo(

@@ -30,7 +30,6 @@ export type TUseCurrencyInputHandlers = (props: {
 
 export type TUseConvertedValues = (
   isFocused: boolean,
-  focusedCurrencyValue: string,
   course: number | undefined,
   focusedCurrencyCourse: number | undefined,
 ) => string;
