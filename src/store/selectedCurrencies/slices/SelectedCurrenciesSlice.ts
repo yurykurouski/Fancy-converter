@@ -46,17 +46,6 @@ export const SelectedCurrenciesSlice = createSlice({
     ) => {
       delete state.currencies[action.payload];
     },
-    // changeCurrValue: (
-    //   state,
-    //   action: PayloadAction<{
-    //     currencyCode: EAvailableFiatNames | EAvailableCryptoNames;
-    //     value: string;
-    //   }>,
-    // ) => {
-    //   const { currencyCode, value } = action.payload;
-
-    //   state.currencies[currencyCode] = value;
-    // },
 
     setIsInEditMode: (state, action: PayloadAction<boolean>) => {
       state.isInEditMode = action.payload;
