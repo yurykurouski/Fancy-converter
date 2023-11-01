@@ -46,6 +46,7 @@ export const CurrencySelector = ({
 
   const sortedWithFavorites = useMemo(() => {
     return Object.keys(currencies).sort(a => {
+      //@ts-expect-error
       if (favoriteCurrencies[a]) return -1;
       return 1;
     });
