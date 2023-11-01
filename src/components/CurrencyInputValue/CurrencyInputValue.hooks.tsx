@@ -106,13 +106,17 @@ export const useOnContainerPress = ({
   addToCurrInEdit,
   selectedCurrenciesInEdit,
   removeFromSelectedCurrenciesInEdit,
+  selectedInEditAmount,
+  setEditMode,
 }: TUseOnContainerPressParams) => {
   return () => {
     if (isInEditMode) {
       if (!selectedCurrenciesInEdit[currencyCode]) {
         addToCurrInEdit(currencyCode);
-      } else {
+      } else if (selectedInEditAmount > 1) {
         removeFromSelectedCurrenciesInEdit(currencyCode);
+      } else {
+        setEditMode(false);
       }
     }
   };

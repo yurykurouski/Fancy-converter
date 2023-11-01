@@ -10,7 +10,7 @@ import BottomSheet, {
 import { useWindowDimensionChange } from 'hooks';
 import { useSetSetBottomSheetStatus } from 'hooks/store/UIStatus';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { selectBottomSheetIndex } from 'store/ui/selectors';
+import { selectBottomSheetIndex, selectUIStatus } from 'store/ui/selectors';
 import { ECurrencyType, EDimensions } from 'types';
 import { isIos } from 'utils';
 
@@ -34,9 +34,8 @@ export const CurrenciesBottomSheet = React.memo(
     const styles = useStyles();
     const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
-    const { activeCurrencyType, isInEditMode } = useSelector(
-      selectSelectedCurrencies,
-    );
+    const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
+    const { isInEditMode } = useSelector(selectUIStatus);
     const bottomSheetIndex = useSelector(selectBottomSheetIndex);
     const setBSStatus = useSetSetBottomSheetStatus();
 

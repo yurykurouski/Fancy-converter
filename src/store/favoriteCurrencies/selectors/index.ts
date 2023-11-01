@@ -1,4 +1,6 @@
 import { TState } from 'store';
 
+import { FavoriteCurrenciesSlice } from '../slices/FavoriteCurrenciesSlice';
+
 export const selectFavoriteCurrencies = (state: TState) =>
-  state.favoriteCurrencies;
+  state[FavoriteCurrenciesSlice.name];

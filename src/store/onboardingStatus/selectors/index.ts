@@ -1,3 +1,6 @@
 import { TState } from 'store';
 
-export const selectOnBoardingStatus = (state: TState) => state.onBoardingStatus;
+import { OnBoardingStatusSlice } from '../slices/OnBoardingStatusSlice';
+
+export const selectOnBoardingStatus = (state: TState) =>
+  state[OnBoardingStatusSlice.name];

@@ -1,3 +1,6 @@
 import { TState } from 'store';
 
-export const selectFocusedCurrency = (state: TState) => state.focusedCurrency;
+import { FocusedCurrencySlice } from '../slices/FocusedCurrencySlice';
+
+export const selectFocusedCurrency = (state: TState) =>
+  state[FocusedCurrencySlice.name];

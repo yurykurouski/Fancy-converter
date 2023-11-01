@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 import {
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { selectColorSchemeState, selectUIStatus } from 'store/ui/selectors';
+import { selectUIStatus } from 'store/ui/selectors';
 
 import { Counter } from './components/Counter';
 import { CurrencyTypeMenu } from './components/CurrencyTypeMenu';
@@ -33,11 +33,8 @@ export const Header = React.memo<Props>(
 
     const animatedScrollRef = useAnimatedRef<ScrollView>();
 
-    const { colorScheme } = useSelector(selectColorSchemeState);
-    const { isInEditMode, activeCurrencyType } = useSelector(
-      selectSelectedCurrencies,
-    );
-    const { bottomSheetIndex } = useSelector(selectUIStatus);
+    const { colorScheme, bottomSheetIndex } = useSelector(selectUIStatus);
+    const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
 
     const handleMenuPress = () => {
       if (bottomSheetIndex) return;
@@ -52,14 +49,6 @@ export const Header = React.memo<Props>(
         true,
       ),
     );
-
-    useEffect(() => {
-      if (isInEditMode) {
-        headerSharedValue.value = -1;
-      } else {
-        headerSharedValue.value = 0;
-      }
-    }, [headerSharedValue, isInEditMode]);
 
     return (
       <BlurView

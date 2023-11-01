@@ -1,3 +1,6 @@
 import { TState } from 'store';
 
-export const selectExchangeCourses = (state: TState) => state.exchangeCourses;
+import { ExchangeCourseSlice } from '../slices/ExchangeCourseSlice';
+
+export const selectExchangeCourses = (state: TState) =>
+  state[ExchangeCourseSlice.name];

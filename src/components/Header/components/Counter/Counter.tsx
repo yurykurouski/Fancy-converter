@@ -29,21 +29,21 @@ export const Counter = () => {
     };
   });
 
-  const { selectedCurrenciesInEdit, currencies } = useSelector(
+  const { selectedInEditAmount, currencies } = useSelector(
     selectSelectedCurrencies,
   );
 
   const setEditMode = useSetSelectedCurrEditMode();
-  const selectedCurrenciesLength = Object.keys(selectedCurrenciesInEdit).length;
+  // const selectedCurrenciesLength = Object.keys(selectedCurrenciesInEdit).length;
 
   const onCancelPress = () => {
     setEditMode(false);
   };
   useEffect(() => {
-    animatedOffset.value = withTiming(selectedCurrenciesLength * 20, {
+    animatedOffset.value = withTiming(selectedInEditAmount * 20, {
       duration: DEFAULT_ANIMATION_DURATION,
     });
-  }, [animatedOffset, selectedCurrenciesLength]);
+  }, [animatedOffset, selectedInEditAmount, setEditMode]);
 
   return (
     <ButtonWithIPadOSInteraction
