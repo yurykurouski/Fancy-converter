@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
-import { useSetSelectedCurrEditMode } from 'hooks/store/SelectedCurrencies';
+import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
 import { useStyles } from './Counter.styles';
@@ -33,8 +33,7 @@ export const Counter = () => {
     selectSelectedCurrencies,
   );
 
-  const setEditMode = useSetSelectedCurrEditMode();
-  // const selectedCurrenciesLength = Object.keys(selectedCurrenciesInEdit).length;
+  const setEditMode = useSetEditMode();
 
   const onCancelPress = () => {
     setEditMode(false);

@@ -5,4 +5,3 @@ export { useRemoveFromSelectedCurrenciesInEdit } from './useRemoveFromSelectedCu
 export { useRemoveSelected } from './useRemoveSelected';
 export { useSetActiveCurrencyType } from './useSetActiveCurrencyType';
 export { useSetFilteredCurrencies } from './useSetFilteredCurrencies';
-export { useSetSelectedCurrEditMode } from './useSetSelectedCurrEditMode';

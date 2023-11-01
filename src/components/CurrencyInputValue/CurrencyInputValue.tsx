@@ -16,8 +16,8 @@ import {
 import {
   useAddToSelectedCurrenciesInEdit,
   useRemoveFromSelectedCurrenciesInEdit,
-  useSetSelectedCurrEditMode,
 } from 'hooks/store/SelectedCurrencies';
+import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
@@ -67,7 +67,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
   const setFocusedCurrencyName = useSetFocusedCurrencyName();
-  const setEditMode = useSetSelectedCurrEditMode();
+  const setEditMode = useSetEditMode();
 
   const { focusedCurrencyRate, isFocused, rate } =
     useMemoizedValues(currencyCode);

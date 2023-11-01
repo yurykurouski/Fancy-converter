@@ -2,9 +2,9 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { UISlice } from 'store/ui/slices/UISlice';
 
-import { TSetSelectedCurrEditMode } from '../types';
+import { TSetEditMode } from '../types';
 
-export const useSetSelectedCurrEditMode = (): TSetSelectedCurrEditMode => {
+export const useSetEditMode = (): TSetEditMode => {
   const dispatch = useDispatch();
 
   return useCallback(

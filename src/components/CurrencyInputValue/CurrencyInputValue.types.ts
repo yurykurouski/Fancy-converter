@@ -3,9 +3,9 @@ import { TextInput } from 'react-native';
 import {
   TAddToSelectedCurrenciesInEdit,
   TRemoveFromSelectedCurrenciesInEdit,
+  TSetEditMode,
   TSetFocusedCurrencyName,
   TSetFocusedCurrencyValue,
-  TSetSelectedCurrEditMode,
 } from 'hooks/store/types';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 
@@ -44,7 +44,7 @@ export type TUseOnContainerPressParams = {
   };
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
   selectedInEditAmount: number;
-  setEditMode: TSetSelectedCurrEditMode;
+  setEditMode: TSetEditMode;
 };
 
 export type TUseHandleLongPressParams = {

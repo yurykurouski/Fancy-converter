@@ -21,10 +21,7 @@ export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
   EAvailableFiatNames,
   typeof SelectedCurrenciesActions.removeFromSelectedCurrenciesInEdit.type
 >;
-export type TSetSelectedCurrEditMode = TDispatchCallback<
-  boolean,
-  typeof SelectedCurrenciesActions.setIsInEditMode.type
->;
+
 export type TClearSelectedCurrenciesInEdit = TDispatchCallback<
   undefined,
   typeof SelectedCurrenciesActions.clearSelectedCurrenciesInEdit.type
@@ -76,6 +73,10 @@ export type TSetBSStatus = TDispatchCallback<
 export type TSetNotificationData = TDispatchCallback<
   TNotificationData,
   typeof UISliceActions.setNotificationData.type
+>;
+export type TSetEditMode = TDispatchCallback<
+  boolean,
+  typeof UISliceActions.setEditMode.type
 >;
 
 //FocusedCurrency
