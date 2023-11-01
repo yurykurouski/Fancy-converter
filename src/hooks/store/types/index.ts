@@ -1,6 +1,4 @@
-import { ColorSchemeName } from 'react-native';
 import { Action } from '@reduxjs/toolkit';
-import { ColorSchemeActions } from 'store/colorScheme/slices/ColorSchemeSlice';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
@@ -8,7 +6,6 @@ import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
-  EColorSchemeBehavior,
   ECurrencyType,
   TDispatchCallback,
   TNotificationData,
@@ -16,10 +13,6 @@ import {
 import { OnlyCourses } from 'utils/utils.types';
 
 //SelectedCurrencies
-export type TSetSelectedCurrencies = TDispatchCallback<
-  EAvailableFiatNames[],
-  typeof SelectedCurrenciesActions.setSelectedCurrencies.type
->;
 export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
   EAvailableFiatNames,
   typeof SelectedCurrenciesActions.addToSelectedCurrenciesInEdit.type
@@ -28,10 +21,7 @@ export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
   EAvailableFiatNames,
   typeof SelectedCurrenciesActions.removeFromSelectedCurrenciesInEdit.type
 >;
-export type TSetSelectedCurrEditMode = TDispatchCallback<
-  boolean,
-  typeof SelectedCurrenciesActions.setIsInEditMode.type
->;
+
 export type TClearSelectedCurrenciesInEdit = TDispatchCallback<
   undefined,
   typeof SelectedCurrenciesActions.clearSelectedCurrenciesInEdit.type
@@ -39,6 +29,14 @@ export type TClearSelectedCurrenciesInEdit = TDispatchCallback<
 export type TSetActiveCurrencyType = TDispatchCallback<
   ECurrencyType,
   typeof SelectedCurrenciesActions.setActiveCurrencyType.type
+>;
+export type TAddSelectedCurr = TDispatchCallback<
+  EAvailableFiatNames | EAvailableCryptoNames,
+  typeof SelectedCurrenciesActions.addSelectedCurr.type
+>;
+export type TRemoveSelectedCurr = TDispatchCallback<
+  EAvailableFiatNames | EAvailableCryptoNames,
+  typeof SelectedCurrenciesActions.removeSelectedCurr.type
 >;
 export type TSetFilteredCurrencies = (
   type: ECurrencyType,
@@ -76,15 +74,9 @@ export type TSetNotificationData = TDispatchCallback<
   TNotificationData,
   typeof UISliceActions.setNotificationData.type
 >;
-
-//ColorScheme
-export type TSetColorScheme = TDispatchCallback<
-  ColorSchemeName,
-  typeof ColorSchemeActions.setColorScheme.type
->;
-export type TSetColorSchemeBehavior = TDispatchCallback<
-  EColorSchemeBehavior,
-  typeof ColorSchemeActions.setColorSchemeBehavior.type
+export type TSetEditMode = TDispatchCallback<
+  boolean,
+  typeof UISliceActions.setEditMode.type
 >;
 
 //FocusedCurrency
@@ -93,6 +85,6 @@ export type TSetFocusedCurrencyValue = TDispatchCallback<
   typeof FocusedCurrencySliceActions.setFocusedCurrencyValue.type
 >;
 export type TSetFocusedCurrencyName = TDispatchCallback<
-  EAvailableFiatNames,
+  { currencyCode: EAvailableFiatNames | EAvailableCryptoNames; value: string },
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
 >;

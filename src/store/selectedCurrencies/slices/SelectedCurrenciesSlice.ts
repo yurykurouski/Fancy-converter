@@ -1,24 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import availableCurrencies from 'resources/avaliable-currencies';
+import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
+  EAvailableCryptoNames,
   EAvailableFiatNames,
   ECurrencyType,
   TAvailableCurrencies,
 } from 'types';
 
 export type TSelectedCurrenciesSlice = {
-  selectedCurrencies: EAvailableFiatNames[];
-  selectedCurrenciesInEdit: EAvailableFiatNames[];
-  isInEditMode: boolean;
+  currencies: { [key in EAvailableFiatNames | EAvailableCryptoNames]?: string };
+  selectedCurrenciesInEdit: {
+    [key in EAvailableFiatNames | EAvailableCryptoNames]?: number;
+  };
+  selectedInEditAmount: number;
   searchValue: string;
   activeCurrencyType: ECurrencyType;
   filteredCurrencies: TAvailableCurrencies;
 };
 
 const initialState: TSelectedCurrenciesSlice = {
-  selectedCurrencies: [],
-  selectedCurrenciesInEdit: [],
-  isInEditMode: false,
+  currencies: {},
+  selectedCurrenciesInEdit: {},
+  selectedInEditAmount: 0,
   searchValue: '',
   activeCurrencyType: ECurrencyType.FIAT,
   filteredCurrencies: availableCurrencies,
@@ -28,33 +32,45 @@ export const SelectedCurrenciesSlice = createSlice({
   name: 'SelectedCurrencies',
   initialState,
   reducers: {
-    setSelectedCurrencies: (
+    addSelectedCurr: (
       state,
-      action: PayloadAction<EAvailableFiatNames[]>,
+      action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
     ) => {
-      state.selectedCurrencies = action.payload;
+      state.currencies = {
+        ...state.currencies,
+        [action.payload]: '',
+      };
     },
-
-    setIsInEditMode: (state, action: PayloadAction<boolean>) => {
-      state.isInEditMode = action.payload;
+    removeSelectedCurr: (
+      state,
+      action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
+    ) => {
+      delete state.currencies[action.payload];
     },
 
     addToSelectedCurrenciesInEdit: (
       state,
-      action: PayloadAction<EAvailableFiatNames>,
+      action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
     ) => {
-      state.selectedCurrenciesInEdit.push(action.payload);
+      state.selectedCurrenciesInEdit[action.payload] = 1;
+      state.selectedInEditAmount += 1;
     },
     removeFromSelectedCurrenciesInEdit: (
       state,
       action: PayloadAction<EAvailableFiatNames>,
     ) => {
-      state.selectedCurrenciesInEdit = state.selectedCurrenciesInEdit.filter(
-        el => el !== action.payload,
-      );
+      delete state.selectedCurrenciesInEdit[action.payload];
+
+      state.selectedInEditAmount -= 1;
     },
     clearSelectedCurrenciesInEdit: state => {
-      state.selectedCurrenciesInEdit = [];
+      Object.keys(state.selectedCurrenciesInEdit).forEach(
+        //@ts-expect-error
+        el => delete state.currencies[el],
+      );
+
+      state.selectedCurrenciesInEdit = {};
+      state.selectedInEditAmount = 0;
     },
 
     searchCurrenciesValue: (state, action: PayloadAction<string>) => {
@@ -77,6 +93,14 @@ export const SelectedCurrenciesSlice = createSlice({
     setActiveCurrencyType: (state, action: PayloadAction<ECurrencyType>) => {
       state.activeCurrencyType = action.payload;
     },
+  },
+  extraReducers(builder) {
+    builder.addCase(UISliceActions.setEditMode, (state, action) => {
+      if (!action.payload) {
+        state.selectedCurrenciesInEdit = {};
+        state.selectedInEditAmount = 0;
+      }
+    });
   },
 });
 

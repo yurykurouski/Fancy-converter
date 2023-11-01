@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  GestureResponderEvent,
   Insets,
   Pressable,
   PressableProps,
@@ -13,7 +12,6 @@ import { isAndroid, isIos } from 'utils';
 
 type TProps = PressableProps & {
   children: JSX.Element | JSX.Element[];
-  onPress: null | ((event: GestureResponderEvent) => void) | undefined;
   containerStyle?: StyleProp<ViewStyle>;
   hitSlop?: number | Insets;
 };

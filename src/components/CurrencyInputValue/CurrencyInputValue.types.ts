@@ -3,11 +3,11 @@ import { TextInput } from 'react-native';
 import {
   TAddToSelectedCurrenciesInEdit,
   TRemoveFromSelectedCurrenciesInEdit,
+  TSetEditMode,
   TSetFocusedCurrencyName,
   TSetFocusedCurrencyValue,
-  TSetSelectedCurrEditMode,
 } from 'hooks/store/types';
-import { EAvailableFiatNames } from 'types';
+import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 
 export type Props = {
   currencyCode: EAvailableFiatNames;
@@ -31,7 +31,6 @@ export type TUseCurrencyInputHandlers = (props: {
 
 export type TUseConvertedValues = (
   isFocused: boolean,
-  focusedCurrencyValue: string,
   course: number | undefined,
   focusedCurrencyCourse: number | undefined,
 ) => string;
@@ -40,14 +39,16 @@ export type TUseOnContainerPressParams = {
   isInEditMode: boolean;
   currencyCode: EAvailableFiatNames;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
-  selectedCurrenciesInEdit: EAvailableFiatNames[];
+  selectedCurrenciesInEdit: {
+    [key in EAvailableFiatNames | EAvailableCryptoNames]?: number;
+  };
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
-  setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
+  selectedInEditAmount: number;
+  setEditMode: TSetEditMode;
 };
 
 export type TUseHandleLongPressParams = {
   isInEditMode: boolean;
-  setSelectedCurrInEditMode: TSetSelectedCurrEditMode;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
   currencyCode: EAvailableFiatNames;
 };

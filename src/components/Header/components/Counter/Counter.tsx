@@ -9,10 +9,7 @@ import { useSelector } from 'react-redux';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
-import {
-  useClearSelectedCurrenciesInEdit,
-  useSetSelectedCurrEditMode,
-} from 'hooks/store/SelectedCurrencies';
+import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
 import { useStyles } from './Counter.styles';
@@ -32,22 +29,20 @@ export const Counter = () => {
     };
   });
 
-  const { selectedCurrenciesInEdit, selectedCurrencies } = useSelector(
+  const { selectedInEditAmount, currencies } = useSelector(
     selectSelectedCurrencies,
   );
 
-  const cancelEditMode = useSetSelectedCurrEditMode();
-  const clearSelectedCurrenciesInEdit = useClearSelectedCurrenciesInEdit();
+  const setEditMode = useSetEditMode();
 
   const onCancelPress = () => {
-    cancelEditMode(false);
-    clearSelectedCurrenciesInEdit(undefined);
+    setEditMode(false);
   };
   useEffect(() => {
-    animatedOffset.value = withTiming(selectedCurrenciesInEdit.length * 20, {
+    animatedOffset.value = withTiming(selectedInEditAmount * 20, {
       duration: DEFAULT_ANIMATION_DURATION,
     });
-  }, [animatedOffset, selectedCurrenciesInEdit.length]);
+  }, [animatedOffset, selectedInEditAmount, setEditMode]);
 
   return (
     <ButtonWithIPadOSInteraction
@@ -58,9 +53,9 @@ export const Counter = () => {
       <View style={styles.counterContainer}>
         <Animated.View style={[animatedStyle]}>
           <Text style={styles.counterText}>{''}</Text>
-          {Object.keys(selectedCurrencies).map(el => (
-            <Text key={el} style={styles.counterText}>
-              {Number(el) + 1}
+          {Object.keys(currencies).map((_, i) => (
+            <Text key={i} style={styles.counterText}>
+              {Number(i) + 1}
             </Text>
           ))}
         </Animated.View>

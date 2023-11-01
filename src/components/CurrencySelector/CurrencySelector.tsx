@@ -32,7 +32,7 @@ export const CurrencySelector = ({
   const { top } = useSafeAreaInsets();
 
   const { isLoading } = useSelector(selectExchangeCourses);
-  const { selectedCurrencies } = useSelector(selectSelectedCurrencies);
+  const { currencies } = useSelector(selectSelectedCurrencies);
   const { colorScheme } = useSelector(selectColorSchemeState);
   const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
@@ -45,11 +45,12 @@ export const CurrencySelector = ({
   const onOffsetChange = useOnScrollOffsetChange(setIsHeaderBlurred);
 
   const sortedWithFavorites = useMemo(() => {
-    return [...selectedCurrencies].sort(a => {
+    return Object.keys(currencies).sort(a => {
+      //@ts-expect-error
       if (favoriteCurrencies[a]) return -1;
       return 1;
     });
-  }, [favoriteCurrencies, selectedCurrencies]);
+  }, [favoriteCurrencies, currencies]);
 
   return (
     <KeyboardAvoidingHOC>
@@ -76,7 +77,7 @@ export const CurrencySelector = ({
         }
         ItemSeparatorComponent={SeparatorComponent}
         ListFooterComponent={
-          selectedCurrencies.length ? ListFooterComponent : null
+          Object.keys(currencies).length ? ListFooterComponent : null
         }
         ListHeaderComponent={<View style={styles.headerComponent} />}
         showsVerticalScrollIndicator={false}

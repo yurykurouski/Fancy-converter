@@ -1,7 +1,9 @@
 import { useCallback, useMemo } from 'react';
 import { Keyboard, Vibration } from 'react-native';
+import { useSelector } from 'react-redux';
 import { INPUT_VALIDATION_REGEXP } from 'constants/constants';
 import { l } from 'resources/localization';
+import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 
 import {
   TUseConvertedValues,
@@ -34,15 +36,9 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
     (inputValue: string) => {
       if (isInEditMode) return;
 
-      setFocusedCurrencyName(currencyCode);
-      setFocusedCurrencyValue(inputValue);
+      setFocusedCurrencyName({ currencyCode, value: inputValue });
     },
-    [
-      currencyCode,
-      isInEditMode,
-      setFocusedCurrencyName,
-      setFocusedCurrencyValue,
-    ],
+    [currencyCode, isInEditMode, setFocusedCurrencyName],
   );
 
   const containerOnPressHandler = useCallback(() => {
@@ -60,10 +56,11 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
 
 export const useConvertedValues: TUseConvertedValues = (
   isFocused,
-  focusedCurrencyValue,
   course,
   focusedCurrencyCourse,
 ) => {
+  const { focusedCurrencyValue } = useSelector(selectFocusedCurrency);
+
   const coefficient = Number(course) / Number(focusedCurrencyCourse);
 
   const calculatedValue = useMemo(
@@ -109,18 +106,17 @@ export const useOnContainerPress = ({
   addToCurrInEdit,
   selectedCurrenciesInEdit,
   removeFromSelectedCurrenciesInEdit,
-  setSelectedCurrInEditMode,
+  selectedInEditAmount,
+  setEditMode,
 }: TUseOnContainerPressParams) => {
   return () => {
     if (isInEditMode) {
-      if (!selectedCurrenciesInEdit.includes(currencyCode)) {
+      if (!selectedCurrenciesInEdit[currencyCode]) {
         addToCurrInEdit(currencyCode);
-      } else {
+      } else if (selectedInEditAmount > 1) {
         removeFromSelectedCurrenciesInEdit(currencyCode);
-
-        if (selectedCurrenciesInEdit.length === 1) {
-          setSelectedCurrInEditMode(false);
-        }
+      } else {
+        setEditMode(false);
       }
     }
   };
@@ -128,7 +124,6 @@ export const useOnContainerPress = ({
 
 export const useHandleLongPress = ({
   isInEditMode,
-  setSelectedCurrInEditMode,
   addToCurrInEdit,
   currencyCode,
 }: TUseHandleLongPressParams) =>
@@ -137,7 +132,6 @@ export const useHandleLongPress = ({
       Vibration.vibrate(1);
       Keyboard.dismiss();
 
-      setSelectedCurrInEditMode(true);
       addToCurrInEdit(currencyCode);
     }
-  }, [addToCurrInEdit, currencyCode, isInEditMode, setSelectedCurrInEditMode]);
+  }, [addToCurrInEdit, currencyCode, isInEditMode]);

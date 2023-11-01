@@ -13,6 +13,8 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 
+import { FocusedCurrencySlice } from './focusedCurrency/slices/FocusedCurrencySlice';
+import { SelectedCurrenciesSlice } from './selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { UISlice } from './ui/slices/UISlice';
 import { rootReducer } from './rootReducer';
 
@@ -25,7 +27,11 @@ if (__DEV__) {
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: [UISlice.name],
+  blacklist: [
+    UISlice.name,
+    SelectedCurrenciesSlice.name,
+    FocusedCurrencySlice.name,
+  ],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

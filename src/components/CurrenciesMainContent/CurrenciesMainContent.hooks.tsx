@@ -15,12 +15,8 @@ import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { HOUR_IN_MS } from 'constants/constants';
 import { useLoadCourses, useSetDrawerStatus } from 'hooks';
-import {
-  useClearSelectedCurrenciesInEdit,
-  useSetSelectedCurrEditMode,
-} from 'hooks/store/SelectedCurrencies';
+import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { selectUIStatus } from 'store/ui/selectors';
 
 import {
@@ -77,11 +73,9 @@ export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
   });
 
 export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
-  const { isDrawerOpened } = useSelector(selectUIStatus);
-  const { isInEditMode } = useSelector(selectSelectedCurrencies);
+  const { isDrawerOpened, isInEditMode } = useSelector(selectUIStatus);
 
-  const clearSelectedCurrenciesInEdit = useClearSelectedCurrenciesInEdit();
-  const setSelectedCurrInEditMode = useSetSelectedCurrEditMode();
+  const setSelectedCurrInEditMode = useSetEditMode();
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
@@ -89,7 +83,6 @@ export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
       () => {
         if (isInEditMode) {
           setSelectedCurrInEditMode(false);
-          clearSelectedCurrenciesInEdit(undefined);
           return true;
         }
 
@@ -102,13 +95,7 @@ export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
     );
 
     return () => backHandler.remove();
-  }, [
-    isDrawerOpened,
-    closeDrawer,
-    isInEditMode,
-    clearSelectedCurrenciesInEdit,
-    setSelectedCurrInEditMode,
-  ]);
+  }, [isDrawerOpened, closeDrawer, isInEditMode, setSelectedCurrInEditMode]);
 };
 
 export const useUpdateCourses = () => {
