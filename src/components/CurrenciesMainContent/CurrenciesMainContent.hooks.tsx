@@ -16,6 +16,7 @@ import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { HOUR_IN_MS } from 'constants/constants';
 import { useLoadCourses, useSetDrawerStatus } from 'hooks';
 import { useSetEditMode } from 'hooks/store/UIStatus';
+import { selectEditMode } from 'store/editMode/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectUIStatus } from 'store/ui/selectors';
 
@@ -73,7 +74,8 @@ export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
   });
 
 export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
-  const { isDrawerOpened, isInEditMode } = useSelector(selectUIStatus);
+  const { isDrawerOpened } = useSelector(selectUIStatus);
+  const { isInEditMode } = useSelector(selectEditMode);
 
   const setSelectedCurrInEditMode = useSetEditMode();
 

@@ -18,10 +18,11 @@ import {
   useRemoveFromSelectedCurrenciesInEdit,
 } from 'hooks/store/SelectedCurrencies';
 import { useSetEditMode } from 'hooks/store/UIStatus';
+import { selectEditMode } from 'store/editMode/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { selectUIStatus } from 'store/ui/selectors';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 
@@ -55,10 +56,10 @@ const useMemoizedValues = (
 };
 
 export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
-  const { colorScheme, isInEditMode } = useSelector(selectUIStatus);
-  const { selectedCurrenciesInEdit, selectedInEditAmount } = useSelector(
-    selectSelectedCurrencies,
-  );
+  const { colorScheme } = useSelector(selectUIStatus);
+  const { isInEditMode } = useSelector(selectEditMode);
+  const { selectedCurrencies, selectedAmount } =
+    useSelector(selectSelectedInEdit);
   const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
   const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
@@ -76,7 +77,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const inputRef = useRef<TextInput>(null);
 
-  const isSelectedForEdit = !!selectedCurrenciesInEdit[currencyCode];
+  const isSelectedForEdit = !!selectedCurrencies[currencyCode];
 
   const { onChangeTextHandler, onFocusHandler, containerOnPressHandler } =
     useCurrencyInputHandlers({
@@ -91,9 +92,9 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
     isInEditMode,
     currencyCode,
     addToCurrInEdit,
-    selectedCurrenciesInEdit,
+    selectedCurrenciesInEdit: selectedCurrencies,
     removeFromSelectedCurrenciesInEdit,
-    selectedInEditAmount,
+    selectedInEditAmount: selectedAmount,
     setEditMode,
   });
 

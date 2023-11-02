@@ -8,9 +8,8 @@ import BottomSheet, {
   WINDOW_WIDTH,
 } from '@gorhom/bottom-sheet';
 import { useWindowDimensionChange } from 'hooks';
-import { useSetSetBottomSheetStatus } from 'hooks/store/UIStatus';
+import { selectEditMode } from 'store/editMode/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { selectBottomSheetIndex, selectUIStatus } from 'store/ui/selectors';
 import { ECurrencyType, EDimensions } from 'types';
 import { isIos } from 'utils';
 
@@ -35,9 +34,7 @@ export const CurrenciesBottomSheet = React.memo(
     const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
     const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
-    const { isInEditMode } = useSelector(selectUIStatus);
-    const bottomSheetIndex = useSelector(selectBottomSheetIndex);
-    const setBSStatus = useSetSetBottomSheetStatus();
+    const { isInEditMode } = useSelector(selectEditMode);
 
     const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
 
@@ -49,7 +46,7 @@ export const CurrenciesBottomSheet = React.memo(
     const renderHandle = useRenderHandler(onPressHandler);
     const renderTabList = useRenderBottomSheetTabList(snapPoints[1] - 90);
 
-    useBackButtonHandler(bottomSheetIndex, sheetRef);
+    useBackButtonHandler(headerSharedValue.value, sheetRef);
 
     useEffect(() => {
       if (activeCurrencyType === ECurrencyType.FIAT) {
@@ -82,7 +79,6 @@ export const CurrenciesBottomSheet = React.memo(
         backgroundStyle={styles.backgroundStyle}
         containerStyle={styles.containerStyle}
         keyboardBehavior="extend"
-        onChange={setBSStatus}
         animatedIndex={headerSharedValue}
         animateOnMount={false}>
         <BottomSheetFlatList

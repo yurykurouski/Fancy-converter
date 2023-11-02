@@ -11,6 +11,7 @@ import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
 import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 
 import { useStyles } from './Counter.styles';
 
@@ -29,9 +30,8 @@ export const Counter = () => {
     };
   });
 
-  const { selectedInEditAmount, currencies } = useSelector(
-    selectSelectedCurrencies,
-  );
+  const { currencies } = useSelector(selectSelectedCurrencies);
+  const { selectedAmount } = useSelector(selectSelectedInEdit);
 
   const setEditMode = useSetEditMode();
 
@@ -39,10 +39,10 @@ export const Counter = () => {
     setEditMode(false);
   };
   useEffect(() => {
-    animatedOffset.value = withTiming(selectedInEditAmount * 20, {
+    animatedOffset.value = withTiming(selectedAmount * 20, {
       duration: DEFAULT_ANIMATION_DURATION,
     });
-  }, [animatedOffset, selectedInEditAmount, setEditMode]);
+  }, [animatedOffset, selectedAmount, setEditMode]);
 
   return (
     <ButtonWithIPadOSInteraction
