@@ -115,7 +115,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
     <Animated.View
       style={[
         styles.containerWrapper,
-        isFocused && styles.containerWrapperFocused,
+        isFocused && !isInEditMode && styles.containerWrapperFocused,
       ]}
       exiting={SlideOutRight.duration(DEFAULT_ANIMATION_DURATION)}>
       <Pressable
@@ -128,7 +128,9 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
           <Text
             style={[
               styles.title,
-              (isFocused || isSelectedForEdit) && styles.titleFocused,
+              ((isFocused && !isInEditMode) ||
+                (isInEditMode && isSelectedForEdit)) &&
+                styles.titleFocused,
             ]}>
             {currencyCode}
           </Text>
