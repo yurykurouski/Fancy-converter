@@ -13,8 +13,10 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 
+import { EditModeSlice } from './editMode/reducers/EditModeSlice';
 import { FocusedCurrencySlice } from './focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesSlice } from './selectedCurrencies/slices/SelectedCurrenciesSlice';
+import { SelectedForEditSlice } from './selectedForEdit/slices/SelectedForEditSlice';
 import { UISlice } from './ui/slices/UISlice';
 import { rootReducer } from './rootReducer';
 
@@ -31,6 +33,8 @@ const persistConfig = {
     UISlice.name,
     SelectedCurrenciesSlice.name,
     FocusedCurrencySlice.name,
+    SelectedForEditSlice.name,
+    EditModeSlice.name,
   ],
 };
 

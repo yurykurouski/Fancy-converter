@@ -2,7 +2,6 @@ import { ColorSchemeName } from 'react-native';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FavoriteCurrenciesSliceActions } from 'store/favoriteCurrencies/slices/FavoriteCurrenciesSlice';
-import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import {
   EColorSchemeBehavior,
   ENotificationType,
@@ -12,20 +11,16 @@ import { getCurrentColorTheme } from 'utils';
 
 export type TUISlice = {
   isDrawerOpened: boolean;
-  bottomSheetIndex: number;
   notificationData: TNotificationData | null;
   colorScheme: ColorSchemeName;
   behavior: EColorSchemeBehavior;
-  isInEditMode: boolean;
 };
 
 const initialState: TUISlice = {
   isDrawerOpened: false,
-  bottomSheetIndex: 0,
   notificationData: null,
   colorScheme: getCurrentColorTheme(),
   behavior: EColorSchemeBehavior.AUTO,
-  isInEditMode: false,
 };
 
 export const UISlice = createSlice({
@@ -34,10 +29,6 @@ export const UISlice = createSlice({
   reducers: {
     setDrawerOpenedState: (state, action: PayloadAction<boolean>) => {
       state.isDrawerOpened = action.payload;
-    },
-
-    setBottomSheetState: (state, action: PayloadAction<number>) => {
-      state.bottomSheetIndex = action.payload;
     },
 
     setNotificationData: (state, action: PayloadAction<TNotificationData>) => {
@@ -50,10 +41,6 @@ export const UISlice = createSlice({
       if (state.behavior === EColorSchemeBehavior.AUTO) {
         state.behavior = EColorSchemeBehavior.MANUAL;
       }
-    },
-
-    setEditMode: (state, action: PayloadAction<boolean>) => {
-      state.isInEditMode = action.payload;
     },
 
     switchAppearanceBehavior: state => {
@@ -95,21 +82,7 @@ export const UISlice = createSlice({
           timeStamp: Date.now(),
           data: null,
         };
-      })
-      .addCase(
-        SelectedCurrenciesActions.addToSelectedCurrenciesInEdit,
-        state => {
-          if (!state.isInEditMode) {
-            state.isInEditMode = true;
-          }
-        },
-      )
-      .addCase(
-        SelectedCurrenciesActions.clearSelectedCurrenciesInEdit,
-        state => {
-          state.isInEditMode = false;
-        },
-      );
+      });
   },
 });
 

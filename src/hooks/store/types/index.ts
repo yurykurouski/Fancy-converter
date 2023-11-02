@@ -1,7 +1,9 @@
 import { Action } from '@reduxjs/toolkit';
+import { EditModeSliceActions } from 'store/editMode/reducers/EditModeSlice';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
+import { SelectedForEditSliceActions } from 'store/selectedForEdit/slices/SelectedForEditSlice';
 import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
   EAvailableCryptoNames,
@@ -13,19 +15,6 @@ import {
 import { OnlyCourses } from 'utils/utils.types';
 
 //SelectedCurrencies
-export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
-  EAvailableFiatNames,
-  typeof SelectedCurrenciesActions.addToSelectedCurrenciesInEdit.type
->;
-export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
-  EAvailableFiatNames,
-  typeof SelectedCurrenciesActions.removeFromSelectedCurrenciesInEdit.type
->;
-
-export type TClearSelectedCurrenciesInEdit = TDispatchCallback<
-  undefined,
-  typeof SelectedCurrenciesActions.clearSelectedCurrenciesInEdit.type
->;
 export type TSetActiveCurrencyType = TDispatchCallback<
   ECurrencyType,
   typeof SelectedCurrenciesActions.setActiveCurrencyType.type
@@ -66,17 +55,9 @@ export type TSetDrawerStatus = TDispatchCallback<
   boolean,
   typeof UISliceActions.setDrawerOpenedState.type
 >;
-export type TSetBSStatus = TDispatchCallback<
-  number,
-  typeof UISliceActions.setBottomSheetState.type
->;
 export type TSetNotificationData = TDispatchCallback<
   TNotificationData,
   typeof UISliceActions.setNotificationData.type
->;
-export type TSetEditMode = TDispatchCallback<
-  boolean,
-  typeof UISliceActions.setEditMode.type
 >;
 
 //FocusedCurrency
@@ -87,4 +68,20 @@ export type TSetFocusedCurrencyValue = TDispatchCallback<
 export type TSetFocusedCurrencyName = TDispatchCallback<
   { currencyCode: EAvailableFiatNames | EAvailableCryptoNames; value: string },
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
+>;
+
+//SelectedForEditSlice
+export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
+  EAvailableFiatNames | EAvailableCryptoNames,
+  typeof SelectedForEditSliceActions.addToSelected.type
+>;
+export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
+  EAvailableFiatNames,
+  typeof SelectedForEditSliceActions.clearSelected.type
+>;
+
+//EditMode
+export type TSetEditMode = TDispatchCallback<
+  boolean,
+  typeof EditModeSliceActions.setEditMode.type
 >;

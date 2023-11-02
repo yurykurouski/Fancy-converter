@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { SelectedCurrenciesSlice } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
-import { EAvailableFiatNames } from 'types';
+import { SelectedForEditSlice } from 'store/selectedForEdit/slices/SelectedForEditSlice';
 
 import { TAddToSelectedCurrenciesInEdit } from '../types';
 
@@ -10,10 +9,7 @@ export const useAddToSelectedCurrenciesInEdit =
     const dispatch = useDispatch();
 
     return useCallback(
-      (value: EAvailableFiatNames) =>
-        dispatch(
-          SelectedCurrenciesSlice.actions.addToSelectedCurrenciesInEdit(value),
-        ),
+      value => dispatch(SelectedForEditSlice.actions.addToSelected(value)),
       [dispatch],
     );
   };

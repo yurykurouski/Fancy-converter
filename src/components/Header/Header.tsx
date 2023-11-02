@@ -33,11 +33,11 @@ export const Header = React.memo<Props>(
 
     const animatedScrollRef = useAnimatedRef<ScrollView>();
 
-    const { colorScheme, bottomSheetIndex } = useSelector(selectUIStatus);
+    const { colorScheme } = useSelector(selectUIStatus);
     const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
 
     const handleMenuPress = () => {
-      if (bottomSheetIndex) return;
+      if (headerSharedValue.value) return;
       onOpenDrawer();
     };
 

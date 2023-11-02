@@ -16,39 +16,37 @@ type TProps = PressableProps & {
   hitSlop?: number | Insets;
 };
 
-export const ButtonWithIPadOSInteraction = ({
-  children,
-  containerStyle,
-  onPress,
-  hitSlop = 0,
-  ...rest
-}: TProps) => {
-  const rippleConfig = useAndroidRippleConfig();
+export const ButtonWithIPadOSInteraction = React.memo(
+  ({ children, containerStyle, onPress, hitSlop = 0, ...rest }: TProps) => {
+    const rippleConfig = useAndroidRippleConfig();
 
-  const hitSlops =
-    typeof hitSlop === 'number'
-      ? {
-          top: hitSlop,
-          left: hitSlop,
-          bottom: hitSlop,
-          right: hitSlop,
-        }
-      : hitSlop;
+    const hitSlops =
+      typeof hitSlop === 'number'
+        ? {
+            top: hitSlop,
+            left: hitSlop,
+            bottom: hitSlop,
+            right: hitSlop,
+          }
+        : hitSlop;
 
-  return (
-    <Pressable
-      hitSlop={hitSlops}
-      style={isAndroid ? containerStyle : undefined}
-      onPress={onPress}
-      android_ripple={rippleConfig}
-      {...rest}>
-      {isIos ? (
-        <PointerInteractionView pointerMode="highlight" style={containerStyle}>
-          {children}
-        </PointerInteractionView>
-      ) : (
-        children
-      )}
-    </Pressable>
-  );
-};
+    return (
+      <Pressable
+        hitSlop={hitSlops}
+        style={isAndroid ? containerStyle : undefined}
+        onPress={onPress}
+        android_ripple={rippleConfig}
+        {...rest}>
+        {isIos ? (
+          <PointerInteractionView
+            pointerMode="highlight"
+            style={containerStyle}>
+            {children}
+          </PointerInteractionView>
+        ) : (
+          children
+        )}
+      </Pressable>
+    );
+  },
+);

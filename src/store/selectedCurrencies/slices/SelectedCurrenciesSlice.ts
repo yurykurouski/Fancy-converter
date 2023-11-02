@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import availableCurrencies from 'resources/avaliable-currencies';
-import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
@@ -10,10 +9,6 @@ import {
 
 export type TSelectedCurrenciesSlice = {
   currencies: { [key in EAvailableFiatNames | EAvailableCryptoNames]?: string };
-  selectedCurrenciesInEdit: {
-    [key in EAvailableFiatNames | EAvailableCryptoNames]?: number;
-  };
-  selectedInEditAmount: number;
   searchValue: string;
   activeCurrencyType: ECurrencyType;
   filteredCurrencies: TAvailableCurrencies;
@@ -21,8 +16,6 @@ export type TSelectedCurrenciesSlice = {
 
 const initialState: TSelectedCurrenciesSlice = {
   currencies: {},
-  selectedCurrenciesInEdit: {},
-  selectedInEditAmount: 0,
   searchValue: '',
   activeCurrencyType: ECurrencyType.FIAT,
   filteredCurrencies: availableCurrencies,
@@ -48,29 +41,9 @@ export const SelectedCurrenciesSlice = createSlice({
       delete state.currencies[action.payload];
     },
 
-    addToSelectedCurrenciesInEdit: (
-      state,
-      action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
-    ) => {
-      state.selectedCurrenciesInEdit[action.payload] = 1;
-      state.selectedInEditAmount += 1;
-    },
-    removeFromSelectedCurrenciesInEdit: (
-      state,
-      action: PayloadAction<EAvailableFiatNames>,
-    ) => {
-      delete state.selectedCurrenciesInEdit[action.payload];
-
-      state.selectedInEditAmount -= 1;
-    },
-    clearSelectedCurrenciesInEdit: state => {
-      Object.keys(state.selectedCurrenciesInEdit).forEach(
-        //@ts-expect-error
-        el => delete state.currencies[el],
-      );
-
-      state.selectedCurrenciesInEdit = {};
-      state.selectedInEditAmount = 0;
+    deleteAllSelected: (state, action) => {
+      //@ts-expect-error
+      Object.keys(action.payload).forEach(el => delete state.currencies[el]);
     },
 
     searchCurrenciesValue: (state, action: PayloadAction<string>) => {
@@ -93,14 +66,6 @@ export const SelectedCurrenciesSlice = createSlice({
     setActiveCurrencyType: (state, action: PayloadAction<ECurrencyType>) => {
       state.activeCurrencyType = action.payload;
     },
-  },
-  extraReducers(builder) {
-    builder.addCase(UISliceActions.setEditMode, (state, action) => {
-      if (!action.payload) {
-        state.selectedCurrenciesInEdit = {};
-        state.selectedInEditAmount = 0;
-      }
-    });
   },
 });
 
