@@ -1,3 +1,4 @@
+export { AppStatusBar } from './AppStatusBar';
 export { CurrenciesBottomSheet } from './CurrenciesBottomSheet';
 export { CurrenciesMainContent } from './CurrenciesMainContent';
 export { CurrencyInputValue } from './CurrencyInputValue';
