@@ -8,6 +8,7 @@ export const useStyles = () =>
       borderWidth: 2,
       overflow: 'hidden',
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
+      marginHorizontal: 10,
     },
     container: {
       flexDirection: 'row',

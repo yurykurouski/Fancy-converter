@@ -4,7 +4,7 @@ import { EDimensions } from 'types';
 export const useStyles = (height?: number) => {
   const windowWidth = useWindowDimensionChange(EDimensions.WIDTH);
 
-  return useTheme((_, { bottom }) => ({
+  return useTheme(() => ({
     container: {
       width: windowWidth,
       height,
@@ -13,7 +13,6 @@ export const useStyles = (height?: number) => {
       paddingHorizontal: 10,
     },
     containerStyle: {
-      marginBottom: bottom,
       zIndex: 2,
     },
     backgroundStyle: {
