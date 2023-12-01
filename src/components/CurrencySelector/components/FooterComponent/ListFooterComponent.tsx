@@ -1,35 +1,33 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { GestureDetector } from 'react-native-gesture-handler';
+import { SharedValue } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { useTheme } from 'hooks';
+import { useOpedDrawerGesture } from 'components/CurrenciesMainContent/CurrenciesMainContent.hooks';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { getSaveDateReadable } from 'utils';
 
-const useStyles = () =>
-  useTheme(theme => ({
-    container: {
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      paddingVertical: 6,
-    },
-    text: {
-      color: theme.FONT_COLOR_FADED,
-      fontSize: 12,
-    },
-  }));
+import { useStyles } from './ListFooterComponent.styles';
 
-export const ListFooterComponent = () => {
+export const ListFooterComponent = ({
+  drawerPosition,
+}: {
+  drawerPosition: SharedValue<number>;
+}) => {
   const styles = useStyles();
   const { lastUpdated } = useSelector(selectExchangeCourses);
 
+  const panGesture = useOpedDrawerGesture(drawerPosition);
+
   if (!lastUpdated) return null;
 
-  const test = getSaveDateReadable(new Date(lastUpdated));
+  const saveDate = getSaveDateReadable(new Date(lastUpdated));
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{test}</Text>
-    </View>
+    <GestureDetector gesture={panGesture}>
+      <View style={styles.container}>
+        <Text style={styles.text}>{saveDate}</Text>
+      </View>
+    </GestureDetector>
   );
 };
