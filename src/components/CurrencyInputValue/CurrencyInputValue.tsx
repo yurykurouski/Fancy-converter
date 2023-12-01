@@ -1,10 +1,6 @@
 import React, { FC, useMemo, useRef } from 'react';
 import { Pressable, Text, TextInput } from 'react-native';
-import Animated, {
-  FadeInRight,
-  FadeOutRight,
-  SlideOutRight,
-} from 'react-native-reanimated';
+import Animated, { FadeInRight, FadeOutRight } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
@@ -31,7 +27,6 @@ import {
   useConvertedValues,
   useCurrencyInputHandlers,
   useFormattedValue,
-  useHandleLongPress,
   useOnContainerPress,
 } from './CurrencyInputValue.hooks';
 import { Props } from './CurrencyInputValue.types';
@@ -106,26 +101,21 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const formattedValue = useFormattedValue(calculatedValue);
 
-  const handleLongPress = useHandleLongPress({
-    isInEditMode,
-    addToCurrInEdit,
-    currencyCode,
-  });
-
   return (
     <Animated.View
       style={[
         styles.containerWrapper,
         isFocused && !isInEditMode && styles.containerWrapperFocused,
       ]}
-      exiting={SlideOutRight.duration(DEFAULT_ANIMATION_DURATION)}>
+      //NOTE: removed for now
+      // layout={SequencedTransition}
+      /* exiting={FadeOut.duration(DEFAULT_ANIMATION_DURATION)} */
+    >
       <Pressable
         onPress={onContainerPress}
         style={styles.container}
         pointerEvents={isInEditMode ? 'box-only' : 'box-none'}>
-        <Pressable
-          onLongPress={handleLongPress}
-          onPress={containerOnPressHandler}>
+        <Pressable onPress={containerOnPressHandler}>
           <Text
             style={[
               styles.title,

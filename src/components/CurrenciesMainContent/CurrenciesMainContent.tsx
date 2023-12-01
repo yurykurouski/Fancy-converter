@@ -4,6 +4,7 @@ import { GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useSharedValue } from 'react-native-reanimated';
 import { CurrenciesBottomSheet, Drawer, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
+import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
 
 import {
   useAnimatedScreenStyle,
@@ -21,15 +22,15 @@ export const CurrenciesMainContent = React.memo(() => {
   const [isHeaderBlurred, setIsHeaderBlurred] = useState<boolean>(false);
 
   const headerSharedValue = useSharedValue(0);
+  const drawerPosition = useSharedValue(-DRAWER_CONTENT_WIDTH);
 
-  const { animatedPosition, closeDrawer, openDrawer } =
-    useOpenDrawerAnimations();
+  const { closeDrawer, openDrawer } = useOpenDrawerAnimations(drawerPosition);
 
   useHandleBackPress(closeDrawer);
   useUpdateCourses();
 
-  const animatedScreenStyle = useAnimatedScreenStyle(animatedPosition);
-  const panGesture = useOpedDrawerGesture(animatedPosition);
+  const animatedScreenStyle = useAnimatedScreenStyle(drawerPosition);
+  const panGesture = useOpedDrawerGesture(drawerPosition);
 
   return (
     <>
@@ -39,13 +40,16 @@ export const CurrenciesMainContent = React.memo(() => {
           isHeaderBlurred={isHeaderBlurred}
           headerSharedValue={headerSharedValue}
         />
-        <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
+        <CurrencySelector
+          setIsHeaderBlurred={setIsHeaderBlurred}
+          drawerPosition={drawerPosition}
+        />
         <GestureDetector gesture={panGesture}>
           <View style={styles.gestureHandler} />
         </GestureDetector>
         <CurrenciesBottomSheet headerSharedValue={headerSharedValue} />
       </Animated.View>
-      <Drawer animatedPosition={animatedPosition} closeDrawer={closeDrawer} />
+      <Drawer drawerPosition={drawerPosition} closeDrawer={closeDrawer} />
     </>
   );
 });

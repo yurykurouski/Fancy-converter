@@ -1,7 +1,8 @@
 import { SharedValue } from 'react-native-reanimated';
 
-export type TUseOpenDrawerAnimations = () => {
-  animatedPosition: SharedValue<number>;
+export type TUseOpenDrawerAnimations = (
+  drawerPosition: SharedValue<number>,
+) => {
   closeDrawer: () => void;
   openDrawer: () => void;
 };

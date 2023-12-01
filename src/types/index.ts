@@ -51,3 +51,7 @@ export type TNotificationData = {
   timeStamp: number;
   data?: unknown;
 };
+
+export type TAvailableCurrenciesNames =
+  | EAvailableFiatNames
+  | EAvailableCryptoNames;

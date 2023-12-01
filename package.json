@@ -11,7 +11,8 @@
     "type:check": "tsc --noemit --skipLibCheck",
     "upgrade": "yarn upgrade-interactive",
     "nuke": "rm -rf node_modules; rm -rf ios/build; rm -rf ios/Pods; rm -rf ios/Podfile.lock; yarn; yarn podinstall",
-    "findDead": "ts-prune | grep -v '(used in module)'"
+    "findDead": "ts-prune | grep -v '(used in module)'",
+    "ios:pods-release": "cd ios; NO_FLIPPER=1 pod install"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "4.5.1",
@@ -38,6 +39,7 @@
     "react-native-swift": "^1.2.3",
     "react-native-swipeable-item": "2.0.9",
     "react-redux": "8.1.2",
+    "recyclerlistview": "^4.2.0",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {

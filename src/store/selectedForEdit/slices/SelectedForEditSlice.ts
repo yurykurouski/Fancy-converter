@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { EditModeSliceActions } from 'store/editMode/reducers/EditModeSlice';
-import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
+import { TAvailableCurrenciesNames } from 'types';
 
 export type TSelectedForEditSlice = {
   selectedCurrencies: {
-    [key in EAvailableFiatNames | EAvailableCryptoNames]?: number;
+    [key in TAvailableCurrenciesNames]?: number;
   };
   selectedAmount: number;
 };
@@ -20,12 +20,15 @@ export const SelectedForEditSlice = createSlice({
   reducers: {
     addToSelected: (
       state,
-      action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
+      action: PayloadAction<TAvailableCurrenciesNames>,
     ) => {
       state.selectedCurrencies[action.payload] = 1;
       state.selectedAmount += 1;
     },
-    clearSelected: (state, action: PayloadAction<EAvailableFiatNames>) => {
+    clearSelected: (
+      state,
+      action: PayloadAction<TAvailableCurrenciesNames>,
+    ) => {
       delete state.selectedCurrencies[action.payload];
 
       state.selectedAmount -= 1;

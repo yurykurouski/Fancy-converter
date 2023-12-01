@@ -9,7 +9,6 @@ export const useStyles = () =>
       borderTopRightRadius: 20,
       marginBottom: 10,
       marginHorizontal: 10,
-      backgroundColor: 'red',
     },
     currencyContainer: {
       paddingVertical: 15,

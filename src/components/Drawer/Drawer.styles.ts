@@ -2,11 +2,10 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme((theme, { bottom }) => ({
+  useTheme(theme => ({
     drawer: {
       position: 'absolute',
       height: '100%',
-      paddingBottom: bottom,
       zIndex: 99,
       shadowColor: '#000',
       shadowOffset: {

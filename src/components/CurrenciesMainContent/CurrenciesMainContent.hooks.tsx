@@ -7,7 +7,6 @@ import {
   runOnJS,
   SharedValue,
   useAnimatedStyle,
-  useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
@@ -25,36 +24,34 @@ import {
   TUseOpenDrawerAnimations,
 } from './CurrenciesMainContent.types';
 
-export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = () => {
-  const setIsDrawerOpened = useSetDrawerStatus();
+export const useOpenDrawerAnimations: TUseOpenDrawerAnimations =
+  drawerPosition => {
+    const setIsDrawerOpened = useSetDrawerStatus();
 
-  const animatedPosition = useSharedValue(-DRAWER_CONTENT_WIDTH);
+    const closeDrawer = useCallback(() => {
+      drawerPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
+        duration: DEFAULT_ANIMATION_DURATION,
+      });
 
-  const closeDrawer = useCallback(() => {
-    animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
-      duration: DEFAULT_ANIMATION_DURATION,
-    });
+      setIsDrawerOpened(false);
+    }, [drawerPosition, setIsDrawerOpened]);
 
-    setIsDrawerOpened(false);
-  }, [animatedPosition, setIsDrawerOpened]);
+    const openDrawer = useCallback(() => {
+      Vibration.vibrate(1);
+      Keyboard.dismiss();
 
-  const openDrawer = useCallback(() => {
-    Vibration.vibrate(1);
-    Keyboard.dismiss();
+      drawerPosition.value = withTiming(0, {
+        duration: DEFAULT_ANIMATION_DURATION,
+      });
 
-    animatedPosition.value = withTiming(0, {
-      duration: DEFAULT_ANIMATION_DURATION,
-    });
+      setIsDrawerOpened(true);
+    }, [drawerPosition, setIsDrawerOpened]);
 
-    setIsDrawerOpened(true);
-  }, [animatedPosition, setIsDrawerOpened]);
-
-  return {
-    animatedPosition,
-    closeDrawer,
-    openDrawer,
+    return {
+      closeDrawer,
+      openDrawer,
+    };
   };
-};
 
 export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
   useAnimatedStyle(() => {
