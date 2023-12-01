@@ -9,6 +9,7 @@ import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
   ECurrencyType,
+  TAvailableCurrenciesNames,
   TDispatchCallback,
   TNotificationData,
 } from 'types';
@@ -20,11 +21,11 @@ export type TSetActiveCurrencyType = TDispatchCallback<
   typeof SelectedCurrenciesActions.setActiveCurrencyType.type
 >;
 export type TAddSelectedCurr = TDispatchCallback<
-  EAvailableFiatNames | EAvailableCryptoNames,
+  TAvailableCurrenciesNames,
   typeof SelectedCurrenciesActions.addSelectedCurr.type
 >;
 export type TRemoveSelectedCurr = TDispatchCallback<
-  EAvailableFiatNames | EAvailableCryptoNames,
+  TAvailableCurrenciesNames,
   typeof SelectedCurrenciesActions.removeSelectedCurr.type
 >;
 export type TSetFilteredCurrencies = (
@@ -66,17 +67,17 @@ export type TSetFocusedCurrencyValue = TDispatchCallback<
   typeof FocusedCurrencySliceActions.setFocusedCurrencyValue.type
 >;
 export type TSetFocusedCurrencyName = TDispatchCallback<
-  { currencyCode: EAvailableFiatNames | EAvailableCryptoNames; value: string },
+  { currencyCode: TAvailableCurrenciesNames; value: string },
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
 >;
 
 //SelectedForEditSlice
 export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
-  EAvailableFiatNames | EAvailableCryptoNames,
+  TAvailableCurrenciesNames,
   typeof SelectedForEditSliceActions.addToSelected.type
 >;
 export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
-  EAvailableFiatNames,
+  TAvailableCurrenciesNames,
   typeof SelectedForEditSliceActions.clearSelected.type
 >;
 
