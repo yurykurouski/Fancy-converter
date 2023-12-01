@@ -4870,6 +4870,7 @@ __metadata:
     react-native-swift: ^1.2.3
     react-native-swipeable-item: 2.0.9
     react-redux: 8.1.2
+    recyclerlistview: ^4.2.0
     redux-flipper: 2.0.2
     redux-persist: ^6.0.0
     ts-prune: ^0.10.3
@@ -8324,7 +8325,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recyclerlistview@npm:4.2.0":
+"recyclerlistview@npm:4.2.0, recyclerlistview@npm:^4.2.0":
   version: 4.2.0
   resolution: "recyclerlistview@npm:4.2.0"
   dependencies:
