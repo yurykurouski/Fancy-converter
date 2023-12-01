@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { SelectedForEditSlice } from 'store/selectedForEdit/slices/SelectedForEditSlice';
-import { EAvailableFiatNames } from 'types';
+import { TAvailableCurrenciesNames } from 'types';
 
 import { TRemoveFromSelectedCurrenciesInEdit } from '../types';
 
@@ -10,7 +10,7 @@ export const useRemoveFromSelectedCurrenciesInEdit =
     const dispatch = useDispatch();
 
     return useCallback(
-      (value: EAvailableFiatNames) =>
+      (value: TAvailableCurrenciesNames) =>
         dispatch(SelectedForEditSlice.actions.clearSelected(value)),
       [dispatch],
     );
