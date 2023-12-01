@@ -1,101 +1,146 @@
-import React, { Dispatch, SetStateAction, useMemo } from 'react';
-import { ListRenderItem, RefreshControl, View } from 'react-native';
-import Animated, { Layout } from 'react-native-reanimated';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+  useRef,
+} from 'react';
+import { GestureDetector } from 'react-native-gesture-handler';
+import { SharedValue, useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
-import { THEME_COLORS } from 'assets/colors';
+import { RecyclerListViewState } from 'recyclerlistview/dist/reactnative/core/RecyclerListView';
+import { WINDOW_WIDTH } from '@gorhom/bottom-sheet';
 import { CurrencyInputValue } from 'components';
-import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
-import { useGetCurrenciesExchangeCourse } from 'hooks';
+import { AppRefreshControl } from 'components/common/AppRefreshControl';
+import {
+  useGetCurrenciesExchangeCourse,
+  useWindowDimensionChange,
+} from 'hooks';
+import {
+  useAddToSelectedCurrenciesInEdit,
+  useRemoveFromSelectedCurrenciesInEdit,
+} from 'hooks/store/SelectedCurrencies';
+import { useSetEditMode } from 'hooks/store/UIStatus';
+import {
+  DataProvider,
+  RecyclerListView,
+  RecyclerListViewProps,
+} from 'recyclerlistview';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { selectColorSchemeState } from 'store/ui/selectors';
-import { EAvailableFiatNames } from 'types';
-import { isIos } from 'utils';
+import { EDimensions, TAvailableCurrenciesNames } from 'types';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
-import { SeparatorComponent } from './components/SeparatorComponent';
-import { useOnScrollOffsetChange } from './CurrencySelector.hooks';
+import {
+  useLayoutProvider,
+  useLongPressSwipeGesture,
+  useOnScrollOffsetChange,
+} from './hooks';
 
 import { useStyles } from './CurrencySelector.styles';
 
 import { KeyboardAvoidingHOC } from 'HOC/KeyboardAvoidingHOC';
 
-export const CurrencySelector = React.memo(
-  ({
-    setIsHeaderBlurred,
-  }: {
-    setIsHeaderBlurred: Dispatch<SetStateAction<boolean>>;
-  }) => {
+type TProps = {
+  setIsHeaderBlurred: Dispatch<SetStateAction<boolean>>;
+  drawerPosition: SharedValue<number>;
+};
+
+const dataProvider = new DataProvider((r1, r2) => r1 !== r2);
+
+export const CurrencySelector = React.memo<TProps>(
+  ({ setIsHeaderBlurred, drawerPosition }) => {
     const styles = useStyles();
 
+    const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
     const { top } = useSafeAreaInsets();
+
+    const visibleItemsShared = useSharedValue<number[]>([]);
+    const selectionModeShared = useSharedValue(1);
+    const selectedDuringSwipeShared = useSharedValue(0);
+
+    const listViewRef =
+      useRef<RecyclerListView<RecyclerListViewProps, RecyclerListViewState>>(
+        null,
+      );
 
     const { isLoading } = useSelector(selectExchangeCourses);
     const { currencies } = useSelector(selectSelectedCurrencies);
-    const { colorScheme } = useSelector(selectColorSchemeState);
     const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 
     const { reloadCourses } = useGetCurrenciesExchangeCourse();
 
-    const renderItem: ListRenderItem<EAvailableFiatNames> = ({ item }) => (
-      <CurrencyInputValue currencyCode={item} />
+    const setEditMode = useSetEditMode();
+    const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
+    const removeFromSelectedCurrenciesInEdit =
+      useRemoveFromSelectedCurrenciesInEdit();
+
+    const renderItem: RecyclerListViewProps['rowRenderer'] = useCallback(
+      (_, data) => <CurrencyInputValue currencyCode={data} />,
+      [],
     );
+    const renderFooter = useCallback(
+      () => <ListFooterComponent drawerPosition={drawerPosition} />,
+      [drawerPosition],
+    );
+    const layoutProvider = useLayoutProvider();
 
     const onOffsetChange = useOnScrollOffsetChange(setIsHeaderBlurred);
 
     const sortedWithFavorites = useMemo(() => {
       return Object.keys(currencies).sort(a => {
-        //@ts-expect-error
-        if (favoriteCurrencies[a]) return -1;
+        if (favoriteCurrencies[a as TAvailableCurrenciesNames]) return -1;
         return 1;
-      });
+      }) as TAvailableCurrenciesNames[];
     }, [favoriteCurrencies, currencies]);
 
-    return (
-      <KeyboardAvoidingHOC>
-        <Animated.FlatList
-          keyboardShouldPersistTaps="handled"
-          style={styles.container}
-          data={sortedWithFavorites}
-          keyExtractor={item => item}
-          renderItem={renderItem}
-          onScroll={onOffsetChange}
-          refreshControl={
-            <RefreshControl
-              refreshing={isLoading}
-              progressViewOffset={top + (isIos ? 26 : 18)}
-              onRefresh={reloadCourses}
-              //android
-              colors={[THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR]}
-              progressBackgroundColor={
-                THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
-              }
-              //ios
-              tintColor={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
-            />
-          }
-          ItemSeparatorComponent={SeparatorComponent}
-          ListFooterComponent={
-            Object.keys(currencies).length ? ListFooterComponent : null
-          }
-          ListHeaderComponent={<View style={styles.headerComponent} />}
-          showsVerticalScrollIndicator={false}
-          itemLayoutAnimation={
-            isIos
-              ? Layout.delay(DEFAULT_ANIMATION_DURATION).duration(
-                  DEFAULT_ANIMATION_DURATION,
-                )
-              : undefined
-          }
-          getItemLayout={(_, index) => ({
-            length: 74,
-            offset: 74 * index,
-            index,
-          })}
-        />
-      </KeyboardAvoidingHOC>
+    const onVisibleIndicesChanged = useCallback(
+      (all: number[]) => (visibleItemsShared.value = all),
+      [visibleItemsShared],
     );
+
+    const gesture = useLongPressSwipeGesture({
+      windowHeight,
+      visibleItemsShared,
+      sortedWithFavorites,
+      selectionModeShared,
+      selectedDuringSwipeShared,
+      setEditMode,
+      addToCurrInEdit,
+      removeFromSelectedCurrenciesInEdit,
+    });
+
+    return sortedWithFavorites.length ? (
+      <KeyboardAvoidingHOC>
+        <GestureDetector gesture={gesture}>
+          <RecyclerListView
+            ref={listViewRef}
+            style={styles.recyclerContainer}
+            layoutProvider={layoutProvider}
+            dataProvider={dataProvider.cloneWithRows(sortedWithFavorites)}
+            rowRenderer={renderItem}
+            onScroll={onOffsetChange}
+            //@ts-expect-error
+            refreshControl={
+              <AppRefreshControl
+                refreshing={isLoading}
+                onRefresh={reloadCourses}
+                progressViewOffset={top + 30}
+              />
+            }
+            renderFooter={renderFooter}
+            canChangeSize
+            layoutSize={{
+              height: windowHeight - 100 - top - 44,
+              width: WINDOW_WIDTH,
+            }}
+            onVisibleIndicesChanged={onVisibleIndicesChanged}
+            optimizeForInsertDeleteAnimations
+          />
+        </GestureDetector>
+      </KeyboardAvoidingHOC>
+    ) : null;
   },
 );

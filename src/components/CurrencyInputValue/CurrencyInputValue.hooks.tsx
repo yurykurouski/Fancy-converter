@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from 'react';
-import { Keyboard, Vibration } from 'react-native';
 import { useSelector } from 'react-redux';
 import { INPUT_VALIDATION_REGEXP } from 'constants/constants';
 import { l } from 'resources/localization';
@@ -8,7 +7,6 @@ import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import {
   TUseConvertedValues,
   TUseCurrencyInputHandlers,
-  TUseHandleLongPressParams,
   TUseOnContainerPressParams,
 } from './CurrencyInputValue.types';
 
@@ -121,17 +119,3 @@ export const useOnContainerPress = ({
     }
   };
 };
-
-export const useHandleLongPress = ({
-  isInEditMode,
-  addToCurrInEdit,
-  currencyCode,
-}: TUseHandleLongPressParams) =>
-  useCallback(() => {
-    if (!isInEditMode) {
-      Vibration.vibrate(1);
-      Keyboard.dismiss();
-
-      addToCurrInEdit(currencyCode);
-    }
-  }, [addToCurrInEdit, currencyCode, isInEditMode]);
