@@ -15,30 +15,28 @@ import { DrawerContent } from './DrawerContent';
 
 import { useStyles } from './Drawer.styles';
 
-export const Drawer = React.memo<TProps>(
-  ({ animatedPosition, closeDrawer }) => {
-    const styles = useStyles();
+export const Drawer = React.memo<TProps>(({ drawerPosition, closeDrawer }) => {
+  const styles = useStyles();
 
-    const { isDrawerOpened } = useSelector(selectUIStatus);
+  const { isDrawerOpened } = useSelector(selectUIStatus);
 
-    const panGesture = usePanGesture(animatedPosition);
+  const panGesture = usePanGesture(drawerPosition);
 
-    const animatedStyles = useDrawerAnimatedStyles(animatedPosition);
-    const animatedOpacity = useDrawerBlurAnimatedStyles(animatedPosition);
+  const animatedStyles = useDrawerAnimatedStyles(drawerPosition);
+  const animatedOpacity = useDrawerBlurAnimatedStyles(drawerPosition);
 
-    return (
-      <>
-        <GestureDetector gesture={panGesture}>
-          <Animated.View style={[styles.drawer, animatedStyles]}>
-            <DrawerContent />
-          </Animated.View>
-        </GestureDetector>
-        <Animated.View
-          pointerEvents={isDrawerOpened ? 'box-none' : 'none'}
-          style={[styles.fadeContainer, animatedOpacity]}>
-          <Pressable onPressIn={closeDrawer} style={StyleSheet.absoluteFill} />
+  return (
+    <>
+      <GestureDetector gesture={panGesture}>
+        <Animated.View style={[styles.drawer, animatedStyles]}>
+          <DrawerContent />
         </Animated.View>
-      </>
-    );
-  },
-);
+      </GestureDetector>
+      <Animated.View
+        pointerEvents={isDrawerOpened ? 'box-none' : 'none'}
+        style={[styles.fadeContainer, animatedOpacity]}>
+        <Pressable onPressIn={closeDrawer} style={StyleSheet.absoluteFill} />
+      </Animated.View>
+    </>
+  );
+});

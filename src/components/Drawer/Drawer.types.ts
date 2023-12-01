@@ -1,6 +1,6 @@
 import { SharedValue } from 'react-native-reanimated';
 
 export type TProps = {
-  animatedPosition: SharedValue<number>;
+  drawerPosition: SharedValue<number>;
   closeDrawer: () => void;
 };
