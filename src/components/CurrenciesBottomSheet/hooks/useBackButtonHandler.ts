@@ -11,7 +11,7 @@ export const useBackButtonHandler: TUseBackButtonHandler = (
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
-        if (bottomSheetIndex) {
+        if (bottomSheetIndex.value) {
           sheetRef.current?.snapToIndex(0);
           return true;
         }
