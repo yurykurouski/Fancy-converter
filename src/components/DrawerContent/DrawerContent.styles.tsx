@@ -1,6 +1,8 @@
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
+import { DRAWER_CONTENT_WIDTH } from './Drawer.constants';
+
 export const useStyles = () =>
   useTheme((theme, { top }) => ({
     contentContainer: {
@@ -8,10 +10,21 @@ export const useStyles = () =>
       flex: 1,
       justifyContent: 'space-between',
       paddingHorizontal: 10,
+      width: DRAWER_CONTENT_WIDTH,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+
+      elevation: 5,
     },
     controlsContainer: {
       flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'space-between',
       gap: 20,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       borderRadius: 30,
@@ -49,5 +62,6 @@ export const useStyles = () =>
       borderRadius: 30,
       flexDirection: 'row',
       justifyContent: 'space-between',
+      marginBottom: 10,
     },
   }));

@@ -1,59 +1,39 @@
-import { useCallback, useEffect, useMemo } from 'react';
-import { BackHandler, Keyboard, Vibration } from 'react-native';
-import { Gesture } from 'react-native-gesture-handler';
+import { useCallback, useEffect } from 'react';
+import { BackHandler } from 'react-native';
 import {
   interpolate,
-  ReduceMotion,
-  runOnJS,
   SharedValue,
   useAnimatedStyle,
-  withTiming,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
-import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
+import { DRAWER_CONTENT_WIDTH } from 'components/DrawerContent/Drawer.constants';
 import { HOUR_IN_MS } from 'constants/constants';
-import { useLoadCourses, useSetDrawerStatus } from 'hooks';
+import { useLoadCourses } from 'hooks';
 import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectEditMode } from 'store/editMode/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
-import { selectUIStatus } from 'store/ui/selectors';
 
 import {
   TUseHandleBackPress,
   TUseOpenDrawerAnimations,
 } from './CurrenciesMainContent.types';
 
-export const useOpenDrawerAnimations: TUseOpenDrawerAnimations =
-  drawerPosition => {
-    const setIsDrawerOpened = useSetDrawerStatus();
+export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = drawerRef => {
+  const closeDrawer = useCallback(() => {
+    drawerRef.current?.closeDrawer();
+  }, [drawerRef]);
 
-    const closeDrawer = useCallback(() => {
-      drawerPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
-        duration: DEFAULT_ANIMATION_DURATION,
-      });
+  const openDrawer = useCallback(() => {
+    drawerRef.current?.openDrawer();
+  }, [drawerRef]);
 
-      setIsDrawerOpened(false);
-    }, [drawerPosition, setIsDrawerOpened]);
-
-    const openDrawer = useCallback(() => {
-      Vibration.vibrate(1);
-      Keyboard.dismiss();
-
-      drawerPosition.value = withTiming(0, {
-        duration: DEFAULT_ANIMATION_DURATION,
-      });
-
-      setIsDrawerOpened(true);
-    }, [drawerPosition, setIsDrawerOpened]);
-
-    return {
-      closeDrawer,
-      openDrawer,
-    };
+  return {
+    closeDrawer,
+    openDrawer,
   };
+};
 
-export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
+export const useHorizontalParallax = (animatedPosition: SharedValue<number>) =>
   useAnimatedStyle(() => {
     const translateX = interpolate(
       animatedPosition.value,
@@ -70,8 +50,10 @@ export const useAnimatedScreenStyle = (animatedPosition: SharedValue<number>) =>
     };
   });
 
-export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
-  const { isDrawerOpened } = useSelector(selectUIStatus);
+export const useHandleBackPress: TUseHandleBackPress = (
+  closeDrawer,
+  drawerRef,
+) => {
   const { isInEditMode } = useSelector(selectEditMode);
 
   const setSelectedCurrInEditMode = useSetEditMode();
@@ -84,17 +66,18 @@ export const useHandleBackPress: TUseHandleBackPress = closeDrawer => {
           setSelectedCurrInEditMode(false);
           return true;
         }
-
-        if (isDrawerOpened) {
+        //@ts-expect-error
+        if (drawerRef.current?.drawerShown) {
           closeDrawer();
           return true;
         }
+
         return false;
       },
     );
 
     return () => backHandler.remove();
-  }, [isDrawerOpened, closeDrawer, isInEditMode, setSelectedCurrInEditMode]);
+  }, [closeDrawer, isInEditMode, setSelectedCurrInEditMode, drawerRef]);
 };
 
 export const useUpdateCourses = () => {
@@ -115,34 +98,34 @@ export const useUpdateCourses = () => {
   }, [lastUpdated, loadCourses]);
 };
 
-export const useOpedDrawerGesture = (animatedPosition: SharedValue<number>) => {
-  const setIsDrawerOpened = useSetDrawerStatus();
+// export const useOpedDrawerGesture = (animatedPosition: SharedValue<number>) => {
+//   const setIsDrawerOpened = useSetDrawerStatus();
 
-  return useMemo(
-    () =>
-      Gesture.Pan()
-        .onUpdate(e => {
-          if (e.translationX < 0 || e.translationX >= DRAWER_CONTENT_WIDTH)
-            return;
+//   return useMemo(
+//     () =>
+//       Gesture.Pan()
+//         .onUpdate(e => {
+//           if (e.translationX < 0 || e.translationX >= DRAWER_CONTENT_WIDTH)
+//             return;
 
-          animatedPosition.value = -DRAWER_CONTENT_WIDTH + e.translationX;
-        })
-        .onEnd(e => {
-          const { translationX, velocityX } = e;
+//           animatedPosition.value = -DRAWER_CONTENT_WIDTH + e.translationX;
+//         })
+//         .onEnd(e => {
+//           const { translationX, velocityX } = e;
 
-          if (translationX > 100 || velocityX > 800) {
-            animatedPosition.value = withTiming(0, {
-              duration: DEFAULT_ANIMATION_DURATION,
-            });
+//           if (translationX > 100 || velocityX > 800) {
+//             animatedPosition.value = withTiming(0, {
+//               duration: DEFAULT_ANIMATION_DURATION,
+//             });
 
-            runOnJS(setIsDrawerOpened)(true);
-          } else {
-            animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
-              duration: DEFAULT_ANIMATION_DURATION,
-              reduceMotion: ReduceMotion.System,
-            });
-          }
-        }),
-    [animatedPosition, setIsDrawerOpened],
-  );
-};
+//             runOnJS(setIsDrawerOpened)(true);
+//           } else {
+//             animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
+//               duration: DEFAULT_ANIMATION_DURATION,
+//               reduceMotion: ReduceMotion.System,
+//             });
+//           }
+//         }),
+//     [animatedPosition, setIsDrawerOpened],
+//   );
+// };

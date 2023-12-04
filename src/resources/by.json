@@ -173,6 +173,6 @@
   "settings_auto-theme_switch": "Follow system theme",
   "header-menu_currency_fiat": "Fiat",
   "header-menu_currency_crypto": "Crypto",
-  "drawer_placeholder_title": "Больш",
-  "drawer_placeholder_text": "будзе хутка"
+  "drawer_placeholder_title": "Хутка",
+  "drawer_placeholder_text": "будзе больш"
 }

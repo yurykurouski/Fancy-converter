@@ -18,10 +18,9 @@ import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/ui/selectors';
 import { EColorSchemeBehavior } from 'types';
 
-import { DrawerIcon } from '../DrawerIcon';
-import { DrawerThemeSwitcher } from '../DrawerThemeSwitcher';
-
 import { useButtonOnPress } from './DrawerContent.hooks';
+import { DrawerIcon } from './DrawerIcon';
+import { DrawerThemeSwitcher } from './DrawerThemeSwitcher';
 
 import { useStyles } from './DrawerContent.styles';
 

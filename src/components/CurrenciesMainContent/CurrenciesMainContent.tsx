@@ -1,55 +1,61 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useSharedValue } from 'react-native-reanimated';
-import { CurrenciesBottomSheet, Drawer, Header } from 'components';
+import React, { useCallback, useRef, useState } from 'react';
+import { Keyboard } from 'react-native';
+import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
+import { useSharedValue } from 'react-native-reanimated';
+import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
+import { CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
-import { DRAWER_CONTENT_WIDTH } from 'components/Drawer/Drawer.constants';
+import { DrawerContent } from 'components/DrawerContent';
+import { DRAWER_CONTENT_WIDTH } from 'components/DrawerContent/Drawer.constants';
+import { selectColorSchemeState } from 'store/ui/selectors';
+import { isIos } from 'utils';
 
 import {
-  useAnimatedScreenStyle,
   useHandleBackPress,
-  useOpedDrawerGesture,
   useOpenDrawerAnimations,
   useUpdateCourses,
 } from './CurrenciesMainContent.hooks';
 
-import { useStyles } from './CurrenciesMainContent.styles';
-
 export const CurrenciesMainContent = React.memo(() => {
-  const styles = useStyles();
-
   const [isHeaderBlurred, setIsHeaderBlurred] = useState<boolean>(false);
 
+  const { colorScheme } = useSelector(selectColorSchemeState);
+
+  const drawerRef = useRef<DrawerLayout>(null);
+
   const headerSharedValue = useSharedValue(0);
-  const drawerPosition = useSharedValue(-DRAWER_CONTENT_WIDTH);
 
-  const { closeDrawer, openDrawer } = useOpenDrawerAnimations(drawerPosition);
+  const { closeDrawer, openDrawer } = useOpenDrawerAnimations(drawerRef);
 
-  useHandleBackPress(closeDrawer);
+  const renderContent = useCallback(() => <DrawerContent />, []);
+
+  useHandleBackPress(closeDrawer, drawerRef);
   useUpdateCourses();
 
-  const animatedScreenStyle = useAnimatedScreenStyle(drawerPosition);
-  const panGesture = useOpedDrawerGesture(drawerPosition);
-
   return (
-    <>
-      <Animated.View style={[styles.container, animatedScreenStyle]}>
-        <Header
-          onOpenDrawer={openDrawer}
-          isHeaderBlurred={isHeaderBlurred}
-          headerSharedValue={headerSharedValue}
-        />
-        <CurrencySelector
-          setIsHeaderBlurred={setIsHeaderBlurred}
-          drawerPosition={drawerPosition}
-        />
-        <GestureDetector gesture={panGesture}>
-          <View style={styles.gestureHandler} />
-        </GestureDetector>
-        <CurrenciesBottomSheet headerSharedValue={headerSharedValue} />
-      </Animated.View>
-      <Drawer drawerPosition={drawerPosition} closeDrawer={closeDrawer} />
-    </>
+    <DrawerLayout
+      //NOTE: https://github.com/software-mansion/react-native-gesture-handler/issues/2208#issuecomment-1291675205
+      useNativeAnimations={false}
+      ref={drawerRef}
+      overlayColor={`${THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY}99`}
+      contentContainerStyle={{
+        backgroundColor: THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY,
+      }}
+      drawerType={'back'}
+      drawerWidth={DRAWER_CONTENT_WIDTH}
+      drawerPosition={'left'}
+      renderNavigationView={renderContent}
+      onDrawerOpen={Keyboard.dismiss}
+      edgeWidth={isIos ? 10 : -10}
+      enableTrackpadTwoFingerGesture>
+      <Header
+        onOpenDrawer={openDrawer}
+        isHeaderBlurred={isHeaderBlurred}
+        headerSharedValue={headerSharedValue}
+      />
+      <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
+      <CurrenciesBottomSheet headerSharedValue={headerSharedValue} />
+    </DrawerLayout>
   );
 });
