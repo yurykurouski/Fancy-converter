@@ -46,7 +46,7 @@ export const CurrenciesBottomSheet = React.memo(
     const renderHandle = useRenderHandler(onPressHandler);
     const renderTabList = useRenderBottomSheetTabList(snapPoints[1] - 90);
 
-    useBackButtonHandler(headerSharedValue.value, sheetRef);
+    useBackButtonHandler(headerSharedValue, sheetRef);
 
     useEffect(() => {
       if (activeCurrencyType === ECurrencyType.FIAT) {
@@ -67,7 +67,7 @@ export const CurrenciesBottomSheet = React.memo(
         ? sheetRef?.current?.close()
         : sheetRef.current?.snapToIndex(0);
     }, [isInEditMode]);
-
+    console.log('sheetRef: ', sheetRef.current);
     return (
       <BottomSheet
         snapPoints={snapPoints}
