@@ -24,6 +24,26 @@ export const useStyles = () =>
       textTransform: 'uppercase',
       color: theme.FONT_PRIMARY_COLOR,
     },
+    morePlaceholder: {
+      height: 300,
+      borderRadius: 10,
+      marginTop: '50%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: theme.ACCENT_COLOR_DARKER,
+    },
+    moreText: {
+      color: theme.FONT_PRIMARY_COLOR,
+      fontWeight: 'bold',
+      ...(isAndroid && { fontFamily: 'monospace' }),
+      textTransform: 'uppercase',
+    },
+    moreFirstRow: {
+      fontSize: 40,
+    },
+    moreSecondRow: {
+      fontSize: 20,
+    },
     iconsContainer: {
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       borderRadius: 30,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import cupDark from 'assets/icons/cup_dark.png';
 import cupLight from 'assets/icons/cup_light.png';
@@ -50,17 +50,26 @@ export const DrawerContent = React.memo(() => {
 
   return (
     <View style={styles.contentContainer}>
-      <View style={styles.controlsContainer}>
-        <ButtonWithIPadOSInteraction onPress={switchAppearanceBehavior}>
-          <Text style={styles.switchLabel}>
-            {l['settings_auto-theme_switch']}
+      <ScrollView>
+        <View style={styles.controlsContainer}>
+          <ButtonWithIPadOSInteraction onPress={switchAppearanceBehavior}>
+            <Text style={styles.switchLabel}>
+              {l['settings_auto-theme_switch']}
+            </Text>
+          </ButtonWithIPadOSInteraction>
+          <Switch
+            value={behavior === EColorSchemeBehavior.AUTO}
+            onValueChange={switchAppearanceBehavior}
+          />
+        </View>
+
+        <View style={styles.morePlaceholder}>
+          <Text style={[styles.moreText, styles.moreFirstRow]}>More</Text>
+          <Text style={[styles.moreText, styles.moreSecondRow]}>
+            coming soon
           </Text>
-        </ButtonWithIPadOSInteraction>
-        <Switch
-          value={behavior === EColorSchemeBehavior.AUTO}
-          onValueChange={switchAppearanceBehavior}
-        />
-      </View>
+        </View>
+      </ScrollView>
 
       <View style={styles.iconsContainer}>
         <DrawerIcon onPress={openGH} icon={ghIcon} />
