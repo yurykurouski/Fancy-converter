@@ -64,9 +64,11 @@ export const DrawerContent = React.memo(() => {
         </View>
 
         <View style={styles.morePlaceholder}>
-          <Text style={[styles.moreText, styles.moreFirstRow]}>More</Text>
+          <Text style={[styles.moreText, styles.moreFirstRow]}>
+            {l.drawer_placeholder_title}
+          </Text>
           <Text style={[styles.moreText, styles.moreSecondRow]}>
-            coming soon
+            {l.drawer_placeholder_text}
           </Text>
         </View>
       </ScrollView>

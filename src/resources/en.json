@@ -172,5 +172,7 @@
   "currencies-bootomsheet_empty-search-result": "No result found",
   "settings_auto-theme_switch": "Follow system theme",
   "header-menu_currency_fiat": "Fiat",
-  "header-menu_currency_crypto": "Crypto"
+  "header-menu_currency_crypto": "Crypto",
+  "drawer_placeholder_title": "More",
+  "drawer_placeholder_text": "coming soon"
 }
