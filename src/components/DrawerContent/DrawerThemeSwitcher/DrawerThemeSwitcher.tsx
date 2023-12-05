@@ -7,7 +7,7 @@ import {
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { useSwitchColorScheme } from 'hooks/store/UIStatus';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
 
 import { DarkIcon } from './DarkIcon';

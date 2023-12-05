@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { UISlice } from 'store/ui/slices/UISlice';
+import { ColorSchemeSlice } from 'store/colorScheme/slices/ColorSchemeSlice';
 
 export const useSwitchAppearanceBehavior = () => {
   const dispatch = useDispatch();
 
   return useCallback(
-    () => dispatch(UISlice.actions.switchAppearanceBehavior()),
+    () => dispatch(ColorSchemeSlice.actions.switchAppearanceBehavior()),
     [dispatch],
   );
 };

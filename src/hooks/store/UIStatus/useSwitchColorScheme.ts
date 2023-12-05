@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { UISlice } from 'store/ui/slices/UISlice';
+import { ColorSchemeSlice } from 'store/colorScheme/slices/ColorSchemeSlice';
 import { EColorSchemeBehavior } from 'types';
 
 export const useSwitchColorScheme = () => {
@@ -8,7 +8,7 @@ export const useSwitchColorScheme = () => {
 
   return useCallback(
     (behavior: EColorSchemeBehavior) =>
-      dispatch(UISlice.actions.switchColorScheme(behavior)),
+      dispatch(ColorSchemeSlice.actions.switchColorScheme(behavior)),
     [dispatch],
   );
 };

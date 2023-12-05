@@ -15,7 +15,7 @@ import {
 } from 'constants/constants';
 import { useSwitchAppearanceBehavior } from 'hooks/store/UIStatus';
 import { l } from 'resources/localization';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
 
 import { useButtonOnPress } from './DrawerContent.hooks';

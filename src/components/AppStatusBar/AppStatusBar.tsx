@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 export const AppStatusBar = () => {
   const { colorScheme } = useSelector(selectColorSchemeState);

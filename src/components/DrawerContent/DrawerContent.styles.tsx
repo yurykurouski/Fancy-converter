@@ -8,6 +8,7 @@ export const useStyles = () =>
     contentContainer: {
       paddingTop: top,
       flex: 1,
+      // eslint-disable-next-line sonarjs/no-duplicate-string
       justifyContent: 'space-between',
       paddingHorizontal: 10,
       width: DRAWER_CONTENT_WIDTH,

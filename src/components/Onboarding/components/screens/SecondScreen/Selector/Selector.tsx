@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { useStyles } from './Selector.styles';
 

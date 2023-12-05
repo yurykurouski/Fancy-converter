@@ -8,7 +8,7 @@ import { CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
 import { DrawerContent } from 'components/DrawerContent';
 import { DRAWER_CONTENT_WIDTH } from 'components/DrawerContent/Drawer.constants';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { isIos } from 'utils';
 
 import {
