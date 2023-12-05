@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { Path, Svg } from 'react-native-svg';
 import { useSelector } from 'react-redux';
 import { ColorsDark, ColorsLight, THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 type TProps = {
   size: number;

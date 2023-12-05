@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { TUseTheme } from './types';
 

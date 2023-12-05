@@ -16,9 +16,9 @@ import {
   useRemoveSelected,
 } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { selectColorSchemeState } from 'store/ui/selectors';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
 import { TProps } from './CurrencySelectorValue.types';

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 export const AppRefreshControl = ({
   refreshing,

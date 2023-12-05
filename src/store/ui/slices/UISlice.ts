@@ -1,26 +1,16 @@
-import { ColorSchemeName } from 'react-native';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FavoriteCurrenciesSliceActions } from 'store/favoriteCurrencies/slices/FavoriteCurrenciesSlice';
-import {
-  EColorSchemeBehavior,
-  ENotificationType,
-  TNotificationData,
-} from 'types';
-import { getCurrentColorTheme } from 'utils';
+import { ENotificationType, TNotificationData } from 'types';
 
 export type TUISlice = {
   isDrawerOpened: boolean;
   notificationData: TNotificationData | null;
-  colorScheme: ColorSchemeName;
-  behavior: EColorSchemeBehavior;
 };
 
 const initialState: TUISlice = {
   isDrawerOpened: false,
   notificationData: null,
-  colorScheme: getCurrentColorTheme(),
-  behavior: EColorSchemeBehavior.AUTO,
 };
 
 export const UISlice = createSlice({
@@ -33,25 +23,6 @@ export const UISlice = createSlice({
 
     setNotificationData: (state, action: PayloadAction<TNotificationData>) => {
       state.notificationData = action.payload;
-    },
-
-    switchColorScheme: state => {
-      state.colorScheme = state.colorScheme === 'light' ? 'dark' : 'light';
-
-      if (state.behavior === EColorSchemeBehavior.AUTO) {
-        state.behavior = EColorSchemeBehavior.MANUAL;
-      }
-    },
-
-    switchAppearanceBehavior: state => {
-      state.behavior =
-        state.behavior === EColorSchemeBehavior.AUTO
-          ? EColorSchemeBehavior.MANUAL
-          : EColorSchemeBehavior.AUTO;
-
-      if (state.behavior === EColorSchemeBehavior.AUTO) {
-        state.colorScheme = getCurrentColorTheme();
-      }
     },
   },
   extraReducers(builder) {

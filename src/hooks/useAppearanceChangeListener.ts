@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Appearance } from 'react-native';
 import { useSelector } from 'react-redux';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
 
 import { useSwitchColorScheme } from './store/UIStatus';
@@ -19,7 +19,7 @@ export const useAppearanceChangeListener = () => {
         behavior === EColorSchemeBehavior.AUTO &&
         currentColorScheme !== prop.colorScheme
       ) {
-        switchColorScheme();
+        switchColorScheme(EColorSchemeBehavior.AUTO);
       }
     });
 

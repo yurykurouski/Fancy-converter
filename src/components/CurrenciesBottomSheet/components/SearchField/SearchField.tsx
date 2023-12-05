@@ -6,9 +6,9 @@ import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { useSetFilteredCurrencies } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
-import { selectColorSchemeState } from 'store/ui/selectors';
 
 import { useHandleTextChange } from './SearchField.hooks';
 

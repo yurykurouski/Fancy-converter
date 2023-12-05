@@ -7,7 +7,7 @@ import {
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { useSwitchColorScheme } from 'hooks/store/UIStatus';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
 
 import { DarkIcon } from './DarkIcon';
@@ -24,6 +24,8 @@ export const DrawerThemeSwitcher = () => {
 
   const animatedValue = useSharedValue(0);
 
+  const handlePress = () => switchColorScheme(EColorSchemeBehavior.MANUAL);
+
   useEffect(() => {
     const toValue = colorScheme === 'dark' ? 135 : 0;
 
@@ -34,7 +36,7 @@ export const DrawerThemeSwitcher = () => {
   }, [animatedValue, colorScheme]);
 
   return (
-    <Pressable onPress={switchColorScheme} style={styles.container}>
+    <Pressable onPress={handlePress} style={styles.container}>
       <LightIcon animatedValue={animatedValue} />
       <DarkIcon animatedValue={animatedValue} />
       {behavior === EColorSchemeBehavior.AUTO && (

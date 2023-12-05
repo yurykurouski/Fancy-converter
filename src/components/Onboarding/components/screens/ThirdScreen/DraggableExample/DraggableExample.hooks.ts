@@ -2,7 +2,7 @@ import { Animated } from 'react-native';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
-import { selectColorSchemeState } from 'store/ui/selectors';
+import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 const MAIN_ITEM_OFFSET = new Animated.Value(0);
 const SECOND_ITEM_OFFSET = new Animated.Value(0);
