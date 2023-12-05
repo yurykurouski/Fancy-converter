@@ -31,10 +31,7 @@ export const AnimatedFlipIcon = ({
 
   const animatedContainerStyle = useAnimatedStyle(() => {
     return {
-      transform: [
-        { perspective: 100 },
-        { rotateY: `${animatedRotateValue.value}deg` },
-      ],
+      transform: [{ rotateY: `${animatedRotateValue.value}deg` }],
     };
   });
 

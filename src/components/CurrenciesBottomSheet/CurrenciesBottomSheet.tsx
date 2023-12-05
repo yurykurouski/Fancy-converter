@@ -67,7 +67,7 @@ export const CurrenciesBottomSheet = React.memo(
         ? sheetRef?.current?.close()
         : sheetRef.current?.snapToIndex(0);
     }, [isInEditMode]);
-    console.log('sheetRef: ', sheetRef.current);
+
     return (
       <BottomSheet
         snapPoints={snapPoints}
