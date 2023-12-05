@@ -35,12 +35,9 @@ export const UISlice = createSlice({
       state.notificationData = action.payload;
     },
 
-    switchColorScheme: state => {
+    switchColorScheme: (state, action: PayloadAction<EColorSchemeBehavior>) => {
       state.colorScheme = state.colorScheme === 'light' ? 'dark' : 'light';
-
-      if (state.behavior === EColorSchemeBehavior.AUTO) {
-        state.behavior = EColorSchemeBehavior.MANUAL;
-      }
+      state.behavior = action.payload;
     },
 
     switchAppearanceBehavior: state => {

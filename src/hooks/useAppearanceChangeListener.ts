@@ -19,7 +19,7 @@ export const useAppearanceChangeListener = () => {
         behavior === EColorSchemeBehavior.AUTO &&
         currentColorScheme !== prop.colorScheme
       ) {
-        switchColorScheme();
+        switchColorScheme(EColorSchemeBehavior.AUTO);
       }
     });
 
