@@ -41,7 +41,7 @@ export const DraggableExample = () => {
             style={[styles.container, dragAnimationVariant]}
             key={index}>
             <Selector
-              withRipple={index === 0}
+              isSelected={index === 0}
               animatedHandleColorStyle={animatedHandleColorStyle}
               animatedRippleStyle={animatedRippleStyle}
             />

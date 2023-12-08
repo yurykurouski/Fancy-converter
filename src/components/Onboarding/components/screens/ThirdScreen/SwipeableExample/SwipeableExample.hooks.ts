@@ -16,6 +16,7 @@ export const useAnimationStyles = () => ({
   },
 });
 
+//NOTE: dead
 export const useSwipeAnimation = () => () =>
   Animated.sequence([
     Animated.parallel([

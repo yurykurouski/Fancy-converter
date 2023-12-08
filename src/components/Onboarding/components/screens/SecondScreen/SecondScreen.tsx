@@ -17,10 +17,14 @@ export const SecondScreen = ({ windowWidth }: { windowWidth: number }) => {
   const Handle = useRenderHandler();
 
   const screenTitle = l['onboarding_second-screen_title'];
+  const screenText = l['onboarding_second-screen_text'];
 
   return (
     <View style={styles.container}>
       <Text style={[textStyles.mainText, textStyles.title]}>{screenTitle}</Text>
+      <Text style={[textStyles.mainText, textStyles.subTitle]}>
+        {screenText}
+      </Text>
       <View style={styles.backgroundContainer}>
         <Handle />
         <ScrollView removeClippedSubviews>
