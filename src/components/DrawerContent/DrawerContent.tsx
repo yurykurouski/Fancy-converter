@@ -1,24 +1,20 @@
 import React from 'react';
-import { Linking, ScrollView, Text, View } from 'react-native';
+import { Linking, ScrollView, Share, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { MailIcon } from 'assets/icons';
-import cupDark from 'assets/icons/cup_dark.png';
-import cupLight from 'assets/icons/cup_light.png';
-import ghDarkIcon from 'assets/icons/github-dark.png';
-import ghLightIcon from 'assets/icons/github-light.png';
-import tgIcon from 'assets/icons/telegram-logo.png';
+import { CoffeeCupIcon, GithubIcon, MailIcon } from 'assets/icons';
+import { ShareIcon } from 'assets/icons/ShareIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { Separator } from 'components/common/Separator';
 import { Switch } from 'components/common/Switch';
+import { GITHUB_REPO_URL, PAYPAL_DONATION_URL } from 'constants/constants';
 import {
-  GITHUB_REPO_URL,
-  PAYPAL_DONATION_URL,
-  TG_CHANNEL_URL,
-} from 'constants/constants';
-import { useSwitchAppearanceBehavior } from 'hooks/store/UIStatus';
+  useSwitchAppearanceBehavior,
+  useSwitchColorScheme,
+} from 'hooks/store/UIStatus';
 import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
+import { isIos } from 'utils';
 
 import { useButtonOnPress } from './DrawerContent.hooks';
 import { DrawerIcon } from './DrawerIcon';
@@ -26,23 +22,19 @@ import { DrawerThemeSwitcher } from './DrawerThemeSwitcher';
 
 import { useStyles } from './DrawerContent.styles';
 
-const ENABLE_TG_BUTTON = false;
+const STORE_LINK = isIos ? 'App store link' : 'Play Store link';
 
 export const DrawerContent = React.memo(() => {
   const styles = useStyles();
-  const { colorScheme, behavior } = useSelector(selectColorSchemeState);
+  const { behavior } = useSelector(selectColorSchemeState);
 
   const switchAppearanceBehavior = useSwitchAppearanceBehavior();
-
-  const ghIcon = colorScheme === 'dark' ? ghLightIcon : ghDarkIcon;
-  const cupIcon = colorScheme === 'dark' ? cupDark : cupLight;
+  const switchColorScheme = useSwitchColorScheme();
 
   const openGH = useButtonOnPress(
     GITHUB_REPO_URL,
     'alert_message.github_press.description',
   );
-
-  const openTG = useButtonOnPress(TG_CHANNEL_URL);
 
   const openPayPal = useButtonOnPress(
     PAYPAL_DONATION_URL,
@@ -53,6 +45,14 @@ export const DrawerContent = React.memo(() => {
     Linking.openURL(
       'mailto:zorkasoftware@gmail.com?subject=Fancy converter feedback',
     );
+
+  const onShare = () => {
+    Share.share({
+      message: `Fancy Converter: ${STORE_LINK}`,
+    });
+  };
+
+  const switchTheme = () => switchColorScheme(EColorSchemeBehavior.MANUAL);
 
   return (
     <View style={styles.contentContainer}>
@@ -101,13 +101,14 @@ export const DrawerContent = React.memo(() => {
       </ScrollView>
 
       <View style={styles.iconsContainer}>
-        <DrawerIcon onPress={openGH} icon={ghIcon} />
-        {ENABLE_TG_BUTTON ? (
-          <DrawerIcon onPress={openTG} icon={tgIcon} />
-        ) : (
-          <DrawerIcon onPress={openPayPal} icon={cupIcon} />
-        )}
-        <DrawerThemeSwitcher />
+        <DrawerIcon Icon={ShareIcon} size={30} onPress={onShare} />
+        <DrawerIcon Icon={GithubIcon} size={30} onPress={openGH} />
+        <DrawerIcon Icon={CoffeeCupIcon} size={30} onPress={openPayPal} />
+        <DrawerIcon
+          Icon={DrawerThemeSwitcher}
+          size={30}
+          onPress={switchTheme}
+        />
       </View>
     </View>
   );

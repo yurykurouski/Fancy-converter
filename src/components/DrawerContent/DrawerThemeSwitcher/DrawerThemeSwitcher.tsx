@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { Pressable, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import {
   ReduceMotion,
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { useSwitchColorScheme } from 'hooks/store/UIStatus';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
 
@@ -20,11 +19,7 @@ export const DrawerThemeSwitcher = () => {
 
   const { colorScheme, behavior } = useSelector(selectColorSchemeState);
 
-  const switchColorScheme = useSwitchColorScheme();
-
   const animatedValue = useSharedValue(0);
-
-  const handlePress = () => switchColorScheme(EColorSchemeBehavior.MANUAL);
 
   useEffect(() => {
     const toValue = colorScheme === 'dark' ? 135 : 0;
@@ -36,12 +31,12 @@ export const DrawerThemeSwitcher = () => {
   }, [animatedValue, colorScheme]);
 
   return (
-    <Pressable onPress={handlePress} style={styles.container}>
+    <View style={styles.container}>
       <LightIcon animatedValue={animatedValue} />
       <DarkIcon animatedValue={animatedValue} />
       {behavior === EColorSchemeBehavior.AUTO && (
         <Text style={styles.behaviorIndicator}>A</Text>
       )}
-    </Pressable>
+    </View>
   );
 };
