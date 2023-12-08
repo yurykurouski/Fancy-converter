@@ -1,7 +1,8 @@
 import { Action } from '@reduxjs/toolkit';
-import by from 'resources/by.json';
-import en from 'resources/en.json';
-import ua from 'resources/ua.json';
+import by from 'resources/locales/by.json';
+import en from 'resources/locales/en.json';
+import pl from 'resources/locales/pl.json';
+import ua from 'resources/locales/ua.json';
 
 import {
   EAvailableCryptoNames,
@@ -14,7 +15,11 @@ export {
 
 export type TDispatchCallback<T, A> = (value: T) => Action<A>;
 
-export type TLocaleString = keyof typeof en | keyof typeof by | keyof typeof ua;
+export type TLocaleString =
+  | keyof typeof en
+  | keyof typeof by
+  | keyof typeof ua
+  | keyof typeof pl;
 
 export type TGroupByName<T> = (data: T[]) => {
   [key: string]: T[];
