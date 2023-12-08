@@ -1,4 +1,7 @@
+import React from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
 import { Action } from '@reduxjs/toolkit';
+import { ColorsDark, ColorsLight } from 'assets/colors';
 import by from 'resources/locales/by.json';
 import en from 'resources/locales/en.json';
 import pl from 'resources/locales/pl.json';
@@ -60,3 +63,9 @@ export type TNotificationData = {
 export type TAvailableCurrenciesNames =
   | EAvailableFiatNames
   | EAvailableCryptoNames;
+
+export type TSVGIcon = (props: {
+  size: number;
+  style?: StyleProp<ViewStyle>;
+  color?: ColorsLight | ColorsDark;
+}) => React.JSX.Element;
