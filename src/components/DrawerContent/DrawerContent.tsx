@@ -1,12 +1,14 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { Linking, ScrollView, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
+import { MailIcon } from 'assets/icons';
 import cupDark from 'assets/icons/cup_dark.png';
 import cupLight from 'assets/icons/cup_light.png';
 import ghDarkIcon from 'assets/icons/github-dark.png';
 import ghLightIcon from 'assets/icons/github-light.png';
 import tgIcon from 'assets/icons/telegram-logo.png';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
+import { Separator } from 'components/common/Separator';
 import { Switch } from 'components/common/Switch';
 import {
   GITHUB_REPO_URL,
@@ -47,24 +49,45 @@ export const DrawerContent = React.memo(() => {
     'alert_message.paypal_press.description',
   );
 
+  const writeEmail = () =>
+    Linking.openURL(
+      'mailto:zorkasoftware@gmail.com?subject=Fancy converter feedback',
+    );
+
   return (
     <View style={styles.contentContainer}>
       <ScrollView>
-        <View style={styles.controlsContainer}>
-          <ButtonWithIPadOSInteraction
-            onPress={switchAppearanceBehavior}
-            containerStyle={styles.switchLabelContainer}>
-            <Text
-              style={styles.switchLabel}
-              adjustsFontSizeToFit
-              numberOfLines={2}>
-              {l['settings_auto-theme_switch']}
-            </Text>
-          </ButtonWithIPadOSInteraction>
-          <Switch
-            value={behavior === EColorSchemeBehavior.AUTO}
-            onValueChange={switchAppearanceBehavior}
-          />
+        <View style={styles.controls}>
+          <View style={styles.controlContainer}>
+            <ButtonWithIPadOSInteraction
+              onPress={switchAppearanceBehavior}
+              containerStyle={styles.switchLabelContainer}>
+              <Text
+                style={styles.switchLabel}
+                adjustsFontSizeToFit
+                numberOfLines={2}>
+                {l['settings_auto-theme_switch']}
+              </Text>
+            </ButtonWithIPadOSInteraction>
+            <Switch
+              value={behavior === EColorSchemeBehavior.AUTO}
+              onValueChange={switchAppearanceBehavior}
+            />
+          </View>
+          <Separator />
+          <View style={styles.controlContainer}>
+            <ButtonWithIPadOSInteraction
+              onPress={writeEmail}
+              containerStyle={styles.switchLabelContainer}>
+              <Text
+                style={styles.switchLabel}
+                adjustsFontSizeToFit
+                numberOfLines={2}>
+                {l['drawer_share-text']}
+              </Text>
+            </ButtonWithIPadOSInteraction>
+            <MailIcon size={30} />
+          </View>
         </View>
 
         <View style={styles.morePlaceholder}>

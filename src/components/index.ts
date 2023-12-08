@@ -1,4 +1,5 @@
 export { AppStatusBar } from './AppStatusBar';
+export { Separator } from './common/Separator';
 export { CurrenciesBottomSheet } from './CurrenciesBottomSheet';
 export { CurrenciesMainContent } from './CurrenciesMainContent';
 export { CurrencyInputValue } from './CurrencyInputValue';
