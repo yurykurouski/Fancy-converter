@@ -8,6 +8,7 @@ export const useStyles = () =>
       height: 40,
       justifyContent: 'center',
       alignItems: 'center',
+      transform: [{ scale: 0.8 }],
     },
     behaviorIndicator: {
       position: 'absolute',

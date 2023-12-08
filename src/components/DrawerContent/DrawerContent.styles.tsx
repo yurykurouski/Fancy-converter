@@ -46,6 +46,13 @@ export const useStyles = () =>
       textTransform: 'uppercase',
       color: theme.FONT_PRIMARY_COLOR,
     },
+    mailIcon: {
+      backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
+      borderRadius: 20,
+      padding: 4,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     morePlaceholder: {
       height: 300,
       borderRadius: 10,

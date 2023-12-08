@@ -1,16 +1,11 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
 import { Path, Svg } from 'react-native-svg';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { TSVGIcon } from 'types';
 
-type TProps = {
-  size: number;
-  style?: StyleProp<ViewStyle>;
-};
-
-export const MenuIcon = ({ size, style }: TProps) => {
+export const MenuIcon: TSVGIcon = ({ size, style }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   return (
