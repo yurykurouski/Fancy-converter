@@ -51,8 +51,13 @@ export const DrawerContent = React.memo(() => {
     <View style={styles.contentContainer}>
       <ScrollView>
         <View style={styles.controlsContainer}>
-          <ButtonWithIPadOSInteraction onPress={switchAppearanceBehavior}>
-            <Text style={styles.switchLabel}>
+          <ButtonWithIPadOSInteraction
+            onPress={switchAppearanceBehavior}
+            containerStyle={styles.switchLabelContainer}>
+            <Text
+              style={styles.switchLabel}
+              adjustsFontSizeToFit
+              numberOfLines={2}>
               {l['settings_auto-theme_switch']}
             </Text>
           </ButtonWithIPadOSInteraction>

@@ -30,6 +30,10 @@ export const useStyles = () =>
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       borderRadius: 30,
       padding: 4,
+      overflow: 'hidden',
+    },
+    switchLabelContainer: {
+      width: 200,
     },
     switchLabel: {
       fontSize: 16,
