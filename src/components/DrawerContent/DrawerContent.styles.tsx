@@ -22,7 +22,11 @@ export const useStyles = () =>
 
       elevation: 5,
     },
-    controlsContainer: {
+    controls: {
+      gap: 10,
+    },
+    controlContainer: {
+      minHeight: 40,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
