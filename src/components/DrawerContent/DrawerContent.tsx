@@ -1,6 +1,7 @@
 import React from 'react';
 import { Linking, ScrollView, Share, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
+import { THEME_COLORS } from 'assets/colors';
 import { CoffeeCupIcon, GithubIcon, MailIcon } from 'assets/icons';
 import { ShareIcon } from 'assets/icons/ShareIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
@@ -26,7 +27,7 @@ const STORE_LINK = isIos ? 'App store link' : 'Play Store link';
 
 export const DrawerContent = React.memo(() => {
   const styles = useStyles();
-  const { behavior } = useSelector(selectColorSchemeState);
+  const { behavior, colorScheme } = useSelector(selectColorSchemeState);
 
   const switchAppearanceBehavior = useSwitchAppearanceBehavior();
   const switchColorScheme = useSwitchColorScheme();
@@ -86,7 +87,17 @@ export const DrawerContent = React.memo(() => {
                 {l['drawer_share-text']}
               </Text>
             </ButtonWithIPadOSInteraction>
-            <MailIcon size={30} />
+            <View
+              style={{
+                backgroundColor:
+                  THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR_INVERTED,
+                borderRadius: 20,
+                padding: 4,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <MailIcon size={26} />
+            </View>
           </View>
         </View>
 

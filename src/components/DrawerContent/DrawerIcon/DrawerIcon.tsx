@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { TSVGIcon } from 'types';
 
 import { useStyles } from './DrawerIcon.styles';
@@ -15,8 +15,10 @@ export const DrawerIcon: DrawerIcon = ({ onPress, Icon, size, color }) => {
   const styles = useStyles(color);
 
   return (
-    <Pressable onPress={onPress} style={styles.iconContainer}>
+    <ButtonWithIPadOSInteraction
+      onPress={onPress}
+      containerStyle={styles.iconContainer}>
       <Icon size={size} />
-    </Pressable>
+    </ButtonWithIPadOSInteraction>
   );
 };

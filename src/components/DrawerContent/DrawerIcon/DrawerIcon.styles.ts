@@ -10,5 +10,6 @@ export const useStyles = (color?: string) =>
       alignItems: 'center',
       justifyContent: 'center',
       margin: 4,
+      overflow: 'hidden',
     },
   }));
