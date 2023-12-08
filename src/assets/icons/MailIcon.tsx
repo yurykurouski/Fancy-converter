@@ -1,17 +1,11 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
 import { Path, Svg } from 'react-native-svg';
 import { useSelector } from 'react-redux';
-import { ColorsDark, ColorsLight, THEME_COLORS } from 'assets/colors';
+import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { TSVGIcon } from 'types';
 
-type TProps = {
-  size: number;
-  style?: StyleProp<ViewStyle>;
-  color?: ColorsLight | ColorsDark;
-};
-
-export const MailIcon = ({ size, style, color }: TProps) => {
+export const MailIcon: TSVGIcon = ({ size, style, color }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   return (
