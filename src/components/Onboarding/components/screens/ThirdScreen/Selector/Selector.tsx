@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 import { Animated, View } from 'react-native';
+import { CheckIcon } from 'assets/icons';
+import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 
 import { Props } from './Selector.types';
 
@@ -9,6 +11,7 @@ export const Selector: FC<Props> = ({
   withRipple = false,
   animatedHandleColorStyle,
   animatedRippleStyle,
+  isSelected,
 }) => {
   const styles = useStyles();
 
@@ -27,7 +30,11 @@ export const Selector: FC<Props> = ({
         <Animated.View style={[styles.rippleBaseStyle, animatedRippleStyle]} />
       )}
 
-      <View style={styles.flagPlaceholder} />
+      <AnimatedFlipIcon
+        nextState={isSelected}
+        DefaultIcon={<View style={styles.flagPlaceholder} />}
+        NextIcon={<CheckIcon size={30} />}
+      />
     </View>
   );
 };

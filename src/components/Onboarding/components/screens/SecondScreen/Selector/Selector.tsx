@@ -42,7 +42,7 @@ export const Selector = () => {
           NextIcon={
             <CheckIcon
               size={30}
-              color={THEME_COLORS[colorScheme!].ACCENT_COLOR_LIGHTER}
+              color={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
             />
           }
         />
