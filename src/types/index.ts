@@ -67,5 +67,5 @@ export type TAvailableCurrenciesNames =
 export type TSVGIcon = (props: {
   size: number;
   style?: StyleProp<ViewStyle>;
-  color?: ColorsLight | ColorsDark;
+  color?: ColorsLight | ColorsDark | string;
 }) => React.JSX.Element;
