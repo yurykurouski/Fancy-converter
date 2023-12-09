@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
-import { DrawerContent } from 'components/DrawerContent';
-import { DRAWER_CONTENT_WIDTH } from 'components/DrawerContent/Drawer.constants';
+import { DrawerStack } from 'navigation';
+import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { isIos } from 'utils';
 
@@ -28,7 +28,7 @@ export const CurrenciesMainContent = React.memo(() => {
 
   const { closeDrawer, openDrawer } = useOpenDrawerAnimations(drawerRef);
 
-  const renderContent = useCallback(() => <DrawerContent />, []);
+  const renderContent = useCallback(() => <DrawerStack />, []);
 
   useHandleBackPress(closeDrawer, drawerRef);
   useUpdateCourses();
