@@ -7,7 +7,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { ReactIcon } from 'assets/icons/ReactIcon';
 import { DrawerScreen } from 'components';
-import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
 import { l } from 'resources/localization';
 
 import { version } from '../../../package.json';
@@ -36,7 +35,7 @@ export const DrawerCreditsScreen = () => {
 
   const animateLogo = () => {
     logoShared.value = withTiming(logoShared.value + 90, {
-      duration: DEFAULT_ANIMATION_DURATION,
+      duration: 500,
     });
   };
 
