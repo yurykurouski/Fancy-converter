@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Action } from '@reduxjs/toolkit';
 import { ColorsDark, ColorsLight } from 'assets/colors';
+import { DrawerStackParamList } from 'navigation/DrawerStack/DrawerStack.routes';
 import by from 'resources/locales/by.json';
 import en from 'resources/locales/en.json';
 import pl from 'resources/locales/pl.json';
@@ -69,3 +70,11 @@ export type TSVGIcon = (props: {
   style?: StyleProp<ViewStyle>;
   color?: ColorsLight | ColorsDark | string;
 }) => React.JSX.Element;
+
+export type RootStackParamsList = DrawerStackParamList;
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamsList {}
+  }
+}
