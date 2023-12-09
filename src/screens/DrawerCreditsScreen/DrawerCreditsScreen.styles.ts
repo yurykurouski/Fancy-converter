@@ -5,6 +5,7 @@ export const useStyles = () => {
   return useTheme(theme => ({
     container: {
       flex: 1,
+      gap: 10,
       // eslint-disable-next-line sonarjs/no-duplicate-string
       justifyContent: 'space-between',
     },
