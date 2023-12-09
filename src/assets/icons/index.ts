@@ -6,4 +6,5 @@ export { GithubIcon } from './GithubIcon';
 export { LeftArrowIcon } from './LeftArrowIcon';
 export { MailIcon } from './MailIcon';
 export { MenuIcon } from './MenuIcon';
+export { ReactIcon } from './ReactIcon';
 export { RightArrowIcon } from './RightArrowIcon';
