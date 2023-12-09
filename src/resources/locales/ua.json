@@ -176,5 +176,9 @@
   "header-menu_currency_crypto": "Crypto",
   "drawer_placeholder_title": "Незабаром",
   "drawer_placeholder_text": "буде більше",
-  "drawer_share-text": "Поділіться своїми відгуками"
+  "drawer_share-text": "Поділіться своїми відгуками",
+  "drawer_credits_powered": "Powered by React Native",
+  "drawer_main_more-nav": "More",
+  "nav_back": "Back",
+  "drawer_credits-nav": "Credits"
 }
