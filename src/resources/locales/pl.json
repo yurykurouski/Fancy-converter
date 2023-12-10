@@ -171,15 +171,16 @@
   "onboarding_third-screen_subtitle-swipe": "Długie naciśnięcie i przesunięcie, aby usunąć:",
   "onboarding_third-screen_subtitle-drag": "Przeciągnij, aby zmienić kolejność:",
   "currencies-bootomsheet_empty-search-result": "Nie znaleziono wyników",
-  "settings_auto-theme_switch": "Podążaj za motywem systemu",
+  "settings_auto-theme_switch": "Motyw urządzenia",
   "header-menu_currency_fiat": "Fiat",
   "header-menu_currency_crypto": "Crypto",
   "drawer_placeholder_title": "Więcej",
   "drawer_placeholder_text": "Już wkrótce",
-  "drawer_share-text": "Podziel się swoją opinią",
+  "drawer_share-text": "Podziel się opinią",
   "drawer_credits_powered": "Powered by React Native",
-  "drawer_main_more-nav": "More",
-  "nav_back": "Back",
-  "drawer_credits-nav": "Credits",
-  "drawer_main-nav": "Main"
+  "drawer_main_more-nav": "Więcej",
+  "nav_back": "Wstecz",
+  "drawer_credits-nav": "Podziękowania",
+  "drawer_credits-made-with": "Stworzone z ❤️",
+  "drawer_main-nav": "Główny"
 }

@@ -171,15 +171,16 @@
   "onboarding_third-screen_subtitle-swipe": "Давіце даўжэй і правядзіце каб выдаліць:",
   "onboarding_third-screen_subtitle-drag": "Перацягніце, каб змяніць парадак",
   "currencies-bootomsheet_empty-search-result": "Нічога не знойдзена",
-  "settings_auto-theme_switch": "Сачыць за сістэмнай тэмай",
+  "settings_auto-theme_switch": "Тэма прылады",
   "header-menu_currency_fiat": "Fiat",
   "header-menu_currency_crypto": "Crypto",
   "drawer_placeholder_title": "Хутка",
   "drawer_placeholder_text": "будзе больш",
-  "drawer_share-text": "Падзяліцеся сваім водгукам",
+  "drawer_share-text": "Падзяліцца водгукам",
   "drawer_credits_powered": "Powered by React Native",
-  "drawer_main_more-nav": "More",
-  "nav_back": "Back",
-  "drawer_credits-nav": "Credits",
-  "drawer_main-nav": "Main"
+  "drawer_main_more-nav": "Больш",
+  "nav_back": "Назад",
+  "drawer_credits-nav": "Падзякі",
+  "drawer_credits-made-with": "Створана з ❤️",
+  "drawer_main-nav": "Галоўны"
 }
