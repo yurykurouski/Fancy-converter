@@ -65,13 +65,17 @@ export const DrawerCreditsScreen = () => {
 
         <View style={styles.footerContainer}>
           <View style={styles.credsContainer}>
-            <Text style={styles.creditsSmallText}>Made with ❤️</Text>
+            <Text style={styles.creditsSmallText}>
+              {l['drawer_credits-made-with']}
+            </Text>
             <Text style={styles.creditsSmallText}>
               {`2023 v.${version} Yury Kurouski`}
             </Text>
           </View>
           <View style={styles.poweredContainer}>
-            <Text style={styles.itemTitle}>{l.drawer_credits_powered}</Text>
+            <Text style={[styles.itemTitle, styles.poweredText]}>
+              {l.drawer_credits_powered}
+            </Text>
             <Pressable onPress={animateLogo} style={styles.iconContainer}>
               <Animated.View style={[styles.iconFix, animatedStyle]}>
                 <ReactIcon size={28} />

@@ -44,6 +44,9 @@ export const useStyles = () => {
       borderRadius: 30,
       padding: 4,
     },
+    poweredText: {
+      fontSize: 14,
+    },
     creditsSmallText: {
       fontSize: 12,
       fontWeight: '600',
