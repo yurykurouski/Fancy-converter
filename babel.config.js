@@ -22,6 +22,8 @@ module.exports = {
           context: './src/context',
           store: './src/store',
           HOC: './src/HOC',
+          screens: './src/screens',
+          navigation: './src/navigation',
         },
       },
     ],

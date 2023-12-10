@@ -1,0 +1,1 @@
+export { DrawerCreditsScreen } from './DrawerCreditsScreen';

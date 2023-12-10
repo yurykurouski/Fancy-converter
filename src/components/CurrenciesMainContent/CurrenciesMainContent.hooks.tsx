@@ -6,10 +6,10 @@ import {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { DRAWER_CONTENT_WIDTH } from 'components/DrawerContent/Drawer.constants';
 import { HOUR_IN_MS } from 'constants/constants';
 import { useLoadCourses } from 'hooks';
 import { useSetEditMode } from 'hooks/store/UIStatus';
+import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
 import { selectEditMode } from 'store/editMode/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 
@@ -97,35 +97,3 @@ export const useUpdateCourses = () => {
     }
   }, [lastUpdated, loadCourses]);
 };
-
-// export const useOpedDrawerGesture = (animatedPosition: SharedValue<number>) => {
-//   const setIsDrawerOpened = useSetDrawerStatus();
-
-//   return useMemo(
-//     () =>
-//       Gesture.Pan()
-//         .onUpdate(e => {
-//           if (e.translationX < 0 || e.translationX >= DRAWER_CONTENT_WIDTH)
-//             return;
-
-//           animatedPosition.value = -DRAWER_CONTENT_WIDTH + e.translationX;
-//         })
-//         .onEnd(e => {
-//           const { translationX, velocityX } = e;
-
-//           if (translationX > 100 || velocityX > 800) {
-//             animatedPosition.value = withTiming(0, {
-//               duration: DEFAULT_ANIMATION_DURATION,
-//             });
-
-//             runOnJS(setIsDrawerOpened)(true);
-//           } else {
-//             animatedPosition.value = withTiming(-DRAWER_CONTENT_WIDTH, {
-//               duration: DEFAULT_ANIMATION_DURATION,
-//               reduceMotion: ReduceMotion.System,
-//             });
-//           }
-//         }),
-//     [animatedPosition, setIsDrawerOpened],
-//   );
-// };

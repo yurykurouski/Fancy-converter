@@ -1,14 +1,14 @@
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
-import { DRAWER_CONTENT_WIDTH } from './Drawer.constants';
+import { DRAWER_CONTENT_WIDTH } from './DrawerMainScreen.constants';
 
 export const useStyles = () =>
   useTheme((theme, { top }) => ({
     contentContainer: {
       paddingTop: top,
       flex: 1,
-      // eslint-disable-next-line sonarjs/no-duplicate-string
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       justifyContent: 'space-between',
       paddingHorizontal: 10,
       width: DRAWER_CONTENT_WIDTH,
@@ -21,30 +21,6 @@ export const useStyles = () =>
       shadowRadius: 3.84,
 
       elevation: 5,
-    },
-    controls: {
-      gap: 10,
-    },
-    controlContainer: {
-      minHeight: 40,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      gap: 20,
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
-      borderRadius: 30,
-      padding: 4,
-      overflow: 'hidden',
-    },
-    switchLabelContainer: {
-      width: 200,
-    },
-    switchLabel: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      ...(isAndroid && { fontFamily: 'monospace' }),
-      textTransform: 'uppercase',
-      color: theme.FONT_PRIMARY_COLOR,
     },
     mailIcon: {
       backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,

@@ -14,10 +14,18 @@ type TProps = PressableProps & {
   children: JSX.Element | JSX.Element[];
   containerStyle?: StyleProp<ViewStyle>;
   hitSlop?: number | Insets;
+  withRipple?: boolean;
 };
 
 export const ButtonWithIPadOSInteraction = React.memo(
-  ({ children, containerStyle, onPress, hitSlop = 0, ...rest }: TProps) => {
+  ({
+    children,
+    containerStyle,
+    onPress,
+    hitSlop = 0,
+    withRipple = true,
+    ...rest
+  }: TProps) => {
     const rippleConfig = useAndroidRippleConfig();
 
     const hitSlops =
@@ -35,7 +43,7 @@ export const ButtonWithIPadOSInteraction = React.memo(
         hitSlop={hitSlops}
         style={isAndroid ? containerStyle : undefined}
         onPress={onPress}
-        android_ripple={rippleConfig}
+        android_ripple={withRipple ? rippleConfig : undefined}
         {...rest}>
         {isIos ? (
           <PointerInteractionView
