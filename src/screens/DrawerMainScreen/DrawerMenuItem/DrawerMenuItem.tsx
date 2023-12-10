@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 
 import { useStyles } from './DrawerMenuItem.styles';
@@ -14,15 +14,13 @@ export const DrawerMenuItem = ({ onPress, labelText, children }: TProps) => {
   const styles = useStyles();
 
   return (
-    <View style={styles.container}>
-      <ButtonWithIPadOSInteraction
-        onPress={onPress}
-        containerStyle={styles.labelContainer}>
-        <Text style={styles.labelText} adjustsFontSizeToFit numberOfLines={2}>
-          {labelText}
-        </Text>
-      </ButtonWithIPadOSInteraction>
+    <ButtonWithIPadOSInteraction
+      onPress={onPress}
+      containerStyle={styles.container}>
+      <Text style={styles.labelText} adjustsFontSizeToFit numberOfLines={2}>
+        {labelText}
+      </Text>
       {children}
-    </View>
+    </ButtonWithIPadOSInteraction>
   );
 };

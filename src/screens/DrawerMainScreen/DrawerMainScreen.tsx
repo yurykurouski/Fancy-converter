@@ -51,15 +51,13 @@ export const DrawerMainScreen = React.memo(() => {
   return (
     <View style={styles.contentContainer}>
       <ScrollView>
-        <View style={styles.controls}>
-          <DrawerMenuItem
-            onPress={testNavigation}
-            labelText={l['drawer_main_more-nav']}>
-            <View style={styles.mailIcon}>
-              <RightArrowIcon size={26} />
-            </View>
-          </DrawerMenuItem>
-        </View>
+        <DrawerMenuItem
+          onPress={testNavigation}
+          labelText={l['drawer_main_more-nav']}>
+          <View style={styles.mailIcon}>
+            <RightArrowIcon size={26} />
+          </View>
+        </DrawerMenuItem>
 
         <View style={styles.morePlaceholder}>
           <Text style={[styles.moreText, styles.moreFirstRow]}>

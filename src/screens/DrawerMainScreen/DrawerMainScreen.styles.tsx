@@ -22,9 +22,6 @@ export const useStyles = () =>
 
       elevation: 5,
     },
-    controls: {
-      gap: 10,
-    },
     mailIcon: {
       backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
       borderRadius: 20,
