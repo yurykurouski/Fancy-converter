@@ -1,5 +1,4 @@
 import { useTheme } from 'hooks';
-import { isAndroid } from 'utils';
 
 export const useStyles = () =>
   useTheme(theme => ({
@@ -19,12 +18,5 @@ export const useStyles = () =>
           rotate: '180deg',
         },
       ],
-    },
-    backTitle: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      ...(isAndroid && { fontFamily: 'monospace' }),
-      textTransform: 'uppercase',
-      color: theme.FONT_PRIMARY_COLOR,
     },
   }));
