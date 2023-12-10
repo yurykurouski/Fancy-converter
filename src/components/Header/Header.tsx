@@ -14,10 +14,8 @@ import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
-import { Counter } from './components/Counter';
 import { CurrencyTypeMenu } from './components/CurrencyTypeMenu';
 import { Menu } from './components/Menu';
-import { RemoveSweep } from './components/RemoveSweep';
 
 import { useStyles } from './Header.styles';
 
@@ -36,16 +34,11 @@ export const Header = React.memo<Props>(
     const { colorScheme } = useSelector(selectColorSchemeState);
     const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
 
-    const handleMenuPress = () => {
-      if (headerSharedValue.value) return;
-      onOpenDrawer();
-    };
-
     useDerivedValue(() =>
       scrollTo(
         animatedScrollRef,
         0,
-        interpolate(headerSharedValue.value, [-1, 1], [0, 2]) * 32,
+        interpolate(headerSharedValue.value, [0, 1], [0, 2]) * 32,
         true,
       ),
     );
@@ -63,17 +56,13 @@ export const Header = React.memo<Props>(
         pointerEvents="box-none">
         <View style={styles.container}>
           <ScrollView
-            contentOffset={{ x: 0, y: 32 }}
+            contentOffset={{ x: 0, y: 0 }}
             ref={animatedScrollRef}
             scrollEnabled={false}
             style={styles.scrollContainer}
             showsVerticalScrollIndicator={false}>
             <View style={styles.containerFrame}>
-              <Counter />
-              <RemoveSweep />
-            </View>
-            <View style={styles.containerFrame}>
-              <Menu onOpenDrawer={handleMenuPress} />
+              <Menu onOpenDrawer={onOpenDrawer} />
               <Text style={styles.header}>Fancy converter</Text>
             </View>
             <View style={[styles.containerFrame]}>
