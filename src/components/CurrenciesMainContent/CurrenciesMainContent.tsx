@@ -4,7 +4,7 @@ import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import { useSharedValue } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { CurrenciesBottomSheet, Header } from 'components';
+import { ControlsMenu, CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
 import { DrawerStack } from 'navigation';
 import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
@@ -17,8 +17,12 @@ import {
   useUpdateCourses,
 } from './CurrenciesMainContent.hooks';
 
+import { useStyles } from './CurrenciesMainContent.styles';
+
 export const CurrenciesMainContent = React.memo(() => {
   const [isHeaderBlurred, setIsHeaderBlurred] = useState<boolean>(false);
+
+  const styles = useStyles();
 
   const { colorScheme } = useSelector(selectColorSchemeState);
 
@@ -39,9 +43,7 @@ export const CurrenciesMainContent = React.memo(() => {
       useNativeAnimations={false}
       ref={drawerRef}
       overlayColor={`${THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY}99`}
-      contentContainerStyle={{
-        backgroundColor: THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY,
-      }}
+      contentContainerStyle={styles.drawerContainerStyle}
       drawerType={'back'}
       drawerWidth={DRAWER_CONTENT_WIDTH}
       drawerPosition={'left'}
@@ -55,6 +57,7 @@ export const CurrenciesMainContent = React.memo(() => {
         headerSharedValue={headerSharedValue}
       />
       <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
+      <ControlsMenu />
       <CurrenciesBottomSheet headerSharedValue={headerSharedValue} />
     </DrawerLayout>
   );
