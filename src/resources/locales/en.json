@@ -162,7 +162,7 @@
   "ADD_FAVORITE": "was added to favorites",
   "REMOVE_FAVORITE": "was removed from favorites",
   "currency_input.value.error_message": "Wrong value!",
-  "currency_search.input.placeholder": "Search here",
+  "currency_search.input.placeholder": "Search",
   "currencies_main.currency_deleted": "was deleted",
   "onboarding_first-screen": "HEY!\nLet's take a brief overview",
   "onboarding_second-screen_title": "You can select your favorite currencies",

@@ -162,7 +162,7 @@
   "ADD_FAVORITE": "було додано до обраних",
   "REMOVE_FAVORITE": "було видалено з обраних",
   "currency_input.value.error_message": "Помілка!",
-  "currency_search.input.placeholder": "Шукайте тут",
+  "currency_search.input.placeholder": "Пошук",
   "currencies_main.currency_deleted": "було видалено",
   "onboarding_first-screen": "Привіт!\nОгланемо коротко, що в нас є",
   "onboarding_second-screen_title": "Ви можете виділити свої обрані валюти",

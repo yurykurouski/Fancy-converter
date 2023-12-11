@@ -162,7 +162,7 @@
   "ADD_FAVORITE": "zostało dodane do ulubionych",
   "REMOVE_FAVORITE": "zostało usunięte z ulubionych",
   "currency_input.value.error_message": "Nieprawidłowa wartość!",
-  "currency_search.input.placeholder": "Szukaj tutaj",
+  "currency_search.input.placeholder": "Szukaj",
   "currencies_main.currency_deleted": "zostało usunięte",
   "onboarding_first-screen": "Cześć!\nPrzeprowadźmy krótkie omówienie",
   "onboarding_second-screen_title": "Możesz wybrać swoje ulubione waluty",
