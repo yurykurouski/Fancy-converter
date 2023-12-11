@@ -29,3 +29,5 @@ export const HOUR_IN_MS = 3600000;
 export const BOTTOMSHEET_EL_HEIGHT = 66;
 
 export const INPUT_ELEMENT_HEIGHT = 74;
+
+export const ICON_BUTTON_SIZE = 24;

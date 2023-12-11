@@ -1,5 +1,6 @@
 export { AppStatusBar } from './AppStatusBar';
 export { DrawerScreen } from './common/DrawerScreen';
+export { ScreenHeader } from './common/ScreenHeader';
 export { ScreenHeaderLeft } from './common/ScreenHeaderLeft';
 export { ScreenHeaderTitle } from './common/ScreenHeaderTitle';
 export { Separator } from './common/Separator';

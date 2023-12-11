@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { RouteProp } from '@react-navigation/native';
+import { Text } from 'react-native';
 import {
   DrawerStackParamList,
   DrawerStackScreens,
@@ -9,15 +8,11 @@ import {
 import { useStyles } from './ScreenHeaderTitle.styles';
 
 export const ScreenHeaderTitle = ({
-  route,
+  children,
 }: {
-  route: RouteProp<DrawerStackParamList, keyof DrawerStackParamList>;
+  children: keyof DrawerStackParamList;
 }) => {
   const styles = useStyles();
 
-  return (
-    <View>
-      <Text style={styles.text}>{DrawerStackScreens[route.name]}</Text>
-    </View>
-  );
+  return <Text style={styles.text}>{DrawerStackScreens[children]}</Text>;
 };

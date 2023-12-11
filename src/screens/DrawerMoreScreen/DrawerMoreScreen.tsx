@@ -47,12 +47,12 @@ export const DrawerMoreScreen = () => {
           onPress={handleCreditsNavigation}
           labelText={l['drawer_credits-nav']}>
           <View style={styles.icon}>
-            <RightArrowIcon size={26} />
+            <RightArrowIcon size={24} />
           </View>
         </DrawerMenuItem>
         <DrawerMenuItem onPress={writeEmail} labelText={l['drawer_share-text']}>
           <View style={styles.icon}>
-            <MailIcon size={26} />
+            <MailIcon size={24} />
           </View>
         </DrawerMenuItem>
       </View>
