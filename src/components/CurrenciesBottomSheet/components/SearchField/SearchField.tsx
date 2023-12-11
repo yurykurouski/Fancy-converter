@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Keyboard, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
@@ -40,13 +40,14 @@ export const SearchField = () => {
     dispatch(SelectedCurrenciesActions.searchCurrenciesValue(value));
   };
 
+  const setFocus = useCallback(() => setIsFocused(true), []);
+  const unsetFocus = useCallback(() => setIsFocused(false), []);
+
   useEffect(() => {
-    const listener = Keyboard.addListener('keyboardDidHide', () => {
-      setIsFocused(false);
-    });
+    const listener = Keyboard.addListener('keyboardDidHide', unsetFocus);
 
     return () => listener.remove();
-  }, [isFocused]);
+  }, [isFocused, unsetFocus]);
 
   useEffect(() => {
     handleTextChange(searchValue);
@@ -63,9 +64,9 @@ export const SearchField = () => {
           style={styles.input}
           maxLength={25}
           caretHidden={!isFocused}
-          onBlur={() => setIsFocused(false)}
-          onFocus={() => setIsFocused(true)}
-          onPressOut={() => setIsFocused(true)}
+          onBlur={unsetFocus}
+          onFocus={setFocus}
+          onPressOut={setFocus}
           placeholder={l['currency_search.input.placeholder']}
           placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
           keyboardAppearance={colorScheme!}
