@@ -59,10 +59,12 @@ export const useLongPressSwipeGesture = ({
       const pressedIndex = Math.floor(event?.y / INPUT_ELEMENT_HEIGHT);
       const pressedInVisibles = visibleItemsShared.value?.[pressedIndex - 1];
 
-      runOnJS(handleLongPress)(
-        sortedWithFavorites[pressedInVisibles] as TAvailableCurrenciesNames,
-      );
-      lastSelectedShared.value = pressedInVisibles;
+      if (pressedInVisibles) {
+        runOnJS(handleLongPress)(
+          sortedWithFavorites[pressedInVisibles] as TAvailableCurrenciesNames,
+        );
+        lastSelectedShared.value = pressedInVisibles;
+      }
     })
     .onTouchesMove(event => {
       if (isLongPressed.value && selectionModeShared.value !== -1) {
