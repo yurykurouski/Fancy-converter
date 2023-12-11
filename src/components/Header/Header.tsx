@@ -2,7 +2,6 @@ import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 import {
-  interpolate,
   scrollTo,
   SharedValue,
   useAnimatedRef,
@@ -35,12 +34,7 @@ export const Header = React.memo<Props>(
     const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
 
     useDerivedValue(() =>
-      scrollTo(
-        animatedScrollRef,
-        0,
-        interpolate(headerSharedValue.value, [0, 1], [0, 2]) * 32,
-        true,
-      ),
+      scrollTo(animatedScrollRef, 0, headerSharedValue.value * 32, true),
     );
 
     return (
