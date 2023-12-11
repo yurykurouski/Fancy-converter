@@ -16,6 +16,7 @@ export const DrawerMenuItem = ({ onPress, labelText, children }: TProps) => {
   return (
     <ButtonWithIPadOSInteraction
       onPress={onPress}
+      onLongPress={() => null}
       containerStyle={styles.container}>
       <Text style={styles.labelText} adjustsFontSizeToFit numberOfLines={2}>
         {labelText}
