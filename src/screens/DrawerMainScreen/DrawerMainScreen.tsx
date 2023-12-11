@@ -3,7 +3,11 @@ import { ScrollView, Share, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CoffeeCupIcon, GithubIcon, RightArrowIcon } from 'assets/icons';
 import { ShareIcon } from 'assets/icons/ShareIcon';
-import { GITHUB_REPO_URL, PAYPAL_DONATION_URL } from 'constants/constants';
+import {
+  GITHUB_REPO_URL,
+  ICON_BUTTON_SIZE,
+  PAYPAL_DONATION_URL,
+} from 'constants/constants';
 import { useSwitchColorScheme } from 'hooks/store/UIStatus';
 import { DRAWER_STACK_ROUTES } from 'navigation/DrawerStack/DrawerStack.routes';
 import { l } from 'resources/localization';
@@ -55,7 +59,7 @@ export const DrawerMainScreen = React.memo(() => {
           onPress={testNavigation}
           labelText={l['drawer_main_more-nav']}>
           <View style={styles.mailIcon}>
-            <RightArrowIcon size={26} />
+            <RightArrowIcon size={ICON_BUTTON_SIZE} />
           </View>
         </DrawerMenuItem>
 
