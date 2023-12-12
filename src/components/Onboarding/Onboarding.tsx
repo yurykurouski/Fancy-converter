@@ -36,7 +36,11 @@ export const Onboarding = () => {
         overScrollMode="never"
         horizontal>
         {ONBOARDING_SCREENS.map((Component, i) => (
-          <Component windowWidth={windowWidth} key={i} />
+          <Component
+            windowWidth={windowWidth}
+            key={i}
+            currentPage={currentPage}
+          />
         ))}
       </Animated.ScrollView>
       <OnboardingNavigation
