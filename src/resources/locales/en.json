@@ -170,6 +170,8 @@
   "onboarding_third-screen_title": "And manage them on main screen",
   "onboarding_third-screen_subtitle-swipe": "Long press and swipe to delete:",
   "onboarding_third-screen_subtitle-drag": "Drag to reorder:",
+  "onboarding_fourth-screen_title": "Suggested currencies:",
+  "onboarding_fourth-screen_second-title": "Based on your location:",
   "currencies-bootomsheet_empty-search-result": "No result found",
   "settings_auto-theme_switch": "Follow system theme",
   "header-menu_currency_fiat": "Fiat",

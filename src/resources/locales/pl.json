@@ -170,6 +170,8 @@
   "onboarding_third-screen_title": "I zarządzać nimi na ekranie głównym",
   "onboarding_third-screen_subtitle-swipe": "Długie naciśnięcie i przesunięcie, aby usunąć:",
   "onboarding_third-screen_subtitle-drag": "Przeciągnij, aby zmienić kolejność:",
+  "onboarding_fourth-screen_title": "Sugerowane waluty:",
+  "onboarding_fourth-screen_second-title": "Na podstawie Twojej lokalizacji:",
   "currencies-bootomsheet_empty-search-result": "Nie znaleziono wyników",
   "settings_auto-theme_switch": "Motyw urządzenia",
   "header-menu_currency_fiat": "Fiat",
