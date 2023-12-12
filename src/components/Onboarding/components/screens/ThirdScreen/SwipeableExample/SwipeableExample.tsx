@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, View } from 'react-native';
 import {
   runOnJS,
   SharedValue,
@@ -8,16 +7,12 @@ import {
 
 import { Selector } from '../Selector';
 
-import { useStyles } from './SwipeableExample.styles';
-
 type TProps = {
   rippleAnimValue: SharedValue<number>;
   value: number;
 };
 
 export const SwipeableExample = ({ value, rippleAnimValue }: TProps) => {
-  const styles = useStyles();
-
   const [isSelected, setIsSelected] = useState(value === 1);
 
   useEffect(() => {}, []);
@@ -36,11 +31,5 @@ export const SwipeableExample = ({ value, rippleAnimValue }: TProps) => {
     },
   );
 
-  return (
-    <View style={styles.underlayBackground}>
-      <Animated.View style={[styles.selector]}>
-        <Selector isSelected={isSelected} />
-      </Animated.View>
-    </View>
-  );
+  return <Selector isSelected={isSelected} />;
 };

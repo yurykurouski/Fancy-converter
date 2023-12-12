@@ -8,7 +8,6 @@ export const useStyles = () =>
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       padding: 10,
       justifyContent: 'space-between',
-      alignContent: 'center',
     },
     codeValueContainer: {
       flexDirection: 'row',
