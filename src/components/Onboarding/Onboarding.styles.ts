@@ -16,7 +16,7 @@ export const useCommonOnboardingStyles = () =>
       marginTop: 60,
     },
     subTitle: {
-      marginTop: 20,
+      marginTop: 'auto',
     },
     mainText: {
       alignSelf: 'center',

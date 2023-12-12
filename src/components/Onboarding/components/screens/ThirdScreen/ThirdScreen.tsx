@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import Animated, {
   clamp,
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
+import { ControlsMenu } from 'components';
 import { l } from 'resources/localization';
 
 import { SwipeableExample } from './SwipeableExample';
@@ -21,13 +23,15 @@ export const ThirdScreen = ({ windowWidth }: { windowWidth: number }) => {
   const styles = useScreenStyles(windowWidth);
   const textStyles = useCommonOnboardingStyles();
 
-  const rippleAnimValue = useSharedValue(0);
+  const rippleSwipeAnimValue = useSharedValue(0);
+  const ripplePressAnimValue = useSharedValue(0);
 
   const screenTitle = l['onboarding_third-screen_title'];
   const screenSubTitleSwipe = l['onboarding_third-screen_subtitle-swipe'];
+  const screenSubTitlePress = l['onboarding_third-screen_subtitle-press'];
 
-  const animatedStyle = useAnimatedStyle(() => {
-    const scaleValue = clamp(rippleAnimValue.value, 0, 1);
+  const animatedSwipeStyle = useAnimatedStyle(() => {
+    const scaleValue = clamp(rippleSwipeAnimValue.value, 0, 1);
 
     return {
       transform: [
@@ -35,41 +39,82 @@ export const ThirdScreen = ({ windowWidth }: { windowWidth: number }) => {
           scale: scaleValue,
         },
         {
-          translateY: -rippleAnimValue.value,
+          translateY: -rippleSwipeAnimValue.value,
+        },
+      ],
+    };
+  });
+
+  const animatedPressStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          scale: ripplePressAnimValue.value,
+        },
+      ],
+    };
+  });
+
+  const animatedPressRightStyle = useAnimatedStyle(() => {
+    const scaleValue = interpolate(ripplePressAnimValue.value, [0, 1], [1, 0]);
+    return {
+      transform: [
+        {
+          scale: scaleValue,
         },
       ],
     };
   });
 
   useEffect(() => {
-    rippleAnimValue.value = withRepeat(
+    rippleSwipeAnimValue.value = withRepeat(
       withDelay(2000, withTiming(255, { duration: 5000 })),
       -1,
     );
-  }, [rippleAnimValue]);
+    ripplePressAnimValue.value = withRepeat(
+      withTiming(1, { duration: 1000 }),
+      -1,
+      true,
+    );
+  }, [ripplePressAnimValue, rippleSwipeAnimValue]);
 
   return (
     <View style={styles.container}>
       <Text style={[textStyles.mainText, textStyles.title]}>{screenTitle}</Text>
       <View style={styles.contentContainer}>
-        <Text
-          style={[
-            textStyles.mainText,
-            textStyles.title,
-            styles.subTitle,
-            textStyles.subTitle,
-          ]}>
+        <Text style={[textStyles.mainText, textStyles.title, styles.subTitle]}>
           {screenSubTitleSwipe}
         </Text>
         {EXAMPLES.map(value => (
           <SwipeableExample
-            rippleAnimValue={rippleAnimValue}
+            rippleAnimValue={rippleSwipeAnimValue}
             value={value}
             key={value}
           />
         ))}
-        <Animated.View style={[styles.rippleBaseStyle, animatedStyle]} />
+        <Animated.View
+          style={[
+            styles.rippleBaseStyle,
+            styles.swipeRipple,
+            animatedSwipeStyle,
+          ]}
+        />
       </View>
+
+      <Text style={[textStyles.mainText, styles.subTitlePress]}>
+        {screenSubTitlePress}
+      </Text>
+      <ControlsMenu />
+      <Animated.View
+        style={[styles.rippleBaseStyle, styles.pressRipple, animatedPressStyle]}
+      />
+      <Animated.View
+        style={[
+          styles.rippleBaseStyle,
+          styles.pressRippleRight,
+          animatedPressRightStyle,
+        ]}
+      />
     </View>
   );
 };

@@ -7,15 +7,27 @@ export const useScreenStyles = (windowWidth: number) =>
       justifyContent: 'center',
       gap: 10,
     },
-    subTitle: { marginBottom: 20 },
+    subTitle: { marginTop: 100 },
     subTitleDrag: { marginBottom: 20 },
+    subTitlePress: { marginTop: 'auto', marginBottom: 60 },
     rippleBaseStyle: {
       width: 50,
       height: 50,
       borderRadius: 25,
       backgroundColor: 'rgba(0,0,0,0.2)',
       position: 'absolute',
+    },
+    swipeRipple: {
       left: 10,
       bottom: 8,
+    },
+    pressRipple: {
+      bottom: 2,
+      left: 13,
+      transform: [{ scale: 0 }],
+    },
+    pressRippleRight: {
+      bottom: 2,
+      right: 13,
     },
   });
