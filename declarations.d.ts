@@ -1,5 +1,6 @@
 declare module '@env' {
   export const DEFAULT_API_URL: string;
+  export const OSM_API_URL: string;
 }
 
 declare module '*.svg' {
