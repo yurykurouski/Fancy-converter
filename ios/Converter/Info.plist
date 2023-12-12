@@ -34,7 +34,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Your location will be used to auto-detect currency used in your country.</string>
 	<key>O</key>
 	<string></string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -60,5 +60,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your location will be used to auto-detect currency used in your country.</string>
 </dict>
 </plist>

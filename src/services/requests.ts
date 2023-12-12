@@ -1,4 +1,3 @@
-import { DEFAULT_API_URL } from '@env';
 import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/constants';
 
 import { RequestsInterface, Response } from './requests.types';
@@ -7,8 +6,8 @@ class Requests implements RequestsInterface {
   response: Response;
 
   constructor() {
-    this.response = async (method, data) =>
-      await fetch(DEFAULT_API_URL, {
+    this.response = async (method, url, data) =>
+      await fetch(url, {
         method,
         body: JSON.stringify(data),
         headers: {
@@ -17,9 +16,9 @@ class Requests implements RequestsInterface {
       });
   }
 
-  async get() {
+  async get(url: string) {
     try {
-      return this.response(REQUEST_GET).then(response => response.json());
+      return this.response(REQUEST_GET, url).then(response => response.json());
     } catch (err) {
       throw new Error(err as string);
     }
