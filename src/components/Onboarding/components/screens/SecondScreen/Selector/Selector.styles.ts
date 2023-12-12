@@ -14,9 +14,10 @@ export const useStyles = () =>
       paddingVertical: 15,
       paddingHorizontal: 10,
       width: '100%',
-      heigth: 40,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       flexDirection: 'row',
+      alignItems: 'center',
+      borderRadius: 20,
     },
     currencyFlagPlaceholder: {
       width: 36,
@@ -28,6 +29,7 @@ export const useStyles = () =>
       flexDirection: 'column',
       justifyContent: 'space-between',
       marginLeft: 10,
+      gap: 10,
     },
     currencyCodePlaceholder: {
       height: 16,

@@ -9,7 +9,7 @@ export const useStyles = (windowWidth: number) =>
     },
     backgroundContainer: {
       height: '60%',
-      marginTop: 'auto',
+      marginTop: 20,
       padding: 0,
       borderTopRightRadius: 20,
       borderTopLeftRadius: 20,
