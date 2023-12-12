@@ -15,7 +15,14 @@ export type TSelectedCurrenciesSlice = {
 };
 
 const initialState: TSelectedCurrenciesSlice = {
-  currencies: {},
+  currencies: {
+    [EAvailableFiatNames.EUR]: '',
+    [EAvailableFiatNames.USD]: '',
+    [EAvailableFiatNames.JPY]: '',
+    [EAvailableFiatNames.GBP]: '',
+    [EAvailableFiatNames.CAD]: '',
+    [EAvailableFiatNames.CHF]: '',
+  },
   searchValue: '',
   activeCurrencyType: ECurrencyType.FIAT,
   filteredCurrencies: availableCurrencies,
