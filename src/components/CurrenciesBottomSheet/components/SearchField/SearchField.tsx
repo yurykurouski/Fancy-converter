@@ -9,6 +9,7 @@ import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
+import { triggerSelectionHaptic } from 'utils';
 
 import { useHandleTextChange } from './SearchField.hooks';
 
@@ -40,7 +41,12 @@ export const SearchField = () => {
     dispatch(SelectedCurrenciesActions.searchCurrenciesValue(value));
   };
 
-  const setFocus = useCallback(() => setIsFocused(true), []);
+  const setFocus = useCallback(() => {
+    if (!isFocused) {
+      setIsFocused(true);
+      triggerSelectionHaptic();
+    }
+  }, [isFocused]);
   const unsetFocus = useCallback(() => setIsFocused(false), []);
 
   useEffect(() => {
@@ -70,6 +76,8 @@ export const SearchField = () => {
           placeholder={l['currency_search.input.placeholder']}
           placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
           keyboardAppearance={colorScheme!}
+          inputMode="search"
+          returnKeyLabel={l['currency_search.input.placeholder']}
           contextMenuHidden
           autoCorrect={false}
         />
