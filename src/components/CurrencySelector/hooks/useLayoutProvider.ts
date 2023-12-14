@@ -1,4 +1,4 @@
-import { INPUT_ELEMENT_HEIGHT } from 'constants/constants';
+import { INPUT_ELEMENT_HEIGHT } from 'constants/index';
 import { useWindowDimensionChange } from 'hooks';
 import { LayoutProvider } from 'recyclerlistview';
 import { EDimensions } from 'types';

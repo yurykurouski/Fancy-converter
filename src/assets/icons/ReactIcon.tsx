@@ -2,7 +2,7 @@ import React from 'react';
 import { Circle, Ellipse, G, Svg } from 'react-native-svg';
 import { TSVGIcon } from 'types';
 
-export const ReactIcon: TSVGIcon = ({ size, style }) => {
+export const ReactIcon: TSVGIcon = React.memo(({ size, style }) => {
   return (
     <Svg
       width={size}
@@ -17,4 +17,4 @@ export const ReactIcon: TSVGIcon = ({ size, style }) => {
       </G>
     </Svg>
   );
-};
+});

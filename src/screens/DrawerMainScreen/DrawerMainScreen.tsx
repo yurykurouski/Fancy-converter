@@ -7,7 +7,7 @@ import {
   GITHUB_REPO_URL,
   ICON_BUTTON_SIZE,
   PAYPAL_DONATION_URL,
-} from 'constants/constants';
+} from 'constants/index';
 import { useSwitchColorScheme } from 'hooks/store/UIStatus';
 import { DRAWER_STACK_ROUTES } from 'navigation/DrawerStack/DrawerStack.routes';
 import { l } from 'resources/localization';

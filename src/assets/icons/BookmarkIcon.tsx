@@ -5,7 +5,7 @@ import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { TSVGIcon } from 'types';
 
-export const BookmarkIcon: TSVGIcon = ({ style, size, color }) => {
+export const BookmarkIcon: TSVGIcon = React.memo(({ style, size, color }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   return (
@@ -16,4 +16,4 @@ export const BookmarkIcon: TSVGIcon = ({ style, size, color }) => {
       />
     </Svg>
   );
-};
+});

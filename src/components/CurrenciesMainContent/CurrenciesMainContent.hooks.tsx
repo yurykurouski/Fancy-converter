@@ -1,15 +1,9 @@
 import { useCallback, useEffect } from 'react';
 import { BackHandler } from 'react-native';
-import {
-  interpolate,
-  SharedValue,
-  useAnimatedStyle,
-} from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
-import { HOUR_IN_MS } from 'constants/constants';
+import { HOUR_IN_MS } from 'constants/index';
 import { useLoadCourses } from 'hooks';
 import { useSetEditMode } from 'hooks/store/UIStatus';
-import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
 import { selectEditMode } from 'store/editMode/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 
@@ -32,23 +26,6 @@ export const useOpenDrawerAnimations: TUseOpenDrawerAnimations = drawerRef => {
     openDrawer,
   };
 };
-
-export const useHorizontalParallax = (animatedPosition: SharedValue<number>) =>
-  useAnimatedStyle(() => {
-    const translateX = interpolate(
-      animatedPosition.value,
-      [-DRAWER_CONTENT_WIDTH, 0],
-      [0, 10],
-    );
-
-    return {
-      transform: [
-        {
-          translateX: translateX,
-        },
-      ],
-    };
-  });
 
 export const useHandleBackPress: TUseHandleBackPress = (
   closeDrawer,

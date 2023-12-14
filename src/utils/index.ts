@@ -8,7 +8,6 @@ import {
 export * from './compareDate';
 export * from './getCurrentColorTheme';
 export * from './platform';
-export * from './removeDuplicates';
 export * from './showNoConnectionAlert';
 export * from './storage';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -35,16 +34,6 @@ export const groupByName: TGroupByName<
     {},
   );
 
-// export const makeSectionsData = (
-//   data: ReturnType<TGroupByName<EAvailableFiatNames | EAvailableCryptoNames>>,
-// ) =>
-//   Object.keys(data).map(el => {
-//     return {
-//       title: el,
-//       data: data[el],
-//     };
-//   });
-
 export const makeSectionsData = (
   data: ReturnType<TGroupByName<EAvailableFiatNames | EAvailableCryptoNames>>,
 ) =>
@@ -53,6 +42,11 @@ export const makeSectionsData = (
       return [el, ...data[el]];
     })
     .flat();
+
+export const removeDuplicates = <T>(arr1: T[], arr2: T[]) => {
+  const set2 = new Set(arr2);
+  return arr1.filter(item => !set2.has(item));
+};
 
 const options = {
   enableVibrateFallback: false,

@@ -5,7 +5,7 @@ import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { TSVGIcon } from 'types';
 
-export const ShareIcon: TSVGIcon = ({ size, style, color }) => {
+export const ShareIcon: TSVGIcon = React.memo(({ size, style, color }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   return (
@@ -16,4 +16,4 @@ export const ShareIcon: TSVGIcon = ({ size, style, color }) => {
       />
     </Svg>
   );
-};
+});

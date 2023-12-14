@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { INPUT_VALIDATION_REGEXP } from 'constants/constants';
+import { INPUT_VALIDATION_REGEXP } from 'constants/index';
 import { l } from 'resources/localization';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 

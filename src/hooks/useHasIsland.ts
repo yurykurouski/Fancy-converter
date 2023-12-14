@@ -1,5 +1,5 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { TOP_INSET_WITH_ISLAND } from 'constants/constants';
+import { TOP_INSET_WITH_ISLAND } from 'constants/index';
 import { isIos } from 'utils';
 
 export const useIsHasIsland = () => {

@@ -5,7 +5,7 @@ import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { TSVGIcon } from 'types';
 
-export const DeleteSweepIcon: TSVGIcon = ({ size }) => {
+export const DeleteSweepIcon: TSVGIcon = React.memo(({ size }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   return (
@@ -16,4 +16,4 @@ export const DeleteSweepIcon: TSVGIcon = ({ size }) => {
       />
     </Svg>
   );
-};
+});

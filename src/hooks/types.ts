@@ -2,12 +2,8 @@ import { Dispatch } from 'react';
 import { ColorSchemeName, StyleSheet } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
 import { Theme } from 'assets/colors';
-import { EAvailableFiatNames } from 'types';
 import { StorageKeys } from 'utils';
-import {
-  OnlyCourses,
-  TGetCoursesForSelectedCurrencies,
-} from 'utils/utils.types';
+import { OnlyCourses } from 'utils/utils.types';
 
 import { TSetCoursesLoading } from './store/types';
 
@@ -27,11 +23,6 @@ export type TUseReloadCourses = (
   setIsLoading: TSetCoursesLoading,
   getCoursesFromStorage: GetCoursesFromStorage,
 ) => ReloadCourses;
-
-export type TUseFilteredCourseBySelectedCurrencies = (
-  exchangeCourse: OnlyCourses | undefined,
-  selectedCurrencies: EAvailableFiatNames[] | [],
-) => ReturnType<TGetCoursesForSelectedCurrencies>;
 
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
   mapStyles: (

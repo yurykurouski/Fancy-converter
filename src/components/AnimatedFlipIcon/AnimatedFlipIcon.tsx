@@ -5,7 +5,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
 
 import { styles } from './AnimatedFlipIcon.styles';
 

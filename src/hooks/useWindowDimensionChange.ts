@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
-import { WindowDimensions } from 'constants/constants';
+import { WindowDimensions } from 'constants/index';
 import { EDimensions } from 'types';
 
 export const useWindowDimensionChange = (dimension: EDimensions) => {

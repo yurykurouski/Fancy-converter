@@ -9,7 +9,7 @@ import {
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/constants';
+import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/index';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
