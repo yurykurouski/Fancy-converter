@@ -1,3 +1,8 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#053513",
+    "titleBar.activeBackground": "#074B1A",
+    "titleBar.activeForeground": "#EFFEF3"
+  },
 }
