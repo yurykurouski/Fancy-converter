@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { useIsHasIsland } from 'hooks/useHasIsland';
 import { l } from 'resources/localization';
 import { selectUIStatus } from 'store/ui/selectors';
+import { triggerLongPressHaptic } from 'utils';
 
 import { useStyles } from './WithNotificationHOC.styles';
 
@@ -53,6 +54,7 @@ export const WithNotificationHOC = ({
   useEffect(() => {
     if (notificationData?.timeStamp) {
       showNotification(animatedValue, hasIsland, top);
+      triggerLongPressHaptic();
     }
   }, [animatedValue, hasIsland, notificationData?.timeStamp, top]);
 

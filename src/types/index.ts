@@ -88,5 +88,5 @@ export enum EHapticType {
   NOTIFICATION_ERROR = 'notificationError',
   SELECTION_IOS = 'selection',
   EFFECT_TICK_ANDROID = 'effectTick',
-  LONG_PRESS_ANDROID = 'keyboardPress',
+  LONG_PRESS_ANDROID = 'effectClick',
 }

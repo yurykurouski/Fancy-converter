@@ -18,7 +18,6 @@ import { l } from 'resources/localization';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { triggerLongPressHaptic } from 'utils';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
 import { TProps } from './CurrencySelectorValue.types';
@@ -51,8 +50,6 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     );
 
     const onLongPress = useCallback(() => {
-      triggerLongPressHaptic();
-
       if (isFavorite) {
         removeFavCurrency(currencyCode);
       } else {
