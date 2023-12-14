@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { Animated } from 'react-native';
-import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
 
 export const useChangeDotScale = () => {
   const scaleValue = useMemo(() => new Animated.Value(1), []);

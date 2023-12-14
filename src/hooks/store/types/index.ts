@@ -4,14 +4,12 @@ import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/Exchang
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { SelectedForEditSliceActions } from 'store/selectedForEdit/slices/SelectedForEditSlice';
-import { UISliceActions } from 'store/ui/slices/UISlice';
 import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
   ECurrencyType,
   TAvailableCurrenciesNames,
   TDispatchCallback,
-  TNotificationData,
 } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 
@@ -42,24 +40,13 @@ export type TSetExchangeCourses = TDispatchCallback<
   OnlyCourses,
   typeof ExchangeCourseSliceActions.setExchangeCourses.type
 >;
-export type TSetLastUpdateDate = TDispatchCallback<
-  number,
-  typeof ExchangeCourseSliceActions.setLastUpdateDate.type
->;
+
 export type TSetCoursesRequestError = TDispatchCallback<
   string,
   typeof ExchangeCourseSliceActions.setRequestError.type
 >;
 
 //UIStatus
-export type TSetDrawerStatus = TDispatchCallback<
-  boolean,
-  typeof UISliceActions.setDrawerOpenedState.type
->;
-export type TSetNotificationData = TDispatchCallback<
-  TNotificationData,
-  typeof UISliceActions.setNotificationData.type
->;
 
 //FocusedCurrency
 export type TSetFocusedCurrencyValue = TDispatchCallback<

@@ -6,11 +6,8 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { useSelector } from 'react-redux';
-import CloseIconDark from 'assets/icons/close_black_24dp.svg';
-import CloseIconLight from 'assets/icons/close_white_24dp.svg';
+import { CloseIcon } from 'assets/icons';
 import { OnChangeTextHandler } from 'components/CurrencyInputValue/CurrencyInputValue.types';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 
 import { useStyles } from './CancelButton.styles';
 
@@ -23,7 +20,6 @@ type TProps = {
 
 export const CancelButton = forwardRef<View, TProps>(
   ({ onPress, size = 24, additionalStyle, pointerEvents = 'auto' }, ref) => {
-    const { colorScheme } = useSelector(selectColorSchemeState);
     const styles = useStyles(size);
 
     return (
@@ -32,11 +28,7 @@ export const CancelButton = forwardRef<View, TProps>(
         pointerEvents={pointerEvents}
         onPressOut={() => onPress?.('')}
         style={[styles.buttonWrapper, additionalStyle]}>
-        {colorScheme === 'dark' ? (
-          <CloseIconLight width={size} height={size} />
-        ) : (
-          <CloseIconDark width={size} height={size} />
-        )}
+        <CloseIcon size={size} />
       </Pressable>
     );
   },

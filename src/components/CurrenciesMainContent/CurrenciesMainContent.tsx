@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Keyboard } from 'react-native';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import { useSharedValue } from 'react-native-reanimated';

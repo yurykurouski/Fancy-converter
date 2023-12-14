@@ -4,7 +4,7 @@ import Animated, { FadeInRight, FadeOutRight } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
-import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
 import {
   useSetFocusedCurrencyName,
   useSetFocusedCurrencyValue,

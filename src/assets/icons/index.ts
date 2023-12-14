@@ -1,9 +1,9 @@
 export { BookmarkIcon } from './BookmarkIcon';
 export { CheckIcon } from './CheckIcon';
+export { CloseIcon } from './CloseIcon';
 export { CoffeeCupIcon } from './CoffeeCupIcon';
 export { DeleteSweepIcon } from './DeleteSweepIcon';
 export { GithubIcon } from './GithubIcon';
-export { LeftArrowIcon } from './LeftArrowIcon';
 export { MailIcon } from './MailIcon';
 export { MenuIcon } from './MenuIcon';
 export { ReactIcon } from './ReactIcon';

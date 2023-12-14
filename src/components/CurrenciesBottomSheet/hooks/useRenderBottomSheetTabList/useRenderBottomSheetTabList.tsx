@@ -8,7 +8,7 @@ import {
 } from '@gorhom/bottom-sheet';
 import { FlashList, ListRenderItem } from '@shopify/flash-list';
 import { BottomSheetEmpty } from 'components/CurrenciesBottomSheet/components/BottomSheetEmpty';
-import { BOTTOMSHEET_EL_HEIGHT } from 'constants/constants';
+import { BOTTOMSHEET_EL_HEIGHT } from 'constants/index';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { EAvailableFiatNames, ECurrencyType } from 'types';
 import { groupByName, isIos, makeSectionsData } from 'utils';

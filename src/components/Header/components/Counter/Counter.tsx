@@ -8,7 +8,7 @@ import Animated, {
 import { useSelector } from 'react-redux';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CancelButton } from 'components/common/CancelButton';
-import { DEFAULT_ANIMATION_DURATION } from 'constants/constants';
+import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
 import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';

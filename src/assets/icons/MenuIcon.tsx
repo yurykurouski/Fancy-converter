@@ -5,7 +5,7 @@ import { THEME_COLORS } from 'assets/colors';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { TSVGIcon } from 'types';
 
-export const MenuIcon: TSVGIcon = ({ size, style }) => {
+export const MenuIcon: TSVGIcon = React.memo(({ size, style }) => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   return (
@@ -16,4 +16,4 @@ export const MenuIcon: TSVGIcon = ({ size, style }) => {
       />
     </Svg>
   );
-};
+});

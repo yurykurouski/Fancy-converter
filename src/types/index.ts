@@ -69,7 +69,7 @@ export type TSVGIcon = (props: {
   size: number;
   style?: StyleProp<ViewStyle>;
   color?: ColorsLight | ColorsDark | string;
-}) => React.JSX.Element;
+}) => React.ReactNode;
 
 export type RootStackParamsList = DrawerStackParamList;
 

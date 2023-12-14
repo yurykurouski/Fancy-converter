@@ -1,4 +1,4 @@
-import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/constants';
+import { REQUEST_CT_APPLICATION_JSON, REQUEST_GET } from 'constants/index';
 
 import { RequestsInterface, Response } from './requests.types';
 
