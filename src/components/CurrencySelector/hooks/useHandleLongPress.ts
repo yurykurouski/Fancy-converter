@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { Keyboard, Vibration } from 'react-native';
+import { Keyboard } from 'react-native';
 import { TAvailableCurrenciesNames } from 'types';
+import { triggerLongPressHaptic } from 'utils';
 
 import { TUseHandleLongPressParams } from '../CurrencySelector.types';
 
@@ -15,7 +16,7 @@ export const useHandleLongPress = ({
 }: TUseHandleLongPressParams) =>
   useCallback(
     (currencyCode: TAvailableCurrenciesNames) => {
-      Vibration.vibrate(1);
+      triggerLongPressHaptic();
       Keyboard.dismiss();
 
       if (!selectedCurrencies[currencyCode]) {

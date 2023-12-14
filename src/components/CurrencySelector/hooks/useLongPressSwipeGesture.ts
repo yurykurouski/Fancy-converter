@@ -9,6 +9,7 @@ import {
 } from 'hooks/store/types';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { TAvailableCurrenciesNames } from 'types';
+import { triggerSelectionHaptic } from 'utils';
 
 import { useHandleLongPress } from './useHandleLongPress';
 
@@ -88,6 +89,7 @@ export const useLongPressSwipeGesture = ({
             selectedDuringSwipeShared.value =
               selectedDuringSwipeShared.value + 1;
             runOnJS(addToCurrInEdit)(sortedWithFavorites[pressedInVisibles]);
+            runOnJS(triggerSelectionHaptic)();
           } else if (
             selectedCurrencies[sortedWithFavorites[pressedInVisibles]] &&
             selectionModeShared.value === 0
@@ -97,6 +99,7 @@ export const useLongPressSwipeGesture = ({
             runOnJS(removeFromSelectedCurrenciesInEdit)(
               sortedWithFavorites[pressedInVisibles],
             );
+            runOnJS(triggerSelectionHaptic)();
 
             if (selectedDuringSwipeShared.value < 2) {
               selectedDuringSwipeShared.value = 0;
