@@ -14,6 +14,7 @@
 		61AB77DE1C222BE473764B85 /* libPods-Converter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D52841A80B836B9C5E62F449 /* libPods-Converter.a */; };
 		80A8D8B2C8E6551EA9A295ED /* libPods-Converter-ConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FDF72826657D60E15A39BD /* libPods-Converter-ConverterTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		FB0AF3412B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */; };
 		FB66E8F92AB4E94700E1DFDF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		BF6DEA8E9E26480B6296BD2A /* Pods-Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Converter.release.xcconfig"; path = "Target Support Files/Pods-Converter/Pods-Converter.release.xcconfig"; sourceTree = "<group>"; };
 		D52841A80B836B9C5E62F449 /* libPods-Converter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Converter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FB0AF33D2B2B4DE700A86918 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
+		FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5A81FDAA20A5FA36466AD3 /* Pods-Converter-ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Converter-ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Converter-ConverterTests/Pods-Converter-ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = Converter/BootSplash.storyboard; sourceTree = "<group>"; };
 		FBC3ECDA2ABE36D10048B8AE /* Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Converter.entitlements; path = Converter/Converter.entitlements; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0AF3412B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a in Frameworks */,
 				61AB77DE1C222BE473764B85 /* libPods-Converter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +108,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				D52841A80B836B9C5E62F449 /* libPods-Converter.a */,
 				A1FDF72826657D60E15A39BD /* libPods-Converter-ConverterTests.a */,
@@ -114,6 +119,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				FB0AF33D2B2B4DE700A86918 /* RNReactNativeHapticFeedback.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -151,6 +157,13 @@
 				FB5A81FDAA20A5FA36466AD3 /* Pods-Converter-ConverterTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FB0AF33E2B2B4DE700A86918 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +240,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FB0AF33E2B2B4DE700A86918 /* Products */;
+					ProjectRef = FB0AF33D2B2B4DE700A86918 /* RNReactNativeHapticFeedback.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* Converter */,
