@@ -1,6 +1,5 @@
 import React, { FC, useCallback } from 'react';
 import { Text, View } from 'react-native';
-import { Vibration } from 'react-native';
 import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { BookmarkIcon, CheckIcon } from 'assets/icons';
@@ -51,7 +50,6 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     );
 
     const onLongPress = useCallback(() => {
-      Vibration.vibrate(1);
       if (isFavorite) {
         removeFavCurrency(currencyCode);
       } else {

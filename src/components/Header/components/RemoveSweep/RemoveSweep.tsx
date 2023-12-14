@@ -5,6 +5,7 @@ import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSI
 import { useClearSelectedCurrenciesInEdit } from 'hooks/store/SelectedCurrencies';
 import { useDeleteAllInEdit } from 'hooks/store/SelectedCurrencies/useDeleteAllInEdit';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+import { triggerWarningHaptic } from 'utils';
 
 import { styles } from './RemoveSweep.styles';
 
@@ -18,6 +19,7 @@ export const RemoveSweep = () => {
     clearSelectedCurrenciesInEdit();
 
     deleteAllInEdit(selectedCurrencies);
+    triggerWarningHaptic();
   }, [clearSelectedCurrenciesInEdit, deleteAllInEdit, selectedCurrencies]);
 
   return (

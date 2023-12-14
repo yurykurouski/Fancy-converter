@@ -1,6 +1,7 @@
 import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
+  EHapticType,
   TGroupByName,
 } from 'types';
 
@@ -10,6 +11,9 @@ export * from './platform';
 export * from './removeDuplicates';
 export * from './showNoConnectionAlert';
 export * from './storage';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+import { isIos } from './platform';
 
 export const groupByName: TGroupByName<
   EAvailableFiatNames | EAvailableCryptoNames
@@ -49,3 +53,21 @@ export const makeSectionsData = (
       return [el, ...data[el]];
     })
     .flat();
+
+const options = {
+  enableVibrateFallback: false,
+  ignoreAndroidSystemSettings: true,
+};
+
+export const triggerLongPressHaptic = () =>
+  ReactNativeHapticFeedback.trigger(
+    isIos ? EHapticType.IMPACT_LIGHT : EHapticType.LONG_PRESS_ANDROID,
+    options,
+  );
+export const triggerSelectionHaptic = () =>
+  ReactNativeHapticFeedback.trigger(
+    isIos ? EHapticType.SELECTION_IOS : EHapticType.EFFECT_TICK_ANDROID,
+    options,
+  );
+export const triggerWarningHaptic = () =>
+  ReactNativeHapticFeedback.trigger(EHapticType.NOTIFICATION_WARNING, options);

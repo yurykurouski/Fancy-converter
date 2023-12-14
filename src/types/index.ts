@@ -78,3 +78,15 @@ declare global {
     interface RootParamList extends RootStackParamsList {}
   }
 }
+
+export enum EHapticType {
+  IMPACT_LIGHT = 'impactLight',
+  IMPACT_MEDIUM = 'impactMedium',
+  IMPACT_HEAVY = 'impactHeavy',
+  NOTIFICATION_SUCCESS = 'notificationSuccess',
+  NOTIFICATION_WARNING = 'notificationWarning',
+  NOTIFICATION_ERROR = 'notificationError',
+  SELECTION_IOS = 'selection',
+  EFFECT_TICK_ANDROID = 'effectTick',
+  LONG_PRESS_ANDROID = 'effectClick',
+}
