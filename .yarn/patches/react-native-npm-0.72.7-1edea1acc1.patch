@@ -1,0 +1,132 @@
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..f405f5c5f34e8fa97de0aadb03019df012567aa4
+--- /dev/null
++++ b/.vscode/settings.json
+@@ -0,0 +1,7 @@
++{
++  "workbench.colorCustomizations": {
++    "activityBar.background": "#0F3513",
++    "titleBar.activeBackground": "#144A1B",
++    "titleBar.activeForeground": "#F5FCF6"
++  }
++}
+\ No newline at end of file
+diff --git a/Libraries/Text/TextInput/RCTBaseTextInputView.m b/Libraries/Text/TextInput/RCTBaseTextInputView.m
+index 0bc14b42f7c944754763f8f5db5add7204c8717a..657acdaa115981e69c0887c72b3fbd8c67c6ffb3 100644
+--- a/Libraries/Text/TextInput/RCTBaseTextInputView.m
++++ b/Libraries/Text/TextInput/RCTBaseTextInputView.m
+@@ -10,6 +10,7 @@
+ #import <React/RCTBridge.h>
+ #import <React/RCTConvert.h>
+ #import <React/RCTEventDispatcherProtocol.h>
++#import <React/RCTScrollView.h>
+ #import <React/RCTUIManager.h>
+ #import <React/RCTUtils.h>
+ #import <React/UIView+React.h>
+@@ -19,6 +20,9 @@
+ #import <React/RCTTextAttributes.h>
+ #import <React/RCTTextSelection.h>
+ 
++/** Native iOS text field bottom keyboard offset amount */
++static const CGFloat kSingleLineKeyboardBottomOffset = 15.0;
++
+ @implementation RCTBaseTextInputView {
+   __weak RCTBridge *_bridge;
+   __weak id<RCTEventDispatcherProtocol> _eventDispatcher;
+@@ -27,6 +31,30 @@ @implementation RCTBaseTextInputView {
+   BOOL _didMoveToWindow;
+ }
+ 
++- (void)reactUpdateResponderOffsetForScrollView:(RCTScrollView *)scrollView
++{
++  if (![self isDescendantOfView:scrollView]) {
++    // View is outside scroll view
++    return;
++  }
++
++  UITextRange *selectedTextRange = self.backedTextInputView.selectedTextRange;
++  UITextSelectionRect *selection = [self.backedTextInputView selectionRectsForRange:selectedTextRange].firstObject;
++  CGRect focusRect;
++  if (selection == nil) {
++    // No active selection or caret - fallback to entire input frame
++    focusRect = self.bounds;
++  } else {
++    // Focus on text selection frame
++    focusRect = selection.rect;
++    BOOL isMultiline = [self.backedTextInputView isKindOfClass:[UITextView class]];
++    if (!isMultiline) {
++      focusRect.size.height += kSingleLineKeyboardBottomOffset;
++    }
++  }
++  scrollView.firstResponderFocus = [self convertRect:focusRect toView:nil];
++}
++
+ - (instancetype)initWithBridge:(RCTBridge *)bridge
+ {
+   RCTAssertParam(bridge);
+diff --git a/React/Views/ScrollView/RCTScrollView.h b/React/Views/ScrollView/RCTScrollView.h
+index 14554f688ac6d694c6073a472bc2c2f0e5eb24be..8769b7629eac8a575f76cba3d44188126f9accdc 100644
+--- a/React/Views/ScrollView/RCTScrollView.h
++++ b/React/Views/ScrollView/RCTScrollView.h
+@@ -49,6 +49,9 @@
+ @property (nonatomic, copy) NSString *snapToAlignment;
+ @property (nonatomic, assign) BOOL inverted;
+ 
++/** Focus area of newly-activated text input relative to the window to compare against UIKeyboardFrameBegin/End */
++@property (nonatomic, assign) CGRect firstResponderFocus;
++
+ // NOTE: currently these event props are only declared so we can export the
+ // event names to JS - we don't call the blocks directly because scroll events
+ // need to be coalesced before sending, for performance reasons.
+@@ -61,6 +64,12 @@
+ 
+ @end
+ 
++@interface UIView (RCTScrollView)
++
++- (void)reactUpdateResponderOffsetForScrollView:(RCTScrollView *)scrollView;
++
++@end
++
+ @interface RCTScrollView (Internal)
+ 
+ - (void)updateContentSizeIfNeeded;
+diff --git a/React/Views/ScrollView/RCTScrollView.m b/React/Views/ScrollView/RCTScrollView.m
+index 2929f2dfdf3831c39f1010825ab7f076dbe538eb..7b0e0d6c941754fb19563f3f5ca00a95c403c56a 100644
+--- a/React/Views/ScrollView/RCTScrollView.m
++++ b/React/Views/ScrollView/RCTScrollView.m
+@@ -307,6 +307,7 @@ - (void)_keyboardWillChangeFrame:(NSNotification *)notification
+   }
+ 
+   double duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
++
+   UIViewAnimationCurve curve =
+       (UIViewAnimationCurve)[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+   CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+@@ -324,7 +325,24 @@ - (void)_keyboardWillChangeFrame:(NSNotification *)notification
+   }
+ 
+   CGPoint newContentOffset = _scrollView.contentOffset;
+-  CGFloat contentDiff = endFrame.origin.y - beginFrame.origin.y;
++  self.firstResponderFocus = CGRectNull;
++
++  CGFloat contentDiff = 0;
++  if ([[UIApplication sharedApplication] sendAction:@selector(reactUpdateResponderOffsetForScrollView:)
++                                                 to:nil
++                                               from:self
++                                           forEvent:nil]) {
++    // Inner text field focused
++    CGFloat focusEnd = CGRectGetMaxY(self.firstResponderFocus);
++    BOOL didFocusExternalTextField = focusEnd == INFINITY;
++    if (!didFocusExternalTextField && focusEnd > endFrame.origin.y) {
++      // Text field active region is below visible area with keyboard - update diff to bring into view
++      contentDiff = endFrame.origin.y - focusEnd;
++    }
++  } else if (endFrame.origin.y <= beginFrame.origin.y) {
++    // Keyboard opened for other reason
++    contentDiff = endFrame.origin.y - beginFrame.origin.y;
++  }
+   if (self.inverted) {
+     newContentOffset.y += contentDiff;
+   } else {
