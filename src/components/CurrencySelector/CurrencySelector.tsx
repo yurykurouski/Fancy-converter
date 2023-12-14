@@ -41,8 +41,6 @@ import {
 
 import { useStyles } from './CurrencySelector.styles';
 
-import { KeyboardAvoidingHOC } from 'HOC/KeyboardAvoidingHOC';
-
 type TProps = {
   setIsHeaderBlurred: Dispatch<SetStateAction<boolean>>;
 };
@@ -108,33 +106,33 @@ export const CurrencySelector = React.memo<TProps>(({ setIsHeaderBlurred }) => {
   });
 
   return sortedWithFavorites.length ? (
-    <KeyboardAvoidingHOC>
-      <GestureDetector gesture={gesture}>
-        <RecyclerListView
-          ref={listViewRef}
-          style={styles.recyclerContainer}
-          layoutProvider={layoutProvider}
-          dataProvider={dataProvider.cloneWithRows(sortedWithFavorites)}
-          rowRenderer={renderItem}
-          onScroll={onOffsetChange}
-          //@ts-expect-error
-          refreshControl={
-            <AppRefreshControl
-              refreshing={isLoading}
-              onRefresh={reloadCourses}
-              progressViewOffset={top + 30}
-            />
-          }
-          renderFooter={renderFooter}
-          canChangeSize
-          layoutSize={{
-            height: windowHeight - 100 - top - 44,
-            width: WINDOW_WIDTH,
-          }}
-          onVisibleIndicesChanged={onVisibleIndicesChanged}
-          optimizeForInsertDeleteAnimations
-        />
-      </GestureDetector>
-    </KeyboardAvoidingHOC>
+    <GestureDetector gesture={gesture}>
+      <RecyclerListView
+        ref={listViewRef}
+        style={styles.recyclerContainer}
+        layoutProvider={layoutProvider}
+        dataProvider={dataProvider.cloneWithRows(sortedWithFavorites)}
+        rowRenderer={renderItem}
+        onScroll={onOffsetChange}
+        //@ts-expect-error
+        refreshControl={
+          <AppRefreshControl
+            refreshing={isLoading}
+            onRefresh={reloadCourses}
+            progressViewOffset={top + 30}
+          />
+        }
+        renderFooter={renderFooter}
+        canChangeSize
+        layoutSize={{
+          height: windowHeight - 100 - top - 44,
+          width: WINDOW_WIDTH,
+        }}
+        onVisibleIndicesChanged={onVisibleIndicesChanged}
+        optimizeForInsertDeleteAnimations
+        automaticallyAdjustKeyboardInsets
+        keyboardDismissMode="interactive"
+      />
+    </GestureDetector>
   ) : null;
 });
