@@ -1,0 +1,13 @@
+diff --git a/android/src/main/java/com/mkuczera/RNReactNativeHapticFeedbackPackage.java b/android/src/main/java/com/mkuczera/RNReactNativeHapticFeedbackPackage.java
+index 945ff349ad36e38c2a79eccc0361d5d530b6b1c5..d260eecf8e03497e55e06169d6efd2897c5dc0b6 100644
+--- a/android/src/main/java/com/mkuczera/RNReactNativeHapticFeedbackPackage.java
++++ b/android/src/main/java/com/mkuczera/RNReactNativeHapticFeedbackPackage.java
+@@ -34,7 +34,7 @@ public class RNReactNativeHapticFeedbackPackage extends TurboReactPackage {
+                     new ReactModuleInfo(
+                             RNReactNativeHapticFeedbackModuleImpl.NAME,
+                             RNReactNativeHapticFeedbackModuleImpl.NAME,
+-                            false, // canOverrideExistingModule
++                            true, // canOverrideExistingModule
+                             false, // needsEagerInit
+                             true, // hasConstants
+                             false, // isCxxModule
