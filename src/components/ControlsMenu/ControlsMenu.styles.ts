@@ -13,7 +13,7 @@ export const useStyles = () =>
       justifyContent: 'space-between',
       paddingLeft: 18,
       paddingRight: 10,
-      paddingVertical: 10,
+      paddingVertical: 18,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
       elevation: 10,
