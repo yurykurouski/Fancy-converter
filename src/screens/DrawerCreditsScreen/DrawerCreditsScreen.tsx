@@ -22,8 +22,8 @@ export const DrawerCreditsScreen = () => {
     Linking.openURL('https://github.com/HatScripts/circle-flags');
   const openCryptoLink = () => Linking.openURL('https://cryptologos.cc/');
   const openRatesLink = () => Linking.openURL('https://www.coinbase.com');
-  const openGeocodingLink = () =>
-    Linking.openURL('https://www.openstreetmap.org');
+  // const openGeocodingLink = () =>
+  //   Linking.openURL('https://www.openstreetmap.org');
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -65,12 +65,12 @@ export const DrawerCreditsScreen = () => {
           </Text>
         </View>
 
-        <View style={styles.itemContainer}>
+        {/* <View style={styles.itemContainer}>
           <Text style={styles.itemTitle}>Geocoding:</Text>
           <Text style={styles.itemContent} onPress={openGeocodingLink}>
             openstreetmap.org
           </Text>
-        </View>
+        </View> */}
 
         <View style={styles.footerContainer}>
           <View style={styles.credsContainer}>

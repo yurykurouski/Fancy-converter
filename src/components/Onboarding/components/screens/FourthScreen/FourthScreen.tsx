@@ -1,41 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { useAddSelected } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { EAvailableFiatNames } from 'types';
 
 import { CurrencyItem } from './components/CurrencyItem';
-import { useGetLocalCurrency } from './FourthScreen.hooks';
 
 import { useStyles } from './FourthScreen.styles';
 import { useCommonOnboardingStyles } from 'components/Onboarding/Onboarding.styles';
 
 type TProps = {
-  currentPage: number;
   windowWidth: number;
 };
 
-export const FourthScreen = ({ currentPage, windowWidth }: TProps) => {
+export const FourthScreen = ({ windowWidth }: TProps) => {
   const styles = useStyles(windowWidth);
   const textStyles = useCommonOnboardingStyles();
 
-  const [locationCurrency, setLocationCurrency] = useState('');
+  const [locationCurrency] = useState('');
 
   const { currencies } = useSelector(selectSelectedCurrencies);
-  const addSelected = useAddSelected();
+  // const addSelected = useAddSelected();
 
-  const getLocalCurrency = useGetLocalCurrency(
-    addSelected,
-    setLocationCurrency,
-  );
+  // const getLocalCurrency = useGetLocalCurrency(
+  //   addSelected,
+  //   setLocationCurrency,
+  // );
 
-  useEffect(() => {
-    if (currentPage === 3 && !locationCurrency) {
-      getLocalCurrency();
-    }
-  }, [locationCurrency, currentPage, getLocalCurrency]);
+  // useEffect(() => {
+  //   if (currentPage === 3 && !locationCurrency) {
+  //     getLocalCurrency();
+  //   }
+  // }, [locationCurrency, currentPage, getLocalCurrency]);
 
   return (
     <View style={styles.container}>
