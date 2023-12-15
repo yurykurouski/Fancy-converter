@@ -1,6 +1,8 @@
 import { Dimensions } from 'react-native';
 import { EDimensions } from 'types';
 
+export const APP_NAME = 'Converter';
+
 export const REQUEST_GET = 'GET';
 export const REQUEST_CT_APPLICATION_JSON = 'application/json';
 
