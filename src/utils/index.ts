@@ -1,9 +1,4 @@
-import {
-  EAvailableCryptoNames,
-  EAvailableFiatNames,
-  EHapticType,
-  TGroupByName,
-} from 'types';
+import { EHapticType, TAvailableCurrenciesNames, TGroupByName } from 'types';
 
 export * from './compareDate';
 export * from './getCurrentColorTheme';
@@ -14,16 +9,9 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import { isIos } from './platform';
 
-export const groupByName: TGroupByName<
-  EAvailableFiatNames | EAvailableCryptoNames
-> = data =>
+export const groupByName: TGroupByName<TAvailableCurrenciesNames> = data =>
   data.reduce(
-    (
-      acc: ReturnType<
-        TGroupByName<EAvailableFiatNames | EAvailableCryptoNames>
-      >,
-      el,
-    ) => {
+    (acc: ReturnType<TGroupByName<TAvailableCurrenciesNames>>, el) => {
       const char = el[0];
       const prevVal = acc[char];
 
@@ -35,13 +23,14 @@ export const groupByName: TGroupByName<
   );
 
 export const makeSectionsData = (
-  data: ReturnType<TGroupByName<EAvailableFiatNames | EAvailableCryptoNames>>,
+  data: ReturnType<TGroupByName<TAvailableCurrenciesNames>>,
 ) =>
-  Object.keys(data)
-    .map(el => {
-      return [el, ...data[el]];
-    })
-    .flat();
+  Object.keys(data).map(el => {
+    return {
+      title: el,
+      data: data[el],
+    };
+  });
 
 export const removeDuplicates = <T>(arr1: T[], arr2: T[]) => {
   const set2 = new Set(arr2);

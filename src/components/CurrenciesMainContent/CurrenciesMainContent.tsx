@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import { useSharedValue } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
+import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { ControlsMenu, CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
@@ -28,6 +29,7 @@ export const CurrenciesMainContent = React.memo(() => {
   const { colorScheme } = useSelector(selectColorSchemeState);
 
   const drawerRef = useRef<DrawerLayout>(null);
+  const containerListRef = useRef<BottomSheetFlatListMethods>(null);
 
   const headerSharedValue = useSharedValue(0);
 
@@ -56,10 +58,14 @@ export const CurrenciesMainContent = React.memo(() => {
         onOpenDrawer={openDrawer}
         isHeaderBlurred={isHeaderBlurred}
         headerSharedValue={headerSharedValue}
+        ref={containerListRef}
       />
       <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
       <ControlsMenu />
-      <CurrenciesBottomSheet headerSharedValue={headerSharedValue} />
+      <CurrenciesBottomSheet
+        headerSharedValue={headerSharedValue}
+        ref={containerListRef}
+      />
     </DrawerLayout>
   );
 });

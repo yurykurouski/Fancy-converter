@@ -2,12 +2,12 @@ import React from 'react';
 import { Image, View } from 'react-native';
 import { flags } from 'assets/flagsMap';
 import { BookmarkIcon } from 'assets/icons';
-import { EAvailableFiatNames } from 'types';
+import { TAvailableCurrenciesNames } from 'types';
 
 import { useStyles } from './CountryFlag.styles';
 
 type Props = {
-  currencyCode: EAvailableFiatNames;
+  currencyCode: TAvailableCurrenciesNames;
   size?: number;
   bookmark?: boolean;
 };

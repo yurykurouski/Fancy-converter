@@ -1,7 +1,12 @@
 import React, { useCallback } from 'react';
+import { SectionListRenderItem } from 'react-native';
 import { CurrencySelectorValue } from 'components/CurrencySelectorValue';
+import { TAvailableCurrenciesNames } from 'types';
 
-import { TUseRenderListItem } from '../CurrenciesBottomSheet.types';
+import { TSectionData } from '../CurrenciesBottomSheet.types';
 
-export const useRenderListItem: TUseRenderListItem = () =>
-  useCallback(item => <CurrencySelectorValue currencyCode={item} />, []);
+export const useRenderListItem = (): SectionListRenderItem<
+  TAvailableCurrenciesNames,
+  TSectionData
+> =>
+  useCallback(({ item }) => <CurrencySelectorValue currencyCode={item} />, []);

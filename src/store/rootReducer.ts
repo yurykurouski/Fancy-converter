@@ -20,6 +20,7 @@ const persistConfigSelected = {
     'selectedInEditAmount',
     'searchValue',
     'filteredCurrencies',
+    'activeCurrencyType',
   ],
 };
 

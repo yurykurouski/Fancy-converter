@@ -9,7 +9,6 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet';
 import { useWindowDimensionChange } from 'hooks';
 import { selectEditMode } from 'store/editMode/selectors';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { ECurrencyType, EDimensions } from 'types';
 import { isIos } from 'utils';
 
@@ -24,82 +23,70 @@ import { useStyles } from './CurrenciesBottomSheet.styles';
 
 const TABS_DATA = [ECurrencyType.FIAT, ECurrencyType.CRYPTO];
 
+type TProps = { headerSharedValue: SharedValue<number> };
+
 export const CurrenciesBottomSheet = React.memo(
-  ({ headerSharedValue }: { headerSharedValue: SharedValue<number> }) => {
-    const sheetRef = useRef<BottomSheet>(null);
-    const containerListRef = useRef<BottomSheetFlatListMethods>(null);
+  React.forwardRef<BottomSheetFlatListMethods, TProps>(
+    ({ headerSharedValue }, containerListRef) => {
+      const sheetRef = useRef<BottomSheet>(null);
 
-    const { bottom, top } = useSafeAreaInsets();
-    const styles = useStyles();
-    const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
+      const { bottom, top } = useSafeAreaInsets();
+      const styles = useStyles();
+      const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
-    const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
-    const { isInEditMode } = useSelector(selectEditMode);
+      const { isInEditMode } = useSelector(selectEditMode);
 
-    const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
+      const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
 
-    const snapPoints = useMemo(
-      () => getSnapPoints(bottom, top, windowHeight),
-      [bottom, top, windowHeight],
-    );
+      const snapPoints = useMemo(
+        () => getSnapPoints(bottom, top, windowHeight),
+        [bottom, top, windowHeight],
+      );
 
-    const renderHandle = useRenderHandler(onPressHandler);
-    const renderTabList = useRenderBottomSheetTabList(snapPoints[1] - 90);
+      const renderHandle = useRenderHandler(onPressHandler);
+      const renderTabList = useRenderBottomSheetTabList(snapPoints[1] - 90);
 
-    useBackButtonHandler(headerSharedValue, sheetRef);
+      useBackButtonHandler(headerSharedValue, sheetRef);
 
-    useEffect(() => {
-      if (activeCurrencyType === ECurrencyType.FIAT) {
-        containerListRef.current?.scrollToIndex({
-          index: 0,
-          animated: true,
-        });
-      } else {
-        containerListRef.current?.scrollToIndex({
-          index: 1,
-          animated: true,
-        });
-      }
-    }, [activeCurrencyType]);
+      useEffect(() => {
+        isInEditMode
+          ? sheetRef?.current?.close()
+          : sheetRef.current?.snapToIndex(0);
+      }, [isInEditMode, sheetRef]);
 
-    useEffect(() => {
-      isInEditMode
-        ? sheetRef?.current?.close()
-        : sheetRef.current?.snapToIndex(0);
-    }, [isInEditMode]);
-
-    return (
-      <BottomSheet
-        snapPoints={snapPoints}
-        ref={sheetRef}
-        handleHeight={10}
-        topInset={top + (isIos ? 40 : -4)}
-        handleComponent={renderHandle}
-        backgroundComponent={BottomSheetBackground}
-        backgroundStyle={styles.backgroundStyle}
-        containerStyle={styles.containerStyle}
-        keyboardBehavior="extend"
-        animatedIndex={headerSharedValue}
-        animateOnMount={false}>
-        <BottomSheetFlatList
-          ref={containerListRef}
-          getItemLayout={(_, index) => ({
-            length: WINDOW_WIDTH,
-            offset: WINDOW_WIDTH * index,
-            index,
-          })}
-          pointerEvents={'box-none'}
-          data={TABS_DATA}
-          horizontal
-          initialNumToRender={1}
-          scrollEnabled={false}
-          showsHorizontalScrollIndicator={false}
-          overScrollMode="never"
-          initialScrollIndex={activeCurrencyType === ECurrencyType.FIAT ? 0 : 1}
-          renderItem={renderTabList}
-        />
-        <SearchField />
-      </BottomSheet>
-    );
-  },
+      return (
+        <BottomSheet
+          snapPoints={snapPoints}
+          ref={sheetRef}
+          handleHeight={10}
+          topInset={top + (isIos ? 40 : -4)}
+          handleComponent={renderHandle}
+          backgroundComponent={BottomSheetBackground}
+          backgroundStyle={styles.backgroundStyle}
+          containerStyle={styles.containerStyle}
+          keyboardBehavior="extend"
+          animatedIndex={headerSharedValue}
+          animateOnMount={false}>
+          <BottomSheetFlatList
+            ref={containerListRef}
+            getItemLayout={(_, index) => ({
+              length: WINDOW_WIDTH,
+              offset: WINDOW_WIDTH * index,
+              index,
+            })}
+            pointerEvents={'box-none'}
+            data={TABS_DATA}
+            horizontal
+            initialNumToRender={1}
+            scrollEnabled={false}
+            showsHorizontalScrollIndicator={false}
+            overScrollMode="never"
+            initialScrollIndex={0}
+            renderItem={renderTabList}
+          />
+          <SearchField />
+        </BottomSheet>
+      );
+    },
+  ),
 );

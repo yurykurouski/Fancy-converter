@@ -1,7 +1,8 @@
 import { RefObject } from 'react';
+import { SectionListData } from 'react-native';
 import { SharedValue } from 'react-native-reanimated';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
-import { EAvailableFiatNames } from 'types';
+import { TAvailableCurrenciesNames } from 'types';
 
 export type TUseBottomSheetOnPressHandler = (
   sheetRef: RefObject<BottomSheetMethods>,
@@ -12,6 +13,10 @@ export type TUseBackButtonHandler = (
   sheetRef: RefObject<BottomSheetMethods>,
 ) => void;
 
-export type TUseRenderListItem = () => (
-  item: EAvailableFiatNames,
-) => JSX.Element;
+export type TSectionData = SectionListData<
+  TAvailableCurrenciesNames,
+  {
+    title: string;
+    data: TAvailableCurrenciesNames[];
+  }
+>;
