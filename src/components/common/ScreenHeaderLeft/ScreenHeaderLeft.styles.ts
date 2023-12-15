@@ -2,14 +2,9 @@ import { useTheme } from 'hooks';
 
 export const useStyles = () =>
   useTheme(theme => ({
-    container: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: 10,
-    },
     iconContainer: {
       backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
-      borderRadius: 20,
+      borderRadius: 16,
       padding: 4,
       alignItems: 'center',
       justifyContent: 'center',
@@ -18,5 +13,6 @@ export const useStyles = () =>
           rotate: '180deg',
         },
       ],
+      overflow: 'hidden',
     },
   }));

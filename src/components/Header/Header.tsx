@@ -10,7 +10,7 @@ import {
 import { useSelector } from 'react-redux';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
-import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/index';
+import { APP_NAME, BLUR_AMOUNT, BLUR_RADIUS } from 'constants/index';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 
@@ -62,7 +62,7 @@ export const Header = React.memo(
               showsVerticalScrollIndicator={false}>
               <View style={styles.containerFrame}>
                 <Menu onOpenDrawer={onOpenDrawer} />
-                <Text style={styles.header}>Fancy converter</Text>
+                <Text style={styles.header}>{APP_NAME}</Text>
               </View>
               <View style={[styles.containerFrame]}>
                 <CurrencyTypeMenu
