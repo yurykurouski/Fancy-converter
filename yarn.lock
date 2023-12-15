@@ -2407,20 +2407,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@shopify/flash-list@npm:^1.6.3":
-  version: 1.6.3
-  resolution: "@shopify/flash-list@npm:1.6.3"
-  dependencies:
-    recyclerlistview: "npm:4.2.0"
-    tslib: "npm:2.4.0"
-  peerDependencies:
-    "@babel/runtime": "*"
-    react: "*"
-    react-native: "*"
-  checksum: 655723d750275c07837099b79ec01a63c40223ccf56a706299e0906cec907fb9617e1135b49d59a05ff550fdaa7565957dee92929b84671cd6d910a145664b2c
-  languageName: node
-  linkType: hard
-
 "@sideway/address@npm:^4.1.3":
   version: 4.1.4
   resolution: "@sideway/address@npm:4.1.4"
@@ -4893,7 +4879,6 @@ __metadata:
     "@react-navigation/native": ^6.1.9
     "@react-navigation/native-stack": ^6.9.17
     "@reduxjs/toolkit": 1.9.5
-    "@shopify/flash-list": ^1.6.3
     "@thefunbots/react-native-pointer-interactions": ^1.1.0
     "@tsconfig/react-native": ^3.0.0
     "@types/lodash.debounce": ^4.0.7
@@ -8418,7 +8403,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recyclerlistview@npm:4.2.0, recyclerlistview@npm:^4.2.0":
+"recyclerlistview@npm:^4.2.0":
   version: 4.2.0
   resolution: "recyclerlistview@npm:4.2.0"
   dependencies:
@@ -9578,13 +9563,6 @@ __metadata:
   bin:
     ts-prune: lib/index.js
   checksum: 2cbc4d64a2e50637d06691e7f962b913d87aba2419ba772a3a1cb6e4b7542412cd77af592ba7b376ed273f5e37d9be180613b479602b9f92693e4d72f0f5a373
-  languageName: node
-  linkType: hard
-
-"tslib@npm:2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
