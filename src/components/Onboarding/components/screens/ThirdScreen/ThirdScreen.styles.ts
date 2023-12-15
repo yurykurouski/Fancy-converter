@@ -9,7 +9,7 @@ export const useScreenStyles = (windowWidth: number) =>
     },
     subTitle: { marginTop: 100 },
     subTitleDrag: { marginBottom: 20 },
-    subTitlePress: { marginTop: 'auto', marginBottom: 60 },
+    subTitlePress: { marginTop: 'auto', marginBottom: 80 },
     rippleBaseStyle: {
       width: 50,
       height: 50,
