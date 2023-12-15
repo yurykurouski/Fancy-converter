@@ -1,5 +1,9 @@
 import { TAddSelectedCurr, TRemoveSelectedCurr } from 'hooks/store/types';
-import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
+import {
+  EAvailableCryptoNames,
+  EAvailableFiatNames,
+  TAvailableCurrenciesNames,
+} from 'types';
 
 export type TUseOnPressHandler = (
   isActive: boolean,
@@ -9,5 +13,5 @@ export type TUseOnPressHandler = (
 ) => () => void;
 
 export type TProps = {
-  currencyCode: EAvailableFiatNames;
+  currencyCode: TAvailableCurrenciesNames;
 };

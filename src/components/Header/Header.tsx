@@ -8,6 +8,7 @@ import {
   useDerivedValue,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
+import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { BLUR_AMOUNT, BLUR_RADIUS } from 'constants/index';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
@@ -24,47 +25,55 @@ type Props = {
   headerSharedValue: SharedValue<number>;
 };
 
-export const Header = React.memo<Props>(
-  ({ onOpenDrawer, isHeaderBlurred, headerSharedValue }) => {
-    const styles = useStyles(isHeaderBlurred);
+export const Header = React.memo(
+  React.forwardRef<BottomSheetFlatListMethods, Props>(
+    (
+      { onOpenDrawer, isHeaderBlurred, headerSharedValue },
+      containerListRef,
+    ) => {
+      const styles = useStyles(isHeaderBlurred);
 
-    const animatedScrollRef = useAnimatedRef<ScrollView>();
+      const animatedScrollRef = useAnimatedRef<ScrollView>();
 
-    const { colorScheme } = useSelector(selectColorSchemeState);
-    const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
+      const { colorScheme } = useSelector(selectColorSchemeState);
+      const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
 
-    useDerivedValue(() =>
-      scrollTo(animatedScrollRef, 0, headerSharedValue.value * 32, true),
-    );
+      useDerivedValue(() =>
+        scrollTo(animatedScrollRef, 0, headerSharedValue.value * 32, true),
+      );
 
-    return (
-      <BlurView
-        style={styles.blurView}
-        overlayColor="transparent"
-        blurAmount={BLUR_AMOUNT}
-        blurRadius={BLUR_RADIUS}
-        reducedTransparencyFallbackColor={
-          THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
-        }
-        blurType={colorScheme!}
-        pointerEvents="box-none">
-        <View style={styles.container}>
-          <ScrollView
-            contentOffset={{ x: 0, y: 0 }}
-            ref={animatedScrollRef}
-            scrollEnabled={false}
-            style={styles.scrollContainer}
-            showsVerticalScrollIndicator={false}>
-            <View style={styles.containerFrame}>
-              <Menu onOpenDrawer={onOpenDrawer} />
-              <Text style={styles.header}>Fancy converter</Text>
-            </View>
-            <View style={[styles.containerFrame]}>
-              <CurrencyTypeMenu activeCurrencyType={activeCurrencyType} />
-            </View>
-          </ScrollView>
-        </View>
-      </BlurView>
-    );
-  },
+      return (
+        <BlurView
+          style={styles.blurView}
+          overlayColor="transparent"
+          blurAmount={BLUR_AMOUNT}
+          blurRadius={BLUR_RADIUS}
+          reducedTransparencyFallbackColor={
+            THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
+          }
+          blurType={colorScheme!}
+          pointerEvents="box-none">
+          <View style={styles.container}>
+            <ScrollView
+              contentOffset={{ x: 0, y: 0 }}
+              ref={animatedScrollRef}
+              scrollEnabled={false}
+              style={styles.scrollContainer}
+              showsVerticalScrollIndicator={false}>
+              <View style={styles.containerFrame}>
+                <Menu onOpenDrawer={onOpenDrawer} />
+                <Text style={styles.header}>Fancy converter</Text>
+              </View>
+              <View style={[styles.containerFrame]}>
+                <CurrencyTypeMenu
+                  activeCurrencyType={activeCurrencyType}
+                  ref={containerListRef}
+                />
+              </View>
+            </ScrollView>
+          </View>
+        </BlurView>
+      );
+    },
+  ),
 );
