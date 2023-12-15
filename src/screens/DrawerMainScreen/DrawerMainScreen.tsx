@@ -4,9 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 import { CoffeeCupIcon, GithubIcon, RightArrowIcon } from 'assets/icons';
 import { ShareIcon } from 'assets/icons/ShareIcon';
 import {
+  DONATION_URL,
   GITHUB_REPO_URL,
   ICON_BUTTON_SIZE,
-  PAYPAL_DONATION_URL,
 } from 'constants/index';
 import { useSwitchColorScheme } from 'hooks/store/UIStatus';
 import { DRAWER_STACK_ROUTES } from 'navigation/DrawerStack/DrawerStack.routes';
@@ -36,7 +36,7 @@ export const DrawerMainScreen = React.memo(() => {
   );
 
   const openPayPal = useButtonOnPress(
-    PAYPAL_DONATION_URL,
+    DONATION_URL,
     'alert_message.paypal_press.description',
   );
 

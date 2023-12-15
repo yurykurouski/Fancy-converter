@@ -11,7 +11,7 @@ export const INPUT_VALIDATION_REGEXP = new RegExp('^[0-9]*.[0-9]*$');
 
 export const GITHUB_REPO_URL =
   'https://github.com/yurykurouski/Fancy-converter';
-export const PAYPAL_DONATION_URL = 'https://paypal.me/yurykurouski';
+export const DONATION_URL = 'https://www.buymeacoffee.com/yury_kurouski';
 
 export const TOP_INSET_WITH_ISLAND = 59;
 
