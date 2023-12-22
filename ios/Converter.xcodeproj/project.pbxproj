@@ -16,6 +16,14 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FB0AF3412B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */; };
 		FB66E8F92AB4E94700E1DFDF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */; };
+		FBA48A6A2B3632AF00ABA302 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA48A692B3632AF00ABA302 /* WidgetKit.framework */; };
+		FBA48A6C2B3632AF00ABA302 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA48A6B2B3632AF00ABA302 /* SwiftUI.framework */; };
+		FBA48A6F2B3632AF00ABA302 /* FavoritesWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A6E2B3632AF00ABA302 /* FavoritesWidgetBundle.swift */; };
+		FBA48A712B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A702B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift */; };
+		FBA48A732B3632AF00ABA302 /* FavoritesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A722B3632AF00ABA302 /* FavoritesWidget.swift */; };
+		FBA48A752B3632AF00ABA302 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A742B3632AF00ABA302 /* AppIntent.swift */; };
+		FBA48A772B3632B100ABA302 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA48A762B3632B100ABA302 /* Assets.xcassets */; };
+		FBA48A7B2B3632B100ABA302 /* FavoritesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,7 +34,28 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = Converter;
 		};
+		FBA48A792B3632B100ABA302 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBA48A672B3632AF00ABA302;
+			remoteInfo = FavoritesWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FBA48A7C2B3632B100ABA302 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FBA48A7B2B3632B100ABA302 /* FavoritesWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* ConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +78,15 @@
 		FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5A81FDAA20A5FA36466AD3 /* Pods-Converter-ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Converter-ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Converter-ConverterTests/Pods-Converter-ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = Converter/BootSplash.storyboard; sourceTree = "<group>"; };
+		FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FavoritesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBA48A692B3632AF00ABA302 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		FBA48A6B2B3632AF00ABA302 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		FBA48A6E2B3632AF00ABA302 /* FavoritesWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidgetBundle.swift; sourceTree = "<group>"; };
+		FBA48A702B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		FBA48A722B3632AF00ABA302 /* FavoritesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidget.swift; sourceTree = "<group>"; };
+		FBA48A742B3632AF00ABA302 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		FBA48A762B3632B100ABA302 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FBA48A782B3632B100ABA302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBC3ECDA2ABE36D10048B8AE /* Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Converter.entitlements; path = Converter/Converter.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +105,15 @@
 			files = (
 				FB0AF3412B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a in Frameworks */,
 				61AB77DE1C222BE473764B85 /* libPods-Converter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBA48A652B3632AF00ABA302 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBA48A6C2B3632AF00ABA302 /* SwiftUI.framework in Frameworks */,
+				FBA48A6A2B3632AF00ABA302 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +159,8 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				D52841A80B836B9C5E62F449 /* libPods-Converter.a */,
 				A1FDF72826657D60E15A39BD /* libPods-Converter-ConverterTests.a */,
+				FBA48A692B3632AF00ABA302 /* WidgetKit.framework */,
+				FBA48A6B2B3632AF00ABA302 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +179,7 @@
 				13B07FAE1A68108700A75B9A /* Converter */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ConverterTests */,
+				FBA48A6D2B3632AF00ABA302 /* FavoritesWidget */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -144,6 +194,7 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* Converter.app */,
 				00E356EE1AD99517003FC87E /* ConverterTests.xctest */,
+				FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,6 +215,19 @@
 			children = (
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FBA48A6D2B3632AF00ABA302 /* FavoritesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				FBA48A6E2B3632AF00ABA302 /* FavoritesWidgetBundle.swift */,
+				FBA48A702B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift */,
+				FBA48A722B3632AF00ABA302 /* FavoritesWidget.swift */,
+				FBA48A742B3632AF00ABA302 /* AppIntent.swift */,
+				FBA48A762B3632B100ABA302 /* Assets.xcassets */,
+				FBA48A782B3632B100ABA302 /* Info.plist */,
+			);
+			path = FavoritesWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,15 +266,34 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				845ADB2B2449C7ADCA362D34 /* [CP] Embed Pods Frameworks */,
 				AD3F3D6943B1E38DB5A6A3B0 /* [CP] Copy Pods Resources */,
+				FBA48A7C2B3632B100ABA302 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FBA48A7A2B3632B100ABA302 /* PBXTargetDependency */,
 			);
 			name = Converter;
 			productName = Converter;
 			productReference = 13B07F961A680F5B00A75B9A /* Converter.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FBA48A672B3632AF00ABA302 /* FavoritesWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBA48A7F2B3632B100ABA302 /* Build configuration list for PBXNativeTarget "FavoritesWidgetExtension" */;
+			buildPhases = (
+				FBA48A642B3632AF00ABA302 /* Sources */,
+				FBA48A652B3632AF00ABA302 /* Frameworks */,
+				FBA48A662B3632AF00ABA302 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FavoritesWidgetExtension;
+			productName = FavoritesWidgetExtension;
+			productReference = FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -218,6 +301,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -226,6 +310,9 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
+					};
+					FBA48A672B3632AF00ABA302 = {
+						CreatedOnToolsVersion = 15.1;
 					};
 				};
 			};
@@ -250,6 +337,7 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* Converter */,
 				00E356ED1AD99517003FC87E /* ConverterTests */,
+				FBA48A672B3632AF00ABA302 /* FavoritesWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -269,6 +357,14 @@
 				FB66E8F92AB4E94700E1DFDF /* BootSplash.storyboard in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBA48A662B3632AF00ABA302 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBA48A772B3632B100ABA302 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +538,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FBA48A642B3632AF00ABA302 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBA48A712B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift in Sources */,
+				FBA48A752B3632AF00ABA302 /* AppIntent.swift in Sources */,
+				FBA48A6F2B3632AF00ABA302 /* FavoritesWidgetBundle.swift in Sources */,
+				FBA48A732B3632AF00ABA302 /* FavoritesWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -449,6 +556,11 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* Converter */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		FBA48A7A2B3632B100ABA302 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBA48A672B3632AF00ABA302 /* FavoritesWidgetExtension */;
+			targetProxy = FBA48A792B3632B100ABA302 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -510,6 +622,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B37C957A6088A396C6B4227 /* Pods-Converter.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Converter/Converter.entitlements;
@@ -542,6 +655,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF6DEA8E9E26480B6296BD2A /* Pods-Converter.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Converter/Converter.entitlements;
@@ -730,6 +844,95 @@
 			};
 			name = Release;
 		};
+		FBA48A7D2B3632B100ABA302 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = LVU6W9ST24;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FavoritesWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FavoritesWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = yury.kurouski.Converter.FavoritesWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FBA48A7E2B3632B100ABA302 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = LVU6W9ST24;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FavoritesWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FavoritesWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = yury.kurouski.Converter.FavoritesWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -756,6 +959,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBA48A7F2B3632B100ABA302 /* Build configuration list for PBXNativeTarget "FavoritesWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBA48A7D2B3632B100ABA302 /* Debug */,
+				FBA48A7E2B3632B100ABA302 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
