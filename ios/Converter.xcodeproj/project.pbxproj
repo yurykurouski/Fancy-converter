@@ -24,6 +24,8 @@
 		FBA48A752B3632AF00ABA302 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A742B3632AF00ABA302 /* AppIntent.swift */; };
 		FBA48A772B3632B100ABA302 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA48A762B3632B100ABA302 /* Assets.xcassets */; };
 		FBA48A7B2B3632B100ABA302 /* FavoritesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FBBCF6F42B51841E0062CAB5 /* WidgetWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBCF6F32B51841E0062CAB5 /* WidgetWrapper.swift */; };
+		FBBCF6F62B5184760062CAB5 /* WidgetWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBCF6F52B5184760062CAB5 /* WidgetWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,9 @@
 		FBA48A742B3632AF00ABA302 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		FBA48A762B3632B100ABA302 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBA48A782B3632B100ABA302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBBCF6F22B51841E0062CAB5 /* Converter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Converter-Bridging-Header.h"; sourceTree = "<group>"; };
+		FBBCF6F32B51841E0062CAB5 /* WidgetWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetWrapper.swift; sourceTree = "<group>"; };
+		FBBCF6F52B5184760062CAB5 /* WidgetWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WidgetWrapper.m; sourceTree = "<group>"; };
 		FBC3ECDA2ABE36D10048B8AE /* Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Converter.entitlements; path = Converter/Converter.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,11 +148,14 @@
 				FBC3ECDA2ABE36D10048B8AE /* Converter.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */,
+				FBBCF6F32B51841E0062CAB5 /* WidgetWrapper.swift */,
+				FBBCF6F52B5184760062CAB5 /* WidgetWrapper.m */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				FBBCF6F22B51841E0062CAB5 /* Converter-Bridging-Header.h */,
 			);
 			name = Converter;
 			sourceTree = "<group>";
@@ -309,7 +317,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1520;
 					};
 					FBA48A672B3632AF00ABA302 = {
 						CreatedOnToolsVersion = 15.1;
@@ -534,7 +542,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				FBBCF6F42B51841E0062CAB5 /* WidgetWrapper.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				FBBCF6F62B5184760062CAB5 /* WidgetWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3EF04AE9076A7500131B237 /* Pods-Converter-ConverterTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = LVU6W9ST24;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -597,6 +608,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB5A81FDAA20A5FA36466AD3 /* Pods-Converter-ConverterTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = LVU6W9ST24;
@@ -627,7 +639,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Converter/Converter.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LVU6W9ST24;
+				DEVELOPMENT_TEAM = 656FL7AFFK;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Converter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -644,6 +656,7 @@
 				PRODUCT_NAME = Converter;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Converter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -660,7 +673,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Converter/Converter.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LVU6W9ST24;
+				DEVELOPMENT_TEAM = 656FL7AFFK;
 				INFOPLIST_FILE = Converter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -676,6 +689,7 @@
 				PRODUCT_NAME = Converter;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Converter-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -859,7 +873,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = LVU6W9ST24;
+				DEVELOPMENT_TEAM = 656FL7AFFK;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -907,7 +921,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = LVU6W9ST24;
+				DEVELOPMENT_TEAM = 656FL7AFFK;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
