@@ -15,13 +15,158 @@
 		80A8D8B2C8E6551EA9A295ED /* libPods-Converter-ConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FDF72826657D60E15A39BD /* libPods-Converter-ConverterTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FB0AF3412B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */; };
+		FB56DD142B53095F00DC84FA /* PKR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCAD2B53095600DC84FA /* PKR.png */; };
+		FB56DD152B53095F00DC84FA /* BGN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCAE2B53095600DC84FA /* BGN.png */; };
+		FB56DD162B53095F00DC84FA /* GTQ.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCAF2B53095600DC84FA /* GTQ.png */; };
+		FB56DD172B53095F00DC84FA /* TZS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB02B53095600DC84FA /* TZS.png */; };
+		FB56DD182B53095F00DC84FA /* CLP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB12B53095600DC84FA /* CLP.png */; };
+		FB56DD192B53095F00DC84FA /* ARS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB22B53095600DC84FA /* ARS.png */; };
+		FB56DD1A2B53095F00DC84FA /* CNY.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB32B53095600DC84FA /* CNY.png */; };
+		FB56DD1B2B53095F00DC84FA /* OMR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB42B53095600DC84FA /* OMR.png */; };
+		FB56DD1C2B53095F00DC84FA /* BAM.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB52B53095600DC84FA /* BAM.png */; };
+		FB56DD1D2B53095F00DC84FA /* PAB.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB62B53095600DC84FA /* PAB.png */; };
+		FB56DD1E2B53095F00DC84FA /* RUB.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB72B53095600DC84FA /* RUB.png */; };
+		FB56DD1F2B53095F00DC84FA /* MDL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB82B53095600DC84FA /* MDL.png */; };
+		FB56DD202B53095F00DC84FA /* MVR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCB92B53095600DC84FA /* MVR.png */; };
+		FB56DD212B53095F00DC84FA /* LSL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCBA2B53095600DC84FA /* LSL.png */; };
+		FB56DD222B53095F00DC84FA /* PEN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCBB2B53095700DC84FA /* PEN.png */; };
+		FB56DD232B53095F00DC84FA /* KES.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCBC2B53095700DC84FA /* KES.png */; };
+		FB56DD242B53095F00DC84FA /* SYP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCBD2B53095700DC84FA /* SYP.png */; };
+		FB56DD252B53095F00DC84FA /* JPY.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCBE2B53095700DC84FA /* JPY.png */; };
+		FB56DD262B53095F00DC84FA /* LBP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCBF2B53095700DC84FA /* LBP.png */; };
+		FB56DD272B53095F00DC84FA /* EUR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC02B53095700DC84FA /* EUR.png */; };
+		FB56DD282B53095F00DC84FA /* THB.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC12B53095700DC84FA /* THB.png */; };
+		FB56DD292B53095F00DC84FA /* PHP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC22B53095700DC84FA /* PHP.png */; };
+		FB56DD2A2B53095F00DC84FA /* SBD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC32B53095800DC84FA /* SBD.png */; };
+		FB56DD2B2B53095F00DC84FA /* LRD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC42B53095800DC84FA /* LRD.png */; };
+		FB56DD2C2B53095F00DC84FA /* QAR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC52B53095800DC84FA /* QAR.png */; };
+		FB56DD2D2B53095F00DC84FA /* SVC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC62B53095800DC84FA /* SVC.png */; };
+		FB56DD2E2B53095F00DC84FA /* VND.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC72B53095800DC84FA /* VND.png */; };
+		FB56DD2F2B53095F00DC84FA /* CZK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC82B53095800DC84FA /* CZK.png */; };
+		FB56DD302B53095F00DC84FA /* LYD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCC92B53095800DC84FA /* LYD.png */; };
+		FB56DD312B53095F00DC84FA /* KZT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCCA2B53095800DC84FA /* KZT.png */; };
+		FB56DD322B53095F00DC84FA /* ILS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCCB2B53095900DC84FA /* ILS.png */; };
+		FB56DD332B53095F00DC84FA /* SCR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCCC2B53095900DC84FA /* SCR.png */; };
+		FB56DD342B53095F00DC84FA /* CAD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCCD2B53095900DC84FA /* CAD.png */; };
+		FB56DD352B53095F00DC84FA /* TWD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCCE2B53095900DC84FA /* TWD.png */; };
+		FB56DD362B53095F00DC84FA /* ALL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCCF2B53095900DC84FA /* ALL.png */; };
+		FB56DD372B53095F00DC84FA /* TJS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD02B53095900DC84FA /* TJS.png */; };
+		FB56DD382B53095F00DC84FA /* LAK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD12B53095900DC84FA /* LAK.png */; };
+		FB56DD392B53095F00DC84FA /* IMP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD22B53095900DC84FA /* IMP.png */; };
+		FB56DD3A2B53095F00DC84FA /* VES.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD32B53095900DC84FA /* VES.png */; };
+		FB56DD3B2B53095F00DC84FA /* SGD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD42B53095A00DC84FA /* SGD.png */; };
+		FB56DD3C2B53095F00DC84FA /* TRY.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD52B53095A00DC84FA /* TRY.png */; };
+		FB56DD3D2B53095F00DC84FA /* ZAR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD62B53095A00DC84FA /* ZAR.png */; };
+		FB56DD3E2B53095F00DC84FA /* GEL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD72B53095A00DC84FA /* GEL.png */; };
+		FB56DD3F2B53095F00DC84FA /* KWD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD82B53095A00DC84FA /* KWD.png */; };
+		FB56DD402B53095F00DC84FA /* UAH.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCD92B53095A00DC84FA /* UAH.png */; };
+		FB56DD412B53095F00DC84FA /* MYR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCDA2B53095A00DC84FA /* MYR.png */; };
+		FB56DD422B53095F00DC84FA /* SAR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCDB2B53095A00DC84FA /* SAR.png */; };
+		FB56DD432B53095F00DC84FA /* MUR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCDC2B53095A00DC84FA /* MUR.png */; };
+		FB56DD442B53095F00DC84FA /* GBP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCDD2B53095A00DC84FA /* GBP.png */; };
+		FB56DD452B53095F00DC84FA /* CHF.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCDE2B53095B00DC84FA /* CHF.png */; };
+		FB56DD462B53095F00DC84FA /* DKK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCDF2B53095B00DC84FA /* DKK.png */; };
+		FB56DD472B53095F00DC84FA /* NOK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE02B53095B00DC84FA /* NOK.png */; };
+		FB56DD482B53095F00DC84FA /* BRL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE12B53095B00DC84FA /* BRL.png */; };
+		FB56DD492B53095F00DC84FA /* MMK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE22B53095B00DC84FA /* MMK.png */; };
+		FB56DD4A2B53095F00DC84FA /* MAD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE32B53095C00DC84FA /* MAD.png */; };
+		FB56DD4B2B53095F00DC84FA /* KGS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE42B53095C00DC84FA /* KGS.png */; };
+		FB56DD4C2B53095F00DC84FA /* AMD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE52B53095C00DC84FA /* AMD.png */; };
+		FB56DD4D2B53095F00DC84FA /* YER.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE62B53095C00DC84FA /* YER.png */; };
+		FB56DD4E2B53095F00DC84FA /* USD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE72B53095C00DC84FA /* USD.png */; };
+		FB56DD4F2B53095F00DC84FA /* KRW.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE82B53095C00DC84FA /* KRW.png */; };
+		FB56DD502B53095F00DC84FA /* EGP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCE92B53095C00DC84FA /* EGP.png */; };
+		FB56DD512B53095F00DC84FA /* ISK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCEA2B53095C00DC84FA /* ISK.png */; };
+		FB56DD522B53095F00DC84FA /* NZD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCEB2B53095C00DC84FA /* NZD.png */; };
+		FB56DD532B53095F00DC84FA /* UZS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCEC2B53095C00DC84FA /* UZS.png */; };
+		FB56DD542B53095F00DC84FA /* AED.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCED2B53095C00DC84FA /* AED.png */; };
+		FB56DD552B53095F00DC84FA /* XAF.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCEE2B53095C00DC84FA /* XAF.png */; };
+		FB56DD562B53095F00DC84FA /* JOD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCEF2B53095C00DC84FA /* JOD.png */; };
+		FB56DD572B53095F00DC84FA /* NGN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF02B53095C00DC84FA /* NGN.png */; };
+		FB56DD582B53095F00DC84FA /* TMT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF12B53095C00DC84FA /* TMT.png */; };
+		FB56DD592B53095F00DC84FA /* RON.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF22B53095C00DC84FA /* RON.png */; };
+		FB56DD5A2B53095F00DC84FA /* BYN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF32B53095D00DC84FA /* BYN.png */; };
+		FB56DD5B2B53095F00DC84FA /* MRU.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF42B53095D00DC84FA /* MRU.png */; };
+		FB56DD5C2B53095F00DC84FA /* MZN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF52B53095D00DC84FA /* MZN.png */; };
+		FB56DD5D2B53095F00DC84FA /* AZN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF62B53095D00DC84FA /* AZN.png */; };
+		FB56DD5E2B53095F00DC84FA /* RSD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF72B53095D00DC84FA /* RSD.png */; };
+		FB56DD5F2B53095F00DC84FA /* HRK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF82B53095D00DC84FA /* HRK.png */; };
+		FB56DD602B53095F00DC84FA /* SKK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCF92B53095D00DC84FA /* SKK.png */; };
+		FB56DD612B53095F00DC84FA /* MXN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCFA2B53095D00DC84FA /* MXN.png */; };
+		FB56DD622B53095F00DC84FA /* HUF.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCFB2B53095D00DC84FA /* HUF.png */; };
+		FB56DD632B53095F00DC84FA /* JEP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCFC2B53095D00DC84FA /* JEP.png */; };
+		FB56DD642B53095F00DC84FA /* HKD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCFD2B53095D00DC84FA /* HKD.png */; };
+		FB56DD652B53095F00DC84FA /* ZMK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCFE2B53095D00DC84FA /* ZMK.png */; };
+		FB56DD662B53095F00DC84FA /* MNT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DCFF2B53095D00DC84FA /* MNT.png */; };
+		FB56DD672B53095F00DC84FA /* TND.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD002B53095D00DC84FA /* TND.png */; };
+		FB56DD682B53095F00DC84FA /* NPR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD012B53095E00DC84FA /* NPR.png */; };
+		FB56DD692B53095F00DC84FA /* PYG.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD022B53095E00DC84FA /* PYG.png */; };
+		FB56DD6A2B53095F00DC84FA /* PGK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD032B53095E00DC84FA /* PGK.png */; };
+		FB56DD6B2B53095F00DC84FA /* IQD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD042B53095E00DC84FA /* IQD.png */; };
+		FB56DD6C2B53095F00DC84FA /* LKR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD052B53095E00DC84FA /* LKR.png */; };
+		FB56DD6D2B53095F00DC84FA /* KMF.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD062B53095E00DC84FA /* KMF.png */; };
+		FB56DD6E2B53095F00DC84FA /* WST.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD072B53095E00DC84FA /* WST.png */; };
+		FB56DD6F2B53095F00DC84FA /* INR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD082B53095E00DC84FA /* INR.png */; };
+		FB56DD702B53095F00DC84FA /* KHR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD092B53095E00DC84FA /* KHR.png */; };
+		FB56DD712B53095F00DC84FA /* NAD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD0A2B53095E00DC84FA /* NAD.png */; };
+		FB56DD722B53095F00DC84FA /* PLN.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD0B2B53095E00DC84FA /* PLN.png */; };
+		FB56DD732B53095F00DC84FA /* SEK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD0C2B53095E00DC84FA /* SEK.png */; };
+		FB56DD742B53095F00DC84FA /* SLL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD0D2B53095E00DC84FA /* SLL.png */; };
+		FB56DD752B53095F00DC84FA /* IDR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD0E2B53095E00DC84FA /* IDR.png */; };
+		FB56DD762B53095F00DC84FA /* JMD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD0F2B53095E00DC84FA /* JMD.png */; };
+		FB56DD772B53095F00DC84FA /* KYD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD102B53095E00DC84FA /* KYD.png */; };
+		FB56DD782B53095F00DC84FA /* IRR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD112B53095E00DC84FA /* IRR.png */; };
+		FB56DD792B53095F00DC84FA /* NIO.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD122B53095F00DC84FA /* NIO.png */; };
+		FB56DD7A2B53095F00DC84FA /* MKD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD132B53095F00DC84FA /* MKD.png */; };
+		FB56DDA92B5309D200DC84FA /* SHIB.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD7C2B5309CE00DC84FA /* SHIB.png */; };
+		FB56DDAA2B5309D200DC84FA /* BSV.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD7D2B5309CE00DC84FA /* BSV.png */; };
+		FB56DDAB2B5309D200DC84FA /* LDO.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD7E2B5309CE00DC84FA /* LDO.png */; };
+		FB56DDAC2B5309D200DC84FA /* RNDR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD7F2B5309CE00DC84FA /* RNDR.png */; };
+		FB56DDAD2B5309D200DC84FA /* XTZ.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD802B5309CE00DC84FA /* XTZ.png */; };
+		FB56DDAE2B5309D200DC84FA /* XLM.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD812B5309CE00DC84FA /* XLM.png */; };
+		FB56DDAF2B5309D200DC84FA /* ETC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD822B5309CE00DC84FA /* ETC.png */; };
+		FB56DDB02B5309D200DC84FA /* XRP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD832B5309CE00DC84FA /* XRP.png */; };
+		FB56DDB12B5309D200DC84FA /* IMX.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD842B5309CF00DC84FA /* IMX.png */; };
+		FB56DDB22B5309D200DC84FA /* CRO.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD852B5309CF00DC84FA /* CRO.png */; };
+		FB56DDB32B5309D200DC84FA /* WBTC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD862B5309CF00DC84FA /* WBTC.png */; };
+		FB56DDB42B5309D200DC84FA /* DOT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD872B5309CF00DC84FA /* DOT.png */; };
+		FB56DDB52B5309D200DC84FA /* BTC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD882B5309CF00DC84FA /* BTC.png */; };
+		FB56DDB62B5309D200DC84FA /* EOS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD892B5309CF00DC84FA /* EOS.png */; };
+		FB56DDB72B5309D200DC84FA /* ADA.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD8A2B5309CF00DC84FA /* ADA.png */; };
+		FB56DDB82B5309D200DC84FA /* SAND.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD8B2B5309CF00DC84FA /* SAND.png */; };
+		FB56DDB92B5309D200DC84FA /* APT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD8C2B5309CF00DC84FA /* APT.png */; };
+		FB56DDBA2B5309D200DC84FA /* ICP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD8D2B5309D000DC84FA /* ICP.png */; };
+		FB56DDBB2B5309D200DC84FA /* AVAX.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD8E2B5309D000DC84FA /* AVAX.png */; };
+		FB56DDBC2B5309D200DC84FA /* DAI.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD8F2B5309D000DC84FA /* DAI.png */; };
+		FB56DDBD2B5309D200DC84FA /* LTC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD902B5309D000DC84FA /* LTC.png */; };
+		FB56DDBE2B5309D200DC84FA /* DOGE.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD912B5309D000DC84FA /* DOGE.png */; };
+		FB56DDBF2B5309D200DC84FA /* AXS.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD922B5309D000DC84FA /* AXS.png */; };
+		FB56DDC02B5309D200DC84FA /* SOL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD932B5309D000DC84FA /* SOL.png */; };
+		FB56DDC12B5309D200DC84FA /* BCH.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD942B5309D000DC84FA /* BCH.png */; };
+		FB56DDC22B5309D200DC84FA /* ETH.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD952B5309D000DC84FA /* ETH.png */; };
+		FB56DDC32B5309D200DC84FA /* HBAR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD962B5309D000DC84FA /* HBAR.png */; };
+		FB56DDC42B5309D200DC84FA /* INJ.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD972B5309D000DC84FA /* INJ.png */; };
+		FB56DDC52B5309D200DC84FA /* LINK.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD982B5309D100DC84FA /* LINK.png */; };
+		FB56DDC62B5309D200DC84FA /* USDT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD992B5309D100DC84FA /* USDT.png */; };
+		FB56DDC72B5309D200DC84FA /* ATOM.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD9A2B5309D100DC84FA /* ATOM.png */; };
+		FB56DDC82B5309D200DC84FA /* NEAR.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD9B2B5309D100DC84FA /* NEAR.png */; };
+		FB56DDC92B5309D200DC84FA /* VET.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD9C2B5309D100DC84FA /* VET.png */; };
+		FB56DDCA2B5309D200DC84FA /* ARB.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD9D2B5309D100DC84FA /* ARB.png */; };
+		FB56DDCB2B5309D200DC84FA /* OP.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD9E2B5309D100DC84FA /* OP.png */; };
+		FB56DDCC2B5309D200DC84FA /* STX.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DD9F2B5309D100DC84FA /* STX.png */; };
+		FB56DDCD2B5309D200DC84FA /* USDC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA02B5309D100DC84FA /* USDC.png */; };
+		FB56DDCE2B5309D200DC84FA /* BUSD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA12B5309D100DC84FA /* BUSD.png */; };
+		FB56DDCF2B5309D200DC84FA /* ALGO.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA22B5309D200DC84FA /* ALGO.png */; };
+		FB56DDD02B5309D200DC84FA /* GRT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA32B5309D200DC84FA /* GRT.png */; };
+		FB56DDD12B5309D200DC84FA /* FIL.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA42B5309D200DC84FA /* FIL.png */; };
+		FB56DDD22B5309D200DC84FA /* EGLD.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA52B5309D200DC84FA /* EGLD.png */; };
+		FB56DDD32B5309D200DC84FA /* MATIC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA62B5309D200DC84FA /* MATIC.png */; };
+		FB56DDD42B5309D200DC84FA /* AAVE.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA72B5309D200DC84FA /* AAVE.png */; };
+		FB56DDD52B5309D200DC84FA /* QNT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA82B5309D200DC84FA /* QNT.png */; };
 		FB66E8F92AB4E94700E1DFDF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */; };
 		FBA48A6A2B3632AF00ABA302 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA48A692B3632AF00ABA302 /* WidgetKit.framework */; };
 		FBA48A6C2B3632AF00ABA302 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA48A6B2B3632AF00ABA302 /* SwiftUI.framework */; };
-		FBA48A6F2B3632AF00ABA302 /* FavoritesWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A6E2B3632AF00ABA302 /* FavoritesWidgetBundle.swift */; };
-		FBA48A712B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A702B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift */; };
 		FBA48A732B3632AF00ABA302 /* FavoritesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A722B3632AF00ABA302 /* FavoritesWidget.swift */; };
-		FBA48A752B3632AF00ABA302 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA48A742B3632AF00ABA302 /* AppIntent.swift */; };
 		FBA48A772B3632B100ABA302 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA48A762B3632B100ABA302 /* Assets.xcassets */; };
 		FBA48A7B2B3632B100ABA302 /* FavoritesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FBBCF6F42B51841E0062CAB5 /* WidgetWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBCF6F32B51841E0062CAB5 /* WidgetWrapper.swift */; };
@@ -78,15 +223,161 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FB0AF33D2B2B4DE700A86918 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB4B86DB2B51B35D002D8124 /* FavoritesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FavoritesWidgetExtension.entitlements; sourceTree = "<group>"; };
+		FB56DCAD2B53095600DC84FA /* PKR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PKR.png; path = ../../../src/assets/flags/fiat/PKR.png; sourceTree = "<group>"; };
+		FB56DCAE2B53095600DC84FA /* BGN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BGN.png; path = ../../../src/assets/flags/fiat/BGN.png; sourceTree = "<group>"; };
+		FB56DCAF2B53095600DC84FA /* GTQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GTQ.png; path = ../../../src/assets/flags/fiat/GTQ.png; sourceTree = "<group>"; };
+		FB56DCB02B53095600DC84FA /* TZS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TZS.png; path = ../../../src/assets/flags/fiat/TZS.png; sourceTree = "<group>"; };
+		FB56DCB12B53095600DC84FA /* CLP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CLP.png; path = ../../../src/assets/flags/fiat/CLP.png; sourceTree = "<group>"; };
+		FB56DCB22B53095600DC84FA /* ARS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ARS.png; path = ../../../src/assets/flags/fiat/ARS.png; sourceTree = "<group>"; };
+		FB56DCB32B53095600DC84FA /* CNY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CNY.png; path = ../../../src/assets/flags/fiat/CNY.png; sourceTree = "<group>"; };
+		FB56DCB42B53095600DC84FA /* OMR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OMR.png; path = ../../../src/assets/flags/fiat/OMR.png; sourceTree = "<group>"; };
+		FB56DCB52B53095600DC84FA /* BAM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BAM.png; path = ../../../src/assets/flags/fiat/BAM.png; sourceTree = "<group>"; };
+		FB56DCB62B53095600DC84FA /* PAB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PAB.png; path = ../../../src/assets/flags/fiat/PAB.png; sourceTree = "<group>"; };
+		FB56DCB72B53095600DC84FA /* RUB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RUB.png; path = ../../../src/assets/flags/fiat/RUB.png; sourceTree = "<group>"; };
+		FB56DCB82B53095600DC84FA /* MDL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MDL.png; path = ../../../src/assets/flags/fiat/MDL.png; sourceTree = "<group>"; };
+		FB56DCB92B53095600DC84FA /* MVR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MVR.png; path = ../../../src/assets/flags/fiat/MVR.png; sourceTree = "<group>"; };
+		FB56DCBA2B53095600DC84FA /* LSL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LSL.png; path = ../../../src/assets/flags/fiat/LSL.png; sourceTree = "<group>"; };
+		FB56DCBB2B53095700DC84FA /* PEN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PEN.png; path = ../../../src/assets/flags/fiat/PEN.png; sourceTree = "<group>"; };
+		FB56DCBC2B53095700DC84FA /* KES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KES.png; path = ../../../src/assets/flags/fiat/KES.png; sourceTree = "<group>"; };
+		FB56DCBD2B53095700DC84FA /* SYP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SYP.png; path = ../../../src/assets/flags/fiat/SYP.png; sourceTree = "<group>"; };
+		FB56DCBE2B53095700DC84FA /* JPY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JPY.png; path = ../../../src/assets/flags/fiat/JPY.png; sourceTree = "<group>"; };
+		FB56DCBF2B53095700DC84FA /* LBP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LBP.png; path = ../../../src/assets/flags/fiat/LBP.png; sourceTree = "<group>"; };
+		FB56DCC02B53095700DC84FA /* EUR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EUR.png; path = ../../../src/assets/flags/fiat/EUR.png; sourceTree = "<group>"; };
+		FB56DCC12B53095700DC84FA /* THB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = THB.png; path = ../../../src/assets/flags/fiat/THB.png; sourceTree = "<group>"; };
+		FB56DCC22B53095700DC84FA /* PHP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PHP.png; path = ../../../src/assets/flags/fiat/PHP.png; sourceTree = "<group>"; };
+		FB56DCC32B53095800DC84FA /* SBD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SBD.png; path = ../../../src/assets/flags/fiat/SBD.png; sourceTree = "<group>"; };
+		FB56DCC42B53095800DC84FA /* LRD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LRD.png; path = ../../../src/assets/flags/fiat/LRD.png; sourceTree = "<group>"; };
+		FB56DCC52B53095800DC84FA /* QAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QAR.png; path = ../../../src/assets/flags/fiat/QAR.png; sourceTree = "<group>"; };
+		FB56DCC62B53095800DC84FA /* SVC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SVC.png; path = ../../../src/assets/flags/fiat/SVC.png; sourceTree = "<group>"; };
+		FB56DCC72B53095800DC84FA /* VND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VND.png; path = ../../../src/assets/flags/fiat/VND.png; sourceTree = "<group>"; };
+		FB56DCC82B53095800DC84FA /* CZK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CZK.png; path = ../../../src/assets/flags/fiat/CZK.png; sourceTree = "<group>"; };
+		FB56DCC92B53095800DC84FA /* LYD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LYD.png; path = ../../../src/assets/flags/fiat/LYD.png; sourceTree = "<group>"; };
+		FB56DCCA2B53095800DC84FA /* KZT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KZT.png; path = ../../../src/assets/flags/fiat/KZT.png; sourceTree = "<group>"; };
+		FB56DCCB2B53095900DC84FA /* ILS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ILS.png; path = ../../../src/assets/flags/fiat/ILS.png; sourceTree = "<group>"; };
+		FB56DCCC2B53095900DC84FA /* SCR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SCR.png; path = ../../../src/assets/flags/fiat/SCR.png; sourceTree = "<group>"; };
+		FB56DCCD2B53095900DC84FA /* CAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CAD.png; path = ../../../src/assets/flags/fiat/CAD.png; sourceTree = "<group>"; };
+		FB56DCCE2B53095900DC84FA /* TWD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TWD.png; path = ../../../src/assets/flags/fiat/TWD.png; sourceTree = "<group>"; };
+		FB56DCCF2B53095900DC84FA /* ALL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ALL.png; path = ../../../src/assets/flags/fiat/ALL.png; sourceTree = "<group>"; };
+		FB56DCD02B53095900DC84FA /* TJS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TJS.png; path = ../../../src/assets/flags/fiat/TJS.png; sourceTree = "<group>"; };
+		FB56DCD12B53095900DC84FA /* LAK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LAK.png; path = ../../../src/assets/flags/fiat/LAK.png; sourceTree = "<group>"; };
+		FB56DCD22B53095900DC84FA /* IMP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMP.png; path = ../../../src/assets/flags/fiat/IMP.png; sourceTree = "<group>"; };
+		FB56DCD32B53095900DC84FA /* VES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VES.png; path = ../../../src/assets/flags/fiat/VES.png; sourceTree = "<group>"; };
+		FB56DCD42B53095A00DC84FA /* SGD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SGD.png; path = ../../../src/assets/flags/fiat/SGD.png; sourceTree = "<group>"; };
+		FB56DCD52B53095A00DC84FA /* TRY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TRY.png; path = ../../../src/assets/flags/fiat/TRY.png; sourceTree = "<group>"; };
+		FB56DCD62B53095A00DC84FA /* ZAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZAR.png; path = ../../../src/assets/flags/fiat/ZAR.png; sourceTree = "<group>"; };
+		FB56DCD72B53095A00DC84FA /* GEL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GEL.png; path = ../../../src/assets/flags/fiat/GEL.png; sourceTree = "<group>"; };
+		FB56DCD82B53095A00DC84FA /* KWD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KWD.png; path = ../../../src/assets/flags/fiat/KWD.png; sourceTree = "<group>"; };
+		FB56DCD92B53095A00DC84FA /* UAH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UAH.png; path = ../../../src/assets/flags/fiat/UAH.png; sourceTree = "<group>"; };
+		FB56DCDA2B53095A00DC84FA /* MYR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MYR.png; path = ../../../src/assets/flags/fiat/MYR.png; sourceTree = "<group>"; };
+		FB56DCDB2B53095A00DC84FA /* SAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SAR.png; path = ../../../src/assets/flags/fiat/SAR.png; sourceTree = "<group>"; };
+		FB56DCDC2B53095A00DC84FA /* MUR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MUR.png; path = ../../../src/assets/flags/fiat/MUR.png; sourceTree = "<group>"; };
+		FB56DCDD2B53095A00DC84FA /* GBP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GBP.png; path = ../../../src/assets/flags/fiat/GBP.png; sourceTree = "<group>"; };
+		FB56DCDE2B53095B00DC84FA /* CHF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CHF.png; path = ../../../src/assets/flags/fiat/CHF.png; sourceTree = "<group>"; };
+		FB56DCDF2B53095B00DC84FA /* DKK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DKK.png; path = ../../../src/assets/flags/fiat/DKK.png; sourceTree = "<group>"; };
+		FB56DCE02B53095B00DC84FA /* NOK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NOK.png; path = ../../../src/assets/flags/fiat/NOK.png; sourceTree = "<group>"; };
+		FB56DCE12B53095B00DC84FA /* BRL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BRL.png; path = ../../../src/assets/flags/fiat/BRL.png; sourceTree = "<group>"; };
+		FB56DCE22B53095B00DC84FA /* MMK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MMK.png; path = ../../../src/assets/flags/fiat/MMK.png; sourceTree = "<group>"; };
+		FB56DCE32B53095C00DC84FA /* MAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MAD.png; path = ../../../src/assets/flags/fiat/MAD.png; sourceTree = "<group>"; };
+		FB56DCE42B53095C00DC84FA /* KGS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KGS.png; path = ../../../src/assets/flags/fiat/KGS.png; sourceTree = "<group>"; };
+		FB56DCE52B53095C00DC84FA /* AMD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AMD.png; path = ../../../src/assets/flags/fiat/AMD.png; sourceTree = "<group>"; };
+		FB56DCE62B53095C00DC84FA /* YER.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YER.png; path = ../../../src/assets/flags/fiat/YER.png; sourceTree = "<group>"; };
+		FB56DCE72B53095C00DC84FA /* USD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = USD.png; path = ../../../src/assets/flags/fiat/USD.png; sourceTree = "<group>"; };
+		FB56DCE82B53095C00DC84FA /* KRW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KRW.png; path = ../../../src/assets/flags/fiat/KRW.png; sourceTree = "<group>"; };
+		FB56DCE92B53095C00DC84FA /* EGP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EGP.png; path = ../../../src/assets/flags/fiat/EGP.png; sourceTree = "<group>"; };
+		FB56DCEA2B53095C00DC84FA /* ISK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ISK.png; path = ../../../src/assets/flags/fiat/ISK.png; sourceTree = "<group>"; };
+		FB56DCEB2B53095C00DC84FA /* NZD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NZD.png; path = ../../../src/assets/flags/fiat/NZD.png; sourceTree = "<group>"; };
+		FB56DCEC2B53095C00DC84FA /* UZS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UZS.png; path = ../../../src/assets/flags/fiat/UZS.png; sourceTree = "<group>"; };
+		FB56DCED2B53095C00DC84FA /* AED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AED.png; path = ../../../src/assets/flags/fiat/AED.png; sourceTree = "<group>"; };
+		FB56DCEE2B53095C00DC84FA /* XAF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = XAF.png; path = ../../../src/assets/flags/fiat/XAF.png; sourceTree = "<group>"; };
+		FB56DCEF2B53095C00DC84FA /* JOD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JOD.png; path = ../../../src/assets/flags/fiat/JOD.png; sourceTree = "<group>"; };
+		FB56DCF02B53095C00DC84FA /* NGN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NGN.png; path = ../../../src/assets/flags/fiat/NGN.png; sourceTree = "<group>"; };
+		FB56DCF12B53095C00DC84FA /* TMT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TMT.png; path = ../../../src/assets/flags/fiat/TMT.png; sourceTree = "<group>"; };
+		FB56DCF22B53095C00DC84FA /* RON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RON.png; path = ../../../src/assets/flags/fiat/RON.png; sourceTree = "<group>"; };
+		FB56DCF32B53095D00DC84FA /* BYN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BYN.png; path = ../../../src/assets/flags/fiat/BYN.png; sourceTree = "<group>"; };
+		FB56DCF42B53095D00DC84FA /* MRU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MRU.png; path = ../../../src/assets/flags/fiat/MRU.png; sourceTree = "<group>"; };
+		FB56DCF52B53095D00DC84FA /* MZN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MZN.png; path = ../../../src/assets/flags/fiat/MZN.png; sourceTree = "<group>"; };
+		FB56DCF62B53095D00DC84FA /* AZN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AZN.png; path = ../../../src/assets/flags/fiat/AZN.png; sourceTree = "<group>"; };
+		FB56DCF72B53095D00DC84FA /* RSD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RSD.png; path = ../../../src/assets/flags/fiat/RSD.png; sourceTree = "<group>"; };
+		FB56DCF82B53095D00DC84FA /* HRK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HRK.png; path = ../../../src/assets/flags/fiat/HRK.png; sourceTree = "<group>"; };
+		FB56DCF92B53095D00DC84FA /* SKK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SKK.png; path = ../../../src/assets/flags/fiat/SKK.png; sourceTree = "<group>"; };
+		FB56DCFA2B53095D00DC84FA /* MXN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MXN.png; path = ../../../src/assets/flags/fiat/MXN.png; sourceTree = "<group>"; };
+		FB56DCFB2B53095D00DC84FA /* HUF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HUF.png; path = ../../../src/assets/flags/fiat/HUF.png; sourceTree = "<group>"; };
+		FB56DCFC2B53095D00DC84FA /* JEP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JEP.png; path = ../../../src/assets/flags/fiat/JEP.png; sourceTree = "<group>"; };
+		FB56DCFD2B53095D00DC84FA /* HKD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HKD.png; path = ../../../src/assets/flags/fiat/HKD.png; sourceTree = "<group>"; };
+		FB56DCFE2B53095D00DC84FA /* ZMK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ZMK.png; path = ../../../src/assets/flags/fiat/ZMK.png; sourceTree = "<group>"; };
+		FB56DCFF2B53095D00DC84FA /* MNT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MNT.png; path = ../../../src/assets/flags/fiat/MNT.png; sourceTree = "<group>"; };
+		FB56DD002B53095D00DC84FA /* TND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TND.png; path = ../../../src/assets/flags/fiat/TND.png; sourceTree = "<group>"; };
+		FB56DD012B53095E00DC84FA /* NPR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NPR.png; path = ../../../src/assets/flags/fiat/NPR.png; sourceTree = "<group>"; };
+		FB56DD022B53095E00DC84FA /* PYG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PYG.png; path = ../../../src/assets/flags/fiat/PYG.png; sourceTree = "<group>"; };
+		FB56DD032B53095E00DC84FA /* PGK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PGK.png; path = ../../../src/assets/flags/fiat/PGK.png; sourceTree = "<group>"; };
+		FB56DD042B53095E00DC84FA /* IQD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IQD.png; path = ../../../src/assets/flags/fiat/IQD.png; sourceTree = "<group>"; };
+		FB56DD052B53095E00DC84FA /* LKR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LKR.png; path = ../../../src/assets/flags/fiat/LKR.png; sourceTree = "<group>"; };
+		FB56DD062B53095E00DC84FA /* KMF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KMF.png; path = ../../../src/assets/flags/fiat/KMF.png; sourceTree = "<group>"; };
+		FB56DD072B53095E00DC84FA /* WST.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WST.png; path = ../../../src/assets/flags/fiat/WST.png; sourceTree = "<group>"; };
+		FB56DD082B53095E00DC84FA /* INR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = INR.png; path = ../../../src/assets/flags/fiat/INR.png; sourceTree = "<group>"; };
+		FB56DD092B53095E00DC84FA /* KHR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KHR.png; path = ../../../src/assets/flags/fiat/KHR.png; sourceTree = "<group>"; };
+		FB56DD0A2B53095E00DC84FA /* NAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NAD.png; path = ../../../src/assets/flags/fiat/NAD.png; sourceTree = "<group>"; };
+		FB56DD0B2B53095E00DC84FA /* PLN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PLN.png; path = ../../../src/assets/flags/fiat/PLN.png; sourceTree = "<group>"; };
+		FB56DD0C2B53095E00DC84FA /* SEK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SEK.png; path = ../../../src/assets/flags/fiat/SEK.png; sourceTree = "<group>"; };
+		FB56DD0D2B53095E00DC84FA /* SLL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SLL.png; path = ../../../src/assets/flags/fiat/SLL.png; sourceTree = "<group>"; };
+		FB56DD0E2B53095E00DC84FA /* IDR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IDR.png; path = ../../../src/assets/flags/fiat/IDR.png; sourceTree = "<group>"; };
+		FB56DD0F2B53095E00DC84FA /* JMD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JMD.png; path = ../../../src/assets/flags/fiat/JMD.png; sourceTree = "<group>"; };
+		FB56DD102B53095E00DC84FA /* KYD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KYD.png; path = ../../../src/assets/flags/fiat/KYD.png; sourceTree = "<group>"; };
+		FB56DD112B53095E00DC84FA /* IRR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IRR.png; path = ../../../src/assets/flags/fiat/IRR.png; sourceTree = "<group>"; };
+		FB56DD122B53095F00DC84FA /* NIO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NIO.png; path = ../../../src/assets/flags/fiat/NIO.png; sourceTree = "<group>"; };
+		FB56DD132B53095F00DC84FA /* MKD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MKD.png; path = ../../../src/assets/flags/fiat/MKD.png; sourceTree = "<group>"; };
+		FB56DD7C2B5309CE00DC84FA /* SHIB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SHIB.png; path = ../../../src/assets/flags/crypto/SHIB.png; sourceTree = "<group>"; };
+		FB56DD7D2B5309CE00DC84FA /* BSV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BSV.png; path = ../../../src/assets/flags/crypto/BSV.png; sourceTree = "<group>"; };
+		FB56DD7E2B5309CE00DC84FA /* LDO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LDO.png; path = ../../../src/assets/flags/crypto/LDO.png; sourceTree = "<group>"; };
+		FB56DD7F2B5309CE00DC84FA /* RNDR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RNDR.png; path = ../../../src/assets/flags/crypto/RNDR.png; sourceTree = "<group>"; };
+		FB56DD802B5309CE00DC84FA /* XTZ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = XTZ.png; path = ../../../src/assets/flags/crypto/XTZ.png; sourceTree = "<group>"; };
+		FB56DD812B5309CE00DC84FA /* XLM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = XLM.png; path = ../../../src/assets/flags/crypto/XLM.png; sourceTree = "<group>"; };
+		FB56DD822B5309CE00DC84FA /* ETC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ETC.png; path = ../../../src/assets/flags/crypto/ETC.png; sourceTree = "<group>"; };
+		FB56DD832B5309CE00DC84FA /* XRP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = XRP.png; path = ../../../src/assets/flags/crypto/XRP.png; sourceTree = "<group>"; };
+		FB56DD842B5309CF00DC84FA /* IMX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMX.png; path = ../../../src/assets/flags/crypto/IMX.png; sourceTree = "<group>"; };
+		FB56DD852B5309CF00DC84FA /* CRO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CRO.png; path = ../../../src/assets/flags/crypto/CRO.png; sourceTree = "<group>"; };
+		FB56DD862B5309CF00DC84FA /* WBTC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WBTC.png; path = ../../../src/assets/flags/crypto/WBTC.png; sourceTree = "<group>"; };
+		FB56DD872B5309CF00DC84FA /* DOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DOT.png; path = ../../../src/assets/flags/crypto/DOT.png; sourceTree = "<group>"; };
+		FB56DD882B5309CF00DC84FA /* BTC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BTC.png; path = ../../../src/assets/flags/crypto/BTC.png; sourceTree = "<group>"; };
+		FB56DD892B5309CF00DC84FA /* EOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EOS.png; path = ../../../src/assets/flags/crypto/EOS.png; sourceTree = "<group>"; };
+		FB56DD8A2B5309CF00DC84FA /* ADA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ADA.png; path = ../../../src/assets/flags/crypto/ADA.png; sourceTree = "<group>"; };
+		FB56DD8B2B5309CF00DC84FA /* SAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SAND.png; path = ../../../src/assets/flags/crypto/SAND.png; sourceTree = "<group>"; };
+		FB56DD8C2B5309CF00DC84FA /* APT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = APT.png; path = ../../../src/assets/flags/crypto/APT.png; sourceTree = "<group>"; };
+		FB56DD8D2B5309D000DC84FA /* ICP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ICP.png; path = ../../../src/assets/flags/crypto/ICP.png; sourceTree = "<group>"; };
+		FB56DD8E2B5309D000DC84FA /* AVAX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AVAX.png; path = ../../../src/assets/flags/crypto/AVAX.png; sourceTree = "<group>"; };
+		FB56DD8F2B5309D000DC84FA /* DAI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DAI.png; path = ../../../src/assets/flags/crypto/DAI.png; sourceTree = "<group>"; };
+		FB56DD902B5309D000DC84FA /* LTC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LTC.png; path = ../../../src/assets/flags/crypto/LTC.png; sourceTree = "<group>"; };
+		FB56DD912B5309D000DC84FA /* DOGE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DOGE.png; path = ../../../src/assets/flags/crypto/DOGE.png; sourceTree = "<group>"; };
+		FB56DD922B5309D000DC84FA /* AXS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AXS.png; path = ../../../src/assets/flags/crypto/AXS.png; sourceTree = "<group>"; };
+		FB56DD932B5309D000DC84FA /* SOL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SOL.png; path = ../../../src/assets/flags/crypto/SOL.png; sourceTree = "<group>"; };
+		FB56DD942B5309D000DC84FA /* BCH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BCH.png; path = ../../../src/assets/flags/crypto/BCH.png; sourceTree = "<group>"; };
+		FB56DD952B5309D000DC84FA /* ETH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ETH.png; path = ../../../src/assets/flags/crypto/ETH.png; sourceTree = "<group>"; };
+		FB56DD962B5309D000DC84FA /* HBAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HBAR.png; path = ../../../src/assets/flags/crypto/HBAR.png; sourceTree = "<group>"; };
+		FB56DD972B5309D000DC84FA /* INJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = INJ.png; path = ../../../src/assets/flags/crypto/INJ.png; sourceTree = "<group>"; };
+		FB56DD982B5309D100DC84FA /* LINK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LINK.png; path = ../../../src/assets/flags/crypto/LINK.png; sourceTree = "<group>"; };
+		FB56DD992B5309D100DC84FA /* USDT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = USDT.png; path = ../../../src/assets/flags/crypto/USDT.png; sourceTree = "<group>"; };
+		FB56DD9A2B5309D100DC84FA /* ATOM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ATOM.png; path = ../../../src/assets/flags/crypto/ATOM.png; sourceTree = "<group>"; };
+		FB56DD9B2B5309D100DC84FA /* NEAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NEAR.png; path = ../../../src/assets/flags/crypto/NEAR.png; sourceTree = "<group>"; };
+		FB56DD9C2B5309D100DC84FA /* VET.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VET.png; path = ../../../src/assets/flags/crypto/VET.png; sourceTree = "<group>"; };
+		FB56DD9D2B5309D100DC84FA /* ARB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ARB.png; path = ../../../src/assets/flags/crypto/ARB.png; sourceTree = "<group>"; };
+		FB56DD9E2B5309D100DC84FA /* OP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OP.png; path = ../../../src/assets/flags/crypto/OP.png; sourceTree = "<group>"; };
+		FB56DD9F2B5309D100DC84FA /* STX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = STX.png; path = ../../../src/assets/flags/crypto/STX.png; sourceTree = "<group>"; };
+		FB56DDA02B5309D100DC84FA /* USDC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = USDC.png; path = ../../../src/assets/flags/crypto/USDC.png; sourceTree = "<group>"; };
+		FB56DDA12B5309D100DC84FA /* BUSD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BUSD.png; path = ../../../src/assets/flags/crypto/BUSD.png; sourceTree = "<group>"; };
+		FB56DDA22B5309D200DC84FA /* ALGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ALGO.png; path = ../../../src/assets/flags/crypto/ALGO.png; sourceTree = "<group>"; };
+		FB56DDA32B5309D200DC84FA /* GRT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GRT.png; path = ../../../src/assets/flags/crypto/GRT.png; sourceTree = "<group>"; };
+		FB56DDA42B5309D200DC84FA /* FIL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FIL.png; path = ../../../src/assets/flags/crypto/FIL.png; sourceTree = "<group>"; };
+		FB56DDA52B5309D200DC84FA /* EGLD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EGLD.png; path = ../../../src/assets/flags/crypto/EGLD.png; sourceTree = "<group>"; };
+		FB56DDA62B5309D200DC84FA /* MATIC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MATIC.png; path = ../../../src/assets/flags/crypto/MATIC.png; sourceTree = "<group>"; };
+		FB56DDA72B5309D200DC84FA /* AAVE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AAVE.png; path = ../../../src/assets/flags/crypto/AAVE.png; sourceTree = "<group>"; };
+		FB56DDA82B5309D200DC84FA /* QNT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QNT.png; path = ../../../src/assets/flags/crypto/QNT.png; sourceTree = "<group>"; };
 		FB5A81FDAA20A5FA36466AD3 /* Pods-Converter-ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Converter-ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Converter-ConverterTests/Pods-Converter-ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = Converter/BootSplash.storyboard; sourceTree = "<group>"; };
 		FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FavoritesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA48A692B3632AF00ABA302 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		FBA48A6B2B3632AF00ABA302 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		FBA48A6E2B3632AF00ABA302 /* FavoritesWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidgetBundle.swift; sourceTree = "<group>"; };
-		FBA48A702B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		FBA48A722B3632AF00ABA302 /* FavoritesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesWidget.swift; sourceTree = "<group>"; };
-		FBA48A742B3632AF00ABA302 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		FBA48A762B3632B100ABA302 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBA48A782B3632B100ABA302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBBCF6F22B51841E0062CAB5 /* Converter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Converter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -184,6 +475,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				FB4B86DB2B51B35D002D8124 /* FavoritesWidgetExtension.entitlements */,
 				13B07FAE1A68108700A75B9A /* Converter */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ConverterTests */,
@@ -225,13 +517,190 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FB56DCA92B53091C00DC84FA /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				FB56DCAB2B53093A00DC84FA /* flags */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		FB56DCAB2B53093A00DC84FA /* flags */ = {
+			isa = PBXGroup;
+			children = (
+				FB56DD7B2B5309BD00DC84FA /* crypto */,
+				FB56DCAC2B53094000DC84FA /* fiat */,
+			);
+			name = flags;
+			sourceTree = "<group>";
+		};
+		FB56DCAC2B53094000DC84FA /* fiat */ = {
+			isa = PBXGroup;
+			children = (
+				FB56DCED2B53095C00DC84FA /* AED.png */,
+				FB56DCCF2B53095900DC84FA /* ALL.png */,
+				FB56DCE52B53095C00DC84FA /* AMD.png */,
+				FB56DCB22B53095600DC84FA /* ARS.png */,
+				FB56DCF62B53095D00DC84FA /* AZN.png */,
+				FB56DCB52B53095600DC84FA /* BAM.png */,
+				FB56DCAE2B53095600DC84FA /* BGN.png */,
+				FB56DCE12B53095B00DC84FA /* BRL.png */,
+				FB56DCF32B53095D00DC84FA /* BYN.png */,
+				FB56DCCD2B53095900DC84FA /* CAD.png */,
+				FB56DCDE2B53095B00DC84FA /* CHF.png */,
+				FB56DCB12B53095600DC84FA /* CLP.png */,
+				FB56DCB32B53095600DC84FA /* CNY.png */,
+				FB56DCC82B53095800DC84FA /* CZK.png */,
+				FB56DCDF2B53095B00DC84FA /* DKK.png */,
+				FB56DCE92B53095C00DC84FA /* EGP.png */,
+				FB56DCC02B53095700DC84FA /* EUR.png */,
+				FB56DCDD2B53095A00DC84FA /* GBP.png */,
+				FB56DCD72B53095A00DC84FA /* GEL.png */,
+				FB56DCAF2B53095600DC84FA /* GTQ.png */,
+				FB56DCFD2B53095D00DC84FA /* HKD.png */,
+				FB56DCF82B53095D00DC84FA /* HRK.png */,
+				FB56DCFB2B53095D00DC84FA /* HUF.png */,
+				FB56DD0E2B53095E00DC84FA /* IDR.png */,
+				FB56DCCB2B53095900DC84FA /* ILS.png */,
+				FB56DCD22B53095900DC84FA /* IMP.png */,
+				FB56DD082B53095E00DC84FA /* INR.png */,
+				FB56DD042B53095E00DC84FA /* IQD.png */,
+				FB56DD112B53095E00DC84FA /* IRR.png */,
+				FB56DCEA2B53095C00DC84FA /* ISK.png */,
+				FB56DCFC2B53095D00DC84FA /* JEP.png */,
+				FB56DD0F2B53095E00DC84FA /* JMD.png */,
+				FB56DCEF2B53095C00DC84FA /* JOD.png */,
+				FB56DCBE2B53095700DC84FA /* JPY.png */,
+				FB56DCBC2B53095700DC84FA /* KES.png */,
+				FB56DCE42B53095C00DC84FA /* KGS.png */,
+				FB56DD092B53095E00DC84FA /* KHR.png */,
+				FB56DD062B53095E00DC84FA /* KMF.png */,
+				FB56DCE82B53095C00DC84FA /* KRW.png */,
+				FB56DCD82B53095A00DC84FA /* KWD.png */,
+				FB56DD102B53095E00DC84FA /* KYD.png */,
+				FB56DCCA2B53095800DC84FA /* KZT.png */,
+				FB56DCD12B53095900DC84FA /* LAK.png */,
+				FB56DCBF2B53095700DC84FA /* LBP.png */,
+				FB56DD052B53095E00DC84FA /* LKR.png */,
+				FB56DCC42B53095800DC84FA /* LRD.png */,
+				FB56DCBA2B53095600DC84FA /* LSL.png */,
+				FB56DCC92B53095800DC84FA /* LYD.png */,
+				FB56DCE32B53095C00DC84FA /* MAD.png */,
+				FB56DCB82B53095600DC84FA /* MDL.png */,
+				FB56DD132B53095F00DC84FA /* MKD.png */,
+				FB56DCE22B53095B00DC84FA /* MMK.png */,
+				FB56DCFF2B53095D00DC84FA /* MNT.png */,
+				FB56DCF42B53095D00DC84FA /* MRU.png */,
+				FB56DCDC2B53095A00DC84FA /* MUR.png */,
+				FB56DCB92B53095600DC84FA /* MVR.png */,
+				FB56DCFA2B53095D00DC84FA /* MXN.png */,
+				FB56DCDA2B53095A00DC84FA /* MYR.png */,
+				FB56DCF52B53095D00DC84FA /* MZN.png */,
+				FB56DD0A2B53095E00DC84FA /* NAD.png */,
+				FB56DCF02B53095C00DC84FA /* NGN.png */,
+				FB56DD122B53095F00DC84FA /* NIO.png */,
+				FB56DCE02B53095B00DC84FA /* NOK.png */,
+				FB56DD012B53095E00DC84FA /* NPR.png */,
+				FB56DCEB2B53095C00DC84FA /* NZD.png */,
+				FB56DCB42B53095600DC84FA /* OMR.png */,
+				FB56DCB62B53095600DC84FA /* PAB.png */,
+				FB56DCBB2B53095700DC84FA /* PEN.png */,
+				FB56DD032B53095E00DC84FA /* PGK.png */,
+				FB56DCC22B53095700DC84FA /* PHP.png */,
+				FB56DCAD2B53095600DC84FA /* PKR.png */,
+				FB56DD0B2B53095E00DC84FA /* PLN.png */,
+				FB56DD022B53095E00DC84FA /* PYG.png */,
+				FB56DCC52B53095800DC84FA /* QAR.png */,
+				FB56DCF22B53095C00DC84FA /* RON.png */,
+				FB56DCF72B53095D00DC84FA /* RSD.png */,
+				FB56DCB72B53095600DC84FA /* RUB.png */,
+				FB56DCDB2B53095A00DC84FA /* SAR.png */,
+				FB56DCC32B53095800DC84FA /* SBD.png */,
+				FB56DCCC2B53095900DC84FA /* SCR.png */,
+				FB56DD0C2B53095E00DC84FA /* SEK.png */,
+				FB56DCD42B53095A00DC84FA /* SGD.png */,
+				FB56DCF92B53095D00DC84FA /* SKK.png */,
+				FB56DD0D2B53095E00DC84FA /* SLL.png */,
+				FB56DCC62B53095800DC84FA /* SVC.png */,
+				FB56DCBD2B53095700DC84FA /* SYP.png */,
+				FB56DCC12B53095700DC84FA /* THB.png */,
+				FB56DCD02B53095900DC84FA /* TJS.png */,
+				FB56DCF12B53095C00DC84FA /* TMT.png */,
+				FB56DD002B53095D00DC84FA /* TND.png */,
+				FB56DCD52B53095A00DC84FA /* TRY.png */,
+				FB56DCCE2B53095900DC84FA /* TWD.png */,
+				FB56DCB02B53095600DC84FA /* TZS.png */,
+				FB56DCD92B53095A00DC84FA /* UAH.png */,
+				FB56DCE72B53095C00DC84FA /* USD.png */,
+				FB56DCEC2B53095C00DC84FA /* UZS.png */,
+				FB56DCD32B53095900DC84FA /* VES.png */,
+				FB56DCC72B53095800DC84FA /* VND.png */,
+				FB56DD072B53095E00DC84FA /* WST.png */,
+				FB56DCEE2B53095C00DC84FA /* XAF.png */,
+				FB56DCE62B53095C00DC84FA /* YER.png */,
+				FB56DCD62B53095A00DC84FA /* ZAR.png */,
+				FB56DCFE2B53095D00DC84FA /* ZMK.png */,
+			);
+			name = fiat;
+			sourceTree = "<group>";
+		};
+		FB56DD7B2B5309BD00DC84FA /* crypto */ = {
+			isa = PBXGroup;
+			children = (
+				FB56DDA72B5309D200DC84FA /* AAVE.png */,
+				FB56DD8A2B5309CF00DC84FA /* ADA.png */,
+				FB56DDA22B5309D200DC84FA /* ALGO.png */,
+				FB56DD8C2B5309CF00DC84FA /* APT.png */,
+				FB56DD9D2B5309D100DC84FA /* ARB.png */,
+				FB56DD9A2B5309D100DC84FA /* ATOM.png */,
+				FB56DD8E2B5309D000DC84FA /* AVAX.png */,
+				FB56DD922B5309D000DC84FA /* AXS.png */,
+				FB56DD942B5309D000DC84FA /* BCH.png */,
+				FB56DD7D2B5309CE00DC84FA /* BSV.png */,
+				FB56DD882B5309CF00DC84FA /* BTC.png */,
+				FB56DDA12B5309D100DC84FA /* BUSD.png */,
+				FB56DD852B5309CF00DC84FA /* CRO.png */,
+				FB56DD8F2B5309D000DC84FA /* DAI.png */,
+				FB56DD912B5309D000DC84FA /* DOGE.png */,
+				FB56DD872B5309CF00DC84FA /* DOT.png */,
+				FB56DDA52B5309D200DC84FA /* EGLD.png */,
+				FB56DD892B5309CF00DC84FA /* EOS.png */,
+				FB56DD822B5309CE00DC84FA /* ETC.png */,
+				FB56DD952B5309D000DC84FA /* ETH.png */,
+				FB56DDA42B5309D200DC84FA /* FIL.png */,
+				FB56DDA32B5309D200DC84FA /* GRT.png */,
+				FB56DD962B5309D000DC84FA /* HBAR.png */,
+				FB56DD8D2B5309D000DC84FA /* ICP.png */,
+				FB56DD842B5309CF00DC84FA /* IMX.png */,
+				FB56DD972B5309D000DC84FA /* INJ.png */,
+				FB56DD7E2B5309CE00DC84FA /* LDO.png */,
+				FB56DD982B5309D100DC84FA /* LINK.png */,
+				FB56DD902B5309D000DC84FA /* LTC.png */,
+				FB56DDA62B5309D200DC84FA /* MATIC.png */,
+				FB56DD9B2B5309D100DC84FA /* NEAR.png */,
+				FB56DD9E2B5309D100DC84FA /* OP.png */,
+				FB56DDA82B5309D200DC84FA /* QNT.png */,
+				FB56DD7F2B5309CE00DC84FA /* RNDR.png */,
+				FB56DD8B2B5309CF00DC84FA /* SAND.png */,
+				FB56DD7C2B5309CE00DC84FA /* SHIB.png */,
+				FB56DD932B5309D000DC84FA /* SOL.png */,
+				FB56DD9F2B5309D100DC84FA /* STX.png */,
+				FB56DDA02B5309D100DC84FA /* USDC.png */,
+				FB56DD992B5309D100DC84FA /* USDT.png */,
+				FB56DD9C2B5309D100DC84FA /* VET.png */,
+				FB56DD862B5309CF00DC84FA /* WBTC.png */,
+				FB56DD812B5309CE00DC84FA /* XLM.png */,
+				FB56DD832B5309CE00DC84FA /* XRP.png */,
+				FB56DD802B5309CE00DC84FA /* XTZ.png */,
+			);
+			name = crypto;
+			sourceTree = "<group>";
+		};
 		FBA48A6D2B3632AF00ABA302 /* FavoritesWidget */ = {
 			isa = PBXGroup;
 			children = (
-				FBA48A6E2B3632AF00ABA302 /* FavoritesWidgetBundle.swift */,
-				FBA48A702B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift */,
+				FB56DCA92B53091C00DC84FA /* assets */,
 				FBA48A722B3632AF00ABA302 /* FavoritesWidget.swift */,
-				FBA48A742B3632AF00ABA302 /* AppIntent.swift */,
 				FBA48A762B3632B100ABA302 /* Assets.xcassets */,
 				FBA48A782B3632B100ABA302 /* Info.plist */,
 			);
@@ -372,7 +841,155 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB56DDC12B5309D200DC84FA /* BCH.png in Resources */,
+				FB56DDC82B5309D200DC84FA /* NEAR.png in Resources */,
+				FB56DDBA2B5309D200DC84FA /* ICP.png in Resources */,
+				FB56DD732B53095F00DC84FA /* SEK.png in Resources */,
+				FB56DD682B53095F00DC84FA /* NPR.png in Resources */,
+				FB56DDCE2B5309D200DC84FA /* BUSD.png in Resources */,
+				FB56DD712B53095F00DC84FA /* NAD.png in Resources */,
+				FB56DD422B53095F00DC84FA /* SAR.png in Resources */,
+				FB56DDC32B5309D200DC84FA /* HBAR.png in Resources */,
+				FB56DD4D2B53095F00DC84FA /* YER.png in Resources */,
+				FB56DD3D2B53095F00DC84FA /* ZAR.png in Resources */,
+				FB56DD512B53095F00DC84FA /* ISK.png in Resources */,
+				FB56DD342B53095F00DC84FA /* CAD.png in Resources */,
+				FB56DD262B53095F00DC84FA /* LBP.png in Resources */,
+				FB56DD212B53095F00DC84FA /* LSL.png in Resources */,
+				FB56DD362B53095F00DC84FA /* ALL.png in Resources */,
+				FB56DDCA2B5309D200DC84FA /* ARB.png in Resources */,
+				FB56DD482B53095F00DC84FA /* BRL.png in Resources */,
+				FB56DD322B53095F00DC84FA /* ILS.png in Resources */,
+				FB56DD282B53095F00DC84FA /* THB.png in Resources */,
+				FB56DD462B53095F00DC84FA /* DKK.png in Resources */,
+				FB56DD772B53095F00DC84FA /* KYD.png in Resources */,
+				FB56DDBD2B5309D200DC84FA /* LTC.png in Resources */,
+				FB56DD542B53095F00DC84FA /* AED.png in Resources */,
+				FB56DDB32B5309D200DC84FA /* WBTC.png in Resources */,
+				FB56DD622B53095F00DC84FA /* HUF.png in Resources */,
+				FB56DD6F2B53095F00DC84FA /* INR.png in Resources */,
+				FB56DD392B53095F00DC84FA /* IMP.png in Resources */,
+				FB56DDB02B5309D200DC84FA /* XRP.png in Resources */,
+				FB56DD2A2B53095F00DC84FA /* SBD.png in Resources */,
+				FB56DDC72B5309D200DC84FA /* ATOM.png in Resources */,
+				FB56DD1C2B53095F00DC84FA /* BAM.png in Resources */,
+				FB56DD642B53095F00DC84FA /* HKD.png in Resources */,
+				FB56DD372B53095F00DC84FA /* TJS.png in Resources */,
+				FB56DD432B53095F00DC84FA /* MUR.png in Resources */,
+				FB56DD752B53095F00DC84FA /* IDR.png in Resources */,
+				FB56DDB12B5309D200DC84FA /* IMX.png in Resources */,
+				FB56DD692B53095F00DC84FA /* PYG.png in Resources */,
+				FB56DD332B53095F00DC84FA /* SCR.png in Resources */,
+				FB56DD152B53095F00DC84FA /* BGN.png in Resources */,
 				FBA48A772B3632B100ABA302 /* Assets.xcassets in Resources */,
+				FB56DD1E2B53095F00DC84FA /* RUB.png in Resources */,
+				FB56DDBE2B5309D200DC84FA /* DOGE.png in Resources */,
+				FB56DD502B53095F00DC84FA /* EGP.png in Resources */,
+				FB56DD172B53095F00DC84FA /* TZS.png in Resources */,
+				FB56DD572B53095F00DC84FA /* NGN.png in Resources */,
+				FB56DDB42B5309D200DC84FA /* DOT.png in Resources */,
+				FB56DDB22B5309D200DC84FA /* CRO.png in Resources */,
+				FB56DD762B53095F00DC84FA /* JMD.png in Resources */,
+				FB56DDD12B5309D200DC84FA /* FIL.png in Resources */,
+				FB56DD252B53095F00DC84FA /* JPY.png in Resources */,
+				FB56DDC22B5309D200DC84FA /* ETH.png in Resources */,
+				FB56DDAF2B5309D200DC84FA /* ETC.png in Resources */,
+				FB56DDCD2B5309D200DC84FA /* USDC.png in Resources */,
+				FB56DD412B53095F00DC84FA /* MYR.png in Resources */,
+				FB56DD5E2B53095F00DC84FA /* RSD.png in Resources */,
+				FB56DD5A2B53095F00DC84FA /* BYN.png in Resources */,
+				FB56DD3A2B53095F00DC84FA /* VES.png in Resources */,
+				FB56DD722B53095F00DC84FA /* PLN.png in Resources */,
+				FB56DDD32B5309D200DC84FA /* MATIC.png in Resources */,
+				FB56DD402B53095F00DC84FA /* UAH.png in Resources */,
+				FB56DDAD2B5309D200DC84FA /* XTZ.png in Resources */,
+				FB56DD4B2B53095F00DC84FA /* KGS.png in Resources */,
+				FB56DDB72B5309D200DC84FA /* ADA.png in Resources */,
+				FB56DD182B53095F00DC84FA /* CLP.png in Resources */,
+				FB56DDB62B5309D200DC84FA /* EOS.png in Resources */,
+				FB56DD382B53095F00DC84FA /* LAK.png in Resources */,
+				FB56DD782B53095F00DC84FA /* IRR.png in Resources */,
+				FB56DDD52B5309D200DC84FA /* QNT.png in Resources */,
+				FB56DD7A2B53095F00DC84FA /* MKD.png in Resources */,
+				FB56DD292B53095F00DC84FA /* PHP.png in Resources */,
+				FB56DDCF2B5309D200DC84FA /* ALGO.png in Resources */,
+				FB56DDB82B5309D200DC84FA /* SAND.png in Resources */,
+				FB56DD272B53095F00DC84FA /* EUR.png in Resources */,
+				FB56DD4A2B53095F00DC84FA /* MAD.png in Resources */,
+				FB56DD3E2B53095F00DC84FA /* GEL.png in Resources */,
+				FB56DD562B53095F00DC84FA /* JOD.png in Resources */,
+				FB56DD452B53095F00DC84FA /* CHF.png in Resources */,
+				FB56DD1D2B53095F00DC84FA /* PAB.png in Resources */,
+				FB56DD612B53095F00DC84FA /* MXN.png in Resources */,
+				FB56DD592B53095F00DC84FA /* RON.png in Resources */,
+				FB56DDB52B5309D200DC84FA /* BTC.png in Resources */,
+				FB56DD662B53095F00DC84FA /* MNT.png in Resources */,
+				FB56DD672B53095F00DC84FA /* TND.png in Resources */,
+				FB56DDBF2B5309D200DC84FA /* AXS.png in Resources */,
+				FB56DD2C2B53095F00DC84FA /* QAR.png in Resources */,
+				FB56DD632B53095F00DC84FA /* JEP.png in Resources */,
+				FB56DD4F2B53095F00DC84FA /* KRW.png in Resources */,
+				FB56DD522B53095F00DC84FA /* NZD.png in Resources */,
+				FB56DD602B53095F00DC84FA /* SKK.png in Resources */,
+				FB56DD202B53095F00DC84FA /* MVR.png in Resources */,
+				FB56DD2B2B53095F00DC84FA /* LRD.png in Resources */,
+				FB56DD492B53095F00DC84FA /* MMK.png in Resources */,
+				FB56DD6B2B53095F00DC84FA /* IQD.png in Resources */,
+				FB56DD652B53095F00DC84FA /* ZMK.png in Resources */,
+				FB56DDC52B5309D200DC84FA /* LINK.png in Resources */,
+				FB56DDBC2B5309D200DC84FA /* DAI.png in Resources */,
+				FB56DD5C2B53095F00DC84FA /* MZN.png in Resources */,
+				FB56DD6E2B53095F00DC84FA /* WST.png in Resources */,
+				FB56DD5D2B53095F00DC84FA /* AZN.png in Resources */,
+				FB56DD6A2B53095F00DC84FA /* PGK.png in Resources */,
+				FB56DD1A2B53095F00DC84FA /* CNY.png in Resources */,
+				FB56DD2E2B53095F00DC84FA /* VND.png in Resources */,
+				FB56DDAB2B5309D200DC84FA /* LDO.png in Resources */,
+				FB56DD3C2B53095F00DC84FA /* TRY.png in Resources */,
+				FB56DD2D2B53095F00DC84FA /* SVC.png in Resources */,
+				FB56DDC62B5309D200DC84FA /* USDT.png in Resources */,
+				FB56DD4E2B53095F00DC84FA /* USD.png in Resources */,
+				FB56DD702B53095F00DC84FA /* KHR.png in Resources */,
+				FB56DD442B53095F00DC84FA /* GBP.png in Resources */,
+				FB56DDC42B5309D200DC84FA /* INJ.png in Resources */,
+				FB56DD552B53095F00DC84FA /* XAF.png in Resources */,
+				FB56DDCB2B5309D200DC84FA /* OP.png in Resources */,
+				FB56DDAC2B5309D200DC84FA /* RNDR.png in Resources */,
+				FB56DD352B53095F00DC84FA /* TWD.png in Resources */,
+				FB56DDC92B5309D200DC84FA /* VET.png in Resources */,
+				FB56DD192B53095F00DC84FA /* ARS.png in Resources */,
+				FB56DDAE2B5309D200DC84FA /* XLM.png in Resources */,
+				FB56DD302B53095F00DC84FA /* LYD.png in Resources */,
+				FB56DDCC2B5309D200DC84FA /* STX.png in Resources */,
+				FB56DD472B53095F00DC84FA /* NOK.png in Resources */,
+				FB56DDD42B5309D200DC84FA /* AAVE.png in Resources */,
+				FB56DD232B53095F00DC84FA /* KES.png in Resources */,
+				FB56DDC02B5309D200DC84FA /* SOL.png in Resources */,
+				FB56DD792B53095F00DC84FA /* NIO.png in Resources */,
+				FB56DD582B53095F00DC84FA /* TMT.png in Resources */,
+				FB56DD742B53095F00DC84FA /* SLL.png in Resources */,
+				FB56DD6C2B53095F00DC84FA /* LKR.png in Resources */,
+				FB56DD3B2B53095F00DC84FA /* SGD.png in Resources */,
+				FB56DD242B53095F00DC84FA /* SYP.png in Resources */,
+				FB56DD5B2B53095F00DC84FA /* MRU.png in Resources */,
+				FB56DD1B2B53095F00DC84FA /* OMR.png in Resources */,
+				FB56DD162B53095F00DC84FA /* GTQ.png in Resources */,
+				FB56DD5F2B53095F00DC84FA /* HRK.png in Resources */,
+				FB56DD3F2B53095F00DC84FA /* KWD.png in Resources */,
+				FB56DDBB2B5309D200DC84FA /* AVAX.png in Resources */,
+				FB56DDB92B5309D200DC84FA /* APT.png in Resources */,
+				FB56DD4C2B53095F00DC84FA /* AMD.png in Resources */,
+				FB56DDAA2B5309D200DC84FA /* BSV.png in Resources */,
+				FB56DDD02B5309D200DC84FA /* GRT.png in Resources */,
+				FB56DD222B53095F00DC84FA /* PEN.png in Resources */,
+				FB56DD1F2B53095F00DC84FA /* MDL.png in Resources */,
+				FB56DD6D2B53095F00DC84FA /* KMF.png in Resources */,
+				FB56DD312B53095F00DC84FA /* KZT.png in Resources */,
+				FB56DDD22B5309D200DC84FA /* EGLD.png in Resources */,
+				FB56DD2F2B53095F00DC84FA /* CZK.png in Resources */,
+				FB56DDA92B5309D200DC84FA /* SHIB.png in Resources */,
+				FB56DD532B53095F00DC84FA /* UZS.png in Resources */,
+				FB56DD142B53095F00DC84FA /* PKR.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,9 +1169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBA48A712B3632AF00ABA302 /* FavoritesWidgetLiveActivity.swift in Sources */,
-				FBA48A752B3632AF00ABA302 /* AppIntent.swift in Sources */,
-				FBA48A6F2B3632AF00ABA302 /* FavoritesWidgetBundle.swift in Sources */,
 				FBA48A732B3632AF00ABA302 /* FavoritesWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,6 +1484,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = FavoritesWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -896,6 +1512,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = yury.kurouski.Converter.FavoritesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -917,6 +1534,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = FavoritesWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -939,6 +1558,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = yury.kurouski.Converter.FavoritesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;

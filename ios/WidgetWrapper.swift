@@ -6,26 +6,55 @@
 //
 
 import Foundation
+import WidgetKit
 
 @objc(WidgetWrapper)
 class WidgetWrapper:NSObject{
   
   @objc
-  func addToFavorites(_ currencyName: String){
-    var favorites = UserDefaults.standard.object(forKey: "Favorites") as? [String]
+  func addToFavorites(_ currencyName: String) -> String{
+    let defaults = UserDefaults(suiteName: "group.yury.kurouski.Converter")
+
+    if (defaults != nil) {
+      guard var favorites = defaults?.string(forKey: "favorites") as? String else {
+        defaults?.set(currencyName, forKey: "favorites")
+        
+        return currencyName
+      }
+      favorites.append(",")
+      favorites.append(currencyName)
+      
+      
+      defaults?.set(favorites, forKey: "favorites")
+      
+      return favorites
+    }
     
-    favorites?.append(currencyName)
-    
-    UserDefaults.standard.set(favorites, forKey: "Favorites")
+    if #available(iOS 14.0, *) {
+      WidgetCenter.shared.reloadAllTimelines()
+    } else {
+      // Fallback on earlier versions
+    }
+    return "Test"
   }
   
   @objc
   func removeFromFavorites(_ currencyName: String){
-    let favorites = UserDefaults.standard.object(forKey: "Favorites") as? [String]
+    let defaults = UserDefaults(suiteName: "group.yury.kurouski.Converter")
     
-    let filtered = favorites?.filter {$0 != currencyName}
+    if (defaults != nil) {
+      let favorites = defaults?.object(forKey: "favorites") as? String
+      
+      let filtered = favorites?.components(separatedBy: ",").filter {$0 != currencyName}
+      
+      defaults?.set(filtered?.joined(separator: ",") , forKey: "favorites")
+    }
     
-    UserDefaults.standard.set(filtered, forKey: "Favorites")
+    if #available(iOS 14.0, *) {
+      WidgetCenter.shared.reloadAllTimelines()
+    } else {
+      // Fallback on earlier versions
+    }
   }
   
   @objc
