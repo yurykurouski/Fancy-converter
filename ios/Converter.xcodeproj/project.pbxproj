@@ -163,6 +163,7 @@
 		FB56DDD32B5309D200DC84FA /* MATIC.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA62B5309D200DC84FA /* MATIC.png */; };
 		FB56DDD42B5309D200DC84FA /* AAVE.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA72B5309D200DC84FA /* AAVE.png */; };
 		FB56DDD52B5309D200DC84FA /* QNT.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56DDA82B5309D200DC84FA /* QNT.png */; };
+		FB56DDDB2B5326FC00DC84FA /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56DDDA2B5326FC00DC84FA /* CurrencyView.swift */; };
 		FB66E8F92AB4E94700E1DFDF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */; };
 		FBA48A6A2B3632AF00ABA302 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA48A692B3632AF00ABA302 /* WidgetKit.framework */; };
 		FBA48A6C2B3632AF00ABA302 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA48A6B2B3632AF00ABA302 /* SwiftUI.framework */; };
@@ -191,6 +192,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		FB56DDEB2B53364400DC84FA /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBA48A7C2B3632B100ABA302 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,6 +383,9 @@
 		FB56DDA62B5309D200DC84FA /* MATIC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MATIC.png; path = ../../../src/assets/flags/crypto/MATIC.png; sourceTree = "<group>"; };
 		FB56DDA72B5309D200DC84FA /* AAVE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AAVE.png; path = ../../../src/assets/flags/crypto/AAVE.png; sourceTree = "<group>"; };
 		FB56DDA82B5309D200DC84FA /* QNT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = QNT.png; path = ../../../src/assets/flags/crypto/QNT.png; sourceTree = "<group>"; };
+		FB56DDDA2B5326FC00DC84FA /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
+		FB56DDFA2B5339E900DC84FA /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		FB56DE052B5339EC00DC84FA /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		FB5A81FDAA20A5FA36466AD3 /* Pods-Converter-ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Converter-ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Converter-ConverterTests/Pods-Converter-ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = Converter/BootSplash.storyboard; sourceTree = "<group>"; };
 		FBA48A682B3632AF00ABA302 /* FavoritesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FavoritesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -460,6 +474,8 @@
 				A1FDF72826657D60E15A39BD /* libPods-Converter-ConverterTests.a */,
 				FBA48A692B3632AF00ABA302 /* WidgetKit.framework */,
 				FBA48A6B2B3632AF00ABA302 /* SwiftUI.framework */,
+				FB56DDFA2B5339E900DC84FA /* Intents.framework */,
+				FB56DE052B5339EC00DC84FA /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -701,6 +717,7 @@
 			children = (
 				FB56DCA92B53091C00DC84FA /* assets */,
 				FBA48A722B3632AF00ABA302 /* FavoritesWidget.swift */,
+				FB56DDDA2B5326FC00DC84FA /* CurrencyView.swift */,
 				FBA48A762B3632B100ABA302 /* Assets.xcassets */,
 				FBA48A782B3632B100ABA302 /* Info.plist */,
 			);
@@ -744,6 +761,7 @@
 				845ADB2B2449C7ADCA362D34 /* [CP] Embed Pods Frameworks */,
 				AD3F3D6943B1E38DB5A6A3B0 /* [CP] Copy Pods Resources */,
 				FBA48A7C2B3632B100ABA302 /* Embed Foundation Extensions */,
+				FB56DDEB2B53364400DC84FA /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
@@ -778,7 +796,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1170,6 +1188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA48A732B3632AF00ABA302 /* FavoritesWidget.swift in Sources */,
+				FB56DDDB2B5326FC00DC84FA /* CurrencyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

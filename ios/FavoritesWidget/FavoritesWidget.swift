@@ -1,5 +1,6 @@
 import SwiftUI
 import WidgetKit
+import AppIntents
 
 struct FavoritesWidget: Widget {
   let kind: String = "FavoritesWidget"
@@ -75,21 +76,7 @@ struct FavoritesWidgetView: View {
           GridItem(.flexible()),
         ], spacing: 20){
           ForEach(entry.favoriteCurrencies.prefix(maxCount), id: \.self){currencyName in
-            VStack{
-              Image(uiImage: #imageLiteral(resourceName: "\(currencyName).png"))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 40, height: 40)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .overlay {
-                  RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color("background_light"), lineWidth: 1)
-                }
-              Text(currencyName)
-                .font(.subheadline)
-                .foregroundStyle(Color("font_primary"))
-            }
-            .frame(width: 40,height: 50)
+            CurrencyView(currencyName: currencyName)
           }
         }
         .containerBackground(for: .widget) {
@@ -101,21 +88,9 @@ struct FavoritesWidgetView: View {
             ForEach(entry.favoriteCurrencies[0 ..< shortLastIndex], id: \.self){currencyName in
               HStack{
                 Spacer()
-                VStack{
-                  Image(uiImage: #imageLiteral(resourceName: "\(currencyName).png"))
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 40, height: 40)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .overlay {
-                      RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color("background_light"), lineWidth: 1)
-                    }
-                  Text(currencyName)
-                    .font(.subheadline)
-                    .foregroundStyle(Color("font_primary"))
-                }
-                .frame(width: 40,height: 50)
+                
+                CurrencyView(currencyName: currencyName)
+                
                 Spacer()
               }
             }
@@ -128,21 +103,9 @@ struct FavoritesWidgetView: View {
               ForEach(entry.favoriteCurrencies[6 ..< entry.favoriteCurrencies.endIndex], id: \.self){currencyName in
                 HStack{
                   Spacer()
-                  VStack{
-                    Image(uiImage: #imageLiteral(resourceName: "\(currencyName).png"))
-                      .resizable()
-                      .aspectRatio(contentMode: .fill)
-                      .frame(width: 40, height: 40)
-                      .clipShape(RoundedRectangle(cornerRadius: 20))
-                      .overlay {
-                        RoundedRectangle(cornerRadius: 20)
-                          .stroke(Color("background_light"), lineWidth: 1)
-                      }
-                    Text(currencyName)
-                      .font(.subheadline)
-                      .foregroundStyle(Color("font_primary"))
-                  }
-                  .frame(width: 40,height: 50)
+                  
+                  CurrencyView(currencyName: currencyName)
+                  
                   Spacer()
                 }
               }
@@ -167,5 +130,24 @@ struct FavoritesWidgetBundle: WidgetBundle {
 #Preview(as: .systemSmall) {
   FavoritesWidget()
 } timeline: {
-  FavoritesWidgetEntry(date: .now, favoriteCurrencies: ["BYN", "USD", "ALL", "BTC", "AED", "CAD", "JPY", "BAM", "BGN"/*, "BRL", "CHF"*/])
+  FavoritesWidgetEntry(date: .now, favoriteCurrencies: ["BYN", "USD", "ALL", "BTC", "AED", "CAD", "JPY", "BAM", "BGN", "BRL"/*, "CHF"*/])
 }
+
+struct SelectFavIntent:AppIntent, WidgetConfigurationIntent{
+  static var title: LocalizedStringResource = "selectFav"
+
+
+  func perform(value: String) async throws -> some IntentResult {
+    if let store = UserDefaults(suiteName: "group.yury.kurouski.Converter"){
+      store.setValue(value, forKey: "selectedFav")
+
+      WidgetCenter.shared.reloadAllTimelines()
+
+      return .result()
+    }
+
+    return .result()
+  }
+}
+
+
