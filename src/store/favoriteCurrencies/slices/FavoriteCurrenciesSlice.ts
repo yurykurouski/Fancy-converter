@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { addToFavorites, removeFromFavorites } from 'services/widget-service';
 import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
@@ -29,8 +28,6 @@ export const FavoriteCurrenciesSlice = createSlice({
     ) => {
       state.favoriteCurrencies[action.payload.currencyName] =
         action.payload.currencyType;
-
-      addToFavorites(action.payload.currencyName);
     },
 
     removeFavoriteCurrency: (
@@ -38,8 +35,6 @@ export const FavoriteCurrenciesSlice = createSlice({
       action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
     ) => {
       delete state.favoriteCurrencies[action.payload];
-
-      removeFromFavorites(action.payload);
     },
   },
 });

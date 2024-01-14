@@ -1,6 +1,6 @@
 //
 //  CurrencyView.swift
-//  FavoritesWidgetExtension
+//  SelectedWidgetExtension
 //
 //  Created by Yury Kurouski on 13.01.24.
 //

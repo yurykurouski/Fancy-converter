@@ -1,10 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { initialCurrencies } from 'constants/index';
 import availableCurrencies from 'resources/avaliable-currencies';
+import {
+  addToSelected,
+  deleteSomeSelected,
+  removeFromSelected,
+} from 'services/widget-service';
 import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
   ECurrencyType,
   TAvailableCurrencies,
+  TAvailableCurrenciesNames,
 } from 'types';
 
 export type TSelectedCurrenciesSlice = {
@@ -15,14 +22,7 @@ export type TSelectedCurrenciesSlice = {
 };
 
 const initialState: TSelectedCurrenciesSlice = {
-  currencies: {
-    [EAvailableFiatNames.EUR]: '',
-    [EAvailableFiatNames.USD]: '',
-    [EAvailableFiatNames.JPY]: '',
-    [EAvailableFiatNames.GBP]: '',
-    [EAvailableFiatNames.CAD]: '',
-    [EAvailableFiatNames.CHF]: '',
-  },
+  currencies: initialCurrencies,
   searchValue: '',
   activeCurrencyType: ECurrencyType.FIAT,
   filteredCurrencies: availableCurrencies,
@@ -40,17 +40,24 @@ export const SelectedCurrenciesSlice = createSlice({
         ...state.currencies,
         [action.payload]: '',
       };
+
+      addToSelected(action.payload);
     },
     removeSelectedCurr: (
       state,
       action: PayloadAction<EAvailableFiatNames | EAvailableCryptoNames>,
     ) => {
       delete state.currencies[action.payload];
+
+      removeFromSelected(action.payload);
     },
 
     deleteAllSelected: (state, action) => {
-      //@ts-expect-error
-      Object.keys(action.payload).forEach(el => delete state.currencies[el]);
+      const curs = Object.keys(action.payload) as [TAvailableCurrenciesNames];
+
+      curs.forEach(el => delete state.currencies[el]);
+
+      deleteSomeSelected(curs.join(','));
     },
 
     searchCurrenciesValue: (state, action: PayloadAction<string>) => {

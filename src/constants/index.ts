@@ -1,5 +1,5 @@
 import { Dimensions } from 'react-native';
-import { EDimensions } from 'types';
+import { EAvailableFiatNames, EDimensions } from 'types';
 
 export const APP_NAME = 'Converter';
 
@@ -32,3 +32,12 @@ export const BOTTOMSHEET_EL_HEIGHT = 66;
 export const INPUT_ELEMENT_HEIGHT = 74;
 
 export const ICON_BUTTON_SIZE = 24;
+
+export const initialCurrencies = {
+  [EAvailableFiatNames.EUR]: '',
+  [EAvailableFiatNames.USD]: '',
+  [EAvailableFiatNames.JPY]: '',
+  [EAvailableFiatNames.GBP]: '',
+  [EAvailableFiatNames.CAD]: '',
+  [EAvailableFiatNames.CHF]: '',
+};
