@@ -41,16 +41,6 @@ struct Provider: TimelineProvider {
     let timeline = Timeline(entries: [entry], policy: .atEnd)
     completion(timeline)
   }
-  
-//  func getFavorites() -> [String] {
-//    let suiteName = "group.yury.kurouski.Converter"
-//    
-//    guard let defaults = UserDefaults(suiteName: suiteName) else {
-//      return ["ERROR"]
-//    }
-//    
-//    return defaults.object(forKey: "selectedCurrencies") as! [String]
-//  }
 }
 
 struct SelectedWidgetView: View {
