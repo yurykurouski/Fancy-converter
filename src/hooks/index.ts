@@ -4,6 +4,8 @@ export { useAndroidRippleConfig } from './useAndroidRippleConfig';
 export { useAppearanceChangeListener } from './useAppearanceChangeListener';
 export * from './useGetCoursesFromStorage';
 export * from './useGetCurrenciesExchangeCourse';
+export { useHandleActiveCurrLink } from './useHandleActiveCurrLink';
+export { useHandleDeepLink } from './useHandleDeepLink';
 export { useLoadCourses } from './useLoadCourses';
 export * from './useReloadCourses';
 export { useTheme } from './useTheme';

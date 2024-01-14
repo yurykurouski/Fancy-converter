@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import React, { MutableRefObject, RefObject } from 'react';
+import { StyleProp, TextInput, ViewStyle } from 'react-native';
 import { Action } from '@reduxjs/toolkit';
 import { ColorsDark, ColorsLight } from 'assets/colors';
 import { DrawerStackParamList } from 'navigation/DrawerStack/DrawerStack.routes';
@@ -90,3 +90,12 @@ export enum EHapticType {
   EFFECT_TICK_ANDROID = 'effectTick',
   LONG_PRESS_ANDROID = 'effectClick',
 }
+
+export type TUseHandleDeepLinkProps = {
+  currencies: {
+    [key in TAvailableCurrenciesNames]?: string;
+  };
+  inputsRefs: MutableRefObject<{
+    [key in TAvailableCurrenciesNames]?: RefObject<TextInput>;
+  }>;
+};

@@ -15,6 +15,7 @@ import { CurrencyInputValue } from 'components';
 import { AppRefreshControl } from 'components/common/AppRefreshControl';
 import {
   useGetCurrenciesExchangeCourse,
+  useHandleDeepLink,
   useWindowDimensionChange,
 } from 'hooks';
 import {
@@ -61,6 +62,7 @@ export const CurrencySelector = React.memo<TProps>(({ setIsHeaderBlurred }) => {
     useRef<RecyclerListView<RecyclerListViewProps, RecyclerListViewState>>(
       null,
     );
+  const inputsRefs = useRef({});
 
   const { isLoading } = useSelector(selectExchangeCourses);
   const { currencies } = useSelector(selectSelectedCurrencies);
@@ -74,7 +76,7 @@ export const CurrencySelector = React.memo<TProps>(({ setIsHeaderBlurred }) => {
     useRemoveFromSelectedCurrenciesInEdit();
 
   const renderItem: RecyclerListViewProps['rowRenderer'] = useCallback(
-    (_, data) => <CurrencyInputValue currencyCode={data} />,
+    (_, data) => <CurrencyInputValue currencyCode={data} ref={inputsRefs} />,
     [],
   );
   const renderFooter = useCallback(() => <ListFooterComponent />, []);
@@ -104,6 +106,8 @@ export const CurrencySelector = React.memo<TProps>(({ setIsHeaderBlurred }) => {
     addToCurrInEdit,
     removeFromSelectedCurrenciesInEdit,
   });
+
+  useHandleDeepLink({ currencies, inputsRefs });
 
   return sortedWithFavorites.length ? (
     <GestureDetector gesture={gesture}>
