@@ -2,6 +2,7 @@
 #import "RNBootSplash.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <React/RCTLinkingManager.h>
 
 @implementation AppDelegate
 
@@ -34,6 +35,13 @@
   [RNBootSplash initWithStoryboard:@"BootSplash" rootView:rootView]; // geting errror (Incompatible pointer types 
  // sending 'UIView *' to parameter of type 'RCTRootView * _Nonnull')
   return rootView;
+}
+
+- (BOOL)application:(UIApplication *)application
+   openURL:(NSURL *)url
+   options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  return [RCTLinkingManager application:application openURL:url options:options];
 }
 
 @end
