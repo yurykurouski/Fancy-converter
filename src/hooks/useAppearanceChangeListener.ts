@@ -14,15 +14,25 @@ export const useAppearanceChangeListener = () => {
   const switchColorScheme = useSwitchColorScheme();
 
   useEffect(() => {
-    const listener = Appearance.addChangeListener(prop => {
-      if (
-        behavior === EColorSchemeBehavior.AUTO &&
-        currentColorScheme !== prop.colorScheme
-      ) {
-        switchColorScheme(EColorSchemeBehavior.AUTO);
-      }
+    let timeoutID: NodeJS.Timeout;
+
+    const listener = Appearance.addChangeListener(() => {
+      timeoutID = setTimeout(() => {
+        if (
+          behavior === EColorSchemeBehavior.AUTO &&
+          currentColorScheme !== Appearance.getColorScheme()
+        ) {
+          switchColorScheme(EColorSchemeBehavior.AUTO);
+        }
+      }, 500);
     });
 
-    return () => listener.remove();
+    return () => {
+      listener.remove();
+
+      if (timeoutID) {
+        clearTimeout(timeoutID);
+      }
+    };
   }, [behavior, currentColorScheme, switchColorScheme]);
 };
