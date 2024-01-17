@@ -2797,7 +2797,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.30.5, @typescript-eslint/eslint-plugin@npm:^5.37.0":
+"@typescript-eslint/eslint-plugin@npm:^5.30.5":
   version: 5.62.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.62.0"
   dependencies:
@@ -4874,7 +4874,6 @@ __metadata:
     "@types/react": ^18.0.24
     "@types/react-native": ^0.69.10
     "@types/react-native-dotenv": ^0.2.0
-    "@typescript-eslint/eslint-plugin": ^5.37.0
     asyncstorage-inspector-flipper: ^1.0.2
     babel-plugin-module-resolver: ^4.1.0
     eslint: ^8.19.0
