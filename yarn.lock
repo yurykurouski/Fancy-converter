@@ -2718,15 +2718,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.69.10":
-  version: 0.69.26
-  resolution: "@types/react-native@npm:0.69.26"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: e71b4599919310e38e6ed0e351b3908c25bc00cbf335080f8c1892b2ad71797acda1fd910f56cb39d9c60384230617a3b67ef683cb99358e1fcb961b42b258f5
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:*, @types/react@npm:^18.0.24":
   version: 18.2.45
   resolution: "@types/react@npm:18.2.45"
@@ -4875,7 +4866,6 @@ __metadata:
     "@tsconfig/react-native": ^3.0.0
     "@types/lodash.debounce": ^4.0.7
     "@types/react": ^18.0.24
-    "@types/react-native": ^0.69.10
     "@types/react-native-dotenv": ^0.2.0
     asyncstorage-inspector-flipper: ^1.0.2
     babel-plugin-module-resolver: ^4.1.0

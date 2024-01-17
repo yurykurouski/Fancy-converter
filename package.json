@@ -53,7 +53,6 @@
     "@tsconfig/react-native": "^3.0.0",
     "@types/lodash.debounce": "^4.0.7",
     "@types/react": "^18.0.24",
-    "@types/react-native": "^0.69.10",
     "@types/react-native-dotenv": "^0.2.0",
     "asyncstorage-inspector-flipper": "^1.0.2",
     "babel-plugin-module-resolver": "^4.1.0",
