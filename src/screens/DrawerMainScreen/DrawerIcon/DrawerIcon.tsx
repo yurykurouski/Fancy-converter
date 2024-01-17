@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { NamedExoticComponent } from 'react';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { TSVGIcon } from 'types';
 
@@ -6,7 +6,9 @@ import { useStyles } from './DrawerIcon.styles';
 
 type TDrawerIcon = (props: {
   onPress: () => void;
-  Icon: TSVGIcon;
+  Icon:
+    | NamedExoticComponent<TSVGIcon>
+    | ((prop: { size: number }) => React.JSX.Element);
   size: number;
   color?: string;
   withRipple?: boolean;

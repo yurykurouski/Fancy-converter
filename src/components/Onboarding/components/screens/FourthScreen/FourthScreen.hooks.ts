@@ -1,3 +1,4 @@
+export {};
 // export const useGetLocalCurrency = (
 //   addSelected: TAddSelectedCurr,
 //   setLocationCurrency: Dispatch<SetStateAction<string>>,
