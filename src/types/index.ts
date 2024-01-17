@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Action } from '@reduxjs/toolkit';
 import { ColorsDark, ColorsLight } from 'assets/colors';
@@ -65,11 +64,11 @@ export type TAvailableCurrenciesNames =
   | EAvailableFiatNames
   | EAvailableCryptoNames;
 
-export type TSVGIcon = (props: {
+export type TSVGIcon = {
   size: number;
   style?: StyleProp<ViewStyle>;
   color?: ColorsLight | ColorsDark | string;
-}) => React.ReactNode;
+};
 
 export type RootStackParamsList = DrawerStackParamList;
 

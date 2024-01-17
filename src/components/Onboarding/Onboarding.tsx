@@ -39,7 +39,7 @@ export const Onboarding = () => {
           <Component
             windowWidth={windowWidth}
             key={i}
-            currentPage={currentPage}
+            // currentPage={currentPage}
           />
         ))}
       </Animated.ScrollView>
