@@ -34,7 +34,7 @@ jobs:
           java-version: 17
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --force
 
       - name: Install appcenter cli
         run: npm install -g appcenter-cli
