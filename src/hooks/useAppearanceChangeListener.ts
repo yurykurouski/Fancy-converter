@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Appearance } from 'react-native';
 import { useSelector } from 'react-redux';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
@@ -13,16 +13,32 @@ export const useAppearanceChangeListener = () => {
 
   const switchColorScheme = useSwitchColorScheme();
 
+  const switchAppearance = useCallback(() => {
+    if (
+      behavior === EColorSchemeBehavior.AUTO &&
+      currentColorScheme !== Appearance.getColorScheme()
+    ) {
+      switchColorScheme(EColorSchemeBehavior.AUTO);
+    }
+  }, [behavior, currentColorScheme, switchColorScheme]);
+
   useEffect(() => {
-    const listener = Appearance.addChangeListener(prop => {
-      if (
-        behavior === EColorSchemeBehavior.AUTO &&
-        currentColorScheme !== prop.colorScheme
-      ) {
-        switchColorScheme(EColorSchemeBehavior.AUTO);
-      }
+    let timeoutID: NodeJS.Timeout;
+
+    switchAppearance();
+
+    const listener = Appearance.addChangeListener(() => {
+      timeoutID = setTimeout(() => {
+        switchAppearance();
+      }, 500);
     });
 
-    return () => listener.remove();
-  }, [behavior, currentColorScheme, switchColorScheme]);
+    return () => {
+      listener.remove();
+
+      if (timeoutID) {
+        clearTimeout(timeoutID);
+      }
+    };
+  }, [behavior, currentColorScheme, switchAppearance, switchColorScheme]);
 };
