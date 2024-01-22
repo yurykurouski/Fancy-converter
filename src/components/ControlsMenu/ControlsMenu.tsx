@@ -1,17 +1,39 @@
 import React from 'react';
-import { View } from 'react-native';
+import Animated, {
+  SharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 import { Counter } from 'components/Header/components/Counter';
 import { RemoveSweep } from 'components/Header/components/RemoveSweep';
+import { CONTROLS_OFFSET } from 'constants/index';
 
 import { useStyles } from './ControlsMenu.styles';
 
-export const ControlsMenu = React.memo(() => {
+type TProps = {
+  headerSharedValue: SharedValue<number>;
+};
+
+export const ControlsMenu = React.memo<TProps>(({ headerSharedValue }) => {
   const styles = useStyles();
 
+  const animStyle = useAnimatedStyle(() => {
+    if (headerSharedValue.value < 0) {
+      return {
+        transform: [
+          {
+            translateY: headerSharedValue.value * CONTROLS_OFFSET,
+          },
+        ],
+      };
+    } else {
+      return {};
+    }
+  });
+
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, animStyle]}>
       <Counter />
       <RemoveSweep />
-    </View>
+    </Animated.View>
   );
 });

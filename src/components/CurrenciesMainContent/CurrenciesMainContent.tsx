@@ -58,7 +58,7 @@ export const CurrenciesMainContent = React.memo(() => {
         ref={containerListRef}
       />
       <CurrencySelector />
-      <ControlsMenu />
+      <ControlsMenu headerSharedValue={headerSharedValue} />
       <CurrenciesBottomSheet
         headerSharedValue={headerSharedValue}
         ref={containerListRef}

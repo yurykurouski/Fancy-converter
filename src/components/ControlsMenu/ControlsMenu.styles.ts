@@ -1,3 +1,4 @@
+import { CONTROLS_OFFSET } from 'constants/index';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
@@ -6,7 +7,7 @@ export const useStyles = () =>
       position: 'absolute',
       left: 0,
       right: 0,
-      bottom: 0,
+      bottom: -CONTROLS_OFFSET,
       flexDirection: 'row',
       backgroundColor: theme.ACCENT_COLOR_DARKER,
       alignItems: 'center',
