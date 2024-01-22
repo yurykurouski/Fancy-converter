@@ -10,14 +10,14 @@ import { CONTROLS_OFFSET } from 'constants/index';
 import { useStyles } from './ControlsMenu.styles';
 
 type TProps = {
-  headerSharedValue: SharedValue<number>;
+  headerSharedValue?: SharedValue<number>;
 };
 
 export const ControlsMenu = React.memo<TProps>(({ headerSharedValue }) => {
   const styles = useStyles();
 
   const animStyle = useAnimatedStyle(() => {
-    if (headerSharedValue.value < 0) {
+    if (headerSharedValue?.value && headerSharedValue.value < 0) {
       return {
         transform: [
           {
