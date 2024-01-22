@@ -1,39 +1,27 @@
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
-export const useStyles = (headerBlurred: boolean) =>
+export const useStyles = () =>
   useTheme((theme, { top }) => ({
     blurView: {
       position: 'absolute',
       width: '100%',
       top: 0,
       zIndex: 1,
+      height: top + 40,
     },
     container: {
-      paddingTop: top,
-      paddingLeft: 15,
-      alignItems: 'flex-end',
-      backgroundColor: headerBlurred
-        ? 'transparent'
-        : theme.APP_BACKGROUND_PRIMARY,
-      width: '100%',
-      borderBottomColor: headerBlurred
-        ? theme.ELEMENT_FADE_OR_BACKGROUND
-        : theme.APP_BACKGROUND_PRIMARY,
-      borderBottomWidth: 1,
-      justifyContent: 'center',
-      flexDirection: 'row',
+      flex: 1,
+      paddingHorizontal: 6,
       overflow: 'hidden',
     },
     scrollContainer: {
-      height: 30,
-      marginBottom: 10,
+      marginTop: top + 4,
       overflow: 'hidden',
-      paddingRight: 10,
     },
     containerFrame: {
-      flexDirection: 'row',
       alignItems: 'center',
+      flexDirection: 'row',
       justifyContent: 'space-between',
     },
     header: {
@@ -42,5 +30,6 @@ export const useStyles = (headerBlurred: boolean) =>
       ...(isAndroid && { fontFamily: 'monospace' }),
       textTransform: 'uppercase',
       color: theme.FONT_PRIMARY_COLOR,
+      marginRight: 4,
     },
   }));

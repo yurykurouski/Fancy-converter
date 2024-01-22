@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { Keyboard } from 'react-native';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import { useSharedValue } from 'react-native-reanimated';
@@ -22,8 +22,6 @@ import {
 import { useStyles } from './CurrenciesMainContent.styles';
 
 export const CurrenciesMainContent = React.memo(() => {
-  const [isHeaderBlurred, setIsHeaderBlurred] = useState<boolean>(false);
-
   const styles = useStyles();
 
   const { colorScheme } = useSelector(selectColorSchemeState);
@@ -56,11 +54,10 @@ export const CurrenciesMainContent = React.memo(() => {
       enableTrackpadTwoFingerGesture>
       <Header
         onOpenDrawer={openDrawer}
-        isHeaderBlurred={isHeaderBlurred}
         headerSharedValue={headerSharedValue}
         ref={containerListRef}
       />
-      <CurrencySelector setIsHeaderBlurred={setIsHeaderBlurred} />
+      <CurrencySelector />
       <ControlsMenu />
       <CurrenciesBottomSheet
         headerSharedValue={headerSharedValue}

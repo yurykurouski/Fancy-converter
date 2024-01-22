@@ -1,11 +1,9 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
-import {
-  scrollTo,
+import Animated, {
   SharedValue,
-  useAnimatedRef,
-  useDerivedValue,
+  useAnimatedStyle,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
@@ -21,26 +19,30 @@ import { useStyles } from './Header.styles';
 
 type Props = {
   onOpenDrawer: () => void;
-  isHeaderBlurred: boolean;
   headerSharedValue: SharedValue<number>;
 };
 
 export const Header = React.memo(
   React.forwardRef<BottomSheetFlatListMethods, Props>(
-    (
-      { onOpenDrawer, isHeaderBlurred, headerSharedValue },
-      containerListRef,
-    ) => {
-      const styles = useStyles(isHeaderBlurred);
-
-      const animatedScrollRef = useAnimatedRef<ScrollView>();
+    ({ onOpenDrawer, headerSharedValue }, containerListRef) => {
+      const styles = useStyles();
 
       const { colorScheme } = useSelector(selectColorSchemeState);
       const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
 
-      useDerivedValue(() =>
-        scrollTo(animatedScrollRef, 0, headerSharedValue.value * 32, true),
-      );
+      const animatedPositionStyle = useAnimatedStyle(() => {
+        if (headerSharedValue.value < 0) {
+          return {};
+        }
+
+        return {
+          transform: [
+            {
+              translateY: -headerSharedValue.value * 32,
+            },
+          ],
+        };
+      });
 
       return (
         <BlurView
@@ -54,23 +56,20 @@ export const Header = React.memo(
           blurType={colorScheme!}
           pointerEvents="box-none">
           <View style={styles.container}>
-            <ScrollView
-              contentOffset={{ x: 0, y: 0 }}
-              ref={animatedScrollRef}
-              scrollEnabled={false}
-              style={styles.scrollContainer}
-              showsVerticalScrollIndicator={false}>
-              <View style={styles.containerFrame}>
+            <View style={styles.scrollContainer}>
+              <Animated.View
+                style={[styles.containerFrame, animatedPositionStyle]}>
                 <Menu onOpenDrawer={onOpenDrawer} />
                 <Text style={styles.header}>{APP_NAME}</Text>
-              </View>
-              <View style={[styles.containerFrame]}>
+              </Animated.View>
+              <Animated.View
+                style={[styles.containerFrame, animatedPositionStyle]}>
                 <CurrencyTypeMenu
                   activeCurrencyType={activeCurrencyType}
                   ref={containerListRef}
                 />
-              </View>
-            </ScrollView>
+              </Animated.View>
+            </View>
           </View>
         </BlurView>
       );
