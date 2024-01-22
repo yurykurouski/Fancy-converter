@@ -6,7 +6,7 @@ import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSI
 const styles = StyleSheet.create({
   container: {
     padding: 5,
-    marginLeft: 5,
+    marginLeft: 10,
     borderRadius: 10,
     overflow: 'hidden',
   },

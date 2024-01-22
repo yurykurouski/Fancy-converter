@@ -3,10 +3,14 @@ import { useTheme } from 'hooks';
 export const useStyles = () =>
   useTheme((theme, { bottom }) => {
     return {
+      wrapper: {
+        flex: 1,
+        backgroundColor: theme.ACCENT_COLOR_DARKER,
+      },
       container: {
         flex: 1,
         backgroundColor: theme.APP_BACKGROUND_PRIMARY,
-        paddingBottom: bottom,
+        marginBottom: bottom,
       },
     };
   });

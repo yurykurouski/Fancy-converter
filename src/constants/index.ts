@@ -32,3 +32,5 @@ export const BOTTOMSHEET_EL_HEIGHT = 66;
 export const INPUT_ELEMENT_HEIGHT = 74;
 
 export const ICON_BUTTON_SIZE = 24;
+
+export const CONTROLS_OFFSET = 30;

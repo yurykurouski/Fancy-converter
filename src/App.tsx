@@ -25,12 +25,12 @@ const App = React.memo(() => {
   useAppearanceChangeListener();
 
   return (
-    <>
+    <View style={styles.wrapper}>
       <AppStatusBar />
       <View style={styles.container}>
         {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
       </View>
-    </>
+    </View>
   );
 });
 

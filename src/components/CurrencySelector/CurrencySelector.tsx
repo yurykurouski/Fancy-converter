@@ -1,10 +1,4 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { GestureDetector } from 'react-native-gesture-handler';
 import { useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -33,21 +27,13 @@ import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
-import {
-  useLayoutProvider,
-  useLongPressSwipeGesture,
-  useOnScrollOffsetChange,
-} from './hooks';
+import { useLayoutProvider, useLongPressSwipeGesture } from './hooks';
 
 import { useStyles } from './CurrencySelector.styles';
 
-type TProps = {
-  setIsHeaderBlurred: Dispatch<SetStateAction<boolean>>;
-};
-
 const dataProvider = new DataProvider((r1, r2) => r1 !== r2);
 
-export const CurrencySelector = React.memo<TProps>(({ setIsHeaderBlurred }) => {
+export const CurrencySelector = React.memo(() => {
   const styles = useStyles();
 
   const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
@@ -80,8 +66,6 @@ export const CurrencySelector = React.memo<TProps>(({ setIsHeaderBlurred }) => {
   const renderFooter = useCallback(() => <ListFooterComponent />, []);
   const layoutProvider = useLayoutProvider();
 
-  const onOffsetChange = useOnScrollOffsetChange(setIsHeaderBlurred);
-
   const sortedWithFavorites = useMemo(() => {
     return Object.keys(currencies).sort(a => {
       if (favoriteCurrencies[a as TAvailableCurrenciesNames]) return -1;
@@ -113,7 +97,6 @@ export const CurrencySelector = React.memo<TProps>(({ setIsHeaderBlurred }) => {
         layoutProvider={layoutProvider}
         dataProvider={dataProvider.cloneWithRows(sortedWithFavorites)}
         rowRenderer={renderItem}
-        onScroll={onOffsetChange}
         //@ts-expect-error
         refreshControl={
           <AppRefreshControl
