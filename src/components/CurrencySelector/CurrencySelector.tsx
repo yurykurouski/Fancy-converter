@@ -115,6 +115,7 @@ export const CurrencySelector = React.memo(() => {
         optimizeForInsertDeleteAnimations
         automaticallyAdjustKeyboardInsets
         keyboardDismissMode="interactive"
+        keyboardShouldPersistTaps="handled"
       />
     </GestureDetector>
   ) : null;
