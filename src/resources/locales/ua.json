@@ -164,7 +164,7 @@
   "currency_input.value.error_message": "Помілка!",
   "currency_search.input.placeholder": "Пошук",
   "currencies_main.currency_deleted": "було видалено",
-  "currencies_main.no-share": "Select more or input value!",
+  "currencies_main.no-share": "Виберіть більше або введіть значення!",
   "onboarding_first-screen": "Привіт!\nОгланемо коротко, що в нас є",
   "onboarding_second-screen_title": "Ви можете виділити свої обрані валюти",
   "onboarding_second-screen_text": "Довгий тап додасть у Вибране:",
@@ -187,6 +187,6 @@
   "drawer_credits-nav": "Подяки",
   "drawer_credits-made-with": "Створено з ❤️",
   "drawer_main-nav": "Головний",
-  "share-rates_content": "is roughly equivalent to:\n",
-  "share-rates_footer": "Check by yourself:"
+  "share-rates_content": "буде приблизно:\n",
+  "share-rates_footer": "Перевір сам:"
 }
