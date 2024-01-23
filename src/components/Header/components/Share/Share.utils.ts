@@ -16,7 +16,7 @@ export const getValues: TGetValues = (
   focusedCurrencyValue,
 ) =>
   Object.keys(selectedCurrencies).reduce((acc, el) => {
-    if (el !== focusedCurrencyName && focusedCurrencyName && exchangeCourses) {
+    if (focusedCurrencyName && exchangeCourses) {
       const value = (
         (Number(focusedCurrencyValue) /
           Number(exchangeCourses[focusedCurrencyName])) *
