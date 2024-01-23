@@ -8,3 +8,4 @@ export { MailIcon } from './MailIcon';
 export { MenuIcon } from './MenuIcon';
 export { ReactIcon } from './ReactIcon';
 export { RightArrowIcon } from './RightArrowIcon';
+export { ShareIOsIcon } from './ShareIOsIcon';

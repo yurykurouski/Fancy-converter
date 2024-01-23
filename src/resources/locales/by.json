@@ -164,6 +164,7 @@
   "currency_input.value.error_message": "Памылка!",
   "currency_search.input.placeholder": "Шукаць",
   "currencies_main.currency_deleted": "быў выдалены",
+  "currencies_main.no-share": "Select more or input value!",
   "onboarding_first-screen": "Прывітанкі!\nДавайце зробім кароткі агляд",
   "onboarding_second-screen_title": "Вы можаце вылучыць выбраныя вамі валюты",
   "onboarding_second-screen_text": "Даўгі націск дадае ў абранае:",
@@ -185,5 +186,7 @@
   "nav_back": "Назад",
   "drawer_credits-nav": "Падзякі",
   "drawer_credits-made-with": "Створана з ❤️",
-  "drawer_main-nav": "Галоўны"
+  "drawer_main-nav": "Галоўны",
+  "share-rates_content": "is roughly equivalent to:\n",
+  "share-rates_footer": "Check by yourself:"
 }

@@ -1,8 +1,7 @@
 import React from 'react';
-import { ScrollView, Share, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CoffeeCupIcon, GithubIcon, RightArrowIcon } from 'assets/icons';
-import { ShareIcon } from 'assets/icons/ShareIcon';
 import {
   DONATION_URL,
   GITHUB_REPO_URL,
@@ -12,7 +11,6 @@ import { useSwitchColorScheme } from 'hooks/store/UIStatus';
 import { DRAWER_STACK_ROUTES } from 'navigation/DrawerStack/DrawerStack.routes';
 import { l } from 'resources/localization';
 import { EColorSchemeBehavior } from 'types';
-import { isIos } from 'utils';
 
 import { DrawerIcon } from './DrawerIcon';
 import { useButtonOnPress } from './DrawerMainScreen.hooks';
@@ -20,8 +18,6 @@ import { DrawerMenuItem } from './DrawerMenuItem';
 import { DrawerThemeSwitcher } from './DrawerThemeSwitcher';
 
 import { useStyles } from './DrawerMainScreen.styles';
-
-const STORE_LINK = isIos ? 'App store link' : 'Play Store link';
 
 export const DrawerMainScreen = React.memo(() => {
   const styles = useStyles();
@@ -39,12 +35,6 @@ export const DrawerMainScreen = React.memo(() => {
     DONATION_URL,
     'alert_message.paypal_press.description',
   );
-
-  const onShare = () => {
-    Share.share({
-      message: `Fancy Converter: ${STORE_LINK}`,
-    });
-  };
 
   const testNavigation = () => {
     navigate(DRAWER_STACK_ROUTES.MoreScreen);
@@ -74,7 +64,6 @@ export const DrawerMainScreen = React.memo(() => {
       </ScrollView>
 
       <View style={styles.iconsContainer}>
-        <DrawerIcon Icon={ShareIcon} size={30} onPress={onShare} />
         <DrawerIcon Icon={GithubIcon} size={30} onPress={openGH} />
         <DrawerIcon Icon={CoffeeCupIcon} size={30} onPress={openPayPal} />
         <DrawerIcon
