@@ -5,6 +5,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Counter } from 'components/Header/components/Counter';
 import { RemoveSweep } from 'components/Header/components/RemoveSweep';
+import { Share } from 'components/Header/components/Share';
 import { CONTROLS_OFFSET } from 'constants/index';
 
 import { useStyles } from './ControlsMenu.styles';
@@ -33,6 +34,7 @@ export const ControlsMenu = React.memo<TProps>(({ headerSharedValue }) => {
   return (
     <Animated.View style={[styles.container, animStyle]}>
       <Counter />
+      <Share />
       <RemoveSweep />
     </Animated.View>
   );

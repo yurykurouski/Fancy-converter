@@ -164,6 +164,7 @@
   "currency_input.value.error_message": "Nieprawidłowa wartość!",
   "currency_search.input.placeholder": "Szukaj",
   "currencies_main.currency_deleted": "zostało usunięte",
+  "currencies_main.no-share": "Wybierz więcej lub wprowadź wartość!",
   "onboarding_first-screen": "Hej!\nPrzeprowadźmy krótkie omówienie",
   "onboarding_second-screen_title": "Możesz wybrać swoje ulubione waluty",
   "onboarding_second-screen_text": "Długi tap doda do ulubionych:",
@@ -185,5 +186,7 @@
   "nav_back": "Wstecz",
   "drawer_credits-nav": "Podziękowania",
   "drawer_credits-made-with": "Stworzone z ❤️",
-  "drawer_main-nav": "Główny"
+  "drawer_main-nav": "Główny",
+  "share-rates_content": "będzie mniej więcej:\n",
+  "share-rates_footer": "Sprawdź sam:"
 }

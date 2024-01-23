@@ -164,6 +164,7 @@
   "currency_input.value.error_message": "Wrong value!",
   "currency_search.input.placeholder": "Search",
   "currencies_main.currency_deleted": "was deleted",
+  "currencies_main.no-share": "Select more or input value!",
   "onboarding_first-screen": "HEY!\nLet's take a brief overview",
   "onboarding_second-screen_title": "You can select your favorite currencies",
   "onboarding_second-screen_text": "Long tap to add in Favorites:",
@@ -185,5 +186,7 @@
   "nav_back": "Back",
   "drawer_credits-nav": "Credits",
   "drawer_credits-made-with": "Made with ❤️",
-  "drawer_main-nav": "Main"
+  "drawer_main-nav": "Main",
+  "share-rates_content": "is roughly equivalent to:",
+  "share-rates_footer": "Check by yourself:"
 }

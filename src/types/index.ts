@@ -89,3 +89,7 @@ export enum EHapticType {
   EFFECT_TICK_ANDROID = 'effectTick',
   LONG_PRESS_ANDROID = 'effectClick',
 }
+
+export type TSelectedCurrencies = {
+  [key in TAvailableCurrenciesNames]?: number;
+};
