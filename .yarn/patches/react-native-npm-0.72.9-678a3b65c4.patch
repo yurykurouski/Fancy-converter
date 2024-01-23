@@ -1,19 +1,5 @@
-diff --git a/.vscode/settings.json b/.vscode/settings.json
-new file mode 100644
-index 0000000000000000000000000000000000000000..f405f5c5f34e8fa97de0aadb03019df012567aa4
---- /dev/null
-+++ b/.vscode/settings.json
-@@ -0,0 +1,7 @@
-+{
-+  "workbench.colorCustomizations": {
-+    "activityBar.background": "#0F3513",
-+    "titleBar.activeBackground": "#144A1B",
-+    "titleBar.activeForeground": "#F5FCF6"
-+  }
-+}
-\ No newline at end of file
 diff --git a/Libraries/Text/TextInput/RCTBaseTextInputView.m b/Libraries/Text/TextInput/RCTBaseTextInputView.m
-index 0bc14b42f7c944754763f8f5db5add7204c8717a..657acdaa115981e69c0887c72b3fbd8c67c6ffb3 100644
+index 0bc14b42f7c944754763f8f5db5add7204c8717a..4efdcbd691c4d193cd84424be9b0e92d24d03e9c 100644
 --- a/Libraries/Text/TextInput/RCTBaseTextInputView.m
 +++ b/Libraries/Text/TextInput/RCTBaseTextInputView.m
 @@ -10,6 +10,7 @@
@@ -34,7 +20,7 @@ index 0bc14b42f7c944754763f8f5db5add7204c8717a..657acdaa115981e69c0887c72b3fbd8c
  @implementation RCTBaseTextInputView {
    __weak RCTBridge *_bridge;
    __weak id<RCTEventDispatcherProtocol> _eventDispatcher;
-@@ -27,6 +31,30 @@ @implementation RCTBaseTextInputView {
+@@ -27,6 +31,31 @@ @implementation RCTBaseTextInputView {
    BOOL _didMoveToWindow;
  }
  
@@ -61,6 +47,7 @@ index 0bc14b42f7c944754763f8f5db5add7204c8717a..657acdaa115981e69c0887c72b3fbd8c
 +  }
 +  scrollView.firstResponderFocus = [self convertRect:focusRect toView:nil];
 +}
++
 +
  - (instancetype)initWithBridge:(RCTBridge *)bridge
  {
@@ -93,18 +80,10 @@ index 14554f688ac6d694c6073a472bc2c2f0e5eb24be..8769b7629eac8a575f76cba3d4418812
  
  - (void)updateContentSizeIfNeeded;
 diff --git a/React/Views/ScrollView/RCTScrollView.m b/React/Views/ScrollView/RCTScrollView.m
-index 2929f2dfdf3831c39f1010825ab7f076dbe538eb..7b0e0d6c941754fb19563f3f5ca00a95c403c56a 100644
+index 2929f2dfdf3831c39f1010825ab7f076dbe538eb..ad273539a86cb08b7a4cc834fe9d2902492c1baf 100644
 --- a/React/Views/ScrollView/RCTScrollView.m
 +++ b/React/Views/ScrollView/RCTScrollView.m
-@@ -307,6 +307,7 @@ - (void)_keyboardWillChangeFrame:(NSNotification *)notification
-   }
- 
-   double duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-+
-   UIViewAnimationCurve curve =
-       (UIViewAnimationCurve)[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
-   CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-@@ -324,7 +325,24 @@ - (void)_keyboardWillChangeFrame:(NSNotification *)notification
+@@ -324,7 +324,25 @@ - (void)_keyboardWillChangeFrame:(NSNotification *)notification
    }
  
    CGPoint newContentOffset = _scrollView.contentOffset;
@@ -113,20 +92,21 @@ index 2929f2dfdf3831c39f1010825ab7f076dbe538eb..7b0e0d6c941754fb19563f3f5ca00a95
 +
 +  CGFloat contentDiff = 0;
 +  if ([[UIApplication sharedApplication] sendAction:@selector(reactUpdateResponderOffsetForScrollView:)
-+                                                 to:nil
-+                                               from:self
-+                                           forEvent:nil]) {
++  to:nil
++  from:self
++  forEvent:nil]) {
 +    // Inner text field focused
 +    CGFloat focusEnd = CGRectGetMaxY(self.firstResponderFocus);
 +    BOOL didFocusExternalTextField = focusEnd == INFINITY;
 +    if (!didFocusExternalTextField && focusEnd > endFrame.origin.y) {
 +      // Text field active region is below visible area with keyboard - update diff to bring into view
 +      contentDiff = endFrame.origin.y - focusEnd;
-+    }
-+  } else if (endFrame.origin.y <= beginFrame.origin.y) {
-+    // Keyboard opened for other reason
-+    contentDiff = endFrame.origin.y - beginFrame.origin.y;
-+  }
++      }
++      } else if (endFrame.origin.y <= beginFrame.origin.y) {
++        // Keyboard opened for other reason
++        contentDiff = endFrame.origin.y - beginFrame.origin.y;
++      }
++
    if (self.inverted) {
      newContentOffset.y += contentDiff;
    } else {
