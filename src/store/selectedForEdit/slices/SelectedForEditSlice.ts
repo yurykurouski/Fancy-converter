@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { EditModeSliceActions } from 'store/editMode/reducers/EditModeSlice';
-import { TAvailableCurrenciesNames } from 'types';
+import { TAvailableCurrenciesNames, TSelectedCurrencies } from 'types';
 
 export type TSelectedForEditSlice = {
-  selectedCurrencies: {
-    [key in TAvailableCurrenciesNames]?: number;
-  };
+  selectedCurrencies: TSelectedCurrencies;
   selectedAmount: number;
 };
 

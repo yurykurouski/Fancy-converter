@@ -7,7 +7,7 @@ import {
   TSetFocusedCurrencyName,
   TSetFocusedCurrencyValue,
 } from 'hooks/store/types';
-import { EAvailableFiatNames, TAvailableCurrenciesNames } from 'types';
+import { EAvailableFiatNames, TSelectedCurrencies } from 'types';
 
 export type Props = {
   currencyCode: EAvailableFiatNames;
@@ -39,9 +39,7 @@ export type TUseOnContainerPressParams = {
   isInEditMode: boolean;
   currencyCode: EAvailableFiatNames;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
-  selectedCurrenciesInEdit: {
-    [key in TAvailableCurrenciesNames]?: number;
-  };
+  selectedCurrenciesInEdit: TSelectedCurrencies;
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
   selectedInEditAmount: number;
   setEditMode: TSetEditMode;
