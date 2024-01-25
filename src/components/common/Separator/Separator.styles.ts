@@ -5,5 +5,6 @@ export const useStyles = () =>
     container: {
       height: 1,
       backgroundColor: theme.ACCENT_COLOR_DARKER,
+      marginVertical: 4,
     },
   }));

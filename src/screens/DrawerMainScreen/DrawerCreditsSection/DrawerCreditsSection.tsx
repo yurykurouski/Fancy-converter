@@ -6,15 +6,18 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { ReactIcon } from 'assets/icons/ReactIcon';
-import { DrawerScreen } from 'components';
 import { l } from 'resources/localization';
 
-import { version } from '../../../package.json';
+import { version } from '../../../../package.json';
 
-import { useStyles } from './DrawerCreditsScreen.styles';
+import { useStyles } from './DrawerCreditsSection.styles';
 
-export const DrawerCreditsScreen = () => {
-  const styles = useStyles();
+export const DrawerCreditsSection = ({
+  pageHeight,
+}: {
+  pageHeight: number;
+}) => {
+  const styles = useStyles(pageHeight);
 
   const logoShared = useSharedValue(0);
 
@@ -42,7 +45,8 @@ export const DrawerCreditsScreen = () => {
   };
 
   return (
-    <DrawerScreen>
+    <View style={styles.container}>
+      <Text style={styles.title}>{l['drawer_credits-nav']}</Text>
       <View style={styles.container}>
         <View style={styles.itemContainer}>
           <Text style={styles.itemTitle}>Flag icons:</Text>
@@ -93,6 +97,6 @@ export const DrawerCreditsScreen = () => {
           </View>
         </View>
       </View>
-    </DrawerScreen>
+    </View>
   );
 };

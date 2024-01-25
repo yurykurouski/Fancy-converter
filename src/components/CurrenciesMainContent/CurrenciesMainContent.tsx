@@ -8,7 +8,7 @@ import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { ControlsMenu, CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
-import { DrawerStack } from 'navigation';
+import { DrawerMainScreen } from 'screens';
 import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { isIos } from 'utils';
@@ -33,7 +33,10 @@ export const CurrenciesMainContent = React.memo(() => {
 
   const { closeDrawer, openDrawer } = useOpenDrawerAnimations(drawerRef);
 
-  const renderContent = useCallback(() => <DrawerStack />, []);
+  const renderContent = useCallback(
+    () => <DrawerMainScreen ref={drawerRef} />,
+    [],
+  );
 
   useHandleBackPress(closeDrawer, drawerRef);
   useUpdateCourses();

@@ -8,10 +8,12 @@ export const useStyles = () =>
       alignItems: 'center',
       justifyContent: 'space-between',
       gap: 20,
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
+      backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
       borderRadius: 20,
       padding: 4,
       overflow: 'hidden',
+      borderWidth: 1,
+      borderColor: theme.ACCENT_COLOR_DARKER,
     },
     labelText: {
       fontSize: 16,
