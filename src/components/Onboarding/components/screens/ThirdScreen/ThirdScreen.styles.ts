@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { CONTROLS_OFFSET } from 'constants/index';
 
 export const useScreenStyles = (windowWidth: number) =>
   StyleSheet.create({
@@ -9,7 +10,10 @@ export const useScreenStyles = (windowWidth: number) =>
     },
     subTitle: { marginTop: 100 },
     subTitleDrag: { marginBottom: 20 },
-    subTitlePress: { marginTop: 'auto', marginBottom: 80 },
+    controls: {
+      marginTop: 'auto',
+      transform: [{ translateY: -CONTROLS_OFFSET }],
+    },
     rippleBaseStyle: {
       width: 50,
       height: 50,
@@ -22,12 +26,12 @@ export const useScreenStyles = (windowWidth: number) =>
       bottom: 8,
     },
     pressRipple: {
-      bottom: 2,
-      left: 13,
+      bottom: 10,
+      left: 24,
       transform: [{ scale: 0 }],
     },
     pressRippleRight: {
-      bottom: 2,
-      right: 13,
+      bottom: 10,
+      right: 24,
     },
   });

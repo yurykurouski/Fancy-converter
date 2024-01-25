@@ -1,5 +1,7 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
+import { l } from 'resources/localization';
 
 import { ProgressBar } from '../components';
 import { ONBOARDING_SCREENS } from '../Onboarding.consts';
@@ -22,27 +24,26 @@ export const OnboardingNavigation = ({ currentPage, scrollListRef }: Props) => {
 
   const handleSkip = useHandleOnboardingSkip(scrollListRef);
 
-  //TODO: add translations
   const rightButtonText =
-    currentPage === ONBOARDING_SCREENS.length - 1 ? 'Done' : 'Next';
+    currentPage === ONBOARDING_SCREENS.length - 1
+      ? l.onboarding_navigation_done
+      : l.onboarding_navigation_next;
 
   return (
     <View style={styles.container}>
       <View style={styles.divider} />
       <View style={styles.wrapper}>
-        <Pressable
-          onPress={handleSkip}
-          android_ripple={{ borderless: true, foreground: true }}
-          style={styles.navigationBtn}>
-          <Text style={styles.mainText}>Skip</Text>
-        </Pressable>
+        <ButtonWithIPadOSInteraction
+          containerStyle={styles.navigationBtn}
+          onPress={handleSkip}>
+          <Text style={styles.mainText}>{l.onboarding_navigation_skip}</Text>
+        </ButtonWithIPadOSInteraction>
         <ProgressBar activeIndex={currentPage} />
-        <Pressable
-          android_ripple={{ borderless: true, foreground: true }}
-          style={styles.navigationBtn}
+        <ButtonWithIPadOSInteraction
+          containerStyle={styles.navigationBtn}
           onPress={handleNextPress}>
           <Text style={styles.mainText}>{rightButtonText}</Text>
-        </Pressable>
+        </ButtonWithIPadOSInteraction>
       </View>
     </View>
   );

@@ -32,7 +32,7 @@ export const Onboarding = () => {
         onScroll={handleScroll}
         showsHorizontalScrollIndicator={false}
         decelerationRate={'fast'}
-        snapToOffsets={[0, windowWidth, windowWidth * 2]}
+        pagingEnabled
         overScrollMode="never"
         horizontal>
         {ONBOARDING_SCREENS.map((Component, i) => (

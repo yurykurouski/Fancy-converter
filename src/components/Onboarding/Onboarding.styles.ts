@@ -2,11 +2,10 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
-  useTheme((theme, { bottom }) => ({
+  useTheme(theme => ({
     contentContainer: {
       flex: 1,
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
-      paddingBottom: bottom,
     },
   }));
 

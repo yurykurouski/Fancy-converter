@@ -39,19 +39,21 @@ export const FourthScreen = ({ windowWidth }: TProps) => {
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}>
-        <Text style={[textStyles.mainText, styles.title]}>
-          {l['onboarding_fourth-screen_title']}
-        </Text>
-        {Object.keys(currencies).map(
-          currencyCode =>
-            currencyCode !== locationCurrency && (
-              <CurrencyItem
-                key={currencyCode}
-                currencyCode={currencyCode as EAvailableFiatNames}
-                currencyName={l[currencyCode as EAvailableFiatNames]}
-              />
-            ),
-        )}
+        <View style={styles.currs}>
+          <Text style={textStyles.mainText}>
+            {l['onboarding_fourth-screen_title']}
+          </Text>
+          {Object.keys(currencies).map(
+            currencyCode =>
+              currencyCode !== locationCurrency && (
+                <CurrencyItem
+                  key={currencyCode}
+                  currencyCode={currencyCode as EAvailableFiatNames}
+                  currencyName={l[currencyCode as EAvailableFiatNames]}
+                />
+              ),
+          )}
+        </View>
 
         {locationCurrency && (
           <>
