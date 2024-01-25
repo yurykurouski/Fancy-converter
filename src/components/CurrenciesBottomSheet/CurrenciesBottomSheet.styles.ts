@@ -6,10 +6,10 @@ export const useStyles = (height?: number) => {
 
   return useTheme(() => ({
     container: {
-      width: windowWidth,
       height,
     },
     listContainer: {
+      width: windowWidth,
       paddingHorizontal: 10,
     },
     containerStyle: {
