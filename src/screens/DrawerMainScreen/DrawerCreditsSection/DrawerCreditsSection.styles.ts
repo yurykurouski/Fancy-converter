@@ -2,7 +2,7 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
 export const useStyles = (pageHeight: number) => {
-  return useTheme((theme, { bottom, top }) => ({
+  return useTheme(theme => ({
     container: {
       height: pageHeight,
       gap: 10,
