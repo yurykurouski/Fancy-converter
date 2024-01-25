@@ -2,10 +2,10 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
 export const useStyles = (pageHeight: number) => {
-  return useTheme((theme, { bottom, top }) => ({
+  return useTheme(theme => ({
     container: {
       height: pageHeight,
-      gap: 6,
+      gap: 10,
     },
     title: {
       fontSize: 16,
@@ -51,7 +51,7 @@ export const useStyles = (pageHeight: number) => {
       alignItems: 'center',
       borderRadius: 30,
       padding: 4,
-      marginBottom: bottom + 50 + (isAndroid ? top : 10),
+      marginBottom: 110,
     },
     poweredText: {
       fontSize: 14,
@@ -64,7 +64,6 @@ export const useStyles = (pageHeight: number) => {
     },
     footerContainer: {
       marginTop: 'auto',
-      marginBottom: 10,
       gap: 10,
     },
     credsContainer: {

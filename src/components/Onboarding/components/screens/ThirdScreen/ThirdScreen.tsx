@@ -28,7 +28,6 @@ export const ThirdScreen = ({ windowWidth }: { windowWidth: number }) => {
 
   const screenTitle = l['onboarding_third-screen_title'];
   const screenSubTitleSwipe = l['onboarding_third-screen_subtitle-swipe'];
-  const screenSubTitlePress = l['onboarding_third-screen_subtitle-press'];
 
   const animatedSwipeStyle = useAnimatedStyle(() => {
     const scaleValue = clamp(rippleSwipeAnimValue.value, 0, 1);
@@ -100,11 +99,9 @@ export const ThirdScreen = ({ windowWidth }: { windowWidth: number }) => {
           ]}
         />
       </View>
-
-      <Text style={[textStyles.mainText, styles.subTitlePress]}>
-        {screenSubTitlePress}
-      </Text>
-      <ControlsMenu />
+      <View style={styles.controls}>
+        <ControlsMenu />
+      </View>
       <Animated.View
         style={[styles.rippleBaseStyle, styles.pressRipple, animatedPressStyle]}
       />

@@ -10,8 +10,12 @@ export const useStyles = (windowWidth: number) =>
       alignItems: 'center',
       paddingHorizontal: 10,
     },
-    scrollContainer: { gap: 10, marginTop: 10, width: DRAWER_CONTENT_WIDTH },
-    title: {
+    scrollContainer: {
+      marginTop: 10,
+      width: DRAWER_CONTENT_WIDTH,
+    },
+    currs: {
       marginTop: '50%',
+      gap: 10,
     },
   });
