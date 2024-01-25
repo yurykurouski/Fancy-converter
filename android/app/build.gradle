@@ -72,9 +72,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.converter"
+    namespace "com.zorkasoftware.converter"
     defaultConfig {
-        applicationId "com.converter"
+        applicationId "com.zorkasoftware.converter"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 3
