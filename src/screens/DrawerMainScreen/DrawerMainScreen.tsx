@@ -1,78 +1,69 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { CoffeeCupIcon, GithubIcon, RightArrowIcon } from 'assets/icons';
-import {
-  DONATION_URL,
-  GITHUB_REPO_URL,
-  ICON_BUTTON_SIZE,
-} from 'constants/index';
-import { useSwitchColorScheme } from 'hooks/store/UIStatus';
-import { DRAWER_STACK_ROUTES } from 'navigation/DrawerStack/DrawerStack.routes';
-import { l } from 'resources/localization';
-import { EColorSchemeBehavior } from 'types';
+import { View } from 'react-native';
+import { DrawerLayout } from 'react-native-gesture-handler';
+import Animated, {
+  useAnimatedScrollHandler,
+  useSharedValue,
+} from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ScrollIndicator } from 'components';
+import { useWindowDimensionChange } from 'hooks';
+import { DrawerCreditsSection } from 'screens/DrawerMainScreen/DrawerCreditsSection';
+import { EDimensions } from 'types';
+import { isAndroid } from 'utils';
 
-import { DrawerIcon } from './DrawerIcon';
-import { useButtonOnPress } from './DrawerMainScreen.hooks';
-import { DrawerMenuItem } from './DrawerMenuItem';
-import { DrawerThemeSwitcher } from './DrawerThemeSwitcher';
+import { DrawerMainSection } from './DrawerMainSection';
+import { DrawerMoreSection } from './DrawerMoreSection';
+import { DrawerSwitcher } from './DrawerSwitcher';
 
 import { useStyles } from './DrawerMainScreen.styles';
 
-export const DrawerMainScreen = React.memo(() => {
-  const styles = useStyles();
+export const DrawerMainScreen = React.forwardRef<DrawerLayout>(
+  (_, drawerRef) => {
+    const styles = useStyles();
 
-  const switchColorScheme = useSwitchColorScheme();
+    const translationY = useSharedValue(0);
+    const indicatorState = useSharedValue(0);
 
-  const { navigate } = useNavigation();
+    const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
+    const { top, bottom } = useSafeAreaInsets();
 
-  const openGH = useButtonOnPress(
-    GITHUB_REPO_URL,
-    'alert_message.github_press.description',
-  );
+    const scrollHandler = useAnimatedScrollHandler({
+      onScroll: event => {
+        translationY.value = event.contentOffset.y;
+      },
+      onBeginDrag: () => {
+        indicatorState.value = 1;
+      },
+      onEndDrag: () => {
+        indicatorState.value = 0;
+      },
+    });
 
-  const openPayPal = useButtonOnPress(
-    DONATION_URL,
-    'alert_message.paypal_press.description',
-  );
+    const pageHeight = windowHeight - bottom - (isAndroid ? 0 : top);
 
-  const testNavigation = () => {
-    navigate(DRAWER_STACK_ROUTES.MoreScreen);
-  };
-
-  const switchTheme = () => switchColorScheme(EColorSchemeBehavior.MANUAL);
-
-  return (
-    <View style={styles.contentContainer}>
-      <ScrollView>
-        <DrawerMenuItem
-          onPress={testNavigation}
-          labelText={l['drawer_main_more-nav']}>
-          <View style={styles.mailIcon}>
-            <RightArrowIcon size={ICON_BUTTON_SIZE} />
-          </View>
-        </DrawerMenuItem>
-
-        <View style={styles.morePlaceholder}>
-          <Text style={[styles.moreText, styles.moreFirstRow]}>
-            {l.drawer_placeholder_title}
-          </Text>
-          <Text style={[styles.moreText, styles.moreSecondRow]}>
-            {l.drawer_placeholder_text}
-          </Text>
-        </View>
-      </ScrollView>
-
-      <View style={styles.iconsContainer}>
-        <DrawerIcon Icon={GithubIcon} size={30} onPress={openGH} />
-        <DrawerIcon Icon={CoffeeCupIcon} size={30} onPress={openPayPal} />
-        <DrawerIcon
-          Icon={DrawerThemeSwitcher}
-          size={30}
-          onPress={switchTheme}
-          withRipple={false}
+    return (
+      <View style={styles.contentContainer}>
+        <ScrollIndicator
+          ref={drawerRef}
+          translationY={translationY}
+          totalHeight={pageHeight * 3}
+          indicatorState={indicatorState}
         />
+        <Animated.ScrollView
+          onScroll={scrollHandler}
+          decelerationRate={'fast'}
+          pagingEnabled
+          showsVerticalScrollIndicator={false}>
+          <DrawerMainSection pageHeight={pageHeight} />
+
+          <DrawerMoreSection pageHeight={pageHeight} />
+
+          <DrawerCreditsSection pageHeight={pageHeight} />
+        </Animated.ScrollView>
+
+        <DrawerSwitcher />
       </View>
-    </View>
-  );
-});
+    );
+  },
+);

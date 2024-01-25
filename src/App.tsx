@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   initialWindowMetrics,
@@ -40,16 +39,14 @@ const { container } = StyleSheet.create({
 
 export default () => (
   <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-    <NavigationContainer>
-      <GestureHandlerRootView style={container}>
-        <Provider store={store}>
-          <PersistGate persistor={persistor}>
-            <WithNotificationHOC>
-              <App />
-            </WithNotificationHOC>
-          </PersistGate>
-        </Provider>
-      </GestureHandlerRootView>
-    </NavigationContainer>
+    <GestureHandlerRootView style={container}>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <WithNotificationHOC>
+            <App />
+          </WithNotificationHOC>
+        </PersistGate>
+      </Provider>
+    </GestureHandlerRootView>
   </SafeAreaProvider>
 );

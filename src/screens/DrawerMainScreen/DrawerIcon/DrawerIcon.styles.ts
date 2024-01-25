@@ -11,5 +11,7 @@ export const useStyles = (color?: string) =>
       justifyContent: 'center',
       margin: 4,
       overflow: 'hidden',
+      borderWidth: 1,
+      borderColor: theme.ACCENT_COLOR_DARKER,
     },
   }));

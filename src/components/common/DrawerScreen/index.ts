@@ -1,1 +1,0 @@
-export { DrawerScreen } from './DrawerScreen';
