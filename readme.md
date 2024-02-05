@@ -1,0 +1,1 @@
+<img src='src/assets/images/preview.png' alignment='center'>
