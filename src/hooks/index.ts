@@ -2,6 +2,7 @@ export * from './store';
 export { useAlertMessage } from './useAlertMessage';
 export { useAndroidRippleConfig } from './useAndroidRippleConfig';
 export { useAppearanceChangeListener } from './useAppearanceChangeListener';
+export { useAppState } from './useAppState';
 export * from './useGetCoursesFromStorage';
 export * from './useGetCurrenciesExchangeCourse';
 export { useLoadCourses } from './useLoadCourses';
