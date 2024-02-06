@@ -1,4 +1,7 @@
 {
   "name": "Converter",
-  "displayName": "Converter"
+  "displayName": "Converter",
+  "plugins": [
+    "expo-localization"
+  ]
 }
