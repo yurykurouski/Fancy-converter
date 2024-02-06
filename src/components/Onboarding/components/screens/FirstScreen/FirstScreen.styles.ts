@@ -9,5 +9,7 @@ export const useScreenStyles = (windowWidth: number) =>
     },
     appIcon: {
       alignSelf: 'center',
+      width: 160,
+      height: 160,
     },
   });
