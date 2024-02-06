@@ -6,12 +6,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:sonarjs/recommended',
   ],
-  plugins: [
-    'eslint-plugin-simple-import-sort',
-    'react-hooks',
-    'unused-imports',
-    'sonarjs',
-  ],
+  plugins: ['simple-import-sort', 'react-hooks', 'unused-imports', 'sonarjs'],
   rules: {
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',

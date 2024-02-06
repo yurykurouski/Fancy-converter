@@ -1,8 +1,5 @@
 module.exports = {
-  presets: [
-    'module:metro-react-native-babel-preset',
-    '@babel/preset-typescript',
-  ],
+  presets: ['module:@react-native/babel-preset'],
   plugins: [
     ['module:react-native-dotenv'],
     [
@@ -23,7 +20,6 @@ module.exports = {
           store: './src/store',
           HOC: './src/HOC',
           screens: './src/screens',
-          navigation: './src/navigation',
         },
       },
     ],

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Text } from 'react-native';
-import { useAppState } from '@react-native-community/hooks';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -8,6 +7,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
+import { useAppState } from 'hooks';
 import { useIsHasIsland } from 'hooks/useHasIsland';
 import { l } from 'resources/localization';
 import { selectUIStatus } from 'store/ui/selectors';

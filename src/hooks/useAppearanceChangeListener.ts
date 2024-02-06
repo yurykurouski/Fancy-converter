@@ -23,7 +23,7 @@ export const useAppearanceChangeListener = () => {
   }, [behavior, currentColorScheme, switchColorScheme]);
 
   useEffect(() => {
-    let timeoutID: NodeJS.Timeout;
+    let timeoutID: number;
 
     switchAppearance();
 

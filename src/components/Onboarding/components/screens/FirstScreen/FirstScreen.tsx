@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Image, Text } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
-import AppIcon from 'assets/icons/icon_svg.svg';
 import { l } from 'resources/localization';
 
 import { useScreenStyles } from './FirstScreen.styles';
@@ -15,7 +14,10 @@ export const FirstScreen = ({ windowWidth }: { windowWidth: number }) => {
 
   return (
     <Animated.View style={screenStyles.container} layout={FadeInUp}>
-      <AppIcon width="160" height="160" style={screenStyles.appIcon} />
+      <Image
+        source={require('assets/icons/icon.png')}
+        style={screenStyles.appIcon}
+      />
       <Text style={[styles.mainText, styles.title]}>{screenTitle}</Text>
     </Animated.View>
   );
