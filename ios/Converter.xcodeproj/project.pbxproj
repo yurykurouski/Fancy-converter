@@ -14,6 +14,7 @@
 		61AB77DE1C222BE473764B85 /* libPods-Converter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D52841A80B836B9C5E62F449 /* libPods-Converter.a */; };
 		80A8D8B2C8E6551EA9A295ED /* libPods-Converter-ConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FDF72826657D60E15A39BD /* libPods-Converter-ConverterTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		FB07C2D12B71BCE100273DC5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB07C2D02B71BCE100273DC5 /* Colors.xcassets */; };
 		FB0AF3412B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */; };
 		FB66E8F92AB4E94700E1DFDF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		BF6DEA8E9E26480B6296BD2A /* Pods-Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Converter.release.xcconfig"; path = "Target Support Files/Pods-Converter/Pods-Converter.release.xcconfig"; sourceTree = "<group>"; };
 		D52841A80B836B9C5E62F449 /* libPods-Converter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Converter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FB07C2D02B71BCE100273DC5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FB0AF33D2B2B4DE700A86918 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		FB0AF3402B2B4EC400A86918 /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5A81FDAA20A5FA36466AD3 /* Pods-Converter-ConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Converter-ConverterTests.release.xcconfig"; path = "Target Support Files/Pods-Converter-ConverterTests/Pods-Converter-ConverterTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				FBC3ECDA2ABE36D10048B8AE /* Converter.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				FB66E8F82AB4E94700E1DFDF /* BootSplash.storyboard */,
+				FB07C2D02B71BCE100273DC5 /* Colors.xcassets */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB66E8F92AB4E94700E1DFDF /* BootSplash.storyboard in Resources */,
+				FB07C2D12B71BCE100273DC5 /* Colors.xcassets in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
