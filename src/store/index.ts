@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RNBootSplash from 'react-native-bootsplash';
 import { configureStore, Middleware } from '@reduxjs/toolkit';
-import createDebugger from 'redux-flipper';
 import {
   FLUSH,
   PAUSE,
@@ -21,10 +20,6 @@ import { UISlice } from './ui/slices/UISlice';
 import { rootReducer } from './rootReducer';
 
 const middlewares: Middleware[] = [];
-
-if (__DEV__) {
-  middlewares.push(createDebugger());
-}
 
 const persistConfig = {
   key: 'root',

@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json",
+  "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "jsx": "react-native",
     "baseUrl": "src", /* Base directory to resolve non-absolute module names. */
@@ -10,5 +10,7 @@
   "typeRoots": [
     "./node_modules/@types"
   ],
-  "exclude": ["./metro.config.js"]
+  "exclude": [
+    "./metro.config.js"
+  ]
 }
