@@ -12,6 +12,7 @@ export const useStyles = () =>
       backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
       borderWidth: 1,
       borderColor: theme.ACCENT_COLOR_DARKER,
+      overflow: 'hidden',
     },
     behaviorIndicator: {
       position: 'absolute',

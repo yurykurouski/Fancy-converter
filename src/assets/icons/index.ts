@@ -2,6 +2,8 @@ export { BookmarkIcon } from './BookmarkIcon';
 export { CheckIcon } from './CheckIcon';
 export { CloseIcon } from './CloseIcon';
 export { CoffeeCupIcon } from './CoffeeCupIcon';
+export { DarkIconMoon } from './DarkIconMoon';
+export { DarkIconStars } from './DarkIconStars';
 export { DeleteSweepIcon } from './DeleteSweepIcon';
 export { GithubIcon } from './GithubIcon';
 export { LightIconRays } from './LightIconRays';

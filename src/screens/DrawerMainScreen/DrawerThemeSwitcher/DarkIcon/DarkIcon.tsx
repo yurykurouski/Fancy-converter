@@ -4,8 +4,7 @@ import Animated, {
   SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import moonCore from 'assets/icons/dark_mode/moon_core.png';
-import moonStars from 'assets/icons/dark_mode/moon_stars.png';
+import { DarkIconMoon, DarkIconStars } from 'assets/icons';
 
 import { styles } from './DarkIcon.styles';
 
@@ -33,14 +32,14 @@ export const DarkIcon = ({ animatedValue }: TProps) => {
 
   return (
     <>
-      <Animated.Image
-        style={[styles.moon, animatedContainerStyle]}
-        source={moonCore}
-      />
-      <Animated.Image
+      <AnimatedDarkIconMoon style={[styles.moon, animatedContainerStyle]} />
+      <AnimatedDarkIconStars
+        size={12}
         style={[styles.stars, animatedStarStyle]}
-        source={moonStars}
       />
     </>
   );
 };
+
+const AnimatedDarkIconStars = Animated.createAnimatedComponent(DarkIconStars);
+const AnimatedDarkIconMoon = Animated.createAnimatedComponent(DarkIconMoon);
