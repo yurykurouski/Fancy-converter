@@ -5,9 +5,7 @@ import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { GithubIcon } from 'assets/icons';
 import { BLUR_AMOUNT, BLUR_RADIUS, GITHUB_REPO_URL } from 'constants/index';
-import { useSwitchColorScheme } from 'hooks/store/UIStatus';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { EColorSchemeBehavior } from 'types';
 
 import { DrawerIcon } from '../DrawerIcon';
 import { useButtonOnPress } from '../DrawerMainScreen.hooks';
@@ -15,24 +13,15 @@ import { DrawerThemeSwitcher } from '../DrawerThemeSwitcher';
 
 import { useStyles } from './DrawerSwitcher.styles';
 
-export const DrawerSwitcher = () => {
+export const DrawerSwitcher = React.memo(() => {
   const styles = useStyles();
 
   const { colorScheme } = useSelector(selectColorSchemeState);
-
-  const switchColorScheme = useSwitchColorScheme();
 
   const openGH = useButtonOnPress(
     GITHUB_REPO_URL,
     'alert_message.github_press.description',
   );
-
-  // const openPayPal = useButtonOnPress(
-  //   DONATION_URL,
-  //   'alert_message.paypal_press.description',
-  // );
-
-  const switchTheme = () => switchColorScheme(EColorSchemeBehavior.MANUAL);
 
   return (
     <View style={styles.iconsContainer}>
@@ -48,15 +37,9 @@ export const DrawerSwitcher = () => {
         pointerEvents="box-none">
         <View style={styles.wrapper}>
           <DrawerIcon Icon={GithubIcon} size={30} onPress={openGH} />
-          {/* <DrawerIcon Icon={CoffeeCupIcon} size={30} onPress={openPayPal} /> */}
-          <DrawerIcon
-            Icon={DrawerThemeSwitcher}
-            size={30}
-            onPress={switchTheme}
-            withRipple={false}
-          />
+          <DrawerThemeSwitcher />
         </View>
       </BlurView>
     </View>
   );
-};
+});

@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
-import {
+import { Pressable } from 'react-native';
+import Animated, {
+  FadeIn,
+  FadeOut,
   ReduceMotion,
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
+import { DEFAULT_ANIMATION_DURATION } from 'constants';
+import { useSwitchColorScheme } from 'hooks/store/UIStatus';
+import throttle from 'lodash/throttle';
 import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { EColorSchemeBehavior } from 'types';
 
@@ -14,29 +19,49 @@ import { LightIcon } from './LightIcon';
 
 import { useStyles } from './DrawerThemeSwitcher.styles';
 
-export const DrawerThemeSwitcher = () => {
+export const DrawerThemeSwitcher = React.memo(() => {
   const styles = useStyles();
 
   const { colorScheme, behavior } = useSelector(selectColorSchemeState);
 
-  const animatedValue = useSharedValue(0);
+  const switchColorScheme = useSwitchColorScheme();
 
-  useEffect(() => {
-    const toValue = colorScheme === 'dark' ? 135 : 0;
+  const animatedValue = useSharedValue(colorScheme !== 'dark' ? 0 : 135);
+
+  const onPress = throttle(() => {
+    const toValue = colorScheme === 'dark' ? 0 : 135;
 
     animatedValue.value = withSpring(toValue, {
       dampingRatio: 0.7,
       reduceMotion: ReduceMotion.System,
     });
-  }, [animatedValue, colorScheme]);
+
+    switchColorScheme(EColorSchemeBehavior.MANUAL);
+  }, 500);
+
+  useEffect(() => {
+    if (behavior === EColorSchemeBehavior.AUTO) {
+      const toValue = colorScheme === 'dark' ? 135 : 0;
+
+      animatedValue.value = withSpring(toValue, {
+        dampingRatio: 0.7,
+        reduceMotion: ReduceMotion.System,
+      });
+    }
+  }, [animatedValue, behavior, colorScheme]);
 
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <LightIcon animatedValue={animatedValue} />
       <DarkIcon animatedValue={animatedValue} />
       {behavior === EColorSchemeBehavior.AUTO && (
-        <Text style={styles.behaviorIndicator}>A</Text>
+        <Animated.Text
+          style={styles.behaviorIndicator}
+          entering={FadeIn.duration(DEFAULT_ANIMATION_DURATION)}
+          exiting={FadeOut.duration(DEFAULT_ANIMATION_DURATION)}>
+          A
+        </Animated.Text>
       )}
-    </View>
+    </Pressable>
   );
-};
+});

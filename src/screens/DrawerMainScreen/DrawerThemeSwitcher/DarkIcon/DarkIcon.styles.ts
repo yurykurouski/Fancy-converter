@@ -2,15 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   moon: {
-    width: 40,
-    height: 40,
+    width: 34,
+    height: 34,
     position: 'absolute',
   },
   stars: {
-    width: 16,
-    height: 16,
+    width: 12,
+    height: 12,
     right: 20,
-    top: 0,
+    top: 4,
     position: 'absolute',
   },
 });

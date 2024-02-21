@@ -8,7 +8,10 @@ export const useStyles = () =>
       height: 40,
       justifyContent: 'center',
       alignItems: 'center',
-      transform: [{ scale: 0.8 }],
+      borderRadius: 20,
+      backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
+      borderWidth: 1,
+      borderColor: theme.ACCENT_COLOR_DARKER,
     },
     behaviorIndicator: {
       position: 'absolute',

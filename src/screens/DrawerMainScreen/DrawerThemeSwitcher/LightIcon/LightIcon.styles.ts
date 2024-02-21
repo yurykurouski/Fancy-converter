@@ -4,8 +4,8 @@ export const useStyles = () =>
   useTheme(theme => ({
     container: {
       position: 'absolute',
-      width: 40,
-      height: 40,
+      width: 34,
+      height: 34,
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -16,8 +16,8 @@ export const useStyles = () =>
       backgroundColor: theme.FONT_PRIMARY_COLOR,
     },
     rays: {
-      width: 40,
-      height: 40,
+      width: 34,
+      height: 34,
       top: 0,
       zIndex: 1,
       position: 'absolute',
