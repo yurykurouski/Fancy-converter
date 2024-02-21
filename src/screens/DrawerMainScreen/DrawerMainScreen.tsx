@@ -44,25 +44,27 @@ export const DrawerMainScreen = React.forwardRef<DrawerLayout>(
 
     return (
       <View style={styles.contentContainer}>
-        <ScrollIndicator
-          ref={drawerRef}
-          translationY={translationY}
-          totalHeight={pageHeight * 3}
-          indicatorState={indicatorState}
-        />
-        <Animated.ScrollView
-          onScroll={scrollHandler}
-          decelerationRate={'fast'}
-          pagingEnabled
-          showsVerticalScrollIndicator={false}>
-          <DrawerMainSection pageHeight={pageHeight} />
+        <View style={styles.scrollContainer}>
+          <ScrollIndicator
+            ref={drawerRef}
+            translationY={translationY}
+            totalHeight={pageHeight * 3}
+            indicatorState={indicatorState}
+          />
+          <Animated.ScrollView
+            onScroll={scrollHandler}
+            decelerationRate={'fast'}
+            pagingEnabled
+            showsVerticalScrollIndicator={false}>
+            <DrawerMainSection pageHeight={pageHeight} />
 
-          <DrawerMoreSection pageHeight={pageHeight} />
+            <DrawerMoreSection pageHeight={pageHeight} />
 
-          <DrawerCreditsSection pageHeight={pageHeight} />
-        </Animated.ScrollView>
+            <DrawerCreditsSection pageHeight={pageHeight} />
+          </Animated.ScrollView>
 
-        <DrawerSwitcher />
+          <DrawerSwitcher />
+        </View>
       </View>
     );
   },

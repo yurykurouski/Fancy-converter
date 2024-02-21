@@ -7,9 +7,15 @@ export const useStyles = () =>
     contentContainer: {
       paddingTop: top,
       flex: 1,
-      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       justifyContent: 'space-between',
-      paddingHorizontal: 10,
       width: DRAWER_CONTENT_WIDTH,
+    },
+    scrollContainer: {
+      flex: 1,
+      paddingHorizontal: 10,
+
+      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
+      borderRadius: 28,
+      overflow: 'hidden',
     },
   }));
