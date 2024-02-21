@@ -4,6 +4,7 @@ export { CloseIcon } from './CloseIcon';
 export { CoffeeCupIcon } from './CoffeeCupIcon';
 export { DeleteSweepIcon } from './DeleteSweepIcon';
 export { GithubIcon } from './GithubIcon';
+export { LightIconRays } from './LightIconRays';
 export { MailIcon } from './MailIcon';
 export { MenuIcon } from './MenuIcon';
 export { ReactIcon } from './ReactIcon';
