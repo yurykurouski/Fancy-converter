@@ -10,14 +10,12 @@ export const useStyles = () =>
       justifyContent: 'center',
     },
     core: {
-      width: 18,
-      height: 18,
+      width: 14,
+      height: 14,
       borderRadius: 10,
       backgroundColor: theme.FONT_PRIMARY_COLOR,
     },
     rays: {
-      width: 34,
-      height: 34,
       top: 0,
       zIndex: 1,
       position: 'absolute',

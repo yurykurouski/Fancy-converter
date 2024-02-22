@@ -9,11 +9,11 @@ export const useStyles = () =>
       flex: 1,
       justifyContent: 'space-between',
       width: DRAWER_CONTENT_WIDTH,
+      backgroundColor: theme.ACCENT_COLOR_DARKER,
     },
     scrollContainer: {
       flex: 1,
       paddingHorizontal: 10,
-
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       borderRadius: 28,
       overflow: 'hidden',

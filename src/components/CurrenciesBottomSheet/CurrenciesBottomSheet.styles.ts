@@ -1,3 +1,4 @@
+import { ELEVATION_10 } from 'constants';
 import { useTheme, useWindowDimensionChange } from 'hooks';
 import { EDimensions } from 'types';
 
@@ -16,7 +17,7 @@ export const useStyles = (height?: number) => {
       zIndex: 2,
     },
     backgroundStyle: {
-      elevation: 10,
+      ...ELEVATION_10,
     },
     activityIndicatorContainer: {
       position: 'absolute',

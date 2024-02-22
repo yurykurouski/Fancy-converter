@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+import { ELEVATION_1 } from 'constants';
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
@@ -8,12 +10,15 @@ export const useStyles = () =>
       alignItems: 'center',
       justifyContent: 'space-between',
       gap: 20,
-      backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       borderRadius: 20,
       padding: 4,
-      overflow: 'hidden',
-      borderWidth: 1,
-      borderColor: theme.ACCENT_COLOR_DARKER,
+      ...ELEVATION_1,
+      ...Platform.select({
+        android: {
+          overflow: 'hidden',
+        },
+      }),
     },
     labelText: {
       fontSize: 16,

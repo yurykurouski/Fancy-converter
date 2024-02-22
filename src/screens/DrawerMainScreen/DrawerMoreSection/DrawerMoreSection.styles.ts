@@ -17,13 +17,11 @@ export const useStyles = (pageHeight: number) => {
       marginTop: 10,
     },
     icon: {
-      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_DARKER,
+      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       borderRadius: 20,
       padding: 4,
       alignItems: 'center',
       justifyContent: 'center',
-      borderWidth: 1,
-      borderColor: theme.APP_BACKGROUND_PRIMARY,
     },
   }));
 };

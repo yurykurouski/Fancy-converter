@@ -1,11 +1,14 @@
+import { ELEVATION_1 } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = (size?: number) =>
   useTheme(theme => ({
+    container: {
+      ...ELEVATION_1,
+    },
     flagContainer: {
       alignSelf: 'center',
       borderRadius: 32,
-      overflow: 'hidden',
       justifyContent: 'center',
       alignContent: 'center',
       borderWidth: 1,

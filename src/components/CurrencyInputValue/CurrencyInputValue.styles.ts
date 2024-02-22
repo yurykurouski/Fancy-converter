@@ -1,3 +1,4 @@
+import { ELEVATION_1 } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
@@ -6,9 +7,9 @@ export const useStyles = () =>
       borderRadius: 15,
       borderColor: 'transparent',
       borderWidth: 2,
-      overflow: 'hidden',
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       marginHorizontal: 10,
+      ...ELEVATION_1,
     },
     container: {
       flexDirection: 'row',

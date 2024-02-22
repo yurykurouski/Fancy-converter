@@ -12,7 +12,7 @@ export const useStyles = (pageHeight: number) =>
       marginTop: '50%',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
     },
     moreFirstRow: {
       fontSize: 40,

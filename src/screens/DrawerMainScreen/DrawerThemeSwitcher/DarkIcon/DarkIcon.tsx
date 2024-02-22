@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import Animated, {
   interpolate,
   SharedValue,
@@ -31,13 +32,13 @@ export const DarkIcon = ({ animatedValue }: TProps) => {
   });
 
   return (
-    <>
+    <View style={styles.container}>
       <AnimatedDarkIconMoon style={[styles.moon, animatedContainerStyle]} />
       <AnimatedDarkIconStars
         size={12}
         style={[styles.stars, animatedStarStyle]}
       />
-    </>
+    </View>
   );
 };
 
