@@ -5,7 +5,7 @@ export const useStyles = (pageHeight: number) => {
   return useTheme(theme => ({
     container: {
       height: pageHeight,
-      gap: 6,
+      gap: 10,
     },
     title: {
       fontSize: 16,
