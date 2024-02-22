@@ -48,7 +48,7 @@ export const CurrenciesMainContent = React.memo(() => {
       ref={drawerRef}
       overlayColor={`${THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY}99`}
       contentContainerStyle={styles.drawerContainerStyle}
-      drawerType={'back'}
+      drawerType={'slide'}
       drawerWidth={DRAWER_CONTENT_WIDTH}
       drawerPosition={'left'}
       renderNavigationView={renderContent}

@@ -5,7 +5,7 @@ import Animated, {
   SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import sunRaysIcon from 'assets/icons/light_mode/sun_rays.png';
+import { LightIconRays } from 'assets/icons';
 
 import { useStyles } from './LightIcon.styles';
 
@@ -39,11 +39,10 @@ export const LightIcon = ({ animatedValue }: TRops) => {
 
   return (
     <Animated.View style={[styles.container, opacityStyle]}>
-      <Animated.Image
-        style={[styles.rays, animatedRays]}
-        source={sunRaysIcon}
-      />
+      <AnimatedIcon style={[styles.rays, animatedRays]} />
       <View style={styles.core} />
     </Animated.View>
   );
 };
+
+const AnimatedIcon = Animated.createAnimatedComponent(LightIconRays);

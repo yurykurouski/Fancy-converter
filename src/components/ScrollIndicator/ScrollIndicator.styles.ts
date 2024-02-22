@@ -1,3 +1,4 @@
+import { ELEVATION_1 } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
@@ -14,11 +15,12 @@ export const useStyles = () =>
       borderRadius: 6,
     },
     background: {
-      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
+      ...ELEVATION_1,
     },
     indicator: {
       top: 12,
-      backgroundColor: theme.FONT_COLOR_FADED,
-      zIndex: 1,
+      backgroundColor: theme.FONT_PRIMARY_COLOR,
+      zIndex: 2,
     },
   }));

@@ -5,7 +5,7 @@ export const useStyles = (pageHeight: number) => {
   return useTheme(theme => ({
     container: {
       height: pageHeight,
-      gap: 6,
+      gap: 10,
     },
     title: {
       fontSize: 16,
@@ -17,13 +17,11 @@ export const useStyles = (pageHeight: number) => {
       marginTop: 10,
     },
     icon: {
-      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_DARKER,
+      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       borderRadius: 20,
       padding: 4,
       alignItems: 'center',
       justifyContent: 'center',
-      borderWidth: 1,
-      borderColor: theme.APP_BACKGROUND_PRIMARY,
     },
   }));
 };

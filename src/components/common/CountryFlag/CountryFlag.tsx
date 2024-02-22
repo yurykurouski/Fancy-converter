@@ -19,7 +19,7 @@ export const CountryFlag = React.memo<Props>(
     const flagImg = flags[currencyCode];
 
     return (
-      <View>
+      <View style={styles.container}>
         <Image source={flagImg} style={styles.flagContainer} />
         {bookmark && (
           <BookmarkIcon size={8} style={styles.bookmarkIcon} color="grey" />

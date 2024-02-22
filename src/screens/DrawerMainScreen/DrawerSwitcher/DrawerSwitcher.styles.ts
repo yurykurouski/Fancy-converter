@@ -1,3 +1,4 @@
+import { ELEVATION_10 } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
@@ -10,18 +11,9 @@ export const useStyles = () =>
       borderRadius: 30,
       marginBottom: 10,
       marginHorizontal: 10,
-      overflow: 'hidden',
-      backgroundColor: 'transparent',
-      borderWidth: 1,
-      borderColor: theme.ACCENT_COLOR_DARKER,
-    },
-    blurView: {
-      flex: 1,
-      zIndex: 1,
-    },
-    wrapper: {
       flexDirection: 'row',
       justifyContent: 'space-evenly',
-      backgroundColor: 'transparent',
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
+      ...ELEVATION_10,
     },
   }));

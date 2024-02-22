@@ -1,16 +1,22 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 38,
+    height: 38,
+    borderRadius: 18,
+    overflow: 'hidden',
+  },
   moon: {
-    width: 40,
-    height: 40,
     position: 'absolute',
+    top: 4,
+    left: 4,
   },
   stars: {
-    width: 16,
-    height: 16,
-    right: 20,
-    top: 0,
+    right: 19,
+    top: 6,
     position: 'absolute',
   },
 });

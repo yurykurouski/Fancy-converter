@@ -1,3 +1,4 @@
+import { ELEVATION_1 } from 'constants';
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
@@ -45,13 +46,14 @@ export const useStyles = (pageHeight: number) => {
       borderRadius: 20,
     },
     poweredContainer: {
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       borderRadius: 30,
       padding: 4,
       marginBottom: 110,
+      ...ELEVATION_1,
     },
     poweredText: {
       fontSize: 14,

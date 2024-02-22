@@ -64,7 +64,7 @@ export type TAvailableCurrenciesNames =
   | EAvailableCryptoNames;
 
 export type TSVGIcon = {
-  size: number;
+  size?: number;
   style?: StyleProp<ViewStyle>;
   color?: ColorsLight | ColorsDark | string;
 };

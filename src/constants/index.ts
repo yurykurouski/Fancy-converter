@@ -1,4 +1,5 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, ViewStyle } from 'react-native';
+import { Platform } from 'react-native';
 import { EDimensions } from 'types';
 
 export const APP_NAME = 'Converter';
@@ -34,3 +35,31 @@ export const INPUT_ELEMENT_HEIGHT = 74;
 export const ICON_BUTTON_SIZE = 24;
 
 export const CONTROLS_OFFSET = 30;
+
+export const ELEVATION_1: ViewStyle = Platform.select({
+  ios: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+  },
+  android: {
+    elevation: 1,
+    overflow: 'hidden',
+  },
+})!;
+
+export const ELEVATION_10 = Platform.select({
+  ios: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+  },
+  android: {
+    elevation: 10,
+  },
+});

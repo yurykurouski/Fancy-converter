@@ -1,3 +1,4 @@
+import { ELEVATION_1 } from 'constants';
 import { useTheme } from 'hooks/useTheme';
 
 export const useStyles = () =>
@@ -8,7 +9,9 @@ export const useStyles = () =>
       height: 40,
       justifyContent: 'center',
       alignItems: 'center',
-      transform: [{ scale: 0.8 }],
+      borderRadius: 20,
+      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
+      ...ELEVATION_1,
     },
     behaviorIndicator: {
       position: 'absolute',
@@ -16,8 +19,9 @@ export const useStyles = () =>
         left: 20,
         bottom: 6,
       }),
+      includeFontPadding: false,
       zIndex: 1,
-      color: theme.FONT_PRIMARY_COLOR_INVERTED,
+      color: theme.ELEMENT_FADE_OR_BACKGROUND,
       fontWeight: 'bold',
     },
   }));

@@ -1,3 +1,4 @@
+import { ELEVATION_1 } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = (color?: string) =>
@@ -5,13 +6,11 @@ export const useStyles = (color?: string) =>
     iconContainer: {
       width: 40,
       height: 40,
-      backgroundColor: color ?? theme.FONT_PRIMARY_COLOR_INVERTED,
+      backgroundColor: color ?? theme.ELEMENT_FADE_OR_BACKGROUND,
       borderRadius: 20,
       alignItems: 'center',
       justifyContent: 'center',
       margin: 4,
-      overflow: 'hidden',
-      borderWidth: 1,
-      borderColor: theme.ACCENT_COLOR_DARKER,
+      ...ELEVATION_1,
     },
   }));
