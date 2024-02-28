@@ -16,9 +16,6 @@ export const DONATION_URL = 'https://www.buymeacoffee.com/yury_kurouski';
 
 export const TOP_INSET_WITH_ISLAND = 59;
 
-export const BLUR_AMOUNT = 26;
-export const BLUR_RADIUS = 16;
-
 export const DEFAULT_ANIMATION_DURATION = 150;
 
 export const WindowDimensions = {
@@ -39,9 +36,9 @@ export const CONTROLS_OFFSET = 30;
 export const ELEVATION_1: ViewStyle = Platform.select({
   ios: {
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
+    shadowOffset: { width: 0, height: 0.5 },
     shadowOpacity: 0.5,
-    shadowRadius: 1,
+    shadowRadius: 0.1,
   },
   android: {
     elevation: 1,

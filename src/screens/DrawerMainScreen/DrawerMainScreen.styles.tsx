@@ -9,13 +9,14 @@ export const useStyles = () =>
       flex: 1,
       justifyContent: 'space-between',
       width: DRAWER_CONTENT_WIDTH,
-      backgroundColor: theme.ACCENT_COLOR_DARKER,
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
     },
     scrollContainer: {
       flex: 1,
       paddingHorizontal: 10,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
-      borderRadius: 28,
+      borderTopRightRadius: 28,
+      borderBottomRightRadius: 28,
       overflow: 'hidden',
     },
   }));
