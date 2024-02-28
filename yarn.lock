@@ -1994,16 +1994,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/blur@npm:^4.3.2":
-  version: 4.3.2
-  resolution: "@react-native-community/blur@npm:4.3.2"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 4f7ed6a3bb58cd53346bb7d5755bb2733e8401fdae86334fde4f2fa0c554734e9bb52175c1f9ef1d99766aeb7a4991ac5dfe428c92da518d0353a1a6e5c3d39c
-  languageName: node
-  linkType: hard
-
 "@react-native-community/cli-clean@npm:12.3.2":
   version: 12.3.2
   resolution: "@react-native-community/cli-clean@npm:12.3.2"
@@ -4613,7 +4603,6 @@ __metadata:
     "@babel/runtime": ^7.20.0
     "@gorhom/bottom-sheet": 4.5.1
     "@react-native-async-storage/async-storage": 1.19.3
-    "@react-native-community/blur": ^4.3.2
     "@react-native-community/netinfo": 9.3.0
     "@react-native/babel-preset": 0.73.21
     "@react-native/eslint-config": 0.73.2
