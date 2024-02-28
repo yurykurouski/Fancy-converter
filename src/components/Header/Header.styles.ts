@@ -3,16 +3,14 @@ import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
   useTheme((theme, { top }) => ({
-    blurView: {
+    container: {
       position: 'absolute',
       width: '100%',
       top: 0,
       zIndex: 1,
       height: top + 40,
-    },
-    container: {
-      flex: 1,
       paddingHorizontal: 6,
+      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       overflow: 'hidden',
     },
     scrollContainer: {

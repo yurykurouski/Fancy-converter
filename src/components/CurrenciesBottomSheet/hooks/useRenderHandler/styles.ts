@@ -12,6 +12,7 @@ export const useStyles = () =>
           translateY: 10,
         },
       ],
+      overflow: 'hidden',
     },
     handle: {
       width: 50,
