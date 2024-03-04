@@ -14,6 +14,7 @@ export const useStyles = () =>
     },
     currencyInfoWrapper: {
       flexDirection: 'row',
+      alignItems: 'center',
       flex: 1,
     },
     currencyCodeNameWrapper: {
