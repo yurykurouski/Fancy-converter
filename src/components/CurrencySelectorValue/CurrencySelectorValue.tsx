@@ -7,17 +7,14 @@ import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
 import {
-  useRemoveFavoriteCurrency,
-  useSetFavoriteCurrency,
-} from 'hooks/store/FavoriteCurrencies';
-import {
   useAddSelected,
   useRemoveSelected,
 } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
-import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import { focusedCurrencyActions } from 'store/valtio/favoriteCurrenciesStore/favoriteCurrenciesStore';
 import { useSnapshot } from 'valtio';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
@@ -33,10 +30,8 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     const { activeCurrencyType, currencies } = useSelector(
       selectSelectedCurrencies,
     );
-    const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
+    const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
 
-    const setFavoriteCurrency = useSetFavoriteCurrency();
-    const removeFavCurrency = useRemoveFavoriteCurrency();
     const removeSelected = useRemoveSelected();
     const addSelected = useAddSelected();
 
@@ -52,17 +47,14 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
 
     const onLongPress = useCallback(() => {
       if (isFavorite) {
-        removeFavCurrency(currencyCode);
+        focusedCurrencyActions.removeFavoriteCurrency(currencyCode);
       } else {
-        setFavoriteCurrency(currencyCode, activeCurrencyType);
+        focusedCurrencyActions.setFavoriteCurrency(
+          currencyCode,
+          activeCurrencyType,
+        );
       }
-    }, [
-      activeCurrencyType,
-      currencyCode,
-      isFavorite,
-      removeFavCurrency,
-      setFavoriteCurrency,
-    ]);
+    }, [activeCurrencyType, currencyCode, isFavorite]);
 
     const currencyName = l[currencyCode];
 

@@ -21,9 +21,9 @@ import {
   RecyclerListView,
   RecyclerListViewProps,
 } from 'recyclerlistview';
-import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
+import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
 import { useSnapshot } from 'valtio';
 
@@ -51,7 +51,7 @@ export const CurrencySelector = React.memo(() => {
 
   const { isLoading } = useSnapshot(exchangeRatesStore);
   const { currencies } = useSelector(selectSelectedCurrencies);
-  const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
+  const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse();
 

@@ -3,7 +3,6 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 
 import { EditModeSlice } from './editMode/reducers/EditModeSlice';
-import { FavoriteCurrenciesSlice } from './favoriteCurrencies/slices/FavoriteCurrenciesSlice';
 import { FocusedCurrencySlice } from './focusedCurrency/slices/FocusedCurrencySlice';
 import { OnBoardingStatusSlice } from './onboardingStatus/slices/OnBoardingStatusSlice';
 import { SelectedCurrenciesSlice } from './selectedCurrencies/slices/SelectedCurrenciesSlice';
@@ -29,6 +28,5 @@ export const rootReducer = combineReducers({
   [SelectedForEditSlice.name]: SelectedForEditSlice.reducer,
   [FocusedCurrencySlice.name]: FocusedCurrencySlice.reducer,
   [OnBoardingStatusSlice.name]: OnBoardingStatusSlice.reducer,
-  [FavoriteCurrenciesSlice.name]: FavoriteCurrenciesSlice.reducer,
   [EditModeSlice.name]: EditModeSlice.reducer,
 });

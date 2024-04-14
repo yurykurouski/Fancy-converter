@@ -15,11 +15,11 @@ import {
 } from 'hooks/store/SelectedCurrencies';
 import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectEditMode } from 'store/editMode/selectors';
-import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
+import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 import { useSnapshot } from 'valtio';
 
@@ -56,7 +56,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const { isInEditMode } = useSelector(selectEditMode);
   const { selectedCurrencies, selectedAmount } =
     useSelector(selectSelectedInEdit);
-  const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
+  const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
 
   const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
   const removeFromSelectedCurrenciesInEdit =

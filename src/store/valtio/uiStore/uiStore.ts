@@ -22,27 +22,3 @@ export const uiStoreActions = {
     uiStore.notificationData = notificationData;
   },
 };
-//TODO
-// extraReducers(builder) {
-//   builder
-//     .addCase(
-//       FavoriteCurrenciesSliceActions.setFavoriteCurrency,
-//       (state, action) => {
-//         state.notificationData = {
-//           type: ENotificationType.ADD_FAVORITE,
-//           timeStamp: Date.now(),
-//           data: action.payload.currencyName,
-//         };
-//       },
-//     )
-//     .addCase(
-//       FavoriteCurrenciesSliceActions.removeFavoriteCurrency,
-//       (state, action) => {
-//         state.notificationData = {
-//           type: ENotificationType.REMOVE_FAVORITE,
-//           timeStamp: Date.now(),
-//           data: action.payload,
-//         };
-//       },
-//     )
-// };
