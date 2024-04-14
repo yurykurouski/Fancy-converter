@@ -8,7 +8,6 @@ import { FocusedCurrencySlice } from './focusedCurrency/slices/FocusedCurrencySl
 import { OnBoardingStatusSlice } from './onboardingStatus/slices/OnBoardingStatusSlice';
 import { SelectedCurrenciesSlice } from './selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { SelectedForEditSlice } from './selectedForEdit/slices/SelectedForEditSlice';
-import { UISlice } from './ui/slices/UISlice';
 
 const persistConfigSelected = {
   key: 'selectedCurrencies',
@@ -31,6 +30,5 @@ export const rootReducer = combineReducers({
   [FocusedCurrencySlice.name]: FocusedCurrencySlice.reducer,
   [OnBoardingStatusSlice.name]: OnBoardingStatusSlice.reducer,
   [FavoriteCurrenciesSlice.name]: FavoriteCurrenciesSlice.reducer,
-  [UISlice.name]: UISlice.reducer,
   [EditModeSlice.name]: EditModeSlice.reducer,
 });
