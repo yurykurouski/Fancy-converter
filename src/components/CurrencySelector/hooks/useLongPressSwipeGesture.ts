@@ -5,7 +5,6 @@ import { INPUT_ELEMENT_HEIGHT } from 'constants/index';
 import {
   TAddToSelectedCurrenciesInEdit,
   TRemoveFromSelectedCurrenciesInEdit,
-  TSetEditMode,
 } from 'hooks/store/types';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { TAvailableCurrenciesNames } from 'types';
@@ -19,7 +18,7 @@ type TProps = {
   sortedWithFavorites: TAvailableCurrenciesNames[];
   selectionModeShared: SharedValue<number>;
   selectedDuringSwipeShared: SharedValue<number>;
-  setEditMode: TSetEditMode;
+  setEditMode: (value: boolean) => void;
   addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
 };

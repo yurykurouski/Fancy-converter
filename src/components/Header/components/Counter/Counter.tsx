@@ -9,9 +9,9 @@ import { useSelector } from 'react-redux';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
-import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+import { editModeActions } from 'store/valtio/editModeStore';
 
 import { useStyles } from './Counter.styles';
 
@@ -33,16 +33,14 @@ export const Counter = () => {
   const { currencies } = useSelector(selectSelectedCurrencies);
   const { selectedAmount } = useSelector(selectSelectedInEdit);
 
-  const setEditMode = useSetEditMode();
-
   const onCancelPress = () => {
-    setEditMode(false);
+    editModeActions.setEditMode(false);
   };
   useEffect(() => {
     animatedOffset.value = withTiming(selectedAmount * 20, {
       duration: DEFAULT_ANIMATION_DURATION,
     });
-  }, [animatedOffset, selectedAmount, setEditMode]);
+  }, [animatedOffset, selectedAmount]);
 
   return (
     <ButtonWithIPadOSInteraction

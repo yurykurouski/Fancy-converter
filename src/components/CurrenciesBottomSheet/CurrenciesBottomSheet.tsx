@@ -1,16 +1,16 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
 import BottomSheet, {
   BottomSheetFlatList,
   BottomSheetFlatListMethods,
   WINDOW_WIDTH,
 } from '@gorhom/bottom-sheet';
 import { useWindowDimensionChange } from 'hooks';
-import { selectEditMode } from 'store/editMode/selectors';
+import { editModeStore } from 'store/valtio/editModeStore/editModeStore';
 import { ECurrencyType, EDimensions } from 'types';
 import { isIos } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { SearchField } from './components/SearchField';
 import { useBackButtonHandler } from './hooks/useBackButtonHandler';
@@ -34,7 +34,7 @@ export const CurrenciesBottomSheet = React.memo(
       const styles = useStyles();
       const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
 
-      const { isInEditMode } = useSelector(selectEditMode);
+      const { isInEditMode } = useSnapshot(editModeStore);
 
       const onPressHandler = useBottomSheetOnPressHandler(sheetRef);
 

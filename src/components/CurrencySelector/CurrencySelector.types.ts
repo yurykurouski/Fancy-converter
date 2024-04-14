@@ -2,7 +2,6 @@ import { SharedValue } from 'react-native-reanimated';
 import {
   TAddToSelectedCurrenciesInEdit,
   TRemoveFromSelectedCurrenciesInEdit,
-  TSetEditMode,
 } from 'hooks/store/types';
 import { TSelectedForEditSlice } from 'store/selectedForEdit/slices/SelectedForEditSlice';
 
@@ -11,7 +10,7 @@ export type TUseHandleLongPressParams = {
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
   selectedCurrencies: TSelectedForEditSlice['selectedCurrencies'];
   selectionModeShared: SharedValue<number>;
-  setEditMode: TSetEditMode;
+  setEditMode: (value: boolean) => void;
   selectedAmount: number;
   selectedDuringSwipeShared: SharedValue<number>;
 };

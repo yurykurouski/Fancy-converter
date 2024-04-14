@@ -13,11 +13,10 @@ import {
   useAddToSelectedCurrenciesInEdit,
   useRemoveFromSelectedCurrenciesInEdit,
 } from 'hooks/store/SelectedCurrencies';
-import { useSetEditMode } from 'hooks/store/UIStatus';
-import { selectEditMode } from 'store/editMode/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { editModeActions, editModeStore } from 'store/valtio/editModeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
@@ -53,7 +52,7 @@ const useMemoizedValues = (
 
 export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const { colorScheme } = useSnapshot(colorSchemeStore);
-  const { isInEditMode } = useSelector(selectEditMode);
+  const { isInEditMode } = useSnapshot(editModeStore);
   const { selectedCurrencies, selectedAmount } =
     useSelector(selectSelectedInEdit);
   const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
@@ -64,7 +63,6 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
 
   const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
   const setFocusedCurrencyName = useSetFocusedCurrencyName();
-  const setEditMode = useSetEditMode();
 
   const { focusedCurrencyRate, isFocused, rate } =
     useMemoizedValues(currencyCode);
@@ -91,7 +89,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
     selectedCurrenciesInEdit: selectedCurrencies,
     removeFromSelectedCurrenciesInEdit,
     selectedInEditAmount: selectedAmount,
-    setEditMode,
+    setEditMode: editModeActions.setEditMode,
   });
 
   const calculatedValue = useConvertedValues(

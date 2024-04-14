@@ -3,7 +3,6 @@ import { TextInput } from 'react-native';
 import {
   TAddToSelectedCurrenciesInEdit,
   TRemoveFromSelectedCurrenciesInEdit,
-  TSetEditMode,
   TSetFocusedCurrencyName,
   TSetFocusedCurrencyValue,
 } from 'hooks/store/types';
@@ -42,5 +41,5 @@ export type TUseOnContainerPressParams = {
   selectedCurrenciesInEdit: TSelectedCurrencies;
   removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
   selectedInEditAmount: number;
-  setEditMode: TSetEditMode;
+  setEditMode: (value: boolean) => void;
 };

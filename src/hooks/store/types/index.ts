@@ -1,5 +1,4 @@
 import { Action } from '@reduxjs/toolkit';
-import { EditModeSliceActions } from 'store/editMode/reducers/EditModeSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { SelectedForEditSliceActions } from 'store/selectedForEdit/slices/SelectedForEditSlice';
@@ -49,10 +48,4 @@ export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
 export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
   TAvailableCurrenciesNames,
   typeof SelectedForEditSliceActions.clearSelected.type
->;
-
-//EditMode
-export type TSetEditMode = TDispatchCallback<
-  boolean,
-  typeof EditModeSliceActions.setEditMode.type
 >;

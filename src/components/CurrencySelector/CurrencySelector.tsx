@@ -15,13 +15,13 @@ import {
   useAddToSelectedCurrenciesInEdit,
   useRemoveFromSelectedCurrenciesInEdit,
 } from 'hooks/store/SelectedCurrencies';
-import { useSetEditMode } from 'hooks/store/UIStatus';
 import {
   DataProvider,
   RecyclerListView,
   RecyclerListViewProps,
 } from 'recyclerlistview';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { editModeActions } from 'store/valtio/editModeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
@@ -55,7 +55,6 @@ export const CurrencySelector = React.memo(() => {
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse();
 
-  const setEditMode = useSetEditMode();
   const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
   const removeFromSelectedCurrenciesInEdit =
     useRemoveFromSelectedCurrenciesInEdit();
@@ -85,7 +84,7 @@ export const CurrencySelector = React.memo(() => {
     sortedWithFavorites,
     selectionModeShared,
     selectedDuringSwipeShared,
-    setEditMode,
+    setEditMode: editModeActions.setEditMode,
     addToCurrInEdit,
     removeFromSelectedCurrenciesInEdit,
   });
