@@ -1,21 +1,15 @@
 import { useCallback } from 'react';
 import { currenciesService } from 'services/currencies-service';
+import { exchangeRatesActions } from 'store/valtio/exchangeRateStore';
 
-import { useSetCoursesRequestErr } from './store';
-import { useSetExchangeCourses } from './store';
-
-export const useLoadCourses = () => {
-  const setExchangeCourses = useSetExchangeCourses();
-  const handleError = useSetCoursesRequestErr();
-
-  return useCallback(
+export const useLoadCourses = () =>
+  useCallback(
     async () =>
       currenciesService
         .getDailyCourses()
         .then(({ data: { rates } }) => {
-          setExchangeCourses(rates);
+          exchangeRatesActions.setExchangeRates(rates);
         })
-        .catch(handleError),
-    [handleError, setExchangeCourses],
+        .catch(exchangeRatesActions.setRequestError),
+    [],
   );
-};

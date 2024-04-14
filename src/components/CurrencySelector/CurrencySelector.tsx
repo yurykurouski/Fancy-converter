@@ -21,10 +21,11 @@ import {
   RecyclerListView,
   RecyclerListViewProps,
 } from 'recyclerlistview';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
+import { useSnapshot } from 'valtio';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
 import { useLayoutProvider, useLongPressSwipeGesture } from './hooks';
@@ -48,7 +49,7 @@ export const CurrencySelector = React.memo(() => {
       null,
     );
 
-  const { isLoading } = useSelector(selectExchangeCourses);
+  const { isLoading } = useSnapshot(exchangeRatesStore);
   const { currencies } = useSelector(selectSelectedCurrencies);
   const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
 

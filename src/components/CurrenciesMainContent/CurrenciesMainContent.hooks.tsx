@@ -5,7 +5,8 @@ import { HOUR_IN_MS } from 'constants/index';
 import { useLoadCourses } from 'hooks';
 import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectEditMode } from 'store/editMode/selectors';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
+import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
+import { useSnapshot } from 'valtio';
 
 import {
   TUseHandleBackPress,
@@ -60,7 +61,7 @@ export const useHandleBackPress: TUseHandleBackPress = (
 export const useUpdateCourses = () => {
   const loadCourses = useLoadCourses();
 
-  const { lastUpdated } = useSelector(selectExchangeCourses);
+  const { lastUpdated } = useSnapshot(exchangeRatesStore);
 
   useEffect(() => {
     if (lastUpdated) {

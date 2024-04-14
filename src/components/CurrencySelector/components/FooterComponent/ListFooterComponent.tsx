@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
+import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { getSaveDateReadable } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useStyles } from './ListFooterComponent.styles';
 
 export const ListFooterComponent = () => {
   const styles = useStyles();
-  const { lastUpdated } = useSelector(selectExchangeCourses);
+  const { lastUpdated } = useSnapshot(exchangeRatesStore);
 
   if (!lastUpdated) return null;
 

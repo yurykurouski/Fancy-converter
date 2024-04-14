@@ -15,11 +15,11 @@ import {
 } from 'hooks/store/SelectedCurrencies';
 import { useSetEditMode } from 'hooks/store/UIStatus';
 import { selectEditMode } from 'store/editMode/selectors';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 import { useSnapshot } from 'valtio';
 
@@ -37,17 +37,17 @@ import { useStyles } from './CurrencyInputValue.styles';
 const useMemoizedValues = (
   currencyCode: EAvailableFiatNames | EAvailableCryptoNames,
 ) => {
-  const { exchangeCourses } = useSelector(selectExchangeCourses);
+  const { exchangeRates } = useSnapshot(exchangeRatesStore);
   const { focusedCurrencyName } = useSelector(selectFocusedCurrency);
 
   return useMemo(
     () => ({
       focusedCurrencyRate:
-        focusedCurrencyName && exchangeCourses?.[focusedCurrencyName],
+        focusedCurrencyName && exchangeRates?.[focusedCurrencyName],
       isFocused: focusedCurrencyName === currencyCode,
-      rate: exchangeCourses?.[currencyCode],
+      rate: exchangeRates?.[currencyCode],
     }),
-    [currencyCode, exchangeCourses, focusedCurrencyName],
+    [currencyCode, exchangeRates, focusedCurrencyName],
   );
 };
 
