@@ -1,6 +1,5 @@
 import { Action } from '@reduxjs/toolkit';
 import { EditModeSliceActions } from 'store/editMode/reducers/EditModeSlice';
-import { ExchangeCourseSliceActions } from 'store/exchangeCourses/slices/ExchangeCourseSlice';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
 import { SelectedForEditSliceActions } from 'store/selectedForEdit/slices/SelectedForEditSlice';
@@ -11,7 +10,6 @@ import {
   TAvailableCurrenciesNames,
   TDispatchCallback,
 } from 'types';
-import { OnlyCourses } from 'utils/utils.types';
 
 //SelectedCurrencies
 export type TSetActiveCurrencyType = TDispatchCallback<
@@ -30,21 +28,6 @@ export type TSetFilteredCurrencies = (
   type: ECurrencyType,
   value: EAvailableFiatNames[] | EAvailableCryptoNames[],
 ) => Action<typeof SelectedCurrenciesActions.setFilteredCurrencies.type>;
-
-//ExchangeCourses
-export type TSetCoursesLoading = TDispatchCallback<
-  boolean,
-  typeof ExchangeCourseSliceActions.setIsLoading.type
->;
-export type TSetExchangeCourses = TDispatchCallback<
-  OnlyCourses,
-  typeof ExchangeCourseSliceActions.setExchangeCourses.type
->;
-
-export type TSetCoursesRequestError = TDispatchCallback<
-  string,
-  typeof ExchangeCourseSliceActions.setRequestError.type
->;
 
 //UIStatus
 

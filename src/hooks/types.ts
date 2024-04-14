@@ -5,8 +5,6 @@ import { Theme } from 'assets/colors';
 import { StorageKeys } from 'utils';
 import { OnlyCourses } from 'utils/utils.types';
 
-import { TSetCoursesLoading } from './store/types';
-
 type ReloadCourses = () => void;
 
 export type UseGetCurrenciesExchangeCourse = () => {
@@ -20,7 +18,7 @@ export type UseGetCoursesFromStorage = (
 ) => GetCoursesFromStorage;
 
 export type TUseReloadCourses = (
-  setIsLoading: TSetCoursesLoading,
+  setIsLoading: (isLoading: boolean) => void,
   getCoursesFromStorage: GetCoursesFromStorage,
 ) => ReloadCourses;
 
