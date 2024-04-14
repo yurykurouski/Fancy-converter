@@ -1,10 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useSelector } from 'react-redux';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { useSnapshot } from 'valtio';
 
 export const AppStatusBar = () => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
 
   return (
     <StatusBar

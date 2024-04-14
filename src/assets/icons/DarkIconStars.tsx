@@ -1,13 +1,13 @@
 import React, { LegacyRef, NamedExoticComponent } from 'react';
 import { Path, Svg } from 'react-native-svg';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { TSVGIcon } from 'types';
+import { useSnapshot } from 'valtio';
 
 export const DarkIconStars: NamedExoticComponent<TSVGIcon> = React.forwardRef(
   ({ size, style, color }, ref: LegacyRef<Svg>) => {
-    const { colorScheme } = useSelector(selectColorSchemeState);
+    const { colorScheme } = useSnapshot(colorSchemeStore);
 
     return (
       <Svg

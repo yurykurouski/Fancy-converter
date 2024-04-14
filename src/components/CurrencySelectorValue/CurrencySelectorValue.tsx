@@ -15,9 +15,10 @@ import {
   useRemoveSelected,
 } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { useSnapshot } from 'valtio';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
 import { TProps } from './CurrencySelectorValue.types';
@@ -28,7 +29,7 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
   ({ currencyCode }) => {
     const styles = useStyles();
 
-    const { colorScheme } = useSelector(selectColorSchemeState);
+    const { colorScheme } = useSnapshot(colorSchemeStore);
     const { activeCurrencyType, currencies } = useSelector(
       selectSelectedCurrencies,
     );

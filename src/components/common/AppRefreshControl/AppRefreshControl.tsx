@@ -3,16 +3,16 @@ import {
   RefreshControl as RNRefreshControl,
   RefreshControlProps,
 } from 'react-native';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { useSnapshot } from 'valtio';
 
 export const AppRefreshControl = ({
   refreshing,
   onRefresh,
   ...rest
 }: RefreshControlProps) => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
 
   return (
     <RNRefreshControl

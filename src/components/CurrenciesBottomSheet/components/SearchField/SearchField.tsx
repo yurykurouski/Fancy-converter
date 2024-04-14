@@ -6,10 +6,11 @@ import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { useSetFilteredCurrencies } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { triggerSelectionHaptic } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useHandleTextChange } from './SearchField.hooks';
 
@@ -22,7 +23,7 @@ export const SearchField = () => {
 
   const dispatch = useDispatch();
 
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
   const { searchValue, activeCurrencyType } = useSelector(
     selectSelectedCurrencies,
   );

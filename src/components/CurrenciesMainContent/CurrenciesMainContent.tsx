@@ -3,15 +3,15 @@ import { useCallback, useRef } from 'react';
 import { Keyboard } from 'react-native';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import { useSharedValue } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { ControlsMenu, CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
 import { DrawerMainScreen } from 'screens';
 import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { isIos } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import {
   useHandleBackPress,
@@ -24,7 +24,7 @@ import { useStyles } from './CurrenciesMainContent.styles';
 export const CurrenciesMainContent = React.memo(() => {
   const styles = useStyles();
 
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
 
   const drawerRef = useRef<DrawerLayout>(null);
   const containerListRef = useRef<BottomSheetFlatListMethods>(null);

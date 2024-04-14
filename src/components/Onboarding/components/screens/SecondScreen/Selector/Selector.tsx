@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, View } from 'react-native';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { useSnapshot } from 'valtio';
 
 import { useStyles } from './Selector.styles';
 
 export const Selector = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
 
   const styles = useStyles();
 

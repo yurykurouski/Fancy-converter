@@ -14,13 +14,14 @@ import {
   useRemoveFromSelectedCurrenciesInEdit,
 } from 'hooks/store/SelectedCurrencies';
 import { useSetEditMode } from 'hooks/store/UIStatus';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
 import { selectEditMode } from 'store/editMode/selectors';
 import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
 import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
+import { useSnapshot } from 'valtio';
 
 import { CurrencyInputIcon } from './CurrencyInputIcon/CurrencyInputIcon';
 import {
@@ -51,7 +52,7 @@ const useMemoizedValues = (
 };
 
 export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
   const { isInEditMode } = useSelector(selectEditMode);
   const { selectedCurrencies, selectedAmount } =
     useSelector(selectSelectedInEdit);

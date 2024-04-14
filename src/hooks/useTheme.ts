@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { useSnapshot } from 'valtio';
 
 import { TUseTheme } from './types';
 
@@ -15,7 +15,7 @@ const defaultInsets: EdgeInsets = {
 };
 
 export const useTheme: TUseTheme = mapStyles => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
   const insets = useSafeAreaInsets();
 
   return useMemo(

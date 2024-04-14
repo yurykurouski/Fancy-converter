@@ -1,13 +1,13 @@
 import { PressableAndroidRippleConfig } from 'react-native';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { isIos } from 'utils';
+import { useSnapshot } from 'valtio';
 
 export const useAndroidRippleConfig = ():
   | PressableAndroidRippleConfig
   | undefined => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
 
   if (!isIos) {
     return {

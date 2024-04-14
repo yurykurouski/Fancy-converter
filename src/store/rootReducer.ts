@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 
-import { ColorSchemeSlice } from './colorScheme/slices/ColorSchemeSlice';
 import { EditModeSlice } from './editMode/reducers/EditModeSlice';
 import { ExchangeCourseSlice } from './exchangeCourses/slices/ExchangeCourseSlice';
 import { FavoriteCurrenciesSlice } from './favoriteCurrencies/slices/FavoriteCurrenciesSlice';
@@ -36,5 +35,4 @@ export const rootReducer = combineReducers({
   [FavoriteCurrenciesSlice.name]: FavoriteCurrenciesSlice.reducer,
   [UISlice.name]: UISlice.reducer,
   [EditModeSlice.name]: EditModeSlice.reducer,
-  [ColorSchemeSlice.name]: ColorSchemeSlice.reducer,
 });

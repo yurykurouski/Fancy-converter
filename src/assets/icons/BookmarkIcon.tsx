@@ -1,13 +1,13 @@
 import React, { NamedExoticComponent } from 'react';
 import Svg, { Path } from 'react-native-svg';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { TSVGIcon } from 'types';
+import { useSnapshot } from 'valtio';
 
 export const BookmarkIcon: NamedExoticComponent<TSVGIcon> = React.memo(
   ({ style, size, color }) => {
-    const { colorScheme } = useSelector(selectColorSchemeState);
+    const { colorScheme } = useSnapshot(colorSchemeStore);
 
     return (
       <Svg width={size} height={size} viewBox="0 0 14 18" style={style}>
