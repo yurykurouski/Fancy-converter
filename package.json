@@ -36,7 +36,8 @@
     "react-native-swift": "^1.2.3",
     "react-redux": "8.1.2",
     "recyclerlistview": "^4.2.0",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "valtio": "^1.13.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
