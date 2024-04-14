@@ -4623,7 +4623,7 @@ __metadata:
     lodash.debounce: 4.0.8
     prettier: 2.8.8
     react: 18.2.0
-    react-native: 0.73.5
+    react-native: 0.73.6
     react-native-bootsplash: 5.3.0
     react-native-dotenv: 3.4.9
     react-native-gesture-handler: 2.15.0
@@ -7766,9 +7766,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:0.73.5":
-  version: 0.73.5
-  resolution: "react-native@npm:0.73.5"
+"react-native@npm:0.73.6":
+  version: 0.73.6
+  resolution: "react-native@npm:0.73.6"
   dependencies:
     "@jest/create-cache-key-function": ^29.6.3
     "@react-native-community/cli": 12.3.6
@@ -7812,7 +7812,7 @@ __metadata:
     react: 18.2.0
   bin:
     react-native: cli.js
-  checksum: 107037a28b37e5d8883e8d7553d48e15d802ecf2b3ecee834f79c5dd653761ac23506a08c3a48f357bf872fb0857078ae31d226623a8742e530b065fed5d9d47
+  checksum: 20e71c902f165c15add9f841bbc555c7b8495235122ccc42f5f1c5c0189c453651a450e59b6541188d8edb829a2aac524a1762501fb6ecebc4c89e9aa6667682
   languageName: node
   linkType: hard
 
