@@ -5,19 +5,20 @@ import {
   initialWindowMetrics,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { AppStatusBar, CurrenciesMainContent, Onboarding } from 'components';
 import { useAppearanceChangeListener } from 'hooks';
 import store, { persistor } from 'store';
-import { selectOnBoardingStatus } from 'store/onboardingStatus/selectors';
+import { onboardingStatusStore } from 'store/valtio/onboardingStatusStore';
+import { useSnapshot } from 'valtio';
 
 import { useStyles } from './App.styles';
 
 import { WithNotificationHOC } from 'HOC/WithNotificationHOC';
 
 const App = React.memo(() => {
-  const { isOnBoarded } = useSelector(selectOnBoardingStatus);
+  const { isOnBoarded } = useSnapshot(onboardingStatusStore);
 
   const styles = useStyles();
 
