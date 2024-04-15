@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { THEME_COLORS } from 'assets/colors';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { useSnapshot } from 'valtio';
 
 import { TUseTheme } from './types';

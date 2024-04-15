@@ -2,8 +2,8 @@ import { useCallback, useEffect } from 'react';
 import { BackHandler } from 'react-native';
 import { HOUR_IN_MS } from 'constants/index';
 import { useLoadCourses } from 'hooks';
-import { editModeActions, editModeStore } from 'store/valtio/editModeStore';
-import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
+import { editModeActions, editModeStore } from 'store/editModeStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
 import { useSnapshot } from 'valtio';
 
 import {

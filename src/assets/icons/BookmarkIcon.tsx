@@ -1,7 +1,7 @@
 import React, { NamedExoticComponent } from 'react';
 import Svg, { Path } from 'react-native-svg';
 import { THEME_COLORS } from 'assets/colors';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { TSVGIcon } from 'types';
 import { useSnapshot } from 'valtio';
 

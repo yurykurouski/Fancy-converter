@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 import Animated, { AnimatedRef } from 'react-native-reanimated';
-import { onboardingStatusActions } from 'store/valtio/onboardingStatusStore';
+import { onboardingStatusActions } from 'store/onboardingStatusStore';
 
 import { ONBOARDING_SCREENS } from '../Onboarding.consts';
 

@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { INPUT_VALIDATION_REGEXP } from 'constants/index';
 import { l } from 'resources/localization';
-import { focusedCurrencyStore } from 'store/valtio/focusedCurrencyStore';
+import { focusedCurrencyStore } from 'store/focusedCurrencyStore';
 import { useSnapshot } from 'valtio';
 
 import {

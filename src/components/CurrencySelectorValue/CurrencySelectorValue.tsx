@@ -6,13 +6,13 @@ import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { l } from 'resources/localization';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
-import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
-import { favoriteCurrencyActions } from 'store/valtio/favoriteCurrenciesStore/favoriteCurrenciesStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
+import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
+import { favoriteCurrencyActions } from 'store/favoriteCurrenciesStore/favoriteCurrenciesStore';
 import {
   selectedCurrenciesActions,
   selectedCurrenciesStore,
-} from 'store/valtio/selectedCurrenciesStore';
+} from 'store/selectedCurrenciesStore';
 import { useSnapshot } from 'valtio';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';

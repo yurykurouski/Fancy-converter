@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { BottomSheetSectionList, WINDOW_HEIGHT } from '@gorhom/bottom-sheet';
 import { BottomSheetEmpty } from 'components/CurrenciesBottomSheet/components/BottomSheetEmpty';
 import { BOTTOMSHEET_EL_HEIGHT } from 'constants/index';
-import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
+import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
 import { ECurrencyType } from 'types';
 import { groupByName, isAndroid, makeSectionsData } from 'utils';
 import { useSnapshot } from 'valtio';

@@ -1,6 +1,6 @@
 import { PressableAndroidRippleConfig } from 'react-native';
 import { THEME_COLORS } from 'assets/colors';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { isIos } from 'utils';
 import { useSnapshot } from 'valtio';
 

@@ -6,7 +6,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { APP_NAME } from 'constants/index';
-import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
+import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
 import { useSnapshot } from 'valtio';
 
 import { CurrencyTypeMenu } from './components/CurrencyTypeMenu';

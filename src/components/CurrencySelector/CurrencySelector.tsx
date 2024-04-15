@@ -15,11 +15,11 @@ import {
   RecyclerListView,
   RecyclerListViewProps,
 } from 'recyclerlistview';
-import { editModeActions } from 'store/valtio/editModeStore';
-import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
-import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
-import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
-import { selectedForEditActions } from 'store/valtio/selectedForEditStore';
+import { editModeActions } from 'store/editModeStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
+import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
+import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
+import { selectedForEditActions } from 'store/selectedForEditStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
 import { useSnapshot } from 'valtio';
 

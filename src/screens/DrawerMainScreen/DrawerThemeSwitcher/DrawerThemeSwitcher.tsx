@@ -9,10 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { DEFAULT_ANIMATION_DURATION } from 'constants';
 import throttle from 'lodash/throttle';
-import {
-  colorSchemeActions,
-  colorSchemeStore,
-} from 'store/valtio/colorSchemeStore';
+import { colorSchemeActions, colorSchemeStore } from 'store/colorSchemeStore';
 import { EColorSchemeBehavior } from 'types';
 import { useSnapshot } from 'valtio';
 

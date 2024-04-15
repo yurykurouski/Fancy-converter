@@ -1,7 +1,7 @@
 import { Gesture } from 'react-native-gesture-handler';
 import { runOnJS, SharedValue, useSharedValue } from 'react-native-reanimated';
 import { INPUT_ELEMENT_HEIGHT } from 'constants/index';
-import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
+import { selectedForEditStore } from 'store/selectedForEditStore';
 import { TAvailableCurrenciesNames } from 'types';
 import { triggerSelectionHaptic } from 'utils';
 import { useSnapshot } from 'valtio';

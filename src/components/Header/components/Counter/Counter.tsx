@@ -8,9 +8,9 @@ import Animated, {
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
-import { editModeActions } from 'store/valtio/editModeStore';
-import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
-import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
+import { editModeActions } from 'store/editModeStore';
+import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
+import { selectedForEditStore } from 'store/selectedForEditStore';
 import { useSnapshot } from 'valtio';
 
 import { useStyles } from './Counter.styles';

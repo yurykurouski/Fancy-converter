@@ -4,11 +4,11 @@ import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { l } from 'resources/localization';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import {
   selectedCurrenciesActions,
   selectedCurrenciesStore,
-} from 'store/valtio/selectedCurrenciesStore';
+} from 'store/selectedCurrenciesStore';
 import { triggerSelectionHaptic } from 'utils';
 import { useSnapshot } from 'valtio';
 

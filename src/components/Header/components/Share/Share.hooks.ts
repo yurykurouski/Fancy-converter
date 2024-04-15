@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { Share, ToastAndroid } from 'react-native';
 import { l } from 'resources/localization';
-import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
-import { focusedCurrencyStore } from 'store/valtio/focusedCurrencyStore';
-import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
+import { focusedCurrencyStore } from 'store/focusedCurrencyStore';
+import { selectedForEditStore } from 'store/selectedForEditStore';
 import { getSaveDateReadable, isAndroid } from 'utils';
 import { useSnapshot } from 'valtio';
 

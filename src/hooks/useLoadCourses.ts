@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { currenciesService } from 'services/currencies-service';
-import { exchangeRatesActions } from 'store/valtio/exchangeRateStore';
+import { exchangeRatesActions } from 'store/exchangeRateStore';
 
 export const useLoadCourses = () =>
   useCallback(

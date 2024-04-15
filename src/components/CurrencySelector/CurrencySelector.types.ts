@@ -1,5 +1,5 @@
 import { SharedValue } from 'react-native-reanimated';
-import { TSelectedForEdit } from 'store/valtio/selectedForEditStore/selectedForEditStore';
+import { TSelectedForEdit } from 'store/selectedForEditStore/selectedForEditStore';
 import { TAvailableCurrenciesNames } from 'types';
 
 export type TUseHandleLongPressParams = {

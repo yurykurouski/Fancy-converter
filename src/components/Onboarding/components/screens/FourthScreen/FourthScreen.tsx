@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { l } from 'resources/localization';
-import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
+import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
 import { EAvailableFiatNames } from 'types';
 import { useSnapshot } from 'valtio';
 

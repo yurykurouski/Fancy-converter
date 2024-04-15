@@ -4,18 +4,18 @@ import Animated, { FadeInRight, FadeOutRight } from 'react-native-reanimated';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
-import { editModeActions, editModeStore } from 'store/valtio/editModeStore';
-import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
-import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
+import { editModeActions, editModeStore } from 'store/editModeStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
+import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
 import {
   focusedCurrencyActions,
   focusedCurrencyStore,
-} from 'store/valtio/focusedCurrencyStore';
+} from 'store/focusedCurrencyStore';
 import {
   selectedForEditActions,
   selectedForEditStore,
-} from 'store/valtio/selectedForEditStore';
+} from 'store/selectedForEditStore';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 import { useSnapshot } from 'valtio';
 

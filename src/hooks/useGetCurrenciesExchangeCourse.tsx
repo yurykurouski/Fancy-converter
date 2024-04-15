@@ -1,5 +1,5 @@
 import { useGetCoursesFromStorage, useReloadCourses } from 'hooks';
-import { exchangeRatesActions } from 'store/valtio/exchangeRateStore';
+import { exchangeRatesActions } from 'store/exchangeRateStore';
 
 import { UseGetCurrenciesExchangeCourse } from './types';
 

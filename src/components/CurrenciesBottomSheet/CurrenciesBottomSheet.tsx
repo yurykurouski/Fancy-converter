@@ -7,7 +7,7 @@ import BottomSheet, {
   WINDOW_WIDTH,
 } from '@gorhom/bottom-sheet';
 import { useWindowDimensionChange } from 'hooks';
-import { editModeStore } from 'store/valtio/editModeStore/editModeStore';
+import { editModeStore } from 'store/editModeStore/editModeStore';
 import { ECurrencyType, EDimensions } from 'types';
 import { isIos } from 'utils';
 import { useSnapshot } from 'valtio';

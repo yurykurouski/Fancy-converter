@@ -3,10 +3,7 @@ import { Linking, Text, View } from 'react-native';
 import { MailIcon } from 'assets/icons';
 import { Switch } from 'components/common/Switch';
 import { l } from 'resources/localization';
-import {
-  colorSchemeActions,
-  colorSchemeStore,
-} from 'store/valtio/colorSchemeStore';
+import { colorSchemeActions, colorSchemeStore } from 'store/colorSchemeStore';
 import { EColorSchemeBehavior } from 'types';
 import { useSnapshot } from 'valtio';
 

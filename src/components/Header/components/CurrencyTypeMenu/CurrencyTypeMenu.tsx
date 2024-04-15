@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { l } from 'resources/localization';
-import { selectedCurrenciesActions } from 'store/valtio/selectedCurrenciesStore';
+import { selectedCurrenciesActions } from 'store/selectedCurrenciesStore';
 import { ECurrencyType } from 'types';
 
 import { useStyles } from './CurrencyTypeMenu.styles';

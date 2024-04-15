@@ -8,8 +8,8 @@ import { ShareIOsIcon } from 'assets/icons';
 import { ShareIcon } from 'assets/icons/ShareIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
-import { focusedCurrencyStore } from 'store/valtio/focusedCurrencyStore';
-import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
+import { focusedCurrencyStore } from 'store/focusedCurrencyStore';
+import { selectedForEditStore } from 'store/selectedForEditStore';
 import { isIos } from 'utils';
 import { useSnapshot } from 'valtio';
 

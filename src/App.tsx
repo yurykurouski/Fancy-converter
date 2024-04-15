@@ -10,7 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { AppStatusBar, CurrenciesMainContent, Onboarding } from 'components';
 import { useAppearanceChangeListener } from 'hooks';
 import store, { persistor } from 'store';
-import { onboardingStatusStore } from 'store/valtio/onboardingStatusStore';
+import { onboardingStatusStore } from 'store/onboardingStatusStore';
 import { useSnapshot } from 'valtio';
 
 import { useStyles } from './App.styles';

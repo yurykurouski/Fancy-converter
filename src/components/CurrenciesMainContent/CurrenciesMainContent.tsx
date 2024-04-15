@@ -9,7 +9,7 @@ import { ControlsMenu, CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
 import { DrawerMainScreen } from 'screens';
 import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { isIos } from 'utils';
 import { useSnapshot } from 'valtio';
 

@@ -1,9 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { Appearance } from 'react-native';
-import {
-  colorSchemeActions,
-  colorSchemeStore,
-} from 'store/valtio/colorSchemeStore';
+import { colorSchemeActions, colorSchemeStore } from 'store/colorSchemeStore';
 import { EColorSchemeBehavior } from 'types';
 import { useSnapshot } from 'valtio';
 

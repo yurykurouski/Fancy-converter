@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { ICON_BUTTON_SIZE } from 'constants/index';
-import { selectedCurrenciesActions } from 'store/valtio/selectedCurrenciesStore';
+import { selectedCurrenciesActions } from 'store/selectedCurrenciesStore';
 import { EAvailableFiatNames } from 'types';
 
 import { useStyles } from './CurrencyItem.styles';

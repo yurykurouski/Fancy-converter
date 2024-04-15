@@ -9,7 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppState } from 'hooks';
 import { useIsHasIsland } from 'hooks/useHasIsland';
 import { l } from 'resources/localization';
-import { uiStore } from 'store/valtio/uiStore/uiStore';
+import { uiStore } from 'store/uiStore/uiStore';
 import { triggerLongPressHaptic } from 'utils';
 import { useSnapshot } from 'valtio';
 

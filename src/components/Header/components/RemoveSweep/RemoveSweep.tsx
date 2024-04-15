@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { DeleteSweepIcon } from 'assets/icons';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
-import { selectedCurrenciesActions } from 'store/valtio/selectedCurrenciesStore';
-import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
+import { selectedCurrenciesActions } from 'store/selectedCurrenciesStore';
+import { selectedForEditStore } from 'store/selectedForEditStore';
 import { triggerWarningHaptic } from 'utils';
 import { useSnapshot } from 'valtio';
 

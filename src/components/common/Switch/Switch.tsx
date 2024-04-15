@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch as RNSwitch, View } from 'react-native';
 import { THEME_COLORS } from 'assets/colors';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { isAndroid } from 'utils';
 import { useSnapshot } from 'valtio';
 

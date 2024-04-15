@@ -3,7 +3,7 @@ import { Pressable, View } from 'react-native';
 import { THEME_COLORS } from 'assets/colors';
 import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { useSnapshot } from 'valtio';
 
 import { useStyles } from './Selector.styles';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
 import { getSaveDateReadable } from 'utils';
 import { useSnapshot } from 'valtio';
 

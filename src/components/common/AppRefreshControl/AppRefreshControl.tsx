@@ -4,7 +4,7 @@ import {
   RefreshControlProps,
 } from 'react-native';
 import { THEME_COLORS } from 'assets/colors';
-import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { useSnapshot } from 'valtio';
 
 export const AppRefreshControl = ({
