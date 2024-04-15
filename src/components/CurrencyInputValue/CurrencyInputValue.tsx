@@ -9,16 +9,15 @@ import {
   useSetFocusedCurrencyName,
   useSetFocusedCurrencyValue,
 } from 'hooks/store/FocusedCurrency';
-import {
-  useAddToSelectedCurrenciesInEdit,
-  useRemoveFromSelectedCurrenciesInEdit,
-} from 'hooks/store/SelectedCurrencies';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { editModeActions, editModeStore } from 'store/valtio/editModeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import {
+  selectedForEditActions,
+  selectedForEditStore,
+} from 'store/valtio/selectedForEditStore';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
 import { useSnapshot } from 'valtio';
 
@@ -54,12 +53,8 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const { colorScheme } = useSnapshot(colorSchemeStore);
   const { isInEditMode } = useSnapshot(editModeStore);
   const { selectedCurrencies, selectedAmount } =
-    useSelector(selectSelectedInEdit);
+    useSnapshot(selectedForEditStore);
   const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
-
-  const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
-  const removeFromSelectedCurrenciesInEdit =
-    useRemoveFromSelectedCurrenciesInEdit();
 
   const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
   const setFocusedCurrencyName = useSetFocusedCurrencyName();
@@ -85,9 +80,9 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const onContainerPress = useOnContainerPress({
     isInEditMode,
     currencyCode,
-    addToCurrInEdit,
+    addToCurrInEdit: selectedForEditActions.addToSelected,
     selectedCurrenciesInEdit: selectedCurrencies,
-    removeFromSelectedCurrenciesInEdit,
+    removeFromSelectedCurrenciesInEdit: selectedForEditActions.clearSelected,
     selectedInEditAmount: selectedAmount,
     setEditMode: editModeActions.setEditMode,
   });

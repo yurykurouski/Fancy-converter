@@ -10,15 +10,16 @@ import { ShareIcon } from 'assets/icons/ShareIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
 import { isIos } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useHandlePress } from './Share.hooks';
 
 import { styles } from './Share.styles';
 
 export const Share = memo(() => {
-  const { selectedAmount } = useSelector(selectSelectedInEdit);
+  const { selectedAmount } = useSnapshot(selectedForEditStore);
   const { focusedCurrencyValue } = useSelector(selectFocusedCurrency);
 
   const opacityValue = useSharedValue(1);

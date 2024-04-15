@@ -1,7 +1,6 @@
 import { Action } from '@reduxjs/toolkit';
 import { FocusedCurrencySliceActions } from 'store/focusedCurrency/slices/FocusedCurrencySlice';
 import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
-import { SelectedForEditSliceActions } from 'store/selectedForEdit/slices/SelectedForEditSlice';
 import {
   EAvailableCryptoNames,
   EAvailableFiatNames,
@@ -38,14 +37,4 @@ export type TSetFocusedCurrencyValue = TDispatchCallback<
 export type TSetFocusedCurrencyName = TDispatchCallback<
   { currencyCode: TAvailableCurrenciesNames; value: string },
   typeof FocusedCurrencySliceActions.setFocusedCurrencyName.type
->;
-
-//SelectedForEditSlice
-export type TAddToSelectedCurrenciesInEdit = TDispatchCallback<
-  TAvailableCurrenciesNames,
-  typeof SelectedForEditSliceActions.addToSelected.type
->;
-export type TRemoveFromSelectedCurrenciesInEdit = TDispatchCallback<
-  TAvailableCurrenciesNames,
-  typeof SelectedForEditSliceActions.clearSelected.type
 >;

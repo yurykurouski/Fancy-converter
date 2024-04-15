@@ -3,8 +3,8 @@ import { Share, ToastAndroid } from 'react-native';
 import { useSelector } from 'react-redux';
 import { l } from 'resources/localization';
 import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
+import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
 import { getSaveDateReadable, isAndroid } from 'utils';
 import { useSnapshot } from 'valtio';
 
@@ -12,7 +12,7 @@ import { getContentText, getValues } from './Share.utils';
 
 export const useHandlePress = () => {
   const { selectedCurrencies, selectedAmount } =
-    useSelector(selectSelectedInEdit);
+    useSnapshot(selectedForEditStore);
   const { exchangeRates, lastUpdated } = useSnapshot(exchangeRatesStore);
   const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
     selectFocusedCurrency,

@@ -10,8 +10,9 @@ import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSI
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
 import { editModeActions } from 'store/valtio/editModeStore';
+import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
+import { useSnapshot } from 'valtio';
 
 import { useStyles } from './Counter.styles';
 
@@ -31,7 +32,7 @@ export const Counter = () => {
   });
 
   const { currencies } = useSelector(selectSelectedCurrencies);
-  const { selectedAmount } = useSelector(selectSelectedInEdit);
+  const { selectedAmount } = useSnapshot(selectedForEditStore);
 
   const onCancelPress = () => {
     editModeActions.setEditMode(false);

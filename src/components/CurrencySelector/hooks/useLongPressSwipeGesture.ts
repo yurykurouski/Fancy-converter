@@ -1,14 +1,10 @@
 import { Gesture } from 'react-native-gesture-handler';
 import { runOnJS, SharedValue, useSharedValue } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 import { INPUT_ELEMENT_HEIGHT } from 'constants/index';
-import {
-  TAddToSelectedCurrenciesInEdit,
-  TRemoveFromSelectedCurrenciesInEdit,
-} from 'hooks/store/types';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
 import { TAvailableCurrenciesNames } from 'types';
 import { triggerSelectionHaptic } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useHandleLongPress } from './useHandleLongPress';
 
@@ -19,8 +15,10 @@ type TProps = {
   selectionModeShared: SharedValue<number>;
   selectedDuringSwipeShared: SharedValue<number>;
   setEditMode: (value: boolean) => void;
-  addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
-  removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
+  addToCurrInEdit: (currName: TAvailableCurrenciesNames) => void;
+  removeFromSelectedCurrenciesInEdit: (
+    currName: TAvailableCurrenciesNames,
+  ) => void;
 };
 
 export const useLongPressSwipeGesture = ({
@@ -34,7 +32,7 @@ export const useLongPressSwipeGesture = ({
   removeFromSelectedCurrenciesInEdit,
 }: TProps) => {
   const { selectedCurrencies, selectedAmount } =
-    useSelector(selectSelectedInEdit);
+    useSnapshot(selectedForEditStore);
 
   const lastSelectedShared = useSharedValue<number | null>(null);
   const isLongPressed = useSharedValue(0);
