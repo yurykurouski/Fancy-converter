@@ -13,7 +13,7 @@ import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { editModeActions, editModeStore } from 'store/valtio/editModeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
-import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
 import {
   selectedForEditActions,
   selectedForEditStore,
@@ -54,7 +54,7 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const { isInEditMode } = useSnapshot(editModeStore);
   const { selectedCurrencies, selectedAmount } =
     useSnapshot(selectedForEditStore);
-  const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
+  const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
   const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
   const setFocusedCurrencyName = useSetFocusedCurrencyName();

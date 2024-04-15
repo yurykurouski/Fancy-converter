@@ -19,7 +19,7 @@ import {
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { editModeActions } from 'store/valtio/editModeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
-import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
 import { selectedForEditActions } from 'store/valtio/selectedForEditStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
 import { useSnapshot } from 'valtio';
@@ -48,7 +48,7 @@ export const CurrencySelector = React.memo(() => {
 
   const { isLoading } = useSnapshot(exchangeRatesStore);
   const { currencies } = useSelector(selectSelectedCurrencies);
-  const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
+  const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse();
 

@@ -13,8 +13,8 @@ import {
 import { l } from 'resources/localization';
 import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
-import { focusedCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
-import { focusedCurrencyActions } from 'store/valtio/favoriteCurrenciesStore/favoriteCurrenciesStore';
+import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import { favoriteCurrencyActions } from 'store/valtio/favoriteCurrenciesStore/favoriteCurrenciesStore';
 import { useSnapshot } from 'valtio';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
@@ -30,7 +30,7 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     const { activeCurrencyType, currencies } = useSelector(
       selectSelectedCurrencies,
     );
-    const { favoriteCurrencies } = useSnapshot(focusedCurrencyStore);
+    const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
     const removeSelected = useRemoveSelected();
     const addSelected = useAddSelected();
@@ -47,9 +47,9 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
 
     const onLongPress = useCallback(() => {
       if (isFavorite) {
-        focusedCurrencyActions.removeFavoriteCurrency(currencyCode);
+        favoriteCurrencyActions.removeFavoriteCurrency(currencyCode);
       } else {
-        focusedCurrencyActions.setFavoriteCurrency(
+        favoriteCurrencyActions.setFavoriteCurrency(
           currencyCode,
           activeCurrencyType,
         );

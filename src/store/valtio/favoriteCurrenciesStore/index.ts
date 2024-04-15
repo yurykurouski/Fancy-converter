@@ -1,4 +1,4 @@
 export {
-  focusedCurrencyActions,
-  focusedCurrencyStore,
+  favoriteCurrencyActions,
+  favoriteCurrencyStore,
 } from './favoriteCurrenciesStore';

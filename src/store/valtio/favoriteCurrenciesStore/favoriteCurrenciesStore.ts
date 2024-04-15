@@ -15,14 +15,14 @@ const initialState: TFocusedCurrency = {
   favoriteCurrencies: {},
 };
 
-export const focusedCurrencyStore = proxy(initialState);
+export const favoriteCurrencyStore = proxy(initialState);
 
-export const focusedCurrencyActions = {
+export const favoriteCurrencyActions = {
   setFavoriteCurrency: (
     currencyName: TAvailableCurrenciesNames,
     currencyType: ECurrencyType,
   ) => {
-    focusedCurrencyStore.favoriteCurrencies[currencyName] = currencyType;
+    favoriteCurrencyStore.favoriteCurrencies[currencyName] = currencyType;
 
     uiStoreActions.setNotificationData({
       type: ENotificationType.ADD_FAVORITE,
@@ -32,7 +32,7 @@ export const focusedCurrencyActions = {
   },
 
   removeFavoriteCurrency: (currName: TAvailableCurrenciesNames) => {
-    delete focusedCurrencyStore.favoriteCurrencies[currName];
+    delete favoriteCurrencyStore.favoriteCurrencies[currName];
 
     uiStoreActions.setNotificationData({
       type: ENotificationType.REMOVE_FAVORITE,
