@@ -4,10 +4,10 @@ import Animated, {
   SharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { APP_NAME } from 'constants/index';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
+import { useSnapshot } from 'valtio';
 
 import { CurrencyTypeMenu } from './components/CurrencyTypeMenu';
 import { Menu } from './components/Menu';
@@ -24,7 +24,7 @@ export const Header = React.memo(
     ({ onOpenDrawer, headerSharedValue }, containerListRef) => {
       const styles = useStyles();
 
-      const { activeCurrencyType } = useSelector(selectSelectedCurrencies);
+      const { activeCurrencyType } = useSnapshot(selectedCurrenciesStore);
 
       const animatedPositionStyle = useAnimatedStyle(() => {
         if (headerSharedValue.value < 0) {

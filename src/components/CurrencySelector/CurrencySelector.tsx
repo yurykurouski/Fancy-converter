@@ -2,7 +2,6 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { GestureDetector } from 'react-native-gesture-handler';
 import { useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
 import { RecyclerListViewState } from 'recyclerlistview/dist/reactnative/core/RecyclerListView';
 import { WINDOW_WIDTH } from '@gorhom/bottom-sheet';
 import { CurrencyInputValue } from 'components';
@@ -16,10 +15,10 @@ import {
   RecyclerListView,
   RecyclerListViewProps,
 } from 'recyclerlistview';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { editModeActions } from 'store/valtio/editModeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
 import { selectedForEditActions } from 'store/valtio/selectedForEditStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
 import { useSnapshot } from 'valtio';
@@ -47,7 +46,7 @@ export const CurrencySelector = React.memo(() => {
     );
 
   const { isLoading } = useSnapshot(exchangeRatesStore);
-  const { currencies } = useSelector(selectSelectedCurrencies);
+  const { currencies } = useSnapshot(selectedCurrenciesStore);
   const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse();

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
 import { l } from 'resources/localization';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
 import { EAvailableFiatNames } from 'types';
+import { useSnapshot } from 'valtio';
 
 import { CurrencyItem } from './components/CurrencyItem';
 
@@ -18,21 +18,7 @@ export const FourthScreen = ({ windowWidth }: TProps) => {
   const styles = useStyles(windowWidth);
   const textStyles = useCommonOnboardingStyles();
 
-  const [locationCurrency] = useState('');
-
-  const { currencies } = useSelector(selectSelectedCurrencies);
-  // const addSelected = useAddSelected();
-
-  // const getLocalCurrency = useGetLocalCurrency(
-  //   addSelected,
-  //   setLocationCurrency,
-  // );
-
-  // useEffect(() => {
-  //   if (currentPage === 3 && !locationCurrency) {
-  //     getLocalCurrency();
-  //   }
-  // }, [locationCurrency, currentPage, getLocalCurrency]);
+  const { currencies } = useSnapshot(selectedCurrenciesStore);
 
   return (
     <View style={styles.container}>
@@ -43,29 +29,14 @@ export const FourthScreen = ({ windowWidth }: TProps) => {
           <Text style={textStyles.mainText}>
             {l['onboarding_fourth-screen_title']}
           </Text>
-          {Object.keys(currencies).map(
-            currencyCode =>
-              currencyCode !== locationCurrency && (
-                <CurrencyItem
-                  key={currencyCode}
-                  currencyCode={currencyCode as EAvailableFiatNames}
-                  currencyName={l[currencyCode as EAvailableFiatNames]}
-                />
-              ),
-          )}
-        </View>
-
-        {locationCurrency && (
-          <>
-            <Text style={textStyles.mainText}>
-              {l['onboarding_fourth-screen_second-title']}
-            </Text>
+          {Object.keys(currencies).map(currencyCode => (
             <CurrencyItem
-              currencyCode={locationCurrency as EAvailableFiatNames}
-              currencyName={l[locationCurrency as EAvailableFiatNames]}
+              key={currencyCode}
+              currencyCode={currencyCode as EAvailableFiatNames}
+              currencyName={l[currencyCode as EAvailableFiatNames]}
             />
-          </>
-        )}
+          ))}
+        </View>
       </ScrollView>
     </View>
   );

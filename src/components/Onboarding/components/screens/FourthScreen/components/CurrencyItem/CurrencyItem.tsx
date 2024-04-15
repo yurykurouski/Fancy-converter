@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Text, View } from 'react-native';
 import { CancelButton } from 'components/common/CancelButton';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { ICON_BUTTON_SIZE } from 'constants/index';
-import { useRemoveSelected } from 'hooks/store/SelectedCurrencies';
+import { selectedCurrenciesActions } from 'store/valtio/selectedCurrenciesStore';
 import { EAvailableFiatNames } from 'types';
 
 import { useStyles } from './CurrencyItem.styles';
@@ -15,9 +15,11 @@ type TProps = {
 
 export const CurrencyItem = ({ currencyCode, currencyName }: TProps) => {
   const styles = useStyles();
-  const removeSelected = useRemoveSelected();
 
-  const onRemovePress = () => removeSelected(currencyCode);
+  const onRemovePress = useCallback(
+    () => selectedCurrenciesActions.removeSelectedCurr(currencyCode),
+    [currencyCode],
+  );
 
   return (
     <View style={styles.currencyInfoWrapper}>

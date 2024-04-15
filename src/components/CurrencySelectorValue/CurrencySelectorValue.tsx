@@ -1,20 +1,18 @@
 import React, { FC, useCallback } from 'react';
 import { Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { BookmarkIcon, CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
-import {
-  useAddSelected,
-  useRemoveSelected,
-} from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
 import { favoriteCurrencyActions } from 'store/valtio/favoriteCurrenciesStore/favoriteCurrenciesStore';
+import {
+  selectedCurrenciesActions,
+  selectedCurrenciesStore,
+} from 'store/valtio/selectedCurrenciesStore';
 import { useSnapshot } from 'valtio';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
@@ -27,13 +25,10 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     const styles = useStyles();
 
     const { colorScheme } = useSnapshot(colorSchemeStore);
-    const { activeCurrencyType, currencies } = useSelector(
-      selectSelectedCurrencies,
+    const { activeCurrencyType, currencies } = useSnapshot(
+      selectedCurrenciesStore,
     );
     const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
-
-    const removeSelected = useRemoveSelected();
-    const addSelected = useAddSelected();
 
     const isActive = currencies.hasOwnProperty(currencyCode);
     const isFavorite = !!favoriteCurrencies[currencyCode];
@@ -41,8 +36,8 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     const onPressHandler = useOnPressHandler(
       isActive,
       currencyCode,
-      removeSelected,
-      addSelected,
+      selectedCurrenciesActions.removeSelectedCurr,
+      selectedCurrenciesActions.addSelectedCurr,
     );
 
     const onLongPress = useCallback(() => {

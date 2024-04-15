@@ -82,5 +82,5 @@ export enum EHapticType {
 }
 
 export type TSelectedCurrencies = {
-  [key in TAvailableCurrenciesNames]?: number;
+  [key in TAvailableCurrenciesNames]?: string;
 };

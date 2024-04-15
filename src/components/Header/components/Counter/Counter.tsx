@@ -5,12 +5,11 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
 import { editModeActions } from 'store/valtio/editModeStore';
+import { selectedCurrenciesStore } from 'store/valtio/selectedCurrenciesStore';
 import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
 import { useSnapshot } from 'valtio';
 
@@ -31,7 +30,7 @@ export const Counter = () => {
     };
   });
 
-  const { currencies } = useSelector(selectSelectedCurrencies);
+  const { currencies } = useSnapshot(selectedCurrenciesStore);
   const { selectedAmount } = useSnapshot(selectedForEditStore);
 
   const onCancelPress = () => {

@@ -17,7 +17,7 @@ export const selectedForEditStore = proxy(initialState);
 
 export const selectedForEditActions = {
   addToSelected: (currName: TAvailableCurrenciesNames) => {
-    selectedForEditStore.selectedCurrencies[currName] = 1;
+    selectedForEditStore.selectedCurrencies[currName] = '1';
     selectedForEditStore.selectedAmount += 1;
 
     if (!editModeStore.isInEditMode) {

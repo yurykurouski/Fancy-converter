@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { DeleteSweepIcon } from 'assets/icons';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
-import { useDeleteAllInEdit } from 'hooks/store/SelectedCurrencies/useDeleteAllInEdit';
+import { selectedCurrenciesActions } from 'store/valtio/selectedCurrenciesStore';
 import { selectedForEditStore } from 'store/valtio/selectedForEditStore';
 import { triggerWarningHaptic } from 'utils';
 import { useSnapshot } from 'valtio';
@@ -11,12 +11,10 @@ import { styles } from './RemoveSweep.styles';
 export const RemoveSweep = () => {
   const { selectedCurrencies } = useSnapshot(selectedForEditStore);
 
-  const deleteAllInEdit = useDeleteAllInEdit();
-
   const handlePress = useCallback(() => {
-    deleteAllInEdit(selectedCurrencies);
+    selectedCurrenciesActions.deleteAllSelected(selectedCurrencies);
     triggerWarningHaptic();
-  }, [deleteAllInEdit, selectedCurrencies]);
+  }, [selectedCurrencies]);
 
   return (
     <ButtonWithIPadOSInteraction

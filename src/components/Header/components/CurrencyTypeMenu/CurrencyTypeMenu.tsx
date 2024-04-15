@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { Text } from 'react-native';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
-import { useSetActiveCurrencyType } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
+import { selectedCurrenciesActions } from 'store/valtio/selectedCurrenciesStore';
 import { ECurrencyType } from 'types';
 
 import { useStyles } from './CurrencyTypeMenu.styles';
@@ -18,27 +18,25 @@ export const CurrencyTypeMenu = React.forwardRef<
 >(({ activeCurrencyType }, containerListRef) => {
   const styles = useStyles();
 
-  const setCurrencyType = useSetActiveCurrencyType();
-
   const setFiat = useCallback(() => {
-    setCurrencyType(ECurrencyType.FIAT);
+    selectedCurrenciesActions.setActiveCurrencyType(ECurrencyType.FIAT);
 
     //@ts-expect-error
     containerListRef?.current?.scrollToIndex({
       index: 0,
       animated: true,
     });
-  }, [containerListRef, setCurrencyType]);
+  }, [containerListRef]);
 
   const setCrypto = useCallback(() => {
-    setCurrencyType(ECurrencyType.CRYPTO);
+    selectedCurrenciesActions.setActiveCurrencyType(ECurrencyType.CRYPTO);
 
     //@ts-expect-error
     containerListRef?.current?.scrollToIndex({
       index: 1,
       animated: true,
     });
-  }, [containerListRef, setCurrencyType]);
+  }, [containerListRef]);
 
   return (
     <>
