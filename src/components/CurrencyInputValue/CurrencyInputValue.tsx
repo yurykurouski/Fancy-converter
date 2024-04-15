@@ -1,19 +1,17 @@
 import React, { FC, useMemo, useRef } from 'react';
 import { Pressable, Text, TextInput } from 'react-native';
 import Animated, { FadeInRight, FadeOutRight } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
-import {
-  useSetFocusedCurrencyName,
-  useSetFocusedCurrencyValue,
-} from 'hooks/store/FocusedCurrency';
-import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
 import { colorSchemeStore } from 'store/valtio/colorSchemeStore';
 import { editModeActions, editModeStore } from 'store/valtio/editModeStore';
 import { exchangeRatesStore } from 'store/valtio/exchangeRateStore';
 import { favoriteCurrencyStore } from 'store/valtio/favoriteCurrenciesStore';
+import {
+  focusedCurrencyActions,
+  focusedCurrencyStore,
+} from 'store/valtio/focusedCurrencyStore';
 import {
   selectedForEditActions,
   selectedForEditStore,
@@ -36,7 +34,7 @@ const useMemoizedValues = (
   currencyCode: EAvailableFiatNames | EAvailableCryptoNames,
 ) => {
   const { exchangeRates } = useSnapshot(exchangeRatesStore);
-  const { focusedCurrencyName } = useSelector(selectFocusedCurrency);
+  const { focusedCurrencyName } = useSnapshot(focusedCurrencyStore);
 
   return useMemo(
     () => ({
@@ -56,8 +54,8 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
     useSnapshot(selectedForEditStore);
   const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
-  const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
-  const setFocusedCurrencyName = useSetFocusedCurrencyName();
+  const { setFocusedCurrencyValue, setFocusedCurrencyName } =
+    focusedCurrencyActions;
 
   const { focusedCurrencyRate, isFocused, rate } =
     useMemoizedValues(currencyCode);

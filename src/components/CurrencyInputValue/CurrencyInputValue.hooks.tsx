@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import { INPUT_VALIDATION_REGEXP } from 'constants/index';
 import { l } from 'resources/localization';
-import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
+import { focusedCurrencyStore } from 'store/valtio/focusedCurrencyStore';
+import { useSnapshot } from 'valtio';
 
 import {
   TUseConvertedValues,
@@ -34,7 +34,7 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
     (inputValue: string) => {
       if (isInEditMode) return;
 
-      setFocusedCurrencyName({ currencyCode, value: inputValue });
+      setFocusedCurrencyName(currencyCode, inputValue);
     },
     [currencyCode, isInEditMode, setFocusedCurrencyName],
   );
@@ -57,7 +57,7 @@ export const useConvertedValues: TUseConvertedValues = (
   course,
   focusedCurrencyCourse,
 ) => {
-  const { focusedCurrencyValue } = useSelector(selectFocusedCurrency);
+  const { focusedCurrencyValue } = useSnapshot(focusedCurrencyStore);
 
   const coefficient = Number(course) / Number(focusedCurrencyCourse);
 

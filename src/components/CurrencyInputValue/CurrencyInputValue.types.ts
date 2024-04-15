@@ -1,10 +1,6 @@
 import { RefObject } from 'react';
 import { TextInput } from 'react-native';
 import {
-  TSetFocusedCurrencyName,
-  TSetFocusedCurrencyValue,
-} from 'hooks/store/types';
-import {
   EAvailableFiatNames,
   TAvailableCurrenciesNames,
   TSelectedCurrencies,
@@ -19,8 +15,11 @@ export type OnFocusHandler = (text: string) => void;
 export type ContainerOnPressHandler = () => void;
 
 export type TUseCurrencyInputHandlers = (props: {
-  setFocusedCurrencyValue: TSetFocusedCurrencyValue;
-  setFocusedCurrencyName: TSetFocusedCurrencyName;
+  setFocusedCurrencyValue: (value: string) => void;
+  setFocusedCurrencyName: (
+    currencyName: TAvailableCurrenciesNames,
+    value: string,
+  ) => void;
   currencyCode: EAvailableFiatNames;
   inputRef: RefObject<TextInput>;
   isInEditMode: boolean;
