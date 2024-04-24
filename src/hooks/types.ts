@@ -33,3 +33,8 @@ export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
 export type TActionsMap<T> = {
   [key in StorageKeys]?: T;
 };
+
+export type UseAppStateProps = {
+  onForeground?: VoidFunction;
+  onBackground?: VoidFunction;
+};
