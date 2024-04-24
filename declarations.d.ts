@@ -16,3 +16,4 @@ declare module '*.png' {
 }
 
 declare type VoidFunction = () => void;
+type ValueOf<T> = T[keyof T];
