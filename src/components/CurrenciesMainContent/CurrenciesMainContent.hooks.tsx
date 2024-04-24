@@ -55,7 +55,7 @@ export const useHandleBackPress: TUseHandleBackPress = (
 };
 
 export const useUpdateCourses = () => {
-  const loadCourses = useLoadCourses();
+  const loadRates = useLoadCourses();
 
   const { lastUpdated } = useSnapshot(exchangeRatesStore);
 
@@ -64,10 +64,10 @@ export const useUpdateCourses = () => {
       const dateDiff = Date.now() - lastUpdated;
 
       if (dateDiff > HOUR_IN_MS) {
-        loadCourses();
+        loadRates();
       }
     } else {
-      loadCourses();
+      loadRates();
     }
-  }, [lastUpdated, loadCourses]);
+  }, [lastUpdated, loadRates]);
 };
