@@ -19,7 +19,9 @@ export const CurrencyTypeMenu = React.forwardRef<
   const styles = useStyles();
 
   const setFiat = useCallback(() => {
-    selectedCurrenciesActions.setActiveCurrencyType(ECurrencyType.FIAT);
+    requestAnimationFrame(() =>
+      selectedCurrenciesActions.setActiveCurrencyType(ECurrencyType.FIAT),
+    );
 
     //@ts-expect-error
     containerListRef?.current?.scrollToIndex({
@@ -29,7 +31,9 @@ export const CurrencyTypeMenu = React.forwardRef<
   }, [containerListRef]);
 
   const setCrypto = useCallback(() => {
-    selectedCurrenciesActions.setActiveCurrencyType(ECurrencyType.CRYPTO);
+    requestAnimationFrame(() =>
+      selectedCurrenciesActions.setActiveCurrencyType(ECurrencyType.CRYPTO),
+    );
 
     //@ts-expect-error
     containerListRef?.current?.scrollToIndex({
