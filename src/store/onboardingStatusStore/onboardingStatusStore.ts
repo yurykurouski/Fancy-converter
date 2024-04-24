@@ -1,17 +1,40 @@
+import { rehydrateState } from 'store/helpers';
+import { PERSISTED_STORES } from 'store/store.config';
 import { proxy } from 'valtio';
 
-type TOnBoardingStatus = {
-  isOnBoarded: boolean | undefined;
+enum EOnboardingKeys {
+  IS_ONBOARDED = 'isOnBoarded',
+}
+
+type TOnboardingStatusStore = {
+  [EOnboardingKeys.IS_ONBOARDED]: boolean;
 };
 
-const initialState: TOnBoardingStatus = {
-  isOnBoarded: undefined,
+const whiteList = [EOnboardingKeys.IS_ONBOARDED];
+
+const initialState = {
+  [EOnboardingKeys.IS_ONBOARDED]: false,
 };
 
-export const onboardingStatusStore = proxy(initialState);
+export const onboardingStatusStore =
+  proxy<TOnboardingStatusStore>(initialState);
 
 export const onboardingStatusActions = {
-  setIsOnBoarded: (isOnBoarded: boolean) => {
+  setIsOnBoarded: function (isOnBoarded: boolean) {
     onboardingStatusStore.isOnBoarded = isOnBoarded;
   },
+
+  rehydrateState: async function () {
+    await rehydrateState(
+      onboardingStatusStore,
+      PERSISTED_STORES.ONBOARDING_STATUS,
+      whiteList,
+    );
+  },
+};
+
+export const onboardingStoreConfig = {
+  store: onboardingStatusStore,
+  actions: onboardingStatusActions,
+  whiteList,
 };

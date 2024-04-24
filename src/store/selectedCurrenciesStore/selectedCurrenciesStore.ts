@@ -1,4 +1,5 @@
 import availableCurrencies from 'resources/avaliable-currencies';
+import { editModeActions } from 'store/editModeStore';
 import {
   EAvailableFiatNames,
   ECurrencyType,
@@ -46,6 +47,7 @@ export const selectedCurrenciesActions = {
       //@ts-expect-error
       el => delete selectedCurrenciesStore.currencies[el],
     );
+    editModeActions.setEditMode(false);
   },
 
   searchCurrenciesValue: (searchValue: string) => {

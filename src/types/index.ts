@@ -1,10 +1,10 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { Action } from '@reduxjs/toolkit';
 import { ColorsDark, ColorsLight } from 'assets/colors';
 import by from 'resources/locales/by.json';
 import en from 'resources/locales/en.json';
 import pl from 'resources/locales/pl.json';
 import ua from 'resources/locales/ua.json';
+import { PERSISTED_STORES } from 'store/store.config';
 
 import {
   EAvailableCryptoNames,
@@ -14,8 +14,6 @@ export {
   EAvailableCryptoNames,
   EAvailableFiatNames,
 } from './availableCurrNames';
-
-export type TDispatchCallback<T, A> = (value: T) => Action<A>;
 
 export type TLocaleString =
   | keyof typeof en
@@ -83,4 +81,12 @@ export enum EHapticType {
 
 export type TSelectedCurrencies = {
   [key in TAvailableCurrenciesNames]?: string;
+};
+
+export type TStoreConfig = {
+  [key in PERSISTED_STORES]: {
+    store: { [key: string]: unknown };
+    actions: { [key: string]: unknown };
+    whiteList: string[];
+  };
 };

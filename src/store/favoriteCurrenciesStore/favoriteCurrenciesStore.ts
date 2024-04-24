@@ -1,3 +1,5 @@
+import { rehydrateState } from 'store/helpers';
+import { PERSISTED_STORES } from 'store/store.config';
 import {
   ECurrencyType,
   ENotificationType,
@@ -7,15 +9,23 @@ import { proxy } from 'valtio';
 
 import { uiStoreActions } from '../uiStore';
 
+enum EFocusedCurrencyKeys {
+  FAVORITE_CURRENCIES = 'favoriteCurrencies',
+}
+
 export type TFocusedCurrency = {
-  favoriteCurrencies: Partial<Record<TAvailableCurrenciesNames, ECurrencyType>>;
+  [EFocusedCurrencyKeys.FAVORITE_CURRENCIES]: Partial<
+    Record<TAvailableCurrenciesNames, ECurrencyType>
+  >;
 };
 
 const initialState: TFocusedCurrency = {
-  favoriteCurrencies: {},
+  [EFocusedCurrencyKeys.FAVORITE_CURRENCIES]: {},
 };
 
-export const favoriteCurrencyStore = proxy(initialState);
+const whiteList = [EFocusedCurrencyKeys.FAVORITE_CURRENCIES];
+
+export const favoriteCurrencyStore = proxy<TFocusedCurrency>(initialState);
 
 export const favoriteCurrencyActions = {
   setFavoriteCurrency: (
@@ -40,4 +50,18 @@ export const favoriteCurrencyActions = {
       data: currName,
     });
   },
+
+  rehydrateState: async function () {
+    await rehydrateState(
+      favoriteCurrencyStore,
+      PERSISTED_STORES.FAVORITE_CURRENCIES,
+      whiteList,
+    );
+  },
+};
+
+export const favoriteCurrencyStoreConfig = {
+  store: favoriteCurrencyStore,
+  actions: favoriteCurrencyActions,
+  whiteList,
 };
