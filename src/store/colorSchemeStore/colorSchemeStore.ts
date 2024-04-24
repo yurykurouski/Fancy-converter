@@ -1,6 +1,4 @@
 import { ColorSchemeName, InteractionManager } from 'react-native';
-import { rehydrateState } from 'store/helpers';
-import { PERSISTED_STORES } from 'store/store.config';
 import { EColorSchemeBehavior } from 'types';
 import { getCurrentColorTheme } from 'utils';
 import { proxy } from 'valtio';
@@ -43,14 +41,6 @@ export const colorSchemeActions = {
         colorSchemeStore.colorScheme = getCurrentColorTheme();
       }
     });
-  },
-
-  rehydrateState: async function () {
-    await rehydrateState(
-      colorSchemeStore,
-      PERSISTED_STORES.COLOR_SCHEME,
-      whiteList,
-    );
   },
 };
 

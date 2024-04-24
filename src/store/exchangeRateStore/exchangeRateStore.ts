@@ -1,5 +1,3 @@
-import { rehydrateState } from 'store/helpers';
-import { PERSISTED_STORES } from 'store/store.config';
 import { ENotificationType } from 'types';
 import { OnlyCourses } from 'utils/utils.types';
 import { proxy } from 'valtio';
@@ -44,13 +42,6 @@ export const exchangeRatesActions = {
       timeStamp: Date.now(),
       data: null,
     });
-  },
-  rehydrateState: async function () {
-    await rehydrateState(
-      exchangeRatesStore,
-      PERSISTED_STORES.EXCHANGE_RATE,
-      whiteList,
-    );
   },
 
   //TODO: move in separate store

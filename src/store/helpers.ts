@@ -4,9 +4,14 @@ import { TStoreConfig } from 'types';
 import { PERSISTED_STORES } from './store.config';
 
 export async function rehydrateState(
-  store: { [key: string]: unknown },
+  {
+    store,
+    whiteList,
+  }: {
+    whiteList: string[];
+    store: { [key: string]: unknown };
+  },
   storeName: PERSISTED_STORES,
-  whiteList: string[],
 ) {
   const storedStateString = await AsyncStorage.getItem(storeName);
 
@@ -24,8 +29,10 @@ export async function rehydrateState(
 export const rehydrateStore = async (storeConfig: TStoreConfig) => {
   for (let storeName in storeConfig) {
     try {
-      //@ts-expect-error
-      await storeConfig[storeName].actions.rehydrateState();
+      await rehydrateState(
+        storeConfig[storeName as PERSISTED_STORES],
+        storeName as PERSISTED_STORES,
+      );
     } catch (e) {
       console.error(e);
     }

@@ -8,15 +8,24 @@ import {
 } from 'types';
 import { proxy } from 'valtio';
 
+enum ESelectedCurrenciesKeys {
+  CURRENCIES = 'currencies',
+  SEARCH_VALUE = 'searchValue',
+  ACTIVE_CURR_TYPE = 'activeCurrencyType',
+  FILTERED_CURRENCIES = 'filteredCurrencies',
+}
+
 type TSelectedCurrencies = {
-  currencies: { [key in TAvailableCurrenciesNames]?: string };
-  searchValue: string;
-  activeCurrencyType: ECurrencyType;
-  filteredCurrencies: TAvailableCurrencies;
+  [ESelectedCurrenciesKeys.CURRENCIES]: {
+    [key in TAvailableCurrenciesNames]?: string;
+  };
+  [ESelectedCurrenciesKeys.SEARCH_VALUE]: string;
+  [ESelectedCurrenciesKeys.ACTIVE_CURR_TYPE]: ECurrencyType;
+  [ESelectedCurrenciesKeys.FILTERED_CURRENCIES]: TAvailableCurrencies;
 };
 
 const initialState: TSelectedCurrencies = {
-  currencies: {
+  [ESelectedCurrenciesKeys.CURRENCIES]: {
     [EAvailableFiatNames.EUR]: '',
     [EAvailableFiatNames.USD]: '',
     [EAvailableFiatNames.JPY]: '',
@@ -24,10 +33,12 @@ const initialState: TSelectedCurrencies = {
     [EAvailableFiatNames.CAD]: '',
     [EAvailableFiatNames.CHF]: '',
   },
-  searchValue: '',
-  activeCurrencyType: ECurrencyType.FIAT,
-  filteredCurrencies: availableCurrencies,
+  [ESelectedCurrenciesKeys.SEARCH_VALUE]: '',
+  [ESelectedCurrenciesKeys.ACTIVE_CURR_TYPE]: ECurrencyType.FIAT,
+  [ESelectedCurrenciesKeys.FILTERED_CURRENCIES]: availableCurrencies,
 };
+
+const whiteList = [ESelectedCurrenciesKeys.CURRENCIES];
 
 export const selectedCurrenciesStore = proxy(initialState);
 
@@ -65,4 +76,10 @@ export const selectedCurrenciesActions = {
   setActiveCurrencyType: (currType: ECurrencyType) => {
     selectedCurrenciesStore.activeCurrencyType = currType;
   },
+};
+
+export const selectedCurrenciesStoreConfig = {
+  store: selectedCurrenciesStore,
+  actions: selectedCurrenciesActions,
+  whiteList,
 };

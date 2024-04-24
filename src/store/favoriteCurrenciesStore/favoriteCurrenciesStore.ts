@@ -1,5 +1,3 @@
-import { rehydrateState } from 'store/helpers';
-import { PERSISTED_STORES } from 'store/store.config';
 import {
   ECurrencyType,
   ENotificationType,
@@ -49,14 +47,6 @@ export const favoriteCurrencyActions = {
       timeStamp: Date.now(),
       data: currName,
     });
-  },
-
-  rehydrateState: async function () {
-    await rehydrateState(
-      favoriteCurrencyStore,
-      PERSISTED_STORES.FAVORITE_CURRENCIES,
-      whiteList,
-    );
   },
 };
 

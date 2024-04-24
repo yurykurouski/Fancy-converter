@@ -1,5 +1,3 @@
-import { rehydrateState } from 'store/helpers';
-import { PERSISTED_STORES } from 'store/store.config';
 import { proxy } from 'valtio';
 
 enum EOnboardingKeys {
@@ -22,14 +20,6 @@ export const onboardingStatusStore =
 export const onboardingStatusActions = {
   setIsOnBoarded: function (isOnBoarded: boolean) {
     onboardingStatusStore.isOnBoarded = isOnBoarded;
-  },
-
-  rehydrateState: async function () {
-    await rehydrateState(
-      onboardingStatusStore,
-      PERSISTED_STORES.ONBOARDING_STATUS,
-      whiteList,
-    );
   },
 };
 
