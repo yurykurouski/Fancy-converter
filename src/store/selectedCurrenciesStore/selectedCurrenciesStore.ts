@@ -80,6 +80,5 @@ export const selectedCurrenciesActions = {
 
 export const selectedCurrenciesStoreConfig = {
   store: selectedCurrenciesStore,
-  actions: selectedCurrenciesActions,
   whiteList,
 };

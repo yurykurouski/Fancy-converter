@@ -63,6 +63,5 @@ export const exchangeRatesActions = {
 
 export const exchangeRateStoreConfig = {
   store: exchangeRatesStore,
-  actions: exchangeRatesActions,
   whiteList,
 };

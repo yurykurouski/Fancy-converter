@@ -25,6 +25,5 @@ export const onboardingStatusActions = {
 
 export const onboardingStoreConfig = {
   store: onboardingStatusStore,
-  actions: onboardingStatusActions,
   whiteList,
 };

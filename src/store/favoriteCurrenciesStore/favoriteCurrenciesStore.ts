@@ -52,6 +52,5 @@ export const favoriteCurrencyActions = {
 
 export const favoriteCurrencyStoreConfig = {
   store: favoriteCurrencyStore,
-  actions: favoriteCurrencyActions,
   whiteList,
 };

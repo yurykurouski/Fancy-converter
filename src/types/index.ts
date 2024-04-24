@@ -86,7 +86,11 @@ export type TSelectedCurrencies = {
 export type TStoreConfig = {
   [key in PERSISTED_STORES]: {
     store: { [key: string]: unknown };
-    actions: { [key: string]: unknown };
     whiteList: string[];
   };
+};
+
+export type TRehydrateStateProps = {
+  storeChunk: ValueOf<TStoreConfig>;
+  parsedValues: TStoreConfig;
 };

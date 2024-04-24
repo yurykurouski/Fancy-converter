@@ -46,6 +46,5 @@ export const colorSchemeActions = {
 
 export const colorSchemeStoreConfig = {
   store: colorSchemeStore,
-  actions: colorSchemeActions,
   whiteList,
 };

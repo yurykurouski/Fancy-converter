@@ -1,41 +1,34 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { TStoreConfig } from 'types';
+import { TRehydrateStateProps, TStoreConfig } from 'types';
 
 import { PERSISTED_STORES } from './store.config';
 
-export async function rehydrateState(
-  {
-    store,
-    whiteList,
-  }: {
-    whiteList: string[];
-    store: { [key: string]: unknown };
-  },
-  storeName: PERSISTED_STORES,
-) {
-  const storedStateString = await AsyncStorage.getItem(storeName);
-
-  if (storedStateString) {
-    const values = JSON.parse(storedStateString);
-
-    for (let key in values) {
-      if (whiteList.includes(key)) {
-        store[key] = values[key];
-      }
+const rehydrateState = ({ storeChunk, parsedValues }: TRehydrateStateProps) => {
+  for (let key in parsedValues) {
+    if (storeChunk.whiteList.includes(key)) {
+      storeChunk.store[key] = parsedValues[key as PERSISTED_STORES];
     }
   }
-}
+};
 
 export const rehydrateStore = async (storeConfig: TStoreConfig) => {
-  for (let storeName in storeConfig) {
-    try {
-      await rehydrateState(
-        storeConfig[storeName as PERSISTED_STORES],
-        storeName as PERSISTED_STORES,
-      );
-    } catch (e) {
-      console.error(e);
-    }
+  const storesKeyValuePair = await AsyncStorage.multiGet(
+    Object.values(PERSISTED_STORES),
+  );
+
+  if (storesKeyValuePair) {
+    storesKeyValuePair.forEach(async ([storeName, values]) => {
+      try {
+        if (values) {
+          const storeChunk = storeConfig[storeName as PERSISTED_STORES];
+          const parsedValues = JSON.parse(values);
+
+          rehydrateState({ storeChunk, parsedValues });
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    });
   }
 };
 
