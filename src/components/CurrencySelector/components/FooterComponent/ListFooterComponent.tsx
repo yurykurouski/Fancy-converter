@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { RefreshIcon } from 'assets/icons';
 import { exchangeRatesStore } from 'store/exchangeRateStore';
 import { getSaveDateReadable } from 'utils';
 import { useSnapshot } from 'valtio';
@@ -17,6 +18,7 @@ export const ListFooterComponent = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{saveDate}</Text>
+      <RefreshIcon size={14} />
     </View>
   );
 };

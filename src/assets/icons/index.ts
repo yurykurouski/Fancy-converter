@@ -10,5 +10,6 @@ export { LightIconRays } from './LightIconRays';
 export { MailIcon } from './MailIcon';
 export { MenuIcon } from './MenuIcon';
 export { ReactIcon } from './ReactIcon';
+export { RefreshIcon } from './RefreshIcon';
 export { RightArrowIcon } from './RightArrowIcon';
 export { ShareIOsIcon } from './ShareIOsIcon';

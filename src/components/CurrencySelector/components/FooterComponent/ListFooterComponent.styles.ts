@@ -14,5 +14,6 @@ export const useStyles = () =>
     text: {
       color: theme.FONT_COLOR_FADED,
       fontSize: 12,
+      marginRight: 4,
     },
   }));
