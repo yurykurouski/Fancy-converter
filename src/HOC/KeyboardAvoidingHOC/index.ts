@@ -1,1 +1,0 @@
-export { KeyboardAvoidingHOC } from './KeyboardAvoidingHOC';

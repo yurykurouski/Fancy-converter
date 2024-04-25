@@ -1,26 +1,23 @@
 import React, { FC, useMemo, useRef } from 'react';
 import { Pressable, Text, TextInput } from 'react-native';
 import Animated, { FadeInRight, FadeOutRight } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
+import { colorSchemeStore } from 'store/colorSchemeStore';
+import { editModeActions, editModeStore } from 'store/editModeStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
+import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
 import {
-  useSetFocusedCurrencyName,
-  useSetFocusedCurrencyValue,
-} from 'hooks/store/FocusedCurrency';
+  focusedCurrencyActions,
+  focusedCurrencyStore,
+} from 'store/focusedCurrencyStore';
 import {
-  useAddToSelectedCurrenciesInEdit,
-  useRemoveFromSelectedCurrenciesInEdit,
-} from 'hooks/store/SelectedCurrencies';
-import { useSetEditMode } from 'hooks/store/UIStatus';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { selectEditMode } from 'store/editMode/selectors';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
-import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
-import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+  selectedForEditActions,
+  selectedForEditStore,
+} from 'store/selectedForEditStore';
 import { EAvailableCryptoNames, EAvailableFiatNames } from 'types';
+import { useSnapshot } from 'valtio';
 
 import { CurrencyInputIcon } from './CurrencyInputIcon/CurrencyInputIcon';
 import {
@@ -36,34 +33,29 @@ import { useStyles } from './CurrencyInputValue.styles';
 const useMemoizedValues = (
   currencyCode: EAvailableFiatNames | EAvailableCryptoNames,
 ) => {
-  const { exchangeCourses } = useSelector(selectExchangeCourses);
-  const { focusedCurrencyName } = useSelector(selectFocusedCurrency);
+  const { exchangeRates } = useSnapshot(exchangeRatesStore);
+  const { focusedCurrencyName } = useSnapshot(focusedCurrencyStore);
 
   return useMemo(
     () => ({
       focusedCurrencyRate:
-        focusedCurrencyName && exchangeCourses?.[focusedCurrencyName],
+        focusedCurrencyName && exchangeRates?.[focusedCurrencyName],
       isFocused: focusedCurrencyName === currencyCode,
-      rate: exchangeCourses?.[currencyCode],
+      rate: exchangeRates?.[currencyCode],
     }),
-    [currencyCode, exchangeCourses, focusedCurrencyName],
+    [currencyCode, exchangeRates, focusedCurrencyName],
   );
 };
 
 export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
-  const { colorScheme } = useSelector(selectColorSchemeState);
-  const { isInEditMode } = useSelector(selectEditMode);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
+  const { isInEditMode } = useSnapshot(editModeStore);
   const { selectedCurrencies, selectedAmount } =
-    useSelector(selectSelectedInEdit);
-  const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
+    useSnapshot(selectedForEditStore);
+  const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
-  const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
-  const removeFromSelectedCurrenciesInEdit =
-    useRemoveFromSelectedCurrenciesInEdit();
-
-  const setFocusedCurrencyValue = useSetFocusedCurrencyValue();
-  const setFocusedCurrencyName = useSetFocusedCurrencyName();
-  const setEditMode = useSetEditMode();
+  const { setFocusedCurrencyValue, setFocusedCurrencyName } =
+    focusedCurrencyActions;
 
   const { focusedCurrencyRate, isFocused, rate } =
     useMemoizedValues(currencyCode);
@@ -86,11 +78,11 @@ export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
   const onContainerPress = useOnContainerPress({
     isInEditMode,
     currencyCode,
-    addToCurrInEdit,
+    addToCurrInEdit: selectedForEditActions.addToSelected,
     selectedCurrenciesInEdit: selectedCurrencies,
-    removeFromSelectedCurrenciesInEdit,
+    removeFromSelectedCurrenciesInEdit: selectedForEditActions.clearSelected,
     selectedInEditAmount: selectedAmount,
-    setEditMode,
+    setEditMode: editModeActions.setEditMode,
   });
 
   const calculatedValue = useConvertedValues(

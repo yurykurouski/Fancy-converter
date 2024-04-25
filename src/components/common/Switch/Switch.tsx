@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch as RNSwitch, View } from 'react-native';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { isAndroid } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useStyles } from './Switch.styles';
 
@@ -14,7 +14,7 @@ type TProps = {
 
 export const Switch = ({ value, onValueChange }: TProps) => {
   const styles = useStyles();
-  const { colorScheme } = useSelector(selectColorSchemeState);
+  const { colorScheme } = useSnapshot(colorSchemeStore);
 
   return (
     <View style={styles.container}>

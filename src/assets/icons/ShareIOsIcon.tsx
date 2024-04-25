@@ -1,13 +1,13 @@
 import React, { NamedExoticComponent } from 'react';
 import { Path, Svg } from 'react-native-svg';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { TSVGIcon } from 'types';
+import { useSnapshot } from 'valtio';
 
 export const ShareIOsIcon: NamedExoticComponent<TSVGIcon> = React.memo(
   ({ size, style, color }) => {
-    const { colorScheme } = useSelector(selectColorSchemeState);
+    const { colorScheme } = useSnapshot(colorSchemeStore);
 
     return (
       <Svg width={size} height={size} viewBox="0 -960 960 960" style={style}>

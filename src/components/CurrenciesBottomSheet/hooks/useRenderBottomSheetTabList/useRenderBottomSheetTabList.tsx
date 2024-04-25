@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { useSelector } from 'react-redux';
 import { BottomSheetSectionList, WINDOW_HEIGHT } from '@gorhom/bottom-sheet';
 import { BottomSheetEmpty } from 'components/CurrenciesBottomSheet/components/BottomSheetEmpty';
 import { BOTTOMSHEET_EL_HEIGHT } from 'constants/index';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
 import { ECurrencyType } from 'types';
 import { groupByName, isAndroid, makeSectionsData } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useRenderListItem } from '../useRenderListItem';
 import { useRenderSectionHeader } from '../useRenderSectionHeader';
@@ -16,7 +16,7 @@ import { useStyles } from '../../CurrenciesBottomSheet.styles';
 export const useRenderBottomSheetTabList = (height: number) => {
   const styles = useStyles(height);
 
-  const { filteredCurrencies } = useSelector(selectSelectedCurrencies);
+  const { filteredCurrencies } = useSnapshot(selectedCurrenciesStore);
 
   const renderItem = useRenderListItem();
   const renderSectionHeader = useRenderSectionHeader();
@@ -29,6 +29,7 @@ export const useRenderBottomSheetTabList = (height: number) => {
 
   return useCallback(
     ({ item }: { item: ECurrencyType }) => {
+      //@ts-expect-error
       const sections = groupByName(filteredCurrencies[item]);
       const sectionsData = makeSectionsData(sections);
 

@@ -1,26 +1,21 @@
 import { useCallback, useEffect } from 'react';
 import { Appearance } from 'react-native';
-import { useSelector } from 'react-redux';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeActions, colorSchemeStore } from 'store/colorSchemeStore';
 import { EColorSchemeBehavior } from 'types';
-
-import { useSwitchColorScheme } from './store/UIStatus';
+import { useSnapshot } from 'valtio';
 
 export const useAppearanceChangeListener = () => {
-  const { behavior, colorScheme: currentColorScheme } = useSelector(
-    selectColorSchemeState,
-  );
-
-  const switchColorScheme = useSwitchColorScheme();
+  const { behavior, colorScheme: currentColorScheme } =
+    useSnapshot(colorSchemeStore);
 
   const switchAppearance = useCallback(() => {
     if (
       behavior === EColorSchemeBehavior.AUTO &&
       currentColorScheme !== Appearance.getColorScheme()
     ) {
-      switchColorScheme(EColorSchemeBehavior.AUTO);
+      colorSchemeActions.switchColorScheme(EColorSchemeBehavior.AUTO);
     }
-  }, [behavior, currentColorScheme, switchColorScheme]);
+  }, [behavior, currentColorScheme]);
 
   useEffect(() => {
     let timeoutID: number;
@@ -40,5 +35,5 @@ export const useAppearanceChangeListener = () => {
         clearTimeout(timeoutID);
       }
     };
-  }, [behavior, currentColorScheme, switchAppearance, switchColorScheme]);
+  }, [behavior, currentColorScheme, switchAppearance]);
 };

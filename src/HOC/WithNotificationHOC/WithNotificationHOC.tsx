@@ -6,12 +6,12 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
 import { useAppState } from 'hooks';
 import { useIsHasIsland } from 'hooks/useHasIsland';
 import { l } from 'resources/localization';
-import { selectUIStatus } from 'store/ui/selectors';
+import { uiStore } from 'store/uiStore/uiStore';
 import { triggerLongPressHaptic } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useStyles } from './WithNotificationHOC.styles';
 
@@ -27,7 +27,7 @@ export const WithNotificationHOC = ({
 
   const animatedValue = useSharedValue(0);
 
-  const { notificationData } = useSelector(selectUIStatus);
+  const { notificationData } = useSnapshot(uiStore);
 
   const appState = useAppState();
   const opacity = appState === 'inactive' ? 0 : 1;

@@ -2,7 +2,6 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { GestureDetector } from 'react-native-gesture-handler';
 import { useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
 import { RecyclerListViewState } from 'recyclerlistview/dist/reactnative/core/RecyclerListView';
 import { WINDOW_WIDTH } from '@gorhom/bottom-sheet';
 import { CurrencyInputValue } from 'components';
@@ -12,19 +11,17 @@ import {
   useWindowDimensionChange,
 } from 'hooks';
 import {
-  useAddToSelectedCurrenciesInEdit,
-  useRemoveFromSelectedCurrenciesInEdit,
-} from 'hooks/store/SelectedCurrencies';
-import { useSetEditMode } from 'hooks/store/UIStatus';
-import {
   DataProvider,
   RecyclerListView,
   RecyclerListViewProps,
 } from 'recyclerlistview';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
-import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { editModeActions } from 'store/editModeStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
+import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
+import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
+import { selectedForEditActions } from 'store/selectedForEditStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
+import { useSnapshot } from 'valtio';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
 import { useLayoutProvider, useLongPressSwipeGesture } from './hooks';
@@ -48,16 +45,11 @@ export const CurrencySelector = React.memo(() => {
       null,
     );
 
-  const { isLoading } = useSelector(selectExchangeCourses);
-  const { currencies } = useSelector(selectSelectedCurrencies);
-  const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
+  const { isLoading } = useSnapshot(exchangeRatesStore);
+  const { currencies } = useSnapshot(selectedCurrenciesStore);
+  const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
   const { reloadCourses } = useGetCurrenciesExchangeCourse();
-
-  const setEditMode = useSetEditMode();
-  const addToCurrInEdit = useAddToSelectedCurrenciesInEdit();
-  const removeFromSelectedCurrenciesInEdit =
-    useRemoveFromSelectedCurrenciesInEdit();
 
   const renderItem: RecyclerListViewProps['rowRenderer'] = useCallback(
     (_, data) => <CurrencyInputValue currencyCode={data} />,
@@ -84,9 +76,9 @@ export const CurrencySelector = React.memo(() => {
     sortedWithFavorites,
     selectionModeShared,
     selectedDuringSwipeShared,
-    setEditMode,
-    addToCurrInEdit,
-    removeFromSelectedCurrenciesInEdit,
+    setEditMode: editModeActions.setEditMode,
+    addToCurrInEdit: selectedForEditActions.addToSelected,
+    removeFromSelectedCurrenciesInEdit: selectedForEditActions.clearSelected,
   });
 
   return sortedWithFavorites.length ? (

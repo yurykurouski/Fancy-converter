@@ -7,12 +7,11 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 import { DEFAULT_ANIMATION_DURATION } from 'constants';
-import { useSwitchColorScheme } from 'hooks/store/UIStatus';
 import throttle from 'lodash/throttle';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
+import { colorSchemeActions, colorSchemeStore } from 'store/colorSchemeStore';
 import { EColorSchemeBehavior } from 'types';
+import { useSnapshot } from 'valtio';
 
 import { DarkIcon } from './DarkIcon';
 import { LightIcon } from './LightIcon';
@@ -22,9 +21,7 @@ import { useStyles } from './DrawerThemeSwitcher.styles';
 export const DrawerThemeSwitcher = React.memo(() => {
   const styles = useStyles();
 
-  const { colorScheme, behavior } = useSelector(selectColorSchemeState);
-
-  const switchColorScheme = useSwitchColorScheme();
+  const { colorScheme, behavior } = useSnapshot(colorSchemeStore);
 
   const animatedValue = useSharedValue(colorScheme !== 'dark' ? 0 : 135);
 
@@ -36,7 +33,7 @@ export const DrawerThemeSwitcher = React.memo(() => {
       reduceMotion: ReduceMotion.System,
     });
 
-    switchColorScheme(EColorSchemeBehavior.MANUAL);
+    colorSchemeActions.switchColorScheme(EColorSchemeBehavior.MANUAL);
   }, 500);
 
   useEffect(() => {

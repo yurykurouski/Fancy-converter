@@ -1,13 +1,10 @@
 import { RefObject } from 'react';
 import { TextInput } from 'react-native';
 import {
-  TAddToSelectedCurrenciesInEdit,
-  TRemoveFromSelectedCurrenciesInEdit,
-  TSetEditMode,
-  TSetFocusedCurrencyName,
-  TSetFocusedCurrencyValue,
-} from 'hooks/store/types';
-import { EAvailableFiatNames, TSelectedCurrencies } from 'types';
+  EAvailableFiatNames,
+  TAvailableCurrenciesNames,
+  TSelectedCurrencies,
+} from 'types';
 
 export type Props = {
   currencyCode: EAvailableFiatNames;
@@ -18,8 +15,11 @@ export type OnFocusHandler = (text: string) => void;
 export type ContainerOnPressHandler = () => void;
 
 export type TUseCurrencyInputHandlers = (props: {
-  setFocusedCurrencyValue: TSetFocusedCurrencyValue;
-  setFocusedCurrencyName: TSetFocusedCurrencyName;
+  setFocusedCurrencyValue: (value: string) => void;
+  setFocusedCurrencyName: (
+    currencyName: TAvailableCurrenciesNames,
+    value: string,
+  ) => void;
   currencyCode: EAvailableFiatNames;
   inputRef: RefObject<TextInput>;
   isInEditMode: boolean;
@@ -38,9 +38,11 @@ export type TUseConvertedValues = (
 export type TUseOnContainerPressParams = {
   isInEditMode: boolean;
   currencyCode: EAvailableFiatNames;
-  addToCurrInEdit: TAddToSelectedCurrenciesInEdit;
+  addToCurrInEdit: (currName: TAvailableCurrenciesNames) => void;
   selectedCurrenciesInEdit: TSelectedCurrencies;
-  removeFromSelectedCurrenciesInEdit: TRemoveFromSelectedCurrenciesInEdit;
+  removeFromSelectedCurrenciesInEdit: (
+    currName: TAvailableCurrenciesNames,
+  ) => void;
   selectedInEditAmount: number;
-  setEditMode: TSetEditMode;
+  setEditMode: (value: boolean) => void;
 };

@@ -5,23 +5,26 @@ import {
   initialWindowMetrics,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
-import { Provider, useSelector } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
 import { AppStatusBar, CurrenciesMainContent, Onboarding } from 'components';
 import { useAppearanceChangeListener } from 'hooks';
-import store, { persistor } from 'store';
-import { selectOnBoardingStatus } from 'store/onboardingStatus/selectors';
+import { useInitStore } from 'store';
+import { onboardingStatusStore } from 'store/onboardingStatusStore';
+import { useSnapshot } from 'valtio';
 
 import { useStyles } from './App.styles';
 
 import { WithNotificationHOC } from 'HOC/WithNotificationHOC';
 
 const App = React.memo(() => {
-  const { isOnBoarded } = useSelector(selectOnBoardingStatus);
+  const { isOnBoarded } = useSnapshot(onboardingStatusStore);
 
   const styles = useStyles();
 
   useAppearanceChangeListener();
+
+  const { isHydrated } = useInitStore();
+
+  if (!isHydrated) return null;
 
   return (
     <View style={styles.wrapper}>
@@ -40,13 +43,9 @@ const { container } = StyleSheet.create({
 export default () => (
   <SafeAreaProvider initialMetrics={initialWindowMetrics}>
     <GestureHandlerRootView style={container}>
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <WithNotificationHOC>
-            <App />
-          </WithNotificationHOC>
-        </PersistGate>
-      </Provider>
+      <WithNotificationHOC>
+        <App />
+      </WithNotificationHOC>
     </GestureHandlerRootView>
   </SafeAreaProvider>
 );

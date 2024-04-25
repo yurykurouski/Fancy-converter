@@ -1,7 +1,6 @@
 import { Dimensions } from 'react-native';
 import Animated, { AnimatedRef } from 'react-native-reanimated';
-import { useDispatch } from 'react-redux';
-import { OnBoardingStatusSlice } from 'store/onboardingStatus/slices/OnBoardingStatusSlice';
+import { onboardingStatusActions } from 'store/onboardingStatusStore';
 
 import { ONBOARDING_SCREENS } from '../Onboarding.consts';
 
@@ -38,16 +37,11 @@ export const useHandleOnboardingNextPress = ({
   currentPage: number;
   scrollListRef: AnimatedRef<Animated.ScrollView>;
 }) => {
-  const dispatch = useDispatch();
-
-  const setOnboardingStatus = (value: boolean) =>
-    dispatch(OnBoardingStatusSlice.actions.setIsOnBoarded(value));
-
   const scrollToNextScreen = useScrollToNextScreen(currentPage, scrollListRef);
 
   return () => {
     if (currentPage === ONBOARDING_SCREENS.length - 1) {
-      return setOnboardingStatus(true);
+      return onboardingStatusActions.setIsOnBoarded(true);
     }
 
     scrollToNextScreen();

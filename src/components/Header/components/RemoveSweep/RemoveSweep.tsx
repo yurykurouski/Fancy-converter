@@ -1,26 +1,20 @@
 import React, { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { DeleteSweepIcon } from 'assets/icons';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
-import { useClearSelectedCurrenciesInEdit } from 'hooks/store/SelectedCurrencies';
-import { useDeleteAllInEdit } from 'hooks/store/SelectedCurrencies/useDeleteAllInEdit';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+import { selectedCurrenciesActions } from 'store/selectedCurrenciesStore';
+import { selectedForEditStore } from 'store/selectedForEditStore';
 import { triggerWarningHaptic } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { styles } from './RemoveSweep.styles';
 
 export const RemoveSweep = () => {
-  const { selectedCurrencies } = useSelector(selectSelectedInEdit);
-
-  const clearSelectedCurrenciesInEdit = useClearSelectedCurrenciesInEdit();
-  const deleteAllInEdit = useDeleteAllInEdit();
+  const { selectedCurrencies } = useSnapshot(selectedForEditStore);
 
   const handlePress = useCallback(() => {
-    clearSelectedCurrenciesInEdit();
-
-    deleteAllInEdit(selectedCurrencies);
+    selectedCurrenciesActions.deleteAllSelected(selectedCurrencies);
     triggerWarningHaptic();
-  }, [clearSelectedCurrenciesInEdit, deleteAllInEdit, selectedCurrencies]);
+  }, [selectedCurrencies]);
 
   return (
     <ButtonWithIPadOSInteraction

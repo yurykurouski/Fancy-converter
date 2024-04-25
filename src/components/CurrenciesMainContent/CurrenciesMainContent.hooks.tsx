@@ -1,11 +1,10 @@
 import { useCallback, useEffect } from 'react';
 import { BackHandler } from 'react-native';
-import { useSelector } from 'react-redux';
 import { HOUR_IN_MS } from 'constants/index';
 import { useLoadCourses } from 'hooks';
-import { useSetEditMode } from 'hooks/store/UIStatus';
-import { selectEditMode } from 'store/editMode/selectors';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
+import { editModeActions, editModeStore } from 'store/editModeStore';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
+import { useSnapshot } from 'valtio';
 
 import {
   TUseHandleBackPress,
@@ -31,16 +30,14 @@ export const useHandleBackPress: TUseHandleBackPress = (
   closeDrawer,
   drawerRef,
 ) => {
-  const { isInEditMode } = useSelector(selectEditMode);
-
-  const setSelectedCurrInEditMode = useSetEditMode();
+  const { isInEditMode } = useSnapshot(editModeStore);
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
         if (isInEditMode) {
-          setSelectedCurrInEditMode(false);
+          editModeActions.setEditMode(false);
           return true;
         }
         //@ts-expect-error
@@ -54,23 +51,23 @@ export const useHandleBackPress: TUseHandleBackPress = (
     );
 
     return () => backHandler.remove();
-  }, [closeDrawer, isInEditMode, setSelectedCurrInEditMode, drawerRef]);
+  }, [closeDrawer, isInEditMode, drawerRef]);
 };
 
 export const useUpdateCourses = () => {
-  const loadCourses = useLoadCourses();
+  const loadRates = useLoadCourses();
 
-  const { lastUpdated } = useSelector(selectExchangeCourses);
+  const { lastUpdated } = useSnapshot(exchangeRatesStore);
 
   useEffect(() => {
     if (lastUpdated) {
       const dateDiff = Date.now() - lastUpdated;
 
       if (dateDiff > HOUR_IN_MS) {
-        loadCourses();
+        loadRates();
       }
     } else {
-      loadCourses();
+      loadRates();
     }
-  }, [lastUpdated, loadCourses]);
+  }, [lastUpdated, loadRates]);
 };

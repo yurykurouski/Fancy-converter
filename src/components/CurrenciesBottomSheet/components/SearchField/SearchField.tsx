@@ -1,15 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Keyboard, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
-import { useSetFilteredCurrencies } from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
-import { SelectedCurrenciesActions } from 'store/selectedCurrencies/slices/SelectedCurrenciesSlice';
+import { colorSchemeStore } from 'store/colorSchemeStore';
+import {
+  selectedCurrenciesActions,
+  selectedCurrenciesStore,
+} from 'store/selectedCurrenciesStore';
 import { triggerSelectionHaptic } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { useHandleTextChange } from './SearchField.hooks';
 
@@ -20,25 +21,21 @@ export const SearchField = () => {
 
   const ref = useRef();
 
-  const dispatch = useDispatch();
-
-  const { colorScheme } = useSelector(selectColorSchemeState);
-  const { searchValue, activeCurrencyType } = useSelector(
-    selectSelectedCurrencies,
+  const { colorScheme } = useSnapshot(colorSchemeStore);
+  const { searchValue, activeCurrencyType } = useSnapshot(
+    selectedCurrenciesStore,
   );
-
-  const setFilteredCurrencies = useSetFilteredCurrencies();
 
   const styles = useStyles();
 
   const handleTextChange = useHandleTextChange(
-    setFilteredCurrencies,
+    selectedCurrenciesActions.setFilteredCurrencies,
     activeCurrencyType,
   );
 
   const handleChange = (value: string) => {
     handleTextChange(value);
-    dispatch(SelectedCurrenciesActions.searchCurrenciesValue(value));
+    selectedCurrenciesActions.searchCurrenciesValue(value);
   };
 
   const setFocus = useCallback(() => {

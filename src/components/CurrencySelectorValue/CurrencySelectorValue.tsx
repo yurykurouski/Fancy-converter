@@ -1,23 +1,19 @@
 import React, { FC, useCallback } from 'react';
 import { Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
 import { THEME_COLORS } from 'assets/colors';
 import { BookmarkIcon, CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
-import {
-  useRemoveFavoriteCurrency,
-  useSetFavoriteCurrency,
-} from 'hooks/store/FavoriteCurrencies';
-import {
-  useAddSelected,
-  useRemoveSelected,
-} from 'hooks/store/SelectedCurrencies';
 import { l } from 'resources/localization';
-import { selectColorSchemeState } from 'store/colorScheme/selectors';
-import { selectFavoriteCurrencies } from 'store/favoriteCurrencies/selectors';
-import { selectSelectedCurrencies } from 'store/selectedCurrencies/selectors';
+import { colorSchemeStore } from 'store/colorSchemeStore';
+import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
+import { favoriteCurrencyActions } from 'store/favoriteCurrenciesStore/favoriteCurrenciesStore';
+import {
+  selectedCurrenciesActions,
+  selectedCurrenciesStore,
+} from 'store/selectedCurrenciesStore';
+import { useSnapshot } from 'valtio';
 
 import { useOnPressHandler } from './CurrencySelectorValue.hooks';
 import { TProps } from './CurrencySelectorValue.types';
@@ -28,16 +24,11 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
   ({ currencyCode }) => {
     const styles = useStyles();
 
-    const { colorScheme } = useSelector(selectColorSchemeState);
-    const { activeCurrencyType, currencies } = useSelector(
-      selectSelectedCurrencies,
+    const { colorScheme } = useSnapshot(colorSchemeStore);
+    const { activeCurrencyType, currencies } = useSnapshot(
+      selectedCurrenciesStore,
     );
-    const { favoriteCurrencies } = useSelector(selectFavoriteCurrencies);
-
-    const setFavoriteCurrency = useSetFavoriteCurrency();
-    const removeFavCurrency = useRemoveFavoriteCurrency();
-    const removeSelected = useRemoveSelected();
-    const addSelected = useAddSelected();
+    const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
     const isActive = currencies.hasOwnProperty(currencyCode);
     const isFavorite = !!favoriteCurrencies[currencyCode];
@@ -45,23 +36,20 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
     const onPressHandler = useOnPressHandler(
       isActive,
       currencyCode,
-      removeSelected,
-      addSelected,
+      selectedCurrenciesActions.removeSelectedCurr,
+      selectedCurrenciesActions.addSelectedCurr,
     );
 
     const onLongPress = useCallback(() => {
       if (isFavorite) {
-        removeFavCurrency(currencyCode);
+        favoriteCurrencyActions.removeFavoriteCurrency(currencyCode);
       } else {
-        setFavoriteCurrency(currencyCode, activeCurrencyType);
+        favoriteCurrencyActions.setFavoriteCurrency(
+          currencyCode,
+          activeCurrencyType,
+        );
       }
-    }, [
-      activeCurrencyType,
-      currencyCode,
-      isFavorite,
-      removeFavCurrency,
-      setFavoriteCurrency,
-    ]);
+    }, [activeCurrencyType, currencyCode, isFavorite]);
 
     const currencyName = l[currencyCode];
 

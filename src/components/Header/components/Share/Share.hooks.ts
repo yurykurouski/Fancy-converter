@@ -1,21 +1,20 @@
 import { useCallback } from 'react';
 import { Share, ToastAndroid } from 'react-native';
-import { useSelector } from 'react-redux';
 import { l } from 'resources/localization';
-import { selectExchangeCourses } from 'store/exchangeCourses/selectors';
-import { selectFocusedCurrency } from 'store/focusedCurrency/selectors';
-import { selectSelectedInEdit } from 'store/selectedForEdit/selectors';
+import { exchangeRatesStore } from 'store/exchangeRateStore';
+import { focusedCurrencyStore } from 'store/focusedCurrencyStore';
+import { selectedForEditStore } from 'store/selectedForEditStore';
 import { getSaveDateReadable, isAndroid } from 'utils';
+import { useSnapshot } from 'valtio';
 
 import { getContentText, getValues } from './Share.utils';
 
 export const useHandlePress = () => {
   const { selectedCurrencies, selectedAmount } =
-    useSelector(selectSelectedInEdit);
-  const { exchangeCourses, lastUpdated } = useSelector(selectExchangeCourses);
-  const { focusedCurrencyName, focusedCurrencyValue } = useSelector(
-    selectFocusedCurrency,
-  );
+    useSnapshot(selectedForEditStore);
+  const { exchangeRates, lastUpdated } = useSnapshot(exchangeRatesStore);
+  const { focusedCurrencyName, focusedCurrencyValue } =
+    useSnapshot(focusedCurrencyStore);
 
   return useCallback(() => {
     if (selectedAmount < 2 || !focusedCurrencyValue) {
@@ -28,7 +27,7 @@ export const useHandlePress = () => {
     const values = getValues(
       selectedCurrencies,
       focusedCurrencyName,
-      exchangeCourses,
+      exchangeRates,
       focusedCurrencyValue,
     );
 
@@ -42,7 +41,7 @@ export const useHandlePress = () => {
       message: contentText + date + footer,
     });
   }, [
-    exchangeCourses,
+    exchangeRates,
     focusedCurrencyName,
     focusedCurrencyValue,
     lastUpdated,
