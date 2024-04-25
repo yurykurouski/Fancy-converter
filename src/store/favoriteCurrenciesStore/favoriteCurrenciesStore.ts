@@ -1,3 +1,4 @@
+import { l } from 'resources/localization';
 import {
   ECurrencyType,
   ENotificationType,
@@ -33,9 +34,8 @@ export const favoriteCurrencyActions = {
     favoriteCurrencyStore.favoriteCurrencies[currencyName] = currencyType;
 
     uiStoreActions.setNotificationData({
-      type: ENotificationType.ADD_FAVORITE,
-      timeStamp: Date.now(),
-      data: currencyName,
+      type: ENotificationType.MESSAGE,
+      message: `${currencyName} ${l['message_add-to-favs']}`,
     });
   },
 
@@ -43,9 +43,8 @@ export const favoriteCurrencyActions = {
     delete favoriteCurrencyStore.favoriteCurrencies[currName];
 
     uiStoreActions.setNotificationData({
-      type: ENotificationType.REMOVE_FAVORITE,
-      timeStamp: Date.now(),
-      data: currName,
+      type: ENotificationType.MESSAGE,
+      message: `${currName} ${l['message_remove-favs']}`,
     });
   },
 };

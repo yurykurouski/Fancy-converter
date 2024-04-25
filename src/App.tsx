@@ -6,14 +6,13 @@ import {
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
 import { AppStatusBar, CurrenciesMainContent, Onboarding } from 'components';
+import { NotificationMessage } from 'components/NotificationMessage';
 import { useAppearanceChangeListener } from 'hooks';
 import { useInitStore } from 'store';
 import { onboardingStatusStore } from 'store/onboardingStatusStore';
 import { useSnapshot } from 'valtio';
 
 import { useStyles } from './App.styles';
-
-import { WithNotificationHOC } from 'HOC/WithNotificationHOC';
 
 const App = React.memo(() => {
   const { isOnBoarded } = useSnapshot(onboardingStatusStore);
@@ -30,6 +29,7 @@ const App = React.memo(() => {
     <View style={styles.wrapper}>
       <AppStatusBar />
       <View style={styles.container}>
+        <NotificationMessage />
         {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
       </View>
     </View>
@@ -43,9 +43,7 @@ const { container } = StyleSheet.create({
 export default () => (
   <SafeAreaProvider initialMetrics={initialWindowMetrics}>
     <GestureHandlerRootView style={container}>
-      <WithNotificationHOC>
-        <App />
-      </WithNotificationHOC>
+      <App />
     </GestureHandlerRootView>
   </SafeAreaProvider>
 );

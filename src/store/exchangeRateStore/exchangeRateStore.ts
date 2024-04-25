@@ -1,4 +1,4 @@
-import { ENotificationType } from 'types';
+import { l } from 'resources/localization';
 import { OnlyCourses } from 'utils/utils.types';
 import { proxy } from 'valtio';
 
@@ -38,9 +38,7 @@ export const exchangeRatesActions = {
     exchangeRatesStore.lastUpdated = Date.now();
 
     uiStoreActions.setNotificationData({
-      type: ENotificationType.RATES_UPDATED,
-      timeStamp: Date.now(),
-      data: null,
+      message: l['message_rates-updated'],
     });
   },
 
@@ -51,13 +49,6 @@ export const exchangeRatesActions = {
 
   setLastUpdateDate: (date: number) => {
     exchangeRatesStore.lastUpdated = date;
-  },
-  //TODO: move in separate store
-  setRequestError: (error: string) => {
-    exchangeRatesStore.requestError = error;
-  },
-  resetRequestError: () => {
-    exchangeRatesStore.requestError = undefined;
   },
 };
 

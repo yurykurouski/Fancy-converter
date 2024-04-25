@@ -46,15 +46,14 @@ export type TAvailableCurrencies = {
 };
 
 export enum ENotificationType {
-  ADD_FAVORITE = 'ADD_FAVORITE',
-  REMOVE_FAVORITE = 'REMOVE_FAVORITE',
-  RATES_UPDATED = 'RATES_UPDATED',
+  ERROR = 'ERROR',
+  MESSAGE = 'MESSAGE',
 }
 
 export type TNotificationData = {
-  type: ENotificationType;
-  timeStamp: number;
-  data?: unknown;
+  message?: string;
+  timeStamp?: number;
+  type?: ENotificationType;
 };
 
 export type TAvailableCurrenciesNames =

@@ -2,26 +2,24 @@ import React, { useEffect } from 'react';
 import { Text } from 'react-native';
 import Animated, {
   interpolate,
+  LinearTransition,
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useAppState } from 'hooks';
+import { DEFAULT_ANIMATION_DURATION } from 'constants';
+import { useAppStateV2 } from 'hooks/useAppState';
 import { useIsHasIsland } from 'hooks/useHasIsland';
-import { l } from 'resources/localization';
 import { uiStore } from 'store/uiStore/uiStore';
+import { ENotificationType } from 'types';
 import { triggerLongPressHaptic } from 'utils';
 import { useSnapshot } from 'valtio';
 
-import { useStyles } from './WithNotificationHOC.styles';
+import { showNotification } from './notification-animations';
 
-import { showNotification } from 'HOC/WithNotificationHOC/notification-animations';
+import { useStyles } from './NotificationMessage.styles';
 
-export const WithNotificationHOC = ({
-  children,
-}: {
-  children: JSX.Element;
-}) => {
+export const NotificationMessage = () => {
   const styles = useStyles();
   const { top } = useSafeAreaInsets();
 
@@ -29,50 +27,42 @@ export const WithNotificationHOC = ({
 
   const { notificationData } = useSnapshot(uiStore);
 
-  const appState = useAppState();
+  const appState = useAppStateV2();
   const opacity = appState === 'inactive' ? 0 : 1;
 
   const hasIsland = useIsHasIsland();
 
   const animatedStyles = useAnimatedStyle(() => {
-    const interpolatedScale = interpolate(
-      animatedValue.value,
-      [0, hasIsland ? top : top + 38],
-      [0.3, 1],
-    );
+    const interpolatedScale = interpolate(animatedValue.value, [0, 46], [0, 1]);
 
     return {
       transform: [
         {
           translateY: animatedValue.value,
         },
-        { scaleX: interpolatedScale },
       ],
+      opacity: interpolatedScale,
     };
   });
 
   useEffect(() => {
     if (notificationData?.timeStamp) {
       showNotification(animatedValue, hasIsland, top);
+
       triggerLongPressHaptic();
     }
   }, [animatedValue, hasIsland, notificationData?.timeStamp, top]);
 
   return (
-    <>
-      {children}
-      {notificationData?.type && (
-        <Animated.View
-          style={[
-            styles.container,
-            hasIsland && { opacity } && styles.withIslandContainer,
-            animatedStyles,
-          ]}>
-          <Text style={styles.text}>
-            {`${notificationData?.data ?? ''} ${l[notificationData?.type]}`}
-          </Text>
-        </Animated.View>
-      )}
-    </>
+    <Animated.View
+      layout={LinearTransition.duration(DEFAULT_ANIMATION_DURATION)}
+      style={[
+        styles.container,
+        styles[notificationData?.type ?? ENotificationType.MESSAGE],
+        hasIsland && { opacity } && styles.withIslandContainer,
+        animatedStyles,
+      ]}>
+      <Text style={styles.text}>{`${notificationData?.message}`}</Text>
+    </Animated.View>
   );
 };
