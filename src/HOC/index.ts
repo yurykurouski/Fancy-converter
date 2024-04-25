@@ -1,1 +1,0 @@
-export { WithNotificationHOC } from './WithNotificationHOC';

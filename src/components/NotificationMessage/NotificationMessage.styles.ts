@@ -1,20 +1,18 @@
 import { useTheme } from 'hooks';
+import { ENotificationType } from 'types';
 
 export const useStyles = () =>
   useTheme(theme => ({
     container: {
       position: 'absolute',
-      backgroundColor: theme.ACCENT_COLOR_LIGHTER,
-      minWidth: '50%',
-      maxWidth: '100%',
       top: -38,
-      height: 38,
       borderRadius: 50,
       justifyContent: 'center',
       alignItems: 'center',
       alignSelf: 'center',
-      padding: 10,
-      elevation: 3,
+      paddingHorizontal: 10,
+      paddingVertical: 8,
+      zIndex: 1,
     },
     text: {
       fontWeight: '500',
@@ -25,6 +23,11 @@ export const useStyles = () =>
     },
     withIslandContainer: {
       top: 12,
-      height: 35,
+    },
+    [ENotificationType.MESSAGE]: {
+      backgroundColor: theme.ACCENT_COLOR_LIGHTER,
+    },
+    [ENotificationType.ERROR]: {
+      backgroundColor: theme.SUNSET_ORANGE,
     },
   }));
