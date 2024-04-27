@@ -19,7 +19,9 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
 }) => {
   const onChangeTextHandler = useCallback(
     (text: string) => {
-      if (isInEditMode) return;
+      if (isInEditMode) {
+        return;
+      }
 
       const withoutSpaces = text.replace(/\s+/g, '') as string;
 
@@ -32,7 +34,9 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
 
   const onFocusHandler = useCallback(
     (inputValue: string) => {
-      if (isInEditMode) return;
+      if (isInEditMode) {
+        return;
+      }
 
       setFocusedCurrencyName(currencyCode, inputValue);
     },
@@ -40,7 +44,9 @@ export const useCurrencyInputHandlers: TUseCurrencyInputHandlers = ({
   );
 
   const containerOnPressHandler = useCallback(() => {
-    if (isInEditMode) return;
+    if (isInEditMode) {
+      return;
+    }
 
     inputRef.current?.focus();
   }, [inputRef, isInEditMode]);

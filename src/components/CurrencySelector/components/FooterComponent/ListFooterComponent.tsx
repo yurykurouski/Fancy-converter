@@ -11,7 +11,9 @@ export const ListFooterComponent = () => {
   const styles = useStyles();
   const { lastUpdated } = useSnapshot(exchangeRatesStore);
 
-  if (!lastUpdated) return null;
+  if (!lastUpdated) {
+    return null;
+  }
 
   const saveDate = getSaveDateReadable(new Date(lastUpdated));
 

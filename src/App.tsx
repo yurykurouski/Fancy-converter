@@ -23,7 +23,9 @@ const App = React.memo(() => {
 
   const { isHydrated } = useInitStore();
 
-  if (!isHydrated) return null;
+  if (!isHydrated) {
+    return null;
+  }
 
   return (
     <View style={styles.wrapper}>

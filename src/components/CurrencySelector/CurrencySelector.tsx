@@ -60,7 +60,9 @@ export const CurrencySelector = React.memo(() => {
 
   const sortedWithFavorites = useMemo(() => {
     return Object.keys(currencies).sort(a => {
-      if (favoriteCurrencies[a as TAvailableCurrenciesNames]) return -1;
+      if (favoriteCurrencies[a as TAvailableCurrenciesNames]) {
+        return -1;
+      }
       return 1;
     }) as TAvailableCurrenciesNames[];
   }, [favoriteCurrencies, currencies]);
