@@ -48,10 +48,10 @@ export const NotificationMessage = () => {
   useEffect(() => {
     if (notificationData?.timeStamp) {
       showNotification(animatedValue, hasIsland, top);
-
       triggerLongPressHaptic();
     }
-  }, [animatedValue, hasIsland, notificationData?.timeStamp, top]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [animatedValue, hasIsland, notificationData?.timeStamp]);
 
   return (
     <Animated.View

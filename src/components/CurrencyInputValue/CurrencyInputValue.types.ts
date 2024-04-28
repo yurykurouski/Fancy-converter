@@ -1,13 +1,9 @@
 import { RefObject } from 'react';
 import { TextInput } from 'react-native';
-import {
-  EAvailableFiatNames,
-  TAvailableCurrenciesNames,
-  TSelectedCurrencies,
-} from 'types';
+import { TAvailableCurrenciesNames, TSelectedCurrencies } from 'types';
 
 export type Props = {
-  currencyCode: EAvailableFiatNames;
+  currencyCode: TAvailableCurrenciesNames;
 };
 
 export type OnChangeTextHandler = (text: string) => void;
@@ -20,7 +16,7 @@ export type TUseCurrencyInputHandlers = (props: {
     currencyName: TAvailableCurrenciesNames,
     value: string,
   ) => void;
-  currencyCode: EAvailableFiatNames;
+  currencyCode: TAvailableCurrenciesNames;
   inputRef: RefObject<TextInput>;
   isInEditMode: boolean;
 }) => {
@@ -37,7 +33,7 @@ export type TUseConvertedValues = (
 
 export type TUseOnContainerPressParams = {
   isInEditMode: boolean;
-  currencyCode: EAvailableFiatNames;
+  currencyCode: TAvailableCurrenciesNames;
   addToCurrInEdit: (currName: TAvailableCurrenciesNames) => void;
   selectedCurrenciesInEdit: TSelectedCurrencies;
   removeFromSelectedCurrenciesInEdit: (

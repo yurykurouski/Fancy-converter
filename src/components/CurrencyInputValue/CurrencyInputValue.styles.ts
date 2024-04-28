@@ -9,6 +9,7 @@ export const useStyles = () =>
       borderWidth: 2,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       marginHorizontal: 10,
+      marginVertical: 4,
       ...ELEVATION_1,
     },
     container: {

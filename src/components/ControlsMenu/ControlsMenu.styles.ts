@@ -1,12 +1,9 @@
-import { CONTROLS_OFFSET } from 'constants/index';
+import { CONTROLS_OFFSET } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
   useTheme(theme => ({
     container: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
       bottom: -CONTROLS_OFFSET,
       flexDirection: 'row',
       justifyContent: 'space-between',

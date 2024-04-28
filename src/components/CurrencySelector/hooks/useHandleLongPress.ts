@@ -24,17 +24,15 @@ export const useHandleLongPress = ({
 
         selectionModeShared.value = 1;
         selectedDuringSwipeShared.value = 1;
+      } else if (selectedAmount === 1) {
+        setEditMode(false);
+
+        selectionModeShared.value = -1;
+        selectedDuringSwipeShared.value = 0;
       } else {
-        if (selectedAmount === 1) {
-          setEditMode(false);
+        removeFromSelectedCurrenciesInEdit(currencyCode);
 
-          selectionModeShared.value = -1;
-          selectedDuringSwipeShared.value = 0;
-        } else {
-          removeFromSelectedCurrenciesInEdit(currencyCode);
-
-          selectionModeShared.value = 0;
-        }
+        selectionModeShared.value = 0;
       }
     },
     [

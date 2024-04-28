@@ -1,14 +1,11 @@
+import { HEADER_HEIGHT } from 'constants';
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
   useTheme((theme, { top }) => ({
     container: {
-      position: 'absolute',
-      width: '100%',
-      top: 0,
-      zIndex: 1,
-      height: top + 40,
+      height: top + HEADER_HEIGHT,
       paddingHorizontal: 6,
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       overflow: 'hidden',
