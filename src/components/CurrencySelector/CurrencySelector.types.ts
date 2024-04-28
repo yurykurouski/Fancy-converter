@@ -13,3 +13,8 @@ export type TUseHandleLongPressParams = {
   selectedAmount: number;
   selectedDuringSwipeShared: SharedValue<number>;
 };
+
+export type TSortedWithFavs = {
+  favs: TAvailableCurrenciesNames[];
+  rest: TAvailableCurrenciesNames[];
+};

@@ -1,4 +1,4 @@
-import { isIos } from './../../utils/platform';
+import { isIos } from 'utils';
 
 export const getSnapPoints = (
   bottomInset: number,

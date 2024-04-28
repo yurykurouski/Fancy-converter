@@ -1,15 +1,16 @@
-import React from 'react';
-import { useCallback, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Keyboard } from 'react-native';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import { useSharedValue } from 'react-native-reanimated';
 import { BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
+import { FlashList } from '@shopify/flash-list';
 import { THEME_COLORS } from 'assets/colors';
 import { ControlsMenu, CurrenciesBottomSheet, Header } from 'components';
 import { CurrencySelector } from 'components/CurrencySelector/CurrencySelector';
 import { DrawerMainScreen } from 'screens';
 import { DRAWER_CONTENT_WIDTH } from 'screens/DrawerMainScreen/DrawerMainScreen.constants';
 import { colorSchemeStore } from 'store/colorSchemeStore';
+import { TAvailableCurrenciesNames } from 'types';
 import { isIos } from 'utils';
 import { useSnapshot } from 'valtio';
 
@@ -28,6 +29,9 @@ export const CurrenciesMainContent = React.memo(() => {
 
   const drawerRef = useRef<DrawerLayout>(null);
   const containerListRef = useRef<BottomSheetFlatListMethods>(null);
+  const currencyListRef = useRef<FlashList<TAvailableCurrenciesNames> | null>(
+    null,
+  );
 
   const headerSharedValue = useSharedValue(0);
 
@@ -60,8 +64,11 @@ export const CurrenciesMainContent = React.memo(() => {
         headerSharedValue={headerSharedValue}
         ref={containerListRef}
       />
-      <CurrencySelector />
-      <ControlsMenu headerSharedValue={headerSharedValue} />
+      <CurrencySelector ref={currencyListRef} />
+      <ControlsMenu
+        headerSharedValue={headerSharedValue}
+        ref={currencyListRef}
+      />
       <CurrenciesBottomSheet
         headerSharedValue={headerSharedValue}
         ref={containerListRef}

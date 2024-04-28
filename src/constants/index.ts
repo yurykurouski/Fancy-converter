@@ -27,10 +27,10 @@ export const HOUR_IN_MS = 3600000;
 
 export const BOTTOMSHEET_EL_HEIGHT = 66;
 
-export const INPUT_ELEMENT_HEIGHT = 74;
+export const INPUT_ELEMENT_HEIGHT = 72;
 
 export const ICON_BUTTON_SIZE = 24;
-
+export const HEADER_HEIGHT = 40;
 export const CONTROLS_OFFSET = 30;
 
 export const ELEVATION_1: ViewStyle = Platform.select({

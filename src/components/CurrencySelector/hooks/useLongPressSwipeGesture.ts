@@ -1,6 +1,7 @@
+import { ViewToken } from 'react-native';
 import { Gesture } from 'react-native-gesture-handler';
 import { runOnJS, SharedValue, useSharedValue } from 'react-native-reanimated';
-import { INPUT_ELEMENT_HEIGHT } from 'constants/index';
+import { HEADER_HEIGHT, INPUT_ELEMENT_HEIGHT } from 'constants/index';
 import { selectedForEditStore } from 'store/selectedForEditStore';
 import { TAvailableCurrenciesNames } from 'types';
 import { triggerSelectionHaptic } from 'utils';
@@ -9,8 +10,9 @@ import { useSnapshot } from 'valtio';
 import { useHandleLongPress } from './useHandleLongPress';
 
 type TProps = {
+  top: number;
   windowHeight: number;
-  visibleItemsShared: SharedValue<number[]>;
+  visibleItemsShared: SharedValue<ViewToken[]>;
   sortedWithFavorites: TAvailableCurrenciesNames[];
   selectionModeShared: SharedValue<number>;
   selectedDuringSwipeShared: SharedValue<number>;
@@ -22,6 +24,7 @@ type TProps = {
 };
 
 export const useLongPressSwipeGesture = ({
+  top,
   windowHeight,
   visibleItemsShared,
   sortedWithFavorites,
@@ -34,7 +37,7 @@ export const useLongPressSwipeGesture = ({
   const { selectedCurrencies, selectedAmount } =
     useSnapshot(selectedForEditStore);
 
-  const lastSelectedShared = useSharedValue<number | null>(null);
+  const lastSelectedShared = useSharedValue<ViewToken | null>(null);
   const isLongPressed = useSharedValue(0);
 
   const handleLongPress = useHandleLongPress({
@@ -54,13 +57,13 @@ export const useLongPressSwipeGesture = ({
     .onStart(event => {
       isLongPressed.value = 1;
 
-      const pressedIndex = Math.floor(event?.y / INPUT_ELEMENT_HEIGHT);
+      const pressedIndex = Math.floor(
+        (event?.y + HEADER_HEIGHT + top) / INPUT_ELEMENT_HEIGHT,
+      );
       const pressedInVisibles = visibleItemsShared.value?.[pressedIndex - 1];
 
       if (pressedInVisibles !== undefined) {
-        runOnJS(handleLongPress)(
-          sortedWithFavorites[pressedInVisibles] as TAvailableCurrenciesNames,
-        );
+        runOnJS(handleLongPress)(sortedWithFavorites[pressedInVisibles.index!]);
         lastSelectedShared.value = pressedInVisibles;
       }
     })
@@ -68,7 +71,9 @@ export const useLongPressSwipeGesture = ({
       if (isLongPressed.value && selectionModeShared.value !== -1) {
         const { y } = event.changedTouches[0];
 
-        const pressedIndex = Math.floor(y / INPUT_ELEMENT_HEIGHT);
+        const pressedIndex = Math.floor(
+          (y + HEADER_HEIGHT + top) / INPUT_ELEMENT_HEIGHT,
+        );
         const pressedInVisibles = visibleItemsShared.value?.[pressedIndex - 1];
 
         if (
@@ -77,24 +82,24 @@ export const useLongPressSwipeGesture = ({
         ) {
           if (
             !selectedCurrencies[
-              sortedWithFavorites[
-                pressedInVisibles
-              ] as TAvailableCurrenciesNames
+              sortedWithFavorites[pressedInVisibles.index!]
             ] &&
             selectionModeShared.value === 1
           ) {
             selectedDuringSwipeShared.value =
               selectedDuringSwipeShared.value + 1;
-            runOnJS(addToCurrInEdit)(sortedWithFavorites[pressedInVisibles]);
+            runOnJS(addToCurrInEdit)(
+              sortedWithFavorites[pressedInVisibles.index!],
+            );
             runOnJS(triggerSelectionHaptic)();
           } else if (
-            selectedCurrencies[sortedWithFavorites[pressedInVisibles]] &&
+            selectedCurrencies[sortedWithFavorites[pressedInVisibles.index!]] &&
             selectionModeShared.value === 0
           ) {
             selectedDuringSwipeShared.value =
               selectedDuringSwipeShared.value - 1;
             runOnJS(removeFromSelectedCurrenciesInEdit)(
-              sortedWithFavorites[pressedInVisibles],
+              sortedWithFavorites[pressedInVisibles.index!],
             );
             runOnJS(triggerSelectionHaptic)();
 
