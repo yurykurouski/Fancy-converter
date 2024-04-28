@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
 import { WindowDimensions } from 'constants/index';
 import { EDimensions } from 'types';
@@ -8,7 +8,7 @@ export const useWindowDimensionChange = (dimension: EDimensions) => {
     WindowDimensions[dimension],
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const subscription = Dimensions.addEventListener('change', ({ window }) => {
       setWindowDimension(window[dimension]);
     });
