@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, UIManager, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   initialWindowMetrics,
@@ -10,9 +10,14 @@ import { NotificationMessage } from 'components/NotificationMessage';
 import { useAppearanceChangeListener } from 'hooks';
 import { useInitStore } from 'store';
 import { onboardingStatusStore } from 'store/onboardingStatusStore';
+import { isAndroid } from 'utils';
 import { useSnapshot } from 'valtio';
 
 import { useStyles } from './App.styles';
+
+if (UIManager.setLayoutAnimationEnabledExperimental && isAndroid) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const App = React.memo(() => {
   const { isOnBoarded } = useSnapshot(onboardingStatusStore);
