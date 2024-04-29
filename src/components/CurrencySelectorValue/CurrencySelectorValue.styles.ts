@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     currencyBlock: {
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       alignItems: 'center',

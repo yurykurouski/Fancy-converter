@@ -2,7 +2,7 @@ import { useTheme } from 'hooks';
 import { isIos } from 'utils';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     container: {
       flexDirection: 'row',
       alignItems: 'center',

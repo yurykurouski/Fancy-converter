@@ -2,7 +2,7 @@ import { useTheme } from 'hooks';
 import { ENotificationType } from 'types';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     container: {
       position: 'absolute',
       top: -38,

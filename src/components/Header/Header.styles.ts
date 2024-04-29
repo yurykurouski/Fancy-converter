@@ -3,7 +3,7 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
-  useTheme((theme, { top }) => ({
+  useTheme(({ theme, insets: { top } }) => ({
     container: {
       height: top + HEADER_HEIGHT,
       paddingHorizontal: 6,

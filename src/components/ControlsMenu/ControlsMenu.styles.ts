@@ -2,7 +2,7 @@ import { CONTROLS_OFFSET } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     container: {
       bottom: -CONTROLS_OFFSET,
       flexDirection: 'row',

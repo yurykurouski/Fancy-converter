@@ -4,7 +4,7 @@ import { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
 import { useTheme } from 'hooks';
 
 const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     backgroundStyle: {
       borderTopRightRadius: 20,
       borderTopLeftRadius: 20,

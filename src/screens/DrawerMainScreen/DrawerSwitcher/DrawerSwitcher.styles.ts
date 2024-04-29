@@ -1,8 +1,7 @@
-import { ELEVATION_10 } from 'constants';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme, elevation }) => ({
     iconsContainer: {
       position: 'absolute',
       bottom: 0,
@@ -14,6 +13,6 @@ export const useStyles = () =>
       flexDirection: 'row',
       justifyContent: 'space-evenly',
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
-      ...ELEVATION_10,
+      ...elevation[10],
     },
   }));

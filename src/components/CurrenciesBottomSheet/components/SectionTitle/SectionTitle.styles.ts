@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     text: {
       paddingHorizontal: 10,
       paddingTop: 4,

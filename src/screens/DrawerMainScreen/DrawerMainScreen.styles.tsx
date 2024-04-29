@@ -3,7 +3,7 @@ import { useTheme } from 'hooks';
 import { DRAWER_CONTENT_WIDTH } from './DrawerMainScreen.constants';
 
 export const useStyles = () =>
-  useTheme((theme, { top }) => ({
+  useTheme(({ theme, insets: { top } }) => ({
     contentContainer: {
       paddingTop: top,
       flex: 1,
