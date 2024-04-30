@@ -2,14 +2,12 @@ import { useTheme } from 'hooks';
 
 export const useStyles = () =>
   useTheme(({ theme }) => ({
-    searchEmptyStateContainer: {
-      width: '100%',
-      alignItems: 'center',
+    container: {
       marginTop: '50%',
-      gap: 10,
     },
-    searchEmptyStateText: {
-      fontSize: 16,
+    textStyle: {
+      textAlign: 'center',
+      fontSize: 40,
       color: theme.FONT_COLOR_FADED,
     },
   }));

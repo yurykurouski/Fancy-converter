@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Keyboard, View } from 'react-native';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { THEME_COLORS } from 'assets/colors';
@@ -18,8 +18,6 @@ import { useStyles } from './SearchField.styles';
 
 export const SearchField = () => {
   const [isFocused, setIsFocused] = useState(false);
-
-  const ref = useRef();
 
   const { colorScheme } = useSnapshot(colorSchemeStore);
   const { searchValue, activeCurrencyType } = useSnapshot(
@@ -60,8 +58,6 @@ export const SearchField = () => {
     <View style={styles.inputContainer}>
       <View style={[styles.inputWrapper, isFocused && styles.inputFocused]}>
         <BottomSheetTextInput
-          //@ts-expect-error
-          ref={ref}
           value={searchValue}
           onChangeText={handleChange}
           style={styles.input}

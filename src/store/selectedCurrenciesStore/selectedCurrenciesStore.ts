@@ -1,12 +1,14 @@
+import { DEFAULT_CURRENCIES } from 'constants';
 import availableCurrencies from 'resources/avaliable-currencies';
 import { editModeActions } from 'store/editModeStore';
 import {
-  EAvailableFiatNames,
   ECurrencyType,
   TAvailableCurrencies,
   TAvailableCurrenciesNames,
 } from 'types';
 import { proxy } from 'valtio';
+
+import { getInitCurrencies } from './utils';
 
 enum ESelectedCurrenciesKeys {
   CURRENCIES = 'currencies',
@@ -26,12 +28,8 @@ type TSelectedCurrencies = {
 
 const initialState: TSelectedCurrencies = {
   [ESelectedCurrenciesKeys.CURRENCIES]: {
-    [EAvailableFiatNames.EUR]: '',
-    [EAvailableFiatNames.USD]: '',
-    [EAvailableFiatNames.JPY]: '',
-    [EAvailableFiatNames.GBP]: '',
-    [EAvailableFiatNames.CAD]: '',
-    [EAvailableFiatNames.CHF]: '',
+    ...getInitCurrencies(),
+    ...DEFAULT_CURRENCIES,
   },
   [ESelectedCurrenciesKeys.SEARCH_VALUE]: '',
   [ESelectedCurrenciesKeys.ACTIVE_CURR_TYPE]: ECurrencyType.FIAT,

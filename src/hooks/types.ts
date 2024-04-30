@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { ColorSchemeName, StyleSheet } from 'react-native';
+import { ColorSchemeName, StyleSheet, ViewStyle } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
 import { Theme } from 'assets/colors';
 import { StorageKeys } from 'utils';
@@ -23,11 +23,12 @@ export type TUseReloadCourses = (
 ) => ReloadCourses;
 
 export type TUseTheme = <T extends StyleSheet.NamedStyles<T>>(
-  mapStyles: (
-    theme: Theme,
-    insets: EdgeInsets,
-    colorScheme: ColorSchemeName,
-  ) => T,
+  mapStyles: (props: {
+    theme: Theme;
+    insets: EdgeInsets;
+    colorScheme: ColorSchemeName;
+    elevation: { [key: number]: ViewStyle };
+  }) => T,
 ) => T;
 
 export type TActionsMap<T> = {

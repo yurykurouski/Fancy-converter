@@ -2,7 +2,7 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     container: {
       marginTop: 'auto',
     },
@@ -28,5 +28,7 @@ export const useStyles = () =>
     navigationBtn: {
       paddingVertical: 5,
       paddingHorizontal: 15,
+      overflow: 'hidden',
+      borderRadius: 6,
     },
   }));

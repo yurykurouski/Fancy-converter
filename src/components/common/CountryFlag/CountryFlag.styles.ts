@@ -1,8 +1,8 @@
-import { ELEVATION_1 } from 'constants';
+import { ELEVATION_1 } from 'assets/styles';
 import { useTheme } from 'hooks';
 
 export const useStyles = (size?: number) =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     container: {
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND_LIGHTER,
       borderRadius: 32,

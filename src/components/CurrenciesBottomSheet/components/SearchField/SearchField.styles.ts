@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     inputContainer: {
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       elevation: 1,

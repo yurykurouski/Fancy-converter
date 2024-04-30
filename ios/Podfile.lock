@@ -1196,6 +1196,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNLocalize (3.1.0):
+    - React-Core
   - RNPointerInteractions (1.1.0):
     - React-Core
   - RNReactNativeHapticFeedback (2.2.0):
@@ -1289,6 +1291,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNLocalize (from `../node_modules/react-native-localize`)
   - "RNPointerInteractions (from `../node_modules/@thefunbots/react-native-pointer-interactions`)"
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -1421,6 +1424,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@shopify/flash-list"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNLocalize:
+    :path: "../node_modules/react-native-localize"
   RNPointerInteractions:
     :path: "../node_modules/@thefunbots/react-native-pointer-interactions"
   RNReactNativeHapticFeedback:
@@ -1493,6 +1498,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNFlashList: b521ebdd7f9352673817f1d98e8bdc0c8cf8545b
   RNGestureHandler: 4d271a5d9178403bd8dae0d853e2be21cf53743c
+  RNLocalize: e8694475db034bf601e17bd3dfa8986565e769eb
   RNPointerInteractions: 9e1db0a35404207a8a2996a0c8f99e5312d3bfc9
   RNReactNativeHapticFeedback: ec56a5f81c3941206fd85625fa669ffc7b4545f9
   RNReanimated: a921c27a898be3a706f18c8be992db53f3b033d9

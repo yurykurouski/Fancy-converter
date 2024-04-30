@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme((theme, { bottom }) => {
+  useTheme(({ theme, insets: { bottom } }) => {
     return {
       wrapper: {
         flex: 1,

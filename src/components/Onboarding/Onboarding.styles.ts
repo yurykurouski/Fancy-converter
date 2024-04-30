@@ -2,7 +2,7 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     contentContainer: {
       flex: 1,
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
@@ -10,7 +10,7 @@ export const useStyles = () =>
   }));
 
 export const useCommonOnboardingStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     title: {
       marginTop: 60,
     },

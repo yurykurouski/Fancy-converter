@@ -2,7 +2,7 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     container: {
       overflow: 'hidden',
       borderRadius: 10,

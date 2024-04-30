@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = (windowWidth: number) =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     container: {
       flex: 1,
       width: windowWidth,

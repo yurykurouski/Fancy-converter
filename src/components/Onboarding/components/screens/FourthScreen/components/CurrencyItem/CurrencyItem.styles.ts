@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(theme => ({
+  useTheme(({ theme }) => ({
     currencyInfoWrapper: {
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       flexDirection: 'row',

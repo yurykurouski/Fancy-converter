@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { THEME_COLORS } from 'assets/colors';
+import { ELEVATIONS } from 'assets/styles';
 import { colorSchemeStore } from 'store/colorSchemeStore';
 import { useSnapshot } from 'valtio';
 
@@ -21,11 +22,12 @@ export const useTheme: TUseTheme = mapStyles => {
   return useMemo(
     () =>
       StyleSheet.create(
-        mapStyles(
-          THEME_COLORS[colorScheme!],
-          insets ?? defaultInsets,
+        mapStyles({
+          theme: THEME_COLORS[colorScheme!],
+          insets: insets ?? defaultInsets,
           colorScheme,
-        ),
+          elevation: ELEVATIONS,
+        }),
       ),
     [colorScheme, insets, mapStyles],
   );
