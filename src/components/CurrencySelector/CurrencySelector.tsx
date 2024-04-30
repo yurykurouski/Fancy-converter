@@ -7,6 +7,11 @@ import { FlashList, ListRenderItem, ViewToken } from '@shopify/flash-list';
 import { CurrencyInputValue } from 'components';
 import { AppRefreshControl } from 'components/common/AppRefreshControl';
 import {
+  BOTTOMSHEET_EL_HEIGHT,
+  HEADER_HEIGHT,
+  INPUT_ELEMENT_HEIGHT,
+} from 'constants';
+import {
   useGetCurrenciesExchangeCourse,
   useWindowDimensionChange,
 } from 'hooks';
@@ -19,6 +24,7 @@ import { EDimensions, TAvailableCurrenciesNames } from 'types';
 import { useSnapshot } from 'valtio';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
+import { ListEmptyComponent } from './components/ListEmptyComponent/ListEmptyComponent';
 import { TSortedWithFavs } from './CurrencySelector.types';
 import { useLongPressSwipeGesture } from './hooks';
 
@@ -28,7 +34,6 @@ export const CurrencySelector = React.memo(
       const windowHeight = useWindowDimensionChange(EDimensions.HEIGHT);
       const { top } = useSafeAreaInsets();
 
-      const visibleItemsShared = useSharedValue<ViewToken[]>([]);
       const selectionModeShared = useSharedValue(1);
       const selectedDuringSwipeShared = useSharedValue(0);
 
@@ -62,6 +67,10 @@ export const CurrencySelector = React.memo(
 
         return [...separated.favs, ...separated.rest];
       }, [favoriteCurrencies, currencies]);
+
+      const visibleItemsShared = useSharedValue<
+        ViewToken[] | TAvailableCurrenciesNames[]
+      >(sortedWithFavorites);
 
       const onViewableItemsChanged = useCallback(
         ({ viewableItems }: { viewableItems: ViewToken[] }) => {
@@ -97,9 +106,13 @@ export const CurrencySelector = React.memo(
               />
             }
             ListFooterComponent={renderFooter}
+            ListEmptyComponent={ListEmptyComponent}
             drawDistance={0}
-            estimatedItemSize={64}
-            estimatedListSize={{ height: 64 * 9, width: WINDOW_WIDTH }}
+            estimatedItemSize={INPUT_ELEMENT_HEIGHT}
+            estimatedListSize={{
+              height: WINDOW_WIDTH - HEADER_HEIGHT - BOTTOMSHEET_EL_HEIGHT,
+              width: WINDOW_WIDTH,
+            }}
             viewabilityConfig={{
               itemVisiblePercentThreshold: 50,
             }}

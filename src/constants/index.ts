@@ -40,3 +40,5 @@ export const DEFAULT_CURRENCIES = {
   [EAvailableFiatNames.CAD]: '',
   [EAvailableFiatNames.CHF]: '',
 };
+
+export const EMPTY_LIST_PLACEHOLDER = '￣_(ツ)_/￣';
