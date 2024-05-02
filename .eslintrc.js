@@ -5,6 +5,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
     'plugin:sonarjs/recommended',
+    'plugin:valtio/recommended',
   ],
   plugins: ['simple-import-sort', 'react-hooks', 'unused-imports', 'sonarjs'],
   rules: {
