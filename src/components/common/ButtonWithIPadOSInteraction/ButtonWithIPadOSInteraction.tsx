@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  Insets,
-  Pressable,
-  PressableProps,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import { Insets, StyleProp, ViewStyle } from 'react-native';
 import { PointerInteractionView } from '@thefunbots/react-native-pointer-interactions';
-import { useAndroidRippleConfig } from 'hooks';
+import { BaseButtonProps, RectButton } from 'react-native-gesture-handler';
+import { THEME_COLORS } from 'assets/colors';
+import { colorSchemeStore } from 'store/colorSchemeStore';
 import { isAndroid, isIos } from 'utils';
+import { useSnapshot } from 'valtio';
 
-type TProps = PressableProps & {
+type TProps = BaseButtonProps & {
   children: JSX.Element | JSX.Element[];
   containerStyle?: StyleProp<ViewStyle>;
   hitSlop?: number | Insets;
@@ -26,7 +23,7 @@ export const ButtonWithIPadOSInteraction = React.memo(
     withRipple = true,
     ...rest
   }: TProps) => {
-    const rippleConfig = useAndroidRippleConfig();
+    const { colorScheme } = useSnapshot(colorSchemeStore);
 
     const hitSlops =
       typeof hitSlop === 'number'
@@ -39,11 +36,15 @@ export const ButtonWithIPadOSInteraction = React.memo(
         : hitSlop;
 
     return (
-      <Pressable
+      <RectButton
         hitSlop={hitSlops}
         style={isAndroid ? containerStyle : undefined}
         onPress={onPress}
-        android_ripple={withRipple ? rippleConfig : undefined}
+        rippleColor={
+          withRipple
+            ? THEME_COLORS[colorScheme!].APP_BACKGROUND_PRIMARY
+            : undefined
+        }
         {...rest}>
         {isIos ? (
           <PointerInteractionView
@@ -54,7 +55,7 @@ export const ButtonWithIPadOSInteraction = React.memo(
         ) : (
           children
         )}
-      </Pressable>
+      </RectButton>
     );
   },
 );
