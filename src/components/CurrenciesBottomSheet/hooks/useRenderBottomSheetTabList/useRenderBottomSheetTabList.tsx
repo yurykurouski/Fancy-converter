@@ -6,7 +6,7 @@ import { BOTTOMSHEET_EL_HEIGHT } from 'constants/index';
 import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
 import { ECurrencyType } from 'types';
 import { groupByName, isAndroid, makeSectionsData } from 'utils';
-import { useSnapshot } from 'valtio';
+import { useProxy } from 'valtio/utils';
 
 import { useRenderListItem } from '../useRenderListItem';
 import { useRenderSectionHeader } from '../useRenderSectionHeader';
@@ -16,7 +16,7 @@ import { useStyles } from '../../CurrenciesBottomSheet.styles';
 export const useRenderBottomSheetTabList = (height: number) => {
   const styles = useStyles(height);
 
-  const { filteredCurrencies } = useSnapshot(selectedCurrenciesStore);
+  const { filteredCurrencies } = useProxy(selectedCurrenciesStore);
 
   const renderItem = useRenderListItem();
   const renderSectionHeader = useRenderSectionHeader();
@@ -29,7 +29,6 @@ export const useRenderBottomSheetTabList = (height: number) => {
 
   return useCallback(
     ({ item }: { item: ECurrencyType }) => {
-      //@ts-expect-error
       const sections = groupByName(filteredCurrencies[item]);
       const sectionsData = makeSectionsData(sections);
 
@@ -48,6 +47,8 @@ export const useRenderBottomSheetTabList = (height: number) => {
             ItemSeparatorComponent={renderSeparator}
             overScrollMode="always"
             removeClippedSubviews={isAndroid}
+            stickySectionHeadersEnabled
+            stickyHeaderHiddenOnScroll
           />
         </View>
       );

@@ -13,7 +13,7 @@ import { useIsHasIsland } from 'hooks/useHasIsland';
 import { uiStore } from 'store/uiStore/uiStore';
 import { ENotificationType } from 'types';
 import { triggerLongPressHaptic } from 'utils';
-import { useSnapshot } from 'valtio';
+import { useProxy } from 'valtio/utils';
 
 import { showNotification } from './notification-animations';
 
@@ -25,7 +25,7 @@ export const NotificationMessage = () => {
 
   const animatedValue = useSharedValue(0);
 
-  const { notificationData } = useSnapshot(uiStore);
+  const { notificationData } = useProxy(uiStore);
 
   const appState = useAppStateV2();
   const opacity = appState === 'inactive' ? 0 : 1;

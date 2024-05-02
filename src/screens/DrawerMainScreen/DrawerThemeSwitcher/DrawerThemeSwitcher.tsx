@@ -11,7 +11,7 @@ import { DEFAULT_ANIMATION_DURATION } from 'constants';
 import throttle from 'lodash/throttle';
 import { colorSchemeActions, colorSchemeStore } from 'store/colorSchemeStore';
 import { EColorSchemeBehavior } from 'types';
-import { useSnapshot } from 'valtio';
+import { useProxy } from 'valtio/utils';
 
 import { DarkIcon } from './DarkIcon';
 import { LightIcon } from './LightIcon';
@@ -21,7 +21,7 @@ import { useStyles } from './DrawerThemeSwitcher.styles';
 export const DrawerThemeSwitcher = React.memo(() => {
   const styles = useStyles();
 
-  const { colorScheme, behavior } = useSnapshot(colorSchemeStore);
+  const { colorScheme, behavior } = useProxy(colorSchemeStore);
 
   const animatedValue = useSharedValue(colorScheme !== 'dark' ? 0 : 135);
 
