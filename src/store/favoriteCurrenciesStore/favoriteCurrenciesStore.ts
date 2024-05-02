@@ -3,6 +3,7 @@ import {
   ECurrencyType,
   ENotificationType,
   TAvailableCurrenciesNames,
+  TFavoriteCurrencies,
 } from 'types';
 import { proxy } from 'valtio';
 
@@ -13,9 +14,7 @@ enum EFocusedCurrencyKeys {
 }
 
 export type TFocusedCurrency = {
-  [EFocusedCurrencyKeys.FAVORITE_CURRENCIES]: Partial<
-    Record<TAvailableCurrenciesNames, ECurrencyType>
-  >;
+  [EFocusedCurrencyKeys.FAVORITE_CURRENCIES]: TFavoriteCurrencies;
 };
 
 const initialState: TFocusedCurrency = {

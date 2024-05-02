@@ -5,6 +5,7 @@ import {
   ECurrencyType,
   TAvailableCurrencies,
   TAvailableCurrenciesNames,
+  TSelectedCurrencies as SelectedCurrenciesType,
 } from 'types';
 import { proxy } from 'valtio';
 
@@ -18,9 +19,7 @@ enum ESelectedCurrenciesKeys {
 }
 
 type TSelectedCurrencies = {
-  [ESelectedCurrenciesKeys.CURRENCIES]: {
-    [key in TAvailableCurrenciesNames]?: string;
-  };
+  [ESelectedCurrenciesKeys.CURRENCIES]: SelectedCurrenciesType;
   [ESelectedCurrenciesKeys.SEARCH_VALUE]: string;
   [ESelectedCurrenciesKeys.ACTIVE_CURR_TYPE]: ECurrencyType;
   [ESelectedCurrenciesKeys.FILTERED_CURRENCIES]: TAvailableCurrencies;

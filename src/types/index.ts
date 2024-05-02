@@ -93,3 +93,7 @@ export type TRehydrateStateProps = {
   storeChunk: ValueOf<TStoreConfig>;
   parsedValues: TStoreConfig;
 };
+
+export type TFavoriteCurrencies = Partial<
+  Record<TAvailableCurrenciesNames, ECurrencyType>
+>;
