@@ -11,7 +11,6 @@ export const useHandleLongPress = ({
   selectedCurrencies,
   selectionModeShared,
   setEditMode,
-  selectedAmount,
   selectedDuringSwipeShared,
 }: TUseHandleLongPressParams) =>
   useCallback(
@@ -24,7 +23,7 @@ export const useHandleLongPress = ({
 
         selectionModeShared.value = 1;
         selectedDuringSwipeShared.value = 1;
-      } else if (selectedAmount === 1) {
+      } else if (selectedDuringSwipeShared.value === 1) {
         setEditMode(false);
 
         selectionModeShared.value = -1;
@@ -40,7 +39,6 @@ export const useHandleLongPress = ({
       addToCurrInEdit,
       selectionModeShared,
       selectedDuringSwipeShared,
-      selectedAmount,
       setEditMode,
       removeFromSelectedCurrenciesInEdit,
     ],

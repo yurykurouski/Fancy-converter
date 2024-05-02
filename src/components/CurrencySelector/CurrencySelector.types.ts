@@ -10,7 +10,6 @@ export type TUseHandleLongPressParams = {
   selectedCurrencies: TSelectedForEdit['selectedCurrencies'];
   selectionModeShared: SharedValue<number>;
   setEditMode: (value: boolean) => void;
-  selectedAmount: number;
   selectedDuringSwipeShared: SharedValue<number>;
 };
 

@@ -1,9 +1,11 @@
 import { RefObject } from 'react';
 import { TextInput } from 'react-native';
+import { SharedValue } from 'react-native-reanimated';
 import { TAvailableCurrenciesNames, TSelectedCurrencies } from 'types';
 
 export type Props = {
   currencyCode: TAvailableCurrenciesNames;
+  selectedAmountShared: SharedValue<number>;
 };
 
 export type OnChangeTextHandler = (text: string) => void;
@@ -39,6 +41,6 @@ export type TUseOnContainerPressParams = {
   removeFromSelectedCurrenciesInEdit: (
     currName: TAvailableCurrenciesNames,
   ) => void;
-  selectedInEditAmount: number;
+  selectedInEditAmount: SharedValue<number>;
   setEditMode: (value: boolean) => void;
 };

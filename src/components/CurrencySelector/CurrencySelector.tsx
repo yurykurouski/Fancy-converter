@@ -22,6 +22,7 @@ import { selectedCurrenciesStore } from 'store/selectedCurrenciesStore';
 import { selectedForEditActions } from 'store/selectedForEditStore';
 import { EDimensions, TAvailableCurrenciesNames } from 'types';
 import { useSnapshot } from 'valtio';
+import { useProxy } from 'valtio/utils';
 
 import { ListFooterComponent } from './components/FooterComponent/ListFooterComponent';
 import { ListEmptyComponent } from './components/ListEmptyComponent/ListEmptyComponent';
@@ -35,17 +36,22 @@ export const CurrencySelector = React.memo(
       const { top } = useSafeAreaInsets();
 
       const selectionModeShared = useSharedValue(1);
-      const selectedDuringSwipeShared = useSharedValue(0);
+      const selectedAmountShared = useSharedValue(0);
 
       const { isLoading } = useSnapshot(exchangeRatesStore);
-      const { currencies } = useSnapshot(selectedCurrenciesStore);
-      const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
+      const { favoriteCurrencies } = useProxy(favoriteCurrencyStore);
+      const { currencies } = useProxy(selectedCurrenciesStore);
 
       const { reloadCourses } = useGetCurrenciesExchangeCourse();
 
       const renderItem: ListRenderItem<TAvailableCurrenciesNames> = useCallback(
-        ({ item }) => <CurrencyInputValue currencyCode={item} />,
-        [],
+        ({ item }) => (
+          <CurrencyInputValue
+            currencyCode={item}
+            selectedAmountShared={selectedAmountShared}
+          />
+        ),
+        [selectedAmountShared],
       );
       const renderFooter = () =>
         sortedWithFavorites.length ? <ListFooterComponent /> : null;
@@ -85,7 +91,7 @@ export const CurrencySelector = React.memo(
         visibleItemsShared,
         sortedWithFavorites,
         selectionModeShared,
-        selectedDuringSwipeShared,
+        selectedDuringSwipeShared: selectedAmountShared,
         setEditMode: editModeActions.setEditMode,
         addToCurrInEdit: selectedForEditActions.addToSelected,
         removeFromSelectedCurrenciesInEdit:

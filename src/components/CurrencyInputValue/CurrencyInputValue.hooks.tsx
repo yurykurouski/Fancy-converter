@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { INPUT_VALIDATION_REGEXP } from 'constants/index';
 import { l } from 'resources/localization';
 import { focusedCurrencyStore } from 'store/focusedCurrencyStore';
-import { useSnapshot } from 'valtio';
+import { useProxy } from 'valtio/utils';
 
 import {
   TUseConvertedValues,
@@ -63,7 +63,7 @@ export const useConvertedValues: TUseConvertedValues = (
   course,
   focusedCurrencyCourse,
 ) => {
-  const { focusedCurrencyValue } = useSnapshot(focusedCurrencyStore);
+  const { focusedCurrencyValue } = useProxy(focusedCurrencyStore);
 
   const coefficient = Number(course) / Number(focusedCurrencyCourse);
 
@@ -99,9 +99,11 @@ export const useFormattedValue = (value: string | null): string => {
       return [...acc, index % 3 === 0 && index > 0 ? `${char} ` : char];
     }, []);
 
+  const reversedFormatted = [...formatted].reverse().join('');
+
   return haveFraction
-    ? `${formatted.reverse().join('')}.${fraction}`
-    : `${formatted.reverse().join('')}`;
+    ? `${reversedFormatted}.${fraction}`
+    : `${reversedFormatted}`;
 };
 
 export const useOnContainerPress = ({
@@ -117,10 +119,14 @@ export const useOnContainerPress = ({
     if (isInEditMode) {
       if (!selectedCurrenciesInEdit[currencyCode]) {
         addToCurrInEdit(currencyCode);
-      } else if (selectedInEditAmount > 1) {
+        selectedInEditAmount.value += 1;
+      } else if (selectedInEditAmount.value > 1) {
         removeFromSelectedCurrenciesInEdit(currencyCode);
+        selectedInEditAmount.value -= 1;
       } else {
         setEditMode(false);
+
+        selectedInEditAmount.value = 0;
       }
     }
   };

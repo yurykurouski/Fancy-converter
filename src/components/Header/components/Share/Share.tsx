@@ -18,7 +18,7 @@ import { useHandlePress } from './Share.hooks';
 import { styles } from './Share.styles';
 
 export const Share = memo(() => {
-  const { selectedAmount } = useSnapshot(selectedForEditStore);
+  const { selectedCurrencies } = useSnapshot(selectedForEditStore);
   const { focusedCurrencyValue } = useSnapshot(focusedCurrencyStore);
 
   const opacityValue = useSharedValue(1);
@@ -32,7 +32,7 @@ export const Share = memo(() => {
   });
 
   useEffect(() => {
-    if (selectedAmount < 2 || !focusedCurrencyValue) {
+    if (Object.keys(selectedCurrencies).length < 2 || !focusedCurrencyValue) {
       opacityValue.value = withTiming(0.3, {
         duration: DEFAULT_ANIMATION_DURATION,
       });
@@ -41,7 +41,7 @@ export const Share = memo(() => {
         duration: DEFAULT_ANIMATION_DURATION,
       });
     }
-  }, [focusedCurrencyValue, opacityValue, selectedAmount]);
+  }, [focusedCurrencyValue, opacityValue, selectedCurrencies]);
 
   return (
     <ButtonWithIPadOSInteraction

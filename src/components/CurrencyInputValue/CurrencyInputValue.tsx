@@ -1,10 +1,6 @@
 import React, { FC, useMemo, useRef } from 'react';
 import { Pressable, Text, TextInput } from 'react-native';
-import Animated, {
-  FadeIn,
-  FadeInRight,
-  FadeOutRight,
-} from 'react-native-reanimated';
+import Animated, { FadeInRight, FadeOutRight } from 'react-native-reanimated';
 import { THEME_COLORS } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
@@ -49,103 +45,103 @@ const useMemoizedValues = (currencyCode: TAvailableCurrenciesNames) => {
   );
 };
 
-export const CurrencyInputValue: FC<Props> = React.memo(({ currencyCode }) => {
-  const { colorScheme } = useSnapshot(colorSchemeStore);
-  const { isInEditMode } = useSnapshot(editModeStore);
-  const { selectedCurrencies, selectedAmount } =
-    useSnapshot(selectedForEditStore);
-  const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
+export const CurrencyInputValue: FC<Props> = React.memo(
+  ({ currencyCode, selectedAmountShared }) => {
+    const { colorScheme } = useSnapshot(colorSchemeStore);
+    const { isInEditMode } = useSnapshot(editModeStore);
+    const { selectedCurrencies } = useSnapshot(selectedForEditStore);
+    const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
 
-  const { setFocusedCurrencyValue, setFocusedCurrencyName } =
-    focusedCurrencyActions;
+    const { setFocusedCurrencyValue, setFocusedCurrencyName } =
+      focusedCurrencyActions;
 
-  const { focusedCurrencyRate, isFocused, rate } =
-    useMemoizedValues(currencyCode);
+    const { focusedCurrencyRate, isFocused, rate } =
+      useMemoizedValues(currencyCode);
 
-  const styles = useStyles();
+    const styles = useStyles();
 
-  const inputRef = useRef<TextInput>(null);
+    const inputRef = useRef<TextInput>(null);
 
-  const isSelectedForEdit = !!selectedCurrencies[currencyCode];
+    const isSelectedForEdit = !!selectedCurrencies[currencyCode];
 
-  const { onChangeTextHandler, onFocusHandler, containerOnPressHandler } =
-    useCurrencyInputHandlers({
-      setFocusedCurrencyValue,
-      setFocusedCurrencyName,
-      currencyCode,
-      inputRef,
+    const { onChangeTextHandler, onFocusHandler, containerOnPressHandler } =
+      useCurrencyInputHandlers({
+        setFocusedCurrencyValue,
+        setFocusedCurrencyName,
+        currencyCode,
+        inputRef,
+        isInEditMode,
+      });
+
+    const onContainerPress = useOnContainerPress({
       isInEditMode,
+      currencyCode,
+      addToCurrInEdit: selectedForEditActions.addToSelected,
+      selectedCurrenciesInEdit: selectedCurrencies,
+      removeFromSelectedCurrenciesInEdit: selectedForEditActions.clearSelected,
+      selectedInEditAmount: selectedAmountShared,
+      setEditMode: editModeActions.setEditMode,
     });
 
-  const onContainerPress = useOnContainerPress({
-    isInEditMode,
-    currencyCode,
-    addToCurrInEdit: selectedForEditActions.addToSelected,
-    selectedCurrenciesInEdit: selectedCurrencies,
-    removeFromSelectedCurrenciesInEdit: selectedForEditActions.clearSelected,
-    selectedInEditAmount: selectedAmount,
-    setEditMode: editModeActions.setEditMode,
-  });
+    const calculatedValue = useConvertedValues(
+      isFocused,
+      rate,
+      focusedCurrencyRate,
+    );
 
-  const calculatedValue = useConvertedValues(
-    isFocused,
-    rate,
-    focusedCurrencyRate,
-  );
+    const formattedValue = useFormattedValue(calculatedValue);
 
-  const formattedValue = useFormattedValue(calculatedValue);
-
-  return (
-    <Animated.View
-      entering={FadeIn}
-      style={[
-        styles.containerWrapper,
-        isFocused && !isInEditMode && styles.containerWrapperFocused,
-      ]}>
-      <Pressable
-        onPress={onContainerPress}
-        style={styles.container}
-        pointerEvents={isInEditMode ? 'box-only' : 'box-none'}>
-        <Pressable onPress={containerOnPressHandler}>
-          <Text
-            style={[
-              styles.title,
-              ((isFocused && !isInEditMode) ||
-                (isInEditMode && isSelectedForEdit)) &&
-                styles.titleFocused,
-            ]}>
-            {currencyCode}
-          </Text>
-        </Pressable>
-        <TextInput
-          style={styles.input}
-          placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
-          value={formattedValue}
-          onChangeText={onChangeTextHandler}
-          onFocus={() => onFocusHandler(calculatedValue)}
-          ref={inputRef}
-          keyboardType="numeric"
-          keyboardAppearance={colorScheme!}
-          contextMenuHidden
-          placeholder="0"
-          maxLength={14}
-        />
-        {isFocused && !!calculatedValue && !isInEditMode && (
-          <AnimatedCancelIcon
-            onPress={onChangeTextHandler}
-            additionalStyle={styles.cancelBtnAdditional}
-            entering={FadeInRight.duration(DEFAULT_ANIMATION_DURATION)}
-            exiting={FadeOutRight.duration(DEFAULT_ANIMATION_DURATION)}
+    return (
+      <Animated.View
+        style={[
+          styles.containerWrapper,
+          isFocused && !isInEditMode && styles.containerWrapperFocused,
+        ]}>
+        <Pressable
+          onPress={onContainerPress}
+          style={styles.container}
+          pointerEvents={isInEditMode ? 'box-only' : 'box-none'}>
+          <Pressable onPress={containerOnPressHandler}>
+            <Text
+              style={[
+                styles.title,
+                ((isFocused && !isInEditMode) ||
+                  (isInEditMode && isSelectedForEdit)) &&
+                  styles.titleFocused,
+              ]}>
+              {currencyCode}
+            </Text>
+          </Pressable>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
+            value={formattedValue}
+            onChangeText={onChangeTextHandler}
+            onFocus={() => onFocusHandler(calculatedValue)}
+            ref={inputRef}
+            keyboardType="numeric"
+            keyboardAppearance={colorScheme!}
+            contextMenuHidden
+            placeholder="0"
+            maxLength={14}
           />
-        )}
-        <CurrencyInputIcon
-          isSelectedForEdit={isSelectedForEdit}
-          currencyCode={currencyCode}
-          bookmark={!!favoriteCurrencies[currencyCode]}
-        />
-      </Pressable>
-    </Animated.View>
-  );
-});
+          {isFocused && !!calculatedValue && !isInEditMode && (
+            <AnimatedCancelIcon
+              onPress={onChangeTextHandler}
+              additionalStyle={styles.cancelBtnAdditional}
+              entering={FadeInRight.duration(DEFAULT_ANIMATION_DURATION)}
+              exiting={FadeOutRight.duration(DEFAULT_ANIMATION_DURATION)}
+            />
+          )}
+          <CurrencyInputIcon
+            isSelectedForEdit={isSelectedForEdit}
+            currencyCode={currencyCode}
+            bookmark={!!favoriteCurrencies[currencyCode]}
+          />
+        </Pressable>
+      </Animated.View>
+    );
+  },
+);
 
 const AnimatedCancelIcon = Animated.createAnimatedComponent(CancelButton);

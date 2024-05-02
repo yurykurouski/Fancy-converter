@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { InteractionManager, Text, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -31,16 +31,21 @@ export const Counter = () => {
   });
 
   const { currencies } = useSnapshot(selectedCurrenciesStore);
-  const { selectedAmount } = useSnapshot(selectedForEditStore);
+  const { selectedCurrencies } = useSnapshot(selectedForEditStore);
 
   const onCancelPress = () => {
     editModeActions.setEditMode(false);
   };
   useEffect(() => {
-    animatedOffset.value = withTiming(selectedAmount * 20, {
-      duration: DEFAULT_ANIMATION_DURATION,
+    InteractionManager.runAfterInteractions(() => {
+      animatedOffset.value = withTiming(
+        Object.keys(selectedCurrencies).length * 20,
+        {
+          duration: DEFAULT_ANIMATION_DURATION,
+        },
+      );
     });
-  }, [animatedOffset, selectedAmount]);
+  }, [animatedOffset, selectedCurrencies]);
 
   return (
     <ButtonWithIPadOSInteraction

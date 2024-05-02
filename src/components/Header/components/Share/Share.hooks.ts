@@ -10,14 +10,13 @@ import { useSnapshot } from 'valtio';
 import { getContentText, getValues } from './Share.utils';
 
 export const useHandlePress = () => {
-  const { selectedCurrencies, selectedAmount } =
-    useSnapshot(selectedForEditStore);
+  const { selectedCurrencies } = useSnapshot(selectedForEditStore);
   const { exchangeRates, lastUpdated } = useSnapshot(exchangeRatesStore);
   const { focusedCurrencyName, focusedCurrencyValue } =
     useSnapshot(focusedCurrencyStore);
 
   return useCallback(() => {
-    if (selectedAmount < 2 || !focusedCurrencyValue) {
+    if (Object.keys(selectedCurrencies).length < 2 || !focusedCurrencyValue) {
       return (
         isAndroid &&
         ToastAndroid.show(l['currencies_main.no-share'], ToastAndroid.SHORT)
@@ -45,7 +44,6 @@ export const useHandlePress = () => {
     focusedCurrencyName,
     focusedCurrencyValue,
     lastUpdated,
-    selectedAmount,
     selectedCurrencies,
   ]);
 };

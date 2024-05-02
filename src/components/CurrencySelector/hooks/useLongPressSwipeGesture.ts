@@ -34,8 +34,7 @@ export const useLongPressSwipeGesture = ({
   addToCurrInEdit,
   removeFromSelectedCurrenciesInEdit,
 }: TProps) => {
-  const { selectedCurrencies, selectedAmount } =
-    useSnapshot(selectedForEditStore);
+  const { selectedCurrencies } = useSnapshot(selectedForEditStore);
 
   const lastSelectedShared = useSharedValue<
     ViewToken | TAvailableCurrenciesNames | null
@@ -48,7 +47,6 @@ export const useLongPressSwipeGesture = ({
     selectedCurrencies,
     selectionModeShared,
     setEditMode,
-    selectedAmount,
     selectedDuringSwipeShared,
   });
 
@@ -97,13 +95,14 @@ export const useLongPressSwipeGesture = ({
               ] &&
               selectionModeShared.value === 1
             ) {
-              selectedDuringSwipeShared.value =
-                selectedDuringSwipeShared.value + 1;
+              selectedDuringSwipeShared.value += 1;
+
               runOnJS(addToCurrInEdit)(
                 sortedWithFavorites[
                   (pressedInVisibles as ViewToken).index! ?? pressedIndex - 1
                 ],
               );
+
               runOnJS(triggerSelectionHaptic)();
             } else if (
               selectedCurrencies[
@@ -113,8 +112,8 @@ export const useLongPressSwipeGesture = ({
               ] &&
               selectionModeShared.value === 0
             ) {
-              selectedDuringSwipeShared.value =
-                selectedDuringSwipeShared.value - 1;
+              selectedDuringSwipeShared.value -= 1;
+
               runOnJS(removeFromSelectedCurrenciesInEdit)(
                 sortedWithFavorites[
                   (pressedInVisibles as ViewToken).index! ?? pressedIndex - 1
