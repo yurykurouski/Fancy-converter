@@ -7,11 +7,7 @@ export const useStyles = () =>
       alignItems: 'center',
     },
     handlePressable: {
-      transform: [
-        {
-          translateY: 10,
-        },
-      ],
+      top: 10,
       overflow: 'hidden',
     },
     handle: {
