@@ -3311,6 +3311,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vonovak/react-native-theme-control@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@vonovak/react-native-theme-control@npm:5.1.0"
+  peerDependencies:
+    expo: ">=49.0.0"
+    react: "*"
+    react-native: ">=0.72.0"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  checksum: 1388b02728c344d9f70f5cb96ee77ef1a55369985cb3db63af2401aa37da4cc3b9cdf718bdafed30457a8570d23d16025a4d8e60e60f3431078cccce5e589e4d
+  languageName: node
+  linkType: hard
+
 "@xmldom/xmldom@npm:^0.8.8":
   version: 0.8.10
   resolution: "@xmldom/xmldom@npm:0.8.10"
@@ -5234,6 +5248,7 @@ __metadata:
     "@types/lodash.debounce": ^4.0.9
     "@types/react": ^18.2.6
     "@types/react-native-dotenv": ^0.2.2
+    "@vonovak/react-native-theme-control": ^5.1.0
     babel-plugin-module-resolver: ^5.0.2
     eslint: ^8.19.0
     eslint-plugin-react-hooks: ^4.6.0
@@ -5248,15 +5263,16 @@ __metadata:
     react-native: 0.74.1
     react-native-bootsplash: 5.5.3
     react-native-dotenv: 3.4.11
-    react-native-gesture-handler: 2.16.1
+    react-native-gesture-handler: 2.16.2
     react-native-gradle-plugin: 0.71.19
     react-native-haptic-feedback: ^2.2.0
     react-native-localization: 2.3.2
     react-native-localize: ^3.1.0
-    react-native-reanimated: 3.10.0
+    react-native-reanimated: 3.11.0
     react-native-safe-area-context: 4.10.1
     react-native-svg: 15.2.0
     react-native-swift: ^1.2.3
+    react-native-theme-switch-animation: ^0.6.0
     ts-prune: ^0.10.3
     typescript: 5.0.4
     valtio: ^1.13.2
@@ -8320,9 +8336,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-gesture-handler@npm:2.16.1":
-  version: 2.16.1
-  resolution: "react-native-gesture-handler@npm:2.16.1"
+"react-native-gesture-handler@npm:2.16.2":
+  version: 2.16.2
+  resolution: "react-native-gesture-handler@npm:2.16.2"
   dependencies:
     "@egjs/hammerjs": ^2.0.17
     hoist-non-react-statics: ^3.3.0
@@ -8332,7 +8348,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 8c49773474da7d6e31669479786ade58bf583f4affe5df81701a7a82dc42e8298fc99b30ff11c9a909bdc515cbc4e9d1462f264467b5d062aa11ccbc33c9947d
+  checksum: 3f3309de471b8de654624c54793f6d72236869156ee61c1adc8bba0f4aca6ffc8ed02035eb85820473091d33eb5ec8b42a0e387a21ec25dc30ee345dff0c1142
   languageName: node
   linkType: hard
 
@@ -8391,9 +8407,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:3.10.0":
-  version: 3.10.0
-  resolution: "react-native-reanimated@npm:3.10.0"
+"react-native-reanimated@npm:3.11.0":
+  version: 3.11.0
+  resolution: "react-native-reanimated@npm:3.11.0"
   dependencies:
     "@babel/plugin-transform-arrow-functions": ^7.0.0-0
     "@babel/plugin-transform-nullish-coalescing-operator": ^7.0.0-0
@@ -8407,7 +8423,7 @@ __metadata:
     "@babel/core": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: fc0abecee5678f3afb721e359273c93b9e02a044a9bf14922d382c5b83652fa53de8a7fe909ae4d62fe49c876d7403c355133ef4a5b8a84ebf44c6efa596a0ad
+  checksum: 5d0c6be5c9b6d933755e50895a1ec903100800a83b7b48fbc6a4242063f0de52a78f5af69d39da4241f6071a4416602f150c3a53e9a97d20880edb3612ffadbd
   languageName: node
   linkType: hard
 
@@ -8441,6 +8457,16 @@ __metadata:
     "@raydeck/xcode": "npm:^2.2.0"
     glob: "npm:^7.1.2"
   checksum: 694dd51a63664327586d5da6a09ce3c4eb55d741d1c703fd511a1e7c8324acca10e2133bdd463abfb5db2dfccae348dbbf2a2d4079db973ec6071a599b3be10b
+  languageName: node
+  linkType: hard
+
+"react-native-theme-switch-animation@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "react-native-theme-switch-animation@npm:0.6.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: e88b42d60c180c26e75bf599ee1ada6fae4e4eb13568a4d16493275be985ac3310f9e45c28b8ae31d3a925d51d3461dfbc53399ef7a93f568f6497a6c09fc556
   languageName: node
   linkType: hard
 

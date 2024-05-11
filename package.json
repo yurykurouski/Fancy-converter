@@ -12,7 +12,8 @@
     "upgrade": "yarn upgrade-interactive",
     "nuke": "rm -rf node_modules; rm -rf ios/build; rm -rf ios/Pods; rm -rf ios/Podfile.lock; yarn; yarn podinstall",
     "findDead": "ts-prune | grep -v '(used in module)'",
-    "pods": "cd ios; pod install"
+    "pods": "cd ios; pod install",
+    "colors": "npx @klarna/platform-colors"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "4.6.1",
@@ -20,20 +21,22 @@
     "@react-native-community/netinfo": "11.3.1",
     "@shopify/flash-list": "^1.6.4",
     "@thefunbots/react-native-pointer-interactions": "^1.1.0",
+    "@vonovak/react-native-theme-control": "^5.1.0",
     "lodash.debounce": "4.0.8",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-bootsplash": "5.5.3",
     "react-native-dotenv": "3.4.11",
-    "react-native-gesture-handler": "2.16.1",
+    "react-native-gesture-handler": "2.16.2",
     "react-native-gradle-plugin": "0.71.19",
     "react-native-haptic-feedback": "^2.2.0",
     "react-native-localization": "2.3.2",
     "react-native-localize": "^3.1.0",
-    "react-native-reanimated": "3.10.0",
+    "react-native-reanimated": "3.11.0",
     "react-native-safe-area-context": "4.10.1",
     "react-native-svg": "15.2.0",
     "react-native-swift": "^1.2.3",
+    "react-native-theme-switch-animation": "^0.6.0",
     "valtio": "^1.13.2"
   },
   "devDependencies": {
