@@ -1,14 +1,19 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
-import { colorSchemeStore } from 'store/colorSchemeStore';
-import { useSnapshot } from 'valtio';
+import { StatusBar, useColorScheme } from 'react-native';
+import { isAndroid } from 'utils';
 
 export const AppStatusBar = () => {
-  const { colorScheme } = useSnapshot(colorSchemeStore);
+  const colorScheme = useColorScheme();
 
   return (
     <StatusBar
-      barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+      barStyle={
+        isAndroid
+          ? colorScheme === 'dark'
+            ? 'light-content'
+            : 'dark-content'
+          : undefined
+      }
       backgroundColor={'transparent'}
       translucent
       animated
