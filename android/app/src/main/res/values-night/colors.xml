@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<resources>
+  <!--Generated code with RNPC starts, changes will be overridden-->
+  <color name="rnpc_app_background_primary">#202124</color>
+  <color name="rnpc_font_primary_color">#ffffff</color>
+  <color name="rnpc_font_primary_color_inverted">#363535</color>
+  <color name="rnpc_font_secondary_color">#ffffff</color>
+  <color name="rnpc_font_color_faded">#808080</color>
+  <color name="rnpc_element_fade_or_background">#323236</color>
+  <color name="rnpc_element_fade_or_background_darker">#21212b</color>
+  <color name="rnpc_element_fade_or_background_lighter">#424146</color>
+  <color name="rnpc_accent_color_lighter">#4f378b</color>
+  <color name="rnpc_accent_color_darker">#1a1921</color>
+  <color name="rnpc_sunset_orange">#ef5350</color>
+  <color name="rnpc_overlay">#99202124</color>
+  <!--Generated code ends-->
+</resources>

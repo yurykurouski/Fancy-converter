@@ -1,4 +1,19 @@
+<?xml version="1.0"?>
 <resources>
-    <color name="bootsplash_background_dark">#202124</color>
-    <color name="bootsplash_background">#F0F0F3</color>
+  <!--Generated code with RNPC starts, changes will be overridden-->
+  <color name="rnpc_app_background_primary">#f0f0f3</color>
+  <color name="rnpc_font_primary_color">#363535</color>
+  <color name="rnpc_font_primary_color_inverted">#ffffff</color>
+  <color name="rnpc_font_secondary_color">#fafcfe</color>
+  <color name="rnpc_font_color_faded">#808080</color>
+  <color name="rnpc_element_fade_or_background">#e1e1e3</color>
+  <color name="rnpc_element_fade_or_background_darker">#dadae1</color>
+  <color name="rnpc_element_fade_or_background_lighter">#d3d3d5</color>
+  <color name="rnpc_accent_color_lighter">#1a73e8</color>
+  <color name="rnpc_accent_color_darker">#e9e9f0</color>
+  <color name="rnpc_sunset_orange">#ef5350</color>
+  <color name="rnpc_overlay">#99f0f0f3</color>
+  <!--Generated code ends-->
+  <color name="bootsplash_background_dark">#202124</color>
+  <color name="bootsplash_background">#F0F0F3</color>
 </resources>
