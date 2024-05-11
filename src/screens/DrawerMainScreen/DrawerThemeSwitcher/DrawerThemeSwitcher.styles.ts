@@ -1,7 +1,8 @@
+import { ELEVATIONS } from 'assets/styles';
 import { useTheme } from 'hooks/useTheme';
 
 export const useStyles = () =>
-  useTheme(({ theme, colorScheme, elevation }) => ({
+  useTheme(({ theme }) => ({
     container: {
       margin: 4,
       width: 40,
@@ -10,14 +11,14 @@ export const useStyles = () =>
       alignItems: 'center',
       borderRadius: 20,
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
-      ...elevation[1],
+      ...ELEVATIONS[1],
     },
     behaviorIndicator: {
       position: 'absolute',
-      ...(colorScheme === 'light' && {
-        left: 20,
-        bottom: 6,
-      }),
+      // ...(colorScheme === 'light' && {
+      //   left: 20,
+      //   bottom: 6,
+      // }),
       includeFontPadding: false,
       zIndex: 1,
       color: theme.ELEMENT_FADE_OR_BACKGROUND,
