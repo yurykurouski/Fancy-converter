@@ -1,23 +1,11 @@
-import { useTheme } from 'hooks';
+import { StyleSheet } from 'react-native';
 
-export const useStyles = () =>
-  useTheme(({ theme }) => ({
-    container: {
-      position: 'absolute',
-      width: 34,
-      height: 34,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    core: {
-      width: 14,
-      height: 14,
-      borderRadius: 10,
-      backgroundColor: theme.FONT_PRIMARY_COLOR,
-    },
-    rays: {
-      top: 0,
-      zIndex: 1,
-      position: 'absolute',
-    },
-  }));
+export const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    width: 34,
+    height: 34,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
