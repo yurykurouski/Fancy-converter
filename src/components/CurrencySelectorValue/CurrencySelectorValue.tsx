@@ -1,12 +1,11 @@
 import React, { FC, useCallback } from 'react';
 import { Text, View } from 'react-native';
-import { THEME_COLORS } from 'assets/colors';
+import { Colors } from 'assets/colors';
 import { BookmarkIcon, CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
 import { ButtonWithIPadOSInteraction } from 'components/common/ButtonWithIPadOSInteraction';
 import { CountryFlag } from 'components/common/CountryFlag';
 import { l } from 'resources/localization';
-import { colorSchemeStore } from 'store/colorSchemeStore';
 import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
 import { favoriteCurrencyActions } from 'store/favoriteCurrenciesStore/favoriteCurrenciesStore';
 import {
@@ -24,7 +23,6 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
   ({ currencyCode }) => {
     const styles = useStyles();
 
-    const { colorScheme } = useSnapshot(colorSchemeStore);
     const { activeCurrencyType, currencies } = useSnapshot(
       selectedCurrenciesStore,
     );
@@ -72,12 +70,7 @@ export const CurrencySelectorValue: FC<TProps> = React.memo(
         <AnimatedFlipIcon
           nextState={isActive}
           DefaultIcon={<View style={styles.deselectedIcon} />}
-          NextIcon={
-            <CheckIcon
-              size={30}
-              color={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
-            />
-          }
+          NextIcon={<CheckIcon size={30} color={Colors?.FONT_PRIMARY_COLOR} />}
         />
       </ButtonWithIPadOSInteraction>
     );

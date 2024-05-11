@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { ColorsDark, ColorsLight } from 'assets/colors';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import by from 'resources/locales/by.json';
 import en from 'resources/locales/en.json';
 import pl from 'resources/locales/pl.json';
@@ -63,7 +63,7 @@ export type TAvailableCurrenciesNames =
 export type TSVGIcon = {
   size?: number;
   style?: StyleProp<ViewStyle>;
-  color?: ColorsLight | ColorsDark | string;
+  color?: typeof Colors | string;
 };
 
 export enum EHapticType {

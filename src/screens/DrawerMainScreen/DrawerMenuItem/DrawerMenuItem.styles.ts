@@ -1,9 +1,10 @@
 import { Platform } from 'react-native';
+import { ELEVATIONS } from 'assets/styles';
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
 export const useStyles = () =>
-  useTheme(({ theme, elevation }) => ({
+  useTheme(({ theme }) => ({
     container: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -12,7 +13,7 @@ export const useStyles = () =>
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
       borderRadius: 20,
       padding: 4,
-      ...elevation[1],
+      ...ELEVATIONS[1],
       ...Platform.select({
         android: {
           overflow: 'hidden',

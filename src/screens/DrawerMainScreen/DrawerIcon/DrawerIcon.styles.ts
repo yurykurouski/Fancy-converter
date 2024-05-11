@@ -1,7 +1,8 @@
+import { ELEVATIONS } from 'assets/styles';
 import { useTheme } from 'hooks';
 
 export const useStyles = (color?: string) =>
-  useTheme(({ theme, elevation }) => ({
+  useTheme(({ theme }) => ({
     iconContainer: {
       width: 40,
       height: 40,
@@ -10,6 +11,6 @@ export const useStyles = (color?: string) =>
       alignItems: 'center',
       justifyContent: 'center',
       margin: 4,
-      ...elevation[1],
+      ...ELEVATIONS[1],
     },
   }));

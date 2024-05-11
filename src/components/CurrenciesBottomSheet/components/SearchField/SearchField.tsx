@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Keyboard, View } from 'react-native';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
-import { THEME_COLORS } from 'assets/colors';
+import { Colors } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { l } from 'resources/localization';
-import { colorSchemeStore } from 'store/colorSchemeStore';
 import {
   selectedCurrenciesActions,
   selectedCurrenciesStore,
@@ -19,7 +18,6 @@ import { useStyles } from './SearchField.styles';
 export const SearchField = () => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const { colorScheme } = useSnapshot(colorSchemeStore);
   const { searchValue, activeCurrencyType } = useSnapshot(
     selectedCurrenciesStore,
   );
@@ -67,8 +65,7 @@ export const SearchField = () => {
           onFocus={setFocus}
           onPressOut={setFocus}
           placeholder={l['currency_search.input.placeholder']}
-          placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
-          keyboardAppearance={colorScheme!}
+          placeholderTextColor={Colors?.FONT_COLOR_FADED}
           inputMode="search"
           returnKeyLabel={l['currency_search.input.placeholder']}
           contextMenuHidden

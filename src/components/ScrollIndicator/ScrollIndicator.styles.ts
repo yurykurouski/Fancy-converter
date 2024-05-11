@@ -1,7 +1,8 @@
+import { ELEVATIONS } from 'assets/styles';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(({ theme, elevation }) => ({
+  useTheme(({ theme }) => ({
     container: {
       position: 'absolute',
       left: -8,
@@ -15,7 +16,7 @@ export const useStyles = () =>
     },
     background: {
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
-      ...elevation[1],
+      ...ELEVATIONS[1],
     },
     indicator: {
       top: 12,

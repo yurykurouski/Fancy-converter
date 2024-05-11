@@ -1,8 +1,9 @@
+import { ELEVATIONS } from 'assets/styles';
 import { useTheme } from 'hooks';
 import { isAndroid } from 'utils';
 
 export const useStyles = (pageHeight: number) => {
-  return useTheme(({ theme, elevation }) => ({
+  return useTheme(({ theme }) => ({
     container: {
       height: pageHeight,
       gap: 10,
@@ -52,7 +53,7 @@ export const useStyles = (pageHeight: number) => {
       borderRadius: 30,
       padding: 4,
       marginBottom: 110,
-      ...elevation[1],
+      ...ELEVATIONS[1],
     },
     poweredText: {
       fontSize: 14,

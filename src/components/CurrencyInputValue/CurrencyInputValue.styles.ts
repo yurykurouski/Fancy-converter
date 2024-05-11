@@ -1,7 +1,8 @@
+import { ELEVATIONS } from 'assets/styles';
 import { useTheme } from 'hooks';
 
 export const useStyles = () =>
-  useTheme(({ theme, elevation }) => ({
+  useTheme(({ theme }) => ({
     containerWrapper: {
       borderRadius: 15,
       borderColor: 'transparent',
@@ -9,7 +10,7 @@ export const useStyles = () =>
       backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
       marginHorizontal: 10,
       marginVertical: 4,
-      ...elevation[1],
+      ...ELEVATIONS[1],
     },
     container: {
       flexDirection: 'row',

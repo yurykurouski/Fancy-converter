@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, View } from 'react-native';
-import { THEME_COLORS } from 'assets/colors';
+import { Colors } from 'assets/colors';
 import { CheckIcon } from 'assets/icons';
 import { AnimatedFlipIcon } from 'components/AnimatedFlipIcon';
-import { colorSchemeStore } from 'store/colorSchemeStore';
-import { useSnapshot } from 'valtio';
 
 import { useStyles } from './Selector.styles';
 
 export const Selector = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const { colorScheme } = useSnapshot(colorSchemeStore);
 
   const styles = useStyles();
 
@@ -39,12 +36,7 @@ export const Selector = () => {
           containerStyle={styles.iconContainer}
           nextState={isChecked}
           DefaultIcon={<View style={styles.checkbox} />}
-          NextIcon={
-            <CheckIcon
-              size={30}
-              color={THEME_COLORS[colorScheme!].FONT_PRIMARY_COLOR}
-            />
-          }
+          NextIcon={<CheckIcon size={30} color={Colors?.FONT_PRIMARY_COLOR} />}
         />
       </Pressable>
     </View>

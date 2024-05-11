@@ -1,10 +1,12 @@
-import { useTheme, useWindowDimensionChange } from 'hooks';
+import { StyleSheet } from 'react-native';
+import { ELEVATIONS } from 'assets/styles';
+import { useWindowDimensionChange } from 'hooks';
 import { EDimensions } from 'types';
 
 export const useStyles = (height?: number) => {
   const windowWidth = useWindowDimensionChange(EDimensions.WIDTH);
 
-  return useTheme(({ elevation }) => ({
+  return StyleSheet.create({
     container: {
       height,
     },
@@ -16,7 +18,7 @@ export const useStyles = (height?: number) => {
       zIndex: 2,
     },
     backgroundStyle: {
-      ...elevation[10],
+      ...ELEVATIONS[10],
     },
     activityIndicatorContainer: {
       position: 'absolute',
@@ -26,5 +28,5 @@ export const useStyles = (height?: number) => {
     separator: {
       height: 10,
     },
-  }));
+  });
 };

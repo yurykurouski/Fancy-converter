@@ -1,10 +1,9 @@
 import React, { FC, useMemo, useRef } from 'react';
 import { Pressable, Text, TextInput } from 'react-native';
 import Animated, { FadeInRight, FadeOutRight } from 'react-native-reanimated';
-import { THEME_COLORS } from 'assets/colors';
+import { Colors } from 'assets/colors';
 import { CancelButton } from 'components/common/CancelButton';
 import { DEFAULT_ANIMATION_DURATION } from 'constants/index';
-import { colorSchemeStore } from 'store/colorSchemeStore';
 import { editModeActions, editModeStore } from 'store/editModeStore';
 import { exchangeRatesStore } from 'store/exchangeRateStore';
 import { favoriteCurrencyStore } from 'store/favoriteCurrenciesStore';
@@ -47,7 +46,6 @@ const useMemoizedValues = (currencyCode: TAvailableCurrenciesNames) => {
 
 export const CurrencyInputValue: FC<Props> = React.memo(
   ({ currencyCode, selectedAmountShared }) => {
-    const { colorScheme } = useSnapshot(colorSchemeStore);
     const { isInEditMode } = useSnapshot(editModeStore);
     const { selectedCurrencies } = useSnapshot(selectedForEditStore);
     const { favoriteCurrencies } = useSnapshot(favoriteCurrencyStore);
@@ -114,13 +112,12 @@ export const CurrencyInputValue: FC<Props> = React.memo(
           </Pressable>
           <TextInput
             style={styles.input}
-            placeholderTextColor={THEME_COLORS[colorScheme!].FONT_COLOR_FADED}
+            placeholderTextColor={Colors?.FONT_COLOR_FADED}
             value={formattedValue}
             onChangeText={onChangeTextHandler}
             onFocus={() => onFocusHandler(calculatedValue)}
             ref={inputRef}
             keyboardType="numeric"
-            keyboardAppearance={colorScheme!}
             contextMenuHidden
             placeholder="0"
             maxLength={14}
