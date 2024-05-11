@@ -1,5 +1,4 @@
 export { useAlertMessage } from './useAlertMessage';
-export { useAppearanceChangeListener } from './useAppearanceChangeListener';
 export { useAppState } from './useAppState';
 export * from './useGetCoursesFromStorage';
 export * from './useGetCurrenciesExchangeCourse';

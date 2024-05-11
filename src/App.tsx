@@ -7,7 +7,6 @@ import {
 } from 'react-native-safe-area-context';
 import { AppStatusBar, CurrenciesMainContent, Onboarding } from 'components';
 import { NotificationMessage } from 'components/NotificationMessage';
-import { useAppearanceChangeListener } from 'hooks';
 import { useInitStore } from 'store';
 import { onboardingStatusStore } from 'store/onboardingStatusStore';
 import { isAndroid } from 'utils';
@@ -23,8 +22,6 @@ const App = React.memo(() => {
   const { isOnBoarded } = useSnapshot(onboardingStatusStore);
 
   const styles = useStyles();
-
-  useAppearanceChangeListener();
 
   const { isHydrated } = useInitStore();
 
