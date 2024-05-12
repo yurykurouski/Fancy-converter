@@ -57,16 +57,13 @@ export const useLongPressSwipeGesture = ({
       .shouldCancelWhenOutside(false)
       .onStart(event => {
         isLongPressed.value = 1;
-
-        const pressedIndex = Math.floor(
-          (event?.y + HEADER_HEIGHT + top) / INPUT_ELEMENT_HEIGHT,
-        );
-        const pressedInVisibles = visibleItemsShared.value?.[pressedIndex - 1];
+        const pressedIndex = Math.floor(event?.y / INPUT_ELEMENT_HEIGHT);
+        const pressedInVisibles = visibleItemsShared.value?.[pressedIndex];
 
         if (pressedInVisibles !== undefined) {
           runOnJS(handleLongPress)(
             sortedWithFavorites[
-              (pressedInVisibles as ViewToken).index ?? pressedIndex - 1
+              (pressedInVisibles as ViewToken).index ?? pressedIndex
             ],
           );
           lastSelectedShared.value = pressedInVisibles;

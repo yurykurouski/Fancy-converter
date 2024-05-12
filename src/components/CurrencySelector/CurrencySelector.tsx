@@ -117,6 +117,9 @@ export const CurrencySelector = React.memo(
               height: WINDOW_HEIGHT - HEADER_HEIGHT - BOTTOMSHEET_EL_HEIGHT,
               width: WINDOW_WIDTH,
             }}
+            viewabilityConfig={{
+              viewAreaCoveragePercentThreshold: 100,
+            }}
             onViewableItemsChanged={onViewableItemsChanged}
             keyExtractor={item => item}
             decelerationRate={'normal'}
