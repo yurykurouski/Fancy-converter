@@ -42,20 +42,16 @@ export const Header = React.memo(
 
       return (
         <View style={styles.container}>
-          <View style={styles.scrollContainer}>
-            <Animated.View
-              style={[styles.containerFrame, animatedPositionStyle]}>
-              <Menu onOpenDrawer={onOpenDrawer} />
-              <Text style={styles.header}>{APP_NAME}</Text>
-            </Animated.View>
-            <Animated.View
-              style={[styles.containerFrame, animatedPositionStyle]}>
-              <CurrencyTypeMenu
-                activeCurrencyType={activeCurrencyType}
-                ref={containerListRef}
-              />
-            </Animated.View>
-          </View>
+          <Animated.View style={[styles.containerFrame, animatedPositionStyle]}>
+            <Menu onOpenDrawer={onOpenDrawer} />
+            <Text style={styles.header}>{APP_NAME}</Text>
+          </Animated.View>
+          <Animated.View style={[styles.containerFrame, animatedPositionStyle]}>
+            <CurrencyTypeMenu
+              activeCurrencyType={activeCurrencyType}
+              ref={containerListRef}
+            />
+          </Animated.View>
         </View>
       );
     },

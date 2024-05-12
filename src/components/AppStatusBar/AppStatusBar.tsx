@@ -1,21 +1,15 @@
 import React from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
-import { isAndroid } from 'utils';
+import {
+  ThemeAwareStatusBar,
+  useThemePreference,
+} from '@vonovak/react-native-theme-control';
 
 export const AppStatusBar = () => {
-  const colorScheme = useColorScheme();
+  const colorScheme = useThemePreference();
 
   return (
-    <StatusBar
-      barStyle={
-        isAndroid
-          ? colorScheme === 'dark'
-            ? 'light-content'
-            : 'dark-content'
-          : undefined
-      }
-      backgroundColor={'transparent'}
-      translucent
+    <ThemeAwareStatusBar
+      backgroundColor={colorScheme === 'light' ? '#f0f0f3' : '#202124'}
       animated
     />
   );

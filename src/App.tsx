@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, UIManager, View } from 'react-native';
+import { SafeAreaView, StyleSheet, UIManager } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   initialWindowMetrics,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
+import { Colors } from 'assets/colors';
 import { AppStatusBar, CurrenciesMainContent, Onboarding } from 'components';
 import { NotificationMessage } from 'components/NotificationMessage';
 import { useInitStore } from 'store';
@@ -12,7 +13,7 @@ import { onboardingStatusStore } from 'store/onboardingStatusStore';
 import { isAndroid } from 'utils';
 import { useSnapshot } from 'valtio';
 
-import { useStyles } from './App.styles';
+import { styles } from './App.styles';
 
 if (UIManager.setLayoutAnimationEnabledExperimental && isAndroid) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -21,8 +22,6 @@ if (UIManager.setLayoutAnimationEnabledExperimental && isAndroid) {
 const App = React.memo(() => {
   const { isOnBoarded } = useSnapshot(onboardingStatusStore);
 
-  const styles = useStyles();
-
   const { isHydrated } = useInitStore();
 
   if (!isHydrated) {
@@ -30,18 +29,16 @@ const App = React.memo(() => {
   }
 
   return (
-    <View style={styles.wrapper}>
+    <SafeAreaView style={styles.wrapper}>
       <AppStatusBar />
-      <View style={styles.container}>
-        <NotificationMessage />
-        {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
-      </View>
-    </View>
+      <NotificationMessage />
+      {isOnBoarded ? <CurrenciesMainContent /> : <Onboarding />}
+    </SafeAreaView>
   );
 });
 
 const { container } = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, backgroundColor: Colors.APP_BACKGROUND_PRIMARY },
 });
 
 export default () => (

@@ -2,7 +2,7 @@ import React, { LegacyRef, useCallback, useMemo } from 'react';
 import { GestureDetector } from 'react-native-gesture-handler';
 import { useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { WINDOW_WIDTH } from '@gorhom/bottom-sheet';
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from '@gorhom/bottom-sheet';
 import { FlashList, ListRenderItem, ViewToken } from '@shopify/flash-list';
 import { CurrencyInputValue } from 'components';
 import { AppRefreshControl } from 'components/common/AppRefreshControl';
@@ -104,7 +104,6 @@ export const CurrencySelector = React.memo(
             ref={listRef}
             data={sortedWithFavorites}
             renderItem={renderItem}
-            disableAutoLayout
             refreshControl={
               <AppRefreshControl
                 refreshing={isLoading}
@@ -113,20 +112,16 @@ export const CurrencySelector = React.memo(
             }
             ListFooterComponent={renderFooter}
             ListEmptyComponent={ListEmptyComponent}
-            drawDistance={0}
             estimatedItemSize={INPUT_ELEMENT_HEIGHT}
             estimatedListSize={{
-              height: WINDOW_WIDTH - HEADER_HEIGHT - BOTTOMSHEET_EL_HEIGHT,
+              height: WINDOW_HEIGHT - HEADER_HEIGHT - BOTTOMSHEET_EL_HEIGHT,
               width: WINDOW_WIDTH,
-            }}
-            viewabilityConfig={{
-              itemVisiblePercentThreshold: 50,
             }}
             onViewableItemsChanged={onViewableItemsChanged}
             keyExtractor={item => item}
             decelerationRate={'normal'}
             snapToAlignment={'start'}
-            snapToInterval={72}
+            snapToInterval={INPUT_ELEMENT_HEIGHT}
             automaticallyAdjustKeyboardInsets
             keyboardDismissMode="interactive"
             keyboardShouldPersistTaps="handled"

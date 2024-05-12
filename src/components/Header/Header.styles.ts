@@ -3,15 +3,11 @@ import { useTheme } from 'hooks';
 import { isAndroid } from 'utils/platform';
 
 export const useStyles = () =>
-  useTheme(({ theme, insets: { top } }) => ({
+  useTheme(({ theme }) => ({
     container: {
-      height: top + HEADER_HEIGHT,
+      height: HEADER_HEIGHT,
       paddingHorizontal: 6,
       backgroundColor: theme.APP_BACKGROUND_PRIMARY,
-      overflow: 'hidden',
-    },
-    scrollContainer: {
-      marginTop: top + 4,
       overflow: 'hidden',
     },
     containerFrame: {

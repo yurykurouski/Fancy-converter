@@ -43,8 +43,7 @@ export const CurrenciesMainContent = React.memo(() => {
 
   return (
     <DrawerLayout
-      //NOTE: https://github.com/software-mansion/react-native-gesture-handler/issues/2208#issuecomment-1291675205
-      useNativeAnimations={true}
+      useNativeAnimations
       ref={drawerRef}
       overlayColor={Colors.OVERLAY as unknown as string}
       contentContainerStyle={styles.drawerContainerStyle}

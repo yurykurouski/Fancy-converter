@@ -30,7 +30,7 @@ export const INPUT_ELEMENT_HEIGHT = 72;
 
 export const ICON_BUTTON_SIZE = 24;
 export const HEADER_HEIGHT = 40;
-export const CONTROLS_OFFSET = 30;
+export const CONTROLS_OFFSET = 10;
 
 export const DEFAULT_CURRENCIES = {
   [EAvailableFiatNames.EUR]: '',

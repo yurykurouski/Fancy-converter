@@ -1,16 +1,9 @@
-import { useTheme } from 'hooks';
+import { StyleSheet } from 'react-native';
+import { Colors } from 'assets/colors';
 
-export const useStyles = () =>
-  useTheme(({ theme, insets: { bottom } }) => {
-    return {
-      wrapper: {
-        flex: 1,
-        backgroundColor: theme.ACCENT_COLOR_DARKER,
-      },
-      container: {
-        flex: 1,
-        backgroundColor: theme.APP_BACKGROUND_PRIMARY,
-        marginBottom: bottom,
-      },
-    };
-  });
+export const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    backgroundColor: Colors.APP_BACKGROUND_PRIMARY,
+  },
+});

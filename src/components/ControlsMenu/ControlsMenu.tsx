@@ -7,7 +7,7 @@ import { FlashList } from '@shopify/flash-list';
 import { Counter } from 'components/Header/components/Counter';
 import { RemoveSweep } from 'components/Header/components/RemoveSweep';
 import { Share } from 'components/Header/components/Share';
-import { CONTROLS_OFFSET } from 'constants/index';
+import { CONTROLS_OFFSET } from 'constants';
 import { TAvailableCurrenciesNames } from 'types';
 
 import { useStyles } from './ControlsMenu.styles';

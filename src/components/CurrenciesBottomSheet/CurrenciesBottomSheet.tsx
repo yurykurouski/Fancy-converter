@@ -9,7 +9,6 @@ import BottomSheet, {
 import { useWindowDimensionChange } from 'hooks';
 import { editModeStore } from 'store/editModeStore/editModeStore';
 import { ECurrencyType, EDimensions } from 'types';
-import { isIos } from 'utils';
 import { useSnapshot } from 'valtio';
 
 import { SearchField } from './components/SearchField';
@@ -59,7 +58,6 @@ export const CurrenciesBottomSheet = React.memo(
           snapPoints={snapPoints}
           ref={sheetRef}
           handleHeight={10}
-          topInset={top + (isIos ? 40 : -4)}
           handleComponent={renderHandle}
           backgroundComponent={BottomSheetBackground}
           backgroundStyle={styles.backgroundStyle}
