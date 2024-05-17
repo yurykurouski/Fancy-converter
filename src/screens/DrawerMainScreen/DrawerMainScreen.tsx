@@ -10,7 +10,7 @@ import { ScrollIndicator } from 'components';
 import { useWindowDimensionChange } from 'hooks';
 import { DrawerCreditsSection } from 'screens/DrawerMainScreen/DrawerCreditsSection';
 import { EDimensions } from 'types';
-import { isAndroid, isIos } from 'utils';
+import { isAndroid } from 'utils';
 
 import { DrawerMainSection } from './DrawerMainSection';
 import { DrawerMoreSection } from './DrawerMoreSection';
@@ -64,7 +64,7 @@ export const DrawerMainScreen = React.forwardRef<DrawerLayout>(
           </Animated.ScrollView>
 
           {/* NOTE: disabled as for now no appropriate solution with theme switching on Android */}
-          {isIos && <DrawerSwitcher />}
+          <DrawerSwitcher />
         </View>
       </View>
     );

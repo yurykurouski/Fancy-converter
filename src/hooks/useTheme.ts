@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
-import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Colors } from 'assets/colors';
+import { useTheme as useNavTheme } from '@react-navigation/native';
+import { EdgeInsets } from 'react-native-safe-area-context';
 
-import { TUseTheme } from './types';
+import { TUseTheme } from './types.ts';
 
 const defaultInsets: EdgeInsets = {
   top: 0,
@@ -12,7 +12,7 @@ const defaultInsets: EdgeInsets = {
   left: 0,
 };
 
-export const useTheme: TUseTheme = mapStyles => {
+/*export const useTheme: TUseTheme = mapStyles => {
   const insets = useSafeAreaInsets();
 
   return useMemo(
@@ -24,5 +24,19 @@ export const useTheme: TUseTheme = mapStyles => {
         }),
       ),
     [insets, mapStyles],
+  );
+};*/
+
+export const useTheme: TUseTheme = mapStyles => {
+  const theme = useNavTheme();
+
+  return useMemo(
+    () =>
+      StyleSheet.create(
+        mapStyles({
+          theme,
+        }),
+      ),
+    [mapStyles],
   );
 };

@@ -7,7 +7,7 @@ export const useStyles = () =>
       borderRadius: 15,
       borderColor: 'transparent',
       borderWidth: 2,
-      backgroundColor: theme.ELEMENT_FADE_OR_BACKGROUND,
+      backgroundColor: theme.colors.card,
       marginHorizontal: 10,
       marginVertical: 4,
       ...ELEVATIONS[1],
@@ -18,18 +18,18 @@ export const useStyles = () =>
       paddingRight: 10,
     },
     containerWrapperFocused: {
-      borderColor: theme.ACCENT_COLOR_LIGHTER,
+      borderColor: theme.colors.primary,
     },
     title: {
       textAlignVertical: 'center',
       textAlign: 'center',
       paddingVertical: 10,
-      color: theme.FONT_COLOR_FADED,
+      color: theme.colors.text,
       fontSize: 22,
       width: 62,
     },
     titleFocused: {
-      color: theme.FONT_PRIMARY_COLOR,
+      color: theme.colors.text,
       fontWeight: '500',
     },
     input: {
@@ -37,10 +37,10 @@ export const useStyles = () =>
       flexGrow: 1,
       fontSize: 24,
       fontWeight: '500',
-      color: theme.FONT_PRIMARY_COLOR,
+      color: theme.colors.text,
     },
     underlayBackground: {
-      backgroundColor: theme.SUNSET_ORANGE,
+      backgroundColor: theme.colors.notification,
       width: 80,
       borderTopLeftRadius: 15,
       borderBottomLeftRadius: 15,

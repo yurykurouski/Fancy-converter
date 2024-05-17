@@ -13,7 +13,7 @@ export const useStyles = (pageHeight: number) => {
       fontWeight: 'bold',
       ...(isAndroid && { fontFamily: 'monospace' }),
       textTransform: 'uppercase',
-      color: theme.FONT_PRIMARY_COLOR,
+      color: theme.colors.text,
       alignSelf: 'center',
       marginTop: 10,
     },
@@ -26,14 +26,14 @@ export const useStyles = (pageHeight: number) => {
     itemTitle: {
       fontSize: 16,
       fontWeight: 'bold',
-      color: theme.FONT_PRIMARY_COLOR,
+      color: theme.colors.text,
       ...(isAndroid && { fontFamily: 'monospace' }),
       textTransform: 'uppercase',
     },
     itemContent: {
       fontSize: 16,
       fontWeight: '500',
-      color: theme.FONT_PRIMARY_COLOR,
+      color: theme.colors.text,
       textDecorationLine: 'underline',
     },
     iconContainer: {
@@ -42,11 +42,11 @@ export const useStyles = (pageHeight: number) => {
       alignItems: 'center',
       justifyContent: 'center',
       padding: 4,
-      backgroundColor: theme.FONT_PRIMARY_COLOR_INVERTED,
+      backgroundColor: theme.colors.card,
       borderRadius: 20,
     },
     poweredContainer: {
-      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
+      backgroundColor: theme.colors.card,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -61,7 +61,7 @@ export const useStyles = (pageHeight: number) => {
     creditsSmallText: {
       fontSize: 12,
       fontWeight: '600',
-      color: theme.FONT_PRIMARY_COLOR,
+      color: theme.colors.text,
       ...(isAndroid && { fontFamily: 'monospace' }),
     },
     footerContainer: {

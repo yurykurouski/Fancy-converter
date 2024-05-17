@@ -12,7 +12,7 @@ export const useStyles = (pageHeight: number) =>
       marginTop: '50%',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: theme.APP_BACKGROUND_PRIMARY,
+      backgroundColor: theme.colors.card,
     },
     moreFirstRow: {
       fontSize: 40,
@@ -25,7 +25,7 @@ export const useStyles = (pageHeight: number) =>
       fontWeight: 'bold',
       ...(isAndroid && { fontFamily: 'monospace' }),
       textTransform: 'uppercase',
-      color: theme.FONT_PRIMARY_COLOR,
+      color: theme.colors.text,
       alignSelf: 'center',
     },
   }));

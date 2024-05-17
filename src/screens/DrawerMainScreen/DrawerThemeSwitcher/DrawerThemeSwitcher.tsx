@@ -4,8 +4,6 @@ import {
   setThemePreference,
   useThemePreference,
 } from '@vonovak/react-native-theme-control';
-import switchTheme from 'react-native-theme-switch-animation';
-import { DEFAULT_ANIMATION_DURATION } from 'constants';
 import { colorSchemeActions } from 'store/colorSchemeStore';
 import { EColorSchemeBehavior } from 'types';
 
@@ -21,7 +19,7 @@ export const DrawerThemeSwitcher = React.memo(() => {
 
   const onPress = useCallback(() => {
     setThemePreference(colorScheme === 'dark' ? 'light' : 'dark', {
-      persistTheme: true,
+      persistTheme: false,
       //TODO: handle restarting
       // restartActivity: true,
     });
@@ -32,19 +30,20 @@ export const DrawerThemeSwitcher = React.memo(() => {
     <Pressable
       style={styles.container}
       onPress={e => {
-        e.currentTarget.measure((_, __, width, height, px, py) => {
-          switchTheme({
-            switchThemeFunction: onPress,
-            animationConfig: {
-              type: colorScheme === 'dark' ? 'circular' : 'inverted-circular',
-              duration: DEFAULT_ANIMATION_DURATION * 2,
-              startingPoint: {
-                cy: py + height / 2,
-                cx: px + width / 2,
-              },
-            },
-          });
-        });
+        onPress();
+        // e.currentTarget.measure((_, __, width, height, px, py) => {
+        //   switchTheme({
+        //     switchThemeFunction: onPress,
+        //     animationConfig: {
+        //       type: colorScheme === 'dark' ? 'circular' : 'inverted-circular',
+        //       duration: DEFAULT_ANIMATION_DURATION * 2,
+        //       startingPoint: {
+        //         cy: py + height / 2,
+        //         cx: px + width / 2,
+        //       },
+        //     },
+        //   });
+        // });
       }}>
       {colorScheme === 'dark' ? <LightIcon /> : <DarkIcon />}
 
