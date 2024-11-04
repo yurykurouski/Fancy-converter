@@ -40,7 +40,8 @@ jobs:
         run: npm install -g appcenter-cli
 
       - name: Copy the key file to the signing key file
-        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/release-key.keystore && echo "${{ env.KEYSTORE_PASSWORD }}" && echo "${{ env.KEY_ALIAS_PASSWORD }}" && echo "${{ env.KEY_ALIAS }}"
+        run: echo "${{ env.KEYSTORE_PASSWORD }}" && echo "${{ env.KEY_ALIAS_PASSWORD }}" && echo "${{ env.KEY_ALIAS }}"
+        # run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/release-key.keystore && echo "${{ env.KEYSTORE_PASSWORD }}" && echo "${{ env.KEY_ALIAS_PASSWORD }}" && echo "${{ env.KEY_ALIAS }}"
         shell: bash
 
       - name: Build Signed APK
