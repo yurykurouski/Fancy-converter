@@ -40,11 +40,11 @@ jobs:
         run: npm install -g appcenter-cli
 
       - name: Copy the key file to the signing key file
-        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/release-key.keystore
+        run: echo "${{ env.KEYSTORE }}" | base64 -d > $GITHUB_WORKSPACE/release-key.keystore && echo env.KEYSTORE_PASSWORD && echo env.KEY_ALIAS_PASSWORD && echo env.KEY_ALIAS
         shell: bash
 
       - name: Build Signed APK
-        run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease -PKEYSTORE=$GITHUB_WORKSPACE/release-key.keystore -PKEYSTORE_PASSWORD=${{ env.KEYSTORE_PASSWORD }} -PKEY_ALIAS_PASSWORD=${{ env.KEY_ALIAS_PASSWORD }} -PKEY_ALIAS=${{ env.KEY_ALIAS }} && echo env.KEYSTORE_PASSWORD && echo env.KEY_ALIAS_PASSWORD && echo env.KEY_ALIAS 
+        run: cd android && chmod +x ./gradlew && ./gradlew assembleRelease -PKEYSTORE=$GITHUB_WORKSPACE/release-key.keystore -PKEYSTORE_PASSWORD=${{ env.KEYSTORE_PASSWORD }} -PKEY_ALIAS_PASSWORD=${{ env.KEY_ALIAS_PASSWORD }} -PKEY_ALIAS=${{ env.KEY_ALIAS }} 
 
       # - name: Archive production artifacts
       #   uses: actions/upload-artifact@v3
